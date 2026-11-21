@@ -277,7 +277,7 @@ function createLevelVideo(level) {
     box.appendChild(safeText('p','فیلم آموزشی کامل Nicos Weg مربوط به سطح '+level));
 
     const video = document.createElement('iframe');
-    video.src = 'https://www.youtube-nocookie.com/embed/'+videoInfo.id;
+    video.src = 'https://www.youtube.com/embed/'+videoInfo.id;
     video.title = videoInfo.title;
     video.width = '100%';
     video.height = '240';
