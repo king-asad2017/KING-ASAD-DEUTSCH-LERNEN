@@ -1,107 +1,120 @@
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
-  background: #eef2f8;
-  color: #17233d;
-  line-height: 1.9;
+  background: #f1f5f9;
+  color: #172554;
+  direction: rtl;
+  line-height: 1.8;
 }
 
 header {
-  background: linear-gradient(135deg, #101d3a, #2457a6);
+  background: linear-gradient(135deg, #102b59, #1764a5);
   color: white;
   text-align: center;
-  padding: 45px 15px;
-  border-bottom: 5px solid #f5b82e;
+  padding: 30px 15px;
 }
 
 header h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
+  font-size: 34px;
+  margin: 5px;
 }
 
 header h2 {
-  color: #f5b82e;
-}
-
-header p {
-  margin-top: 10px;
+  margin: 5px;
 }
 
 select {
-  margin-top: 20px;
-  padding: 12px 25px;
-  border-radius: 10px;
+  padding: 10px;
+  border-radius: 8px;
   border: none;
-  font-size: 16px;
-  cursor: pointer;
+  margin-top: 10px;
 }
 
 main {
-  max-width: 1050px;
-  margin: 30px auto;
-  padding: 15px;
-}
-
-main > h2 {
-  text-align: center;
-  color: #173c78;
-  margin: 30px 0 20px;
+  width: 92%;
+  max-width: 900px;
+  margin: 25px auto;
 }
 
 section {
   background: white;
-  padding: 25px;
-  margin: 22px 0;
-  border-radius: 16px;
-  border-right: 5px solid #e6aa24;
-  box-shadow: 0 5px 18px rgba(0,0,0,0.07);
-  transition: transform 0.2s;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 15px;
+  border: 1px solid #dbeafe;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
-section:hover {
-  transform: translateY(-3px);
-}
-
-section h3 {
-  color: #17468c;
-  margin-bottom: 12px;
-  font-size: 21px;
-}
-
-section p {
-  padding: 5px;
-  font-size: 16px;
+h2, h3 {
+  color: #164e91;
 }
 
 button {
-  background: #17468c;
+  background: #1764a5;
   color: white;
-  padding: 13px 26px;
-  margin: 10px 5px;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin: 5px;
   cursor: pointer;
-  font-size: 16px;
-  transition: 0.2s;
+  font-size: 15px;
 }
 
-button:hover {
-  background: #e6aa24;
-  color: #14213d;
+button:active {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.question {
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 18px 0;
+}
+
+.question button {
+  min-width: 100px;
+}
+
+.question button.correct {
+  background: #0875d1;
+  color: white;
+  border: 2px solid #004b91;
+}
+
+.question button.wrong {
+  background: #dc2626;
+  color: white;
+  border: 2px solid #991b1b;
+}
+
+#quizResult {
+  background: #e0f2fe;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#quizMessage {
+  text-align: center;
+  font-weight: bold;
 }
 
 footer {
-  background: #101d3a;
+  background: #102b59;
   color: white;
   text-align: center;
-  padding: 30px;
-  margin-top: 40px;
+  padding: 20px;
+  margin-top: 30px;
 }
 
 @media (max-width: 600px) {
@@ -109,15 +122,15 @@ footer {
     font-size: 27px;
   }
 
-  section {
-    padding: 18px;
+  main {
+    width: 95%;
   }
 
-  section h3 {
-    font-size: 19px;
+  section {
+    padding: 14px;
   }
 
   button {
-    width: 100%;
+    font-size: 14px;
   }
 }
