@@ -1841,6 +1841,7 @@ console.log(
 
 );
 
+
 /* =========================================
    KING ASAD
    بخش سیزدهم: نمایش و پخش ویدیوها
@@ -1848,18 +1849,21 @@ console.log(
 
 // ساخت کارت ویدیوی آموزشی
 KING_ASAD.createVideoCard = function (level, video) {
+    if (!video) return null;
 
     const card = document.createElement('div');
     card.className = 'king-video-card';
 
     const title = document.createElement('h3');
-    title.textContent = video.title || ('آموزش زبان آلمانی ' + level);
+    title.textContent =
+        video.title || ('آموزش زبان آلمانی ' + level);
+
     card.appendChild(title);
 
-    // استخراج شناسه ویدیو
-    let videoId = video.id || '';
+    // دریافت شناسه ویدیو
+    let videoId = video.videoId || video.id || '';
 
-   let videoId = video.videoId || video.id || '';
+    if (!videoId && video.url) {
         const match = video.url.match(
             /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&?\/]+)/
         );
@@ -1869,17 +1873,19 @@ KING_ASAD.createVideoCard = function (level, video) {
         }
     }
 
-    // نمایش و پخش ویدیوی یوتیوب
+    // نمایش ویدیوی یوتیوب
     if (videoId) {
         const iframe = document.createElement('iframe');
 
-        iframe.src = 'https://www.youtube.com/embed/' + videoId;
+        iframe.src =
+            'https://www.youtube.com/embed/' + videoId;
+
         iframe.title = title.textContent;
         iframe.allow =
             'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+
         iframe.allowFullscreen = true;
         iframe.loading = 'lazy';
-
         iframe.style.width = '100%';
         iframe.style.aspectRatio = '16 / 9';
         iframe.style.border = '0';
@@ -1888,14 +1894,14 @@ KING_ASAD.createVideoCard = function (level, video) {
         card.appendChild(iframe);
     }
 
-    // لینک بازکردن منبع آموزشی
+    // لینک بازکردن ویدیو
     if (video.url) {
         const link = document.createElement('a');
 
         link.href = video.url;
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
-        link.textContent = 'بازکردن منبع آموزشی';
+        link.textContent = 'بازکردن ویدیو در یوتیوب';
 
         card.appendChild(link);
     }
@@ -1904,58 +1910,47 @@ KING_ASAD.createVideoCard = function (level, video) {
 };
 
 
- },
+// نمایش ویدیوهای یک سطح
+KING_ASAD.renderLevelVideos = function (level, container) {
+    if (!KING_ASAD.LEVELS.includes(level)) {
+        return false;
+    }
 
-// ویدیوهای آموزشی پنج سطح
-KING_ASAD.levelVideos = {
-    A1: [
-        {
-            videoId: '4-eDoThe6qo',
-            title: 'آموزش زبان آلمانی A1',
-            url: 'https://youtu.be/4-eDoThe6qo'
-        }
-    ],
-    A2: [
-        {
-            videoId: 'Lg5P2w_Ro1c',
-            title: 'آموزش زبان آلمانی A2',
-            url: 'https://youtu.be/Lg5P2w_Ro1c'
-        }
-    ],
-    B1: [
-        {
-            videoId: 'LkufozluseI',
-            title: 'آموزش زبان آلمانی B1',
-            url: 'https://youtu.be/LkufozluseI'
-        }
-    ],
-    B2: [
-        {
-            videoId: 'OOOogcObFig',
-            title: 'آموزش زبان آلمانی B2',
-            url: 'https://youtu.be/OOOogcObFig'
-        }
-    ],
-    C1: [
-        {
-            videoId: 'ULKkrkIJ0h8',
-            title: 'آموزش زبان آلمانی C1',
-            url: 'https://youtu.be/ULKkrkIJ0h8'
-        }
-    ]
-};
+    const target = typeof container === 'string'
+        ? document.querySelector(container)
+        : container;
 
-// دریافت ویدیوهای یک سطح
-KING_ASAD.getLevelVideos = function (level) {
-    return KING_ASAD.levelVideos[level] || [];
+    if (!target) return false;
+
+    target.replaceChildren();
+
+    const heading = document.createElement('h2');
+    heading.textContent = 'ویدیوهای سطح ' + level;
+    target.appendChild(heading);
+
+    const videos = KING_ASAD.getLevelVideos(level);
+
+    if (!videos.length) {
+        const message = document.createElement('p');
+        message.textContent = 'ویدیویی برای این سطح ثبت نشده است.';
+        target.appendChild(message);
+        return false;
+    }
+
+    videos.forEach(video => {
+        const card = KING_ASAD.createVideoCard(level, video);
+
+        if (card) {
+            target.appendChild(card);
+        }
+    });
+
+    return true;
 };
 
 
-
-
-// بازکردن صفحه ویدیو در سایت
+// بازکردن صفحه ویدیوی یک سطح
 KING_ASAD.openVideoPage = function (level) {
-
     const video = KING_ASAD.getMainVideo(level);
 
     if (!video || !video.url) {
@@ -1972,11 +1967,9 @@ KING_ASAD.openVideoPage = function (level) {
 };
 
 
-// اتصال دکمه‌های انتخاب سطح به نمایش ویدیو
+// اتصال دکمه‌های انتخاب سطح به ویدیوها
 KING_ASAD.bindVideoButtons = function () {
-
     document.querySelectorAll('[data-video-level]').forEach(button => {
-
         if (button.dataset.kingVideoBound === 'true') {
             return;
         }
@@ -1984,22 +1977,17 @@ KING_ASAD.bindVideoButtons = function () {
         button.dataset.kingVideoBound = 'true';
 
         button.addEventListener('click', function () {
-
             const level = this.dataset.videoLevel;
-
             const container =
                 document.querySelector('#videoContainer');
 
             KING_ASAD.renderLevelVideos(level, container);
-
         });
-
     });
-
 };
 
+console.log('KING ASAD: نمایش و پخش ویدیوها آماده شد.');
 
-console.log('KING ASAD: سیستم نمایش ویدیوها آماده شد.');
 /* =========================================
    KING ASAD
    بخش چهاردهم: کارت‌های درس‌ها
