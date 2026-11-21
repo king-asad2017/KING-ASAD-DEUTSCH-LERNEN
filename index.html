@@ -321,7 +321,9 @@
     <p>© 2026 KING ASAD – All Rights Reserved</p>
 </footer>
 
-<script src="script.js"></script>
-
-</body>
-</html>
+<script src="script.js" defer></script>
+<script>
+window.addEventListener('error', function(e) {
+    alert('خطای سایت: ' + e.message);
+});
+</script>
