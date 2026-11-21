@@ -616,3 +616,186 @@ function renderLessons() {
         container.appendChild(detail);
     });
 }
+
+/* =====================================
+   مکالمه‌های آموزشی
+===================================== */
+
+function renderConversation() {
+    const container = document.getElementById('conversationContent');
+    if (!container) return;
+
+    const conversations = [
+        ['Hallo!', 'سلام!'],
+        ['Wie heißt du?', 'نامت چیست؟'],
+        ['Ich heiße Ahmad.', 'نام من احمد است.'],
+        ['Wie geht es dir?', 'حالت چطور است؟'],
+        ['Mir geht es gut, danke.', 'من خوب هستم، تشکر.'],
+        ['Woher kommst du?', 'اهل کجا هستی؟'],
+        ['Ich komme aus Afghanistan.', 'من اهل افغانستان هستم.'],
+        ['Wo wohnst du?', 'کجا زندگی می‌کنی؟'],
+        ['Ich wohne in Deutschland.', 'من در آلمان زندگی می‌کنم.'],
+        ['Auf Wiedersehen!', 'خداحافظ!']
+    ];
+
+    container.innerHTML = '';
+
+    conversations.forEach(function(item) {
+        const card = document.createElement('div');
+        card.className = 'conversation-card';
+
+        const german = document.createElement('h3');
+        german.textContent = item[0];
+
+        const persian = document.createElement('p');
+        persian.textContent = item[1];
+
+        const button = document.createElement('button');
+        button.textContent = '🔊 شنیدن تلفظ';
+        button.onclick = function() {
+            speakGerman(item[0]);
+        };
+
+        card.append(german, persian, button);
+        container.appendChild(card);
+    });
+}
+
+/* =====================================
+   آموزش گرامر
+===================================== */
+
+function renderGrammar() {
+    const container = document.getElementById('grammarContent');
+    if (!container) return;
+
+    const grammar = [
+        {
+            title: 'فعل sein',
+            explanation: 'فعل sein به معنی بودن است.',
+            example: 'Ich bin müde.',
+            translation: 'من خسته هستم.'
+        },
+        {
+            title: 'فعل haben',
+            explanation: 'فعل haben به معنی داشتن است.',
+            example: 'Ich habe ein Buch.',
+            translation: 'من یک کتاب دارم.'
+        },
+        {
+            title: 'حروف تعریف der, die, das',
+            explanation: 'اسم‌ها در زبان آلمانی جنس دستوری دارند.',
+            example: 'der Mann, die Frau, das Kind',
+            translation: 'مرد، زن، کودک'
+        },
+        {
+            title: 'صرف فعل در زمان حال',
+            explanation: 'فعل با توجه به فاعل تغییر می‌کند.',
+            example: 'Ich lerne Deutsch.',
+            translation: 'من آلمانی یاد می‌گیرم.'
+        },
+        {
+            title: 'ساختار جمله',
+            explanation: 'در جمله خبری ساده، فعل معمولاً در جایگاه دوم قرار می‌گیرد.',
+            example: 'Heute lerne ich Deutsch.',
+            translation: 'امروز من آلمانی یاد می‌گیرم.'
+        },
+        {
+            title: 'زمان گذشته Perfekt',
+            explanation: 'برای بیان بسیاری از اتفاقات گذشته استفاده می‌شود.',
+            example: 'Ich habe Deutsch gelernt.',
+            translation: 'من آلمانی یاد گرفتم.'
+        }
+    ];
+
+    container.innerHTML = '';
+
+    grammar.forEach(function(item) {
+        const card = document.createElement('div');
+        card.className = 'grammar-card';
+
+        const heading = document.createElement('h3');
+        heading.textContent = item.title;
+
+        const explanation = document.createElement('p');
+        explanation.textContent = item.explanation;
+
+        const example = document.createElement('p');
+        example.textContent = 'مثال: ' + item.example;
+
+        const translation = document.createElement('p');
+        translation.textContent = 'ترجمه: ' + item.translation;
+
+        const button = document.createElement('button');
+        button.textContent = '🔊 شنیدن مثال';
+        button.onclick = function() {
+            speakGerman(item.example);
+        };
+
+        card.append(heading, explanation, example, translation, button);
+        container.appendChild(card);
+    });
+}
+
+/* =====================================
+   ویدیوهای آموزشی
+===================================== */
+
+function renderVideos() {
+    const videos = [
+        { id: 'videosA1', level: 'A1' },
+        { id: 'videosA2', level: 'A2' },
+        { id: 'videosB1', level: 'B1' }
+    ];
+
+    videos.forEach(function(item) {
+        const container = document.getElementById(item.id);
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        const message = document.createElement('p');
+        message.textContent =
+            'ویدیوهای آموزشی سطح ' + item.level +
+            ' به‌زودی در این بخش قرار می‌گیرند.';
+
+        container.appendChild(message);
+    });
+}
+
+/* =====================================
+   سیستم باز کردن صفحه‌ها
+===================================== */
+
+window.showPage = function(pageId) {
+    document.querySelectorAll('.page').forEach(function(page) {
+        page.classList.remove('active');
+    });
+
+    const page = document.getElementById(pageId);
+
+    if (!page) {
+        alert('صفحه مورد نظر پیدا نشد: ' + pageId);
+        return;
+    }
+
+    page.classList.add('active');
+    window.scrollTo(0, 0);
+
+    if (pageId === 'homePage') {
+        showProgress();
+    }
+};
+
+/* =====================================
+   اجرای اولیه آموزشگاه
+===================================== */
+
+document.addEventListener('DOMContentLoaded', function() {
+    renderLessons();
+    renderConversation();
+    renderGrammar();
+    renderVideos();
+    showProgress();
+    showPage('homePage');
+});
