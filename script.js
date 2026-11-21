@@ -1978,33 +1978,37 @@ KING_ASAD.renderLevelVideos = function (level, container) {
 };
 
 
-// نمایش همه ویدیوهای پنج سطح
-KING_ASAD.renderAllVideos = function (container) {
-
-    const target = typeof container === 'string'
-        ? document.querySelector(container)
-        : container;
-
-    if (!target) {
-        return false;
-    }
-
-    target.replaceChildren();
-
-    KING_ASAD.LEVELS.forEach(level => {
-
-        const section = document.createElement('section');
-
-        section.className = 'king-video-section';
-
-        KING_ASAD.renderLevelVideos(level, section);
-
-        target.appendChild(section);
-
-    });
-
-    return true;
 };
+
+    // ویدیوهای آموزشی پنج سطح
+    levelVideos: {
+        A1: {
+            id: '4-eDoThe6qo',
+            title: 'آموزش زبان آلمانی A1',
+            url: 'https://youtu.be/4-eDoThe6qo?is=yZgSGfeWgA3OXrwm'
+        },
+        A2: {
+            id: 'Lg5P2w_Ro1c',
+            title: 'آموزش زبان آلمانی A2',
+            url: 'https://youtu.be/Lg5P2w_Ro1c?is=B4C0FhHvXJcSui_y'
+        },
+        B1: {
+            id: 'LkufozluseI',
+            title: 'آموزش زبان آلمانی B1',
+            url: 'https://youtu.be/LkufozluseI?is=q9TZFA-X5UojzCmO'
+        },
+        B2: {
+            id: 'OOOogcObFig',
+            title: 'آموزش زبان آلمانی B2',
+            url: 'https://youtu.be/OOOogcObFig?is=Ty5SYwsZgIsqwmZm'
+        },
+        C1: {
+            id: 'ULKkrkIJ0h8',
+            title: 'آموزش زبان آلمانی C1',
+            url: 'https://youtu.be/ULKkrkIJ0h8?is=84F_0r4dokd0vboh'
+        }
+    },
+
 
 
 // بازکردن صفحه ویدیو در سایت
