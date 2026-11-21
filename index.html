@@ -490,3 +490,88 @@ function checkLessonAnswer(level, index) {
   result.style.color = 'red';
  }
 }
+
+/* فرهنگ لغات */
+const dictionary=[
+["Hallo","سلام"],
+["Guten Morgen","صبح بخیر"],
+["Guten Abend","عصر بخیر"],
+["Gute Nacht","شب بخیر"],
+["Danke","تشکر"],
+["Bitte","لطفاً / خواهش می‌کنم"],
+["Ja","بلی"],
+["Nein","نخیر"],
+["Wasser","آب"],
+["Brot","نان"],
+["Haus","خانه"],
+["Familie","خانواده"],
+["Freund","دوست"],
+["Schule","مکتب"],
+["Buch","کتاب"],
+["Arbeit","کار"],
+["Apfel","سیب"],
+["Mutter","مادر"],
+["Vater","پدر"],
+["Bruder","برادر"],
+["Schwester","خواهر"],
+["Lehrer","معلم"],
+["Arzt","دکتر"],
+["Stadt","شهر"],
+["Auto","موتر"],
+["Liebe","عشق"],
+["Schön","زیبا"],
+["Groß","بزرگ"],
+["Klein","کوچک"],
+["Zeit","زمان"],
+["Geld","پول"],
+["Wohnung","آپارتمان"],
+["Essen","غذا"],
+["Trinken","نوشیدن"],
+["Lernen","یاد گرفتن"],
+["Gesundheit","سلامتی"],
+["Zukunft","آینده"],
+["Erfahrung","تجربه"],
+["Verantwortung","مسئولیت"],
+["Umwelt","محیط زیست"]
+];
+
+function searchDictionary(){
+ const input=document.getElementById('dictionaryInput').value.trim().toLowerCase();
+ const result=document.getElementById('dictionaryResult');
+
+ if(!input){
+  result.innerHTML='<p>لطفاً یک کلمه وارد کنید.</p>';
+  return;
+ }
+
+ const found=dictionary.filter(function(item){
+  return item[0].toLowerCase().includes(input) ||
+         item[1].toLowerCase().includes(input);
+ });
+
+ if(!found.length){
+  result.innerHTML='<p>این کلمه پیدا نشد.</p>';
+  return;
+ }
+
+ result.innerHTML=found.map(function(item){
+  return `
+  <div class="word-card">
+   <h3 class="german">${item[0]}</h3>
+   <p>معنی: ${item[1]}</p>
+   <button onclick="speakGerman('${item[0]}')">🔊 تلفظ</button>
+  </div>`;
+ }).join('');
+}
+
+/* اجرای درس‌های سه سطح */
+renderLessons('a1LessonsList',a1Lessons,'A1');
+renderLessons('a2LessonsList',a2Lessons,'A2');
+renderLessons('b1LessonsList',b1Lessons,'B1');
+
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
