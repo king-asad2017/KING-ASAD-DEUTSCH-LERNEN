@@ -150,3 +150,178 @@
         </div>
     </div>
 </section>
+
+<!-- صفحه درس‌ها -->
+<section id="lessonsPage" class="page">
+    <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
+    <div class="panel">
+        <h2>📚 درس‌های زبان آلمانی</h2>
+        <p>سطح آموزشی مورد نظر خود را انتخاب کنید.</p>
+        <div class="level-grid">
+            <button onclick="showPage('lessonA1Page')">🇩🇪 سطح A1 – مبتدی</button>
+            <button onclick="showPage('lessonA2Page')">🇩🇪 سطح A2 – متوسط مقدماتی</button>
+            <button onclick="showPage('lessonB1Page')">🇩🇪 سطح B1 – متوسط</button>
+        </div>
+    </div>
+</section>
+
+<!-- درس‌های سطح A1 -->
+<section id="lessonA1Page" class="page">
+    <button class="back-button" onclick="showPage('lessonsPage')">بازگشت به سطح‌ها</button>
+    <div class="panel">
+        <h2>🇩🇪 درس‌های سطح A1</h2>
+        <div id="a1LessonsContainer"></div>
+    </div>
+</section>
+
+<!-- درس‌های سطح A2 -->
+<section id="lessonA2Page" class="page">
+    <button class="back-button" onclick="showPage('lessonsPage')">بازگشت به سطح‌ها</button>
+    <div class="panel">
+        <h2>🇩🇪 درس‌های سطح A2</h2>
+        <div id="a2LessonsContainer"></div>
+    </div>
+</section>
+
+<!-- درس‌های سطح B1 -->
+<section id="lessonB1Page" class="page">
+    <button class="back-button" onclick="showPage('lessonsPage')">بازگشت به سطح‌ها</button>
+    <div class="panel">
+        <h2>🇩🇪 درس‌های سطح B1</h2>
+        <div id="b1LessonsContainer"></div>
+    </div>
+</section>
+
+<!-- فرهنگ لغات -->
+<section id="dictionaryPage" class="page">
+    <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
+    <div class="panel">
+        <h2>📖 فرهنگ لغات چندزبانه</h2>
+        <p>زبان مبدأ و زبان مقصد را انتخاب کنید.</p>
+
+        <label for="dictionarySource">زبان مبدأ:</label>
+        <select id="dictionarySource">
+            <option value="fa">فارسی</option>
+            <option value="de">آلمانی</option>
+            <option value="tr">ترکی</option>
+            <option value="ar">عربی</option>
+            <option value="hi">هندی</option>
+            <option value="ps">پشتو</option>
+            <option value="ur">اردو</option>
+            <option value="ru">روسی</option>
+            <option value="en">انگلیسی</option>
+        </select>
+
+        <label for="dictionaryTarget">زبان مقصد:</label>
+        <select id="dictionaryTarget">
+            <option value="de">آلمانی</option>
+            <option value="fa">فارسی</option>
+            <option value="tr">ترکی</option>
+            <option value="ar">عربی</option>
+            <option value="hi">هندی</option>
+            <option value="ps">پشتو</option>
+            <option value="ur">اردو</option>
+            <option value="ru">روسی</option>
+            <option value="en">انگلیسی</option>
+        </select>
+
+        <input id="dictionaryInput" type="text"
+            placeholder="کلمه یا عبارت مورد نظر را بنویسید">
+
+        <button onclick="searchDictionary()">🔍 جست‌وجوی ترجمه</button>
+        <div id="dictionaryResult"></div>
+    </div>
+</section>
+
+<!-- آزمون‌ها -->
+<section id="testsPage" class="page">
+    <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
+    <div class="panel">
+        <h2>📝 مرکز آزمون‌های زبان آلمانی</h2>
+        <p>سطح آزمون خود را انتخاب کنید.</p>
+
+        <div class="level-grid">
+            <button onclick="openQuiz('A1')">شروع آزمون A1</button>
+            <button onclick="openQuiz('A2')">شروع آزمون A2</button>
+            <button onclick="openQuiz('B1')">شروع آزمون B1</button>
+        </div>
+    </div>
+
+    <div id="quiz-A1" class="panel quiz-box" style="display:none">
+        <h3>آزمون سطح A1</h3>
+        <div id="questions-A1"></div>
+        <button onclick="submitQuiz('A1')">ثبت پاسخ‌ها</button>
+        <div id="result-A1"></div>
+    </div>
+
+    <div id="quiz-A2" class="panel quiz-box" style="display:none">
+        <h3>آزمون سطح A2</h3>
+        <div id="questions-A2"></div>
+        <button onclick="submitQuiz('A2')">ثبت پاسخ‌ها</button>
+        <div id="result-A2"></div>
+    </div>
+
+    <div id="quiz-B1" class="panel quiz-box" style="display:none">
+        <h3>آزمون سطح B1</h3>
+        <div id="questions-B1"></div>
+        <button onclick="submitQuiz('B1')">ثبت پاسخ‌ها</button>
+        <div id="result-B1"></div>
+    </div>
+</section>
+
+<!-- ویدیوهای آموزشی -->
+<section id="videosPage" class="page">
+    <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
+    <div class="panel">
+        <h2>🎬 ویدیوهای آموزشی زبان آلمانی</h2>
+        <p>ویدیوهای آموزشی بر اساس سطح زبان‌آموزان قرار می‌گیرند.</p>
+
+        <div class="video-section">
+            <h3>سطح A1</h3>
+            <div id="videosA1"></div>
+        </div>
+
+        <div class="video-section">
+            <h3>سطح A2</h3>
+            <div id="videosA2"></div>
+        </div>
+
+        <div class="video-section">
+            <h3>سطح B1</h3>
+            <div id="videosB1"></div>
+        </div>
+    </div>
+</section>
+
+<!-- مکالمه -->
+<section id="conversationPage" class="page">
+    <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
+    <div class="panel">
+        <h2>💬 تمرین مکالمه آلمانی</h2>
+        <p>جمله‌های آلمانی را بخوانید و با صدای بلند تمرین کنید.</p>
+        <div id="conversationContent"></div>
+    </div>
+</section>
+
+<!-- گرامر -->
+<section id="grammarPage" class="page">
+    <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
+    <div class="panel">
+        <h2>📘 آموزش گرامر آلمانی</h2>
+        <div id="grammarContent"></div>
+    </div>
+</section>
+
+</main>
+
+<footer class="main-footer">
+    <h3>👑 KING ASAD</h3>
+    <p>مرکز آموزش زبان‌های بین‌المللی</p>
+    <p>آموزش، تمرین و پیشرفت برای همه</p>
+    <p>© 2026 KING ASAD – All Rights Reserved</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
