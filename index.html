@@ -1,48 +1,69 @@
+
 <!DOCTYPE html>
-<html lang="de">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KING ASAD - Deutsch Lernen</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KING ASAD - German Learning</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <h1>KING ASAD</h1>
-  <h2>Deutsch Lernen</h2>
-  <p>Learn German step by step</p>
+  <h1>KING ASAD 👑</h1>
+  <p>آموزش زبان آلمانی | Deutsch Lernen</p>
+  <select id="language">
+    <option value="fa">فارسی</option>
+    <option value="de">Deutsch</option>
+    <option value="en">English</option>
+  </select>
 </header>
 
 <main>
-  <h2>Willkommen!</h2>
-  <p>Welcome to KING ASAD German Learning.</p>
+  <h2 id="welcome">به آموزشگاه آنلاین کینگ اسد خوش آمدید!</h2>
 
   <section>
-    <h3>Deutsch Alphabet</h3>
+    <h3>📚 الفبای آلمانی</h3>
     <p>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+    <p>Ä Ä | Ö Ö | Ü Ü | ß Eszett</p>
   </section>
 
   <section>
-    <h3>German Lessons</h3>
-    <p>Learn German words, grammar and conversation.</p>
+    <h3>📖 لغات آلمانی</h3>
+    <p>Hallo — سلام — Hello</p>
+    <p>Danke — تشکر — Thank you</p>
+    <p>Bitte — لطفاً — Please</p>
+    <p>Wasser — آب — Water</p>
+    <p>Freund — دوست — Friend</p>
   </section>
 
   <section>
-    <h3>Vocabulary</h3>
-    <p>Hallo - Hello</p>
-    <p>Danke - Thank you</p>
-    <p>Bitte - Please</p>
-    <p>Guten Morgen - Good morning</p>
+    <h3>🗣️ مکالمه روزمره</h3>
+    <p>Wie heißt du? — نامت چیست؟ — What is your name?</p>
+    <p>Wie geht es dir? — حالت چطور است؟ — How are you?</p>
+    <p>Ich heiße Asad. — نام من اسد است. — My name is Asad.</p>
   </section>
 
-  <button id="welcomeButton">Start Learning</button>
+  <section>
+    <h3>✍️ گرامر آلمانی</h3>
+    <p>Ich bin = من هستم</p>
+    <p>Du bist = تو هستی</p>
+    <p>Er ist = او هست</p>
+    <p>Wir sind = ما هستیم</p>
+  </section>
+
+  <section>
+    <h3>🎯 آزمون آموزشی</h3>
+    <p>معنی کلمه Hallo چیست؟</p>
+    <button onclick="alert('آفرین! پاسخ صحیح: سلام')">سلام</button>
+    <button onclick="alert('دوباره تلاش کن!')">خداحافظ</button>
+  </section>
 </main>
 
 <footer>
-  <p>© 2026 KING ASAD</p>
+  <p>© 2026 KING ASAD - German Learning</p>
 </footer>
 
 <script src="script.js"></script>
 </body>
-    </html>
+</html>
