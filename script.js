@@ -872,15 +872,34 @@ KING_ASAD.createLessonQuiz = function (level, lessonNumber) {
 
 
 // بررسی پاسخ‌های آزمون
-KING_ASAD.checkLessonQuiz = function (level, lessonNumber, answers) {
 
-    const questions = KING_ASAD.createLessonQuiz(level, lessonNumber);
+KING_ASAD.checkLessonStructure = function () {
+    const errors = [];
 
-    if (!Array.isArray(answers) || answers.length !== questions.length) {
-        return {
-            success: false,
-            message: 'لطفاً به تمام سؤال‌ها پاسخ دهید.'
-        };
+    KING_ASAD.LEVELS.forEach(level => {
+        const lessons = KING_ASAD.getLessonsByLevel(level);
+
+        if (lessons.length !== KING_ASAD.LESSON_COUNTS[level]) {
+            errors.push('تعداد درس‌های ' + level + ' درست نیست.');
+        }
+
+        lessons.forEach(lesson => {
+            if (!lesson.title || !lesson.words || !lesson.words.length) {
+                errors.push('اطلاعات درس ' + lesson.id + ' ناقص است.');
+            }
+
+            if (!lesson.grammar || !lesson.dialog || !lesson.dialog.length) {
+                errors.push('محتوای آموزشی درس ' + lesson.id + ' ناقص است.');
+            }
+        });
+    });
+
+    return {
+        valid: errors.length === 0,
+        errors: errors,
+        totalLessons: KING_ASAD.getTotalLessons()
+    };
+
     }
 
     let score = 0;
@@ -2155,7 +2174,6 @@ KING_ASAD.refreshLessonCards = function () {
     });
 
 };
-
 
 console.log('KING ASAD: کارت‌های درس‌ها آماده شدند.');
 /* =========================================
