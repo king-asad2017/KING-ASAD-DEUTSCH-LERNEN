@@ -1771,11 +1771,7 @@ KING_ASAD.videoLibrary = {
 };
 
 
-// دریافت ویدیوهای یک سطح
-KING_ASAD.getLevelVideos = function (level) {
-
-    return KING_ASAD.videoLibrary[level] || [];
-
+.
 };
 
 
@@ -1937,116 +1933,52 @@ KING_ASAD.createVideoCard = function (level, video) {
 };
 
 
-// نمایش همه ویدیوهای پنج سطح
-KING_ASAD.renderAllVideos = function (container) {
+ },
 
-    const target = typeof container === 'string'
-        ? document.querySelector(container)
-        : container;
-
-    if (!target) {
-        return false;
-    }
-
-    target.replaceChildren();
-
-    KING_ASAD.LEVELS.forEach(level => {
-
-        const section = document.createElement('section');
-        section.className = 'king-video-section';
-
-        const heading = document.createElement('h2');
-        heading.textContent = 'ویدیوهای سطح ' + level;
-
-        section.appendChild(heading);
-
-        KING_ASAD.renderLevelVideos(level, section);
-
-        target.appendChild(section);
-    });
-
-    return true;
-};
-
-};
-
-
-// نمایش ویدیوهای یک سطح در صفحه
-KING_ASAD.renderLevelVideos = function (level, container) {
-
-    if (!KING_ASAD.LEVELS.includes(level)) {
-        return false;
-    }
-
-    const target = typeof container === 'string'
-        ? document.querySelector(container)
-        : container;
-
-    if (!target) {
-        console.warn('محل نمایش ویدیو پیدا نشد.');
-        return false;
-    }
-
-    target.replaceChildren();
-
-    const heading = document.createElement('h2');
-    heading.textContent =
-        'ویدیوهای آموزشی ' + KING_ASAD.getLevelName(level);
-
-    target.appendChild(heading);
-
-    const videos = KING_ASAD.getLevelVideos(level);
-
-    if (!videos.length) {
-
-        const empty = document.createElement('p');
-        empty.textContent = 'ویدیویی برای این سطح ثبت نشده است.';
-
-        target.appendChild(empty);
-
-        return true;
-    }
-
-    videos.forEach(video => {
-        target.appendChild(
-            KING_ASAD.createVideoCard(level, video)
-        );
-    });
-
-    return true;
-};
-
-
-};
-
-    // ویدیوهای آموزشی پنج سطح
-    levelVideos: {
-        A1: {
-            id: '4-eDoThe6qo',
+// ویدیوهای آموزشی پنج سطح
+KING_ASAD.levelVideos = {
+    A1: [
+        {
+            videoId: '4-eDoThe6qo',
             title: 'آموزش زبان آلمانی A1',
-            url: 'https://youtu.be/4-eDoThe6qo?is=yZgSGfeWgA3OXrwm'
-        },
-        A2: {
-            id: 'Lg5P2w_Ro1c',
-            title: 'آموزش زبان آلمانی A2',
-            url: 'https://youtu.be/Lg5P2w_Ro1c?is=B4C0FhHvXJcSui_y'
-        },
-        B1: {
-            id: 'LkufozluseI',
-            title: 'آموزش زبان آلمانی B1',
-            url: 'https://youtu.be/LkufozluseI?is=q9TZFA-X5UojzCmO'
-        },
-        B2: {
-            id: 'OOOogcObFig',
-            title: 'آموزش زبان آلمانی B2',
-            url: 'https://youtu.be/OOOogcObFig?is=Ty5SYwsZgIsqwmZm'
-        },
-        C1: {
-            id: 'ULKkrkIJ0h8',
-            title: 'آموزش زبان آلمانی C1',
-            url: 'https://youtu.be/ULKkrkIJ0h8?is=84F_0r4dokd0vboh'
+            url: 'https://youtu.be/4-eDoThe6qo'
         }
-    },
+    ],
+    A2: [
+        {
+            videoId: 'Lg5P2w_Ro1c',
+            title: 'آموزش زبان آلمانی A2',
+            url: 'https://youtu.be/Lg5P2w_Ro1c'
+        }
+    ],
+    B1: [
+        {
+            videoId: 'LkufozluseI',
+            title: 'آموزش زبان آلمانی B1',
+            url: 'https://youtu.be/LkufozluseI'
+        }
+    ],
+    B2: [
+        {
+            videoId: 'OOOogcObFig',
+            title: 'آموزش زبان آلمانی B2',
+            url: 'https://youtu.be/OOOogcObFig'
+        }
+    ],
+    C1: [
+        {
+            videoId: 'ULKkrkIJ0h8',
+            title: 'آموزش زبان آلمانی C1',
+            url: 'https://youtu.be/ULKkrkIJ0h8'
+        }
+    ]
+};
+
+// دریافت ویدیوهای یک سطح
+KING_ASAD.getLevelVideos = function (level) {
+    return KING_ASAD.levelVideos[level] || [];
+};
+
 
 
 
