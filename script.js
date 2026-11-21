@@ -2827,4 +2827,145 @@ KING_ASAD.refreshProgressDashboard = function () {
 
 
 console.log('KING ASAD: داشبورد پیشرفت آماده شد.');
+/* =========================================
+   KING ASAD
+   بخش بیستم: اتصال و راه‌اندازی سیستم
+========================================= */
 
+// اتصال نمایش درس به سیستم اصلی
+window.renderKingAsadLesson = function (lesson) {
+    return KING_ASAD.renderKingAsadLesson(lesson);
+};
+
+
+// اضافه‌کردن دکمه آزمون به جزئیات هر درس
+KING_ASAD.renderLessonWithoutQuiz =
+    KING_ASAD.renderKingAsadLesson;
+
+KING_ASAD.renderKingAsadLesson = function (lesson) {
+
+    const rendered = KING_ASAD.renderLessonWithoutQuiz(lesson);
+
+    if (!rendered) {
+        return false;
+    }
+
+    const container = document.querySelector('#lessonDetail');
+
+    const quizButton = document.createElement('button');
+
+    quizButton.type = 'button';
+    quizButton.textContent = 'شروع آزمون این درس';
+
+    quizButton.addEventListener('click', function () {
+
+        KING_ASAD.openLessonQuiz(
+            lesson.level,
+            lesson.lessonNumber
+        );
+
+        document.querySelector('#quizContainer')
+            ?.scrollIntoView({ behavior: 'smooth' });
+
+    });
+
+    container.appendChild(quizButton);
+
+    // تازه‌سازی داشبورد بعد از تکمیل درس
+    const buttons = container.querySelectorAll('button');
+    const completeButton = buttons[buttons.length - 2];
+
+    if (completeButton) {
+        completeButton.addEventListener('click', function () {
+            KING_ASAD.refreshProgressDashboard();
+        });
+    }
+
+    return true;
+};
+
+
+// تازه‌سازی اطلاعات بعد از ثبت آزمون
+KING_ASAD.saveQuizResultOriginal =
+    KING_ASAD.saveLessonQuizResult;
+
+KING_ASAD.saveLessonQuizResult = function (result) {
+
+    const saved = KING_ASAD.saveQuizResultOriginal(result);
+
+    KING_ASAD.renderQuizHistory('#quizHistory');
+    KING_ASAD.refreshProgressDashboard();
+
+    return saved;
+};
+
+
+// اتصال دکمه‌های انتخاب سطح به فهرست درس‌ها
+KING_ASAD.bindLevelButtons = function () {
+
+    document.querySelectorAll('[data-level]').forEach(button => {
+
+        if (button.dataset.kingLevelBound === 'true') {
+            return;
+        }
+
+        button.dataset.kingLevelBound = 'true';
+
+        button.addEventListener('click', function () {
+
+            const level = this.dataset.level;
+
+            KING_ASAD.renderLessonCards(
+                level,
+                '#lessonCards'
+            );
+
+            document.querySelector('#lessonCards')
+                ?.scrollIntoView({ behavior: 'smooth' });
+
+        });
+
+    });
+
+};
+
+
+// راه‌اندازی تمام قسمت‌ها
+KING_ASAD.initialize = function () {
+
+    console.log('KING ASAD: راه‌اندازی سیستم شروع شد.');
+
+    KING_ASAD.bindLevelButtons();
+
+    KING_ASAD.bindVideoButtons();
+
+    KING_ASAD.refreshProgressDashboard();
+
+    KING_ASAD.renderQuizHistory('#quizHistory');
+
+    console.log('تعداد درس‌ها:', KING_ASAD.getTotalLessons());
+
+    console.log(
+        'بررسی درس‌ها:',
+        KING_ASAD.checkLessonStructure()
+    );
+
+    console.log('KING ASAD با موفقیت راه‌اندازی شد.');
+
+    return true;
+};
+
+
+// اجرای خودکار پس از آماده‌شدن صفحه
+if (document.readyState === 'loading') {
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        KING_ASAD.initialize
+    );
+
+} else {
+
+    KING_ASAD.initialize();
+
+}
