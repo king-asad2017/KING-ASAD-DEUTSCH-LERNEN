@@ -1709,96 +1709,81 @@ KING_ASAD.checkLessonStructure = function () {
 
 
 console.log('KING ASAD: سیستم مدیریت درس‌ها آماده شد.');
+
 /* =========================================
    KING ASAD
    بخش دوازدهم: مدیریت ویدیوهای آموزشی
 ========================================= */
 
-// اطلاعات ویدیوهای آموزشی هر سطح
 KING_ASAD.videoLibrary = {
+    A1: [{
+        title: 'آموزش زبان آلمانی A1',
+        provider: 'YouTube',
+        videoId: '4-eDoThe6qo',
+        url: 'https://youtu.be/4-eDoThe6qo',
+        type: 'YouTube'
+    }],
 
-    A1: [
-        {
-            title: 'Nicos Weg A1',
-            provider: 'DW Learn German',
-            videoId: '4-eDoThe6qo',
-            url: 'https://www.youtube.com/watch?v=4-eDoThe6qo',
-            type: 'YouTube'
-        }
-    ],
+    A2: [{
+        title: 'آموزش زبان آلمانی A2',
+        provider: 'YouTube',
+        videoId: 'Lg5P2w_Ro1c',
+        url: 'https://youtu.be/Lg5P2w_Ro1c',
+        type: 'YouTube'
+    }],
 
-    A2: [
-        {
-            title: 'Nicos Weg A2',
-            provider: 'DW Learn German',
-            videoId: 'Lg5P2w_Ro1c',
-            url: 'https://www.youtube.com/watch?v=Lg5P2w_Ro1c',
-            type: 'YouTube'
-        }
-    ],
+    B1: [{
+        title: 'آموزش زبان آلمانی B1',
+        provider: 'YouTube',
+        videoId: 'LkufozluseI',
+        url: 'https://youtu.be/LkufozluseI',
+        type: 'YouTube'
+    }],
 
-    B1: [
-        {
-            title: 'Nicos Weg B1',
-            provider: 'DW Learn German',
-            videoId: 'LkufozluseI',
-            url: 'https://www.youtube.com/watch?v=LkufozluseI',
-            type: 'YouTube'
-        }
-    ],
+    B2: [{
+        title: 'آموزش زبان آلمانی B2',
+        provider: 'YouTube',
+        videoId: 'OOOogcObFig',
+        url: 'https://youtu.be/OOOogcObFig',
+        type: 'YouTube'
+    }],
 
-    B2: [
-        {
-            title: 'German B2 Learning',
-            provider: 'Goethe-Institut',
-            videoId: null,
-            url: 'https://www.goethe.de/',
-            type: 'External'
-        }
-    ],
-
-    C1: [
-        {
-            title: 'German C1 Learning',
-            provider: 'Goethe-Institut',
-            videoId: null,
-            url: 'https://www.goethe.de/',
-            type: 'External'
-        }
-    ]
-
+    C1: [{
+        title: 'آموزش زبان آلمانی C1',
+        provider: 'YouTube',
+        videoId: 'ULKkrkIJ0h8',
+        url: 'https://youtu.be/ULKkrkIJ0h8',
+        type: 'YouTube'
+    }]
 };
 
+// دریافت ویدیوهای یک سطح
+KING_ASAD.getLevelVideos = function (level) {
+    if (!KING_ASAD.LEVELS.includes(level)) {
+        return [];
+    }
 
-.
+    return KING_ASAD.videoLibrary[level] || [];
 };
 
-
-// دریافت ویدیوی یک سطح
+// دریافت ویدیوی اصلی یک سطح
 KING_ASAD.getMainVideo = function (level) {
-
     const videos = KING_ASAD.getLevelVideos(level);
-
     return videos.length ? videos[0] : null;
-
 };
-
 
 // ساخت لینک پخش ویدیو
 KING_ASAD.getVideoEmbedUrl = function (video) {
-
     if (!video || !video.videoId) {
         return null;
     }
 
-    return `https://www.youtube.com/embed/${video.videoId}`;
+    return 'https://www.youtube.com/embed/' + video.videoId;
 };
 
-
-// دریافت اطلاعات ویدیوی یک سطح
+// دریافت جزئیات ویدیوی یک سطح
 KING_ASAD.getVideoDetails = function (level) {
-
-    let videoId = video.videoId || video.id || '';
+    const video = KING_ASAD.getMainVideo(level);
 
     if (!video) {
         return null;
@@ -1814,43 +1799,33 @@ KING_ASAD.getVideoDetails = function (level) {
         embedUrl: KING_ASAD.getVideoEmbedUrl(video),
         type: video.type
     };
-
 };
-
 
 // دریافت همه ویدیوهای آموزشگاه
 KING_ASAD.getAllVideos = function () {
-
     const result = [];
 
     KING_ASAD.LEVELS.forEach(level => {
-
         KING_ASAD.getLevelVideos(level).forEach(video => {
-
             result.push({
                 level: level,
                 levelName: KING_ASAD.getLevelName(level),
                 ...video
             });
-
         });
-
     });
 
     return result;
-
 };
-// بررسی موجودیت ویدیوهای پنج سطح
-KING_ASAD.validateVideoLibrary = function () {
 
+// بررسی کتابخانه ویدیوها
+KING_ASAD.validateVideoLibrary = function () {
     const errors = [];
 
     KING_ASAD.LEVELS.forEach(level => {
-
         if (!Array.isArray(KING_ASAD.videoLibrary[level])) {
-            errors.push(`ویدیوهای سطح ${level} تعریف نشده است.`);
+            errors.push('ویدیوهای سطح ' + level + ' تعریف نشده است.');
         }
-
     });
 
     return {
@@ -1858,13 +1833,12 @@ KING_ASAD.validateVideoLibrary = function () {
         errors: errors,
         totalVideos: KING_ASAD.getAllVideos().length
     };
-
 };
 
-
 console.log(
-    'KING ASAD: کتابخانه ویدیوها آماده شد.',
+    'KING ASAD: کتابخانه پنج ویدیو آماده شد.',
     KING_ASAD.getAllVideos()
+
 );
 
 /* =========================================
