@@ -1714,39 +1714,13 @@ KING_ASAD.getPreviousLesson = function (level, lessonNumber) {
 };
 
 
-// بررسی ساختار همه درس‌ها
-KING_ASAD.checkLessonStructure = function () {
 
-    const errors = [];
-
-    KING_ASAD.LEVELS.forEach(level => {
-
-        const lessons = KING_ASAD.getLessonsByLevel(level);
-
-        if (lessons.length !== KING_ASAD.LESSON_COUNTS[level]) {
-            errors.push(`تعداد درس‌های ${level} درست نیست.`);
-        }
-
-        lessons.forEach(lesson => 
-            if (!lesson.title || !lesson.words.length) {
-                errors.push(`اطلاعات درس ${lesson.id} ناقص است.`);
-            }
-
-            if (!lesson.grammar || !lesson.dialog.length) {
-                errors.push(`محتوای آموزشی درس ${lesson.id} ناقص است.`);
-            }
-
-        });
-
-    });
-
-    return {
-        valid: errors.length === 0,
-        errors: errors,
-        totalLessons: KING_ASAD.getTotalLessons()
-    };
+/* بررسی ساختار همه درس‌ها
+   استفاده از تابع اصلی برای جلوگیری از تعریف تکراری
+*/
+KING_ASAD.validateAllLessons = function () {
+    return KING_ASAD.checkLessonStructure();
 };
-
 
 console.log('KING ASAD: سیستم مدیریت درس‌ها آماده شد.');
 
