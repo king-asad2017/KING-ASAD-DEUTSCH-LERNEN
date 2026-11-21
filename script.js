@@ -596,169 +596,787 @@ const b2LessonDetails = [
 
 console.log('۳۰ درس سطح B2 آماده شد.');
 
+
 /* =========================================
    KING ASAD
-   بخش سوم از ۴ - قسمت سوم
-   محتوای اختصاصی سطح C1
+   بخش چهارم از ۴
+   توابع اصلی سایت و فعال‌سازی امکانات
 ========================================= */
 
-const c1LessonDetails = [
-    {
-        words: [['die Wissenschaftssprache','زبان علمی'],['die Fachterminologie','اصطلاحات تخصصی'],['die Präzision','دقت'],['die Differenzierung','تفکیک دقیق'],['veranschaulichen','روشن ساختن']],
-        dialog: [['Wie sollte ein wissenschaftlicher Text formuliert sein?','متن علمی چگونه باید نوشته شود؟'],['Präzise, sachlich und differenziert.','دقیق، بی‌طرفانه و با تفکیک روشن.'],['Das ist ein wesentliches Merkmal.','این یک ویژگی اساسی است.']],
-        grammar: 'ساختارهای اسمی و سبک علمی رسمی برای بیان دقیق مفاهیم.'
-    },
-    {
-        words: [['die Textanalyse','تحلیل متن'],['die Argumentationsstruktur','ساختار استدلال'],['die Kernaussage','پیام اصلی'],['die Schlussfolgerung','نتیجه‌گیری'],['herausarbeiten','استخراج و روشن کردن']],
-        dialog: [['Was ist die zentrale These des Textes?','فرضیه اصلی متن چیست؟'],['Der Autor stellt die gesellschaftliche Entwicklung infrage.','نویسنده تحول اجتماعی را زیر سؤال می‌برد.'],['Wie wird diese These begründet?','این فرضیه چگونه توجیه می‌شود؟']],
-        grammar: 'تحلیل جمله‌های پیچیده، جمله‌های موصولی و ساختارهای وابسته.'
-    },
-    {
-        words: [['die Forschungsfrage','پرسش پژوهشی'],['die Methodik','روش‌شناسی'],['die Datenerhebung','گردآوری داده'],['die Auswertung','تحلیل داده'],['die Hypothese','فرضیه']],
-        dialog: [['Wie lautet Ihre Forschungsfrage?','پرسش پژوهشی شما چیست؟'],['Ich untersuche den Einfluss digitaler Medien.','تأثیر رسانه‌های دیجیتال را بررسی می‌کنم.'],['Welche Methode verwenden Sie?','از کدام روش استفاده می‌کنید؟']],
-        grammar: 'سبک علمی و استفاده از ساختارهای غیرشخصی و مجهول.'
-    },
-    {
-        words: [['die Beweisführung','ارائه شواهد'],['die Quellenangabe','ذکر منبع'],['die Fußnote','پاورقی'],['die Forschungsliteratur','منابع پژوهشی'],['belegen','مستند ساختن']],
-        dialog: [['Wie belegen Sie Ihre Aussage?','ادعای خود را چگونه مستند می‌کنید؟'],['Durch aktuelle Forschungsliteratur.','از طریق منابع پژوهشی جدید.'],['Sind die Quellen vollständig angegeben?','آیا منابع به‌طور کامل ذکر شده‌اند؟']],
-        grammar: 'جملات مجهول و ساختارهای رسمی برای استناد و گزارش پژوهش.'
-    },
-    {
-        words: [['die Kritikfähigkeit','توانایی نقد'],['die Argumentationslogik','منطق استدلال'],['die Voreingenommenheit','پیش‌داوری'],['die Schlussfolgerung','نتیجه‌گیری'],['hinterfragen','مورد پرسش قرار دادن']],
-        dialog: [['Wie lässt sich eine Behauptung überprüfen?','چگونه می‌توان یک ادعا را بررسی کرد؟'],['Indem man ihre Grundlagen hinterfragt.','با بررسی و پرسش از مبانی آن.'],['Das erfordert kritisches Denken.','این نیازمند تفکر انتقادی است.']],
-        grammar: 'Konjunktiv I برای بازتاب دیدگاه دیگران و گزارش بی‌طرفانه.'
-    },
-    {
-        words: [['die Gesellschaftsstruktur','ساختار جامعه'],['die soziale Schichtung','طبقه‌بندی اجتماعی'],['die Institution','نهاد'],['der Wertewandel','تغییر ارزش‌ها'],['gesellschaftlich','اجتماعی']],
-        dialog: [['Wie verändert sich die Gesellschaftsstruktur?','ساختار جامعه چگونه تغییر می‌کند؟'],['Durch wirtschaftliche und kulturelle Prozesse.','از طریق فرایندهای اقتصادی و فرهنگی.'],['Welche Folgen hat das?','این چه پیامدهایی دارد؟']],
-        grammar: 'ساختارهای اسمی پیچیده و تبدیل جمله‌های فعلی به عبارت‌های اسمی.'
-    },
-    {
-        words: [['das Bruttoinlandsprodukt','تولید ناخالص داخلی'],['die Inflation','تورم'],['die Geldpolitik','سیاست پولی'],['die Konjunktur','وضعیت چرخه اقتصادی'],['die Kaufkraft','قدرت خرید']],
-        dialog: [['Welche Faktoren beeinflussen die Inflation?','چه عواملی بر تورم تأثیر می‌گذارند؟'],['Angebot, Nachfrage und Geldpolitik.','عرضه، تقاضا و سیاست پولی.'],['Wie wirkt sich das auf Haushalte aus?','این چه تأثیری بر خانواده‌ها دارد؟']],
-        grammar: 'جملات علّی و نتیجه‌ای با infolge، angesichts و aufgrund.'
-    },
-    {
-        words: [['die Rechtsprechung','رویه قضایی'],['die Gesetzesauslegung','تفسیر قانون'],['die Verfassungsnorm','قاعده قانون اساسی'],['die Rechtssicherheit','امنیت حقوقی'],['rechtsverbindlich','از نظر حقوقی الزام‌آور']],
-        dialog: [['Wie wird diese Vorschrift ausgelegt?','این مقرره چگونه تفسیر می‌شود؟'],['Im Einklang mit der Verfassung.','مطابق با قانون اساسی.'],['Ist die Entscheidung verbindlich?','آیا تصمیم الزام‌آور است؟']],
-        grammar: 'سبک حقوقی رسمی و کاربرد ساختارهای مجهول و مصدرهای اسمی.'
-    },
-    {
-        words: [['die Außenpolitik','سیاست خارجی'],['die Diplomatie','دیپلماسی'],['das Bündnis','ائتلاف'],['die Souveränität','حاکمیت'],['vermitteln','میانجی‌گری کردن']],
-        dialog: [['Welche Rolle spielt Diplomatie?','دیپلماسی چه نقشی دارد؟'],['Sie ermöglicht friedliche Konfliktlösungen.','راه‌حل‌های مسالمت‌آمیز برای اختلافات فراهم می‌کند.'],['Das ist international bedeutsam.','این در سطح بین‌المللی مهم است.']],
-        grammar: 'عبارات رسمی و ساختارهای نقل قول غیرمستقیم.'
-    },
-    {
-        words: [['die Verhandlungsstrategie','راهبرد مذاکره'],['das Abkommen','توافق‌نامه'],['die Vermittlung','میانجی‌گری'],['der Interessenausgleich','توازن منافع'],['aushandeln','مذاکره و توافق کردن']],
-        dialog: [['Wie kann eine Einigung erzielt werden?','چگونه می‌توان به توافق رسید؟'],['Durch konstruktive Verhandlungen.','از طریق مذاکرات سازنده.'],['Welche Interessen müssen berücksichtigt werden?','کدام منافع باید در نظر گرفته شوند؟']],
-        grammar: 'Konjunktiv II در پیشنهادهای دیپلماتیک و مذاکره‌های رسمی.'
-    },
-    {
-        words: [['die Geschichtsschreibung','تاریخ‌نگاری'],['die Quellenkritik','نقد منابع'],['die Zeitzeugenaussage','گواهی شاهد تاریخی'],['der Umbruch','دگرگونی اساسی'],['rekonstruieren','بازسازی کردن']],
-        dialog: [['Wie zuverlässig sind historische Quellen?','منابع تاریخی چقدر قابل اعتمادند؟'],['Das hängt von ihrer Entstehung ab.','این به زمان و شرایط ایجاد آن‌ها بستگی دارد.'],['Man muss sie kritisch prüfen.','باید آن‌ها را به‌صورت انتقادی بررسی کرد.']],
-        grammar: 'Plusquamperfekt و Präteritum در روایت و تحلیل تاریخی.'
-    },
-    {
-        words: [['die kulturelle Identität','هویت فرهنگی'],['die Zugehörigkeit','تعلق'],['die Mehrsprachigkeit','چندزبانگی'],['die Wertvorstellung','نگرش ارزشی'],['vermitteln','انتقال دادن']],
-        dialog: [['Wie entsteht kulturelle Identität?','هویت فرهنگی چگونه شکل می‌گیرد؟'],['Durch Sprache, Erfahrungen und Gemeinschaft.','از طریق زبان، تجربه‌ها و اجتماع.'],['Kann sie sich verändern?','آیا می‌تواند تغییر کند؟']],
-        grammar: 'جملات موصولی پیشرفته با Präposition و ضمایر dessen و deren.'
-    },
-    {
-        words: [['die literarische Epoche','دوره ادبی'],['das Motiv','درون‌مایه'],['die Symbolik','نمادپردازی'],['die Erzählperspektive','زاویه دید روایت'],['interpretieren','تفسیر کردن']],
-        dialog: [['Welches Motiv steht im Mittelpunkt?','کدام درون‌مایه در مرکز قرار دارد؟'],['Die Suche nach Identität.','جست‌وجوی هویت.'],['Wie wird es dargestellt?','چگونه نمایش داده شده است؟']],
-        grammar: 'سبک تحلیلی ادبی و کاربرد Konjunktiv برای بیان برداشت و احتمال.'
-    },
-    {
-        words: [['die Literaturkritik','نقد ادبی'],['die Deutung','تفسیر'],['die Mehrdeutigkeit','چندمعنایی'],['der Erzählstil','سبک روایت'],['ambivalent','دوگانه و متناقض']],
-        dialog: [['Wie beurteilen Sie den Erzählstil?','سبک روایت را چگونه ارزیابی می‌کنید؟'],['Er ist bewusst mehrdeutig gestaltet.','عمداً چندمعنایی طراحی شده است.'],['Welche Wirkung erzielt das?','این چه تأثیری ایجاد می‌کند؟']],
-        grammar: 'ساختارهای پیچیده برای بیان تردید، احتمال و تفسیر.'
-    },
-    {
-        words: [['die Ästhetik','زیبایی‌شناسی'],['die Wahrnehmung','ادراک'],['die Komposition','ترکیب‌بندی'],['die Ausdruckskraft','قدرت بیان'],['zeitgenössisch','معاصر']],
-        dialog: [['Was macht ein Kunstwerk bedeutend?','چه چیزی یک اثر هنری را ارزشمند می‌کند؟'],['Seine Ausdruckskraft und Originalität.','قدرت بیان و اصالت آن.'],['Das ist eine interessante Perspektive.','این دیدگاه جالبی است.']],
-        grammar: 'صفت‌ها و قیدهای پیشرفته برای ارزیابی و توصیف دقیق.'
-    },
-    {
-        words: [['der Mediendiskurs','گفتمان رسانه‌ای'],['die Meinungsbildung','شکل‌گیری افکار'],['die Berichterstattung','خبررسانی'],['die Manipulation','دست‌کاری'],['polarisieren','قطبی کردن']],
-        dialog: [['Wie beeinflussen Medien die öffentliche Meinung?','رسانه‌ها چگونه بر افکار عمومی تأثیر می‌گذارند؟'],['Durch Auswahl und Gewichtung von Informationen.','از طریق انتخاب و برجسته‌سازی اطلاعات.'],['Das sollte kritisch betrachtet werden.','باید این موضوع را انتقادی بررسی کرد.']],
-        grammar: 'گزارش غیرمستقیم و ساختارهای مجهول در تحلیل رسانه.'
-    },
-    {
-        words: [['die Fachkommunikation','ارتباط تخصصی'],['die Gesprächsführung','مدیریت گفتگو'],['die Präzisierung','دقیق‌سازی'],['der Einwand','اعتراض'],['entkräften','بی‌اثر کردن']],
-        dialog: [['Wie reagieren Sie auf einen Einwand?','به یک اعتراض چگونه پاسخ می‌دهید؟'],['Ich prüfe zunächst seine Grundlage.','ابتدا مبنای آن را بررسی می‌کنم.'],['Das ist eine sachliche Vorgehensweise.','این یک روش بی‌طرفانه است.']],
-        grammar: 'ساختارهای پیچیده موافقت، مخالفت و محدودسازی ادعا.'
-    },
-    {
-        words: [['die Sprachwissenschaft','زبان‌شناسی'],['die Syntax','نحو'],['die Semantik','معناشناسی'],['die Pragmatik','کاربردشناسی'],['der Sprachwandel','دگرگونی زبان']],
-        dialog: [['Was untersucht die Pragmatik?','کاربردشناسی چه چیزی را بررسی می‌کند؟'],['Sprache im jeweiligen Kontext.','زبان را در متن و موقعیت مربوطه.'],['Welche Rolle spielt die Bedeutung?','معنا چه نقشی دارد؟']],
-        grammar: 'تحلیل ساختارهای نحوی و تفاوت معنای مستقیم و ضمنی.'
-    },
-    {
-        words: [['die Sozialpsychologie','روان‌شناسی اجتماعی'],['die Gruppendynamik','پویایی گروه'],['die Fremdwahrnehmung','برداشت دیگران'],['das Vorurteil','پیش‌داوری'],['beeinflussen','تأثیر گذاشتن']],
-        dialog: [['Wie entstehen Vorurteile?','پیش‌داوری‌ها چگونه به وجود می‌آیند؟'],['Durch soziale Erfahrungen und Zuschreibungen.','از طریق تجربه‌های اجتماعی و نسبت دادن ویژگی‌ها.'],['Wie lassen sie sich abbauen?','چگونه می‌توان آن‌ها را کاهش داد؟']],
-        grammar: 'جملات علّی و شرطی پیچیده با sofern، insofern و zumal.'
-    },
-    {
-        words: [['die Forschungsmethode','روش پژوهش'],['die Stichprobe','نمونه آماری'],['die Validität','اعتبار'],['die Reliabilität','پایایی'],['auswerten','تحلیل کردن']],
-        dialog: [['Welche Methode wurde verwendet?','از کدام روش استفاده شده است؟'],['Eine qualitative Inhaltsanalyse.','یک تحلیل محتوای کیفی.'],['Wie wurden die Daten ausgewertet?','داده‌ها چگونه تحلیل شدند؟']],
-        grammar: 'گزارش پژوهش با مجهول، ساختارهای اسمی و عبارت‌های علمی.'
-    },
-    {
-        words: [['die algorithmische Entscheidung','تصمیم الگوریتمی'],['die Transparenz','شفافیت'],['die Verantwortung','مسئولیت'],['die Diskriminierung','تبعیض'],['regulieren','تنظیم و قانون‌گذاری کردن']],
-        dialog: [['Wer trägt Verantwortung für algorithmische Entscheidungen?','چه کسی مسئول تصمیم‌های الگوریتمی است؟'],['Das muss gesellschaftlich geklärt werden.','این موضوع باید در جامعه روشن شود.'],['Welche Regeln sind notwendig?','چه مقرراتی ضروری است؟']],
-        grammar: 'ساختارهای مجهول با فعل‌های مدال و بیان ضرورت‌های اخلاقی.'
-    },
-    {
-        words: [['die Automatisierung','خودکارسازی'],['die Arbeitswelt','دنیای کار'],['die Qualifizierung','ارتقای صلاحیت'],['der Strukturwandel','تحول ساختاری'],['prognostizieren','پیش‌بینی کردن']],
-        dialog: [['Wie verändert Automatisierung die Arbeitswelt?','خودکارسازی چگونه دنیای کار را تغییر می‌دهد؟'],['Sie verändert Berufsbilder grundlegend.','ساختار حرفه‌ها را به‌طور اساسی تغییر می‌دهد.'],['Welche Kompetenzen werden künftig gebraucht?','در آینده به چه مهارت‌هایی نیاز خواهد بود؟']],
-        grammar: 'Futur II برای پیش‌بینی و فرض درباره رویدادهای تکمیل‌شده در آینده.'
-    },
-    {
-        words: [['die Klimaanpassung','سازگاری اقلیمی'],['die Emissionsminderung','کاهش انتشار آلاینده‌ها'],['die Artenvielfalt','تنوع زیستی'],['die Belastungsgrenze','حد تحمل'],['entgegenwirken','مقابله کردن']],
-        dialog: [['Welche Maßnahmen sind besonders wirksam?','کدام اقدامات به‌خصوص مؤثر هستند؟'],['Eine nachhaltige Energiepolitik.','یک سیاست انرژی پایدار.'],['Reicht das allein aus?','آیا این به‌تنهایی کافی است؟']],
-        grammar: 'ساختارهای تضاد و امتیازدهی: obwohl، wenngleich، obgleich.'
-    },
-    {
-        words: [['die Entwicklungspolitik','سیاست توسعه'],['die Ressourcenverteilung','توزیع منابع'],['die Ungleichheit','نابرابری'],['die Zusammenarbeit','همکاری'],['fördern','تقویت کردن']],
-        dialog: [['Wie lässt sich nachhaltige Entwicklung fördern?','چگونه می‌توان توسعه پایدار را تقویت کرد؟'],['Durch internationale Zusammenarbeit.','از طریق همکاری بین‌المللی.'],['Welche Hindernisse gibt es?','چه موانعی وجود دارد؟']],
-        grammar: 'ساختارهای علت، هدف و نتیجه با infolge، damit و um ... zu.'
-    },
-    {
-        words: [['das Krisenmanagement','مدیریت بحران'],['die Eskalation','تشدید بحران'],['die Risikobewertung','ارزیابی خطر'],['die Notfallmaßnahme','اقدام اضطراری'],['eindämmen','مهار کردن']],
-        dialog: [['Wie sollte man auf eine Krise reagieren?','در برابر بحران چگونه باید واکنش نشان داد؟'],['Zunächst müssen Risiken bewertet werden.','ابتدا باید خطرها ارزیابی شوند.'],['Und danach?','و پس از آن؟']],
-        grammar: 'ساختارهای شرطی و فرضی پیشرفته برای سناریوهای بحرانی.'
-    },
-    {
-        words: [['die Verhandlungsposition','موضع مذاکره'],['die Interessenabwägung','سنجش منافع'],['die Zugeständnis','امتیاز'],['der Konsens','توافق'],['vermitteln','میانجی‌گری کردن']],
-        dialog: [['Welche Strategie führt zum Konsens?','کدام راهبرد به توافق می‌انجامد؟'],['Ein fairer Interessenausgleich.','توازن منصفانه منافع.'],['Das klingt überzeugend.','قانع‌کننده به نظر می‌رسد.']],
-        grammar: 'Konjunktiv II در مذاکره‌های رسمی و بیان پیشنهادهای پیچیده.'
-    },
-    {
-        words: [['die wissenschaftliche Präsentation','ارائه علمی'],['die These','فرضیه'],['die Visualisierung','نمایش بصری'],['die Fragestellung','پرسش پژوهشی'],['zusammenfassen','خلاصه کردن']],
-        dialog: [['Wie strukturieren Sie Ihren Vortrag?','سخنرانی خود را چگونه ساختاربندی می‌کنید؟'],['Zuerst die Fragestellung, dann die Ergebnisse.','ابتدا پرسش پژوهشی و سپس نتایج.'],['Wie schließen Sie ab?','چگونه پایان می‌دهید؟']],
-        grammar: 'عبارات رسمی برای آغاز، انتقال میان بخش‌ها و نتیجه‌گیری علمی.'
-    },
-    {
-        words: [['die wissenschaftliche Publikation','انتشار علمی'],['die Argumentationskette','زنجیره استدلال'],['die Quellenkritik','نقد منابع'],['die Kohärenz','انسجام'],['überarbeiten','بازنگری کردن']],
-        dialog: [['Was ist für eine gute Publikation entscheidend?','برای یک اثر علمی خوب چه چیزی تعیین‌کننده است؟'],['Eine klare Argumentation und zuverlässige Quellen.','استدلال روشن و منابع قابل اعتماد.'],['Wie prüfen Sie die Kohärenz?','انسجام را چگونه بررسی می‌کنید؟']],
-        grammar: 'نگارش علمی پیشرفته، پیوند منطقی پاراگراف‌ها و ارجاع دقیق.'
-    },
-    {
-        words: [['die Diskursanalyse','تحلیل گفتمان'],['die Mehrdeutigkeit','چندمعنایی'],['die Implikation','معنای ضمنی'],['die Interpretation','تفسیر'],['kontextualisieren','در بستر قرار دادن']],
-        dialog: [['Welche implizite Aussage enthält der Text?','متن چه پیام ضمنی دارد؟'],['Das lässt sich nur im Kontext erkennen.','این را فقط در بستر متن می‌توان تشخیص داد.'],['Welche Interpretation ist überzeugender?','کدام تفسیر قانع‌کننده‌تر است؟']],
-        grammar: 'تحلیل معنای ضمنی، ساختارهای پیچیده و پیوندهای گفتمانی.'
-    },
-    {
-        words: [['die Prüfungsvorbereitung','آمادگی امتحان'],['die Sprachbeherrschung','تسلط زبانی'],['die Ausdrucksfähigkeit','توانایی بیان'],['die Textproduktion','تولید متن'],['die Selbstkorrektur','خوداصلاحی']],
-        dialog: [['Wie bereitest du dich auf C1 vor?','چگونه برای C1 آماده می‌شوی؟'],['Ich analysiere Texte und übe wissenschaftliches Schreiben.','متن‌ها را تحلیل می‌کنم و نگارش علمی تمرین می‌کنم.'],['Was ist dein wichtigstes Ziel?','مهم‌ترین هدفت چیست؟']],
-        grammar: 'مرور همه ساختارهای پیشرفته C1 و تمرین چهار مهارت خواندن، شنیدن، نوشتن و صحبت کردن.'
-    },
-    {
-        words: [['die Sprachkompetenz','توانایی زبانی'],['die Nuance','ظرافت معنایی'],['die Redewendung','اصطلاح'],['die Präzision','دقت'],['die Prüfung','امتحان']],
-        dialog: [['Was zeichnet das Niveau C1 aus?','چه چیزی سطح C1 را مشخص می‌کند؟'],['Ein differenzierter und präziser Sprachgebrauch.','کاربرد دقیق و ظریف زبان.'],['Bist du bereit für die Prüfung?','برای امتحان آماده هستی؟']],
-        grammar: 'جمع‌بندی نهایی: جمله‌های پیچیده، سبک آکادمیک، مجهول، نقل قول غیرمستقیم و ساختارهای اسمی.'
-    }
-];
 
-console.log('۳۰ درس سطح C1 آماده شد.');
-console.log('محتوای آموزشی A1 تا C1 ثبت شد.');
+/* =========================================
+   ابزارهای کمکی
+========================================= */
+
+function element(id) {
+    return document.getElementById(id);
+}
+
+function safeText(value) {
+    return String(value ?? '').replace(/[&<>"']/g, function(char) {
+        const entities = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        };
+        return entities[char];
+    });
+}
+
+function getLessonDetails(level) {
+    const allDetails = {
+        A1: a1LessonDetails,
+        A2: a2LessonDetails,
+        B1: b1LessonDetails,
+        B2: b2LessonDetails,
+        C1: c1LessonDetails
+    };
+
+    return allDetails[level] || [];
+}
+
+
+/* =========================================
+   تغییر صفحات سایت
+========================================= */
+
+function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(function(page) {
+        page.classList.remove('active');
+    });
+
+    const selectedPage = element(pageId);
+
+    if (selectedPage) {
+        selectedPage.classList.add('active');
+    }
+
+    if (pageId === 'homePage') {
+        showProgress();
+    }
+
+    if (pageId === 'conversationPage') {
+        renderConversation();
+    }
+
+    if (pageId === 'grammarPage') {
+        renderGrammar();
+    }
+}
+
+
+/* =========================================
+   نمایش درس‌های هر سطح
+========================================= */
+
+let currentLevel = 'A1';
+let currentLessonIndex = 0;
+
+function showLevelLessons(level) {
+    if (!LEVELS.includes(level)) return;
+
+    currentLevel = level;
+
+    const containers = {
+        A1: 'a1LessonsContainer',
+        A2: 'a2LessonsContainer',
+        B1: 'b1LessonsContainer',
+        B2: 'b2LessonsContainer',
+        C1: 'c1LessonsContainer'
+    };
+
+    Object.values(containers).forEach(function(id) {
+        const container = element(id);
+        if (container) {
+            container.style.display = 'none';
+        }
+    });
+
+    const selectedContainer = element(containers[level]);
+
+    if (selectedContainer) {
+        selectedContainer.style.display = 'block';
+    }
+
+    renderLessons(level);
+}
+
+
+/* =========================================
+   ساخت فهرست درس‌ها
+========================================= */
+
+function renderLessons(level) {
+    const containerIds = {
+        A1: 'a1LessonsContainer',
+        A2: 'a2LessonsContainer',
+        B1: 'b1LessonsContainer',
+        B2: 'b2LessonsContainer',
+        C1: 'c1LessonsContainer'
+    };
+
+    const container = element(containerIds[level]);
+
+    if (!container) return;
+
+    const titles = lessonTitles[level] || [];
+    const details = getLessonDetails(level);
+    const total = LESSON_COUNTS[level];
+
+    let html = `
+        <div class="level-heading">
+            <h2>درس‌های سطح ${level}</h2>
+            <p>تعداد درس‌ها: ${total}</p>
+        </div>
+        <div class="lesson-grid">
+    `;
+
+    for (let i = 0; i < total; i++) {
+        const detail = details[i] || {};
+        const title = detail.title || titles[i] || `درس ${i + 1}`;
+
+        html += `
+            <button class="lesson-card"
+                onclick="showLessonDetail('${level}', ${i})">
+                <strong>درس ${i + 1}</strong>
+                <br>
+                ${safeText(title)}
+                <br>
+                <span>مشاهده درس ←</span>
+            </button>
+        `;
+    }
+
+    html += '</div><div id="lessonDetail-' + level + '"></div>';
+
+    container.innerHTML = html;
+}
+
+
+/* =========================================
+   نمایش محتوای یک درس
+========================================= */
+
+function showLessonDetail(level, index) {
+    const details = getLessonDetails(level);
+    const lesson = details[index];
+
+    if (!lesson) {
+        alert('محتوای این درس پیدا نشد.');
+        return;
+    }
+
+    currentLevel = level;
+    currentLessonIndex = index;
+
+    const container = element('lessonDetail-' + level);
+
+    if (!container) return;
+
+    const title = lesson.title ||
+        (lessonTitles[level] || [])[index] ||
+        `درس ${index + 1}`;
+
+    let wordsHTML = '';
+
+    (lesson.words || []).forEach(function(word) {
+        wordsHTML += `
+            <div class="content-card">
+                <h3>${safeText(word[0])}</h3>
+                <p>${safeText(word[1])}</p>
+                <button onclick="speakGerman(this.dataset.text)"
+                    data-text="${safeText(word[0])}">
+                    🔊 تلفظ آلمانی
+                </button>
+            </div>
+        `;
+    });
+
+    let dialogHTML = '';
+
+    (lesson.dialog || []).forEach(function(line) {
+        dialogHTML += `
+            <p>
+                <strong>${safeText(line[0])}</strong>
+                <br>
+                ${safeText(line[1])}
+            </p>
+        `;
+    });
+
+    container.innerHTML = `
+        <div class="lesson-detail">
+            <h2>${level} – درس ${index + 1}</h2>
+            <h3>${safeText(title)}</h3>
+
+            <div class="content-card">
+                <h3>📚 لغات درس</h3>
+                ${wordsHTML || '<p>لغتی ثبت نشده است.</p>'}
+            </div>
+
+            <div class="conversation-card">
+                <h3>🗣️ مکالمه درس</h3>
+                ${dialogHTML || '<p>مکالمه‌ای ثبت نشده است.</p>'}
+            </div>
+
+            <div class="grammar-card">
+                <h3>📖 گرامر درس</h3>
+                <p>${safeText(lesson.grammar || 'گرامری ثبت نشده است.')}</p>
+            </div>
+
+            <button class="action"
+                onclick="renderConversation('${level}', ${index});showPage('conversationPage')">
+                مشاهده مکالمه
+            </button>
+
+            <button class="action"
+                onclick="renderGrammar('${level}', ${index});showPage('grammarPage')">
+                مشاهده گرامر
+            </button>
+
+            <button class="action"
+                onclick="showVideoLevel('${level}');showPage('videosPage')">
+                مشاهده ویدیوی سطح ${level}
+            </button>
+        </div>
+    `;
+
+    container.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+
+
+/* =========================================
+   نمایش مکالمه‌ها
+========================================= */
+
+function renderConversation(level, index) {
+    const container = element('conversationContent');
+
+    if (!container) return;
+
+    let html = '<h2>🗣️ مکالمه‌های زبان آلمانی</h2>';
+
+    if (level && index !== undefined) {
+        const lesson = getLessonDetails(level)[index];
+
+        if (!lesson) return;
+
+        html += `
+            <div class="conversation-card">
+                <h3>${level} – درس ${index + 1}</h3>
+                <h4>${safeText(lesson.title || '')}</h4>
+        `;
+
+        (lesson.dialog || []).forEach(function(line) {
+            html += `
+                <p>
+                    <strong>${safeText(line[0])}</strong>
+                    <br>
+                    ${safeText(line[1])}
+                </p>
+                <button onclick="speakGerman(this.dataset.text)"
+                    data-text="${safeText(line[0])}">
+                    🔊 شنیدن تلفظ
+                </button>
+            `;
+        });
+
+        html += '</div>';
+    } else {
+        html += `
+            <p>برای مشاهده مکالمه، ابتدا وارد درس مورد نظر شوید.</p>
+        `;
+
+        if (currentLevel) {
+            html += `
+                <button class="action"
+                    onclick="showPage('lessonsPage');showLevelLessons('${currentLevel}')">
+                    بازگشت به درس‌های ${currentLevel}
+                </button>
+            `;
+        }
+    }
+
+    container.innerHTML = html;
+}
+
+
+/* =========================================
+   نمایش گرامرها
+========================================= */
+
+function renderGrammar(level, index) {
+    const container = element('grammarContent');
+
+    if (!container) return;
+
+    let html = '<h2>📖 آموزش گرامر آلمانی</h2>';
+
+    if (level && index !== undefined) {
+        const lesson = getLessonDetails(level)[index];
+
+        if (!lesson) return;
+
+        html += `
+            <div class="grammar-card">
+                <h3>${level} – درس ${index + 1}</h3>
+                <h4>${safeText(lesson.title || '')}</h4>
+                <p>${safeText(lesson.grammar || 'گرامری ثبت نشده است.')}</p>
+            </div>
+        `;
+    } else {
+        html += `
+            <p>برای مشاهده گرامر، ابتدا وارد درس مورد نظر شوید.</p>
+            <button class="action"
+                onclick="showPage('lessonsPage')">
+                مشاهده درس‌ها
+            </button>
+        `;
+    }
+
+    container.innerHTML = html;
+}
+
+
+/* =========================================
+   ویدیوهای آموزشی
+========================================= */
+
+function createLevelVideo(level) {
+    const video = levelVideos[level];
+
+    if (!video) {
+        return '<p>ویدیویی برای این سطح ثبت نشده است.</p>';
+    }
+
+    let html = `
+        <div class="content-card">
+            <h3>ویدیوهای سطح ${level}</h3>
+            <p>${safeText(video.title || 'آموزش زبان آلمانی')}</p>
+    `;
+
+    if (video.id) {
+        html += `
+            <div style="position:relative;width:100%;padding-top:56.25%;overflow:hidden;border-radius:12px;">
+                <iframe
+                    src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(video.id)}"
+                    title="آموزش زبان آلمانی ${level}"
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        `;
+    } else if (video.link) {
+        html += `
+            <p>برای دیدن آموزش این سطح از لینک رسمی زیر استفاده کنید:</p>
+            <a href="${safeText(video.link)}"
+                target="_blank"
+                rel="noopener noreferrer">
+                ورود به آموزش ${level}
+            </a>
+        `;
+    } else {
+        html += '<p>لینک ویدیوی این سطح هنوز ثبت نشده است.</p>';
+    }
+
+    html += '</div>';
+
+    return html;
+}
+
+
+function showVideoLevel(level) {
+    if (!LEVELS.includes(level)) return;
+
+    const containers = {
+        A1: 'videosA1',
+        A2: 'videosA2',
+        B1: 'videosB1',
+        B2: 'videosB2',
+        C1: 'videosC1'
+    };
+
+    Object.values(containers).forEach(function(id) {
+        const box = element(id);
+        if (box) {
+            box.style.display = 'none';
+        }
+    });
+
+    const selected = element(containers[level]);
+
+    if (selected) {
+        selected.style.display = 'block';
+        selected.innerHTML = createLevelVideo(level);
+    }
+}
+
+
+function renderVideos() {
+    LEVELS.forEach(function(level) {
+        const ids = {
+            A1: 'videosA1',
+            A2: 'videosA2',
+            B1: 'videosB1',
+            B2: 'videosB2',
+            C1: 'videosC1'
+        };
+
+        const box = element(ids[level]);
+
+        if (box) {
+            box.innerHTML = createLevelVideo(level);
+        }
+    });
+}
+
+
+/* =========================================
+   تلفظ کلمات آلمانی
+========================================= */
+
+function speakGerman(text) {
+    if (!('speechSynthesis' in window)) {
+        alert('مرورگر شما از قابلیت تلفظ پشتیبانی نمی‌کند.');
+        return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = 'de-DE';
+    speech.rate = 0.85;
+
+    window.speechSynthesis.speak(speech);
+}
+
+
+/* =========================================
+   آزمون‌های پنج سطح
+========================================= */
+
+const quizData = {
+    A1: [
+        {q:'معنی Hallo چیست؟', options:['سلام','خداحافظ','شب بخیر'], answer:0},
+        {q:'Ich ___ Ahmad.', options:['bist','heiße','sind'], answer:1},
+        {q:'معنی Danke چیست؟', options:['لطفاً','تشکر','ببخشید'], answer:1},
+        {q:'کدام حرف تعریف برای Mann درست است؟', options:['die','das','der'], answer:2},
+        {q:'Wie geht es dir? یعنی چه؟', options:['حالت چطور است؟','نامت چیست؟','کجا زندگی می‌کنی؟'], answer:0}
+    ],
+
+    A2: [
+        {q:'گذشته فعل gehen چیست؟', options:['ging','geht','gegangen sein'], answer:0},
+        {q:'Ich habe gestern Fußball ___.', options:['spielen','gespielt','spielte'], answer:1},
+        {q:'معنی weil چیست؟', options:['اما','زیرا','اگر'], answer:1},
+        {q:'کدام جمله درست است؟', options:['Ich muss lernen.','Ich lernen muss.','Muss ich lernen gestern.'], answer:0},
+        {q:'معنی die Einladung چیست؟', options:['دعوت‌نامه','مسافرت','آموزش'], answer:0}
+    ],
+
+    B1: [
+        {q:'Wenn ich Zeit hätte, ___ ich reisen.', options:['werde','würde','bin'], answer:1},
+        {q:'معنی obwohl چیست؟', options:['با وجود اینکه','زیرا','بنابراین'], answer:0},
+        {q:'Ich interessiere mich ___ Musik.', options:['für','mit','bei'], answer:0},
+        {q:'گذشته فعل schreiben چیست؟', options:['schrieb','schreibt','geschreiben'], answer:0},
+        {q:'معنی die Erfahrung چیست؟', options:['تجربه','تصمیم','فرصت'], answer:0}
+    ],
+
+    B2: [
+        {q:'معنی dennoch چیست؟', options:['با این حال','به همین دلیل','برای مثال'], answer:0},
+        {q:'کدام جمله مجهول است؟', options:['Das Haus wird gebaut.','Ich baue das Haus.','Ich habe ein Haus.'], answer:0},
+        {q:'معنی die Voraussetzung چیست؟', options:['پیش‌شرط','نتیجه','پیشنهاد'], answer:0},
+        {q:'کدام واژه به معنی «در حالی که» است؟', options:['während','deshalb','damit'], answer:0},
+        {q:'معنی die Herausforderung چیست؟', options:['چالش','موفقیت','آرامش'], answer:0}
+    ],
+
+    C1: [
+        {q:'معنی nichtsdestotrotz چیست؟', options:['با این وجود','در نتیجه','به ندرت'], answer:0},
+        {q:'کدام واژه به معنی «دوپهلو» است؟', options:['mehrdeutig','eindeutig','einfach'], answer:0},
+        {q:'معنی die Schlussfolgerung چیست؟', options:['نتیجه‌گیری','مقدمه','توضیح'], answer:0},
+        {q:'کدام واژه به معنی «قابل‌توجه» است؟', options:['bemerkenswert','unwichtig','gewöhnlich'], answer:0},
+        {q:'معنی die Auseinandersetzung چیست؟', options:['بحث و بررسی','استراحت','مسافرت'], answer:0}
+    ]
+};
+
+
+function openQuiz(level) {
+    if (!quizData[level]) return;
+
+    LEVELS.forEach(function(item) {
+        const box = element('quiz-' + item);
+        if (box) box.style.display = 'none';
+    });
+
+    const quizBox = element('quiz-' + level);
+    const questionsBox = element('questions-' + level);
+    const resultBox = element('result-' + level);
+
+    if (!quizBox || !questionsBox || !resultBox) return;
+
+    quizBox.style.display = 'block';
+    resultBox.innerHTML = '';
+
+    let html = '';
+
+    quizData[level].forEach(function(question, index) {
+        html += `
+            <div class="quiz-question">
+                <h4>${index + 1}. ${safeText(question.q)}</h4>
+        `;
+
+        question.options.forEach(function(option, optionIndex) {
+            html += `
+                <label>
+                    <input type="radio"
+                        name="answer-${level}-${index}"
+                        value="${optionIndex}">
+                    ${safeText(option)}
+                </label>
+            `;
+        });
+
+        html += '</div>';
+    });
+
+    html += `
+        <button class="action" onclick="submitQuiz('${level}')">
+            بررسی پاسخ‌ها
+        </button>
+    `;
+
+    questionsBox.innerHTML = html;
+
+    quizBox.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+
+
+/* =========================================
+   بررسی پاسخ آزمون
+========================================= */
+
+function submitQuiz(level) {
+    const questions = quizData[level];
+
+    if (!questions) return;
+
+    let score = 0;
+    let answered = 0;
+
+    questions.forEach(function(question, index) {
+        const selected = document.querySelector(
+            `input[name="answer-${level}-${index}"]:checked`
+        );
+
+        if (selected) {
+            answered++;
+
+            if (Number(selected.value) === question.answer) {
+                score++;
+            }
+        }
+    });
+
+    if (answered < questions.length) {
+        alert('لطفاً به تمام سوال‌ها پاسخ دهید.');
+        return;
+    }
+
+    const percentage = Math.round(
+        (score / questions.length) * 100
+    );
+
+    const result = element('result-' + level);
+
+    if (!result) return;
+
+    result.innerHTML = `
+        <div class="content-card">
+            <h3>نتیجه آزمون ${level}</h3>
+            <h2>${score} از ${questions.length}</h2>
+            <p>درصد موفقیت: ${percentage}%</p>
+            <p>
+                ${percentage >= 60
+                    ? 'آفرین! نتیجه خوبی گرفتید.'
+                    : 'نیاز به تمرین بیشتر دارید. دوباره تلاش کنید.'}
+            </p>
+        </div>
+    `;
+
+    saveQuizProgress(level, percentage);
+
+    if (percentage >= 60) {
+        showCelebration();
+    }
+
+    showProgress();
+}
+
+
+/* =========================================
+   ذخیره پیشرفت آزمون
+========================================= */
+
+function saveQuizProgress(level, percentage) {
+    try {
+        const saved = JSON.parse(
+            localStorage.getItem('kingAsadProgress') || '{}'
+        );
+
+        saved[level] = percentage;
+
+        localStorage.setItem(
+            'kingAsadProgress',
+            JSON.stringify(saved)
+        );
+    } catch (error) {
+        console.error('خطا در ذخیره پیشرفت:', error);
+    }
+}
+
+
+/* =========================================
+   نمایش پیشرفت در صفحه خانه
+========================================= */
+
+function showProgress() {
+    const container = element('homeProgress');
+
+    if (!container) return;
+
+    let saved = {};
+
+    try {
+        saved = JSON.parse(
+            localStorage.getItem('kingAsadProgress') || '{}'
+        );
+    } catch (error) {
+        saved = {};
+    }
+
+    let html = '';
+
+    LEVELS.forEach(function(level) {
+        const percentage = Number(saved[level] || 0);
+
+        html += `
+            <div class="progress-box">
+                <strong>سطح ${level}</strong>
+                <p>${percentage}% پیشرفت در آزمون</p>
+                <div class="progress-bar">
+                    <div class="progress-fill"
+                        style="width:${Math.max(0, Math.min(100, percentage))}%">
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    container.innerHTML = html;
+}
+
+
+/* =========================================
+   پیام موفقیت
+========================================= */
+
+function showCelebration() {
+    alert('🎉 تبریک! آزمون را با موفقیت پشت سر گذاشتید.');
+}
+
+
+/* =========================================
+   فرهنگ لغات و ترجمه
+========================================= */
+
+async function translateText(text, source, target) {
+    const url =
+        'https://api.mymemory.translated.net/get?q=' +
+        encodeURIComponent(text) +
+        '&langpair=' +
+        encodeURIComponent(source + '|' + target);
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error('خطا در ارتباط با سرویس ترجمه');
+    }
+
+    const data = await response.json();
+
+    if (
+        !data.responseData ||
+        !data.responseData.translatedText
+    ) {
+        throw new Error('ترجمه پیدا نشد.');
+    }
+
+    return data.responseData.translatedText;
+}
+
+
+async function searchDictionary() {
+    const input = element('dictionaryInput');
+    const source = element('dictionarySource');
+    const target = element('dictionaryTarget');
+    const result = element('dictionaryResult');
+
+    if (!input || !source || !target || !result) return;
+
+    const text = input.value.trim();
+
+    if (!text) {
+        result.innerHTML = 'لطفاً یک کلمه یا جمله وارد کنید.';
+        return;
+    }
+
+    if (source.value === target.value) {
+        result.innerHTML = 'زبان مبدأ و مقصد یکسان است.';
+        return;
+    }
+
+    result.innerHTML = 'در حال ترجمه...';
+
+    try {
+        const translation = await translateText(
+            text,
+            source.value,
+            target.value
+        );
+
+        result.innerHTML = `
+            <h3>نتیجه ترجمه</h3>
+            <p><strong>متن اصلی:</strong> ${safeText(text)}</p>
+            <p><strong>ترجمه:</strong> ${safeText(translation)}</p>
+        `;
+    } catch (error) {
+        result.innerHTML = `
+            ترجمه انجام نشد. لطفاً اتصال اینترنت خود را بررسی کنید و دوباره تلاش کنید.
+        `;
+
+        console.error(error);
+    }
+}
+
+
+/* =========================================
+   راه‌اندازی اولیه سایت
+========================================= */
+
+document.addEventListener('DOMContentLoaded', function() {
+    showProgress();
+
+    renderVideos();
+
+    showLevelLessons('A1');
+
+    console.log('KING ASAD – آموزشگاه زبان آلمانی آماده شد.');
+    console.log('سطوح: A1, A2, B1, B2, C1');
+});
