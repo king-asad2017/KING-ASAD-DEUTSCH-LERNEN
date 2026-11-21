@@ -481,3 +481,194 @@ textarea:focus {
         font-size: 25px;
     }
 }
+/* =========================================
+   KING ASAD
+   بخش هجدهم: طراحی حرفه‌ای آموزشگاه
+========================================= */
+
+:root {
+    --king-primary: #173b68;
+    --king-secondary: #2469a8;
+    --king-gold: #e5ad42;
+    --king-background: #f3f6fb;
+    --king-white: #ffffff;
+    --king-text: #263448;
+    --king-border: #dce4ef;
+    --king-success: #21966b;
+    --king-radius: 16px;
+    --king-shadow: 0 8px 25px rgba(20, 48, 80, 0.09);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--king-background);
+    color: var(--king-text);
+    font-family: Arial, sans-serif;
+    direction: rtl;
+}
+
+.king-container {
+    width: min(1100px, 94%);
+    margin: 25px auto;
+}
+
+.king-header {
+    padding: 28px 20px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(
+        135deg,
+        var(--king-primary),
+        var(--king-secondary)
+    );
+    border-radius: var(--king-radius);
+    box-shadow: var(--king-shadow);
+}
+
+.king-header h1 {
+    margin: 0 0 10px;
+    font-size: 30px;
+}
+
+.king-header p {
+    margin: 0;
+    color: #e8eef8;
+}
+
+.king-section {
+    margin-top: 25px;
+    padding: 22px;
+    background: var(--king-white);
+    border: 1px solid var(--king-border);
+    border-radius: var(--king-radius);
+    box-shadow: var(--king-shadow);
+}
+
+.king-section h2,
+.king-section h3 {
+    color: var(--king-primary);
+}
+
+.king-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.king-progress-card,
+.king-lesson-card,
+.king-video-card {
+    padding: 20px;
+    background: var(--king-white);
+    border: 1px solid var(--king-border);
+    border-radius: var(--king-radius);
+    box-shadow: var(--king-shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.king-progress-card:hover,
+.king-lesson-card:hover,
+.king-video-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(20, 48, 80, 0.14);
+}
+
+.king-progress-wrapper {
+    margin: 14px 0;
+}
+
+.king-progress-bar {
+    height: 12px;
+    overflow: hidden;
+    background: #e8edf5;
+    border-radius: 20px;
+}
+
+.king-progress-fill {
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        var(--king-success),
+        #57c99b
+    );
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+.king-progress-wrapper p {
+    margin: 8px 0;
+    font-size: 13px;
+    color: var(--king-secondary);
+}
+
+.king-button,
+button {
+    padding: 11px 20px;
+    color: white;
+    background: var(--king-primary);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.king-button:hover,
+button:hover {
+    background: var(--king-secondary);
+}
+
+.king-input,
+input,
+textarea,
+select {
+    max-width: 100%;
+    padding: 12px;
+    border: 1px solid var(--king-border);
+    border-radius: 9px;
+    box-sizing: border-box;
+}
+
+.king-vocabulary-item {
+    margin: 8px 0;
+    padding: 12px;
+    background: #f5f8fc;
+    border-radius: 9px;
+}
+
+.king-quiz-question {
+    margin: 15px 0;
+    padding: 16px;
+    background: #f7f9fc;
+    border: 1px solid var(--king-border);
+    border-radius: 12px;
+}
+
+.king-quiz-question label {
+    display: block;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.king-footer {
+    margin-top: 30px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    background: var(--king-primary);
+    border-radius: var(--king-radius);
+}
+
+@media (max-width: 650px) {
+    .king-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .king-header h1 {
+        font-size: 24px;
+    }
+
+    .king-section {
+        padding: 15px;
+    }
+}
