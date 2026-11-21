@@ -13,7 +13,6 @@
 <h1>👑 KING ASAD</h1>
 <h2>Deutsch Lernen</h2>
 <p>آموزش زبان آلمانی از صفر تا پیشرفته</p>
-
 <select id="language">
 <option value="fa">🇦🇫 فارسی</option>
 <option value="de">🇩🇪 Deutsch</option>
@@ -22,7 +21,6 @@
 </header>
 
 <main>
-
 <h2 id="welcome">به آموزشگاه آنلاین کینگ اسد خوش آمدید!</h2>
 
 <section>
@@ -33,19 +31,14 @@
 
 <section>
 <h3>📖 لغات آلمانی با تلفظ</h3>
-
 <p>Hallo — سلام — Hello
 <button onclick="speakGerman('Hallo')">🔊 تلفظ</button></p>
-
 <p>Danke — تشکر — Thank you
 <button onclick="speakGerman('Danke')">🔊 تلفظ</button></p>
-
 <p>Bitte — لطفاً — Please
 <button onclick="speakGerman('Bitte')">🔊 تلفظ</button></p>
-
 <p>Wasser — آب — Water
 <button onclick="speakGerman('Wasser')">🔊 تلفظ</button></p>
-
 <p>Freund — دوست — Friend
 <button onclick="speakGerman('Freund')">🔊 تلفظ</button></p>
 </section>
@@ -92,11 +85,43 @@
 <button onclick="alert('دوره B1 به‌زودی تکمیل می‌شود')">شروع B1</button>
 </section>
 
-<section>
-<h3>🎯 آزمون آلمانی</h3>
-<p>معنی Hallo چیست؟</p>
-<button onclick="alert('آفرین! پاسخ صحیح است. +10 امتیاز')">سلام</button>
-<button onclick="alert('اشتباه است، دوباره تلاش کن.')">خداحافظ</button>
+<section id="quiz">
+<h3>🎯 آزمون آلمانی - سطح A1</h3>
+<p>به هر سؤال پاسخ دهید. هر پاسخ درست ۱۰ امتیاز دارد.</p>
+
+<div class="question">
+<p>۱. معنی Hallo چیست؟</p>
+<button onclick="answerQuiz(0, true)">سلام</button>
+<button onclick="answerQuiz(0, false)">خداحافظ</button>
+</div>
+
+<div class="question">
+<p>۲. معنی Danke چیست؟</p>
+<button onclick="answerQuiz(1, true)">تشکر</button>
+<button onclick="answerQuiz(1, false)">آب</button>
+</div>
+
+<div class="question">
+<p>۳. معنی Wasser چیست؟</p>
+<button onclick="answerQuiz(2, true)">دوست</button>
+<button onclick="answerQuiz(2, false)">آب</button>
+</div>
+
+<div class="question">
+<p>۴. معنی Freund چیست؟</p>
+<button onclick="answerQuiz(3, true)">دوست</button>
+<button onclick="answerQuiz(3, false)">خانه</button>
+</div>
+
+<div class="question">
+<p>۵. معنی Bitte چیست؟</p>
+<button onclick="answerQuiz(4, true)">لطفاً</button>
+<button onclick="answerQuiz(4, false)">تشکر</button>
+</div>
+
+<h3 id="quizResult">امتیاز شما: ۰ از ۵۰</h3>
+<p id="quizMessage">آزمون را شروع کنید.</p>
+<button onclick="resetQuiz()">🔄 شروع دوباره آزمون</button>
 </section>
 
 <section>
@@ -112,6 +137,5 @@
 </footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>
