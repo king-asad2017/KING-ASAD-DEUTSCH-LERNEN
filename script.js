@@ -1,67 +1,271 @@
 
 /* =========================================
    KING ASAD - سیستم اصلی آموزشگاه
-   نسخه اصلاح شده ویدیوها و درس‌ها
+   نسخه پنج سطحی: A1 تا C1
+   تعداد درس‌ها: 19 + 20 + 30 + 30 + 30
 ========================================= */
 
-/* =========================================
-   ویدیوهای آموزشی رسمی DW
-========================================= */
+const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1'];
+const LESSON_COUNTS = { A1: 19, A2: 20, B1: 30, B2: 30, C1: 30 };
 
+/* ویدیوها و منابع آموزشی */
 const levelVideos = {
     A1: {
         id: '4-eDoThe6qo',
-        title: 'Nicos Weg A1',
+        title: 'Nicos Weg A1 - Deutsche Welle',
         link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789'
     },
     A2: {
         id: 'Lg5P2w_Ro1c',
-        title: 'Nicos Weg A2',
+        title: 'Nicos Weg A2 - Deutsche Welle',
         link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789'
     },
     B1: {
         id: 'LkufozluseI',
-        title: 'Nicos Weg B1',
+        title: 'Nicos Weg B1 - Deutsche Welle',
         link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789'
+    },
+    B2: {
+        id: null,
+        title: 'Deutsch lernen B2 - Goethe-Institut',
+        link: 'https://www.goethe.de/de/spr/ueb.html'
+    },
+    C1: {
+        id: null,
+        title: 'Deutsch lernen C1 - Goethe-Institut',
+        link: 'https://www.goethe.de/de/spr/ueb.html'
     }
 };
 
 /* =========================================
-   اطلاعات آزمون‌ها
+   عنوان درس‌ها
+========================================= */
+
+const lessonTitles = {
+A1: [
+'سلام و معرفی خود','کشورها و ملیت‌ها','خانواده و دوستان','اعداد و سن','روزهای هفته و ماه‌ها',
+'ساعت و زمان','غذا و نوشیدنی','در کافه و رستورانت','خرید از فروشگاه','رنگ‌ها و لباس‌ها',
+'خانه و اتاق‌ها','وسایل خانه','شغل‌ها و محل کار','برنامه روزانه','حمل‌ونقل شهری',
+'آب‌وهوا و فصل‌ها','بدن و سلامتی','قرار ملاقات','دعوت و خداحافظی'
+],
+A2: [
+'روتین روزانه و عادت‌ها','خانه و جستجوی آپارتمان','خرید لباس و اندازه‌ها','خاطرات آخر هفته','سفر با قطار',
+'رزرو هتل','در رستورانت سفارش دادن','آشپزی و دستور غذا','قرار داکتر','شرح درد و بیماری',
+'آموزش و کورس زبان','کار و همکاران','نامه و ایمیل ساده','تلفن و پیام گذاشتن','تفریح و سرگرمی',
+'ورزش و تناسب اندام','شهر و راهنمایی مسیر','مقایسه کالاها','دعوت به مهمانی','برنامه‌ریزی تعطیلات'
+],
+B1: [
+'بیان نظر و استدلال','محافظت از محیط زیست','درخواست کار و رزومه','مصاحبه شغلی','سلامت و سبک زندگی',
+'رسانه و شبکه‌های اجتماعی','آموزش و انتخاب رشته','زندگی در شهر یا روستا','مهاجرت و سازگاری','فرهنگ و سنت‌ها',
+'مصرف و خرید آگاهانه','تکنولوژی در زندگی','حل اختلاف و مذاکره','دوستی و روابط اجتماعی','برنامه‌ریزی آینده',
+'تجربه‌های سفر','حوادث و گزارش رویداد','آگهی و تبلیغات','اجاره خانه و قرارداد','قوانین و حقوق شهروندی',
+'تغذیه و عادت‌های سالم','حمل‌ونقل عمومی','داوطلبی و کمک اجتماعی','آب‌وهوا و تغییرات اقلیمی','کتاب و فیلم',
+'آمادگی برای امتحان','جلسه و گفت‌وگوی گروهی','شکایت و درخواست رسمی','تصمیم‌گیری و پیامدها','هدف‌گذاری شخصی'
+],
+B2: [
+'استدلال پیچیده و دیدگاه‌ها','رسانه و سواد اطلاعاتی','اقتصاد و بازار کار','مدیریت پروژه','فرهنگ سازمانی',
+'هوش مصنوعی و جامعه','حریم خصوصی دیجیتال','تغییرات اقلیمی و سیاست','انرژی‌های تجدیدپذیر','عدالت اجتماعی',
+'آموزش عالی و پژوهش','مهاجرت و هویت','ارتباطات بین‌فرهنگی','رهبری و مسئولیت','مصالحه و حل تعارض',
+'مصرف پایدار','شهرهای هوشمند','سلامت عمومی','اخلاق در علم','جهانی‌شدن',
+'حقوق کار و قراردادها','تبلیغات و رفتار مصرف‌کننده','تاریخ و حافظه جمعی','هنر و نقد فرهنگی','علم و فناوری',
+'ارائه و سخنرانی رسمی','گزارش‌نویسی تحلیلی','بحث و مناظره','فرضیه و پیامد احتمالی','زبان رسمی و غیررسمی'
+],
+C1: [
+'زبان علمی و دانشگاهی','تحلیل انتقادی متون','بلاغت و فن بیان','ابهام و ظرافت معنایی','سبک‌شناسی نوشتار',
+'مقاله پژوهشی','روش‌شناسی تحقیق','استدلال و مغالطه','گفتمان سیاسی و اجتماعی','اخلاق حرفه‌ای',
+'تحلیل داده و تفسیر نتایج','نقد ادبی','زبان رسانه و چارچوب‌بندی','مذاکره پیشرفته','ارتباطات دیپلماتیک',
+'اصطلاحات حقوقی','اقتصاد کلان و سیاست‌گذاری','فلسفه و جهان‌بینی','هویت و چندزبانگی','جامعه‌شناسی معاصر',
+'فناوری و آینده انسان','زیست‌اخلاق و پزشکی','پایداری و مسئولیت جهانی','مدیریت بحران','ارائه تخصصی',
+'نگارش گزارش مدیریتی','بازنویسی و خلاصه‌سازی','تحلیل سخنرانی','تفسیر ضمنی و کنایه','آمادگی آزمون پیشرفته'
+]
+};
+
+/* =========================================
+   بانک واژگان
+========================================= */
+
+const vocabularyBanks = {
+A1: [
+['begrüßen','خوشامد گفتن'],['heißen','نام داشتن'],['kommen','آمدن'],['wohnen','سکونت داشتن'],['sprechen','صحبت کردن'],
+['die Familie','خانواده'],['der Freund','دوست'],['die Schwester','خواهر'],['der Bruder','برادر'],['das Kind','کودک'],
+['das Wasser','آب'],['das Brot','نان'],['der Apfel','سیب'],['der Kaffee','قهوه'],['bezahlen','پرداخت کردن'],
+['das Zimmer','اتاق'],['die Küche','آشپزخانه'],['die Wohnung','آپارتمان'],['der Tisch','میز'],['der Stuhl','چوکی'],
+['arbeiten','کار کردن'],['lernen','یاد گرفتن'],['fragen','پرسیدن'],['antworten','پاسخ دادن'],['verstehen','فهمیدن']
+],
+A2: [
+['aufstehen','از خواب برخاستن'],['einkaufen','خرید کردن'],['vorbereiten','آماده کردن'],['vereinbaren','تعیین کردن'],['verschieben','به تعویق انداختن'],
+['die Unterkunft','محل اقامت'],['die Buchung','رزرو'],['die Verspätung','تأخیر'],['die Verbindung','ارتباط / مسیر'],['die Fahrkarte','تکت سفر'],
+['die Gesundheit','سلامتی'],['die Untersuchung','معاینه'],['die Ernährung','تغذیه'],['sich erholen','استراحت و بهبود یافتن'],['die Beschwerde','شکایت'],
+['die Ausbildung','آموزش حرفه‌ای'],['die Bewerbung','درخواست کار'],['der Arbeitsplatz','محل کار'],['die Erfahrung','تجربه'],['die Nachricht','پیام / خبر'],
+['empfehlen','توصیه کردن'],['vergleichen','مقایسه کردن'],['erreichen','رسیدن / تماس گرفتن'],['teilnehmen','شرکت کردن'],['erklären','توضیح دادن']
+],
+B1: [
+['die Meinung','نظر'],['die Erfahrung','تجربه'],['die Entscheidung','تصمیم'],['die Voraussetzung','شرط لازم'],['die Auswirkung','پیامد'],
+['die Umwelt','محیط زیست'],['die Verschmutzung','آلودگی'],['die Maßnahme','اقدام'],['die Verantwortung','مسئولیت'],['die Möglichkeit','امکان'],
+['die Bewerbung','درخواست کار'],['der Lebenslauf','زندگی‌نامه کاری'],['das Vorstellungsgespräch','مصاحبه کاری'],['die Fähigkeit','توانایی'],['die Qualifikation','صلاحیت'],
+['begründen','دلیل آوردن'],['zustimmen','موافق بودن'],['widersprechen','مخالفت کردن'],['vermeiden','اجتناب کردن'],['berücksichtigen','در نظر گرفتن'],
+['obwohl','با وجود اینکه'],['während','در حالی که'],['deshalb','به همین دلیل'],['sobald','به محض اینکه'],['die Entwicklung','پیشرفت / توسعه']
+],
+B2: [
+['die Auseinandersetzung','بحث و بررسی'],['die Rahmenbedingung','شرایط کلی'],['die Herausforderung','چالش'],['die Nachhaltigkeit','پایداری'],['die Wechselwirkung','تأثیر متقابل'],
+['die Datensicherheit','امنیت داده‌ها'],['die Chancengleichheit','برابری فرصت‌ها'],['die Maßnahme','اقدام'],['die Umsetzung','اجرا'],['die Wahrnehmung','برداشت / ادراک'],
+['abwägen','سنجیدن'],['hinterfragen','با دید انتقادی بررسی کردن'],['veranschaulichen','روشن ساختن'],['voraussetzen','پیش‌فرض گرفتن'],['sich auseinandersetzen','به بررسی پرداختن'],
+['infolgedessen','در نتیجه آن'],['demgegenüber','در مقابل آن'],['allerdings','با این حال'],['folglich','بنابراین'],['sofern','به شرط اینکه'],
+['die Stellungnahme','اظهارنظر رسمی'],['der Zusammenhang','ارتباط'],['die Voraussetzung','پیش‌شرط'],['die Erkenntnis','دریافت علمی'],['die Perspektive','دیدگاه']
+],
+C1: [
+['die Schlussfolgerung','نتیجه‌گیری'],['die Argumentationslinie','خط استدلال'],['die Diskrepanz','ناهماهنگی'],['die Implikation','پیامد ضمنی'],['die Differenzierung','تفکیک دقیق'],
+['die Prämisse','مقدمه استدلال'],['die These','فرضیه / تز'],['die Evidenz','شواهد'],['die Methodik','روش‌شناسی'],['die Tragweite','دامنه اهمیت'],
+['relativieren','نسبی جلوه دادن'],['präzisieren','دقیق‌تر بیان کردن'],['kontextualisieren','در بافت قرار دادن'],['substanziieren','با شواهد پشتیبانی کردن'],['nuancieren','با ظرافت تفکیک کردن'],
+['nichtsdestoweniger','با وجود این'],['in Anbetracht','با در نظر گرفتن'],['demzufolge','بر این اساس'],['wenngleich','اگرچه'],['insofern','از این جهت'],
+['die Wechselwirkung','تأثیر متقابل'],['die Kontroverse','مناقشه'],['die Auslegung','تفسیر'],['die Verhältnismäßigkeit','تناسب'],['die Gültigkeit','اعتبار']
+]
+};
+
+/* =========================================
+   گرامر هر سطح
+========================================= */
+
+const grammarByLevel = {
+A1: [
+'در جمله خبری آلمانی، فعل صرف‌شده معمولاً در جایگاه دوم قرار می‌گیرد. مثال: Heute lerne ich Deutsch.',
+'فعل‌های sein و haben صرف می‌شوند. مثال: Ich bin müde. / Ich habe Zeit.',
+'برای پرسش بله/خیر، فعل صرف‌شده در ابتدای جمله می‌آید. مثال: Lernst du Deutsch?',
+'حرف تعریف اسم‌ها der، die و das است و بهتر است هر اسم همراه حرف تعریف یاد گرفته شود.',
+'برای منفی‌کردن اسم نامعین از kein و برای منفی‌کردن فعل یا صفت از nicht استفاده می‌شود.'
+],
+A2: [
+'در زمان Perfekt از haben یا sein همراه Partizip II استفاده می‌شود. مثال: Ich habe gelernt.',
+'در جمله وابسته با weil یا dass، فعل صرف‌شده به پایان جمله می‌رود.',
+'افعال جداشدنی در جمله اصلی پیشوند را به پایان جمله می‌فرستند. مثال: Ich stehe früh auf.',
+'حالت Dativ معمولاً برای گیرنده یا پس از برخی حروف اضافه می‌آید. مثال: mit dem Bus.',
+'صفت پیش از اسم با توجه به حرف تعریف و حالت دستوری پسوند می‌گیرد.'
+],
+B1: [
+'با obwohl تضاد را بیان می‌کنیم؛ فعل جمله وابسته در پایان می‌آید.',
+'ساختار Konjunktiv II برای درخواست مؤدبانه و موقعیت فرضی کاربرد دارد: Ich würde gern ...',
+'جمله مجهول در زمان حال با werden و Partizip II ساخته می‌شود.',
+'حروف ربط deshalb و trotzdem ترتیب جمله اصلی را حفظ می‌کنند و فعل در جایگاه دوم می‌ماند.',
+'برای بیان هدف می‌توان از um ... zu همراه مصدر استفاده کرد.'
+],
+B2: [
+'ساختارهای اسمی‌سازی، متن رسمی و دانشگاهی را فشرده‌تر می‌کنند؛ مانند die Durchführung der Untersuchung.',
+'در ساختار Passiv با فعل وجهی، مصدر مجهول در پایان می‌آید: Das Problem muss gelöst werden.',
+'Partizipialattribute اطلاعات را فشرده می‌کنند و در نوشتار رسمی کاربرد دارند.',
+'قیدها و عبارت‌های پیوندی مانند folglich، hingegen و darüber hinaus رابطه منطقی ایده‌ها را مشخص می‌کنند.',
+'Konjunktiv I برای بازگویی غیرمستقیم گفته دیگران، به‌ویژه در گزارش رسمی، استفاده می‌شود.'
+],
+C1: [
+'در نوشتار دانشگاهی، ادعا باید با محدودکننده‌هایی مانند tendenziell یا unter bestimmten Bedingungen دقیق شود.',
+'ساختارهای موصولی گسترده می‌توانند اطلاعات توضیحی پیچیده را به جمله اضافه کنند.',
+'Konjunktiv I برای نقل غیرمستقیم و فاصله‌گذاری نویسنده از محتوای نقل‌شده کاربرد دارد.',
+'Nominalstil و Verbalstil دو شیوه متفاوت بیان‌اند؛ انتخاب آن‌ها به هدف و مخاطب متن بستگی دارد.',
+'برای استدلال منسجم، ادعا، شاهد، توضیح و نتیجه‌گیری باید از هم تفکیک شوند.'
+]
+};
+
+/* =========================================
+   مکالمه‌ها
+========================================= */
+
+const dialogTemplates = {
+A1: [
+['Guten Tag! Können Sie mir bitte helfen?','روز بخیر! می‌توانید لطفاً به من کمک کنید؟'],
+['Ja, natürlich. Was möchten Sie wissen?','بلی، البته. چه چیزی می‌خواهید بدانید؟'],
+['Ich lerne Deutsch und möchte mehr üben.','من آلمانی یاد می‌گیرم و می‌خواهم بیشتر تمرین کنم.']
+],
+A2: [
+['Können wir darüber sprechen?','می‌توانیم درباره آن صحبت کنیم؟'],
+['Ja, gern. Was ist passiert?','بلی، با خوشحالی. چه اتفاقی افتاده است؟'],
+['Ich möchte eine passende Lösung finden.','می‌خواهم یک راه‌حل مناسب پیدا کنم.']
+],
+B1: [
+['Wie beurteilen Sie diese Situation?','این وضعیت را چگونه ارزیابی می‌کنید؟'],
+['Meiner Ansicht nach gibt es mehrere Möglichkeiten.','از دیدگاه من چندین امکان وجود دارد.'],
+['Könnten Sie Ihre Meinung genauer begründen?','می‌توانید نظر خود را دقیق‌تر توضیح دهید؟']
+],
+B2: [
+['Welche Faktoren sollten wir dabei berücksichtigen?','در این مورد کدام عوامل را باید در نظر بگیریم؟'],
+['Entscheidend ist, die langfristigen Folgen abzuwägen.','مهم این است که پیامدهای درازمدت را بسنجیم.'],
+['Dem stimme ich teilweise zu, allerdings sehe ich auch Risiken.','تا اندازه‌ای موافقم، با این حال خطرهایی نیز می‌بینم.']
+],
+C1: [
+['Wie lässt sich diese These wissenschaftlich einordnen?','این فرضیه را چگونه می‌توان از دید علمی بررسی کرد؟'],
+['Zunächst müsste man die zugrunde liegenden Annahmen präzisieren.','نخست باید فرض‌های بنیادی را دقیق‌تر تعریف کرد.'],
+['Das ist überzeugend, sofern die angeführten Belege tragfähig sind.','این قانع‌کننده است، به شرطی که شواهد ارائه‌شده معتبر باشند.']
+]
+};
+
+function buildLessonData() {
+    const result = {};
+    LEVELS.forEach(level => {
+        const bank = vocabularyBanks[level];
+        result[level] = lessonTitles[level].map((title, index) => {
+            const start = (index * 3) % bank.length;
+            const words = Array.from({ length: 5 }, (_, n) => bank[(start + n) % bank.length]);
+            const templates = dialogTemplates[level];
+            const dialog = templates.map(line => [line[0], line[1]]);
+            const grammar = grammarByLevel[level][index % grammarByLevel[level].length];
+            return { title, words, dialog, grammar };
+        });
+    });
+    return result;
+}
+
+const lessonData = buildLessonData();
+
+/* =========================================
+   آزمون‌ها
 ========================================= */
 
 const quizData = {
-    A1: {
-        questions: [
-            {question:"Was bedeutet Hallo?",options:["سلام","خداحافظ","شب بخیر"],correct:0},
-            {question:"Wie heißt du?",options:["چند سال داری؟","نامت چیست؟","کجا زندگی می‌کنی؟"],correct:1},
-            {question:"Was bedeutet Danke?",options:["لطفاً","ببخشید","تشکر"],correct:2},
-            {question:"Wie geht es dir?",options:["حالت چطور است؟","نامت چیست؟","اهل کجا هستی؟"],correct:0},
-            {question:"Was bedeutet Guten Morgen?",options:["شب بخیر","صبح بخیر","عصر بخیر"],correct:1}
-        ],
-        finished:false
-    },
-    A2: {
-        questions: [
-            {question:"Ich _____ gestern nach Berlin gefahren.",options:["bin","habe","ist"],correct:0},
-            {question:"Was bedeutet Einkaufen?",options:["خوابیدن","خرید کردن","درس خواندن"],correct:1},
-            {question:"Er _____ jeden Tag Deutsch.",options:["lernen","lernst","lernt"],correct:2},
-            {question:"Was bedeutet die Wohnung?",options:["خانه / آپارتمان","مدرسه","بیمارستان"],correct:0},
-            {question:"Ich habe gestern Fußball _____.",options:["spiele","gespielt","spielen"],correct:1}
-        ],
-        finished:false
-    },
-    B1: {
-        questions: [
-            {question:"Wenn ich Zeit hätte, _____ ich reisen.",options:["werde","würde","bin"],correct:1},
-            {question:"Was bedeutet Obwohl?",options:["زیرا","اگر","با وجود اینکه"],correct:2},
-            {question:"Er sagt, dass er krank _____.",options:["ist","sein","bist"],correct:0},
-            {question:"Was bedeutet die Erfahrung?",options:["تجربه","تصمیم","سفر"],correct:0},
-            {question:"Nachdem ich gegessen hatte, _____ ich spazieren.",options:["gehe","ging","gehen"],correct:1}
-        ],
-        finished:false
-    }
+A1: [
+['Was bedeutet „Guten Morgen“?',['صبح بخیر','شب بخیر','خداحافظ'],0],
+['Wie heißt du?',['چند سال داری؟','نامت چیست؟','کجا هستی؟'],1],
+['Was bedeutet „Danke“?',['لطفاً','ببخشید','تشکر'],2],
+['Ich ___ aus Afghanistan.',['komme','kommt','kommen'],0],
+['Wie geht es dir?',['حالت چطور است؟','نامت چیست؟','کجا کار می‌کنی؟'],0]
+],
+A2: [
+['Ich ___ gestern nach Berlin gefahren.',['bin','habe','ist'],0],
+['Was bedeutet „Einkaufen“?',['خوابیدن','خرید کردن','درس خواندن'],1],
+['Er ___ jeden Tag Deutsch.',['lernen','lernst','lernt'],2],
+['Was bedeutet „die Wohnung“?',['آپارتمان','مدرسه','بیمارستان'],0],
+['Ich habe gestern Fußball ___.',['spiele','gespielt','spielen'],1]
+],
+B1: [
+['Wenn ich Zeit hätte, ___ ich reisen.',['werde','würde','bin'],1],
+['Was bedeutet „obwohl“?',['زیرا','اگر','با وجود اینکه'],2],
+['Er sagt, dass er krank ___.',['ist','sein','bist'],0],
+['Was bedeutet „die Erfahrung“?',['تجربه','تصمیم','سفر'],0],
+['Nachdem ich gegessen hatte, ___ ich spazieren.',['gehe','ging','gehen'],1]
+],
+B2: [
+['Was bedeutet „abwägen“?',['سنجیدن','فراموش کردن','تکرار کردن'],0],
+['Die Ergebnisse müssen sorgfältig ___.',['analysiert werden','analysieren','analysiert haben'],0],
+['„Hingegen“ drückt meistens ___ aus.',['einen Gegensatz','einen Wunsch','eine Zeit'],0],
+['Was bedeutet „Nachhaltigkeit“?',['پایداری','سرعت','مالکیت'],0],
+['Er behauptet, die Zahlen __ korrekt.',['seien','sindet','wären ist'],0]
+],
+C1: [
+['Was bedeutet „die Schlussfolgerung“?',['نتیجه‌گیری','پیش‌فرض','مخالفت'],0],
+['„Wenngleich“ bedeutet ___.',['اگرچه','بنابراین','در نتیجه'],0],
+['Eine Prämisse ist ___.',['eine Grundannahme','ein Ergebnis','eine Übersetzung'],0],
+['Was bedeutet „präzisieren“?',['دقیق‌تر بیان کردن','پنهان کردن','رد کردن'],0],
+['Konjunktiv I wird häufig für ___ verwendet.',['indirekte Rede','Befehle','Vergleiche'],0]
+]
 };
+
+LEVELS.forEach(level => {
+    quizData[level] = {
+        questions: quizData[level].map(q => ({
+            question: q[0],
+            options: q[1],
+            correct: q[2]
+        })),
+        finished: false
+    };
+});
 
 /* =========================================
    ابزارهای عمومی
@@ -71,10 +275,19 @@ function element(id) {
     return document.getElementById(id);
 }
 
-function safeText(tag,text) {
+function safeText(tag, text) {
     const node = document.createElement(tag);
-    node.textContent = text;
+    node.textContent = String(text ?? '');
     return node;
+}
+
+function makeButton(text, handler, className) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = text;
+    if (className) button.className = className;
+    button.addEventListener('click', handler);
+    return button;
 }
 
 /* =========================================
@@ -82,20 +295,14 @@ function safeText(tag,text) {
 ========================================= */
 
 window.showPage = function(pageId) {
-    document.querySelectorAll('.page').forEach(function(page) {
-        page.classList.remove('active');
-    });
-
+    document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
     const page = element(pageId);
-
     if (!page) {
         alert('صفحه پیدا نشد: ' + pageId);
         return;
     }
-
     page.classList.add('active');
-    window.scrollTo({top:0,behavior:'smooth'});
-
+    window.scrollTo({ top:0, behavior:'smooth' });
     if (pageId === 'homePage') showProgress();
 };
 
@@ -104,159 +311,38 @@ window.showPage = function(pageId) {
 ========================================= */
 
 window.showLevelLessons = function(level) {
-    ['A1','A2','B1'].forEach(function(name) {
-        const box = element(name.toLowerCase()+'LessonsContainer');
-        if (box) {
-            box.style.display = name === level ? 'block' : 'none';
-        }
+    if (!LESSON_COUNTS[level]) return;
+    LEVELS.forEach(name => {
+        const box = element(name.toLowerCase() + 'LessonsContainer');
+        if (box) box.style.display = name === level ? 'block' : 'none';
     });
-
-    const container = element(level.toLowerCase()+'LessonsContainer');
-
-    if (container) {
-        container.scrollIntoView({behavior:'smooth',block:'start'});
-    }
+    const container = element(level.toLowerCase() + 'LessonsContainer');
+    if (container) container.scrollIntoView({ behavior:'smooth', block:'start' });
 };
 
 /* =========================================
-   اطلاعات درس‌ها
-========================================= */
-
-const lessonData = {
-    A1: [
-        {
-            title:'سلام و معرفی خود',
-            words:[['Hallo','سلام'],['Guten Morgen','صبح بخیر'],['Danke','تشکر'],['Bitte','لطفاً'],['Tschüss','خداحافظ']],
-            dialog:[['Hallo!','سلام!'],['Wie heißt du?','نامت چیست؟'],['Ich heiße Ahmad.','نام من احمد است.']],
-            grammar:'فعل heißen برای معرفی نام استفاده می‌شود. مثال: Ich heiße Ahmad.'
-        },
-        {
-            title:'کشور و زبان',
-            words:[['Deutschland','آلمان'],['Afghanistan','افغانستان'],['die Sprache','زبان'],['Deutsch','آلمانی'],['Persisch','فارسی']],
-            dialog:[['Woher kommst du?','اهل کجا هستی؟'],['Ich komme aus Afghanistan.','من اهل افغانستان هستم.']],
-            grammar:'برای گفتن اهل کجا بودن از kommen aus استفاده می‌کنیم.'
-        },
-        {
-            title:'خانواده',
-            words:[['die Familie','خانواده'],['der Vater','پدر'],['die Mutter','مادر'],['der Bruder','برادر'],['die Schwester','خواهر']],
-            dialog:[['Hast du Geschwister?','خواهر یا برادر داری؟'],['Ja, ich habe einen Bruder.','بلی، یک برادر دارم.']],
-            grammar:'فعل haben به معنی داشتن است: Ich habe einen Bruder.'
-        },
-        {
-            title:'اعداد',
-            words:[['eins','یک'],['zwei','دو'],['drei','سه'],['vier','چهار'],['fünf','پنج']],
-            dialog:[['Wie alt bist du?','چند سال داری؟'],['Ich bin zwanzig Jahre alt.','من بیست سال دارم.']],
-            grammar:'برای بیان سن از فعل sein استفاده می‌کنیم: Ich bin 20 Jahre alt.'
-        },
-        {
-            title:'غذا و نوشیدنی',
-            words:[['das Wasser','آب'],['das Brot','نان'],['der Apfel','سیب'],['der Tee','چای'],['essen','خوردن']],
-            dialog:[['Was möchtest du essen?','چه می‌خواهی بخوری؟'],['Ich möchte Brot essen.','می‌خواهم نان بخورم.']],
-            grammar:'möchten برای بیان خواسته مؤدبانه استفاده می‌شود.'
-        }
-    ],
-
-    A2: [
-        {
-            title:'زندگی روزمره',
-            words:[['aufstehen','بیدار شدن'],['frühstücken','صبحانه خوردن'],['arbeiten','کار کردن'],['einkaufen','خرید کردن'],['schlafen','خوابیدن']],
-            dialog:[['Wann stehst du auf?','چه وقت بیدار می‌شوی؟'],['Ich stehe um sieben Uhr auf.','من ساعت هفت بیدار می‌شوم.']],
-            grammar:'افعال جداشدنی مانند aufstehen در جمله صرف می‌شوند و پیشوند به آخر جمله می‌رود.'
-        },
-        {
-            title:'خانه و آپارتمان',
-            words:[['die Wohnung','آپارتمان'],['das Zimmer','اتاق'],['die Küche','آشپزخانه'],['das Bad','حمام'],['die Miete','کرایه']],
-            dialog:[['Wie ist deine Wohnung?','آپارتمانت چگونه است؟'],['Sie ist groß und schön.','بزرگ و زیبا است.']],
-            grammar:'صفت‌ها برای توصیف اسم استفاده می‌شوند: eine schöne Wohnung.'
-        },
-        {
-            title:'خرید کردن',
-            words:[['der Preis','قیمت'],['billig','ارزان'],['teuer','گران'],['bezahlen','پرداخت کردن'],['das Geschäft','فروشگاه']],
-            dialog:[['Wie viel kostet das?','این چند قیمت است؟'],['Das kostet zehn Euro.','ده یورو قیمت دارد.']],
-            grammar:'برای پرسیدن قیمت می‌گوییم: Wie viel kostet das?'
-        },
-        {
-            title:'زمان گذشته',
-            words:[['gestern','دیروز'],['letzte Woche','هفته گذشته'],['gemacht','انجام داده'],['gegangen','رفته'],['gesehen','دیده']],
-            dialog:[['Was hast du gestern gemacht?','دیروز چه کار کردی؟'],['Ich habe Deutsch gelernt.','من آلمانی خواندم.']],
-            grammar:'زمان Perfekt با haben یا sein و قسمت سوم فعل ساخته می‌شود.'
-        },
-        {
-            title:'قرار ملاقات',
-            words:[['der Termin','قرار'],['morgen','فردا'],['heute','امروز'],['verschieben','عقب انداختن'],['pünktlich','به‌موقع']],
-            dialog:[['Hast du morgen Zeit?','فردا وقت داری؟'],['Ja, um zehn Uhr.','بلی، ساعت ده.']],
-            grammar:'برای پیشنهاد می‌توان از Können wir...? استفاده کرد.'
-        }
-    ],
-
-    B1: [
-        {
-            title:'بیان نظر',
-            words:[['die Meinung','نظر'],['meiner Meinung nach','به نظر من'],['zustimmen','موافق بودن'],['ablehnen','رد کردن'],['begründen','دلیل آوردن']],
-            dialog:[['Was denkst du darüber?','در این باره چه فکر می‌کنی؟'],['Meiner Meinung nach ist es wichtig.','به نظر من این مهم است.']],
-            grammar:'برای بیان نظر از meiner Meinung nach و ich denke, dass استفاده می‌شود.'
-        },
-        {
-            title:'محیط زیست',
-            words:[['die Umwelt','محیط زیست'],['die Natur','طبیعت'],['schützen','محافظت کردن'],['die Verschmutzung','آلودگی'],['recyceln','بازیافت کردن']],
-            dialog:[['Was können wir für die Umwelt tun?','برای محیط زیست چه می‌توانیم انجام دهیم؟'],['Wir können weniger Plastik benutzen.','می‌توانیم پلاستیک کمتری استفاده کنیم.']],
-            grammar:'جمله‌های وابسته با weil و dass فعل را به آخر می‌برند.'
-        },
-        {
-            title:'کار و شغل',
-            words:[['die Bewerbung','درخواست کار'],['der Lebenslauf','رزومه'],['die Erfahrung','تجربه'],['das Vorstellungsgespräch','مصاحبه کاری'],['die Fähigkeit','توانایی']],
-            dialog:[['Haben Sie Berufserfahrung?','آیا تجربه کاری دارید؟'],['Ja, ich habe drei Jahre Erfahrung.','بلی، سه سال تجربه دارم.']],
-            grammar:'برای بیان تجربه از Perfekt و زمان گذشته استفاده می‌شود.'
-        },
-        {
-            title:'سلامتی',
-            words:[['die Gesundheit','سلامتی'],['die Untersuchung','معاینه'],['die Krankheit','بیماری'],['der Arzt','دکتر'],['sich erholen','استراحت کردن و بهبود یافتن']],
-            dialog:[['Was fehlt Ihnen?','چه مشکلی دارید؟'],['Ich habe seit gestern Kopfschmerzen.','از دیروز سردرد دارم.']],
-            grammar:'seit برای بیان کاری که از گذشته شروع شده و هنوز ادامه دارد استفاده می‌شود.'
-        },
-        {
-            title:'آینده و برنامه‌ها',
-            words:[['die Zukunft','آینده'],['der Plan','برنامه'],['hoffen','امیدوار بودن'],['vorhaben','قصد داشتن'],['das Ziel','هدف']],
-            dialog:[['Was hast du für die Zukunft vor?','برای آینده چه برنامه‌ای داری؟'],['Ich möchte studieren.','می‌خواهم تحصیل کنم.']],
-            grammar:'برای بیان آینده از werden + مصدر استفاده می‌شود.'
-        }
-    ]
-};
-
-/* =========================================
-   ساخت درس‌ها
+   ساخت فهرست درس‌ها
 ========================================= */
 
 function renderLessons() {
-    const levels = [
-        {id:'a1LessonsContainer',name:'A1',total:19},
-        {id:'a2LessonsContainer',name:'A2',total:20},
-        {id:'b1LessonsContainer',name:'B1',total:20}
-    ];
-
-    levels.forEach(function(level) {
-        const container = element(level.id);
+    LEVELS.forEach(level => {
+        const container = element(level.toLowerCase() + 'LessonsContainer');
         if (!container) return;
 
-        container.innerHTML = '';
+        container.replaceChildren();
 
-        for (let i=1; i<=level.total; i++) {
-            const data = lessonData[level.name][(i-1)%lessonData[level.name].length];
-
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.className = 'lesson-card';
-            button.textContent = '📘 درس '+i+': '+data.title;
-
-            button.addEventListener('click',function() {
-                showLessonDetail(level.name,i,data);
-            });
-
+        lessonData[level].forEach((data, index) => {
+            const number = index + 1;
+            const button = makeButton(
+                '📘 درس ' + number + ': ' + data.title,
+                () => showLessonDetail(level, number, data),
+                'lesson-card'
+            );
             container.appendChild(button);
-        }
+        });
 
         const detail = document.createElement('div');
-        detail.id = 'lessonDetail'+level.name;
+        detail.id = 'lessonDetail' + level;
         detail.className = 'lesson-detail';
         detail.style.display = 'none';
         container.appendChild(detail);
@@ -264,41 +350,40 @@ function renderLessons() {
 }
 
 /* =========================================
-   نمایش ویدیوی هر سطح
+   ویدیوی سطح / منبع آموزشی
 ========================================= */
 
 function createLevelVideo(level) {
-    const videoInfo = levelVideos[level];
-
+    const info = levelVideos[level];
     const box = document.createElement('div');
     box.className = 'content-card';
+    box.appendChild(safeText('h3', '🎬 منبع ویدیویی سطح ' + level));
+    box.appendChild(safeText('p', info.title));
 
-    box.appendChild(safeText('h3','🎬 ویدیوی آموزشی سطح '+level));
-    box.appendChild(safeText('p','فیلم آموزشی کامل Nicos Weg مربوط به سطح '+level));
-
-    const video = document.createElement('iframe');
-    video.src = 'https://www.youtube.com/embed/'+videoInfo.id;
-    video.title = videoInfo.title;
-    video.width = '100%';
-    video.height = '240';
-    video.loading = 'lazy';
-    video.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-    video.allowFullscreen = true;
-    video.style.border = '0';
-    video.style.borderRadius = '12px';
-
-    box.appendChild(video);
+    if (info.id) {
+        const frameWrap = document.createElement('div');
+        frameWrap.style.cssText = 'position:relative;width:100%;padding-top:56.25%;overflow:hidden;border-radius:12px;';
+        const video = document.createElement('iframe');
+        video.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(info.id);
+        video.title = info.title;
+        video.loading = 'lazy';
+        video.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        video.allowFullscreen = true;
+        video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+        frameWrap.appendChild(video);
+        box.appendChild(frameWrap);
+    } else {
+        box.appendChild(safeText('p', 'برای این سطح لینک رسمی منابع آموزشی نمایش داده می‌شود؛ ویدیوی YouTube تأییدشده‌ای در کد فعلی ثبت نشده است.'));
+    }
 
     const link = document.createElement('a');
-    link.href = videoInfo.link;
+    link.href = info.link;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
-    link.textContent = '📚 رفتن به درس‌ها و تمرین‌های رسمی DW';
+    link.textContent = '📚 باز کردن منبع آموزشی رسمی ' + level;
     link.style.display = 'block';
     link.style.marginTop = '12px';
-
     box.appendChild(link);
-
     return box;
 }
 
@@ -306,119 +391,74 @@ function createLevelVideo(level) {
    نمایش محتوای هر درس
 ========================================= */
 
-function showLessonDetail(level,number,data) {
-    const detail = element('lessonDetail'+level);
+function showLessonDetail(level, number, data) {
+    const detail = element('lessonDetail' + level);
     if (!detail) return;
 
-    detail.innerHTML = '';
+    detail.replaceChildren();
     detail.style.display = 'block';
+    detail.appendChild(safeText('h2', 'درس ' + number + ' - سطح ' + level + ': ' + data.title));
 
-    detail.appendChild(
-        safeText('h2','درس '+number+' - سطح '+level+': '+data.title)
-    );
-
-    /* ویدیوی سطح */
     detail.appendChild(createLevelVideo(level));
 
-    /* مکالمه */
     const conversationBox = document.createElement('div');
     conversationBox.className = 'content-card';
-    conversationBox.appendChild(
-        safeText('h3','🗣️ مکالمه با ترجمه فارسی')
-    );
-
-    data.dialog.forEach(function(line) {
-        conversationBox.appendChild(safeText('p','🇩🇪 '+line[0]));
-        conversationBox.appendChild(safeText('p','🇦🇫 '+line[1]));
-
-        const speak = document.createElement('button');
-        speak.textContent = '🔊 شنیدن';
-        speak.onclick = function() {
-            speakGerman(line[0]);
-        };
-
-        conversationBox.appendChild(speak);
+    conversationBox.appendChild(safeText('h3', '🗣️ مکالمه با ترجمه فارسی'));
+    data.dialog.forEach(line => {
+        conversationBox.appendChild(safeText('p', '🇩🇪 ' + line[0]));
+        conversationBox.appendChild(safeText('p', '🇦🇫 ' + line[1]));
+        conversationBox.appendChild(makeButton('🔊 شنیدن آلمانی', () => window.speakGerman(line[0])));
     });
-
     detail.appendChild(conversationBox);
 
-    /* لغات */
     const wordsBox = document.createElement('div');
     wordsBox.className = 'content-card';
-    wordsBox.appendChild(
-        safeText('h3','📚 لغات و معنی فارسی')
-    );
-
-    data.words.forEach(function(word) {
+    wordsBox.appendChild(safeText('h3', '📚 لغات و معنی فارسی'));
+    data.words.forEach(word => {
         const row = document.createElement('div');
         row.style.marginBottom = '10px';
-
-        row.appendChild(safeText('span',word[0]+' = '+word[1]+' '));
-
-        const speak = document.createElement('button');
-        speak.textContent = '🔊';
-        speak.onclick = function() {
-            speakGerman(word[0]);
-        };
-
-        row.appendChild(speak);
+        row.appendChild(safeText('span', word[0] + ' = ' + word[1] + ' '));
+        row.appendChild(makeButton('🔊', () => window.speakGerman(word[0])));
         wordsBox.appendChild(row);
     });
-
     detail.appendChild(wordsBox);
 
-    /* گرامر */
     const grammarBox = document.createElement('div');
     grammarBox.className = 'content-card';
-    grammarBox.appendChild(safeText('h3','📖 گرامر درس'));
-    grammarBox.appendChild(safeText('p',data.grammar));
-
+    grammarBox.appendChild(safeText('h3', '📖 گرامر درس'));
+    grammarBox.appendChild(safeText('p', data.grammar));
     detail.appendChild(grammarBox);
 
-    /* تمرین */
     const practice = document.createElement('div');
     practice.className = 'content-card';
-
-    practice.appendChild(safeText('h3','✍️ تمرین درس'));
-    practice.appendChild(safeText('p','معنی این کلمه چیست؟'));
-
-    const word = data.words[0];
-    practice.appendChild(safeText('h4',word[0]));
+    practice.appendChild(safeText('h3', '✍️ تمرین درس'));
+    practice.appendChild(safeText('p', 'معنی این واژه آلمانی را به فارسی بنویسید:'));
+    const selectedWord = data.words[0];
+    practice.appendChild(safeText('h4', selectedWord[0]));
 
     const answer = document.createElement('input');
     answer.type = 'text';
     answer.placeholder = 'معنی فارسی را بنویسید';
+    answer.autocomplete = 'off';
     practice.appendChild(answer);
 
     const result = document.createElement('p');
-
-    const check = document.createElement('button');
-    check.textContent = 'بررسی پاسخ';
-
-    check.onclick = function() {
-        if (answer.value.trim() === word[1]) {
+    practice.appendChild(makeButton('بررسی پاسخ', () => {
+        const normalize = value => value.trim().toLocaleLowerCase('fa').replace(/\s+/g, ' ');
+        if (normalize(answer.value) === normalize(selectedWord[1])) {
             result.textContent = 'آفرین! پاسخ درست است. 🌹';
         } else {
-            result.textContent = 'پاسخ درست: '+word[1];
+            result.textContent = 'پاسخ درست: ' + selectedWord[1];
         }
-    };
-
-    practice.appendChild(check);
+    }));
     practice.appendChild(result);
     detail.appendChild(practice);
 
-    /* بستن درس */
-    const close = document.createElement('button');
-    close.className = 'action';
-    close.textContent = 'بستن درس';
-
-    close.onclick = function() {
+    detail.appendChild(makeButton('بستن درس', () => {
         detail.style.display = 'none';
-    };
+    }, 'action'));
 
-    detail.appendChild(close);
-
-    detail.scrollIntoView({behavior:'smooth',block:'start'});
+    detail.scrollIntoView({ behavior:'smooth', block:'start' });
 }
 
 /* =========================================
@@ -428,9 +468,8 @@ function showLessonDetail(level,number,data) {
 function renderConversation() {
     const container = element('conversationContent');
     if (!container) return;
-
     const conversations = [
-        ['Hallo!','سلام!'],
+        ['Guten Tag!','روز بخیر!'],
         ['Wie heißt du?','نامت چیست؟'],
         ['Ich heiße Ahmad.','نام من احمد است.'],
         ['Wie geht es dir?','حالت چطور است؟'],
@@ -441,23 +480,13 @@ function renderConversation() {
         ['Ich wohne in Deutschland.','من در آلمان زندگی می‌کنم.'],
         ['Auf Wiedersehen!','خداحافظ!']
     ];
-
-    container.innerHTML = '';
-
-    conversations.forEach(function(item) {
+    container.replaceChildren();
+    conversations.forEach(item => {
         const card = document.createElement('div');
         card.className = 'conversation-card';
-
-        card.appendChild(safeText('h3',item[0]));
-        card.appendChild(safeText('p',item[1]));
-
-        const button = document.createElement('button');
-        button.textContent = '🔊 شنیدن تلفظ';
-        button.onclick = function() {
-            speakGerman(item[0]);
-        };
-
-        card.appendChild(button);
+        card.appendChild(safeText('h3', item[0]));
+        card.appendChild(safeText('p', item[1]));
+        card.appendChild(makeButton('🔊 شنیدن تلفظ', () => window.speakGerman(item[0])));
         container.appendChild(card);
     });
 }
@@ -469,7 +498,6 @@ function renderConversation() {
 function renderGrammar() {
     const container = element('grammarContent');
     if (!container) return;
-
     const items = [
         ['فعل sein','فعل sein به معنی بودن است.','Ich bin müde.','من خسته هستم.'],
         ['فعل haben','فعل haben به معنی داشتن است.','Ich habe ein Buch.','من یک کتاب دارم.'],
@@ -478,55 +506,40 @@ function renderGrammar() {
         ['ساختار جمله','در جمله خبری ساده فعل معمولاً جایگاه دوم است.','Heute lerne ich Deutsch.','امروز آلمانی یاد می‌گیرم.'],
         ['زمان Perfekt','برای بیان بسیاری از اتفاقات گذشته استفاده می‌شود.','Ich habe Deutsch gelernt.','من آلمانی یاد گرفتم.']
     ];
-
-    container.innerHTML = '';
-
-    items.forEach(function(item) {
+    container.replaceChildren();
+    items.forEach(item => {
         const card = document.createElement('div');
         card.className = 'grammar-card';
-
-        card.appendChild(safeText('h3',item[0]));
-        card.appendChild(safeText('p',item[1]));
-        card.appendChild(safeText('p','مثال: '+item[2]));
-        card.appendChild(safeText('p','ترجمه: '+item[3]));
-
-        const button = document.createElement('button');
-        button.textContent = '🔊 شنیدن مثال';
-        button.onclick = function() {
-            speakGerman(item[2]);
-        };
-
-        card.appendChild(button);
+        card.appendChild(safeText('h3', item[0]));
+        card.appendChild(safeText('p', item[1]));
+        card.appendChild(safeText('p', 'مثال: ' + item[2]));
+        card.appendChild(safeText('p', 'ترجمه: ' + item[3]));
+        card.appendChild(makeButton('🔊 شنیدن مثال', () => window.speakGerman(item[2])));
         container.appendChild(card);
     });
 }
 
 /* =========================================
-   ویدیوهای صفحه اصلی ویدیوها
+   ویدیوهای صفحه ویدیوها
 ========================================= */
 
 function renderVideos() {
-    ['A1','A2','B1'].forEach(function(level) {
-        const container = element('videos'+level);
+    LEVELS.forEach(level => {
+        const container = element('videos' + level);
         if (!container) return;
-
-        container.innerHTML = '';
+        container.replaceChildren();
         container.appendChild(createLevelVideo(level));
     });
 }
 
 window.showVideoLevel = function(level) {
-    ['A1','A2','B1'].forEach(function(name) {
-        const box = element('videos'+name);
-        if (box) {
-            box.style.display = name === level ? 'block' : 'none';
-        }
+    if (!LEVELS.includes(level)) return;
+    LEVELS.forEach(name => {
+        const box = element('videos' + name);
+        if (box) box.style.display = name === level ? 'block' : 'none';
     });
-
-    const selected = element('videos'+level);
-    if (selected) {
-        selected.scrollIntoView({behavior:'smooth',block:'start'});
-    }
+    const selected = element('videos' + level);
+    if (selected) selected.scrollIntoView({ behavior:'smooth', block:'start' });
 };
 
 /* =========================================
@@ -534,55 +547,39 @@ window.showVideoLevel = function(level) {
 ========================================= */
 
 window.openQuiz = function(level) {
-    document.querySelectorAll('.quiz-box').forEach(function(box) {
-        box.style.display = 'none';
-    });
-
-    const box = element('quiz-'+level);
-    const questions = element('questions-'+level);
-    const result = element('result-'+level);
-
+    document.querySelectorAll('.quiz-box').forEach(box => box.style.display = 'none');
+    const box = element('quiz-' + level);
+    const questions = element('questions-' + level);
+    const result = element('result-' + level);
     if (!box || !questions || !result || !quizData[level]) {
-        alert('آزمون پیدا نشد.');
+        alert('آزمون پیدا نشد. شناسه‌های HTML را بررسی کنید.');
         return;
     }
 
     box.style.display = 'block';
-    questions.innerHTML = '';
+    questions.replaceChildren();
     result.textContent = '';
     quizData[level].finished = false;
 
-    quizData[level].questions.forEach(function(question,index) {
+    quizData[level].questions.forEach((question, index) => {
         const card = document.createElement('div');
         card.className = 'quiz-question';
-
-        card.appendChild(
-            safeText('h3',(index+1)+'. '+question.question)
-        );
-
-        question.options.forEach(function(option,i) {
+        card.appendChild(safeText('h3', (index + 1) + '. ' + question.question));
+        question.options.forEach((option, i) => {
             const label = document.createElement('label');
             const radio = document.createElement('input');
-
             radio.type = 'radio';
-            radio.name = 'question-'+level+'-'+index;
-            radio.value = i;
-
-            label.append(radio,document.createTextNode(' '+option));
+            radio.name = 'question-' + level + '-' + index;
+            radio.value = String(i);
+            label.append(radio, document.createTextNode(' ' + option));
             card.appendChild(label);
+            card.appendChild(document.createElement('br'));
         });
-
         questions.appendChild(card);
     });
 
-    const submit = document.createElement('button');
-    submit.textContent = 'ثبت پاسخ‌ها';
-    submit.onclick = function() {
-        submitQuiz(level);
-    };
-
-    questions.appendChild(submit);
-    box.scrollIntoView({behavior:'smooth',block:'start'});
+    questions.appendChild(makeButton('ثبت پاسخ‌ها', () => window.submitQuiz(level)));
+    box.scrollIntoView({ behavior:'smooth', block:'start' });
 };
 
 window.submitQuiz = function(level) {
@@ -591,17 +588,10 @@ window.submitQuiz = function(level) {
 
     let score = 0;
     let unanswered = 0;
-
-    quiz.questions.forEach(function(question,index) {
-        const selected = document.querySelector(
-            'input[name="question-'+level+'-'+index+'"]:checked'
-        );
-
-        if (!selected) {
-            unanswered++;
-        } else if (Number(selected.value) === question.correct) {
-            score++;
-        }
+    quiz.questions.forEach((question, index) => {
+        const selected = document.querySelector('input[name="question-' + level + '-' + index + '"]:checked');
+        if (!selected) unanswered++;
+        else if (Number(selected.value) === question.correct) score++;
     });
 
     if (unanswered) {
@@ -610,121 +600,74 @@ window.submitQuiz = function(level) {
     }
 
     quiz.finished = true;
-
-    const points = score*10;
-    const result = element('result-'+level);
-
-    result.textContent = 'امتیاز شما: '+points+' از ۵۰';
-
-    saveQuizProgress(level,points);
-
-    if (points >= 40) {
-        result.textContent += ' 🏆 تبریک! موفق شدید.';
-        showCelebration(level,points);
-    } else {
-        result.textContent += ' 🌷 دوباره تمرین کنید.';
+    const points = score * 10;
+    const result = element('result-' + level);
+    if (result) {
+        result.textContent = 'امتیاز شما: ' + points + ' از ۵۰';
+        result.textContent += points >= 40 ? ' 🏆 تبریک! موفق شدید.' : ' 🌷 دوباره تمرین کنید.';
     }
+    saveQuizProgress(level, points);
+    if (points >= 40) showCelebration(level, points);
 };
 
 /* =========================================
    جشن موفقیت
 ========================================= */
 
-function showCelebration(level,score) {
+function showCelebration(level, score) {
     const old = element('celebration');
     if (old) old.remove();
 
-    const box = document.createElement('div');
-    box.id = 'celebration';
-
-    box.style.cssText =
-        'position:fixed;inset:0;background:#000b;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
+    const overlay = document.createElement('div');
+    overlay.id = 'celebration';
+    overlay.style.cssText = 'position:fixed;inset:0;background:#000b;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
 
     const message = document.createElement('div');
-
-    message.style.cssText =
-        'background:white;padding:30px;border-radius:20px;text-align:center;color:#142b52';
-
-    message.appendChild(safeText('h2','🏆 تبریک! شما موفق شدید!'));
-    message.appendChild(safeText('p','آزمون '+level));
-    message.appendChild(safeText('h3','امتیاز: '+score+' از ۵۰'));
-
-    const close = document.createElement('button');
-    close.textContent = 'بستن';
-    close.onclick = function() {
-        box.remove();
-    };
-
-    message.appendChild(close);
-    box.appendChild(message);
-    document.body.appendChild(box);
+    message.style.cssText = 'background:white;padding:30px;border-radius:20px;text-align:center;color:#142b52;';
+    message.appendChild(safeText('h2', '🏆 تبریک! شما موفق شدید!'));
+    message.appendChild(safeText('p', 'آزمون ' + level));
+    message.appendChild(safeText('h3', 'امتیاز: ' + score + ' از ۵۰'));
+    message.appendChild(makeButton('بستن', () => overlay.remove()));
+    overlay.appendChild(message);
+    document.body.appendChild(overlay);
 }
 
 /* =========================================
-   ذخیره پیشرفت
+   ذخیره و نمایش پیشرفت پنج سطح
 ========================================= */
 
-function saveQuizProgress(level,score) {
+function saveQuizProgress(level, score) {
     try {
-        const progress = JSON.parse(
-            localStorage.getItem('kingAsadProgress') || '{}'
-        );
-
-        progress[level] = {
-            score:score,
-            date:new Date().toLocaleDateString()
-        };
-
-        localStorage.setItem(
-            'kingAsadProgress',
-            JSON.stringify(progress)
-        );
-    } catch(error) {
-        console.log('ذخیره پیشرفت انجام نشد.');
+        const progress = JSON.parse(localStorage.getItem('kingAsadProgress') || '{}');
+        progress[level] = { score, date:new Date().toLocaleDateString() };
+        localStorage.setItem('kingAsadProgress', JSON.stringify(progress));
+    } catch (error) {
+        console.warn('ذخیره پیشرفت انجام نشد.', error);
     }
 }
 
 function showProgress() {
     const container = element('homeProgress');
     if (!container) return;
-
     let progress = {};
-
     try {
-        progress = JSON.parse(
-            localStorage.getItem('kingAsadProgress') || '{}'
-        );
-    } catch(error) {}
+        progress = JSON.parse(localStorage.getItem('kingAsadProgress') || '{}');
+    } catch (error) {
+        progress = {};
+    }
 
-    container.innerHTML = '';
-
-    ['A1','A2','B1'].forEach(function(level) {
+    container.replaceChildren();
+    LEVELS.forEach(level => {
         const card = document.createElement('div');
         card.className = 'progress-box';
-
-        card.appendChild(safeText('h3','سطح '+level));
-
+        card.appendChild(safeText('h3', 'سطح ' + level));
         const saved = progress[level];
-
-        card.appendChild(
-            safeText(
-                'p',
-                saved
-                    ? 'آخرین امتیاز: '+saved.score+' از ۵۰'
-                    : 'هنوز آزمونی انجام نشده است.'
-            )
-        );
-
+        card.appendChild(safeText('p', saved ? 'آخرین امتیاز: ' + saved.score + ' از ۵۰' : 'هنوز آزمونی انجام نشده است.'));
         const bar = document.createElement('div');
         bar.className = 'progress-bar';
-
         const fill = document.createElement('div');
         fill.className = 'progress-fill';
-
-        fill.style.width = saved
-            ? Math.min(100,saved.score*2)+'%'
-            : '0%';
-
+        fill.style.width = saved ? Math.min(100, Math.max(0, Number(saved.score) * 2)) + '%' : '0%';
         bar.appendChild(fill);
         card.appendChild(bar);
         container.appendChild(card);
@@ -740,13 +683,10 @@ window.speakGerman = function(text) {
         alert('مرورگر شما از پخش صدا پشتیبانی نمی‌کند.');
         return;
     }
-
     window.speechSynthesis.cancel();
-
     const speech = new SpeechSynthesisUtterance(text);
     speech.lang = 'de-DE';
     speech.rate = 0.85;
-
     window.speechSynthesis.speak(speech);
 };
 
@@ -754,24 +694,14 @@ window.speakGerman = function(text) {
    فرهنگ لغات و ترجمه
 ========================================= */
 
-async function translateText(text,source,target) {
-    const url =
-        'https://api.mymemory.translated.net/get?q='+
-        encodeURIComponent(text)+
-        '&langpair='+
-        encodeURIComponent(source+'|'+target);
-
+async function translateText(text, source, target) {
+    const url = 'https://api.mymemory.translated.net/get?q=' +
+        encodeURIComponent(text) + '&langpair=' +
+        encodeURIComponent(source + '|' + target);
     const response = await fetch(url);
-
-    if (!response.ok) {
-        throw new Error('Translation error');
-    }
-
+    if (!response.ok) throw new Error('Translation error');
     const data = await response.json();
-
-    return data.responseData && data.responseData.translatedText
-        ? data.responseData.translatedText
-        : '';
+    return data.responseData && data.responseData.translatedText ? data.responseData.translatedText : '';
 }
 
 window.searchDictionary = async function() {
@@ -779,34 +709,24 @@ window.searchDictionary = async function() {
     const source = element('dictionarySource');
     const target = element('dictionaryTarget');
     const result = element('dictionaryResult');
-
     if (!input || !source || !target || !result) return;
 
     const word = input.value.trim();
-
     if (!word) {
         result.textContent = 'لطفاً یک کلمه وارد کنید.';
         return;
     }
-
     if (source.value === target.value) {
         result.textContent = 'زبان مبدأ و مقصد باید متفاوت باشند.';
         return;
     }
 
     result.textContent = '⏳ در حال ترجمه...';
-
     try {
-        const translated = await translateText(
-            word,
-            source.value,
-            target.value
-        );
-
+        const translated = await translateText(word, source.value, target.value);
         result.textContent = translated || 'ترجمه پیدا نشد.';
-    } catch(error) {
-        result.textContent =
-            'ارتباط با سرویس ترجمه برقرار نشد. اینترنت را بررسی کنید.';
+    } catch (error) {
+        result.textContent = 'ارتباط با سرویس ترجمه برقرار نشد. اینترنت را بررسی کنید.';
     }
 };
 
@@ -814,11 +734,11 @@ window.searchDictionary = async function() {
    راه‌اندازی اولیه
 ========================================= */
 
-document.addEventListener('DOMContentLoaded',function() {
+document.addEventListener('DOMContentLoaded', function() {
     renderLessons();
     renderConversation();
     renderGrammar();
     renderVideos();
     showProgress();
-    showPage('homePage');
+    window.showPage('homePage');
 });
