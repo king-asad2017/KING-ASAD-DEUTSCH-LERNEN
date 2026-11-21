@@ -2827,30 +2827,45 @@ KING_ASAD.refreshProgressDashboard = function () {
 
 
 console.log('KING ASAD: داشبورد پیشرفت آماده شد.');
+
 /* =========================================
    KING ASAD
-   بخش بیستم: اتصال و راه‌اندازی سیستم
+   بخش بیستم: اتصال و راه‌اندازی اصلاح‌شده
 ========================================= */
 
-// اتصال نمایش درس به سیستم اصلی
+// اتصال نمایش درس
 window.renderKingAsadLesson = function (lesson) {
     return KING_ASAD.renderKingAsadLesson(lesson);
 };
 
-
-// اضافه‌کردن دکمه آزمون به جزئیات هر درس
+// نگهداری تابع اصلی نمایش درس
 KING_ASAD.renderLessonWithoutQuiz =
     KING_ASAD.renderKingAsadLesson;
 
+// افزودن دکمه آزمون به درس
 KING_ASAD.renderKingAsadLesson = function (lesson) {
 
-    const rendered = KING_ASAD.renderLessonWithoutQuiz(lesson);
+    const rendered =
+        KING_ASAD.renderLessonWithoutQuiz(lesson);
 
-    if (!rendered) {
-        return false;
+    if (!rendered) return false;
+
+    const container =
+        document.querySelector('#lessonDetail');
+
+    if (!container) return false;
+
+    const completeButton =
+        Array.from(container.querySelectorAll('button'))
+        .find(button =>
+            button.textContent.trim() === 'تکمیل این درس'
+        );
+
+    if (completeButton) {
+        completeButton.addEventListener('click', function () {
+            KING_ASAD.refreshProgressDashboard();
+        });
     }
-
-    const container = document.querySelector('#lessonDetail');
 
     const quizButton = document.createElement('button');
 
@@ -2866,32 +2881,21 @@ KING_ASAD.renderKingAsadLesson = function (lesson) {
 
         document.querySelector('#quizContainer')
             ?.scrollIntoView({ behavior: 'smooth' });
-
     });
 
     container.appendChild(quizButton);
 
-    // تازه‌سازی داشبورد بعد از تکمیل درس
-    const buttons = container.querySelectorAll('button');
-    const completeButton = buttons[buttons.length - 2];
-
-    if (completeButton) {
-        completeButton.addEventListener('click', function () {
-            KING_ASAD.refreshProgressDashboard();
-        });
-    }
-
     return true;
 };
 
-
-// تازه‌سازی اطلاعات بعد از ثبت آزمون
+// تازه‌سازی پس از ثبت آزمون
 KING_ASAD.saveQuizResultOriginal =
     KING_ASAD.saveLessonQuizResult;
 
 KING_ASAD.saveLessonQuizResult = function (result) {
 
-    const saved = KING_ASAD.saveQuizResultOriginal(result);
+    const saved =
+        KING_ASAD.saveQuizResultOriginal(result);
 
     KING_ASAD.renderQuizHistory('#quizHistory');
     KING_ASAD.refreshProgressDashboard();
@@ -2899,15 +2903,12 @@ KING_ASAD.saveLessonQuizResult = function (result) {
     return saved;
 };
 
-
-// اتصال دکمه‌های انتخاب سطح به فهرست درس‌ها
+// اتصال دکمه‌های سطوح
 KING_ASAD.bindLevelButtons = function () {
 
     document.querySelectorAll('[data-level]').forEach(button => {
 
-        if (button.dataset.kingLevelBound === 'true') {
-            return;
-        }
+        if (button.dataset.kingLevelBound === 'true') return;
 
         button.dataset.kingLevelBound = 'true';
 
@@ -2915,48 +2916,36 @@ KING_ASAD.bindLevelButtons = function () {
 
             const level = this.dataset.level;
 
-            KING_ASAD.renderLessonCards(
+            const success = KING_ASAD.renderLessonCards(
                 level,
                 '#lessonCards'
             );
 
-            document.querySelector('#lessonCards')
-                ?.scrollIntoView({ behavior: 'smooth' });
-
+            if (success) {
+                document.querySelector('#lessonCards')
+                    ?.scrollIntoView({ behavior: 'smooth' });
+            }
         });
-
     });
-
 };
 
-
-// راه‌اندازی تمام قسمت‌ها
+// راه‌اندازی
 KING_ASAD.initialize = function () {
 
-    console.log('KING ASAD: راه‌اندازی سیستم شروع شد.');
+    console.log('KING ASAD شروع شد.');
 
     KING_ASAD.bindLevelButtons();
-
     KING_ASAD.bindVideoButtons();
 
     KING_ASAD.refreshProgressDashboard();
-
     KING_ASAD.renderQuizHistory('#quizHistory');
 
-    console.log('تعداد درس‌ها:', KING_ASAD.getTotalLessons());
-
-    console.log(
-        'بررسی درس‌ها:',
-        KING_ASAD.checkLessonStructure()
-    );
-
-    console.log('KING ASAD با موفقیت راه‌اندازی شد.');
+    console.log('مجموع درس‌ها:', KING_ASAD.getTotalLessons());
 
     return true;
 };
 
-
-// اجرای خودکار پس از آماده‌شدن صفحه
+// اجرای خودکار
 if (document.readyState === 'loading') {
 
     document.addEventListener(
@@ -2967,5 +2956,4 @@ if (document.readyState === 'loading') {
 } else {
 
     KING_ASAD.initialize();
-
 }
