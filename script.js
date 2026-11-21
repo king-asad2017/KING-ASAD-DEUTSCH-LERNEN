@@ -252,3 +252,18 @@ window.resetQuiz = function (level) {
   const celebration = document.getElementById("celebration");
   if (celebration) celebration.remove();
 };
+
+window.openQuiz = function(level) {
+    document.querySelectorAll('.quiz-level').forEach(function(quiz) {
+        quiz.style.display = 'none';
+    });
+
+    const selectedQuiz = document.getElementById('quiz-' + level);
+
+    if (selectedQuiz) {
+        selectedQuiz.style.display = 'block';
+        selectedQuiz.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        alert('آزمون ' + level + ' پیدا نشد!');
+    }
+};
