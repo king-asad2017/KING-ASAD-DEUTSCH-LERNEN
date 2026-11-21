@@ -925,6 +925,7 @@ KING_ASAD.checkLessonQuiz = function (level, lessonNumber, answers) {
 };
 
 
+
 // بررسی صحت ساختار ۱۲۹ درس
 KING_ASAD.checkLessonStructure = function () {
     const errors = [];
@@ -942,7 +943,7 @@ KING_ASAD.checkLessonStructure = function () {
             }
 
             if (!lesson.grammar || !lesson.dialog || !lesson.dialog.length) {
-                errors.push('محتوای آموزشی درس ' + lesson.id + ' ناقص است.');
+                errors.push('محتوای درس ' + lesson.id + ' ناقص است.');
             }
         });
     });
@@ -952,6 +953,30 @@ KING_ASAD.checkLessonStructure = function () {
         errors: errors,
         totalLessons: KING_ASAD.getTotalLessons()
     };
+};
+
+
+// نمایش نتیجه آزمون در کنسول
+KING_ASAD.printQuizResult = function (result) {
+    if (!result || !result.success) {
+        console.log(
+            result ? result.message : 'نتیجه آزمون موجود نیست.'
+        );
+        return;
+    }
+
+    console.log('نتیجه آزمون KING ASAD');
+    console.log('سطح:', result.level);
+    console.log('شماره درس:', result.lessonNumber);
+    console.log('تعداد سؤال‌ها:', result.totalQuestions);
+    console.log('پاسخ درست:', result.correctAnswers);
+    console.log('پاسخ نادرست:', result.wrongAnswers);
+    console.log('درصد موفقیت:', result.percentage + '%');
+    console.log(
+        'وضعیت:',
+        result.passed ? 'قبول شد' : 'نیاز به تمرین بیشتر'
+    );
+};
 
 console.log('KING ASAD: سیستم آزمون درس‌ها آماده شد.');
 /* =========================================
