@@ -125,11 +125,6 @@ window.showLevelLessons = function(level) {
 const lessonData = {
     A1: [
         {
-{
-    title:'سلام و معرفی خود',
-    videoStart: 0,
-    videoEnd: 60,
-    words:[['Hallo','سلام'],['Guten Morgen','صبح بخیر'],['Danke','تشکر'],['Bitte','لطفاً'],['Tschüss','خداحافظ']],
             title:'سلام و معرفی خود',
             words:[['Hallo','سلام'],['Guten Morgen','صبح بخیر'],['Danke','تشکر'],['Bitte','لطفاً'],['Tschüss','خداحافظ']],
             dialog:[['Hallo!','سلام!'],['Wie heißt du?','نامت چیست؟'],['Ich heiße Ahmad.','نام من احمد است.']],
