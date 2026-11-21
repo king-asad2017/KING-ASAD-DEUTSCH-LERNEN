@@ -15,8 +15,6 @@ const translations = {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-
-  // انتخاب زبان
   const languageSelect = document.getElementById("language");
   const welcome = document.getElementById("welcome");
 
@@ -38,11 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   changeLanguage("fa");
-
-  console.log("KING ASAD is ready!");
 });
 
-// تلفظ آلمانی
+// تلفظ کلمات آلمانی
 window.speakGerman = function (text) {
   if (!("speechSynthesis" in window)) {
     alert("مرورگر شما از تلفظ پشتیبانی نمی‌کند.");
@@ -54,60 +50,77 @@ window.speakGerman = function (text) {
   const speech = new SpeechSynthesisUtterance(text);
   speech.lang = "de-DE";
   speech.rate = 0.85;
-  speech.pitch = 1;
 
   window.speechSynthesis.speak(speech);
 };
 
-// سیستم آزمون و امتیازدهی
-const quizAnswers = [null, null, null, null, null];
-const correctAnswers = [true, true, false, true, true];
+// سیستم آزمون
+const answers = [null, null, null, null, null];
 
-window.answerQuiz = function (question, answer) {
+const correctIndexes = [0, 0, 1, 0, 0];
 
-  if (quizAnswers[question] !== null) {
-    alert("شما قبلاً به این سؤال پاسخ داده‌اید!");
+window.answerQuiz = function (questionIndex, isCorrect, clickedButton) {
+  if (answers[questionIndex] !== null) {
     return;
   }
 
-  quizAnswers[question] = answer;
+  answers[questionIndex] = isCorrect;
+
+  const question = clickedButton.closest(".question");
+  const buttons = question.querySelectorAll("button");
+
+  buttons.forEach(function (button, index) {
+    button.disabled = true;
+
+    if (index === correctIndexes[questionIndex]) {
+      button.classList.add("correct");
+    }
+  });
+
+  if (!isCorrect) {
+    clickedButton.classList.add("wrong");
+  }
 
   let score = 0;
   let completed = 0;
 
-  quizAnswers.forEach(function (value, index) {
-    if (value !== null) {
+  answers.forEach(function (answer) {
+    if (answer !== null) {
       completed++;
 
-      if (value === correctAnswers[index]) {
+      if (answer === true) {
         score += 10;
       }
     }
   });
 
-  const result = document.getElementById("quizResult");
+  document.getElementById("quizResult").textContent =
+    "امتیاز شما: " + score + " از ۵۰";
+
   const message = document.getElementById("quizMessage");
 
-  result.textContent = "امتیاز شما: " + score + " از 50";
-
-  if (answer === correctAnswers[question]) {
-    message.textContent = "آفرین! پاسخ شما درست است. 🌟";
+  if (isCorrect) {
+    message.textContent = "آفرین! جواب شما درست است. 🎉";
   } else {
-    message.textContent = "پاسخ شما نادرست است. دوباره تلاش کنید!";
+    message.textContent = "جواب اشتباه است! جواب درست با رنگ آبی مشخص شده است.";
   }
 
   if (completed === 5) {
     message.textContent =
-      "آزمون تمام شد! امتیاز نهایی شما: " + score + " از 50";
+      "آزمون تمام شد! امتیاز نهایی شما: " + score + " از ۵۰ 🏆";
   }
 };
 
 // شروع دوباره آزمون
 window.resetQuiz = function () {
-
-  for (let i = 0; i < quizAnswers.length; i++) {
-    quizAnswers[i] = null;
+  for (let i = 0; i < answers.length; i++) {
+    answers[i] = null;
   }
+
+  document.querySelectorAll(".question button").forEach(function (button) {
+    button.disabled = false;
+    button.classList.remove("correct", "wrong");
+  });
 
   document.getElementById("quizResult").textContent =
     "امتیاز شما: ۰ از ۵۰";
