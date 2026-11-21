@@ -3,38 +3,171 @@
   box-sizing: border-box;
 }
 
+:root {
+  --navy: #102b59;
+  --blue: #1764a5;
+  --light-blue: #eaf3ff;
+  --gold: #e8b84b;
+  --white: #ffffff;
+  --text: #172554;
+  --border: #d8e5f5;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f1f5f9;
-  color: #172554;
+  background: linear-gradient(135deg, #edf4fc, #f8fbff);
+  color: var(--text);
   direction: rtl;
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 header {
-  background: linear-gradient(135deg, #102b59, #1764a5);
+  background: linear-gradient(135deg, #102044, #1764a5);
   color: white;
   text-align: center;
-  padding: 30px 15px;
+  padding: 40px 15px;
+  border-bottom: 5px solid var(--gold);
+  box-shadow: 0 5px 20px #102b5930;
 }
 
+header h1 {
+  font-size: 36px;
+  margin: 5px;
+  letter-spacing: 1px;
+}
 
-/* رنگ پاسخ درست */
+header h2 {
+  margin: 5px;
+  color: #e5efff;
+}
+
+header p {
+  color: #e5efff;
+}
+
+select {
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-top: 10px;
+  background: white;
+  font-size: 15px;
+}
+
+main {
+  width: 94%;
+  max-width: 1100px;
+  margin: 30px auto;
+}
+
+section {
+  background: white;
+  padding: 24px;
+  margin: 24px 0;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 7px 22px rgba(16, 43, 89, 0.07);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+section:hover {
+  box-shadow: 0 10px 28px rgba(16, 43, 89, 0.12);
+}
+
+h2, h3 {
+  color: var(--blue);
+}
+
+h2 {
+  border-right: 5px solid var(--gold);
+  padding-right: 12px;
+}
+
+button {
+  background: linear-gradient(135deg, var(--blue), #2585ce);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px #1764a530;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.question {
+  background: #f8fbff;
+  border: 1px solid var(--border);
+  border-right: 5px solid var(--blue);
+  border-radius: 15px;
+  padding: 18px;
+  margin: 20px 0;
+  box-shadow: 0 3px 10px #102b590c;
+}
+
+.question button {
+  min-width: 110px;
+}
+
 .question button.correct {
   background: #0875d1 !important;
   color: white !important;
   border: 3px solid #004b91 !important;
 }
 
-/* رنگ پاسخ اشتباه */
 .question button.wrong {
   background: #e00000 !important;
   color: white !important;
   border: 3px solid #990000 !important;
 }
 
-/* صفحه جشن برنده */
+#quizResult,
+[id^="result-"] {
+  background: var(--light-blue);
+  padding: 16px;
+  border-radius: 14px;
+  text-align: center;
+  border: 1px solid var(--border);
+  font-weight: bold;
+}
+
+#quizMessage,
+[id^="message-"] {
+  text-align: center;
+  font-weight: bold;
+}
+
+.quiz-level {
+  margin-top: 20px;
+}
+
+footer {
+  background: linear-gradient(135deg, #102044, #1764a5);
+  color: white;
+  text-align: center;
+  padding: 25px;
+  margin-top: 40px;
+  border-top: 4px solid var(--gold);
+}
+
+/* صفحه جشن موفقیت */
 #celebration {
   position: fixed;
   inset: 0;
@@ -78,7 +211,6 @@ header {
   to { transform: scale(1.2); }
 }
 
-/* گل‌پاشی و کنفتی */
 .confetti {
   position: absolute;
   top: -20px;
@@ -94,118 +226,33 @@ header {
   }
 }
 
-header h1 {
-  font-size: 34px;
-  margin: 5px;
-}
-
-header h2 {
-  margin: 5px;
-}
-
-select {
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  margin-top: 10px;
-}
-
-main {
-  width: 92%;
-  max-width: 900px;
-  margin: 25px auto;
-}
-
-section {
-  background: white;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 15px;
-  border: 1px solid #dbeafe;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-}
-
-h2, h3 {
-  color: #164e91;
-}
-
-button {
-  background: #1764a5;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 16px;
-  margin: 5px;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-button:active {
-  transform: scale(0.97);
-}
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: 1;
-}
-
-.question {
-  border: 1px solid #dbeafe;
-  border-radius: 12px;
-  padding: 15px;
-  margin: 18px 0;
-}
-
-.question button {
-  min-width: 100px;
-}
-
-.question button.correct {
-  background: #0875d1;
-  color: white;
-  border: 2px solid #004b91;
-}
-
-.question button.wrong {
-  background: #dc2626;
-  color: white;
-  border: 2px solid #991b1b;
-}
-
-#quizResult {
-  background: #e0f2fe;
-  padding: 15px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-#quizMessage {
-  text-align: center;
-  font-weight: bold;
-}
-
-footer {
-  background: #102b59;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 30px;
-}
-
+/* موبایل */
 @media (max-width: 600px) {
+  header {
+    padding: 28px 12px;
+  }
+
   header h1 {
     font-size: 27px;
   }
 
   main {
-    width: 95%;
+    width: 94%;
+    margin: 18px auto;
   }
 
   section {
-    padding: 14px;
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 16px;
   }
 
   button {
     font-size: 14px;
+    padding: 11px 15px;
+  }
+
+  .question button {
+    min-width: 90px;
   }
 }
