@@ -3116,3 +3116,139 @@ KING_ASAD.refreshAllDashboards = function () {
 KING_ASAD.renderHomeProgress();
 
 console.log('KING ASAD: توابع اتصال HTML اصلاح شدند.');
+
+/* =========================================
+   KING ASAD
+   نمایش درس زیر کارت خودش
+   فقط یک درس هم‌زمان باز باشد
+========================================= */
+
+KING_ASAD.createLessonCard = function (level, lessonNumber) {
+
+    const lesson = KING_ASAD.getLessonDetails(
+        level,
+        lessonNumber
+    );
+
+    if (!lesson) return null;
+
+    const card = document.createElement('div');
+    card.className = 'king-lesson-card';
+    card.dataset.level = level;
+    card.dataset.lesson = lessonNumber;
+
+    const title = document.createElement('h3');
+    title.textContent =
+        `درس ${lessonNumber}: ${lesson.title}`;
+
+    const status = document.createElement('p');
+    status.className = 'king-lesson-status';
+
+    const completed = KING_ASAD.isLessonCompleted(
+        level,
+        lessonNumber
+    );
+
+    status.textContent = completed
+        ? 'تکمیل‌شده'
+        : 'تکمیل‌نشده';
+
+    const openButton = document.createElement('button');
+    openButton.type = 'button';
+    openButton.textContent = 'مشاهده درس';
+
+    const content = document.createElement('div');
+    content.className = 'king-inline-lesson-content';
+    content.hidden = true;
+
+    // نمایش محتوای درس در زیر همان کارت
+    content.append(
+        KING_ASAD.renderLessonHeading(lesson),
+        KING_ASAD.renderLessonVocabulary(lesson),
+        KING_ASAD.renderLessonConversation(lesson),
+        KING_ASAD.renderLessonGrammar(lesson),
+        KING_ASAD.renderLessonExercises(lesson)
+    );
+
+    // دکمه تکمیل درس
+    const completeButton = document.createElement('button');
+    completeButton.type = 'button';
+    completeButton.textContent = 'تکمیل این درس';
+
+    completeButton.addEventListener('click', function () {
+
+        const saved = KING_ASAD.completeLesson(
+            level,
+            lessonNumber
+        );
+
+        if (saved) {
+            completeButton.textContent = 'درس تکمیل شد';
+            status.textContent = 'تکمیل‌شده';
+
+            KING_ASAD.refreshLessonCards();
+            KING_ASAD.refreshAllDashboards?.();
+        }
+    });
+
+    // دکمه آزمون
+    const quizButton = document.createElement('button');
+    quizButton.type = 'button';
+    quizButton.textContent = 'شروع آزمون این درس';
+
+    quizButton.addEventListener('click', function () {
+        KING_ASAD.openLessonQuiz(level, lessonNumber);
+    });
+
+    content.append(completeButton, quizButton);
+
+    // باز و بسته کردن درس‌ها
+    openButton.addEventListener('click', function () {
+
+        const wasOpen = !content.hidden;
+
+        // بستن تمام درس‌های دیگر
+        document.querySelectorAll(
+            '.king-inline-lesson-content'
+        ).forEach(panel => {
+            panel.hidden = true;
+        });
+
+        document.querySelectorAll(
+            '.king-lesson-card'
+        ).forEach(otherCard => {
+            otherCard.classList.remove('is-open');
+
+            const button = otherCard.querySelector(
+                '.king-lesson-open-button'
+            );
+
+            if (button) {
+                button.textContent = 'مشاهده درس';
+            }
+        });
+
+        // اگر همین درس باز بود، بسته بماند
+        if (wasOpen) return;
+
+        content.hidden = false;
+        card.classList.add('is-open');
+        openButton.textContent = 'بستن درس';
+    });
+
+    openButton.className = 'king-lesson-open-button';
+
+    card.append(
+        title,
+        status,
+        openButton,
+        content
+    );
+
+    return card;
+};
+
+console.log(
+    'KING ASAD: نمایش درس زیر کارت فعال شد.'
+);
+
