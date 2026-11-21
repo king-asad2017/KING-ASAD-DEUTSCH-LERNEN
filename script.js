@@ -1687,8 +1687,7 @@ KING_ASAD.checkLessonStructure = function () {
             errors.push(`تعداد درس‌های ${level} درست نیست.`);
         }
 
-        lessons.forEach(lesson => {
-
+        lessons.forEach(lesson => 
             if (!lesson.title || !lesson.words.length) {
                 errors.push(`اطلاعات درس ${lesson.id} ناقص است.`);
             }
@@ -1799,7 +1798,7 @@ KING_ASAD.getVideoEmbedUrl = function (video) {
 // دریافت اطلاعات ویدیوی یک سطح
 KING_ASAD.getVideoDetails = function (level) {
 
-    const video = KING_ASAD.getMainVideo(level);
+    let videoId = video.videoId || video.id || '';
 
     if (!video) {
         return null;
@@ -1841,8 +1840,6 @@ KING_ASAD.getAllVideos = function () {
     return result;
 
 };
-
-
 // بررسی موجودیت ویدیوهای پنج سطح
 KING_ASAD.validateVideoLibrary = function () {
 
@@ -1888,7 +1885,7 @@ KING_ASAD.createVideoCard = function (level, video) {
     // استخراج شناسه ویدیو
     let videoId = video.id || '';
 
-    if (!videoId && video.url) {
+   let videoId = video.videoId || video.id || '';
         const match = video.url.match(
             /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&?\/]+)/
         );
