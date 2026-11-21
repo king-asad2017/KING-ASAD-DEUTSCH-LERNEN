@@ -4,1137 +4,506 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KING ASAD – Deutsch Lernen</title>
+<meta name="description" content="KING ASAD مرکز آموزش زبان‌های آلمانی و بین‌المللی">
+<title>KING ASAD – مرکز آموزش زبان‌ها</title>
 <link rel="stylesheet" href="style.css">
-
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f3f6fc;color:#17233c;line-height:1.9}
-header{background:linear-gradient(135deg,#102c59,#1765ad);color:white;text-align:center;padding:28px 15px}
-header h1{margin:0;font-size:26px}
-nav{background:white;padding:12px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;position:sticky;top:0;z-index:10;box-shadow:0 3px 12px #0002}
-button{border:0;border-radius:9px;padding:10px 15px;background:#1765ad;color:white;font-family:inherit;font-size:14px;cursor:pointer;margin:3px}
-button:hover{background:#10477e}
-main{width:min(1100px,94%);margin:25px auto}
-.page{display:none}
-.page.active{display:block}
-.panel,.welcome,.level-card,.home-card{background:white;border-radius:15px;padding:20px;margin-bottom:17px;box-shadow:0 4px 15px #00000012}
-.welcome{text-align:center;background:linear-gradient(135deg,#e5f1ff,#fff)}
-.home-grid,.level-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:15px}
-.home-card{text-align:center;cursor:pointer;border:1px solid #e0e8f3;transition:.2s}
-.home-card:hover{transform:translateY(-4px);border-color:#1765ad}
-.symbol{font-size:34px}
-h2,h3,h4{color:#14528c}
-.video-box{position:relative;width:100%;aspect-ratio:16/9;background:#111;border-radius:12px;overflow:hidden;margin:15px 0}
-.video-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.word-card{background:#f1f7ff;border-radius:10px;padding:14px;margin:12px 0}
-.german{color:#14528c;font-weight:bold;direction:ltr;display:inline-block}
-.note{background:#fff8e5;border-right:4px solid #e4ae36;padding:12px;border-radius:8px}
-input{width:100%;padding:12px;margin:8px 0;border:1px solid #ccd6e4;border-radius:8px;font-family:inherit;font-size:15px}
-.back-button{margin-bottom:15px}
-.lesson-item{border:1px solid #dce7f5;border-radius:12px;padding:15px;margin:16px 0;background:#fff}
-.lesson-item h3{margin-top:0}
-.lesson-item ul{padding-right:24px}
-footer{text-align:center;background:#102c59;color:white;padding:25px;margin-top:35px}
-.result-text{font-weight:bold;margin-top:8px}
-.progress-track{height:17px;background:#e2e8f0;border-radius:20px;overflow:hidden}
-.progress-fill{height:100%;width:0%;background:#1765ad;border-radius:20px;transition:width .4s}
-@media(max-width:600px){
-header h1{font-size:21px}
-nav button{padding:8px 10px;font-size:12px}
-.panel,.welcome,.level-card{padding:15px}
-}
-</style>
 </head>
 
 <body>
 
-<header>
-<h1>🇩🇪 KING ASAD – Deutsch Lernen</h1>
-<p>آموزش زبان آلمانی از سطح مبتدی تا متوسط</p>
+<header class="main-header">
+    <div class="logo">👑 KING ASAD</div>
+    <h1>مرکز آموزش زبان‌های بین‌المللی</h1>
+    <p>یادگیری زبان، راهی به سوی آینده‌ای روشن</p>
 </header>
 
-<nav>
-<button onclick="showPage('homePage')">صفحه اصلی</button>
-<button onclick="showPage('lessonsPage')">درس‌ها</button>
-<button onclick="showPage('dictionaryPage')">فرهنگ لغات</button>
-<button onclick="showPage('testsPage')">آزمون‌ها</button>
-<button onclick="showPage('videosPage')">ویدیوها</button>
-<button onclick="showPage('conversationPage')">مکالمه</button>
-<button onclick="showPage('grammarPage')">گرامر</button>
+<nav class="main-nav">
+    <button onclick="showPage('homePage')">🏠 صفحه اصلی</button>
+    <button onclick="showPage('lessonsPage')">📚 درس‌ها</button>
+    <button onclick="showPage('dictionaryPage')">📖 فرهنگ لغات</button>
+    <button onclick="showPage('testsPage')">📝 آزمون‌ها</button>
+    <button onclick="showPage('videosPage')">🎬 ویدیوها</button>
+    <button onclick="showPage('conversationPage')">💬 مکالمه</button>
+    <button onclick="showPage('grammarPage')">📘 گرامر</button>
+    <button onclick="showPage('languagesPage')">🌍 زبان‌های بین‌المللی</button>
 </nav>
 
 <main>
 
+<!-- صفحه اصلی -->
 <section id="homePage" class="page active">
+    <div class="welcome-box">
+        <h2>به مرکز آموزشی KING ASAD خوش آمدید</h2>
+        <p>
+            در این مرکز می‌توانید زبان آلمانی و زبان‌های بین‌المللی
+            را یاد بگیرید، تمرین کنید و دانش خود را با آزمون بسنجید.
+        </p>
+    </div>
 
-<div class="welcome">
-<h2>به آموزشگاه آنلاین زبان آلمانی خوش آمدید</h2>
-<p>یادگیری زبان آلمانی با درس، ویدیو، تمرین و آزمون</p>
-</div>
+    <div class="home-grid">
 
-<div class="home-grid">
+        <div class="home-card" onclick="showPage('lessonsPage')">
+            <div class="symbol">📚</div>
+            <h3>درس‌های آموزشی</h3>
+            <p>آموزش زبان آلمانی در سطح A1، A2 و B1</p>
+        </div>
 
-<div class="home-card" onclick="showPage('lessonsPage')">
-<div class="symbol">📚</div>
-<h3>درس‌های آموزشی</h3>
-<p>سطح A1، A2 و B1</p>
-</div>
+        <div class="home-card" onclick="showPage('dictionaryPage')">
+            <div class="symbol">📖</div>
+            <h3>فرهنگ لغات</h3>
+            <p>جست‌وجوی لغات و ترجمه همراه با جمله نمونه</p>
+        </div>
 
-<div class="home-card" onclick="showPage('dictionaryPage')">
-<div class="symbol">📖</div>
-<h3>فرهنگ لغات</h3>
-<p>جست‌وجوی لغات فارسی و آلمانی</p>
-</div>
+        <div class="home-card" onclick="showPage('testsPage')">
+            <div class="symbol">📝</div>
+            <h3>آزمون‌ها</h3>
+            <p>امتحان و ارزیابی معلومات زبان‌آموزان</p>
+        </div>
 
-<div class="home-card" onclick="showPage('testsPage')">
-<div class="symbol">📝</div>
-<h3>آزمون‌ها</h3>
-<p>سنجش معلومات</p>
-</div>
+        <div class="home-card" onclick="showPage('videosPage')">
+            <div class="symbol">🎬</div>
+            <h3>ویدیوهای آموزشی</h3>
+            <p>آموزش با ویدیوهای زبان آلمانی</p>
+        </div>
 
-<div class="home-card" onclick="showPage('videosPage')">
-<div class="symbol">🎬</div>
-<h3>ویدیوهای آموزشی</h3>
-<p>ویدیوهای سه سطح</p>
-</div>
+        <div class="home-card" onclick="showPage('conversationPage')">
+            <div class="symbol">💬</div>
+            <h3>مکالمه</h3>
+            <p>تمرین گفت‌وگو و صحبت کردن</p>
+        </div>
 
-<div class="home-card" onclick="showPage('conversationPage')">
-<div class="symbol">🗣️</div>
-<h3>مکالمه و تلفظ</h3>
-<p>تمرین صحبت کردن</p>
-</div>
+        <div class="home-card" onclick="showPage('grammarPage')">
+            <div class="symbol">📘</div>
+            <h3>گرامر</h3>
+            <p>یادگیری قواعد زبان آلمانی</p>
+        </div>
 
-<div class="home-card" onclick="showPage('grammarPage')">
-<div class="symbol">✍️</div>
-<h3>گرامر</h3>
-<p>قواعد زبان آلمانی</p>
-</div>
+        <div class="home-card" onclick="showPage('languagesPage')">
+            <div class="symbol">🌍</div>
+            <h3>زبان‌های بین‌المللی</h3>
+            <p>آلمانی، ترکی، عربی، هندی، پشتو، اردو و روسی</p>
+        </div>
 
-</div>
+    </div>
 
-<!-- گزارش پیشرفت شاگردان -->
-
-<div class="panel">
-<h2>🏆 گزارش پیشرفت آموزشی</h2>
-<p>درصد درس‌های تکمیل‌شده در هر سطح:</p>
-
-<div class="word-card">
-<h3>🟢 سطح A1</h3>
-<div class="progress-track">
-<div id="homeA1Bar" class="progress-fill"></div>
-</div>
-<p id="homeA1Text">۰ از ۱۹ درس تکمیل شده است (۰٪)</p>
-</div>
-
-<div class="word-card">
-<h3>🔵 سطح A2</h3>
-<div class="progress-track">
-<div id="homeA2Bar" class="progress-fill"></div>
-</div>
-<p id="homeA2Text">۰ از ۲۰ درس تکمیل شده است (۰٪)</p>
-</div>
-
-<div class="word-card">
-<h3>🟣 سطح B1</h3>
-<div class="progress-track">
-<div id="homeB1Bar" class="progress-fill"></div>
-</div>
-<p id="homeB1Text">۰ از ۲۰ درس تکمیل شده است (۰٪)</p>
-</div>
-
-</div>
+    <div class="panel">
+        <h2>📊 پیشرفت آموزشی شما</h2>
+        <p>پیشرفت درس‌ها و آزمون‌های شما در این بخش نمایش داده می‌شود.</p>
+        <div id="homeProgress"></div>
+    </div>
 </section>
 
-<section id="lessonsPage" class="page">
-<button class="back-button" onclick="showPage('homePage')">بازگشت</button>
-<h2>📚 انتخاب سطح آموزشی</h2>
+<!-- صفحه انتخاب زبان -->
+<section id="languagesPage" class="page">
+    <button class="back-button" onclick="showPage('homePage')">
+        بازگشت به صفحه اصلی
+    </button>
 
-<div class="level-grid">
+    <div class="panel">
+        <h2>🌍 مرکز آموزش زبان‌های بین‌المللی</h2>
+        <p>زبان مورد علاقه خود را انتخاب کنید.</p>
 
-<div class="home-card" onclick="showPage('lessonA1Page')">
-<div class="symbol">🟢</div>
-<h3>سطح A1</h3>
-<p>مبتدی – ۱۹ درس</p>
-</div>
+        <div class="language-grid">
 
-<div class="home-card" onclick="showPage('lessonA2Page')">
-<div class="symbol">🔵</div>
-<h3>سطح A2</h3>
-<p>پایه – ۲۰ درس</p>
-</div>
+            <div class="language-card" onclick="selectDictionaryLanguage('de')">
+                <span class="flag">🇩🇪</span>
+                <h3>آلمانی</h3>
+                <p>Deutsch</p>
+            </div>
 
-<div class="home-card" onclick="showPage('lessonB1Page')">
-<div class="symbol">🟣</div>
-<h3>سطح B1</h3>
-<p>متوسط – ۲۰ درس</p>
-</div>
+            <div class="language-card" onclick="selectDictionaryLanguage('tr')">
+                <span class="flag">🇹🇷</span>
+                <h3>ترکی</h3>
+                <p>Türkçe</p>
+            </div>
 
-</div>
+            <div class="language-card" onclick="selectDictionaryLanguage('ar')">
+                <span class="flag">🇸🇦</span>
+                <h3>عربی</h3>
+                <p>العربية</p>
+            </div>
+
+            <div class="language-card" onclick="selectDictionaryLanguage('hi')">
+                <span class="flag">🇮🇳</span>
+                <h3>هندی</h3>
+                <p>हिन्दी</p>
+            </div>
+
+            <div class="language-card" onclick="selectDictionaryLanguage('ps')">
+                <span class="flag">🇦🇫</span>
+                <h3>پشتو</h3>
+                <p>پښتو</p>
+            </div>
+
+            <div class="language-card" onclick="selectDictionaryLanguage('ur')">
+                <span class="flag">🇵🇰</span>
+                <h3>اردو</h3>
+                <p>اردو</p>
+            </div>
+
+            <div class="language-card" onclick="selectDictionaryLanguage('ru')">
+                <span class="flag">🇷🇺</span>
+                <h3>روسی</h3>
+                <p>Русский</p>
+            </div>
+
+        </div>
+    </div>
 </section>
-
-<section id="lessonA1Page" class="page">
-<button class="back-button" onclick="showPage('lessonsPage')">بازگشت به سطح‌ها</button>
-
-<div class="level-card">
-<h2>🟢 سطح A1 – آموزش زبان آلمانی</h2>
-<p>۱۹ درس همراه با لغات، مثال، ترجمه، تلفظ و تمرین.</p>
-
-<h3>🎬 فیلم آموزشی A1 – DW Nicos Weg</h3>
-<div class="video-box">
-<iframe src="https://www.youtube-nocookie.com/embed/4-eDoThe6qo"
-title="DW Nicos Weg A1" loading="lazy" allowfullscreen></iframe>
-</div>
-
-<p class="note">برای پخش فیلم به اینترنت نیاز دارید.</p>
-<div id="a1LessonsList"></div>
-</div>
-</section>
-
-<section id="lessonA2Page" class="page">
-<button class="back-button" onclick="showPage('lessonsPage')">بازگشت به سطح‌ها</button>
-
-<div class="level-card">
-<h2>🔵 سطح A2 – آموزش زبان آلمانی</h2>
-<p>۲۰ درس آموزشی همراه با لغات، مثال، ترجمه، تلفظ و تمرین.</p>
-
-<h3>🎬 فیلم آموزشی A2 – DW Nicos Weg</h3>
-<div class="video-box">
-<iframe src="https://www.youtube-nocookie.com/embed/Lg5P2w_Ro1c"
-title="DW Nicos Weg A2" loading="lazy" allowfullscreen></iframe>
-</div>
-
-<p class="note">برای پخش فیلم به اینترنت نیاز دارید.</p>
-<div id="a2LessonsList"></div>
-</div>
-</section>
-
-<section id="lessonB1Page" class="page">
-<button class="back-button" onclick="showPage('lessonsPage')">بازگشت به سطح‌ها</button>
-
-<div class="level-card">
-<h2>🟣 سطح B1 – آموزش زبان آلمانی</h2>
-<p>۲۰ درس آموزشی همراه با لغات، مثال، ترجمه، تلفظ و تمرین.</p>
-
-<h3>🎬 فیلم آموزشی B1 – DW Nicos Weg</h3>
-<div class="video-box">
-<iframe src="https://www.youtube-nocookie.com/embed/LkufozluseI"
-title="DW Nicos Weg B1" loading="lazy" allowfullscreen></iframe>
-</div>
-
-<p class="note">برای پخش فیلم به اینترنت نیاز دارید.</p>
-<div id="b1LessonsList"></div>
-</div>
-</section>
-
-<section id="dictionaryPage" class="page">
-<button class="back-button" onclick="showPage('homePage')">بازگشت</button>
-
-<div class="panel">
-<h2>📖 فرهنگ لغات آلمانی – فارسی</h2>
-<p>کلمه آلمانی یا فارسی را وارد کنید.</p>
-
-<input id="dictionaryInput" type="text"
-placeholder="مثلاً Hallo یا سلام">
-
-<button onclick="searchDictionary()">جست‌وجو</button>
-
-<div id="dictionaryResult"></div>
-</div>
-</section>
-
-<section id="testsPage" class="page">
-<button class="back-button" onclick="showPage('homePage')">بازگشت</button>
-
-<div class="panel">
-<h2>📝 آزمون‌های زبان آلمانی</h2>
-<p>سطح آزمون را انتخاب کنید.</p>
-
-<button onclick="openQuiz('A1')">شروع آزمون A1</button>
-<button onclick="openQuiz('A2')">شروع آزمون A2</button>
-<button onclick="openQuiz('B1')">شروع آزمون B1</button>
-
-<div id="quiz-A1" class="quiz-level" style="display:none"></div>
-<div id="quiz-A2" class="quiz-level" style="display:none"></div>
-<div id="quiz-B1" class="quiz-level" style="display:none"></div>
-
-<div id="result-A1"></div>
-<div id="result-A2"></div>
-<div id="result-B1"></div>
-
-</div>
-</section>
-
-<section id="videosPage" class="page">
-<button class="back-button" onclick="showPage('homePage')">بازگشت</button>
-
-<div class="panel">
-<h2>🎬 ویدیوهای آموزشی</h2>
-<p>ویدیوی هر سطح در بخش مخصوص همان سطح قرار دارد.</p>
-
-<button onclick="showPage('lessonA1Page')">ویدیوی A1</button>
-<button onclick="showPage('lessonA2Page')">ویدیوی A2</button>
-<button onclick="showPage('lessonB1Page')">ویدیوی B1</button>
-</div>
-</section>
-
-<section id="conversationPage" class="page">
-<button class="back-button" onclick="showPage('homePage')">بازگشت</button>
-
-<div class="panel">
-<h2>🗣️ تمرین مکالمه و تلفظ</h2>
-
-<div class="word-card">
-<p class="german">Hallo! Wie geht es dir?</p>
-<p>سلام! حالت چطور است؟</p>
-<button onclick="speakGerman('Hallo! Wie geht es dir?')">🔊 تلفظ</button>
-</div>
-
-<div class="word-card">
-<p class="german">Ich heiße Ahmad.</p>
-<p>نام من احمد است.</p>
-<button onclick="speakGerman('Ich heiße Ahmad.')">🔊 تلفظ</button>
-</div>
-
-<div class="word-card">
-<p class="german">Ich komme aus Afghanistan.</p>
-<p>من از افغانستان هستم.</p>
-<button onclick="speakGerman('Ich komme aus Afghanistan.')">🔊 تلفظ</button>
-</div>
-
-<div class="word-card">
-<p class="german">Danke schön!</p>
-<p>بسیار تشکر!</p>
-<button onclick="speakGerman('Danke schön!')">🔊 تلفظ</button>
-</div>
-
-</div>
-</section>
-
-<section id="grammarPage" class="page">
-<button class="back-button" onclick="showPage('homePage')">بازگشت</button>
-
-<div class="panel">
-<h2>✍️ گرامر زبان آلمانی</h2>
-
-<h3>فعل sein – بودن</h3>
-<ul>
-<li>Ich bin – من هستم</li>
-<li>Du bist – تو هستی</li>
-<li>Er ist – او هست</li>
-<li>Wir sind – ما هستیم</li>
-<li>Ihr seid – شما هستید</li>
-<li>Sie sind – آنها هستند / شما هستید</li>
-</ul>
-
-<h3>حروف تعریف</h3>
-<ul>
-<li>der – مذکر</li>
-<li>die – مؤنث و جمع</li>
-<li>das – خنثی</li>
-</ul>
-
-<h3>مثال</h3>
-<p class="german">Ich lerne Deutsch.</p>
-<p>من زبان آلمانی یاد می‌گیرم.</p>
-<button onclick="speakGerman('Ich lerne Deutsch.')">🔊 تلفظ</button>
-
-</div>
-</section>
-
 </main>
 
-<footer>
-<p>© KING ASAD – Deutsch Lernen</p>
-<p>آموزش زبان آلمانی برای همه</p>
+<!-- صفحه درس‌ها -->
+<section id="lessonsPage" class="page">
+    <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
+    <div class="panel">
+        <h2>📚 درس‌های زبان آلمانی</h2>
+        <p>سطح آموزشی مورد نظر خود را انتخاب کنید.</p>
+        <div class="level-grid">
+            <button onclick="showPage('lessonA1Page')">🇩🇪 سطح A1 – مبتدی</button>
+            <button onclick="showPage('lessonA2Page')">🇩🇪 سطح A2 – متوسط مقدماتی</button>
+            <button onclick="showPage('lessonB1Page')">🇩🇪 سطح B1 – متوسط</button>
+        </div>
+    </div>
+</section>
+
+<!-- درس‌های سطح A1 -->
+<section id="lessonA1Page" class="page">
+    <button class="back-button" onclick="showPage('lessonsPage')">بازگشت به سطح‌ها</button>
+    <div class="panel">
+        <h2>🇩🇪 درس‌های سطح A1</h2>
+        <div id="a1LessonsContainer"></div>
+    </div>
+</section>
+
+<!-- درس‌های سطح A2 -->
+<section id="lessonA2Page" class="page">
+    <button class="back-button" onclick="showPage('lessonsPage')">بازگشت به سطح‌ها</button>
+    <div class="panel">
+        <h2>🇩🇪 درس‌های سطح A2</h2>
+        <div id="a2LessonsContainer"></div>
+    </div>
+</section>
+
+<!-- درس‌های سطح B1 -->
+<section id="lessonB1Page" class="page">
+    <button class="back-button" onclick="showPage('lessonsPage')">بازگشت به سطح‌ها</button>
+    <div class="panel">
+        <h2>🇩🇪 درس‌های سطح B1</h2>
+        <div id="b1LessonsContainer"></div>
+    </div>
+</section>
+
+<!-- فرهنگ لغات -->
+<section id="dictionaryPage" class="page">
+    <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
+    <div class="panel">
+        <h2>📖 فرهنگ لغات چندزبانه</h2>
+        <p>زبان مبدأ و زبان مقصد را انتخاب کنید.</p>
+
+        <label for="dictionarySource">زبان مبدأ:</label>
+        <select id="dictionarySource">
+            <option value="fa">فارسی</option>
+            <option value="de">آلمانی</option>
+            <option value="tr">ترکی</option>
+            <option value="ar">عربی</option>
+            <option value="hi">هندی</option>
+            <option value="ps">پشتو</option>
+            <option value="ur">اردو</option>
+            <option value="ru">روسی</option>
+            <option value="en">انگلیسی</option>
+        </select>
+
+        <label for="dictionaryTarget">زبان مقصد:</label>
+        <select id="dictionaryTarget">
+            <option value="de">آلمانی</option>
+            <option value="fa">فارسی</option>
+            <option value="tr">ترکی</option>
+            <option value="ar">عربی</option>
+            <option value="hi">هندی</option>
+            <option value="ps">پشتو</option>
+            <option value="ur">اردو</option>
+            <option value="ru">روسی</option>
+            <option value="en">انگلیسی</option>
+        </select>
+
+        <input id="dictionaryInput" type="text"
+            placeholder="کلمه یا عبارت مورد نظر را بنویسید">
+
+        <button onclick="searchDictionary()">🔍 جست‌وجوی ترجمه</button>
+
+        <div id="dictionaryResult"></div>
+    </div>
+</section>
+
+<!-- آزمون‌ها -->
+<section id="testsPage" class="page">
+    <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
+    <div class="panel">
+        <h2>📝 مرکز آزمون‌های زبان آلمانی</h2>
+        <p>سطح آزمون خود را انتخاب کنید.</p>
+
+        <div class="level-grid">
+            <button onclick="openQuiz('A1')">شروع آزمون A1</button>
+            <button onclick="openQuiz('A2')">شروع آزمون A2</button>
+            <button onclick="openQuiz('B1')">شروع آزمون B1</button>
+        </div>
+    </div>
+
+    <div id="quiz-A1" class="panel quiz-box" style="display:none">
+        <h3>آزمون سطح A1</h3>
+        <div id="questions-A1"></div>
+        <button onclick="submitQuiz('A1')">ثبت پاسخ‌ها</button>
+        <div id="result-A1"></div>
+    </div>
+
+    <div id="quiz-A2" class="panel quiz-box" style="display:none">
+        <h3>آزمون سطح A2</h3>
+        <div id="questions-A2"></div>
+        <button onclick="submitQuiz('A2')">ثبت پاسخ‌ها</button>
+        <div id="result-A2"></div>
+    </div>
+
+    <div id="quiz-B1" class="panel quiz-box" style="display:none">
+        <h3>آزمون سطح B1</h3>
+        <div id="questions-B1"></div>
+        <button onclick="submitQuiz('B1')">ثبت پاسخ‌ها</button>
+        <div id="result-B1"></div>
+    </div>
+</section>
+
+<!-- ویدیوهای آموزشی -->
+<section id="videosPage" class="page">
+    <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
+    <div class="panel">
+        <h2>🎬 ویدیوهای آموزشی زبان آلمانی</h2>
+        <p>ویدیوهای آموزشی بر اساس سطح زبان‌آموزان قرار می‌گیرند.</p>
+
+        <div class="video-section">
+            <h3>سطح A1</h3>
+            <div id="videosA1"></div>
+        </div>
+
+        <div class="video-section">
+            <h3>سطح A2</h3>
+            <div id="videosA2"></div>
+        </div>
+
+        <div class="video-section">
+            <h3>سطح B1</h3>
+            <div id="videosB1"></div>
+        </div>
+    </div>
+</section>
+
+<!-- مکالمه -->
+<section id="conversationPage" class="page">
+    <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
+    <div class="panel">
+        <h2>💬 تمرین مکالمه آلمانی</h2>
+        <p>جمله‌های آلمانی را بخوانید و با صدای بلند تمرین کنید.</p>
+        <div id="conversationContent"></div>
+    </div>
+</section>
+
+<!-- گرامر -->
+<section id="grammarPage" class="page">
+    <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
+    <div class="panel">
+        <h2>📘 آموزش گرامر آلمانی</h2>
+        <div id="grammarContent"></div>
+    </div>
+</section>
+
+<footer class="main-footer">
+    <h3>👑 KING ASAD</h3>
+    <p>مرکز آموزش زبان‌های بین‌المللی</p>
+    <p>آموزش، تمرین و پیشرفت برای همه</p>
+    <p>© 2026 KING ASAD – All Rights Reserved</p>
 </footer>
 
 <script>
-
-function showPage(pageId){
- document.querySelectorAll('.page').forEach(function(page){
-  page.classList.remove('active');
- });
-
- const selected=document.getElementById(pageId);
-
- if(selected){
-  selected.classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
- }
-}
-
-function speakGerman(text){
- if(!('speechSynthesis' in window)){
-  alert('مرورگر شما از تلفظ پشتیبانی نمی‌کند.');
-  return;
- }
-
- window.speechSynthesis.cancel();
-
- const speech=new SpeechSynthesisUtterance(text);
- speech.lang='de-DE';
- speech.rate=0.85;
-
- window.speechSynthesis.speak(speech);
-}
-
-/* =========================
-   درس‌های سطح A1
-========================= */
-
-const a1Lessons=[
-
-["سلام و خداحافظی","Hallo und tschüss",
-[["Hallo","سلام"],["Guten Morgen","صبح بخیر"],["Tschüss","خداحافظ"]],
-"Hallo! Wie geht es dir?","سلام! حالت چطور است؟",
-"معنی Hallo چیست؟","سلام"],
-
-["معرفی خود","Sich vorstellen",
-[["Ich","من"],["Name","نام"],["heißen","نام داشتن"]],
-"Ich heiße Ahmad.","نام من احمد است.",
-"Ich heiße Ahmad یعنی چه؟","نام من احمد است"],
-
-["اعداد","Zahlen",
-[["Eins","یک"],["Zwei","دو"],["Drei","سه"],["Vier","چهار"]],
-"Ich habe zwei Bücher.","من دو کتاب دارم.",
-"معنی Zwei چیست؟","دو"],
-
-["غذا و نوشیدنی","Essen und Getränke",
-[["Wasser","آب"],["Brot","نان"],["Milch","شیر"]],
-"Ich trinke Wasser.","من آب می‌نوشم.",
-"معنی Wasser چیست؟","آب"],
-
-["شهرها و کشورها","Städte und Länder",
-[["Stadt","شهر"],["Land","کشور"],["Deutschland","آلمان"]],
-"Ich wohne in Berlin.","من در برلین زندگی می‌کنم.",
-"معنی Stadt چیست؟","شهر"],
-
-["توصیف اشیا","Dinge beschreiben",
-[["Groß","بزرگ"],["Klein","کوچک"],["Schön","زیبا"]],
-"Das Haus ist groß.","خانه بزرگ است.",
-"معنی Groß چیست؟","بزرگ"],
-
-["وسایل خانه","Möbel",
-[["Tisch","میز"],["Stuhl","صندلی"],["Bett","تخت"]],
-"Der Tisch ist neu.","میز نو است.",
-"معنی Tisch چیست؟","میز"],
-
-["روزهای هفته","Wochentage",
-[["Montag","دوشنبه"],["Dienstag","سه‌شنبه"],["Heute","امروز"]],
-"Heute ist Montag.","امروز دوشنبه است.",
-"معنی Heute چیست؟","امروز"],
-
-["ساعت","Uhrzeiten",
-[["Uhr","ساعت"],["Morgen","صبح"],["Abend","عصر"]],
-"Es ist acht Uhr.","ساعت هشت است.",
-"معنی Uhr چیست؟","ساعت"],
-
-["شغل‌ها","Berufe",
-[["Lehrer","معلم"],["Ärztin","دکتر زن"],["Arbeiter","کارگر"]],
-"Ich bin Lehrer.","من معلم هستم.",
-"معنی Lehrer چیست؟","معلم"],
-
-["آدرس دادن","Wegbeschreibungen",
-[["Links","چپ"],["Rechts","راست"],["Geradeaus","مستقیم"]],
-"Gehen Sie geradeaus.","مستقیم بروید.",
-"معنی Links چیست؟","چپ"],
-
-["اوقات فراغت","Freizeit",
-[["Spielen","بازی کردن"],["Lesen","خواندن"],["Musik","موسیقی"]],
-"Ich höre gern Musik.","من با علاقه موسیقی گوش می‌کنم.",
-"معنی Musik چیست؟","موسیقی"],
-
-["مواد غذایی","Lebensmittel",
-[["Apfel","سیب"],["Käse","پنیر"],["Fleisch","گوشت"]],
-"Ich esse einen Apfel.","من یک سیب می‌خورم.",
-"معنی Apfel چیست؟","سیب"],
-
-["سفر و آب‌وهوا","Reisen und Wetter",
-[["Reisen","سفر کردن"],["Sonne","آفتاب"],["Regen","باران"]],
-"Das Wetter ist schön.","هوا زیبا است.",
-"معنی Regen چیست؟","باران"],
-
-["لباس‌ها","Kleidung",
-[["Hose","پتلون"],["Hemd","پیراهن"],["Schuhe","کفش‌ها"]],
-"Meine Schuhe sind neu.","کفش‌های من نو هستند.",
-"معنی Schuhe چیست؟","کفش‌ها"],
-
-["خانواده","Familie",
-[["Mutter","مادر"],["Vater","پدر"],["Bruder","برادر"]],
-"Meine Familie ist groß.","خانواده من بزرگ است.",
-"معنی Mutter چیست؟","مادر"],
-
-["ورزش","Sport",
-[["Fußball","فوتبال"],["Sport","ورزش"],["Schwimmen","شنا"]],
-"Ich spiele Fußball.","من فوتبال بازی می‌کنم.",
-"معنی Sport چیست؟","ورزش"],
-
-["سلامتی","Gesundheit",
-[["Arzt","دکتر"],["Kopf","سر"],["Schmerzen","درد"]],
-"Ich habe Kopfschmerzen.","سرم درد می‌کند.",
-"معنی Arzt چیست؟","دکتر"],
-
-["شباهت و تفاوت","Gemeinsamkeiten und Unterschiede",
-[["Gleich","یکسان"],["Anders","متفاوت"],["Zusammen","باهم"]],
-"Wir sind zusammen hier.","ما باهم اینجا هستیم.",
-"معنی Anders چیست؟","متفاوت"]
-
-];
-
-</script>
-
-<script>
-
-/* =========================
-   درس‌های سطح A2
-========================= */
-
-const a2Lessons=[
-
-["برنامه روزانه","Tagesablauf",
-[["Aufstehen","از خواب برخاستن"],["Frühstück","صبحانه"],["Arbeiten","کار کردن"]],
-"Ich stehe jeden Morgen um sieben Uhr auf.","من هر صبح ساعت هفت بیدار می‌شوم.",
-"معنی Frühstück چیست؟","صبحانه"],
-
-["گذشته و خاطرات","Vergangenheit",
-[["Gestern","دیروز"],["Damals","در آن زمان"],["Erleben","تجربه کردن"]],
-"Gestern habe ich meine Freunde besucht.","دیروز دوستانم را ملاقات کردم.",
-"معنی Gestern چیست؟","دیروز"],
-
-["قرار ملاقات","Termine",
-[["Termin","قرار ملاقات"],["Verschieben","عقب انداختن"],["Pünktlich","به‌موقع"]],
-"Ich habe morgen einen Termin.","من فردا قرار ملاقات دارم.",
-"معنی Termin چیست؟","قرار ملاقات"],
-
-["سلامتی و دکتر","Gesundheit und Arzt",
-[["Untersuchung","معاینه"],["Fieber","تب"],["Medikament","دارو"]],
-"Ich muss zum Arzt gehen.","من باید نزد دکتر بروم.",
-"معنی Fieber چیست؟","تب"],
-
-["سفر و تعطیلات","Reisen und Urlaub",
-[["Urlaub","تعطیلات"],["Fahrkarte","تکت سفر"],["Gepäck","بار سفر"]],
-"Wir fahren im Sommer nach Deutschland.","ما در تابستان به آلمان سفر می‌کنیم.",
-"معنی Urlaub چیست؟","تعطیلات"],
-
-["کار و شغل","Arbeit und Beruf",
-[["Bewerbung","درخواست کار"],["Kollege","همکار"],["Gehalt","معاش"]],
-"Ich suche eine neue Arbeit.","من به دنبال کار جدید هستم.",
-"معنی Kollege چیست؟","همکار"],
-
-["آب‌وهوا","Wetter",
-[["Wolke","ابر"],["Gewitter","طوفان همراه رعدوبرق"],["Temperatur","درجه حرارت"]],
-"Heute ist es ziemlich kalt.","امروز هوا نسبتاً سرد است.",
-"معنی Wolke چیست؟","ابر"],
-
-["حمل‌ونقل","Verkehr",
-[["Verspätung","تأخیر"],["Bahnhof","ایستگاه قطار"],["Umsteigen","تبدیل وسیله نقلیه"]],
-"Der Zug hat zehn Minuten Verspätung.","قطار ده دقیقه تأخیر دارد.",
-"معنی Bahnhof چیست؟","ایستگاه قطار"],
-
-["نامه و پیام","Briefe und Nachrichten",
-[["Nachricht","پیام"],["Absender","فرستنده"],["Empfänger","گیرنده"]],
-"Ich schreibe dir eine Nachricht.","من برایت یک پیام می‌نویسم.",
-"معنی Nachricht چیست؟","پیام"],
-
-["تجربه‌های زندگی","Erfahrungen",
-[["Erfahrung","تجربه"],["Erinnerung","خاطره"],["Erfolgreich","موفق"]],
-"Das war eine interessante Erfahrung.","این یک تجربه جالب بود.",
-"معنی Erfahrung چیست؟","تجربه"],
-
-["خرید و فروش","Einkaufen",
-[["Angebot","تخفیف و پیشنهاد"],["Quittung","رسید"],["Umtauschen","تعویض کردن"]],
-"Kann ich diese Jacke umtauschen?","آیا می‌توانم این جاکت را تعویض کنم؟",
-"معنی Quittung چیست؟","رسید"],
-
-["خانه و اجاره","Wohnen und Mieten",
-[["Miete","کرایه"],["Vermieter","صاحب‌خانه"],["Wohnung","آپارتمان"]],
-"Die Wohnung hat drei Zimmer.","آپارتمان سه اتاق دارد.",
-"معنی Miete چیست؟","کرایه"],
-
-["آشپزی","Kochen",
-[["Zutat","مواد لازم"],["Schneiden","بریدن"],["Kochen","پختن"]],
-"Ich koche heute eine Suppe.","من امروز سوپ می‌پزم.",
-"معنی Zutat چیست؟","مواد لازم"],
-
-["آموزش و مکتب","Schule und Lernen",
-[["Prüfung","امتحان"],["Hausaufgabe","وظیفه خانه"],["Unterricht","درس"]],
-"Morgen schreiben wir eine Prüfung.","فردا امتحان می‌دهیم.",
-"معنی Prüfung چیست؟","امتحان"],
-
-["رسانه و اینترنت","Medien und Internet",
-[["Webseite","وب‌سایت"],["Nachrichten","اخبار"],["Herunterladen","دانلود کردن"]],
-"Ich lese die Nachrichten im Internet.","من اخبار را در اینترنت می‌خوانم.",
-"معنی Webseite چیست؟","وب‌سایت"],
-
-["احساسات","Gefühle",
-[["Glücklich","خوشحال"],["Enttäuscht","ناامید"],["Aufgeregt","هیجان‌زده"]],
-"Ich bin heute sehr glücklich.","من امروز بسیار خوشحال هستم.",
-"معنی Glücklich چیست؟","خوشحال"],
-
-["دعوت و مهمانی","Einladung und Party",
-[["Einladen","دعوت کردن"],["Feier","جشن"],["Geschenk","تحفه"]],
-"Ich lade dich zu meiner Party ein.","تو را به مهمانی خود دعوت می‌کنم.",
-"معنی Geschenk چیست؟","تحفه"],
-
-["محیط زیست","Umwelt",
-[["Müll","زباله"],["Recycling","بازیافت"],["Umwelt","محیط زیست"]],
-"Wir müssen die Umwelt schützen.","ما باید از محیط زیست محافظت کنیم.",
-"معنی Umwelt چیست؟","محیط زیست"],
-
-["مقایسه کردن","Vergleichen",
-[["Besser","بهتر"],["Schlechter","بدتر"],["Genauso","به همان اندازه"]],
-"Dieses Auto ist schneller als das andere.","این موتر از موتر دیگر سریع‌تر است.",
-"معنی Besser چیست؟","بهتر"],
-
-["برنامه‌های آینده","Zukunftspläne",
-[["Zukunft","آینده"],["Planen","برنامه‌ریزی کردن"],["Vielleicht","شاید"]],
-"Nächstes Jahr möchte ich studieren.","سال آینده می‌خواهم تحصیل کنم.",
-"معنی Zukunft چیست؟","آینده"]
-
-];
-
-
-/* =========================
-   درس‌های سطح B1
-========================= */
-
-const b1Lessons=[
-
-["بیان نظر و عقیده","Meinung äußern",
-[["Meiner Meinung nach","به نظر من"],["Allerdings","با این حال"],["Zustimmen","موافق بودن"]],
-"Meiner Meinung nach ist Bildung sehr wichtig.","به نظر من آموزش بسیار مهم است.",
-"معنی Meinung چیست؟","نظر"],
-
-["تجربه‌ها و خاطرات","Erlebnisse",
-[["Erlebnis","تجربه"],["Unvergesslich","فراموش‌نشدنی"],["Erinnern","به یاد آوردن"]],
-"Diese Reise war unvergesslich.","این سفر فراموش‌نشدنی بود.",
-"معنی Unvergesslich چیست؟","فراموش‌نشدنی"],
-
-["تحصیل و آموزش","Bildung",
-[["Ausbildung","آموزش حرفه‌ای"],["Kenntnisse","دانش"],["Abschluss","مدرک تحصیلی"]],
-"Eine gute Ausbildung ist wichtig für die Zukunft.","آموزش خوب برای آینده مهم است.",
-"معنی Ausbildung چیست؟","آموزش حرفه‌ای"],
-
-["محیط کار","Arbeitswelt",
-[["Arbeitsplatz","محل کار"],["Verantwortung","مسئولیت"],["Bewerbungsgespräch","مصاحبه کاری"]],
-"Ich trage Verantwortung bei meiner Arbeit.","من در کار خود مسئولیت دارم.",
-"معنی Verantwortung چیست؟","مسئولیت"],
-
-["رسانه و تکنولوژی","Medien und Technik",
-[["Technologie","تکنولوژی"],["Datenschutz","حفاظت اطلاعات"],["Entwickeln","توسعه دادن"]],
-"Die Technologie entwickelt sich sehr schnell.","تکنولوژی بسیار سریع پیشرفت می‌کند.",
-"معنی Datenschutz چیست؟","حفاظت اطلاعات"],
-
-["محیط زیست","Umwelt",
-[["Klimawandel","تغییرات اقلیمی"],["Verschmutzung","آلودگی"],["Nachhaltig","پایدار"]],
-"Wir müssen den Klimawandel bekämpfen.","ما باید با تغییرات اقلیمی مبارزه کنیم.",
-"معنی Klimawandel چیست؟","تغییرات اقلیمی"],
-
-["روابط اجتماعی","Soziale Kontakte",
-[["Beziehung","رابطه"],["Vertrauen","اعتماد"],["Missverständnis","سوءتفاهم"]],
-"Vertrauen ist in einer Freundschaft wichtig.","اعتماد در دوستی مهم است.",
-"معنی Vertrauen چیست؟","اعتماد"],
-
-["برنامه‌ریزی آینده","Zukunftspläne",
-[["Ziel","هدف"],["Entscheidung","تصمیم"],["Möglichkeit","امکان"]],
-"Ich möchte meine Ziele erreichen.","می‌خواهم به اهداف خود برسم.",
-"معنی Ziel چیست؟","هدف"],
-
-["مکالمه تلفنی","Telefonieren",
-[["Anrufen","زنگ زدن"],["Besetzt","مصروف"],["Rückruf","تماس دوباره"]],
-"Ich rufe Sie später zurück.","بعداً دوباره به شما زنگ می‌زنم.",
-"معنی Anrufen چیست؟","زنگ زدن"],
-
-["نامه رسمی","Formelle Briefe",
-[["Betreff","موضوع نامه"],["Anhang","ضمیمه"],["Mit freundlichen Grüßen","با احترام"]],
-"Vielen Dank für Ihre Nachricht.","از پیام شما بسیار تشکر.",
-"معنی Betreff چیست؟","موضوع نامه"],
-
-["حل مشکلات","Probleme lösen",
-[["Lösung","راه‌حل"],["Schwierigkeit","مشکل"],["Vorschlagen","پیشنهاد کردن"]],
-"Wir müssen gemeinsam eine Lösung finden.","ما باید باهم یک راه‌حل پیدا کنیم.",
-"معنی Lösung چیست؟","راه‌حل"],
-
-["سلامت و سبک زندگی","Gesundheit und Lebensstil",
-[["Ernährung","تغذیه"],["Bewegung","تحرک"],["Vermeiden","پرهیز کردن"]],
-"Regelmäßige Bewegung ist gesund.","تحرک منظم برای سلامتی مفید است.",
-"معنی Ernährung چیست؟","تغذیه"],
-
-["مهاجرت و زندگی","Migration und Leben",
-[["Einwanderung","مهاجرت به کشور"],["Anpassung","سازگاری"],["Heimat","وطن"]],
-"Ein neues Leben beginnt oft mit Herausforderungen.","یک زندگی جدید اغلب با چالش‌ها آغاز می‌شود.",
-"معنی Heimat چیست؟","وطن"],
-
-["فرهنگ و جامعه","Kultur und Gesellschaft",
-[["Gesellschaft","جامعه"],["Tradition","سنت"],["Veranstaltung","برنامه و رویداد"]],
-"Jede Kultur hat eigene Traditionen.","هر فرهنگ سنت‌های خودش را دارد.",
-"معنی Tradition چیست؟","سنت"],
-
-["مصاحبه و گفتگو","Gespräche und Interviews",
-[["Gespräch","گفتگو"],["Antwort","پاسخ"],["Frage","سؤال"]],
-"Das Gespräch war sehr interessant.","گفتگو بسیار جالب بود.",
-"معنی Gespräch چیست؟","گفتگو"],
-
-["آینده شغلی","Berufliche Zukunft",
-[["Karriere","پیشرفت شغلی"],["Fähigkeit","توانایی"],["Erfahrung","تجربه"]],
-"Ich möchte meine beruflichen Fähigkeiten verbessern.","می‌خواهم توانایی‌های شغلی خود را بهتر کنم.",
-"معنی Fähigkeit چیست؟","توانایی"],
-
-["پول و اقتصاد","Geld und Wirtschaft",
-[["Einkommen","درآمد"],["Ausgaben","مصارف"],["Sparen","پس‌انداز کردن"]],
-"Ich versuche jeden Monat Geld zu sparen.","تلاش می‌کنم هر ماه پول پس‌انداز کنم.",
-"معنی Sparen چیست؟","پس‌انداز کردن"],
-
-["آزادی و مسئولیت","Freiheit und Verantwortung",
-[["Freiheit","آزادی"],["Pflicht","وظیفه"],["Respekt","احترام"]],
-"Freiheit bedeutet auch Verantwortung.","آزادی همچنان به معنی مسئولیت است.",
-"معنی Freiheit چیست؟","آزادی"],
-
-["کتاب و مطالعه","Bücher und Lesen",
-[["Roman","رمان"],["Autor","نویسنده"],["Kapitel","فصل کتاب"]],
-"Ich lese gern deutsche Bücher.","من با علاقه کتاب‌های آلمانی می‌خوانم.",
-"معنی Autor چیست؟","نویسنده"],
-
-["بحث و استدلال","Diskussion und Argumente",
-[["Argument","استدلال"],["Beispiel","مثال"],["Begründen","دلیل آوردن"]],
-"Ich kann meine Meinung mit Beispielen begründen.","می‌توانم نظر خود را با مثال‌ها توضیح دهم.",
-"معنی Argument چیست؟","استدلال"]
-
-];
-
-</script>
-
-<script>
-// ===============================
-// سیستم ذخیره پیشرفت درس‌ها
-// ===============================
-
-function getCompletedLessons(level) {
-    try {
-        return JSON.parse(localStorage.getItem('completed_' + level)) || [];
-    } catch (error) {
-        return [];
-    }
-}
-
-function saveCompletedLesson(level, index) {
-    let completed = getCompletedLessons(level);
-
-    if (!completed.includes(index)) {
-        completed.push(index);
-        localStorage.setItem(
-            'completed_' + level,
-            JSON.stringify(completed)
-        );
-    }
-}
-
-function updateProgress(level, total) {
-    const completed = getCompletedLessons(level);
-    const count = completed.length;
-    const percent = Math.round((count / total) * 100);
-
-    const bar = document.getElementById(level + 'ProgressBar');
-    const text = document.getElementById(level + 'ProgressText');
-
-    if (bar) bar.style.width = percent + '%';
-
-    if (text) {
-        text.textContent = count + ' درس از ' + total +
-            ' درس تکمیل شده است (' + percent + '%)';
-    }
-
-    const homeBar = document.getElementById('home' + level + 'Bar');
-    const homeText = document.getElementById('home' + level + 'Text');
-
-    if (homeBar) homeBar.style.width = percent + '%';
-
-    if (homeText) {
-        homeText.textContent = count + ' از ' + total +
-            ' درس تکمیل شده است (' + percent + '%)';
-    }
-}
-
-// ===============================
-// نمایش درس‌ها
-// ===============================
-
-function renderLessons(containerId, lessons, level) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-
-    const completed = getCompletedLessons(level);
-
-    let html = `
-        <div class="progress-area">
-            <h3>پیشرفت سطح ${level}</h3>
-            <div style="background:#ddd;height:14px;border-radius:20px;overflow:hidden;">
-                <div id="${level}ProgressBar"
-                     style="height:14px;width:0%;background:#1684df;border-radius:20px;transition:0.4s;">
-                </div>
-            </div>
-            <p id="${level}ProgressText">در حال بارگذاری...</p>
-        </div>
-    `;
-
-    lessons.forEach((lesson, index) => {
-        const isDone = completed.includes(index);
-
-        html += `
-            <div class="lesson-card"
-                 style="background:white;padding:15px;margin:12px 0;border-radius:12px;border:1px solid #ddd;">
-
-                <h3>${index + 1}. ${lesson.title}</h3>
-
-                <p>${lesson.description || ''}</p>
-
-                <p><strong>واژه:</strong> ${lesson.word || ''}</p>
-
-                <p><strong>معنی:</strong> ${lesson.meaning || ''}</p>
-
-                <button onclick="speakGerman('${String(lesson.word || '').replace(/'/g, "\\'")}')">
-                    🔊 شنیدن تلفظ
-                </button>
-
-                <div style="margin-top:12px;">
-                    <input
-                        id="answer-${level}-${index}"
-                        type="text"
-                        placeholder="پاسخ آلمانی را بنویسید"
-                        style="padding:10px;width:100%;border:1px solid #aaa;border-radius:8px;"
-                    >
-
-                    <button onclick="checkLessonAnswer('${level}',${index})">
-                        بررسی پاسخ
-                    </button>
-                </div>
-
-                <p id="feedback-${level}-${index}">
-                    ${isDone ? '✅ این درس قبلاً تکمیل شده است.' : ''}
-                </p>
-            </div>
-        `;
+/* مدیریت صفحات سایت */
+function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(function(page) {
+        page.classList.remove('active');
     });
 
-    container.innerHTML = html;
-    updateProgress(level, lessons.length);
-}
+    const selectedPage = document.getElementById(pageId);
 
-// ===============================
-// بررسی جواب شاگرد
-// ===============================
-
-function normalizeAnswer(value) {
-    return String(value || '')
-        .trim()
-        .toLowerCase()
-        .replace(/[أإآ]/g, 'ا')
-        .replace(/ي/g, 'ی')
-        .replace(/ك/g, 'ک')
-        .replace(/\s+/g, ' ');
-}
-
-function checkLessonAnswer(level, index) {
-    let lessons;
-
-    if (level === 'A1') lessons = a1Lessons;
-    if (level === 'A2') lessons = a2Lessons;
-    if (level === 'B1') lessons = b1Lessons;
-
-    if (!lessons || !lessons[index]) return;
-
-    const input = document.getElementById(
-        `answer-${level}-${index}`
-    );
-
-    const feedback = document.getElementById(
-        `feedback-${level}-${index}`
-    );
-
-    const userAnswer = normalizeAnswer(input.value);
-    const correctAnswer = normalizeAnswer(lessons[index].word);
-
-    if (!userAnswer) {
-        feedback.textContent = 'لطفاً پاسخ خود را بنویسید.';
-        feedback.style.color = '#d97706';
-        return;
-    }
-
-    if (userAnswer === correctAnswer) {
-        feedback.textContent = '🎉 آفرین! پاسخ شما درست است.';
-        feedback.style.color = '#0879d1';
-        feedback.style.fontWeight = 'bold';
-
-        saveCompletedLesson(level, index);
-
-        let total = lessons.length;
-        updateProgress(level, total);
-    } else {
-        feedback.textContent =
-            '❌ پاسخ اشتباه است. جواب درست: ' + lessons[index].word;
-
-        feedback.style.color = '#dc2626';
-        feedback.style.fontWeight = 'bold';
+    if (selectedPage) {
+        selectedPage.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }
 
-// ===============================
-// فرهنگ لغات آلمانی و فارسی
-// ===============================
+/* انتخاب زبان برای فرهنگ لغات */
+function selectDictionaryLanguage(lang) {
+    const source = document.getElementById('dictionarySource');
+    const target = document.getElementById('dictionaryTarget');
 
-const germanDictionary = [
-    ['Hallo','سلام'],
-    ['Guten Morgen','صبح بخیر'],
-    ['Guten Tag','روز بخیر'],
-    ['Guten Abend','عصر بخیر'],
-    ['Gute Nacht','شب بخیر'],
-    ['Auf Wiedersehen','خداحافظ'],
-    ['Tschüss','بای'],
-    ['Danke','تشکر'],
-    ['Vielen Dank','بسیار تشکر'],
-    ['Bitte','لطفاً / خواهش می‌کنم'],
-    ['Entschuldigung','ببخشید'],
-    ['Ja','بلی'],
-    ['Nein','نخیر'],
-    ['Vielleicht','شاید'],
-    ['Wasser','آب'],
-    ['Brot','نان'],
-    ['Milch','شیر'],
-    ['Käse','پنیر'],
-    ['Fleisch','گوشت'],
-    ['Reis','برنج'],
-    ['Apfel','سیب'],
-    ['Banane','موز'],
-    ['Kartoffel','کچالو'],
-    ['Gemüse','سبزیجات'],
-    ['Obst','میوه'],
-    ['Essen','غذا'],
-    ['Trinken','نوشیدن'],
-    ['Frühstück','صبحانه'],
-    ['Mittagessen','ناهار'],
-    ['Abendessen','شام'],
-    ['Haus','خانه'],
-    ['Wohnung','آپارتمان'],
-    ['Zimmer','اتاق'],
-    ['Küche','آشپزخانه'],
-    ['Bad','حمام'],
-    ['Tisch','میز'],
-    ['Stuhl','چوکی'],
-    ['Bett','تخت'],
-    ['Tür','دروازه'],
-    ['Fenster','کلکین'],
-    ['Schule','مکتب'],
-    ['Buch','کتاب'],
-    ['Heft','کتابچه'],
-    ['Stift','قلم'],
-    ['Lehrer','معلم'],
-    ['Schüler','شاگرد'],
-    ['Lernen','یاد گرفتن'],
-    ['Lesen','خواندن'],
-    ['Schreiben','نوشتن'],
-    ['Sprechen','صحبت کردن'],
-    ['Arbeit','کار'],
-    ['Beruf','وظیفه'],
-    ['Arzt','داکتر'],
-    ['Krankenhaus','شفاخانه'],
-    ['Gesundheit','سلامتی'],
-    ['Kopf','سر'],
-    ['Hand','دست'],
-    ['Auge','چشم'],
-    ['Herz','قلب'],
-    ['Familie','خانواده'],
-    ['Mutter','مادر'],
-    ['Vater','پدر'],
-    ['Bruder','برادر'],
-    ['Schwester','خواهر'],
-    ['Kind','طفل'],
-    ['Freund','دوست'],
-    ['Liebe','عشق'],
-    ['Mensch','انسان'],
-    ['Mann','مرد'],
-    ['Frau','زن'],
-    ['Stadt','شهر'],
-    ['Dorf','قریه'],
-    ['Land','کشور'],
-    ['Deutschland','آلمان'],
-    ['Afghanistan','افغانستان'],
-    ['Straße','سرک'],
-    ['Bahnhof','ایستگاه قطار'],
-    ['Flughafen','میدان هوایی'],
-    ['Auto','موتر'],
-    ['Bus','بس'],
-    ['Zug','قطار'],
-    ['Fahrrad','بایسکل'],
-    ['Flugzeug','طیاره'],
-    ['Reise','سفر'],
-    ['Urlaub','رخصتی'],
-    ['Geld','پول'],
-    ['Preis','قیمت'],
-    ['Einkaufen','خرید کردن'],
-    ['Geschäft','مغازه'],
-    ['Zeit','وقت'],
-    ['Heute','امروز'],
-    ['Morgen','فردا'],
-    ['Gestern','دیروز'],
-    ['Montag','دوشنبه'],
-    ['Dienstag','سه‌شنبه'],
-    ['Mittwoch','چهارشنبه'],
-    ['Donnerstag','پنجشنبه'],
-    ['Freitag','جمعه'],
-    ['Samstag','شنبه'],
-    ['Sonntag','یکشنبه'],
-    ['Uhr','ساعت'],
-    ['Minute','دقیقه'],
-    ['Stunde','ساعت زمانی'],
-    ['Jahr','سال'],
-    ['Woche','هفته'],
-    ['Monat','ماه'],
-    ['Sommer','تابستان'],
-    ['Winter','زمستان'],
-    ['Frühling','بهار'],
-    ['Herbst','خزان'],
-    ['Sonne','آفتاب'],
-    ['Regen','باران'],
-    ['Schnee','برف'],
-    ['Wetter','آب و هوا'],
-    ['Kalt','سرد'],
-    ['Warm','گرم'],
-    ['Heiß','داغ'],
-    ['Groß','بزرگ'],
-    ['Klein','کوچک'],
-    ['Schön','زیبا'],
-    ['Gut','خوب'],
-    ['Schlecht','بد'],
-    ['Schnell','سریع'],
-    ['Langsam','آهسته'],
-    ['Neu','نو'],
-    ['Alt','قدیمی'],
-    ['Teuer','گران'],
-    ['Billig','ارزان'],
-    ['Glücklich','خوشحال'],
-    ['Traurig','غمگین'],
-    ['Müde','خسته'],
-    ['Hungrig','گرسنه'],
-    ['Durstig','تشنه'],
-    ['Wichtig','مهم'],
-    ['Richtig','درست'],
-    ['Falsch','غلط'],
-    ['Links','چپ'],
-    ['Rechts','راست'],
-    ['Geradeaus','مستقیم'],
-    ['Vorname','نام'],
-    ['Familienname','نام خانوادگی'],
-    ['Geburtstag','تولد'],
-    ['Adresse','آدرس'],
-    ['Telefon','تلفن'],
-    ['Nachricht','پیام'],
-    ['Frage','سوال'],
-    ['Antwort','جواب'],
-    ['Problem','مشکل'],
-    ['Lösung','راه حل'],
-    ['Erfahrung','تجربه'],
-    ['Zukunft','آینده'],
-    ['Vergangenheit','گذشته'],
-    ['Verantwortung','مسئولیت'],
-    ['Umwelt','محیط زیست'],
-    ['Freizeit','اوقات فراغت'],
-    ['Musik','موسیقی'],
-    ['Sport','ورزش'],
-    ['Fußball','فوتبال'],
-    ['Schwimmen','شنا کردن'],
-    ['Spielen','بازی کردن'],
-    ['Kochen','آشپزی کردن'],
-    ['Schlafen','خوابیدن'],
-    ['Gehen','رفتن'],
-    ['Kommen','آمدن'],
-    ['Machen','انجام دادن'],
-    ['Arbeiten','کار کردن'],
-    ['Wohnen','زندگی کردن'],
-    ['Suchen','جستجو کردن'],
-    ['Finden','پیدا کردن'],
-    ['Verstehen','فهمیدن'],
-    ['Helfen','کمک کردن'],
-    ['Fragen','پرسیدن'],
-    ['Antworten','پاسخ دادن'],
-    ['Kaufen','خریدن'],
-    ['Verkaufen','فروختن'],
-    ['Öffnen','باز کردن'],
-    ['Schließen','بستن'],
-    ['Warten','انتظار کشیدن'],
-    ['Beginnen','شروع کردن'],
-    ['Beenden','پایان دادن'],
-    ['Entscheidung','تصمیم'],
-    ['Möglichkeit','امکان'],
-    ['Meinung','نظر'],
-    ['Freiheit','آزادی'],
-    ['Respekt','احترام'],
-    ['Vertrauen','اعتماد'],
-    ['Freundschaft','دوستی'],
-    ['Gesellschaft','جامعه'],
-    ['Tradition','سنت'],
-    ['Technologie','تکنالوژی'],
-    ['Datenschutz','حفاظت از اطلاعات'],
-    ['Ausbildung','آموزش حرفه‌ای'],
-    ['Prüfung','امتحان'],
-    ['Bewerbung','درخواست کار'],
-    ['Gehalt','معاش'],
-    ['Miete','کرایه'],
-    ['Quittung','رسید'],
-    ['Verspätung','تأخیر'],
-    ['Fahrkarte','تکت'],
-    ['Klimawandel','تغییرات اقلیمی']
-];
+    if (source && target) {
+        source.value = 'fa';
+        target.value = lang === 'de' ? 'de' : lang;
+    }
 
-// ===============================
-// جستجوی فرهنگ لغات
-// ===============================
+    showPage('dictionaryPage');
+}
 
-function searchDictionary() {
+/* ترجمه آنلاین */
+async function searchDictionary() {
     const input = document.getElementById('dictionaryInput');
+    const source = document.getElementById('dictionarySource').value;
+    const target = document.getElementById('dictionaryTarget').value;
     const result = document.getElementById('dictionaryResult');
+    const word = input.value.trim();
 
-    if (!input || !result) return;
-
-    const query = normalizeAnswer(input.value);
-
-    if (!query) {
-        result.innerHTML = 'لطفاً یک کلمه آلمانی یا فارسی بنویسید.';
+    if (!word) {
+        result.textContent = 'لطفاً یک کلمه یا عبارت وارد کنید.';
         return;
     }
 
-    const matches = germanDictionary.filter(item => {
-        return normalizeAnswer(item[0]).includes(query) ||
-               normalizeAnswer(item[1]).includes(query);
-    });
-
-    if (matches.length === 0) {
-        result.innerHTML = 'این کلمه در فرهنگ لغات پیدا نشد.';
+    if (source === target) {
+        result.textContent = 'لطفاً دو زبان متفاوت انتخاب کنید.';
         return;
     }
 
-    result.innerHTML = matches.map(item => `
-        <div style="background:white;padding:12px;margin:8px 0;border-radius:10px;border:1px solid #ddd;">
-            <strong>${item[0]}</strong>
-            <p>${item[1]}</p>
-            <button onclick="speakGerman('${item[0].replace(/'/g, "\\'")}')">
-                🔊 تلفظ آلمانی
-            </button>
-        </div>
-    `).join('');
+    result.textContent = '⏳ در حال جست‌وجو و دریافت ترجمه...';
+
+    try {
+        const translation = await translateText(word, source, target);
+
+        if (!translation) {
+            result.textContent = 'ترجمه‌ای پیدا نشد. لطفاً کلمه دیگری امتحان کنید.';
+            return;
+        }
+
+        const box = document.createElement('div');
+        box.className = 'translation-result';
+
+        const title = document.createElement('h3');
+        title.textContent = '📖 نتیجه ترجمه';
+
+        const original = document.createElement('p');
+        original.textContent = 'کلمه اصلی: ' + word;
+
+        const translated = document.createElement('p');
+        translated.textContent = 'ترجمه: ' + translation;
+
+        box.append(title, original, translated);
+
+        if (target === 'de') {
+            const example = getGermanExample(translation);
+            const exampleTitle = document.createElement('h3');
+            exampleTitle.textContent = '✍️ جمله نمونه آلمانی';
+
+            const sentence = document.createElement('p');
+            sentence.textContent = example;
+
+            const speakButton = document.createElement('button');
+            speakButton.textContent = '🔊 شنیدن جمله';
+            speakButton.addEventListener('click', function() {
+                speakGerman(example);
+            });
+
+            box.append(exampleTitle, sentence, speakButton);
+
+            const sentenceTitle = document.createElement('h3');
+            sentenceTitle.textContent = 'ترجمه جمله:';
+
+            const sentenceTranslation = document.createElement('p');
+            sentenceTranslation.textContent = await translateText(example, 'de', source);
+
+            box.append(sentenceTitle, sentenceTranslation);
+        }
+
+        result.replaceChildren(box);
+
+    } catch (error) {
+        result.textContent =
+            'ارتباط با سرویس ترجمه برقرار نشد. لطفاً اینترنت خود را بررسی کنید و دوباره تلاش کنید.';
+    }
 }
 
-// ===============================
-// نمایش درس‌ها در سایت
-// ===============================
+/* ارتباط با سرویس ترجمه */
+async function translateText(text, source, target) {
+    const url =
+        'https://api.mymemory.translated.net/get?q=' +
+        encodeURIComponent(text) +
+        '&langpair=' + encodeURIComponent(source + '|' + target);
 
-renderLessons('a1LessonsList', a1Lessons, 'A1');
-renderLessons('a2LessonsList', a2Lessons, 'A2');
-renderLessons('b1LessonsList', b1Lessons, 'B1');
+    const response = await fetch(url);
 
+    if (!response.ok) {
+        throw new Error('Translation service error');
+    }
+
+    const data = await response.json();
+
+    if (
+        !data.responseData ||
+        !data.responseData.translatedText ||
+        data.responseStatus !== 200
+    ) {
+        return '';
+    }
+
+    return data.responseData.translatedText;
+}
+
+/* جمله‌های نمونه برای لغات رایج */
+function getGermanExample(word) {
+    const examples = {
+        'kommen': 'Ich komme heute nach Hause.',
+        'gehen': 'Ich gehe zur Schule.',
+        'lernen': 'Ich lerne Deutsch.',
+        'essen': 'Ich esse einen Apfel.',
+        'trinken': 'Ich trinke Wasser.',
+        'machen': 'Ich mache meine Arbeit.',
+        'arbeiten': 'Ich arbeite heute.',
+        'wohnen': 'Ich wohne in Deutschland.',
+        'sprechen': 'Ich spreche Deutsch.',
+        'schreiben': 'Ich schreibe einen Brief.',
+        'lesen': 'Ich lese ein Buch.',
+        'schlafen': 'Ich schlafe gut.',
+        'helfen': 'Ich helfe meiner Familie.',
+        'fahren': 'Ich fahre mit dem Bus.',
+        'kaufen': 'Ich kaufe Brot.',
+        'spielen': 'Ich spiele Fußball.',
+        'suchen': 'Ich suche meine Schlüssel.',
+        'finden': 'Ich finde den Weg.',
+        'bringen': 'Ich bringe Wasser.',
+        'sehen': 'Ich sehe einen Vogel.',
+        'hören': 'Ich höre Musik.'
+    };
+
+    const normalized = word.trim().toLowerCase();
+
+    return examples[normalized] ||
+        'Das Wort „' + word + '“ ist wichtig.';
+}
+
+/* تلفظ آلمانی */
+function speakGerman(text) {
+    if (!('speechSynthesis' in window)) {
+        alert('مرورگر شما از پخش صدا پشتیبانی نمی‌کند.');
+        return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = 'de-DE';
+    speech.rate = 0.85;
+
+    window.speechSynthesis.speak(speech);
+}
+
+/* نمایش صفحه اصلی هنگام باز شدن سایت */
+document.addEventListener('DOMContentLoaded', function() {
+    showPage('homePage');
+});
 </script>
 
-<!-- فایل‌های اصلی سایت -->
 <script src="script.js"></script>
 
 </body>
