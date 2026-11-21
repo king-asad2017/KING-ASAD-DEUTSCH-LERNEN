@@ -2,62 +2,43 @@
 const translations = {
   fa: {
     title: "به آموزشگاه آنلاین کینگ اسد خوش آمدید!",
-    direction: "rtl",
-    alphabet: "📚 الفبای آلمانی",
-    words: "📖 لغات آلمانی",
-    conversation: "🗣️ مکالمه روزمره",
-    grammar: "✍️ گرامر آلمانی",
-    quiz: "🎯 آزمون آموزشی"
+    direction: "rtl"
   },
   de: {
     title: "Willkommen bei KING ASAD Deutsch Lernen!",
-    direction: "ltr",
-    alphabet: "📚 Deutsches Alphabet",
-    words: "📖 Deutsche Wörter",
-    conversation: "🗣️ Alltagsgespräche",
-    grammar: "✍️ Deutsche Grammatik",
-    quiz: "🎯 Lerntest"
+    direction: "ltr"
   },
   en: {
     title: "Welcome to KING ASAD German Learning!",
-    direction: "ltr",
-    alphabet: "📚 German Alphabet",
-    words: "📖 German Vocabulary",
-    conversation: "🗣️ Daily Conversation",
-    grammar: "✍️ German Grammar",
-    quiz: "🎯 Learning Quiz"
+    direction: "ltr"
   }
 };
 
-const languageSelect = document.getElementById("language");
+document.addEventListener("DOMContentLoaded", function () {
 
-function changeLanguage(lang) {
-  const selected = translations[lang] || translations.fa;
+  const languageSelect = document.getElementById("language");
+  const welcome = document.getElementById("welcome");
 
-  document.documentElement.lang = lang;
-  document.documentElement.dir = selected.direction;
+  function changeLanguage(language) {
+    const selected = translations[language] || translations.fa;
 
-  document.getElementById("welcome").textContent = selected.title;
+    document.documentElement.lang = language;
+    document.documentElement.dir = selected.direction;
 
-  const headings = document.querySelectorAll("section h3");
+    if (welcome) {
+      welcome.textContent = selected.title;
+    }
+  }
 
-  const labels = [
-    "alphabet",
-    "words",
-    "conversation",
-    "grammar",
-    "quiz"
-  ];
+  if (languageSelect) {
+    languageSelect.addEventListener("change", function () {
+      changeLanguage(this.value);
+    });
+  }
 
-  headings.forEach((heading, index) => {
-    heading.textContent = selected[labels[index]];
-  });
-}
+  changeLanguage("fa");
 
-if (languageSelect) {
-  languageSelect.addEventListener("change", function () {
-    changeLanguage(this.value);
-  });
-}
+  // Welcome message
+  console.log("KING ASAD German Learning is ready!");
 
-changeLanguage("fa");
+});
