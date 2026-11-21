@@ -112,27 +112,61 @@ main{padding:8px}
 
 </section>
 
+<
 <!-- صفحه درس‌ها -->
 <section id="lessonsPage" class="page">
 
-<h2>📚 درس‌های زبان آلمانی</h2>
-<p>سطح مورد نظر را انتخاب کنید:</p>
+<h2>📚 درس‌های زبان آلمانی KING ASAD</h2>
+<p>سطح آموزشی مورد نظر خود را انتخاب کنید:</p>
 
 <div class="level-grid">
-<div class="level-card"><h3>A1</h3><button onclick="showLevelLessons('A1')">درس‌های A1</button></div>
-<div class="level-card"><h3>A2</h3><button onclick="showLevelLessons('A2')">درس‌های A2</button></div>
-<div class="level-card"><h3>B1</h3><button onclick="showLevelLessons('B1')">درس‌های B1</button></div>
-<div class="level-card"><h3>B2</h3><button onclick="showLevelLessons('B2')">درس‌های B2</button></div>
-<div class="level-card"><h3>C1</h3><button onclick="showLevelLessons('C1')">درس‌های C1</button></div>
+
+<div class="level-card">
+<h3>سطح A1</h3>
+<p>۱۹ درس</p>
+<button type="button" data-level="A1">درس‌های A1</button>
 </div>
 
-<div id="a1LessonsContainer" class="level-container"></div>
-<div id="a2LessonsContainer" class="level-container" style="display:none"></div>
-<div id="b1LessonsContainer" class="level-container" style="display:none"></div>
-<div id="b2LessonsContainer" class="level-container" style="display:none"></div>
-<div id="c1LessonsContainer" class="level-container" style="display:none"></div>
+<div class="level-card">
+<h3>سطح A2</h3>
+<p>۲۰ درس</p>
+<button type="button" data-level="A2">درس‌های A2</button>
+</div>
+
+<div class="level-card">
+<h3>سطح B1</h3>
+<p>۳۰ درس</p>
+<button type="button" data-level="B1">درس‌های B1</button>
+</div>
+
+<div class="level-card">
+<h3>سطح B2</h3>
+<p>۳۰ درس</p>
+<button type="button" data-level="B2">درس‌های B2</button>
+</div>
+
+<div class="level-card">
+<h3>سطح C1</h3>
+<p>۳۰ درس</p>
+<button type="button" data-level="C1">درس‌های C1</button>
+</div>
+
+</div>
+
+<hr>
+
+<div id="lessonCards"></div>
+
+<div id="lessonDetail" class="lesson-detail"></div>
+
+<div id="quizContainer" class="quiz-box"></div>
+
+<div id="progressDashboard" class="progress-box"></div>
+
+<div id="quizHistory" class="progress-box"></div>
 
 </section>
+
 
 <!-- صفحه ویدیوها -->
 <section id="videosPage" class="page">
