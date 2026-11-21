@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KING ASAD – آموزش زبان آلمانی</title>
 <link rel="stylesheet" href="style.css">
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f3f6fc;color:#17233c;line-height:1.8}
@@ -33,15 +34,23 @@ input,select{padding:10px;border:1px solid #bbc9dc;border-radius:8px;font-family
 .translation-result{padding:15px;background:#f1f7ff;border-radius:10px;margin-top:12px}
 footer{text-align:center;padding:25px;color:#65748b}
 .small{color:#66758a;font-size:13px}
-@media(max-width:600px){header h1{font-size:20px}nav button{font-size:12px;padding:8px}main{padding:8px}.page{padding:13px}}
+.level-container{margin-top:18px}
+.level-heading{background:#eaf1fc;padding:12px;border-radius:10px}
+@media(max-width:600px){
+header h1{font-size:20px}
+nav button{font-size:12px;padding:8px}
+main{padding:8px}
+.page{padding:13px}
+}
 </style>
 </head>
+
 <body>
 
 <header>
 <h1>🎓 KING ASAD</h1>
 <p>مرکز آموزش آنلاین زبان آلمانی</p>
-<p>Deutsch lernen – A1 | A2 | B1</p>
+<p>Deutsch lernen – A1 | A2 | B1 | B2 | C1</p>
 </header>
 
 <nav>
@@ -56,80 +65,173 @@ footer{text-align:center;padding:25px;color:#65748b}
 
 <main>
 
+<!-- صفحه خانه -->
 <section id="homePage" class="page active">
+
 <h2>به آموزشگاه آنلاین KING ASAD خوش آمدید!</h2>
-<p>در این آموزشگاه زبان آلمانی را از سطح مبتدی تا متوسط یاد بگیرید.</p>
+<p>زبان آلمانی را از سطح مبتدی تا پیشرفته یاد بگیرید.</p>
+
 <div class="level-grid">
-<div class="level-card"><h3>سطح A1</h3><p>آموزش مقدماتی آلمانی</p><button onclick="showPage('lessonsPage')">ورود به درس‌ها</button></div>
-<div class="level-card"><h3>سطح A2</h3><p>آموزش مقدماتی پیشرفته</p><button onclick="showPage('lessonsPage')">ورود به درس‌ها</button></div>
-<div class="level-card"><h3>سطح B1</h3><p>آموزش متوسط آلمانی</p><button onclick="showPage('lessonsPage')">ورود به درس‌ها</button></div>
+
+<div class="level-card">
+<h3>سطح A1</h3>
+<p>۱۹ درس – آموزش مقدماتی</p>
+<button onclick="showPage('lessonsPage');showLevelLessons('A1')">ورود به A1</button>
 </div>
+
+<div class="level-card">
+<h3>سطح A2</h3>
+<p>۲۰ درس – مقدماتی پیشرفته</p>
+<button onclick="showPage('lessonsPage');showLevelLessons('A2')">ورود به A2</button>
+</div>
+
+<div class="level-card">
+<h3>سطح B1</h3>
+<p>۳۰ درس – آموزش متوسط</p>
+<button onclick="showPage('lessonsPage');showLevelLessons('B1')">ورود به B1</button>
+</div>
+
+<div class="level-card">
+<h3>سطح B2</h3>
+<p>۳۰ درس – متوسط پیشرفته</p>
+<button onclick="showPage('lessonsPage');showLevelLessons('B2')">ورود به B2</button>
+</div>
+
+<div class="level-card">
+<h3>سطح C1</h3>
+<p>۳۰ درس – پیشرفته</p>
+<button onclick="showPage('lessonsPage');showLevelLessons('C1')">ورود به C1</button>
+</div>
+
+</div>
+
 <h2>پیشرفت آموزشی شما</h2>
 <div id="homeProgress"></div>
+
 </section>
 
+<!-- صفحه درس‌ها -->
 <section id="lessonsPage" class="page">
+
 <h2>📚 درس‌های زبان آلمانی</h2>
 <p>سطح مورد نظر را انتخاب کنید:</p>
+
 <div class="level-grid">
-<div class="level-card"><h3>A1</h3><button onclick="showLevelLessons('A1')">مشاهده درس‌های A1</button></div>
-<div class="level-card"><h3>A2</h3><button onclick="showLevelLessons('A2')">مشاهده درس‌های A2</button></div>
-<div class="level-card"><h3>B1</h3><button onclick="showLevelLessons('B1')">مشاهده درس‌های B1</button></div>
+<div class="level-card"><h3>A1</h3><button onclick="showLevelLessons('A1')">درس‌های A1</button></div>
+<div class="level-card"><h3>A2</h3><button onclick="showLevelLessons('A2')">درس‌های A2</button></div>
+<div class="level-card"><h3>B1</h3><button onclick="showLevelLessons('B1')">درس‌های B1</button></div>
+<div class="level-card"><h3>B2</h3><button onclick="showLevelLessons('B2')">درس‌های B2</button></div>
+<div class="level-card"><h3>C1</h3><button onclick="showLevelLessons('C1')">درس‌های C1</button></div>
 </div>
-<div id="a1LessonsContainer"></div>
-<div id="a2LessonsContainer" style="display:none"></div>
-<div id="b1LessonsContainer" style="display:none"></div>
+
+<div id="a1LessonsContainer" class="level-container"></div>
+<div id="a2LessonsContainer" class="level-container" style="display:none"></div>
+<div id="b1LessonsContainer" class="level-container" style="display:none"></div>
+<div id="b2LessonsContainer" class="level-container" style="display:none"></div>
+<div id="c1LessonsContainer" class="level-container" style="display:none"></div>
+
 </section>
 
+<!-- صفحه ویدیوها -->
 <section id="videosPage" class="page">
+
 <h2>🎬 ویدیوهای آموزشی</h2>
 <p>سطح خود را انتخاب کنید:</p>
+
 <button class="action" onclick="showVideoLevel('A1')">A1</button>
 <button class="action" onclick="showVideoLevel('A2')">A2</button>
 <button class="action" onclick="showVideoLevel('B1')">B1</button>
+<button class="action" onclick="showVideoLevel('B2')">B2</button>
+<button class="action" onclick="showVideoLevel('C1')">C1</button>
+
 <div id="videosA1"></div>
 <div id="videosA2" style="display:none"></div>
 <div id="videosB1" style="display:none"></div>
+<div id="videosB2" style="display:none"></div>
+<div id="videosC1" style="display:none"></div>
+
 </section>
 
+<!-- صفحه مکالمه -->
 <section id="conversationPage" class="page">
 <h2>🗣️ مکالمه‌های آلمانی</h2>
 <div id="conversationContent"></div>
 </section>
 
+<!-- صفحه گرامر -->
 <section id="grammarPage" class="page">
 <h2>📖 آموزش گرامر</h2>
 <div id="grammarContent"></div>
 </section>
 
+<!-- فرهنگ لغات -->
 <section id="dictionaryPage" class="page">
+
 <h2>📚 فرهنگ لغات و ترجمه</h2>
+
 <input id="dictionaryInput" type="text" placeholder="کلمه یا جمله را وارد کنید">
+
 <p>زبان مبدأ:</p>
 <select id="dictionarySource">
 <option value="fa">فارسی</option>
 <option value="de">آلمانی</option>
 <option value="en">انگلیسی</option>
 </select>
+
 <p>زبان مقصد:</p>
 <select id="dictionaryTarget">
 <option value="de">آلمانی</option>
 <option value="fa">فارسی</option>
 <option value="en">انگلیسی</option>
 </select>
+
 <button class="action" onclick="searchDictionary()">ترجمه کن</button>
-<div id="dictionaryResult"></div>
+<div id="dictionaryResult" class="translation-result"></div>
+
 </section>
 
+<!-- صفحه آزمون‌ها -->
 <section id="quizPage" class="page">
+
 <h2>✍️ آزمون‌های آموزشی</h2>
 <p>سطح آزمون را انتخاب کنید:</p>
+
 <button class="action" onclick="openQuiz('A1')">آزمون A1</button>
 <button class="action" onclick="openQuiz('A2')">آزمون A2</button>
 <button class="action" onclick="openQuiz('B1')">آزمون B1</button>
-<div id="quiz-A1" class="quiz-box" style="display:none"><h3>آزمون A1</h3><div id="questions-A1"></div><div id="result-A1"></div></div>
-<div id="quiz-A2" class="quiz-box" style="display:none"><h3>آزمون A2</h3><div id="questions-A2"></div><div id="result-A2"></div></div>
-<div id="quiz-B1" class="quiz-box" style="display:none"><h3>آزمون B1</h3><div id="questions-B1"></div><div id="result-B1"></div></div>
+<button class="action" onclick="openQuiz('B2')">آزمون B2</button>
+<button class="action" onclick="openQuiz('C1')">آزمون C1</button>
+
+<div id="quiz-A1" class="quiz-box" style="display:none">
+<h3>آزمون A1</h3>
+<div id="questions-A1"></div>
+<div id="result-A1"></div>
+</div>
+
+<div id="quiz-A2" class="quiz-box" style="display:none">
+<h3>آزمون A2</h3>
+<div id="questions-A2"></div>
+<div id="result-A2"></div>
+</div>
+
+<div id="quiz-B1" class="quiz-box" style="display:none">
+<h3>آزمون B1</h3>
+<div id="questions-B1"></div>
+<div id="result-B1"></div>
+</div>
+
+<div id="quiz-B2" class="quiz-box" style="display:none">
+<h3>آزمون B2</h3>
+<div id="questions-B2"></div>
+<div id="result-B2"></div>
+</div>
+
+<div id="quiz-C1" class="quiz-box" style="display:none">
+<h3>آزمون C1</h3>
+<div id="questions-C1"></div>
+<div id="result-C1"></div>
+</div>
+
 </section>
 
 </main>
@@ -139,21 +241,7 @@ footer{text-align:center;padding:25px;color:#65748b}
 <p>آموزش، تمرین و پیشرفت با هم</p>
 </footer>
 
-<script src="script.js?v=4"></script>
-<script>
-function showLevelLessons(level){
-['A1','A2','B1'].forEach(function(item){
-var box=document.getElementById(item.toLowerCase()+'LessonsContainer');
-if(box) box.style.display=item===level?'block':'none';
-});
-}
+<script src="script.js?v=5"></script>
 
-function showVideoLevel(level){
-['A1','A2','B1'].forEach(function(item){
-var box=document.getElementById('videos'+item);
-if(box) box.style.display=item===level?'block':'none';
-});
-}
-</script>
 </body>
 </html>
