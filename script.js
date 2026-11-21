@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const selected = translations[language] || translations.fa;
     document.documentElement.lang = language;
     document.documentElement.dir = selected.direction;
-
     if (welcome) welcome.textContent = selected.title;
   }
 
@@ -47,17 +46,46 @@ window.speakGerman = function (text) {
   const speech = new SpeechSynthesisUtterance(text);
   speech.lang = "de-DE";
   speech.rate = 0.85;
-
   window.speechSynthesis.speak(speech);
 };
 
-// پاسخ‌های درست آزمون
-const answers = [null, null, null, null, null];
-const correctIndexes = [0, 0, 1, 0, 0];
+// اطلاعات آزمون‌ها
+const quizData = {
+  A1: {
+    correct: [0, 0, 1, 0, 0],
+    answers: [null, null, null, null, null],
+    finished: false
+  },
+  A2: {
+    correct: [0, 1, 0, 1, 0],
+    answers: [null, null, null, null, null],
+    finished: false
+  },
+  B1: {
+    correct: [0, 1, 0, 1, 0],
+    answers: [null, null, null, null, null],
+    finished: false
+  }
+};
 
-let quizFinished = false;
+// باز کردن آزمون انتخاب‌شده
+window.openQuiz = function (level) {
+  document.querySelectorAll(".quiz-level").forEach(function (section) {
+    section.style.display = "none";
+  });
 
-// پخش صدای کوتاه
+  const selectedQuiz = document.getElementById("quiz-" + level);
+
+  if (selectedQuiz) {
+    selectedQuiz.style.display = "block";
+    selectedQuiz.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+};
+
+// پخش صدای پاسخ
 function playQuizSound(correct) {
   try {
     const AudioContextClass =
@@ -92,22 +120,23 @@ function playQuizSound(correct) {
   }
 }
 
-// انتخاب پاسخ
-window.answerQuiz = function (questionIndex, isCorrect, clickedButton) {
-  if (quizFinished || answers[questionIndex] !== null) {
+// پاسخ دادن به سؤال
+window.answerQuiz = function (level, questionIndex, isCorrect, clickedButton) {
+  const quiz = quizData[level];
+
+  if (!quiz || quiz.finished || quiz.answers[questionIndex] !== null) {
     return;
   }
 
-  answers[questionIndex] = isCorrect;
+  quiz.answers[questionIndex] = isCorrect;
 
   const question = clickedButton.closest(".question");
   const buttons = question.querySelectorAll("button");
 
-  // نمایش رنگ جواب درست و غلط
   buttons.forEach(function (button, index) {
     button.disabled = true;
 
-    if (index === correctIndexes[questionIndex]) {
+    if (index === quiz.correct[questionIndex]) {
       button.classList.add("correct");
     }
   });
@@ -116,24 +145,22 @@ window.answerQuiz = function (questionIndex, isCorrect, clickedButton) {
     clickedButton.classList.add("wrong");
   }
 
-  // صدای پاسخ
   playQuizSound(isCorrect);
 
-  // محاسبه امتیاز
   let score = 0;
   let completed = 0;
 
-  answers.forEach(function (answer) {
+  quiz.answers.forEach(function (answer) {
     if (answer !== null) {
       completed++;
       if (answer === true) score += 10;
     }
   });
 
-  document.getElementById("quizResult").textContent =
-    "امتیاز شما: " + score + " از ۵۰";
+  const result = document.getElementById("result-" + level);
+  const message = document.getElementById("message-" + level);
 
-  const message = document.getElementById("quizMessage");
+  result.textContent = "امتیاز شما: " + score + " از ۵۰";
 
   if (isCorrect) {
     message.textContent = "آفرین! جواب شما درست است. 🌟";
@@ -142,36 +169,37 @@ window.answerQuiz = function (questionIndex, isCorrect, clickedButton) {
       "جواب اشتباه است! پاسخ درست با رنگ آبی مشخص شده است. ❤️";
   }
 
-  // پایان آزمون
   if (completed === 5) {
-    quizFinished = true;
+    quiz.finished = true;
 
     message.textContent =
-      "آزمون تمام شد! امتیاز نهایی شما: " + score + " از ۵۰";
+      "آزمون " + level + " تمام شد! امتیاز نهایی شما: " + score + " از ۵۰";
 
     if (score >= 40) {
       message.textContent += " 🏆 شما برنده شدید! تبریک!";
-
       playQuizSound(true);
-      setTimeout(showCelebration, 300);
+      setTimeout(function () {
+        showCelebration(level, score);
+      }, 300);
     } else {
       message.textContent += " 🌷 تلاش خوبی بود! دوباره تمرین کنید.";
     }
   }
 };
 
-// جشن برنده
-function showCelebration() {
+// نمایش جشن برنده
+function showCelebration(level, score) {
   const old = document.getElementById("celebration");
   if (old) old.remove();
 
   const celebration = document.createElement("div");
   celebration.id = "celebration";
+
   celebration.innerHTML =
     '<div class="celebration-message">' +
     '<div class="trophy">🏆</div>' +
     '<h2>تبریک! شما برنده شدید!</h2>' +
-    '<p>آفرین به تلاش شما در آموزش زبان آلمانی</p>' +
+    '<p>آزمون ' + level + ' را با ' + score + ' امتیاز به پایان رساندید.</p>' +
     '<div class="flowers">🌸 🌹 🎉 🌺 🎊 🌷</div>' +
     '<button id="closeCelebration">بستن</button>' +
     '</div>';
@@ -200,23 +228,25 @@ function showCelebration() {
   };
 }
 
-// شروع دوباره آزمون
-window.resetQuiz = function () {
-  for (let i = 0; i < answers.length; i++) {
-    answers[i] = null;
-  }
+// شروع دوباره آزمون همان سطح
+window.resetQuiz = function (level) {
+  const quiz = quizData[level];
+  if (!quiz) return;
 
-  quizFinished = false;
+  quiz.answers = [null, null, null, null, null];
+  quiz.finished = false;
 
-  document.querySelectorAll(".question button").forEach(function (button) {
+  const section = document.getElementById("quiz-" + level);
+
+  section.querySelectorAll(".question button").forEach(function (button) {
     button.disabled = false;
     button.classList.remove("correct", "wrong");
   });
 
-  document.getElementById("quizResult").textContent =
+  document.getElementById("result-" + level).textContent =
     "امتیاز شما: ۰ از ۵۰";
 
-  document.getElementById("quizMessage").textContent =
+  document.getElementById("message-" + level).textContent =
     "آزمون را شروع کنید.";
 
   const celebration = document.getElementById("celebration");
