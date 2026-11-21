@@ -3119,10 +3119,11 @@ console.log('KING ASAD: توابع اتصال HTML اصلاح شدند.');
 
 /* =========================================
    KING ASAD
-   نمایش مستقیم درس زیر کارت
-   فقط یک درس باز در هر لحظه
+   پنج چوکات مستقل برای پنج سطح
+   نمایش درس‌ها زیر سطح مربوطه
 ========================================= */
 
+// ساخت کارت مستقل هر درس
 KING_ASAD.createLessonCard = function (level, lessonNumber) {
 
     const lesson = KING_ASAD.getLessonDetails(
@@ -3143,130 +3144,222 @@ KING_ASAD.createLessonCard = function (level, lessonNumber) {
 
     const status = document.createElement('p');
     status.className = 'king-lesson-status';
-    status.textContent = lesson.completed
-        ? 'تکمیل‌شده'
-        : 'تکمیل‌نشده';
+    status.textContent = KING_ASAD.isLessonCompleted(
+        level,
+        lessonNumber
+    ) ? 'تکمیل‌شده' : 'تکمیل‌نشده';
 
-    const openButton = document.createElement('button');
-    openButton.type = 'button';
-    openButton.className = 'king-lesson-open-button';
-    openButton.textContent = 'مشاهده درس';
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = 'مشاهده درس';
 
     const panel = document.createElement('div');
     panel.className = 'king-inline-lesson-content';
-    panel.style.display = 'none';
+    panel.hidden = true;
 
-    openButton.addEventListener('click', function () {
+    button.addEventListener('click', function () {
 
-        const alreadyOpen = panel.style.display === 'block';
+        panel.hidden = !panel.hidden;
 
-        // بستن همه درس‌های باز
-        document.querySelectorAll(
-            '#lessonCards .king-inline-lesson-content'
-        ).forEach(item => {
-            item.style.display = 'none';
-        });
+        button.textContent = panel.hidden
+            ? 'مشاهده درس'
+            : 'بستن درس';
 
-        document.querySelectorAll(
-            '#lessonCards .king-lesson-open-button'
-        ).forEach(button => {
-            button.textContent = 'مشاهده درس';
-        });
-
-        document.querySelectorAll(
-            '#lessonCards .king-lesson-card'
-        ).forEach(item => {
-            item.classList.remove('is-open');
-        });
-
-        if (alreadyOpen) return;
-
-        // ساخت محتوای همین درس
-        panel.replaceChildren();
-
-        panel.append(
-            KING_ASAD.renderLessonHeading(lesson),
-            KING_ASAD.renderLessonVocabulary(lesson),
-            KING_ASAD.renderLessonConversation(lesson),
-            KING_ASAD.renderLessonGrammar(lesson),
-            KING_ASAD.renderLessonExercises(lesson)
-        );
-
-        const completeButton =
-            document.createElement('button');
-
-        completeButton.type = 'button';
-        completeButton.textContent = 'تکمیل این درس';
-
-        completeButton.addEventListener('click', function () {
-
-            const saved = KING_ASAD.completeLesson(
-                level,
-                lessonNumber
-            );
-
-            if (saved) {
-                status.textContent = 'تکمیل‌شده';
-                completeButton.textContent = 'درس تکمیل شد';
-                KING_ASAD.refreshLessonCards();
-                KING_ASAD.refreshAllDashboards?.();
-            }
-        });
-
-        const quizButton =
-            document.createElement('button');
-
-        quizButton.type = 'button';
-        quizButton.textContent = 'شروع آزمون این درس';
-
-        quizButton.addEventListener('click', function () {
-            KING_ASAD.openLessonQuiz(level, lessonNumber);
-        });
-
-        panel.append(completeButton, quizButton);
-
-        panel.style.display = 'block';
-        card.classList.add('is-open');
-        openButton.textContent = 'بستن درس';
+        card.classList.toggle('is-open', !panel.hidden);
     });
 
-    card.append(title, status, openButton, panel);
+    panel.append(
+        KING_ASAD.renderLessonHeading(lesson),
+        KING_ASAD.renderLessonVocabulary(lesson),
+        KING_ASAD.renderLessonConversation(lesson),
+        KING_ASAD.renderLessonGrammar(lesson),
+        KING_ASAD.renderLessonExercises(lesson)
+    );
+
+    const completeButton = document.createElement('button');
+    completeButton.type = 'button';
+    completeButton.textContent = 'تکمیل این درس';
+
+    completeButton.addEventListener('click', function () {
+        if (KING_ASAD.completeLesson(level, lessonNumber)) {
+            status.textContent = 'تکمیل‌شده';
+            completeButton.textContent = 'درس تکمیل شد';
+            KING_ASAD.refreshAllDashboards?.();
+        }
+    });
+
+    const quizButton = document.createElement('button');
+    quizButton.type = 'button';
+    quizButton.textContent = 'شروع آزمون این درس';
+
+    quizButton.addEventListener('click', function () {
+        KING_ASAD.openLessonQuiz(level, lessonNumber);
+    });
+
+    panel.append(completeButton, quizButton);
+    card.append(title, status, button, panel);
 
     return card;
 };
 
 
-// نمایش فهرست درس‌های هر سطح
-KING_ASAD.renderLessonCards = function (level, container) {
+// ساخت پنج چوکات مستقل سطح‌ها
+KING_ASAD.renderAllLevelSections = function () {
 
-    if (!KING_ASAD.LEVELS.includes(level)) {
-        return false;
-    }
+    const container = document.querySelector('#lessonCards');
 
-    const target = typeof container === 'string'
-        ? document.querySelector(container)
-        : container;
+    if (!container) return false;
 
-    if (!target) return false;
+    container.replaceChildren();
 
-    target.replaceChildren();
+    KING_ASAD.LEVELS.forEach((level, index) => {
 
-    const heading = document.createElement('h2');
-    heading.textContent = 'درس‌های سطح ' + level;
+        const section = document.createElement('section');
+        section.className = 'king-level-section';
+        section.id = 'king-level-' + level;
 
-    target.appendChild(heading);
+        const heading = document.createElement('h2');
+        heading.textContent =
+            `سطح ${index + 1} - ${level}`;
 
-    KING_ASAD.getLessonsByLevel(level).forEach(lesson => {
+        const count = document.createElement('p');
+        count.textContent =
+            KING_ASAD.LESSON_COUNTS[level] + ' درس';
 
-        const card = KING_ASAD.createLessonCard(
-            level,
-            lesson.lessonNumber
-        );
+        const lessonsBox = document.createElement('div');
+        lessonsBox.className = 'king-level-lessons';
 
-        if (card) target.appendChild(card);
+        KING_ASAD.getLessonsByLevel(level).forEach(lesson => {
+
+            const card = KING_ASAD.createLessonCard(
+                level,
+                lesson.lessonNumber
+            );
+
+            if (card) lessonsBox.appendChild(card);
+        });
+
+        section.append(heading, count, lessonsBox);
+        container.appendChild(section);
     });
 
     return true;
 };
 
-console.log('KING ASAD: سیستم بازشدن درس‌ها اصلاح شد.');
+
+// دکمه‌های انتخاب سطح فقط به چوکات همان سطح بروند
+KING_ASAD.bindLevelButtons = function () {
+
+    document.querySelectorAll('#lessonsPage [data-level]')
+        .forEach(oldButton => {
+
+            const button = oldButton.cloneNode(true);
+            oldButton.replaceWith(button);
+
+            button.addEventListener('click', function () {
+
+                const level = this.dataset.level;
+
+                document.querySelector('#king-level-' + level)
+                    ?.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+            });
+        });
+};
+
+
+// ورود به صفحه درس‌ها از صفحه خانه
+window.showLevelLessons = function (level) {
+
+    window.showPage('lessonsPage');
+
+    document.querySelector('#king-level-' + level)
+        ?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+
+    return true;
+};
+
+
+// ظاهر منظم پنج سطح و کارت‌های درس
+const kingLevelStyle = document.createElement('style');
+
+kingLevelStyle.textContent = `
+.king-level-section {
+    display: block;
+    width: 100%;
+    margin: 22px 0;
+    padding: 18px;
+    background: #ffffff;
+    border: 2px solid #214b80;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px #00000012;
+    scroll-margin-top: 15px;
+}
+
+.king-level-section > h2 {
+    background: #214b80;
+    color: white;
+    padding: 12px;
+    border-radius: 9px;
+}
+
+.king-level-lessons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.king-level-lessons .king-lesson-card {
+    width: 100%;
+    padding: 15px;
+    background: #f4f7fc;
+    border: 1px solid #cbd8ea;
+    border-radius: 11px;
+}
+
+.king-inline-lesson-content {
+    margin-top: 12px;
+    padding: 14px;
+    background: white;
+    border: 1px solid #e5b94c;
+    border-radius: 10px;
+}
+
+.king-inline-lesson-content[hidden] {
+    display: none !important;
+}
+
+.king-lesson-card.is-open {
+    border: 2px solid #e5b94c;
+}
+
+.king-inline-lesson-content section {
+    margin: 12px 0;
+    padding: 12px;
+    border: 1px solid #dce5f3;
+    border-radius: 9px;
+}
+
+@media (max-width: 600px) {
+    .king-level-section {
+        padding: 10px;
+    }
+
+    .king-level-lessons .king-lesson-card {
+        padding: 12px;
+    }
+}
+`;
+
+document.head.appendChild(kingLevelStyle);
+
+
+// نمایش تمام پنج سطح
+KING_ASAD.renderAllLevelSections();
+
+console.log('KING ASAD: پنج سطح مستقل آماده شدند.');
