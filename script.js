@@ -2957,3 +2957,162 @@ if (document.readyState === 'loading') {
 
     KING_ASAD.initialize();
 }
+
+/* =========================================
+   KING ASAD
+   اصلاح اتصال HTML و JavaScript
+========================================= */
+
+// 1. نمایش صفحات سایت
+window.showPage = function (pageId) {
+
+    const pages = document.querySelectorAll('.page');
+    const selectedPage = document.getElementById(pageId);
+
+    if (!selectedPage) {
+        console.error('صفحه پیدا نشد:', pageId);
+        return false;
+    }
+
+    pages.forEach(page => page.classList.remove('active'));
+
+    selectedPage.classList.add('active');
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
+    return true;
+};
+
+
+// 2. نمایش درس‌های یک سطح
+window.showLevelLessons = function (level) {
+
+    window.showPage('lessonsPage');
+
+    const success = KING_ASAD.renderLessonCards(
+        level,
+        '#lessonCards'
+    );
+
+    if (success) {
+        document.querySelector('#lessonCards')
+            ?.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    return success;
+};
+
+
+// 3. جست‌وجوی فرهنگ لغات
+window.searchDictionary = function () {
+
+    const input = document.querySelector('#dictionaryInput');
+    const resultBox = document.querySelector('#dictionaryResult');
+
+    if (!input || !resultBox) return false;
+
+    const query = input.value.trim();
+
+    resultBox.replaceChildren();
+
+    if (!query) {
+        resultBox.textContent = 'لطفاً یک واژه وارد کنید.';
+        return false;
+    }
+
+    const results = KING_ASAD.searchDictionary(query);
+
+    if (!results.length) {
+        resultBox.textContent = 'واژه‌ای پیدا نشد.';
+        return false;
+    }
+
+    results.forEach(item => {
+
+        const entry = document.createElement('div');
+
+        const german = document.createElement('strong');
+        german.textContent = item.german;
+
+        const persian = document.createElement('p');
+        persian.textContent = item.persian;
+
+        const level = document.createElement('small');
+        level.textContent = 'سطح: ' + item.level;
+
+        const speak = document.createElement('button');
+        speak.type = 'button';
+        speak.textContent = 'شنیدن تلفظ';
+
+        speak.addEventListener('click', function () {
+            KING_ASAD.speakGerman(item.german);
+        });
+
+        entry.append(german, persian, level, speak);
+        resultBox.appendChild(entry);
+    });
+
+    return true;
+};
+
+
+// 4. بازکردن آزمون یک سطح
+window.openQuiz = function (level) {
+
+    if (!KING_ASAD.LEVELS.includes(level)) {
+        return false;
+    }
+
+    window.showPage('lessonsPage');
+
+    KING_ASAD.renderLessonCards(level, '#lessonCards');
+
+    const lessons = KING_ASAD.getLessonsByLevel(level);
+
+    const nextLesson = lessons.find(lesson =>
+        !KING_ASAD.isLessonCompleted(
+            level,
+            lesson.lessonNumber
+        )
+    );
+
+    const lessonNumber = nextLesson
+        ? nextLesson.lessonNumber
+        : 1;
+
+    KING_ASAD.openLessonQuiz(level, lessonNumber);
+
+    document.querySelector('#quizContainer')
+        ?.scrollIntoView({ behavior: 'smooth' });
+
+    return true;
+};
+
+
+// 5. اتصال داشبورد پیشرفت به صفحه خانه
+KING_ASAD.renderHomeProgress = function () {
+
+    return KING_ASAD.renderProgressDashboard(
+        '#homeProgress'
+    );
+};
+
+
+// 6. تازه‌سازی داشبورد خانه و بخش درس‌ها
+KING_ASAD.refreshAllDashboards = function () {
+
+    KING_ASAD.renderHomeProgress();
+    KING_ASAD.refreshProgressDashboard();
+    KING_ASAD.renderQuizHistory('#quizHistory');
+
+    return true;
+};
+
+
+// اجرای داشبورد خانه
+KING_ASAD.renderHomeProgress();
+
+console.log('KING ASAD: توابع اتصال HTML اصلاح شدند.');
