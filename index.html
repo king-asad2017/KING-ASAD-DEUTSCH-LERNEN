@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -13,7 +12,7 @@ body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f3f6fc;color:#1723
 header{background:linear-gradient(135deg,#102c59,#1765ad);color:white;text-align:center;padding:28px 15px}
 header h1{margin:0;font-size:26px}
 nav{background:white;padding:12px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;position:sticky;top:0;z-index:10;box-shadow:0 3px 12px #0002}
-button{border:0;border-radius:9px;padding:10px 15px;background:#1765ad;color:white;font-family:inherit;font-size:14px;cursor:pointer}
+button{border:0;border-radius:9px;padding:10px 15px;background:#1765ad;color:white;font-family:inherit;font-size:14px;cursor:pointer;margin:3px}
 button:hover{background:#10477e}
 main{width:min(1100px,94%);margin:25px auto}
 .page{display:none}
@@ -64,13 +63,11 @@ nav button{padding:8px 10px;font-size:12px}
 
 <main>
 
-<!-- صفحه اصلی -->
 <section id="homePage" class="page active">
 <div class="welcome">
 <h2>به آموزشگاه آنلاین زبان آلمانی خوش آمدید</h2>
 <p>یادگیری زبان آلمانی با درس، ویدیو، تمرین و آزمون</p>
 </div>
-
 <div class="home-grid">
 <div class="home-card" onclick="showPage('lessonsPage')">
 <div class="symbol">📚</div><h3>درس‌های آموزشی</h3><p>سطح A1، A2 و B1</p>
@@ -93,72 +90,64 @@ nav button{padding:8px 10px;font-size:12px}
 </div>
 </section>
 
-<!-- انتخاب سطح -->
 <section id="lessonsPage" class="page">
 <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
 <h2>📚 انتخاب سطح آموزشی</h2>
 <div class="level-grid">
 <div class="home-card" onclick="showPage('lessonA1Page')">
-<div class="symbol">🟢</div><h3>سطح A1</h3><p>مبتدی</p>
+<div class="symbol">🟢</div><h3>سطح A1</h3><p>مبتدی – ۱۹ درس</p>
 </div>
 <div class="home-card" onclick="showPage('lessonA2Page')">
-<div class="symbol">🔵</div><h3>سطح A2</h3><p>پایه</p>
+<div class="symbol">🔵</div><h3>سطح A2</h3><p>پایه – ۲۰ درس</p>
 </div>
 <div class="home-card" onclick="showPage('lessonB1Page')">
-<div class="symbol">🟣</div><h3>سطح B1</h3><p>متوسط</p>
+<div class="symbol">🟣</div><h3>سطح B1</h3><p>متوسط – ۲۰ درس</p>
 </div>
 </div>
 </section>
 
-<!-- سطح A1 -->
 <section id="lessonA1Page" class="page">
 <button class="back-button" onclick="showPage('lessonsPage')">بازگشت به سطح‌ها</button>
 <div class="level-card">
 <h2>🟢 سطح A1 – آموزش زبان آلمانی</h2>
-<p>۱۹ موضوع آموزشی همراه با لغات، مثال، تلفظ و تمرین.</p>
-
+<p>۱۹ درس همراه با لغات، مثال، ترجمه، تلفظ و تمرین.</p>
 <h3>🎬 فیلم آموزشی کامل A1 – DW Nicos Weg</h3>
 <div class="video-box">
-<iframe src="https://www.youtube-nocookie.com/embed/4-eDoThe6qo"
-title="DW Nicos Weg A1" loading="lazy" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/4-eDoThe6qo" title="DW Nicos Weg A1" loading="lazy" allowfullscreen></iframe>
 </div>
-<p class="note">فیلم کامل دوره A1. برای پخش به اینترنت نیاز دارید.</p>
-
+<p class="note">برای پخش فیلم به اینترنت نیاز دارید.</p>
 <div id="a1LessonsList"></div>
 </div>
 </section>
 
-<!-- سطح A2 -->
 <section id="lessonA2Page" class="page">
 <button class="back-button" onclick="showPage('lessonsPage')">بازگشت به سطح‌ها</button>
 <div class="level-card">
 <h2>🔵 سطح A2 – آموزش زبان آلمانی</h2>
-<p>موضوعات آموزشی سطح A2</p>
+<p>۲۰ درس آموزشی همراه با لغات، مثال، ترجمه، تلفظ و تمرین.</p>
 <h3>🎬 فیلم آموزشی کامل A2 – DW Nicos Weg</h3>
 <div class="video-box">
-<iframe src="https://www.youtube-nocookie.com/embed/Lg5P2w_Ro1c"
-title="DW Nicos Weg A2" loading="lazy" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/Lg5P2w_Ro1c" title="DW Nicos Weg A2" loading="lazy" allowfullscreen></iframe>
 </div>
+<p class="note">برای پخش فیلم به اینترنت نیاز دارید.</p>
 <div id="a2LessonsList"></div>
 </div>
 </section>
 
-<!-- سطح B1 -->
 <section id="lessonB1Page" class="page">
 <button class="back-button" onclick="showPage('lessonsPage')">بازگشت به سطح‌ها</button>
 <div class="level-card">
 <h2>🟣 سطح B1 – آموزش زبان آلمانی</h2>
-<p>موضوعات آموزشی سطح B1</p>
+<p>۲۰ درس آموزشی همراه با لغات، مثال، ترجمه، تلفظ و تمرین.</p>
 <h3>🎬 فیلم آموزشی کامل B1 – DW Nicos Weg</h3>
 <div class="video-box">
-<iframe src="https://www.youtube-nocookie.com/embed/LkufozluseI"
-title="DW Nicos Weg B1" loading="lazy" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/LkufozluseI" title="DW Nicos Weg B1" loading="lazy" allowfullscreen></iframe>
 </div>
+<p class="note">برای پخش فیلم به اینترنت نیاز دارید.</p>
 <div id="b1LessonsList"></div>
 </div>
 </section>
 
-<!-- فرهنگ لغات -->
 <section id="dictionaryPage" class="page">
 <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
 <div class="panel">
@@ -170,7 +159,6 @@ title="DW Nicos Weg B1" loading="lazy" allowfullscreen></iframe>
 </div>
 </section>
 
-<!-- آزمون‌ها -->
 <section id="testsPage" class="page">
 <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
 <div class="panel">
@@ -188,7 +176,6 @@ title="DW Nicos Weg B1" loading="lazy" allowfullscreen></iframe>
 </div>
 </section>
 
-<!-- ویدیوها -->
 <section id="videosPage" class="page">
 <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
 <div class="panel">
@@ -200,30 +187,25 @@ title="DW Nicos Weg B1" loading="lazy" allowfullscreen></iframe>
 </div>
 </section>
 
-<!-- مکالمه -->
 <section id="conversationPage" class="page">
 <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
 <div class="panel">
 <h2>🗣️ تمرین مکالمه و تلفظ</h2>
-
 <div class="word-card">
 <p class="german">Hallo! Wie geht es dir?</p>
 <p>سلام! حالت چطور است؟</p>
 <button onclick="speakGerman('Hallo! Wie geht es dir?')">🔊 تلفظ</button>
 </div>
-
 <div class="word-card">
 <p class="german">Ich heiße Ahmad.</p>
 <p>نام من احمد است.</p>
 <button onclick="speakGerman('Ich heiße Ahmad.')">🔊 تلفظ</button>
 </div>
-
 <div class="word-card">
 <p class="german">Ich komme aus Afghanistan.</p>
 <p>من از افغانستان هستم.</p>
 <button onclick="speakGerman('Ich komme aus Afghanistan.')">🔊 تلفظ</button>
 </div>
-
 <div class="word-card">
 <p class="german">Danke schön!</p>
 <p>بسیار تشکر!</p>
@@ -232,7 +214,6 @@ title="DW Nicos Weg B1" loading="lazy" allowfullscreen></iframe>
 </div>
 </section>
 
-<!-- گرامر -->
 <section id="grammarPage" class="page">
 <button class="back-button" onclick="showPage('homePage')">بازگشت</button>
 <div class="panel">
@@ -252,7 +233,7 @@ title="DW Nicos Weg B1" loading="lazy" allowfullscreen></iframe>
 <li>die – مؤنث و جمع</li>
 <li>das – خنثی</li>
 </ul>
-<h3>مثال جمله</h3>
+<h3>مثال</h3>
 <p class="german">Ich lerne Deutsch.</p>
 <p>من زبان آلمانی یاد می‌گیرم.</p>
 <button onclick="speakGerman('Ich lerne Deutsch.')">🔊 تلفظ</button>
@@ -264,180 +245,213 @@ title="DW Nicos Weg B1" loading="lazy" allowfullscreen></iframe>
 <footer>
 <p>© KING ASAD – Deutsch Lernen</p>
 <p>آموزش زبان آلمانی برای همه</p>
-</footer>
-
-<script>
-function showPage(pageId) {
-  document.querySelectorAll('.page').forEach(function(page) {
-    page.classList.remove('active');
-  });
-  const selected = document.getElementById(pageId);
-  if (selected) {
-    selected.classList.add('active');
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
+</footer><script>
+function showPage(pageId){
+ document.querySelectorAll('.page').forEach(function(page){
+  page.classList.remove('active');
+ });
+ const selected=document.getElementById(pageId);
+ if(selected){
+  selected.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+ }
 }
 
-function speakGerman(text) {
-  if (!('speechSynthesis' in window)) {
-    alert('مرورگر شما از تلفظ پشتیبانی نمی‌کند.');
-    return;
-  }
-  window.speechSynthesis.cancel();
-  const speech = new SpeechSynthesisUtterance(text);
-  speech.lang = 'de-DE';
-  speech.rate = 0.85;
-  window.speechSynthesis.speak(speech);
+function speakGerman(text){
+ if(!('speechSynthesis' in window)){
+  alert('مرورگر شما از تلفظ پشتیبانی نمی‌کند.');
+  return;
+ }
+ window.speechSynthesis.cancel();
+ const speech=new SpeechSynthesisUtterance(text);
+ speech.lang='de-DE';
+ speech.rate=0.85;
+ window.speechSynthesis.speak(speech);
 }
 
-/* درس‌های A1 */
-const a1Lessons = [
-{title:"سلام و خداحافظی",de:"Hallo und tschüss",words:[["Hallo","سلام"],["Guten Morgen","صبح بخیر"],["Tschüss","خداحافظ"]],sentence:"Hallo! Wie geht es dir?",meaning:"سلام! حالت چطور است؟",question:"معنی Hallo چیست؟",answer:"سلام"},
-{title:"معرفی خود",de:"Sich vorstellen",words:[["Ich","من"],["Name","نام"],["heißen","نام داشتن"]],sentence:"Ich heiße Ahmad.",meaning:"نام من احمد است.",question:"Ich heiße Ahmad یعنی چه؟",answer:"نام من احمد است"},
-{title:"اعداد",de:"Zahlen",words:[["Eins","یک"],["Zwei","دو"],["Drei","سه"],["Vier","چهار"]],sentence:"Ich habe zwei Bücher.",meaning:"من دو کتاب دارم.",question:"معنی Zwei چیست؟",answer:"دو"},
-{title:"غذا و نوشیدنی",de:"Essen und Getränke",words:[["Wasser","آب"],["Brot","نان"],["Milch","شیر"]],sentence:"Ich trinke Wasser.",meaning:"من آب می‌نوشم.",question:"معنی Wasser چیست؟",answer:"آب"},
-{title:"شهرها و ایالت‌ها",de:"Städte und Bundesländer",words:[["Stadt","شهر"],["Land","کشور"],["Deutschland","آلمان"]],sentence:"Ich wohne in Berlin.",meaning:"من در برلین زندگی می‌کنم.",question:"معنی Stadt چیست؟",answer:"شهر"},
-{title:"توصیف اشیا",de:"Dinge beschreiben",words:[["Groß","بزرگ"],["Klein","کوچک"],["Schön","زیبا"]],sentence:"Das Haus ist groß.",meaning:"خانه بزرگ است.",question:"معنی Groß چیست؟",answer:"بزرگ"},
-{title:"وسایل خانه",de:"Möbel",words:[["Tisch","میز"],["Stuhl","صندلی"],["Bett","تخت"]],sentence:"Der Tisch ist neu.",meaning:"میز نو است.",question:"معنی Tisch چیست؟",answer:"میز"},
-{title:"روزهای هفته",de:"Wochentage",words:[["Montag","دوشنبه"],["Dienstag","سه‌شنبه"],["Heute","امروز"]],sentence:"Heute ist Montag.",meaning:"امروز دوشنبه است.",question:"معنی Heute چیست؟",answer:"امروز"},
-{title:"ساعت",de:"Uhrzeiten",words:[["Uhr","ساعت"],["Morgen","صبح"],["Abend","عصر"]],sentence:"Es ist acht Uhr.",meaning:"ساعت هشت است.",question:"معنی Uhr چیست؟",answer:"ساعت"},
-{title:"شغل‌ها",de:"Berufe",words:[["Lehrer","معلم مرد"],["Ärztin","دکتر زن"],["Arbeiter","کارگر"]],sentence:"Ich bin Lehrer.",meaning:"من معلم هستم.",question:"معنی Lehrer چیست؟",answer:"معلم"},
-{title:"آدرس دادن",de:"Wegbeschreibungen",words:[["Links","چپ"],["Rechts","راست"],["Geradeaus","مستقیم"]],sentence:"Gehen Sie geradeaus.",meaning:"مستقیم بروید.",question:"معنی Links چیست؟",answer:"چپ"},
-{title:"اوقات فراغت",de:"Freizeit",words:[["Spielen","بازی کردن"],["Lesen","خواندن"],["Musik","موسیقی"]],sentence:"Ich höre gern Musik.",meaning:"من با علاقه موسیقی گوش می‌کنم.",question:"معنی Musik چیست؟",answer:"موسیقی"},
-{title:"مواد غذایی",de:"Lebensmittel",words:[["Apfel","سیب"],["Käse","پنیر"],["Fleisch","گوشت"]],sentence:"Ich esse einen Apfel.",meaning:"من یک سیب می‌خورم.",question:"معنی Apfel چیست؟",answer:"سیب"},
-{title:"سفر و آب‌وهوا",de:"Reisen und Wetter",words:[["Reisen","سفر کردن"],["Sonne","آفتاب"],["Regen","باران"]],sentence:"Das Wetter ist schön.",meaning:"هوا زیبا است.",question:"معنی Regen چیست؟",answer:"باران"},
-{title:"لباس‌ها",de:"Kleidung",words:[["Hose","پتلون"],["Hemd","پیراهن"],["Schuhe","کفش‌ها"]],sentence:"Meine Schuhe sind neu.",meaning:"کفش‌های من نو هستند.",question:"معنی Schuhe چیست؟",answer:"کفش‌ها"},
-{title:"خانواده",de:"Familie",words:[["Mutter","مادر"],["Vater","پدر"],["Bruder","برادر"]],sentence:"Meine Familie ist groß.",meaning:"خانواده من بزرگ است.",question:"معنی Mutter چیست؟",answer:"مادر"},
-{title:"ورزش",de:"Sport",words:[["Fußball","فوتبال"],["Sport","ورزش"],["Schwimmen","شنا"]],sentence:"Ich spiele Fußball.",meaning:"من فوتبال بازی می‌کنم.",question:"معنی Sport چیست؟",answer:"ورزش"},
-{title:"سلامتی",de:"Gesundheit",words:[["Arzt","دکتر"],["Kopf","سر"],["Schmerzen","درد"]],sentence:"Ich habe Kopfschmerzen.",meaning:"سرم درد می‌کند.",question:"معنی Arzt چیست؟",answer:"دکتر"},
-{title:"شباهت‌ها و تفاوت‌ها",de:"Gemeinsamkeiten und Unterschiede",words:[["Gleich","یکسان"],["Anders","متفاوت"],["Zusammen","باهم"]],sentence:"Wir sind zusammen hier.",meaning:"ما باهم اینجا هستیم.",question:"معنی Anders چیست؟",answer:"متفاوت"}
+/*
+ساختار هر درس:
+عنوان، لغات، جمله آلمانی، ترجمه،
+سؤال تمرین و جواب صحیح
+*/
+const a1Lessons=[
+["سلام و خداحافظی","Hallo und tschüss",[["Hallo","سلام"],["Guten Morgen","صبح بخیر"],["Tschüss","خداحافظ"]],"Hallo! Wie geht es dir?","سلام! حالت چطور است؟","معنی Hallo چیست؟","سلام"],
+["معرفی خود","Sich vorstellen",[["Ich","من"],["Name","نام"],["heißen","نام داشتن"]],"Ich heiße Ahmad.","نام من احمد است.","Ich heiße Ahmad یعنی چه؟","نام من احمد است"],
+["اعداد","Zahlen",[["Eins","یک"],["Zwei","دو"],["Drei","سه"],["Vier","چهار"]],"Ich habe zwei Bücher.","من دو کتاب دارم.","معنی Zwei چیست؟","دو"],
+["غذا و نوشیدنی","Essen und Getränke",[["Wasser","آب"],["Brot","نان"],["Milch","شیر"]],"Ich trinke Wasser.","من آب می‌نوشم.","معنی Wasser چیست؟","آب"],
+["شهرها و کشورها","Städte und Länder",[["Stadt","شهر"],["Land","کشور"],["Deutschland","آلمان"]],"Ich wohne in Berlin.","من در برلین زندگی می‌کنم.","معنی Stadt چیست؟","شهر"],
+["توصیف اشیا","Dinge beschreiben",[["Groß","بزرگ"],["Klein","کوچک"],["Schön","زیبا"]],"Das Haus ist groß.","خانه بزرگ است.","معنی Groß چیست؟","بزرگ"],
+["وسایل خانه","Möbel",[["Tisch","میز"],["Stuhl","صندلی"],["Bett","تخت"]],"Der Tisch ist neu.","میز نو است.","معنی Tisch چیست؟","میز"],
+["روزهای هفته","Wochentage",[["Montag","دوشنبه"],["Dienstag","سه‌شنبه"],["Heute","امروز"]],"Heute ist Montag.","امروز دوشنبه است.","معنی Heute چیست؟","امروز"],
+["ساعت","Uhrzeiten",[["Uhr","ساعت"],["Morgen","صبح"],["Abend","عصر"]],"Es ist acht Uhr.","ساعت هشت است.","معنی Uhr چیست؟","ساعت"],
+["شغل‌ها","Berufe",[["Lehrer","معلم"],["Ärztin","دکتر زن"],["Arbeiter","کارگر"]],"Ich bin Lehrer.","من معلم هستم.","معنی Lehrer چیست؟","معلم"],
+["آدرس دادن","Wegbeschreibungen",[["Links","چپ"],["Rechts","راست"],["Geradeaus","مستقیم"]],"Gehen Sie geradeaus.","مستقیم بروید.","معنی Links چیست؟","چپ"],
+["اوقات فراغت","Freizeit",[["Spielen","بازی کردن"],["Lesen","خواندن"],["Musik","موسیقی"]],"Ich höre gern Musik.","من با علاقه موسیقی گوش می‌کنم.","معنی Musik چیست؟","موسیقی"],
+["مواد غذایی","Lebensmittel",[["Apfel","سیب"],["Käse","پنیر"],["Fleisch","گوشت"]],"Ich esse einen Apfel.","من یک سیب می‌خورم.","معنی Apfel چیست؟","سیب"],
+["سفر و آب‌وهوا","Reisen und Wetter",[["Reisen","سفر کردن"],["Sonne","آفتاب"],["Regen","باران"]],"Das Wetter ist schön.","هوا زیبا است.","معنی Regen چیست؟","باران"],
+["لباس‌ها","Kleidung",[["Hose","پتلون"],["Hemd","پیراهن"],["Schuhe","کفش‌ها"]],"Meine Schuhe sind neu.","کفش‌های من نو هستند.","معنی Schuhe چیست؟","کفش‌ها"],
+["خانواده","Familie",[["Mutter","مادر"],["Vater","پدر"],["Bruder","برادر"]],"Meine Familie ist groß.","خانواده من بزرگ است.","معنی Mutter چیست؟","مادر"],
+["ورزش","Sport",[["Fußball","فوتبال"],["Sport","ورزش"],["Schwimmen","شنا"]],"Ich spiele Fußball.","من فوتبال بازی می‌کنم.","معنی Sport چیست؟","ورزش"],
+["سلامتی","Gesundheit",[["Arzt","دکتر"],["Kopf","سر"],["Schmerzen","درد"]],"Ich habe Kopfschmerzen.","سرم درد می‌کند.","معنی Arzt چیست؟","دکتر"],
+["شباهت و تفاوت","Gemeinsamkeiten und Unterschiede",[["Gleich","یکسان"],["Anders","متفاوت"],["Zusammen","باهم"]],"Wir sind zusammen hier.","ما باهم اینجا هستیم.","معنی Anders چیست؟","متفاوت"]
 ];
 
-function renderA1Lessons() {
-  const container = document.getElementById('a1LessonsList');
-  if (!container) return;
-
-  container.innerHTML = a1Lessons.map(function(lesson,index) {
-    return `
-    <div class="lesson-item">
-      <h3>درس ${index+1}: ${lesson.title}</h3>
-      <p><strong>به آلمانی:</strong> <span class="german">${lesson.de}</span></p>
-      <h4>📖 لغات مهم</h4>
-      <ul>
-      ${lesson.words.map(function(word) {
-        return `<li><span class="german">${word[0]}</span> — ${word[1]}
-        <button onclick="speakGerman('${word[0]}')">🔊</button></li>`;
-      }).join('')}
-      </ul>
-      <h4>💬 مثال</h4>
-      <p class="german">${lesson.sentence}</p>
-      <p>${lesson.meaning}</p>
-      <button onclick="speakGerman('${lesson.sentence}')">🔊 شنیدن تلفظ مثال</button>
-      <hr>
-      <h4>📝 تمرین درس ${index+1}</h4>
-      <p>${lesson.question}</p>
-      <input id="a1answer${index}" type="text" placeholder="پاسخ خود را بنویسید">
-      <button onclick="checkA1Answer(${index})">بررسی پاسخ</button>
-      <p id="a1result${index}" class="result-text"></p>
-    </div>`;
-  }).join('');
-}
-
-function checkA1Answer(index) {
-  const input = document.getElementById('a1answer'+index);
-  const result = document.getElementById('a1result'+index);
-  const userAnswer = input.value.trim().toLowerCase();
-  const correctAnswer = a1Lessons[index].answer.toLowerCase();
-
-  if (!userAnswer) {
-    result.textContent = 'لطفاً پاسخ خود را بنویسید.';
-    result.style.color = '#d97706';
-  } else if (userAnswer === correctAnswer) {
-    result.textContent = 'آفرین! پاسخ شما درست است. 🌟';
-    result.style.color = 'blue';
-  } else {
-    result.textContent = 'پاسخ درست: '+a1Lessons[index].answer;
-    result.style.color = 'red';
-  }
-}
-
-/* موضوعات مقدماتی A2 و B1 */
-const a2Topics = [
-"برنامه روزانه – Tagesablauf",
-"گذشته و خاطرات – Vergangenheit",
-"قرار ملاقات – Termine",
-"سلامتی و دکتر – Gesundheit",
-"سفر و تعطیلات – Reisen und Urlaub",
-"کار و شغل – Arbeit und Beruf",
-"آب‌وهوا – Wetter",
-"حمل‌ونقل – Verkehr",
-"نامه و پیام – Briefe und Nachrichten",
-"تجربه‌های زندگی – Erfahrungen"
+const a2Lessons=[
+["برنامه روزانه","Tagesablauf",[["Aufstehen","از خواب برخاستن"],["Frühstück","صبحانه"],["Arbeiten","کار کردن"]],"Ich stehe jeden Morgen um sieben Uhr auf.","من هر صبح ساعت هفت بیدار می‌شوم.","معنی Frühstück چیست؟","صبحانه"],
+["گذشته و خاطرات","Vergangenheit",[["Gestern","دیروز"],["Damals","در آن زمان"],["Erleben","تجربه کردن"]],"Gestern habe ich meine Freunde besucht.","دیروز دوستانم را ملاقات کردم.","معنی Gestern چیست؟","دیروز"],
+["قرار ملاقات","Termine",[["Termin","قرار ملاقات"],["Verschieben","عقب انداختن"],["Pünktlich","به‌موقع"]],"Ich habe morgen einen Termin.","من فردا قرار ملاقات دارم.","معنی Termin چیست؟","قرار ملاقات"],
+["سلامتی و دکتر","Gesundheit und Arzt",[["Untersuchung","معاینه"],["Fieber","تب"],["Medikament","دارو"]],"Ich muss zum Arzt gehen.","من باید نزد دکتر بروم.","معنی Fieber چیست؟","تب"],
+["سفر و تعطیلات","Reisen und Urlaub",[["Urlaub","تعطیلات"],["Fahrkarte","تکت سفر"],["Gepäck","بار سفر"]],"Wir fahren im Sommer nach Deutschland.","ما در تابستان به آلمان سفر می‌کنیم.","معنی Urlaub چیست؟","تعطیلات"],
+["کار و شغل","Arbeit und Beruf",[["Bewerbung","درخواست کار"],["Kollege","همکار"],["Gehalt","معاش"]],"Ich suche eine neue Arbeit.","من به دنبال کار جدید هستم.","معنی Kollege چیست؟","همکار"],
+["آب‌وهوا","Wetter",[["Wolke","ابر"],["Gewitter","طوفان همراه رعدوبرق"],["Temperatur","درجه حرارت"]],"Heute ist es ziemlich kalt.","امروز هوا نسبتاً سرد است.","معنی Wolke چیست؟","ابر"],
+["حمل‌ونقل","Verkehr",[["Verspätung","تأخیر"],["Bahnhof","ایستگاه قطار"],["Umsteigen","تبدیل وسیله نقلیه"]],"Der Zug hat zehn Minuten Verspätung.","قطار ده دقیقه تأخیر دارد.","معنی Bahnhof چیست؟","ایستگاه قطار"],
+["نامه و پیام","Briefe und Nachrichten",[["Nachricht","پیام"],["Absender","فرستنده"],["Empfänger","گیرنده"]],"Ich schreibe dir eine Nachricht.","من برایت یک پیام می‌نویسم.","معنی Nachricht چیست؟","پیام"],
+["تجربه‌های زندگی","Erfahrungen",[["Erfahrung","تجربه"],["Erinnerung","خاطره"],["Erfolgreich","موفق"]],"Das war eine interessante Erfahrung.","این یک تجربه جالب بود.","معنی Erfahrung چیست؟","تجربه"],
+["خرید و فروش","Einkaufen",[["Angebot","تخفیف و پیشنهاد"],["Quittung","رسید"],["Umtauschen","تعویض کردن"]],"Kann ich diese Jacke umtauschen?","آیا می‌توانم این جاکت را تعویض کنم؟","معنی Quittung چیست؟","رسید"],
+["خانه و اجاره","Wohnen und Mieten",[["Miete","کرایه"],["Vermieter","صاحب‌خانه"],["Wohnung","آپارتمان"]],"Die Wohnung hat drei Zimmer.","آپارتمان سه اتاق دارد.","معنی Miete چیست؟","کرایه"],
+["آشپزی","Kochen",[["Zutat","مواد لازم"],["Schneiden","بریدن"],["Kochen","پختن"]],"Ich koche heute eine Suppe.","من امروز سوپ می‌پزم.","معنی Zutat چیست؟","مواد لازم"],
+["آموزش و مکتب","Schule und Lernen",[["Prüfung","امتحان"],["Hausaufgabe","وظیفه خانه"],["Unterricht","درس"]],"Morgen schreiben wir eine Prüfung.","فردا امتحان می‌دهیم.","معنی Prüfung چیست؟","امتحان"],
+["رسانه و اینترنت","Medien und Internet",[["Webseite","وب‌سایت"],["Nachrichten","اخبار"],["Herunterladen","دانلود کردن"]],"Ich lese die Nachrichten im Internet.","من اخبار را در اینترنت می‌خوانم.","معنی Webseite چیست؟","وب‌سایت"],
+["احساسات","Gefühle",[["Glücklich","خوشحال"],["Enttäuscht","ناامید"],["Aufgeregt","هیجان‌زده"]],"Ich bin heute sehr glücklich.","من امروز بسیار خوشحال هستم.","معنی Glücklich چیست؟","خوشحال"],
+["دعوت و مهمانی","Einladung und Party",[["Einladen","دعوت کردن"],["Feier","جشن"],["Geschenk","تحفه"]],"Ich lade dich zu meiner Party ein.","تو را به مهمانی خود دعوت می‌کنم.","معنی Geschenk چیست؟","تحفه"],
+["محیط زیست","Umwelt",[["Müll","زباله"],["Recycling","بازیافت"],["Umwelt","محیط زیست"]],"Wir müssen die Umwelt schützen.","ما باید از محیط زیست محافظت کنیم.","معنی Umwelt چیست؟","محیط زیست"],
+["مقایسه کردن","Vergleichen",[["Besser","بهتر"],["Schlechter","بدتر"],["Genauso","به همان اندازه"]],"Dieses Auto ist schneller als das andere.","این موتر از موتر دیگر سریع‌تر است.","معنی Besser چیست؟","بهتر"],
+["برنامه‌های آینده","Zukunftspläne",[["Zukunft","آینده"],["Planen","برنامه‌ریزی کردن"],["Vielleicht","شاید"]],"Nächstes Jahr möchte ich studieren.","سال آینده می‌خواهم تحصیل کنم.","معنی Zukunft چیست؟","آینده"]
 ];
 
-const b1Topics = [
-"بیان نظر و عقیده – Meinung äußern",
-"تجربه‌ها و خاطرات – Erlebnisse",
-"تحصیل و آموزش – Bildung",
-"محیط کار – Arbeitswelt",
-"رسانه و تکنولوژی – Medien und Technik",
-"محیط زیست – Umwelt",
-"روابط اجتماعی – Soziale Kontakte",
-"برنامه‌ریزی آینده – Zukunftspläne",
-"مکالمه تلفنی – Telefonieren",
-"نامه رسمی – Formelle Briefe"
-];
+const b1Lessons=[
+["بیان نظر و عقیده","Meinung äußern",[["Meiner Meinung nach","به نظر من"],["Allerdings","با این حال"],["Zustimmen","موافق بودن"]],"Meiner Meinung nach ist Bildung sehr wichtig.","به نظر من آموزش بسیار مهم است.","معنی Meinung چیست؟","نظر"],
+["تجربه‌ها و خاطرات","Erlebnisse",[["Erlebnis","تجربه"],["Unvergesslich","فراموش‌نشدنی"],["Erinnern","به یاد آوردن"]],"Diese Reise war unvergesslich.","این سفر فراموش‌نشدنی بود.","معنی Unvergesslich چیست؟","فراموش‌نشدنی"],
+["تحصیل و آموزش","Bildung",[["Ausbildung","آموزش حرفه‌ای"],["Kenntnisse","دانش"],["Abschluss","مدرک تحصیلی"]],"Eine gute Ausbildung ist wichtig für die Zukunft.","آموزش خوب برای آینده مهم است.","معنی Ausbildung چیست؟","آموزش حرفه‌ای"],
+["محیط کار","Arbeitswelt",[["Arbeitsplatz","محل کار"],["Verantwortung","مسئولیت"],["Bewerbungsgespräch","مصاحبه کاری"]],"Ich trage Verantwortung bei meiner Arbeit.","من در کار خود مسئولیت دارم.","معنی Verantwortung چیست؟","مسئولیت"],
+["رسانه و تکنولوژی","Medien und Technik",[["Technologie","تکنولوژی"],["Datenschutz","حفاظت اطلاعات"],["Entwickeln","توسعه دادن"]],"Die Technologie entwickelt sich sehr schnell.","تکنولوژی بسیار سریع پیشرفت می‌کند.","معنی Datenschutz چیست؟","حفاظت اطلاعات"],
+["محیط زیست","Umwelt",[["Klimawandel","تغییرات اقلیمی"],["Verschmutzung","آلودگی"],["Nachhaltig","پایدار"]],"Wir müssen den Klimawandel bekämpfen.","ما باید با تغییرات اقلیمی مبارزه کنیم.","معنی Klimawandel چیست؟","تغییرات اقلیمی"],
+["روابط اجتماعی","Soziale Kontakte",[["Beziehung","رابطه"],["Vertrauen","اعتماد"],["Missverständnis","سوءتفاهم"]],"Vertrauen ist in einer Freundschaft wichtig.","اعتماد در دوستی مهم است.","معنی Vertrauen چیست؟","اعتماد"],
+["برنامه‌ریزی آینده","Zukunftspläne",[["Ziel","هدف"],["Entscheidung","تصمیم"],["Möglichkeit","امکان"]],"Ich möchte meine Ziele erreichen.","می‌خواهم به اهداف خود برسم.","معنی Ziel چیست؟","هدف"],
+["مکالمه تلفنی","Telefonieren",[["Anrufen","زنگ زدن"],["Besetzt","مصروف"],["Rückruf","تماس دوباره"]],"Ich rufe Sie später zurück.","بعداً دوباره به شما زنگ می‌زنم.","معنی Anrufen چیست؟","زنگ زدن"],
+["نامه رسمی","Formelle Briefe",[["Betreff","موضوع نامه"],["Anhang","ضمیمه"],["Mit freundlichen Grüßen","با احترام"]],"Vielen Dank für Ihre Nachricht.","از پیام شما بسیار تشکر.","معنی Betreff چیست؟","موضوع نامه"],
+["حل مشکلات","Probleme lösen",[["Lösung","راه‌حل"],["Schwierigkeit","مشکل"],["Vorschlagen","پیشنهاد کردن"]],"Wir müssen gemeinsam eine Lösung finden.","ما باید باهم یک راه‌حل پیدا کنیم.","معنی Lösung چیست؟","راه‌حل"],
+["سلامت و سبک زندگی","Gesundheit und Lebensstil",[["Ernährung","تغذیه"],["Bewegung","تحرک"],["Vermeiden","پرهیز کردن"]],"Regelmäßige Bewegung ist gesund.","تحرک منظم برای سلامتی مفید است.","معنی Ernährung چیست؟","تغذیه"],
+["مهاجرت و زندگی","Migration und Leben",[["Einwanderung","مهاجرت به کشور"],["Anpassung","سازگاری"],["Heimat","وطن"]],"Ein neues Leben beginnt oft mit Herausforderungen.","یک زندگی جدید اغلب با چالش‌ها آغاز می‌شود.","معنی Heimat چیست؟","وطن"],
+["فرهنگ و جامعه","Kultur und Gesellschaft",[["Gesellschaft","جامعه"],["Tradition","سنت"],["Veranstaltung","برنامه و رویداد"]],"Jede Kultur hat eigene Traditionen.","هر فرهنگ سنت‌های خودش را دارد.","معنی Tradition چیست؟","سنت"],
+["مصاحبه و گفتگو","Gespräche und Interviews",[["Gespräch","گفتگو"],["Antwort","پاسخ"],["Frage","سؤال"]],"Das Gespräch war sehr interessant.","گفتگو بسیار جالب بود.","معنی Gespräch چیست؟","گفتگو"],
+["آینده شغلی","Berufliche Zukunft",[["Karriere","پیشرفت شغلی"],["Fähigkeit","توانایی"],["Erfahrung","تجربه"]],"Ich möchte meine beruflichen Fähigkeiten verbessern.","می‌خواهم توانایی‌های شغلی خود را بهتر کنم.","معنی Fähigkeit چیست؟","توانایی"],
+["پول و اقتصاد","Geld und Wirtschaft",[["Einkommen","درآمد"],["Ausgaben","مصارف"],["Sparen","پس‌انداز کردن"]],"Ich versuche jeden Monat Geld zu sparen.","تلاش می‌کنم هر ماه پول پس‌انداز کنم.","معنی Sparen چیست؟","پس‌انداز کردن"],
+["آزادی و مسئولیت","Freiheit und Verantwortung",[["Freiheit","آزادی"],["Pflicht","وظیفه"],["Respekt","احترام"]],"Freiheit bedeutet auch Verantwortung.","آزادی همچنان به معنی مسئولیت است.","معنی Freiheit چیست؟","آزادی"],
+["کتاب و مطالعه","Bücher und Lesen",[["Roman","رمان"],["Autor","نویسنده"],["Kapitel","فصل کتاب"]],"Ich lese gern deutsche Bücher.","من با علاقه کتاب‌های آلمانی می‌خوانم.","معنی Autor چیست؟","نویسنده"],
+["بحث و استدلال","Diskussion und Argumente",[["Argument","استدلال"],["Beispiel","مثال"],["Begründen","دلیل آوردن"]],"Ich kann meine Meinung mit Beispielen begründen.","می‌توانم نظر خود را با مثال‌ها توضیح دهم.","معنی Argument چیست؟","استدلال"]
+];function renderLessons(containerId,lessons,level){
+ const container=document.getElementById(containerId);
+ if(!container)return;
 
-function renderTopicList(containerId,topics,level) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-  container.innerHTML = '<h3>فهرست موضوعات سطح '+level+'</h3><ol>'+
-    topics.map(topic=>'<li>'+topic+'</li>').join('')+
-    '</ol><p class="note">این فهرست موضوعات آموزشی است. برای یادگیری، فیلم آموزشی کامل این سطح را نیز تماشا کنید.</p>';
+ container.innerHTML='<h3>📚 فهرست درس‌های '+level+'</h3>'+
+ lessons.map(function(lesson,index){
+  return `
+  <div class="lesson-item">
+   <h3>درس ${index+1}: ${lesson[0]}</h3>
+   <p><strong>به آلمانی:</strong>
+   <span class="german">${lesson[1]}</span></p>
+
+   <h4>📖 لغات مهم</h4>
+   <ul>
+   ${lesson[2].map(function(word){
+    return `<li>
+     <span class="german">${word[0]}</span> — ${word[1]}
+     <button onclick="speakGerman('${word[0]}')">🔊</button>
+    </li>`;
+   }).join('')}
+   </ul>
+
+   <h4>💬 مثال آلمانی</h4>
+   <p class="german">${lesson[3]}</p>
+   <p>${lesson[4]}</p>
+   <button onclick="speakGerman('${lesson[3]}')">🔊 شنیدن تلفظ مثال</button>
+
+   <hr>
+   <h4>📝 تمرین درس ${index+1}</h4>
+   <p>${lesson[5]}</p>
+   <input id="${level}answer${index}" type="text" placeholder="پاسخ خود را بنویسید">
+   <button onclick="checkLessonAnswer('${level}',${index})">بررسی پاسخ</button>
+   <p id="${level}result${index}" class="result-text"></p>
+  </div>`;
+ }).join('');
+}
+
+function checkLessonAnswer(level,index){
+ let lessons=level==='A1'?a1Lessons:level==='A2'?a2Lessons:b1Lessons;
+ let input=document.getElementById(level+'answer'+index);
+ let result=document.getElementById(level+'result'+index);
+
+ let userAnswer=input.value.trim().toLowerCase();
+ let correctAnswer=lessons[index][6].trim().toLowerCase();
+
+ if(!userAnswer){
+  result.textContent='لطفاً پاسخ خود را بنویسید.';
+  result.style.color='#d97706';
+ }else if(userAnswer===correctAnswer){
+  result.textContent='آفرین! پاسخ شما درست است. 🌟';
+  result.style.color='blue';
+ }else{
+  result.textContent='پاسخ درست: '+lessons[index][6];
+  result.style.color='red';
+ }
 }
 
 /* فرهنگ لغات */
-const dictionary = [
-["Hallo","سلام"],["Guten Morgen","صبح بخیر"],["Guten Abend","عصر بخیر"],
-["Danke","تشکر"],["Bitte","لطفاً / خواهش می‌کنم"],["Ja","بلی"],["Nein","نخیر"],
-["Wasser","آب"],["Brot","نان"],["Haus","خانه"],["Familie","خانواده"],
-["Freund","دوست"],["Schule","مکتب"],["Buch","کتاب"],["Arbeit","کار"],
-["Apfel","سیب"],["Mutter","مادر"],["Vater","پدر"],["Bruder","برادر"],
-["Schwester","خواهر"],["Lehrer","معلم"],["Arzt","دکتر"],["Stadt","شهر"],
-["Auto","موتر"],["Hund","سگ"],["Katze","پیشو"],["Liebe","عشق"],
-["Schön","زیبا"],["Groß","بزرگ"],["Klein","کوچک"]
+const dictionary=[
+["Hallo","سلام"],["Guten Morgen","صبح بخیر"],
+["Guten Abend","عصر بخیر"],["Gute Nacht","شب بخیر"],
+["Danke","تشکر"],["Bitte","لطفاً / خواهش می‌کنم"],
+["Ja","بلی"],["Nein","نخیر"],["Wasser","آب"],
+["Brot","نان"],["Haus","خانه"],["Familie","خانواده"],
+["Freund","دوست"],["Schule","مکتب"],["Buch","کتاب"],
+["Arbeit","کار"],["Apfel","سیب"],["Mutter","مادر"],
+["Vater","پدر"],["Bruder","برادر"],["Schwester","خواهر"],
+["Lehrer","معلم"],["Arzt","دکتر"],["Stadt","شهر"],
+["Auto","موتر"],["Hund","سگ"],["Katze","پیشو"],
+["Liebe","عشق"],["Schön","زیبا"],["Groß","بزرگ"],
+["Klein","کوچک"],["Freude","خوشحالی"],["Zeit","زمان"],
+["Geld","پول"],["Wohnung","آپارتمان"],["Essen","غذا"],
+["Trinken","نوشیدن"],["Lernen","یاد گرفتن"],["Arbeiten","کار کردن"],
+["Gesundheit","سلامتی"],["Zukunft","آینده"],
+["Erfahrung","تجربه"],["Verantwortung","مسئولیت"],
+["Umwelt","محیط زیست"],["Freizeit","اوقات فراغت"]
 ];
 
-function searchDictionary() {
-  const input = document.getElementById('dictionaryInput').value.trim().toLowerCase();
-  const result = document.getElementById('dictionaryResult');
+function searchDictionary(){
+ const input=document.getElementById('dictionaryInput').value.trim().toLowerCase();
+ const result=document.getElementById('dictionaryResult');
 
-  if (!input) {
-    result.innerHTML = '<p>لطفاً یک کلمه وارد کنید.</p>';
-    return;
-  }
+ if(!input){
+  result.innerHTML='<p>لطفاً یک کلمه وارد کنید.</p>';
+  return;
+ }
 
-  const found = dictionary.filter(item =>
-    item[0].toLowerCase().includes(input) || item[1].toLowerCase().includes(input)
-  );
+ const found=dictionary.filter(function(item){
+  return item[0].toLowerCase().includes(input)||
+         item[1].toLowerCase().includes(input);
+ });
 
-  if (!found.length) {
-    result.innerHTML = '<p>این کلمه در فرهنگ لغات فعلی پیدا نشد.</p>';
-    return;
-  }
+ if(!found.length){
+  result.innerHTML='<p>این کلمه در فرهنگ لغات فعلی پیدا نشد.</p>';
+  return;
+ }
 
-  result.innerHTML = found.map(item => `
-    <div class="word-card">
-      <h3 class="german">${item[0]}</h3>
-      <p>معنی: ${item[1]}</p>
-      <button onclick="speakGerman('${item[0]}')">🔊 تلفظ</button>
-    </div>`).join('');
+ result.innerHTML=found.map(function(item){
+  return `
+  <div class="word-card">
+   <h3 class="german">${item[0]}</h3>
+   <p>معنی: ${item[1]}</p>
+   <button onclick="speakGerman('${item[0]}')">🔊 تلفظ</button>
+  </div>`;
+ }).join('');
 }
 
-/* اجرای اولیه */
-renderA1Lessons();
-renderTopicList('a2LessonsList',a2Topics,'A2');
-renderTopicList('b1LessonsList',b1Topics,'B1');
+/* نمایش درس‌ها در بخش مربوط به هر سطح */
+renderLessons('a1LessonsList',a1Lessons,'A1');
+renderLessons('a2LessonsList',a2Lessons,'A2');
+renderLessons('b1LessonsList',b1Lessons,'B1');
+
 </script>
 
 <script src="script.js"></script>
