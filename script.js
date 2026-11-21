@@ -534,7 +534,8 @@ function showProgress() {
    درس‌ها، مکالمه و گرامر
 ===================================== */
 
-/* نمایش درس‌ها */
+
+/* نمایش درس‌ها و باز کردن محتوای هر درس */
 function renderLessons() {
     const levels = [
         { id: 'a1LessonsContainer', name: 'A1', total: 19 },
@@ -544,205 +545,74 @@ function renderLessons() {
 
     levels.forEach(function(level) {
         const container = document.getElementById(level.id);
-
         if (!container) return;
 
         container.innerHTML = '';
 
+        const detail = document.createElement('div');
+        detail.id = 'lessonDetail' + level.name;
+        detail.className = 'lesson-detail';
+        detail.style.display = 'none';
+
         for (let i = 1; i <= level.total; i++) {
-            const card = document.createElement('div');
+            const card = document.createElement('button');
+            card.type = 'button';
             card.className = 'lesson-card';
+            card.style.cssText =
+                'display:block;width:100%;padding:18px;margin:10px 0;' +
+                'border:1px solid #d5ddeb;border-radius:12px;' +
+                'background:white;text-align:right;cursor:pointer;';
 
-            const heading = document.createElement('h3');
-            heading.textContent = 'درس ' + i + ' - سطح ' + level.name;
+            card.textContent =
+                '📘 درس ' + i + ' - سطح ' + level.name +
+                ' | مشاهده محتوای درس';
 
-            const description = document.createElement('p');
-            description.textContent =
-                'در این درس، واژگان، جمله‌ها و تمرین‌های زبان آلمانی را یاد می‌گیرید.';
+            card.onclick = function() {
+                detail.style.display = 'block';
+                detail.innerHTML = '';
 
-            const vocabulary = document.createElement('p');
-            vocabulary.textContent =
-                'تمرین: سلام و احوال‌پرسی، معرفی خود و ساخت جمله‌های ساده.';
+                const heading = document.createElement('h2');
+                heading.textContent =
+                    'درس ' + i + ' - سطح ' + level.name;
 
-            card.append(heading, description, vocabulary);
+                const info = document.createElement('p');
+                info.textContent =
+                    'محتوای آموزشی این درس شامل بخش‌های زیر خواهد بود:';
+
+                const sections = [
+                    '🎬 ویدیوی آموزشی',
+                    '🗣️ مکالمه آلمانی همراه با ترجمه فارسی',
+                    '📚 لغات و معنی فارسی',
+                    '📖 گرامر و توضیحات',
+                    '✍️ تمرین و آزمون درس'
+                ];
+
+                detail.append(heading, info);
+
+                sections.forEach(function(section) {
+                    const item = document.createElement('p');
+                    item.textContent = section;
+                    detail.appendChild(item);
+                });
+
+                const close = document.createElement('button');
+                close.type = 'button';
+                close.textContent = 'بستن محتوای درس';
+                close.onclick = function() {
+                    detail.style.display = 'none';
+                };
+
+                detail.appendChild(close);
+
+                detail.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            };
 
             container.appendChild(card);
         }
+
+        container.appendChild(detail);
     });
 }
-
-/* نمایش مکالمه */
-function renderConversation() {
-    const container = document.getElementById('conversationContent');
-
-    if (!container) return;
-
-    const conversations = [
-        ['Hallo!', 'سلام!'],
-        ['Wie heißt du?', 'نامت چیست؟'],
-        ['Ich heiße Ahmad.', 'نام من احمد است.'],
-        ['Wie geht es dir?', 'حالت چطور است؟'],
-        ['Mir geht es gut, danke.', 'من خوب هستم، تشکر.'],
-        ['Woher kommst du?', 'اهل کجا هستی؟'],
-        ['Ich komme aus Afghanistan.', 'من اهل افغانستان هستم.'],
-        ['Wo wohnst du?', 'کجا زندگی می‌کنی؟'],
-        ['Ich wohne in Deutschland.', 'من در آلمان زندگی می‌کنم.'],
-        ['Auf Wiedersehen!', 'خداحافظ!']
-    ];
-
-    container.innerHTML = '';
-
-    conversations.forEach(function(item) {
-        const card = document.createElement('div');
-        card.className = 'conversation-card';
-
-        const german = document.createElement('h3');
-        german.textContent = item[0];
-
-        const persian = document.createElement('p');
-        persian.textContent = item[1];
-
-        const button = document.createElement('button');
-        button.textContent = '🔊 شنیدن تلفظ';
-
-        button.onclick = function() {
-            speakGerman(item[0]);
-        };
-
-        card.append(german, persian, button);
-        container.appendChild(card);
-    });
-}
-
-/* نمایش گرامر */
-function renderGrammar() {
-    const container = document.getElementById('grammarContent');
-
-    if (!container) return;
-
-    const grammar = [
-        {
-            title: 'فعل sein',
-            explanation: 'فعل sein به معنی بودن است.',
-            example: 'Ich bin müde.',
-            translation: 'من خسته هستم.'
-        },
-        {
-            title: 'فعل haben',
-            explanation: 'فعل haben به معنی داشتن است.',
-            example: 'Ich habe ein Buch.',
-            translation: 'من یک کتاب دارم.'
-        },
-        {
-            title: 'حروف تعریف der, die, das',
-            explanation: 'در زبان آلمانی اسم‌ها دارای جنس دستوری هستند.',
-            example: 'der Mann, die Frau, das Kind',
-            translation: 'مرد، زن، کودک'
-        },
-        {
-            title: 'صرف فعل در زمان حال',
-            explanation: 'فعل با توجه به فاعل تغییر می‌کند.',
-            example: 'Ich lerne Deutsch.',
-            translation: 'من آلمانی یاد می‌گیرم.'
-        },
-        {
-            title: 'ساختار جمله',
-            explanation: 'در جمله خبری ساده، فعل معمولاً در جایگاه دوم قرار می‌گیرد.',
-            example: 'Heute lerne ich Deutsch.',
-            translation: 'امروز من آلمانی یاد می‌گیرم.'
-        },
-        {
-            title: 'زمان گذشته Perfekt',
-            explanation: 'برای بیان بسیاری از اتفاقات گذشته در مکالمه استفاده می‌شود.',
-            example: 'Ich habe Deutsch gelernt.',
-            translation: 'من آلمانی یاد گرفتم.'
-        }
-    ];
-
-    container.innerHTML = '';
-
-    grammar.forEach(function(item) {
-        const card = document.createElement('div');
-        card.className = 'grammar-card';
-
-        const heading = document.createElement('h3');
-        heading.textContent = item.title;
-
-        const explanation = document.createElement('p');
-        explanation.textContent = item.explanation;
-
-        const example = document.createElement('p');
-        example.textContent = 'مثال: ' + item.example;
-
-        const translation = document.createElement('p');
-        translation.textContent = 'ترجمه: ' + item.translation;
-
-        const button = document.createElement('button');
-        button.textContent = '🔊 شنیدن مثال';
-
-        button.onclick = function() {
-            speakGerman(item.example);
-        };
-
-        card.append(
-            heading,
-            explanation,
-            example,
-            translation,
-            button
-        );
-
-        container.appendChild(card);
-    });
-}
-
-
-/* نمایش ویدیوهای آموزشی */
-function renderVideos() {
-    const videos = [
-        { id: 'videosA1', level: 'A1' },
-        { id: 'videosA2', level: 'A2' },
-        { id: 'videosB1', level: 'B1' }
-    ];
-
-    videos.forEach(function(item) {
-        const container = document.getElementById(item.id);
-
-        if (!container) return;
-
-        const message = document.createElement('p');
-        message.textContent =
-            'ویدیوهای آموزشی سطح ' + item.level +
-            ' در این بخش قرار می‌گیرند.';
-
-        container.appendChild(message);
-    });
-}
-
-/* نمایش صفحه */
-window.showPage = function(pageId) {
-    document.querySelectorAll('.page').forEach(function(page) {
-        page.classList.remove('active');
-    });
-
-    const page = document.getElementById(pageId);
-
-    if (page) {
-        page.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    if (pageId === 'homePage') {
-        showProgress();
-    }
-};
-
-/* اجرای بخش‌های سایت هنگام بارگذاری */
-document.addEventListener('DOMContentLoaded', function() {
-    renderLessons();
-    renderConversation();
-    renderGrammar();
-    renderVideos();
-    showProgress();
-    showPage('homePage');
-});
