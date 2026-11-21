@@ -14,8 +14,8 @@ const translations = {
   }
 };
 
+// تغییر زبان سایت
 document.addEventListener("DOMContentLoaded", function () {
-
   const languageSelect = document.getElementById("language");
   const welcome = document.getElementById("welcome");
 
@@ -38,7 +38,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   changeLanguage("fa");
 
-  // Welcome message
   console.log("KING ASAD German Learning is ready!");
-
 });
+
+// تلفظ کلمات آلمانی
+window.speakGerman = function (text) {
+  if (!("speechSynthesis" in window)) {
+    alert("مرورگر شما از قابلیت تلفظ پشتیبانی نمی‌کند.");
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const speech = new SpeechSynthesisUtterance(text);
+  speech.lang = "de-DE";
+  speech.rate = 0.85;
+  speech.pitch = 1;
+
+  window.speechSynthesis.speak(speech);
+};
