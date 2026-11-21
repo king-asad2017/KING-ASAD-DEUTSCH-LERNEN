@@ -1873,6 +1873,7 @@ console.log(
     'KING ASAD: کتابخانه ویدیوها آماده شد.',
     KING_ASAD.getAllVideos()
 );
+
 /* =========================================
    KING ASAD
    بخش سیزدهم: نمایش و پخش ویدیوها
@@ -1885,9 +1886,60 @@ KING_ASAD.createVideoCard = function (level, video) {
     card.className = 'king-video-card';
 
     const title = document.createElement('h3');
-    
+    title.textContent = video.title || ('آموزش زبان آلمانی ' + level);
+    card.appendChild(title);
+
+    // استخراج شناسه ویدیو
+    let videoId = video.id || '';
+
+    if (!videoId && video.url) {
+        const match = video.url.match(
+            /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&?\/]+)/
+        );
+
+        if (match) {
+            videoId = match[1];
+        }
+    }
+
+    // نمایش و پخش ویدیوی یوتیوب
+    if (videoId) {
+        const iframe = document.createElement('iframe');
+
+        iframe.src = 'https://www.youtube.com/embed/' + videoId;
+        iframe.title = title.textContent;
+        iframe.allow =
+            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        iframe.loading = 'lazy';
+
+        iframe.style.width = '100%';
+        iframe.style.aspectRatio = '16 / 9';
+        iframe.style.border = '0';
+        iframe.style.borderRadius = '12px';
+
+        card.appendChild(iframe);
+    }
+
+    // لینک بازکردن منبع آموزشی
+    if (video.url) {
+        const link = document.createElement('a');
+
+        link.href = video.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'بازکردن منبع آموزشی';
+
+        card.appendChild(link);
+    }
+
+    return card;
+};
+
+
 // نمایش همه ویدیوهای پنج سطح
 KING_ASAD.renderAllVideos = function (container) {
+
     const target = typeof container === 'string'
         ? document.querySelector(container)
         : container;
@@ -1899,8 +1951,14 @@ KING_ASAD.renderAllVideos = function (container) {
     target.replaceChildren();
 
     KING_ASAD.LEVELS.forEach(level => {
+
         const section = document.createElement('section');
         section.className = 'king-video-section';
+
+        const heading = document.createElement('h2');
+        heading.textContent = 'ویدیوهای سطح ' + level;
+
+        section.appendChild(heading);
 
         KING_ASAD.renderLevelVideos(level, section);
 
@@ -1910,19 +1968,6 @@ KING_ASAD.renderAllVideos = function (container) {
     return true;
 };
 
-
-    }
-
-    const link = document.createElement('a');
-
-    link.href = video.url;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.textContent = 'بازکردن منبع آموزشی';
-
-    card.appendChild(link);
-
-    return card;
 };
 
 
