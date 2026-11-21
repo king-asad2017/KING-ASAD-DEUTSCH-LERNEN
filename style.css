@@ -19,6 +19,81 @@ header {
   padding: 30px 15px;
 }
 
+
+/* رنگ پاسخ درست */
+.question button.correct {
+  background: #0875d1 !important;
+  color: white !important;
+  border: 3px solid #004b91 !important;
+}
+
+/* رنگ پاسخ اشتباه */
+.question button.wrong {
+  background: #e00000 !important;
+  color: white !important;
+  border: 3px solid #990000 !important;
+}
+
+/* صفحه جشن برنده */
+#celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.celebration-message {
+  position: relative;
+  z-index: 2;
+  background: white;
+  color: #17365d;
+  padding: 30px 20px;
+  border-radius: 22px;
+  text-align: center;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 0 30px gold;
+}
+
+.celebration-message h2 {
+  color: #0875d1;
+}
+
+.trophy {
+  font-size: 75px;
+  animation: winner 1s infinite alternate;
+}
+
+.flowers {
+  font-size: 30px;
+  margin: 20px 0;
+}
+
+@keyframes winner {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
+}
+
+/* گل‌پاشی و کنفتی */
+.confetti {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 15px;
+  border-radius: 3px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(900deg);
+  }
+}
+
 header h1 {
   font-size: 34px;
   margin: 5px;
