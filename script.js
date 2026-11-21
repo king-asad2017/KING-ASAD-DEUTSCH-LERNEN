@@ -745,3 +745,6 @@ document.addEventListener('DOMContentLoaded', function() {
     showProgress();
     showPage('homePage');
 });
+<script src="script.js"></script>
+</body>
+</html>
