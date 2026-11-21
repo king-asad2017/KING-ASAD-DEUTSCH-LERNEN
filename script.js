@@ -14,8 +14,9 @@ const translations = {
   }
 };
 
-// تغییر زبان سایت
 document.addEventListener("DOMContentLoaded", function () {
+
+  // انتخاب زبان
   const languageSelect = document.getElementById("language");
   const welcome = document.getElementById("welcome");
 
@@ -38,13 +39,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   changeLanguage("fa");
 
-  console.log("KING ASAD German Learning is ready!");
+  console.log("KING ASAD is ready!");
 });
 
-// تلفظ کلمات آلمانی
+// تلفظ آلمانی
 window.speakGerman = function (text) {
   if (!("speechSynthesis" in window)) {
-    alert("مرورگر شما از قابلیت تلفظ پشتیبانی نمی‌کند.");
+    alert("مرورگر شما از تلفظ پشتیبانی نمی‌کند.");
     return;
   }
 
@@ -56,4 +57,61 @@ window.speakGerman = function (text) {
   speech.pitch = 1;
 
   window.speechSynthesis.speak(speech);
+};
+
+// سیستم آزمون و امتیازدهی
+const quizAnswers = [null, null, null, null, null];
+const correctAnswers = [true, true, false, true, true];
+
+window.answerQuiz = function (question, answer) {
+
+  if (quizAnswers[question] !== null) {
+    alert("شما قبلاً به این سؤال پاسخ داده‌اید!");
+    return;
+  }
+
+  quizAnswers[question] = answer;
+
+  let score = 0;
+  let completed = 0;
+
+  quizAnswers.forEach(function (value, index) {
+    if (value !== null) {
+      completed++;
+
+      if (value === correctAnswers[index]) {
+        score += 10;
+      }
+    }
+  });
+
+  const result = document.getElementById("quizResult");
+  const message = document.getElementById("quizMessage");
+
+  result.textContent = "امتیاز شما: " + score + " از 50";
+
+  if (answer === correctAnswers[question]) {
+    message.textContent = "آفرین! پاسخ شما درست است. 🌟";
+  } else {
+    message.textContent = "پاسخ شما نادرست است. دوباره تلاش کنید!";
+  }
+
+  if (completed === 5) {
+    message.textContent =
+      "آزمون تمام شد! امتیاز نهایی شما: " + score + " از 50";
+  }
+};
+
+// شروع دوباره آزمون
+window.resetQuiz = function () {
+
+  for (let i = 0; i < quizAnswers.length; i++) {
+    quizAnswers[i] = null;
+  }
+
+  document.getElementById("quizResult").textContent =
+    "امتیاز شما: ۰ از ۵۰";
+
+  document.getElementById("quizMessage").textContent =
+    "آزمون را شروع کنید.";
 };
