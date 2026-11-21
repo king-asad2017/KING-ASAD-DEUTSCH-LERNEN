@@ -1885,37 +1885,31 @@ KING_ASAD.createVideoCard = function (level, video) {
     card.className = 'king-video-card';
 
     const title = document.createElement('h3');
-    title.textContent = video.title;
+    
+// نمایش همه ویدیوهای پنج سطح
+KING_ASAD.renderAllVideos = function (container) {
+    const target = typeof container === 'string'
+        ? document.querySelector(container)
+        : container;
 
-    const levelName = document.createElement('p');
-    levelName.textContent =
-        KING_ASAD.getLevelName(level);
+    if (!target) {
+        return false;
+    }
 
-    const provider = document.createElement('p');
-    provider.textContent = video.provider;
+    target.replaceChildren();
 
-    card.append(title, levelName, provider);
+    KING_ASAD.LEVELS.forEach(level => {
+        const section = document.createElement('section');
+        section.className = 'king-video-section';
 
-    if (video.videoId) {
+        KING_ASAD.renderLevelVideos(level, section);
 
-        const iframe = document.createElement('iframe');
+        target.appendChild(section);
+    });
 
-        iframe.src = KING_ASAD.getVideoEmbedUrl(video);
-        iframe.title = video.title;
-        iframe.loading = 'lazy';
-        iframe.allow =
-            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-        iframe.allowFullscreen = true;
+    return true;
+};
 
-        card.appendChild(iframe);
-
-    } else {
-
-        const message = document.createElement('p');
-        message.textContent =
-            'برای مشاهده منابع آموزشی این سطح، از لینک رسمی استفاده کنید.';
-
-        card.appendChild(message);
 
     }
 
