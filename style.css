@@ -1,88 +1,176 @@
 
+/* =====================================
+   KING ASAD INTERNATIONAL LANGUAGE CENTER
+   Professional Education Website
+===================================== */
+
 * {
   box-sizing: border-box;
 }
 
 :root {
-  --navy: #102b59;
+  --navy: #10244a;
   --blue: #1764a5;
-  --light-blue: #eaf3ff;
+  --blue-light: #eaf4ff;
   --gold: #e8b84b;
   --white: #ffffff;
   --text: #172554;
+  --muted: #64748b;
   --border: #d8e5f5;
+  --green: #15966b;
+  --red: #dc3545;
+  --shadow: 0 8px 28px rgba(16, 43, 89, 0.09);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Tahoma, Arial, sans-serif;
   background: linear-gradient(135deg, #edf4fc, #f8fbff);
   color: var(--text);
   direction: rtl;
   line-height: 1.9;
 }
 
+/* HEADER */
+
 header {
-  background: linear-gradient(135deg, #102044, #1764a5);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0b1836, #123d70, #1764a5);
   color: white;
   text-align: center;
-  padding: 40px 15px;
+  padding: 48px 15px;
   border-bottom: 5px solid var(--gold);
-  box-shadow: 0 5px 20px #102b5930;
+  box-shadow: 0 7px 25px #102b5930;
+}
+
+header::before,
+header::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+header::before {
+  width: 230px;
+  height: 230px;
+  top: -120px;
+  right: -60px;
+}
+
+header::after {
+  width: 180px;
+  height: 180px;
+  bottom: -110px;
+  left: -40px;
 }
 
 header h1 {
-  font-size: 36px;
+  font-size: 38px;
   margin: 5px;
   letter-spacing: 1px;
+  color: white;
+  position: relative;
 }
 
 header h2 {
-  margin: 5px;
-  color: #e5efff;
+  margin: 8px;
+  color: #ffe6a5;
+  position: relative;
 }
 
 header p {
   color: #e5efff;
+  position: relative;
 }
 
-select {
-  padding: 12px 18px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  margin-top: 10px;
-  background: white;
-  font-size: 15px;
+/* NAVIGATION */
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  padding: 14px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 15px rgba(16,43,89,.06);
 }
+
+nav a,
+nav button {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--navy);
+  background: #f1f6fd;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 9px 15px;
+  font-weight: bold;
+  font-size: 14px;
+  transition: .25s;
+}
+
+nav a:hover,
+nav button:hover {
+  background: var(--blue);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* MAIN */
 
 main {
   width: 94%;
-  max-width: 1100px;
+  max-width: 1150px;
   margin: 30px auto;
 }
 
+/* SECTIONS */
+
 section {
   background: white;
-  padding: 24px;
+  padding: 25px;
   margin: 24px 0;
   border-radius: 20px;
   border: 1px solid var(--border);
-  box-shadow: 0 7px 22px rgba(16, 43, 89, 0.07);
-  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: var(--shadow);
+  transition: box-shadow .25s, transform .25s;
 }
 
 section:hover {
-  box-shadow: 0 10px 28px rgba(16, 43, 89, 0.12);
+  box-shadow: 0 12px 32px rgba(16,43,89,.13);
 }
 
-h2, h3 {
+h2,
+h3 {
   color: var(--blue);
 }
 
 h2 {
   border-right: 5px solid var(--gold);
   padding-right: 12px;
+  margin-top: 8px;
 }
+
+/* LINKS */
+
+a {
+  color: var(--blue);
+}
+
+a:hover {
+  color: var(--navy);
+}
+
+/* BUTTONS */
 
 button {
   background: linear-gradient(135deg, var(--blue), #2585ce);
@@ -95,7 +183,7 @@ button {
   font-size: 15px;
   font-weight: bold;
   box-shadow: 0 4px 10px #1764a530;
-  transition: 0.2s;
+  transition: .2s;
 }
 
 button:hover {
@@ -104,22 +192,77 @@ button:hover {
 }
 
 button:active {
-  transform: scale(0.97);
+  transform: scale(.97);
 }
 
 button:disabled {
   cursor: not-allowed;
-  opacity: 1;
+  opacity: .65;
 }
 
-.question {
+/* INPUTS */
+
+input,
+textarea,
+select {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fbfdff;
+  color: var(--text);
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: .2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px #1764a51c;
+  background: white;
+}
+
+select {
+  margin-top: 10px;
+}
+
+/* EDUCATIONAL CARDS */
+
+.lesson-card,
+.quiz-level,
+.question,
+.progress-area {
   background: #f8fbff;
   border: 1px solid var(--border);
-  border-right: 5px solid var(--blue);
   border-radius: 15px;
   padding: 18px;
+  margin: 16px 0;
+  box-shadow: 0 3px 12px #102b590c;
+}
+
+.lesson-card {
+  border-right: 5px solid var(--blue);
+  transition: .25s;
+}
+
+.lesson-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.lesson-card h3 {
+  color: var(--navy);
+}
+
+/* QUIZ */
+
+.question {
+  border-right: 5px solid var(--blue);
   margin: 20px 0;
-  box-shadow: 0 3px 10px #102b590c;
 }
 
 .question button {
@@ -140,7 +283,7 @@ button:disabled {
 
 #quizResult,
 [id^="result-"] {
-  background: var(--light-blue);
+  background: var(--blue-light);
   padding: 16px;
   border-radius: 14px;
   text-align: center;
@@ -154,25 +297,131 @@ button:disabled {
   font-weight: bold;
 }
 
-.quiz-level {
-  margin-top: 20px;
+/* PROGRESS */
+
+.progress-area {
+  background: linear-gradient(135deg, #f0f7ff, #ffffff);
+  border-right: 5px solid var(--gold);
 }
+
+.progress-area p {
+  color: var(--muted);
+  font-weight: bold;
+}
+
+/* DICTIONARY */
+
+#dictionaryResult {
+  margin-top: 18px;
+}
+
+#dictionaryResult > div {
+  border-right: 5px solid var(--green) !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,.05);
+  transition: .2s;
+}
+
+#dictionaryResult > div:hover {
+  transform: translateY(-2px);
+}
+
+#dictionaryResult strong {
+  color: var(--blue);
+  font-size: 19px;
+}
+
+/* VIDEO */
+
+iframe {
+  max-width: 100%;
+  border-radius: 15px;
+}
+
+/* LANGUAGE CARDS - FOR NEW LANGUAGES */
+
+.language-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.language-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 12px;
+  text-align: center;
+  box-shadow: 0 5px 16px rgba(16,43,89,.07);
+  transition: .25s;
+  cursor: pointer;
+}
+
+.language-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  box-shadow: 0 10px 22px #102b5918;
+}
+
+.language-card .flag {
+  font-size: 35px;
+  display: block;
+}
+
+.language-card h3 {
+  margin: 8px 0;
+  color: var(--navy);
+}
+
+/* EDUCATION FEATURES */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.feature-card {
+  background: white;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 5px 16px rgba(16,43,89,.06);
+  transition: .25s;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+
+.feature-card h3 {
+  color: var(--blue);
+}
+
+/* FOOTER */
 
 footer {
   background: linear-gradient(135deg, #102044, #1764a5);
   color: white;
   text-align: center;
-  padding: 25px;
-  margin-top: 40px;
+  padding: 30px 15px;
+  margin-top: 45px;
   border-top: 4px solid var(--gold);
 }
 
-/* صفحه جشن موفقیت */
+footer p {
+  color: #e5efff;
+}
+
+/* CELEBRATION */
+
 #celebration {
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0,0,0,.85);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -226,14 +475,19 @@ footer {
   }
 }
 
-/* موبایل */
+/* MOBILE */
+
 @media (max-width: 600px) {
   header {
-    padding: 28px 12px;
+    padding: 30px 12px;
   }
 
   header h1 {
     font-size: 27px;
+  }
+
+  header h2 {
+    font-size: 19px;
   }
 
   main {
@@ -247,6 +501,17 @@ footer {
     border-radius: 16px;
   }
 
+  nav {
+    gap: 5px;
+    padding: 10px 5px;
+  }
+
+  nav a,
+  nav button {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
   button {
     font-size: 14px;
     padding: 11px 15px;
@@ -254,5 +519,9 @@ footer {
 
   .question button {
     min-width: 90px;
+  }
+
+  .language-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
