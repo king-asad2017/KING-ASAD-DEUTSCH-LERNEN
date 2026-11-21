@@ -873,39 +873,26 @@ KING_ASAD.createLessonQuiz = function (level, lessonNumber) {
 
 // بررسی پاسخ‌های آزمون
 
-KING_ASAD.checkLessonStructure = function () {
-    const errors = [];
 
-    KING_ASAD.LEVELS.forEach(level => {
-        const lessons = KING_ASAD.getLessonsByLevel(level);
+/* =========================================
+   KING ASAD
+   بررسی پاسخ‌های آزمون و ساختار درس‌ها
+========================================= */
 
-        if (lessons.length !== KING_ASAD.LESSON_COUNTS[level]) {
-            errors.push('تعداد درس‌های ' + level + ' درست نیست.');
-        }
+// بررسی پاسخ‌های آزمون یک درس
+KING_ASAD.checkLessonQuiz = function (level, lessonNumber, answers) {
+    const questions = KING_ASAD.createLessonQuiz(level, lessonNumber);
 
-        lessons.forEach(lesson => {
-            if (!lesson.title || !lesson.words || !lesson.words.length) {
-                errors.push('اطلاعات درس ' + lesson.id + ' ناقص است.');
-            }
-
-            if (!lesson.grammar || !lesson.dialog || !lesson.dialog.length) {
-                errors.push('محتوای آموزشی درس ' + lesson.id + ' ناقص است.');
-            }
-        });
-    });
-
-    return {
-        valid: errors.length === 0,
-        errors: errors,
-        totalLessons: KING_ASAD.getTotalLessons()
-    };
-
+    if (!Array.isArray(answers) || answers.length !== questions.length) {
+        return {
+            success: false,
+            message: 'لطفاً به تمام سؤال‌ها پاسخ دهید.'
+        };
     }
 
     let score = 0;
 
     const results = questions.map((question, index) => {
-
         const correct = answers[index] === question.correctAnswer;
 
         if (correct) {
@@ -938,24 +925,33 @@ KING_ASAD.checkLessonStructure = function () {
 };
 
 
-// نمایش نتیجه آزمون در کنسول
-KING_ASAD.printQuizResult = function (result) {
+// بررسی صحت ساختار ۱۲۹ درس
+KING_ASAD.checkLessonStructure = function () {
+    const errors = [];
 
-    if (!result || !result.success) {
-        console.log(result ? result.message : 'نتیجه آزمون موجود نیست.');
-        return;
-    }
+    KING_ASAD.LEVELS.forEach(level => {
+        const lessons = KING_ASAD.getLessonsByLevel(level);
 
-    console.log('نتیجه آزمون KING ASAD');
-    console.log('سطح:', result.level);
-    console.log('شماره درس:', result.lessonNumber);
-    console.log('تعداد سؤال‌ها:', result.totalQuestions);
-    console.log('پاسخ درست:', result.correctAnswers);
-    console.log('پاسخ نادرست:', result.wrongAnswers);
-    console.log('درصد موفقیت:', result.percentage + '%');
-    console.log('وضعیت:', result.passed ? 'قبول شد' : 'نیاز به تمرین بیشتر');
-};
+        if (lessons.length !== KING_ASAD.LESSON_COUNTS[level]) {
+            errors.push('تعداد درس‌های ' + level + ' درست نیست.');
+        }
 
+        lessons.forEach(lesson => {
+            if (!lesson.title || !lesson.words || !lesson.words.length) {
+                errors.push('اطلاعات درس ' + lesson.id + ' ناقص است.');
+            }
+
+            if (!lesson.grammar || !lesson.dialog || !lesson.dialog.length) {
+                errors.push('محتوای آموزشی درس ' + lesson.id + ' ناقص است.');
+            }
+        });
+    });
+
+    return {
+        valid: errors.length === 0,
+        errors: errors,
+        totalLessons: KING_ASAD.getTotalLessons()
+    };
 
 console.log('KING ASAD: سیستم آزمون درس‌ها آماده شد.');
 /* =========================================
