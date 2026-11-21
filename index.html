@@ -320,10 +320,19 @@
     <p>آموزش، تمرین و پیشرفت برای همه</p>
     <p>© 2026 KING ASAD – All Rights Reserved</p>
 </footer>
-
-<script src="script.js" defer></script>
 <script>
-window.addEventListener('error', function(e) {
-    alert('خطای سایت: ' + e.message);
-});
+alert("JavaScript در سایت فعال است!");
+
+window.showPage = function(pageId) {
+    document.querySelectorAll(".page").forEach(function(page) {
+        page.classList.remove("active");
+    });
+
+    const page = document.getElementById(pageId);
+
+    if (page) {
+        page.classList.add("active");
+        window.scrollTo(0, 0);
+    }
+};
 </script>
