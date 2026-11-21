@@ -169,22 +169,43 @@ main{padding:8px}
 
 
 <!-- صفحه ویدیوها -->
+<!-- صفحه ویدیوها -->
 <section id="videosPage" class="page">
 
-<h2>🎬 ویدیوهای آموزشی</h2>
-<p>سطح خود را انتخاب کنید:</p>
+    <h2>🎬 ویدیوهای آموزشی زبان آلمانی</h2>
 
-<button class="action" onclick="showVideoLevel('A1')">A1</button>
-<button class="action" onclick="showVideoLevel('A2')">A2</button>
-<button class="action" onclick="showVideoLevel('B1')">B1</button>
-<button class="action" onclick="showVideoLevel('B2')">B2</button>
-<button class="action" onclick="showVideoLevel('C1')">C1</button>
+    <p>سطح آموزشی خود را انتخاب کنید:</p>
 
-<div id="videosA1"></div>
-<div id="videosA2" style="display:none"></div>
-<div id="videosB1" style="display:none"></div>
-<div id="videosB2" style="display:none"></div>
-<div id="videosC1" style="display:none"></div>
+    <div class="level-grid">
+
+        <div class="level-card">
+            <h3>A1</h3>
+            <button type="button" data-video-level="A1">ویدیوهای A1</button>
+        </div>
+
+        <div class="level-card">
+            <h3>A2</h3>
+            <button type="button" data-video-level="A2">ویدیوهای A2</button>
+        </div>
+
+        <div class="level-card">
+            <h3>B1</h3>
+            <button type="button" data-video-level="B1">ویدیوهای B1</button>
+        </div>
+
+        <div class="level-card">
+            <h3>B2</h3>
+            <button type="button" data-video-level="B2">ویدیوهای B2</button>
+        </div>
+
+        <div class="level-card">
+            <h3>C1</h3>
+            <button type="button" data-video-level="C1">ویدیوهای C1</button>
+        </div>
+
+    </div>
+
+    <div id="videoContainer"></div>
 
 </section>
 
