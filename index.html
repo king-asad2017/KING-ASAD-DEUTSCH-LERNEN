@@ -341,80 +341,111 @@ const b1Lessons=[
 ["کتاب و مطالعه","Bücher und Lesen",[["Roman","رمان"],["Autor","نویسنده"],["Kapitel","فصل کتاب"]],"Ich lese gern deutsche Bücher.","من با علاقه کتاب‌های آلمانی می‌خوانم.","معنی Autor چیست؟","نویسنده"],
 ["بحث و استدلال","Diskussion und Argumente",[["Argument","استدلال"],["Beispiel","مثال"],["Begründen","دلیل آوردن"]],"Ich kann meine Meinung mit Beispielen begründen.","می‌توانم نظر خود را با مثال‌ها توضیح دهم.","معنی Argument چیست؟","استدلال"]
 ];
+
+function getCompletedLessons(level) {
+ try {
+  return JSON.parse(localStorage.getItem('completed_' + level)) || [];
+ } catch (e) {
+  return [];
+ }
+}
+
+function saveCompletedLesson(level, index) {
+ let completed = getCompletedLessons(level);
+
+ if (!completed.includes(index)) {
+  completed.push(index);
+  localStorage.setItem('completed_' + level, JSON.stringify(completed));
+ }
+}
+
+function updateProgress(level, total) {
+ const completed = getCompletedLessons(level);
+ const count = completed.length;
+ const percent = Math.round((count / total) * 100);
+
+ const bar = document.getElementById(level + 'ProgressBar');
+ const text = document.getElementById(level + 'ProgressText');
+
+ if (bar) bar.style.width = percent + '%';
+
+ if (text) {
+  text.textContent =
+   count + ' درس از ' + total + ' درس تکمیل شده است (' + percent + '%)';
+ }
+}
+
 function renderLessons(containerId, lessons, level) {
  const container = document.getElementById(containerId);
  if (!container) return;
 
- container.innerHTML =
- '<h3>📚 فهرست درس‌های ' + level + '</h3>' +
- lessons.map(function(lesson, index) {
-  return `
-  <div class="lesson-item" style="border:1px solid #cbdcf2;padding:18px;border-radius:14px;margin:18px 0;background:#fff">
+ container.innerHTML = `
+  <div class="panel">
+   <h3>🏆 پیشرفت شما در سطح ${level}</h3>
+   <div style="height:18px;background:#e2e8f0;border-radius:20px;overflow:hidden">
+    <div id="${level}ProgressBar"
+     style="height:100%;width:0%;background:#1765ad;border-radius:20px;transition:width .4s">
+    </div>
+   </div>
+   <p id="${level}ProgressText"></p>
+  </div>
+  <h3>📚 فهرست درس‌های ${level}</h3>
+ ` + lessons.map(function(lesson, index) {
+  const completed = getCompletedLessons(level).includes(index);
 
+  return `
+  <div class="lesson-item">
    <h3>📘 درس ${index + 1}: ${lesson[0]}</h3>
 
-   <div style="background:#edf5ff;padding:13px;border-radius:10px">
-    <h4>🎯 هدف این درس</h4>
-    <p>
-     در این درس با موضوع «${lesson[0]}» آشنا می‌شوید.
-     لغات زیر را یاد بگیرید، جمله آلمانی را بخوانید
-     و سپس تمرین را انجام دهید.
-    </p>
-   </div>
+   <p><strong>عنوان آلمانی:</strong>
+    <span class="german">${lesson[1]}</span>
+   </p>
+   <button onclick="speakGerman('${lesson[1]}')">🔊 تلفظ عنوان</button>
 
-   <h4>📖 عنوان درس به آلمانی</h4>
-   <p class="german">${lesson[1]}</p>
-   <button onclick="speakGerman('${lesson[1]}')">🔊 شنیدن عنوان</button>
-
-   <hr>
-
-   <h4>📚 لغات مهم درس</h4>
+   <h4>📖 لغات مهم</h4>
    <ul>
    ${lesson[2].map(function(word) {
     return `
-     <li style="margin:12px 0">
-      <span class="german">${word[0]}</span>
-      — ${word[1]}
-      <button onclick="speakGerman('${word[0]}')">🔊 تلفظ</button>
-     </li>
-    `;
+     <li>
+      <span class="german">${word[0]}</span> — ${word[1]}
+      <button onclick="speakGerman('${word[0]}')">🔊</button>
+     </li>`;
    }).join('')}
    </ul>
 
-   <div style="background:#f0f8f2;padding:14px;border-radius:10px">
+   <div class="word-card">
     <h4>💬 جمله کاربردی</h4>
-    <p class="german" style="font-size:19px">${lesson[3]}</p>
-    <p><strong>ترجمه دری:</strong> ${lesson[4]}</p>
-    <button onclick="speakGerman('${lesson[3]}')">🔊 شنیدن تلفظ جمله</button>
+    <p class="german">${lesson[3]}</p>
+    <p><strong>ترجمه:</strong> ${lesson[4]}</p>
+    <button onclick="speakGerman('${lesson[3]}')">🔊 شنیدن جمله</button>
    </div>
 
-   <h4>🧠 نکته آموزشی</h4>
-   <p>
-    ابتدا معنی لغات را یاد بگیرید. سپس جمله آلمانی را چند بار
-    با صدای بلند بخوانید و به تلفظ آن گوش کنید.
-    کوشش کنید با لغات جدید یک جمله دیگر نیز بسازید.
+   <div class="note">
+    <strong>نکته آموزشی:</strong>
+    لغات را یاد بگیرید، جمله را با صدای بلند بخوانید
+    و تلاش کنید با لغات جدید جمله بسازید.
+   </div>
+
+   <h4>✍️ تمرین درس ${index + 1}</h4>
+   <p>${lesson[5]}</p>
+
+   <input id="${level}answer${index}"
+    type="text" placeholder="پاسخ خود را بنویسید">
+
+   <button onclick="checkLessonAnswer('${level}',${index})">
+    بررسی پاسخ
+   </button>
+
+   <p id="${level}result${index}" class="result-text"></p>
+
+   <p id="${level}completed${index}"
+    style="color:green;font-weight:bold">
+    ${completed ? '✅ این درس قبلاً تکمیل شده است.' : ''}
    </p>
-
-   <div style="background:#fff8e7;padding:14px;border-radius:10px">
-    <h4>✍️ تمرین درس ${index + 1}</h4>
-    <p><strong>${lesson[5]}</strong></p>
-
-    <input
-     id="${level}answer${index}"
-     type="text"
-     placeholder="پاسخ خود را اینجا بنویسید"
-     style="width:100%;padding:12px;border:1px solid #ccc;border-radius:8px"
-    >
-
-    <button onclick="checkLessonAnswer('${level}',${index})">
-     بررسی پاسخ
-    </button>
-
-    <p id="${level}result${index}" class="result-text"></p>
-   </div>
-
   </div>`;
  }).join('');
+
+ updateProgress(level, lessons.length);
 }
 
 function checkLessonAnswer(level, index) {
@@ -424,11 +455,10 @@ function checkLessonAnswer(level, index) {
 
  const input = document.getElementById(level + 'answer' + index);
  const result = document.getElementById(level + 'result' + index);
+ const completedText = document.getElementById(level + 'completed' + index);
 
  function normalizeAnswer(value) {
-  return value
-   .trim()
-   .toLowerCase()
+  return value.trim().toLowerCase()
    .replace(/[؟?!.،,؛;:]/g, '')
    .replace(/ي/g, 'ی')
    .replace(/ك/g, 'ک')
@@ -445,17 +475,18 @@ function checkLessonAnswer(level, index) {
  }
 
  if (userAnswer === correctAnswer) {
-  result.textContent = 'آفرین! پاسخ شما کاملاً درست است. 🌟👏';
+  result.textContent = 'آفرین! پاسخ درست است. 🌟👏';
   result.style.color = 'blue';
-  result.style.background = '#e8f3ff';
-  result.style.padding = '10px';
-  result.style.borderRadius = '8px';
+
+  saveCompletedLesson(level, index);
+
+  completedText.textContent = '✅ این درس تکمیل شد.';
+  completedText.style.color = 'green';
+
+  updateProgress(level, lessons.length);
+
  } else {
-  result.textContent =
-   'پاسخ شما درست نیست. پاسخ صحیح: ' + lessons[index][6];
+  result.textContent = 'پاسخ اشتباه است. پاسخ صحیح: ' + lessons[index][6];
   result.style.color = 'red';
-  result.style.background = '#fff0f0';
-  result.style.padding = '10px';
-  result.style.borderRadius = '8px';
  }
 }
