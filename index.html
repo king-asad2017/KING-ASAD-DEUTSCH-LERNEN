@@ -1,159 +1,479 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#142b52">
 <title>KING ASAD – آموزش زبان آلمانی</title>
 <link rel="stylesheet" href="style.css">
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f3f6fc;color:#17233c;line-height:1.8}
-header{background:#142b52;color:white;padding:22px 12px;text-align:center}
-header h1{margin:0;font-size:25px}
-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;background:#203d6b;padding:12px}
+body{
+ margin:0;
+ font-family:Tahoma,Arial,sans-serif;
+ background:#f3f6fc;
+ color:#17233c;
+ line-height:1.8
+}
+header{
+ background:#142b52;
+ color:white;
+ padding:22px 12px;
+ text-align:center
+}
+header h1{margin:0;font-size:27px}
+nav{
+ display:flex;
+ flex-wrap:wrap;
+ justify-content:center;
+ gap:8px;
+ background:#203d6b;
+ padding:12px
+}
 button{font-family:inherit;cursor:pointer}
-nav button,.main-button{border:0;border-radius:9px;padding:10px 15px;background:#e5b94c;color:#14233c;font-weight:bold}
-main{max-width:1000px;margin:20px auto;padding:12px}
-.page{display:none;background:white;padding:20px;border-radius:15px;box-shadow:0 3px 15px #00000012}
+nav button,.main-button{
+ border:0;
+ border-radius:9px;
+ padding:10px 15px;
+ background:#e5b94c;
+ color:#14233c;
+ font-weight:bold
+}
+main{max-width:1050px;margin:20px auto;padding:12px}
+.page{
+ display:none;
+ background:white;
+ padding:20px;
+ border-radius:15px;
+ box-shadow:0 3px 15px #00000012
+}
 .page.active{display:block}
 h2{color:#1e477e}
-.level-grid,.lesson-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-.level-card,.lesson-card,.content-card,.quiz-box,.progress-box,.conversation-card,.grammar-card{background:#f5f8ff;border:1px solid #dce5f3;border-radius:12px;padding:16px;margin:10px 0}
-.level-card button,.lesson-card{width:100%;padding:13px;border:0;border-radius:9px;background:#214b80;color:white;font-size:16px}
-.lesson-card{text-align:right;margin:6px 0}
-.lesson-detail{margin-top:20px;padding:15px;border:2px solid #e5b94c;border-radius:12px;background:#fffdf5}
-.content-card h3{color:#214b80}
-.content-card button,.quiz-box button,.page button.action{background:#214b80;color:white;border:0;border-radius:8px;padding:10px 14px;margin:5px}
-input,select{padding:10px;border:1px solid #bbc9dc;border-radius:8px;font-family:inherit;margin:5px}
-.quiz-question{padding:12px;margin:10px 0;border-bottom:1px solid #ddd}
-.quiz-question label{display:block;padding:5px}
-.progress-bar{height:12px;background:#ddd;border-radius:20px;overflow:hidden}
-.progress-fill{height:100%;background:#25a56a}
-.translation-result{padding:15px;background:#f1f7ff;border-radius:10px;margin-top:12px}
-footer{text-align:center;padding:25px;color:#65748b}
-.small{color:#66758a;font-size:13px}
-@media(max-width:600px){header h1{font-size:20px}nav button{font-size:12px;padding:8px}main{padding:8px}.page{padding:13px}}
+.level-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+ gap:12px
+}
+.level-card{
+ background:#f5f8ff;
+ border:1px solid #dce5f3;
+ border-radius:12px;
+ padding:16px;
+ text-align:center
+}
+.level-card button,.action{
+ border:0;
+ border-radius:9px;
+ padding:11px 14px;
+ background:#214b80;
+ color:white;
+ font-weight:bold;
+ margin:5px
+}
+.level-card button{width:100%}
+input,select{
+ width:auto;
+ max-width:100%;
+ padding:11px;
+ border:1px solid #bbc9dc;
+ border-radius:8px;
+ font-family:inherit;
+ margin:5px
+}
+#dictionaryInput{width:100%}
+#dictionaryResult{
+ margin-top:15px;
+ padding:12px;
+ border-radius:10px;
+ background:#f1f7ff;
+ overflow-wrap:anywhere
+}
+.king-level-section{
+ display:block;
+ width:100%;
+ margin:22px 0;
+ padding:18px;
+ background:#fff;
+ border:2px solid #214b80;
+ border-radius:15px;
+ scroll-margin-top:15px
+}
+.king-level-section>h2{
+ background:#214b80;
+ color:white;
+ padding:12px;
+ border-radius:9px
+}
+.king-level-lessons{
+ display:grid;
+ grid-template-columns:1fr;
+ gap:12px
+}
+.king-level-lessons .king-lesson-card{
+ width:100%;
+ padding:15px;
+ background:#f4f7fc;
+ border:1px solid #cbd8ea;
+ border-radius:11px
+}
+.king-inline-lesson-content{
+ margin-top:12px;
+ padding:14px;
+ background:white;
+ border:1px solid #e5b94c;
+ border-radius:10px
+}
+.king-inline-lesson-content[hidden]{display:none!important}
+.king-lesson-card.is-open{border:2px solid #e5b94c}
+.king-inline-lesson-content section{
+ margin:12px 0;
+ padding:12px;
+ border:1px solid #dce5f3;
+ border-radius:9px
+}
+.video-box{
+ display:none;
+ margin-top:18px;
+ padding:12px;
+ background:#f5f8ff;
+ border-radius:12px
+}
+.video-box.active{display:block}
+.video-box iframe{
+ width:100%;
+ aspect-ratio:16/9;
+ border:0;
+ border-radius:10px
+}
+.quiz-box,.content-card{
+ background:#f5f8ff;
+ border:1px solid #dce5f3;
+ border-radius:12px;
+ padding:16px;
+ margin:10px 0
+}
+footer{
+ text-align:center;
+ padding:25px;
+ color:#65748b
+}
+@media(max-width:600px){
+ header h1{font-size:21px}
+ nav button{font-size:12px;padding:8px}
+ main{padding:8px}
+ .page{padding:13px}
+ .king-level-section{padding:10px}
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<h1>🎓 KING ASAD</h1>
-<p>مرکز آموزش آنلاین زبان آلمانی</p>
-<p>Deutsch lernen – A1 | A2 | B1</p>
+ <h1>🎓 KING ASAD</h1>
+ <p>مرکز آموزش آنلاین زبان آلمانی</p>
+ <p>Deutsch lernen – A1 تا C1</p>
 </header>
 
 <nav>
-<button onclick="showPage('homePage')">خانه</button>
-<button onclick="showPage('lessonsPage')">درس‌ها</button>
-<button onclick="showPage('videosPage')">ویدیوها</button>
-<button onclick="showPage('conversationPage')">مکالمه</button>
-<button onclick="showPage('grammarPage')">گرامر</button>
-<button onclick="showPage('dictionaryPage')">فرهنگ لغات</button>
-<button onclick="showPage('quizPage')">آزمون‌ها</button>
+ <button onclick="showPage('homePage')">خانه</button>
+ <button onclick="showPage('lessonsPage')">درس‌ها</button>
+ <button onclick="showPage('videosPage')">ویدیوها</button>
+ <button onclick="showPage('conversationPage')">مکالمه</button>
+ <button onclick="showPage('grammarPage')">گرامر</button>
+ <button onclick="showPage('dictionaryPage')">فرهنگ لغات</button>
+ <button onclick="showPage('quizPage')">آزمون‌ها</button>
 </nav>
 
 <main>
 
 <section id="homePage" class="page active">
-<h2>به آموزشگاه آنلاین KING ASAD خوش آمدید!</h2>
-<p>در این آموزشگاه زبان آلمانی را از سطح مبتدی تا متوسط یاد بگیرید.</p>
-<div class="level-grid">
-<div class="level-card"><h3>سطح A1</h3><p>آموزش مقدماتی آلمانی</p><button onclick="showPage('lessonsPage')">ورود به درس‌ها</button></div>
-<div class="level-card"><h3>سطح A2</h3><p>آموزش مقدماتی پیشرفته</p><button onclick="showPage('lessonsPage')">ورود به درس‌ها</button></div>
-<div class="level-card"><h3>سطح B1</h3><p>آموزش متوسط آلمانی</p><button onclick="showPage('lessonsPage')">ورود به درس‌ها</button></div>
-</div>
-<h2>پیشرفت آموزشی شما</h2>
-<div id="homeProgress"></div>
+ <h2>به آموزشگاه آنلاین KING ASAD خوش آمدید!</h2>
+ <p>زبان آلمانی را از سطح A1 تا C1 یاد بگیرید.</p>
+
+ <div class="level-grid">
+  <div class="level-card">
+   <h3>سطح A1</h3>
+   <p>۱۹ درس</p>
+   <button onclick="showLevelLessons('A1')">ورود به درس‌ها</button>
+  </div>
+
+  <div class="level-card">
+   <h3>سطح A2</h3>
+   <p>۲۰ درس</p>
+   <button onclick="showLevelLessons('A2')">ورود به درس‌ها</button>
+  </div>
+
+  <div class="level-card">
+   <h3>سطح B1</h3>
+   <p>۳۰ درس</p>
+   <button onclick="showLevelLessons('B1')">ورود به درس‌ها</button>
+  </div>
+
+  <div class="level-card">
+   <h3>سطح B2</h3>
+   <p>۳۰ درس</p>
+   <button onclick="showLevelLessons('B2')">ورود به درس‌ها</button>
+  </div>
+
+  <div class="level-card">
+   <h3>سطح C1</h3>
+   <p>۳۰ درس</p>
+   <button onclick="showLevelLessons('C1')">ورود به درس‌ها</button>
+  </div>
+ </div>
+
+ <h2>پیشرفت آموزشی شما</h2>
+ <div id="homeProgress"></div>
 </section>
+
 
 <section id="lessonsPage" class="page">
-<h2>📚 درس‌های زبان آلمانی</h2>
-<p>سطح مورد نظر را انتخاب کنید:</p>
-<div class="level-grid">
-<div class="level-card"><h3>A1</h3><button onclick="showLevelLessons('A1')">مشاهده درس‌های A1</button></div>
-<div class="level-card"><h3>A2</h3><button onclick="showLevelLessons('A2')">مشاهده درس‌های A2</button></div>
-<div class="level-card"><h3>B1</h3><button onclick="showLevelLessons('B1')">مشاهده درس‌های B1</button></div>
-</div>
-<div id="a1LessonsContainer"></div>
-<div id="a2LessonsContainer" style="display:none"></div>
-<div id="b1LessonsContainer" style="display:none"></div>
+ <h2>📚 درس‌های زبان آلمانی</h2>
+ <p>سطح مورد نظر را انتخاب کنید:</p>
+
+ <div class="level-grid">
+  <div class="level-card">
+   <h3>A1</h3>
+   <button onclick="showLevelLessons('A1')">مشاهده درس‌های A1</button>
+  </div>
+
+  <div class="level-card">
+   <h3>A2</h3>
+   <button onclick="showLevelLessons('A2')">مشاهده درس‌های A2</button>
+  </div>
+
+  <div class="level-card">
+   <h3>B1</h3>
+   <button onclick="showLevelLessons('B1')">مشاهده درس‌های B1</button>
+  </div>
+
+  <div class="level-card">
+   <h3>B2</h3>
+   <button onclick="showLevelLessons('B2')">مشاهده درس‌های B2</button>
+  </div>
+
+  <div class="level-card">
+   <h3>C1</h3>
+   <button onclick="showLevelLessons('C1')">مشاهده درس‌های C1</button>
+  </div>
+ </div>
+
+ <!-- محل نمایش خودکار ۱۲۹ درس توسط script.js -->
+ <div id="lessonCards"></div>
 </section>
+
 
 <section id="videosPage" class="page">
-<h2>🎬 ویدیوهای آموزشی</h2>
-<p>سطح خود را انتخاب کنید:</p>
-<button class="action" onclick="showVideoLevel('A1')">A1</button>
-<button class="action" onclick="showVideoLevel('A2')">A2</button>
-<button class="action" onclick="showVideoLevel('B1')">B1</button>
-<div id="videosA1"></div>
-<div id="videosA2" style="display:none"></div>
-<div id="videosB1" style="display:none"></div>
+ <h2>🎬 ویدیوهای آموزشی</h2>
+ <p>سطح مورد نظر را انتخاب کنید:</p>
+
+ <div class="level-grid">
+  <div class="level-card">
+   <h3>A1</h3>
+   <button onclick="showVideoLevel('A1')">ویدیوهای A1</button>
+  </div>
+  <div class="level-card">
+   <h3>A2</h3>
+   <button onclick="showVideoLevel('A2')">ویدیوهای A2</button>
+  </div>
+  <div class="level-card">
+   <h3>B1</h3>
+   <button onclick="showVideoLevel('B1')">ویدیوهای B1</button>
+  </div>
+  <div class="level-card">
+   <h3>B2</h3>
+   <button onclick="showVideoLevel('B2')">ویدیوهای B2</button>
+  </div>
+  <div class="level-card">
+   <h3>C1</h3>
+   <button onclick="showVideoLevel('C1')">ویدیوهای C1</button>
+  </div>
+ </div>
+
+ <div id="videosA1" class="video-box">
+  <h3>آموزش زبان آلمانی A1</h3>
+  <iframe src="https://www.youtube.com/embed/4-eDoThe6qo"
+   title="Deutsch A1" allowfullscreen loading="lazy"></iframe>
+ </div>
+
+ <div id="videosA2" class="video-box">
+  <h3>آموزش زبان آلمانی A2</h3>
+  <iframe src="https://www.youtube.com/embed/Lg5P2w_Ro1c"
+   title="Deutsch A2" allowfullscreen loading="lazy"></iframe>
+ </div>
+
+ <div id="videosB1" class="video-box">
+  <h3>آموزش زبان آلمانی B1</h3>
+  <iframe src="https://www.youtube.com/embed/LkufozluseI"
+   title="Deutsch B1" allowfullscreen loading="lazy"></iframe>
+ </div>
+
+ <div id="videosB2" class="video-box">
+  <h3>آموزش زبان آلمانی B2</h3>
+  <iframe src="https://www.youtube.com/embed/OOOogcObFig"
+   title="Deutsch B2" allowfullscreen loading="lazy"></iframe>
+ </div>
+
+ <div id="videosC1" class="video-box">
+  <h3>آموزش زبان آلمانی C1</h3>
+  <iframe src="https://www.youtube.com/embed/ULKkrkIJ0h8"
+   title="Deutsch C1" allowfullscreen loading="lazy"></iframe>
+ </div>
 </section>
+
 
 <section id="conversationPage" class="page">
-<h2>🗣️ مکالمه‌های آلمانی</h2>
-<div id="conversationContent"></div>
+ <h2>🗣️ مکالمه‌های آلمانی</h2>
+ <div id="conversationContent"></div>
 </section>
+
 
 <section id="grammarPage" class="page">
-<h2>📖 آموزش گرامر</h2>
-<div id="grammarContent"></div>
+ <h2>📖 آموزش گرامر</h2>
+ <div id="grammarContent"></div>
 </section>
+
 
 <section id="dictionaryPage" class="page">
-<h2>📚 فرهنگ لغات و ترجمه</h2>
-<input id="dictionaryInput" type="text" placeholder="کلمه یا جمله را وارد کنید">
-<p>زبان مبدأ:</p>
-<select id="dictionarySource">
-<option value="fa">فارسی</option>
-<option value="de">آلمانی</option>
-<option value="en">انگلیسی</option>
-</select>
-<p>زبان مقصد:</p>
-<select id="dictionaryTarget">
-<option value="de">آلمانی</option>
-<option value="fa">فارسی</option>
-<option value="en">انگلیسی</option>
-</select>
-<button class="action" onclick="searchDictionary()">ترجمه کن</button>
-<div id="dictionaryResult"></div>
+ <h2>📚 فرهنگ لغات و ترجمه</h2>
+
+ <input
+  id="dictionaryInput"
+  type="text"
+  placeholder="کلمه یا جمله را وارد کنید">
+
+ <p>زبان مبدأ:</p>
+ <select id="dictionarySource">
+  <option value="fa">فارسی</option>
+  <option value="de">آلمانی</option>
+  <option value="en">انگلیسی</option>
+  <option value="tr">ترکی</option>
+  <option value="ar">عربی</option>
+  <option value="ur">اردو</option>
+  <option value="ps">پشتو</option>
+ </select>
+
+ <p>زبان مقصد:</p>
+ <select id="dictionaryTarget">
+  <option value="de">آلمانی</option>
+  <option value="fa">فارسی</option>
+  <option value="en">انگلیسی</option>
+  <option value="tr">ترکی</option>
+  <option value="ar">عربی</option>
+  <option value="ur">اردو</option>
+  <option value="ps">پشتو</option>
+ </select>
+
+ <br>
+ <button class="action" onclick="searchDictionary()">
+  ترجمه کن
+ </button>
+
+ <div id="dictionaryResult"></div>
 </section>
 
+
 <section id="quizPage" class="page">
-<h2>✍️ آزمون‌های آموزشی</h2>
-<p>سطح آزمون را انتخاب کنید:</p>
-<button class="action" onclick="openQuiz('A1')">آزمون A1</button>
-<button class="action" onclick="openQuiz('A2')">آزمون A2</button>
-<button class="action" onclick="openQuiz('B1')">آزمون B1</button>
-<div id="quiz-A1" class="quiz-box" style="display:none"><h3>آزمون A1</h3><div id="questions-A1"></div><div id="result-A1"></div></div>
-<div id="quiz-A2" class="quiz-box" style="display:none"><h3>آزمون A2</h3><div id="questions-A2"></div><div id="result-A2"></div></div>
-<div id="quiz-B1" class="quiz-box" style="display:none"><h3>آزمون B1</h3><div id="questions-B1"></div><div id="result-B1"></div></div>
+ <h2>✍️ آزمون‌های آموزشی</h2>
+ <p>سطح آزمون را انتخاب کنید:</p>
+
+ <button class="action" onclick="openQuiz('A1')">آزمون A1</button>
+ <button class="action" onclick="openQuiz('A2')">آزمون A2</button>
+ <button class="action" onclick="openQuiz('B1')">آزمون B1</button>
+ <button class="action" onclick="openQuiz('B2')">آزمون B2</button>
+ <button class="action" onclick="openQuiz('C1')">آزمون C1</button>
+
+ <div id="quiz-A1" class="quiz-box" style="display:none">
+  <h3>آزمون A1</h3>
+  <div id="questions-A1"></div>
+  <div id="result-A1"></div>
+ </div>
+
+ <div id="quiz-A2" class="quiz-box" style="display:none">
+  <h3>آزمون A2</h3>
+  <div id="questions-A2"></div>
+  <div id="result-A2"></div>
+ </div>
+
+ <div id="quiz-B1" class="quiz-box" style="display:none">
+  <h3>آزمون B1</h3>
+  <div id="questions-B1"></div>
+  <div id="result-B1"></div>
+ </div>
+
+ <div id="quiz-B2" class="quiz-box" style="display:none">
+  <h3>آزمون B2</h3>
+  <div id="questions-B2"></div>
+  <div id="result-B2"></div>
+ </div>
+
+ <div id="quiz-C1" class="quiz-box" style="display:none">
+  <h3>آزمون C1</h3>
+  <div id="questions-C1"></div>
+  <div id="result-C1"></div>
+ </div>
 </section>
 
 </main>
 
 <footer>
-<p>KING ASAD – آموزش زبان آلمانی</p>
-<p>آموزش، تمرین و پیشرفت با هم</p>
+ <p>KING ASAD – آموزش زبان آلمانی</p>
+ <p>© 2026 KING ASAD – All Rights Reserved</p>
 </footer>
 
-<script src="script.js?v=4"></script>
+<!-- فایل اصلی جاوااسکریپت -->
+<script src="script.js?v=5"></script>
+
 <script>
-function showLevelLessons(level){
-['A1','A2','B1'].forEach(function(item){
-var box=document.getElementById(item.toLowerCase()+'LessonsContainer');
-if(box) box.style.display=item===level?'block':'none';
-});
+/* نمایش صفحه‌ها */
+function showPage(pageId) {
+ document.querySelectorAll('.page').forEach(function(page) {
+  page.classList.remove('active');
+ });
+
+ var selectedPage = document.getElementById(pageId);
+
+ if (selectedPage) {
+  selectedPage.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+ }
 }
 
-function showVideoLevel(level){
-['A1','A2','B1'].forEach(function(item){
-var box=document.getElementById('videos'+item);
-if(box) box.style.display=item===level?'block':'none';
-});
+/* رفتن مستقیم به درس همان سطح */
+function showLevelLessons(level) {
+ showPage('lessonsPage');
+
+ setTimeout(function() {
+  var section = document.getElementById('king-level-' + level);
+
+  if (section) {
+   section.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+   });
+  }
+ }, 100);
+}
+
+/* نمایش ویدیوهای هر سطح */
+function showVideoLevel(level) {
+ document.querySelectorAll('.video-box').forEach(function(box) {
+  box.classList.remove('active');
+ });
+
+ var selectedVideo = document.getElementById('videos' + level);
+
+ if (selectedVideo) {
+  selectedVideo.classList.add('active');
+  selectedVideo.scrollIntoView({
+   behavior: 'smooth',
+   block: 'start'
+  });
+ }
 }
 </script>
+
 </body>
 </html>
