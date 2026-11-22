@@ -10,17 +10,14 @@
     --blue: #174b83;
     --teal: #087e91;
     --gold: #e9b949;
-    --gold-soft: #fff8e6;
     --bg: #eef3fa;
     --white: #ffffff;
     --surface: #f7faff;
     --text: #17233c;
     --muted: #5b6d86;
     --border: #d5e1ef;
-    --success: #1f9d73;
-    --radius-lg: 18px;
-    --radius-md: 12px;
-    --shadow: 0 8px 24px rgba(14, 34, 64, 0.08);
+    --radius: 14px;
+    --shadow: 0 6px 20px rgba(14, 34, 64, 0.08);
 }
 
 * {
@@ -29,16 +26,16 @@
     padding: 0;
 }
 
-html, body {
+body {
     direction: rtl;
     font-family: Tahoma, "Vazirmatn", Arial, sans-serif;
-    background-color: var(--bg);
+    background: var(--bg);
     color: var(--text);
     line-height: 1.85;
-    min-height: 100vh;
+    padding-bottom: 30px;
 }
 
-.main-header {
+header {
     background: linear-gradient(135deg, #0b182e, var(--blue), var(--teal));
     color: #ffffff;
     text-align: center;
@@ -46,383 +43,237 @@ html, body {
     border-bottom: 4px solid var(--gold);
 }
 
-.logo {
-    display: inline-block;
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffd66b;
-    letter-spacing: 2px;
-    padding: 4px 16px;
-    border: 1px solid rgba(255, 214, 107, 0.45);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.07);
-    margin-bottom: 8px;
+header h1 {
+    font-size: 25px;
+    margin-bottom: 6px;
 }
 
-.main-header h1 {
-    font-size: 24px;
-    margin-bottom: 4px;
-}
-
-.main-header p {
+header p {
     color: #e4f0ff;
     font-size: 14px;
 }
 
-.main-nav {
-    background: var(--navy);
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 12px 14px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 2px solid rgba(233, 185, 73, 0.45);
-}
-
-.btn {
-    font-family: inherit;
-    cursor: pointer;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 16px;
-    font-size: 14px;
-    font-weight: bold;
-    background: linear-gradient(135deg, var(--blue), var(--teal));
-    color: #ffffff;
-    transition: 0.2s ease;
-    display: inline-block;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.06);
-}
-
-.nav-btn {
-    background: #ffffff;
-    color: var(--navy);
-}
-
-.nav-btn:hover,
-.nav-btn.active-nav {
-    background: var(--gold);
-    color: var(--navy);
-}
-
-.status-bar {
-    max-width: 1140px;
-    margin: 14px auto 0;
+main {
+    max-width: 1050px;
+    margin: 20px auto;
     padding: 0 14px;
 }
 
-.status-box {
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-right: 4px solid var(--teal);
-    border-radius: 10px;
-    padding: 8px 14px;
-    font-size: 13px;
-    color: var(--muted);
+details.section-box {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
 }
 
-main {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 16px 14px 24px;
+details.section-box > summary {
+    list-style: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--blue), var(--teal));
+    color: #ffffff;
+    padding: 15px 18px;
+    font-size: 17px;
+    font-weight: bold;
 }
 
-.page {
+details.section-box > summary::-webkit-details-marker {
     display: none;
 }
 
-.page.active {
-    display: block;
-}
-
-.panel {
-    background: var(--white);
-    color: var(--text);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 22px;
-    margin-bottom: 20px;
-    box-shadow: var(--shadow);
-}
-
-.panel h2 {
-    color: var(--blue);
-    font-size: 22px;
-    margin-bottom: 6px;
+.section-content {
+    padding: 16px;
 }
 
 .desc-box {
     background: var(--surface);
     color: var(--muted);
     border: 1px solid var(--border);
-    border-right: 5px solid var(--gold);
-    border-radius: var(--radius-md);
-    padding: 12px 16px;
-    margin: 10px 0 16px;
+    border-right: 4px solid var(--gold);
+    border-radius: 10px;
+    padding: 11px 14px;
+    margin-bottom: 14px;
     font-size: 14px;
 }
 
-.level-grid {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 12px;
-    margin: 14px 0;
-}
-
-.level-card {
+details.level-box {
     background: var(--surface);
     border: 1.5px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 16px 12px;
-    text-align: center;
-}
-
-.level-card h3 {
-    color: var(--blue);
-    margin-bottom: 4px;
-}
-
-.level-card p {
-    color: var(--muted);
-    font-size: 13px;
-    margin-bottom: 10px;
-}
-
-.level-lessons-box {
-    margin-top: 16px;
-    padding: 16px;
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-md);
-    display: none;
-}
-
-.level-lessons-box.show {
-    display: block;
-}
-
-.lesson-item {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--white);
-    margin-bottom: 10px;
+    border-radius: 12px;
+    margin-bottom: 12px;
     overflow: hidden;
 }
 
-.lesson-btn {
-    width: 100%;
-    text-align: right;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f4f8ff;
+details.level-box > summary {
+    cursor: pointer;
+    background: #eaf2fc;
     color: var(--navy);
-    border-radius: 0;
-    padding: 14px 16px;
+    padding: 13px 16px;
+    font-weight: bold;
+    font-size: 15px;
 }
 
-.lesson-btn.open {
-    background: linear-gradient(135deg, var(--blue), var(--teal));
-    color: #ffffff;
+.level-inner {
+    padding: 14px;
 }
 
-.lesson-body {
-    padding: 16px;
-    border-top: 2px solid var(--gold);
-    background: #fcfdff;
-    display: none;
-}
-
-.lesson-body.show {
-    display: block;
-}
-
-.sub-card,
-.conv-card,
-.gram-card,
-.prog-card,
-.quiz-box {
+details.lesson-box {
     background: var(--white);
     border: 1px solid var(--border);
-    border-right: 4px solid var(--teal);
-    border-radius: var(--radius-md);
-    padding: 15px 16px;
-    margin: 12px 0;
-}
-
-.sub-card h3,
-.conv-card h3,
-.gram-card h3,
-.prog-card h3 {
-    color: var(--blue);
-    margin-bottom: 6px;
-    font-size: 16px;
-}
-
-input, select {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0 12px;
-    border: 1.5px solid var(--border);
     border-radius: 10px;
-    font-family: inherit;
-    font-size: 15px;
-    background: #ffffff;
-    color: var(--text);
+    margin-bottom: 10px;
+    overflow: hidden;
 }
 
-.dict-result {
-    background: var(--gold-soft);
-    border: 1px solid #edd392;
-    border-right: 5px solid var(--gold);
-    border-radius: var(--radius-md);
-    padding: 14px 16px;
-    margin: 12px 0;
+details.lesson-box > summary {
+    cursor: pointer;
+    background: #f5f9ff;
+    color: var(--blue);
+    padding: 11px 14px;
     font-weight: bold;
+    font-size: 14px;
 }
 
-.dict-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
+.lesson-inner {
+    padding: 12px 14px;
+    border-top: 1px solid var(--border);
+}
+
+.word-row {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 10px 14px;
-    margin: 8px 0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 7px 0;
+    font-size: 14px;
 }
 
-.progress-bar {
-    height: 12px;
-    background: #dce6f2;
-    border-radius: 999px;
-    overflow: hidden;
-    margin-top: 8px;
-}
-
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--teal), var(--success));
-}
-
-.main-footer {
+footer {
+    max-width: 1050px;
+    margin: 24px auto 0;
     background: var(--navy);
     color: #ffffff;
     text-align: center;
-    padding: 22px 16px;
-    margin-top: 28px;
-    border-top: 4px solid var(--gold);
-}
-
-@media (max-width: 850px) {
-    .level-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 520px) {
-    .level-grid {
-        grid-template-columns: 1fr;
-    }
-    .panel {
-        padding: 15px;
-    }
+    padding: 18px;
+    border-radius: var(--radius);
+    border-top: 3px solid var(--gold);
 }
 </style>
 </head>
 <body>
 
-<header class="main-header">
-    <div class="logo">KING ASAD</div>
-    <h1>مرکز آموزش آنلاین زبان آلمانی</h1>
+<header>
+    <h1>KING ASAD – آموزش زبان آلمانی</h1>
     <p>Deutsch lernen – A1 | A2 | B1 | B2 | C1</p>
 </header>
 
-<nav class="main-nav" id="mainNav">
-    <button type="button" class="btn nav-btn active-nav" data-page="homePage">خانه</button>
-    <button type="button" class="btn nav-btn" data-page="lessonsPage">درس‌ها</button>
-    <button type="button" class="btn nav-btn" data-page="videosPage">ویدیوها</button>
-    <button type="button" class="btn nav-btn" data-page="conversationPage">مکالمه</button>
-    <button type="button" class="btn nav-btn" data-page="grammarPage">گرامر</button>
-    <button type="button" class="btn nav-btn" data-page="dictionaryPage">فرهنگ لغات</button>
-    <button type="button" class="btn nav-btn" data-page="quizPage">آزمون‌ها</button>
-</nav>
-
-<div class="status-bar">
-    <div class="status-box" id="statusBox">وضعیت: صفحه خانه فعال است. روی هر بخش کلیک کنید.</div>
-</div>
-
-<main id="appMain">
-    <!-- صفحه اصلی -->
-    <section id="homePage" class="page active">
-        <div class="panel">
-            <h2>به آموزشگاه آنلاین KING ASAD خوش آمدید</h2>
-            <div class="desc-box">توضیحات بخش: در این صفحه می‌توانید وارد سطوح مختلف شوید و وضعیت پیشرفت آزمون‌های خود را در یک نگاه ببینید.</div>
-            <div class="level-grid">
-                <div class="level-card"><h3>سطح A1</h3><p>مقدماتی</p><button type="button" class="btn" data-open-level="A1">ورود به A1</button></div>
-                <div class="level-card"><h3>سطح A2</h3><p>پایه پیشرفته</p><button type="button" class="btn" data-open-level="A2">ورود به A2</button></div>
-                <div class="level-card"><h3>سطح B1</h3><p>متوسط</p><button type="button" class="btn" data-open-level="B1">ورود به B1</button></div>
-                <div class="level-card"><h3>سطح B2</h3><p>متوسط رو به بالا</p><button type="button" class="btn" data-open-level="B2">ورود به B2</button></div>
-                <div class="level-card"><h3>سطح C1</h3><p>پیشرفته</p><button type="button" class="btn" data-open-level="C1">ورود به C1</button></div>
-            </div>
-        </div>
-
-        <div class="panel">
-            <h2>پیشرفت آموزشی شما</h2>
-            <div class="desc-box">توضیحات بخش: امتیاز هر آزمون پس از ثبت به‌صورت خودکار ذخیره می‌شود و نوار پیشرفت همان سطح را به‌روز می‌کند.</div>
-            <div id="homeProgress"></div>
-        </div>
-    </section>
-
+<main>
     <!-- بخش درس‌ها -->
-    <section id="lessonsPage" class="page">
-        <div class="panel">
-            <h2>درس‌های زبان آلمانی</h2>
-            <div class="desc-box">توضیحات بخش: ابتدا سطح را انتخاب کنید تا چوکات درس‌های همان سطح باز شود. با کلیک روی هر درس، محتوای آن باز می‌شود و با کلیک روی درس بعدی یا کلیک دوباره، درس باز شده بسته می‌شود.</div>
-            <div class="level-grid">
-                <div class="level-card"><h3>A1</h3><p>۱۹ درس</p><button type="button" class="btn" data-level="A1">درس‌های A1</button></div>
-                <div class="level-card"><h3>A2</h3><p>۲۰ درس</p><button type="button" class="btn" data-level="A2">درس‌های A2</button></div>
-                <div class="level-card"><h3>B1</h3><p>۳۰ درس</p><button type="button" class="btn" data-level="B1">درس‌های B1</button></div>
-                <div class="level-card"><h3>B2</h3><p>۳۰ درس</p><button type="button" class="btn" data-level="B2">درس‌های B2</button></div>
-                <div class="level-card"><h3>C1</h3><p>۳۰ درس</p><button type="button" class="btn" data-level="C1">درس‌های C1</button></div>
-            </div>
+    <details class="section-box" open>
+        <summary>📚 بخش درس‌ها (A1 تا C1)</summary>
+        <div class="section-content">
+            <div class="desc-box">توضیحات بخش: روی هر سطح کلیک کنید تا درس‌های آن باز شود و روی هر درس بزنید تا محتوای آن را ببینید.</div>
 
-            <div id="a1LessonsContainer" class="level-lessons-box"></div>
-            <div id="a2LessonsContainer" class="level-lessons-box"></div>
-            <div id="b1LessonsContainer" class="level-lessons-box"></div>
-            <div id="b2LessonsContainer" class="level-lessons-box"></div>
-            <div id="c1LessonsContainer" class="level-lessons-box"></div>
+            <details class="level-box">
+                <summary>سطح A1 (مقدماتی)</summary>
+                <div class="level-inner">
+                    <div class="desc-box">توضیحات سطح A1: آشنایی با احوال‌پرسی، معرفی خود و واژگان پایه روزمره.</div>
+
+                    <details class="lesson-box">
+                        <summary>درس ۱: سلام و معرفی خود</summary>
+                        <div class="lesson-inner">
+                            <div class="desc-box">توضیحات درس ۱: یادگیری مکالمه کوتاه و فعل‌های پرکاربرد معرفی خود.</div>
+                            <p>🇩🇪 Guten Tag! Ich heiße Asad. Und wie heißt du?</p>
+                            <p>🇦🇫 روز بخیر! نام من اسد است. و نام تو چیست؟</p>
+                            <div class="word-row">heißen = نام داشتن</div>
+                            <div class="word-row">kommen = آمدن</div>
+                            <div class="word-row">wohnen = سکونت داشتن</div>
+                        </div>
+                    </details>
+
+                    <details class="lesson-box">
+                        <summary>درس ۲: کشورها و ملیت‌ها</summary>
+                        <div class="lesson-inner">
+                            <div class="desc-box">توضیحات درس ۲: بیان محل زندگی و کشور مبدأ به زبان آلمانی.</div>
+                            <p>🇩🇪 Ich komme aus Afghanistan und wohne in Deutschland.</p>
+                            <p>🇦🇫 من اهل افغانستان هستم و در آلمان زندگی می‌کنم.</p>
+                            <div class="word-row">das Land = کشور</div>
+                            <div class="word-row">sprechen = صحبت کردن</div>
+                        </div>
+                    </details>
+                </div>
+            </details>
+
+            <details class="level-box">
+                <summary>سطح A2 (پایه پیشرفته)</summary>
+                <div class="level-inner">
+                    <div class="desc-box">توضیحات سطح A2: روتین روزانه، خرید، سفر و مکالمات کاربردی.</div>
+                    <details class="lesson-box">
+                        <summary>درس ۱: روتین روزانه</summary>
+                        <div class="lesson-inner">
+                            <div class="desc-box">توضیحات درس ۱: افعال جداشدنی و بیان کارهای روزانه.</div>
+                            <p>🇩🇪 Ich stehe um sieben Uhr auf und lerne Deutsch.</p>
+                            <p>🇦🇫 من ساعت هفت بیدار می‌شوم و آلمانی می‌خوانم.</p>
+                            <div class="word-row">aufstehen = از خواب برخاستن</div>
+                            <div class="word-row">einkaufen = خرید کردن</div>
+                        </div>
+                    </details>
+                </div>
+            </details>
+
+            <details class="level-box">
+                <summary>سطح B1 (متوسط)</summary>
+                <div class="level-inner">
+                    <div class="desc-box">توضیحات سطح B1: بیان نظر، دلیل آوردن و درک موضوعات اجتماعی و کاری.</div>
+                    <details class="lesson-box">
+                        <summary>درس ۱: بیان نظر و استدلال</summary>
+                        <div class="lesson-inner">
+                            <div class="desc-box">توضیحات درس ۱: ساختارهای بیان دیدگاه در گفت‌وگو.</div>
+                            <p>🇩🇪 Meiner Meinung nach ist regelmäßiges Üben sehr wichtig.</p>
+                            <p>🇦🇫 به نظر من تمرین منظم بسیار مهم است.</p>
+                            <div class="word-row">die Meinung = نظر</div>
+                            <div class="word-row">begründen = دلیل آوردن</div>
+                        </div>
+                    </details>
+                </div>
+            </details>
+
+            <details class="level-box">
+                <summary>سطح B2 و C1 (پیشرفته)</summary>
+                <div class="level-inner">
+                    <div class="desc-box">توضیحات سطوح B2 و C1: تحلیل متون رسمی، استدلال دقیق و زبان تخصصی.</div>
+                    <details class="lesson-box">
+                        <summary>درس ۱: استدلال و تحلیل</summary>
+                        <div class="lesson-inner">
+                            <div class="desc-box">توضیحات درس ۱: ارزیابی پیامدها و ساختارهای رسمی.</div>
+                            <p>🇩🇪 Entscheidend ist, die langfristigen Folgen sorgfältig abzuwägen.</p>
+                            <p>🇦🇫 مهم این است که پیامدهای درازمدت را با دقت بسنجیم.</p>
+                            <div class="word-row">abwägen = سنجیدن</div>
+                            <div class="word-row">die Schlussfolgerung = نتیجه‌گیری</div>
+                        </div>
+                    </details>
+                </div>
+            </details>
         </div>
-    </section>
+    </details>
 
-    <!-- بخش ویدیوها -->
-    <section id="videosPage" class="page">
-        <div class="panel">
-            <h2>ویدیوها و منابع آموزشی</h2>
-            <div class="desc-box">توضیحات بخش: سطح مورد نظر را انتخاب کنید تا منبع آموزشی و ویدیوی همان سطح در همین چوکات نمایش داده شود.</div>
-            <div class="level-grid">
-                <button type="button" class="btn" data-video-level="A1">A1</button>
-                <button type="button" class="btn" data-video-level="A2">A2</button>
-                <button type="button" class="btn" data-video-level="B1">B1</button>
-                <button type="button" class="btn" data-video-level="B2">B2</button>
-                <button type="button" class="btn" data-video-level="C1">C1</button>
-            </div>
-            <div id="videosA1" style="display:none"></div>
-            <div id="videosA2" style="display:none"></div>
-            <div id="videosB1" style="display:none"></div>
-            <div id="videosB2" style="display:none"></div>
-            <div id="videosC1" style="display:none"></div>
+    <!-- بخش فرهنگ لغات -->
+    <details class="section-box">
+        <summary>📖 بخش فرهنگ لغات</summary>
+        <div class="section-content">
+            <div class="desc-box">توضیحات بخش: واژگان پرکاربرد همراه با ترجمه فارسی در چوکات‌های منظم آماده شده‌اند.</div>
+            <div class="word-row">begrüßen = خوشامد گفتن</div>
+            <div class="word-row">die Familie = خانواده</div>
+            <div class="word-row">die Wohnung = آپارتمان</div>
+            <div class="word-row">die Erfahrung = تجربه</div>
+            <div class="word-row">die Nachhaltigkeit = پایداری</div>
         </div>
-    </section>
+    </details>
 
-    <!-- بخش مکالمه -->
-    <section
+    <!-- بخش گرامر -->
+    <details class="section-box">
+        <summary>✍️ بخش گرامر</summary>
+        <div class="section-content">
+            <div class="desc-box">توضیحات بخش: نکات کلیدی قواعد آلمانی به زبان ساده توضیح داده شده‌اند.</div>
+            <div class="word-row">جایگاه فعل: در جمله خبری ساده،
