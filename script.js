@@ -3388,7 +3388,7 @@ KING_ASAD.renderAllLevelSections();
 console.log('KING ASAD: پنج سطح مستقل آماده شدند.');
 
 /* =====================================
-   KING ASAD - اتصال مترجم LibreTranslate
+   KING ASAD - فرهنگ لغت داخلی و مترجم آنلاین
 ===================================== */
 
 const KING_ASAD_TRANSLATOR_URL =
@@ -3404,7 +3404,7 @@ const KING_ASAD_LANGUAGES = {
     ps: 'پشتو'
 };
 
-// اضافه‌کردن زبان‌ها به فهرست انتخاب
+// تنظیم زبان‌های فرهنگ لغت
 (function setupKingAsadTranslator() {
     const source = document.getElementById('dictionarySource');
     const target = document.getElementById('dictionaryTarget');
@@ -3423,7 +3423,7 @@ const KING_ASAD_LANGUAGES = {
     target.value = 'de';
 })();
 
-// ترجمه متن با سرور
+// جست‌وجو در فرهنگ لغت داخلی و مترجم آنلاین
 window.searchDictionary = async function () {
     const input = document.getElementById('dictionaryInput');
     const result = document.getElementById('dictionaryResult');
@@ -3437,7 +3437,7 @@ window.searchDictionary = async function () {
     result.replaceChildren();
 
     if (!text) {
-        result.textContent = 'لطفاً کلمه یا جمله را وارد کنید.';
+        result.textContent = 'لطفاً یک کلمه یا جمله وارد کنید.';
         return;
     }
 
@@ -3446,8 +3446,55 @@ window.searchDictionary = async function () {
         return;
     }
 
+    // مرحله اول: جست‌وجو در فرهنگ لغت داخلی
+    try {
+        if (
+            window.KING_ASAD &&
+            typeof KING_ASAD.searchDictionary === 'function'
+        ) {
+            const matches = KING_ASAD.searchDictionary(text);
+
+            if (Array.isArray(matches) && matches.length > 0) {
+                const heading = document.createElement('h3');
+                heading.textContent = 'نتایج فرهنگ لغت KING ASAD';
+                result.appendChild(heading);
+
+                matches.slice(0, 20).forEach(item => {
+                    const card = document.createElement('div');
+                    card.style.padding = '12px';
+                    card.style.margin = '8px 0';
+                    card.style.border = '1px solid #c9a227';
+                    card.style.borderRadius = '10px';
+
+                    const german = document.createElement('p');
+                    german.textContent =
+                        'آلمانی: ' + (item.german || '');
+
+                    const persian = document.createElement('p');
+                    persian.textContent =
+                        'فارسی: ' + (item.persian || '');
+
+                    card.append(german, persian);
+
+                    if (item.level) {
+                        const level = document.createElement('small');
+                        level.textContent = 'سطح: ' + item.level;
+                        card.appendChild(level);
+                    }
+
+                    result.appendChild(card);
+                });
+
+                return;
+            }
+        }
+    } catch (error) {
+        console.error('خطای فرهنگ لغت داخلی:', error);
+    }
+
+    // مرحله دوم: ترجمه آنلاین در صورت پیدا نشدن کلمه
     const loading = document.createElement('p');
-    loading.textContent = 'در حال ترجمه... لطفاً صبر کنید.';
+    loading.textContent = 'در حال جست‌وجو و ترجمه آنلاین...';
     result.appendChild(loading);
 
     try {
@@ -3480,7 +3527,7 @@ window.searchDictionary = async function () {
         result.replaceChildren();
 
         const heading = document.createElement('h3');
-        heading.textContent = 'نتیجه ترجمه';
+        heading.textContent = 'نتیجه ترجمه آنلاین';
 
         const original = document.createElement('p');
         original.textContent = 'متن اصلی: ' + text;
@@ -3496,12 +3543,13 @@ window.searchDictionary = async function () {
 
         const message = document.createElement('p');
         message.textContent =
-            'ترجمه انجام نشد: ' + error.message +
-            ' لطفاً اتصال سرور و پشتیبانی زبان‌ها را بررسی کنید.';
+            'کلمه در فرهنگ لغت داخلی پیدا نشد و ترجمه آنلاین هم انجام نشد. ' +
+            'لطفاً کمی بعد دوباره تلاش کنید.';
 
         result.appendChild(message);
+        console.error('خطای مترجم آنلاین:', error);
     }
 };
 
-console.log('KING ASAD: مترجم آنلاین متصل شد.');
+console.log('KING ASAD: فرهنگ لغت داخلی و مترجم آنلاین فعال شد.');
 
