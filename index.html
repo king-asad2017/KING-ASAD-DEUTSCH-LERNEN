@@ -559,21 +559,29 @@ function showLevelLessons(level) {
 
  showPage('lessonsPage');
 
+ // بازسازی کارت‌های درس از اطلاعات اصلی
+ if (
+  window.KING_ASAD &&
+  typeof KING_ASAD.renderAllLevelSections === 'function'
+ ) {
+  KING_ASAD.renderAllLevelSections();
+ }
+
+ // رفتن به سطح انتخاب‌شده
  setTimeout(function() {
 
   var section = document.getElementById('king-level-' + level);
 
   if (section) {
    section.scrollIntoView({
-    behavior:'smooth',
-    block:'start'
+    behavior: 'smooth',
+    block: 'start'
    });
+  } else {
+   console.error('سطح پیدا نشد:', level);
   }
 
- },300);
-
-}
-
+ }, 300);
 
 /* نمایش ویدیوهای هر سطح */
 function showVideoLevel(level) {
