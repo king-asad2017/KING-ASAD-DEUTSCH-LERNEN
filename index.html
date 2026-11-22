@@ -2577,7 +2577,32 @@ if ("serviceWorker" in navigator) {
     });
   });
 }
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register(
+      "/KING-ASAD-DEUTSCH-LERNEN/service-worker.js",
+      { scope: "/KING-ASAD-DEUTSCH-LERNEN/" }
+    ).then(() => {
+      console.log("KING ASAD App is ready!");
+    }).catch(error => {
+      console.error("Service Worker Error:", error);
+    });
+  });
+}
 </script>
-
+    <script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register(
+      "/KING-ASAD-DEUTSCH-LERNEN/service-worker.js",
+      { scope: "/KING-ASAD-DEUTSCH-LERNEN/" }
+    ).then(() => {
+      console.log("KING ASAD App is ready!");
+    }).catch(error => {
+      console.error("Service Worker Error:", error);
+    });
+  });
+</script>
 </body>
 </html>
