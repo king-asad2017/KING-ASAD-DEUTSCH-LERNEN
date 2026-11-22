@@ -2733,7 +2733,7 @@ KING_ASAD.renderProgressDashboard = function (container) {
     );
 
     const levelsTitle = document.createElement('h3');
-    levelsTitle.textContent = 'پیشرفت در پنج سطح';
+    levelsTitle.textContent = 'پیشرفت در پنج سطح'; 
 
     target.appendChild(levelsTitle);
 
@@ -2994,9 +2994,9 @@ window.showLevelLessons = function (level) {
     return success;
 };
 
+};
 
-// 3. جست‌وجوی فرهنگ لغات
-window.searchDictionary = function () {
+window.searchDictionary = async function () {
 
     const input = document.querySelector('#dictionaryInput');
     const resultBox = document.querySelector('#dictionaryResult');
@@ -3012,39 +3012,73 @@ window.searchDictionary = function () {
         return false;
     }
 
+    // ابتدا جست‌وجو در فرهنگ لغات ۱۲۹ درس
     const results = KING_ASAD.searchDictionary(query);
 
-    if (!results.length) {
-        resultBox.textContent = 'واژه‌ای پیدا نشد.';
-        return false;
+    if (results.length) {
+
+        results.forEach(item => {
+
+            const entry = document.createElement('div');
+
+            const german = document.createElement('strong');
+            german.textContent = item.german;
+
+            const persian = document.createElement('p');
+            persian.textContent = item.persian;
+
+            const level = document.createElement('small');
+            level.textContent = 'سطح: ' + item.level;
+
+            const speak = document.createElement('button');
+            speak.type = 'button';
+            speak.textContent = 'شنیدن تلفظ';
+
+            speak.addEventListener('click', function () {
+                KING_ASAD.speakGerman(item.german);
+            });
+
+            entry.append(german, persian, level, speak);
+            resultBox.appendChild(entry);
+        });
+
+        return true;
     }
 
-    results.forEach(item => {
+    // اگر واژه در درس‌ها نبود، ترجمه آنلاین
+    resultBox.textContent = 'در حال جست‌وجوی آنلاین...';
+
+    try {
+
+        const translated = await KING_ASAD.translateOnline(
+            query,
+            'auto',
+            'de'
+        );
+
+        resultBox.replaceChildren();
 
         const entry = document.createElement('div');
 
-        const german = document.createElement('strong');
-        german.textContent = item.german;
+        const title = document.createElement('strong');
+        title.textContent = 'ترجمه آنلاین:';
 
-        const persian = document.createElement('p');
-        persian.textContent = item.persian;
+        const translation = document.createElement('p');
+        translation.textContent = translated;
 
-        const level = document.createElement('small');
-        level.textContent = 'سطح: ' + item.level;
-
-        const speak = document.createElement('button');
-        speak.type = 'button';
-        speak.textContent = 'شنیدن تلفظ';
-
-        speak.addEventListener('click', function () {
-            KING_ASAD.speakGerman(item.german);
-        });
-
-        entry.append(german, persian, level, speak);
+        entry.append(title, translation);
         resultBox.appendChild(entry);
-    });
 
-    return true;
+        return true;
+
+    } catch (error) {
+
+        resultBox.textContent =
+            'ترجمه انجام نشد. لطفاً دوباره تلاش کنید.';
+
+        console.error(error);
+        return false;
+    }
 };
 
 
