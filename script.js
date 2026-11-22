@@ -2848,7 +2848,6 @@ KING_ASAD.renderKingAsadLesson = function (lesson) {
         Array.from(container.querySelectorAll('button'))
         .find(button =>
             button.textContent.trim() === 'تکمیل این درس'
-        );
     if (completeButton) {
         completeButton.addEventListener('click', function () {
             KING_ASAD.refreshProgressDashboard();
