@@ -567,7 +567,6 @@ textarea {
     margin: 8px 0;
 }
 
-/* Quiz colors: Red for wrong, Blue for right */
 .quiz-option-label {
     display: flex;
     align-items: center;
@@ -628,7 +627,6 @@ textarea {
     color: var(--row-dark);
 }
 
-/* Welcome Modal */
 .modal-backdrop {
     position: fixed;
     inset: 0;
@@ -655,7 +653,6 @@ textarea {
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
 }
 
-/* Celebration Confetti */
 .confetti-layer {
     position: fixed;
     inset: 0;
@@ -857,7 +854,7 @@ textarea {
             <div class="row-drawer" id="drawer-vocab100k"></div>
         </section>
 
-        <!-- 03: Custom Text Translator (Translate Any Written Text) -->
+        <!-- 03: Custom Text Translator -->
         <section class="row-group" data-color="orange" id="group-translator">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-translator" onclick="toggleMainRow('translator')">
                 <span class="row-square"><span class="row-num">03</span><span class="row-emoji">🌐</span></span>
@@ -889,7 +886,7 @@ textarea {
             <div class="row-drawer" id="drawer-grammar"></div>
         </section>
 
-        <!-- 05: Podcasts (520+ German Sentences with Persian Translation) -->
+        <!-- 05: Podcasts -->
         <section class="row-group" data-color="purple" id="group-podcasts">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-podcasts" onclick="toggleMainRow('podcasts')">
                 <span class="row-square"><span class="row-num">05</span><span class="row-emoji">🎧</span></span>
@@ -905,7 +902,7 @@ textarea {
             <div class="row-drawer" id="drawer-podcasts"></div>
         </section>
 
-        <!-- 06: German Radio with Live Subtitles & Persian Translation -->
+        <!-- 06: German Radio -->
         <section class="row-group" data-color="cyan" id="group-radio">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-radio" onclick="toggleMainRow('radio')">
                 <span class="row-square"><span class="row-num">06</span><span class="row-emoji">📻</span></span>
@@ -937,7 +934,7 @@ textarea {
             <div class="row-drawer" id="drawer-solver"></div>
         </section>
 
-        <!-- 08: Quizzes (Red/Blue choices, Skip, Live Score, Celebration) -->
+        <!-- 08: Quizzes -->
         <section class="row-group" data-color="green" id="group-quiz">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-quiz" onclick="toggleMainRow('quiz')">
                 <span class="row-square"><span class="row-num">08</span><span class="row-emoji">✍️</span></span>
@@ -969,7 +966,7 @@ textarea {
             <div class="row-drawer" id="drawer-multilang"></div>
         </section>
 
-        <!-- 10: Videos & Contact (+4915212898695) -->
+        <!-- 10: Videos & Contact -->
         <section class="row-group" data-color="orange" id="group-contact">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-contact" onclick="toggleMainRow('contact')">
                 <span class="row-square"><span class="row-num">10</span><span class="row-emoji">🎬</span></span>
@@ -993,11 +990,11 @@ textarea {
 </div>
 
 <script>
-/* PWA Setup */
+/* PWA Setup (Single-line SVG safe) */
 (function setupPWA() {
     try {
-        const iconSvg = encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" rx="38" fill="#0b1c48"/><text x="96" y="116" text-anchor="middle" font-size="78" font-family="Arial, sans-serif" font-weight="bold" fill="#facc15">KA</text></svg>`);
-        const iconDataUrl = `data:image/svg+xml;charset=utf-8,${iconSvg}`;
+        const iconSvg = encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" rx="38" fill="#0b1c48"/><text x="96" y="116" text-anchor="middle" font-size="78" font-family="Arial, sans-serif" font-weight="bold" fill="#facc15">KA</text></svg>');
+        const iconDataUrl = 'data:image/svg+xml;charset=utf-8,' + iconSvg;
 
         const appleLink = document.createElement('link');
         appleLink.rel = 'apple-touch-icon';
@@ -1027,20 +1024,7 @@ textarea {
         document.head.appendChild(manifestLink);
 
         if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
-            const swCode = `
-                const CACHE_NAME = 'king-asad-deutsch-v3';
-                self.addEventListener('install', e => {
-                    self.skipWaiting();
-                    e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']).catch(() => {})));
-                });
-                self.addEventListener('activate', e => {
-                    e.waitUntil(self.clients.claim());
-                });
-                self.addEventListener('fetch', e => {
-                    if (e.request.method !== 'GET') return;
-                    e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
-                });
-            `;
+            const swCode = "const CACHE_NAME='king-asad-deutsch-v4';self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(['./']).catch(()=>{})));});self.addEventListener('activate',e=>{e.waitUntil(self.clients.claim());});self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(fetch(e.request).catch(()=>caches.match(e.request)));});";
             const swBlob = new Blob([swCode], { type: 'application/javascript' });
             const swUrl = URL.createObjectURL(swBlob);
             navigator.serviceWorker.register(swUrl).catch(() => {});
@@ -1268,7 +1252,7 @@ function changeSiteLanguage(lang) {
     const cfg = UI_I18N[lang] || UI_I18N.fa;
     document.documentElement.lang = lang;
     document.documentElement.dir = cfg.dir;
-    document.title = `${cfg.titlePrefix} KING ASAD`;
+    document.title = cfg.titlePrefix + 'KING ASAD';
     const tEl = document.getElementById('uiTitle');
     const slEl = document.getElementById('uiSlogan');
     const sEl = document.getElementById('uiSubtitle');
@@ -1287,13 +1271,16 @@ function startLearningJourney() {
 
 function openLevelFromTile(lvl) {
     selectedLevelFilter = lvl;
-    toggleMainRow('lessons', true);
     const drawer = document.getElementById('drawer-lessons');
+    const trigger = document.querySelector('#group-lessons .row-trigger');
+    const pill = document.getElementById('pill-lessons');
     if (drawer) {
         drawer.innerHTML = buildLessonsDrawerHtml();
         drawer.classList.add('open');
         bindLessonAccordions(drawer);
     }
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+    if (pill) pill.textContent = 'بستن';
     const group = document.getElementById('group-lessons');
     if (group) group.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -1528,7 +1515,7 @@ LEVELS.forEach(lvl => {
     });
 });
 
-/* Grammar A1-C1 & Bilingual Grammar Books */
+/* Grammar & Bilingual Books */
 const GRAMMAR_LEVEL_TOPICS = {
     A1: [
         ['حرف تعریف و جنسیت اسم‌ها (der, die, das)', 'هر اسم آلمانی یک جنس دارد: مذکر (der)، مؤنث (die) و خنثی (das). اسم‌ها را همیشه همراه حرف تعریف بیاموزید.'],
@@ -1551,4 +1538,8 @@ const GRAMMAR_LEVEL_TOPICS = {
     B2: [
         ['اسمی‌سازی و فشرده‌سازی عبارات (Nominalstil)', 'در متون رسمی و اداری، فعل‌ها و جملات به ترکیب‌های اسمی تبدیل می‌شوند.'],
         ['وجه نقلی و نقل قول غیرمستقیم (Konjunktiv I)', 'برای نقل گفته دیگران در گزارش و خبر بدون دخالت نظر گوینده به کار می‌رود.'],
-        ['ساختارهای مجهول با فعل وجهی', 'ترکیب Modalverb + Partizip II + w
+        ['ساختارهای مجهول با فعل وجهی', 'ترکیب Modalverb + Partizip II + werden در پایان جمله می‌آید: Das muss geprüft werden.'],
+        ['حروف ربط و قیدهای تحلیلی (folglich, hingegen, sofern)', 'برای ایجاد انسجام منطقی و نشان دادن تضاد، شرط یا نتیجه در متون تحلیلی.']
+    ],
+    C1: [
+        ['ساختارهای موصولی گسترده (Erweiterte Partizipialattribute)', 'توضیحات مفصل پیش از اسم قرار می‌گیرند تا متن عل
