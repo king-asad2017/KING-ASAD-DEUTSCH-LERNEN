@@ -2817,15 +2817,11 @@ KING_ASAD.refreshProgressDashboard = function () {
 
 console.log('KING ASAD: داشبورد پیشرفت آماده شد.');
 
+
 /* =========================================
    KING ASAD
    بخش بیستم: اتصال و راه‌اندازی اصلاح‌شده
 ========================================= */
-
-// اتصال نمایش درس
-window.renderKingAsadLesson = function (lesson) {
-    return KING_ASAD.renderKingAsadLesson(lesson);
-};
 
 // نگهداری تابع اصلی نمایش درس
 KING_ASAD.renderLessonWithoutQuiz =
@@ -2848,12 +2844,6 @@ KING_ASAD.renderKingAsadLesson = function (lesson) {
         Array.from(container.querySelectorAll('button'))
         .find(button =>
             button.textContent.trim() === 'تکمیل این درس'
-    if (completeButton) {
-        
-    const completeButton =
-        Array.from(container.querySelectorAll('button'))
-        .find(button =>
-            button.textContent.trim() === 'تکمیل این درس'
         );
 
     if (completeButton) {
@@ -2862,6 +2852,7 @@ KING_ASAD.renderKingAsadLesson = function (lesson) {
         });
     }
 
+    const quizButton = document.createElement('button');
 
     quizButton.type = 'button';
     quizButton.textContent = 'شروع آزمون این درس';
@@ -2882,6 +2873,11 @@ KING_ASAD.renderKingAsadLesson = function (lesson) {
     return true;
 };
 
+// اتصال نمایش درس
+window.renderKingAsadLesson = function (lesson) {
+    return KING_ASAD.renderKingAsadLesson(lesson);
+};
+
 // تازه‌سازی پس از ثبت آزمون
 KING_ASAD.saveQuizResultOriginal =
     KING_ASAD.saveLessonQuizResult;
@@ -2896,6 +2892,7 @@ KING_ASAD.saveLessonQuizResult = function (result) {
 
     return saved;
 };
+
 
 // اتصال دکمه‌های سطوح
 KING_ASAD.bindLevelButtons = function () {
