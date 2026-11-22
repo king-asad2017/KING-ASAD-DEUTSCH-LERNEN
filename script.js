@@ -1351,7 +1351,8 @@ KING_ASAD.buildDictionary = function () {
 KING_ASAD.dictionary = KING_ASAD.buildDictionary();
 
 
-// جست‌وجوی واژه
+
+// جست‌وجوی واژه در فرهنگ لغات داخلی
 KING_ASAD.searchDictionary = function (searchText) {
 
     if (
@@ -1373,6 +1374,47 @@ KING_ASAD.searchDictionary = function (searchText) {
     });
 
 };
+
+// جست‌وجوی آنلاین برای واژه‌های خارج از ۱۲۹ درس
+KING_ASAD.translateOnline = async function (
+    text,
+    source = 'auto',
+    target = 'de'
+) {
+
+    if (!text || !text.trim()) {
+        throw new Error('لطفاً متن را وارد کنید.');
+    }
+
+    const response = await fetch(
+        'https://king-asad-translator.onrender.com/translate',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                q: text.trim(),
+                source: source,
+                target: target,
+                format: 'text'
+            })
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error('خطا در ارتباط با سرور مترجم.');
+    }
+
+    const data = await response.json();
+
+    if (!data.translatedText) {
+        throw new Error('ترجمه‌ای دریافت نشد.');
+    }
+
+    return data.translatedText;
+};
+
 
 
 // دریافت معنی دقیق یک واژه
