@@ -1,45 +1,641 @@
-/* =========================================
-   KING ASAD - سیستم اصلی آموزشگاه
-   نسخه پنج سطحی: A1 تا C1
-   آکاردئونی یکپارچه + فرهنگ لغت فعال
-========================================= */
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KING ASAD – مرکز آموزش زبان آلمانی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800&family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+    --page-bg: #f1f3f6;
+    --panel-bg: #ffffff;
+    --ink: #162238;
+    --muted: #586984;
+    --border: #dfe5ee;
 
+    /* ۴ رنگ اصلی ردیف‌های افقی */
+    --c1-main: #2a78be;
+    --c1-dark: #1d5b93;
+    --c1-soft: #eef5fc;
+
+    --c2-main: #c63b7a;
+    --c2-dark: #97285b;
+    --c2-soft: #fdf0f6;
+
+    --c3-main: #d87a28;
+    --c3-dark: #a65916;
+    --c3-soft: #fef5ec;
+
+    --c4-main: #4da347;
+    --c4-dark: #377b32;
+    --c4-soft: #f0f9ef;
+
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --shadow-row: 0 5px 14px rgba(18, 28, 45, 0.08);
+    --shadow-drawer: 0 12px 28px rgba(18, 28, 45, 0.11);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    min-height: 100vh;
+    font-family: "Vazirmatn", "Cairo", "Inter", Tahoma, Arial, sans-serif;
+    background: var(--page-bg);
+    color: var(--ink);
+    line-height: 1.75;
+}
+
+.app-shell {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 24px 16px 36px;
+}
+
+/* هدر بزرگ و مدرن در بالا */
+.site-header {
+    background: linear-gradient(135deg, #13233c 0%, #1f3c68 100%);
+    color: #ffffff;
+    border-radius: var(--radius-md);
+    padding: 22px 24px;
+    margin-bottom: 22px;
+    box-shadow: 0 10px 24px rgba(19, 35, 60, 0.16);
+    border-bottom: 4px solid #e6b447;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.brand-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.brand-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #ffd875;
+    letter-spacing: 0.4px;
+}
+
+.site-title {
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 900;
+    line-height: 1.25;
+    color: #ffffff;
+}
+
+.site-subtitle {
+    font-size: 13.5px;
+    color: #d5e2f5;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.level-tabs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 6px;
+    border-radius: var(--radius-sm);
+}
+
+.lvl-chip {
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: transparent;
+    color: #eef4fc;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 800;
+    padding: 5px 11px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lvl-chip:hover,
+.lvl-chip.active {
+    background: #ffd875;
+    color: #13233c;
+    border-color: #ffd875;
+}
+
+/* چهار چوکات افقی (مربع سمت راست + نوار طویل سمت چپ در حالت RTL) */
+.stacked-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.row-group {
+    --row-main: var(--c1-main);
+    --row-dark: var(--c1-dark);
+    --row-soft: var(--c1-soft);
+}
+
+.row-group[data-color="blue"] {
+    --row-main: var(--c1-main);
+    --row-dark: var(--c1-dark);
+    --row-soft: var(--c1-soft);
+}
+
+.row-group[data-color="rose"] {
+    --row-main: var(--c2-main);
+    --row-dark: var(--c2-dark);
+    --row-soft: var(--c2-soft);
+}
+
+.row-group[data-color="orange"] {
+    --row-main: var(--c3-main);
+    --row-dark: var(--c3-dark);
+    --row-soft: var(--c3-soft);
+}
+
+.row-group[data-color="green"] {
+    --row-main: var(--c4-main);
+    --row-dark: var(--c4-dark);
+    --row-soft: var(--c4-soft);
+}
+
+.row-trigger {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 74px 12px 1fr;
+    align-items: stretch;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: right;
+    font-family: inherit;
+    filter: drop-shadow(var(--shadow-row));
+    transition: transform 0.2s ease;
+}
+
+.row-trigger:hover {
+    transform: translateY(-2px);
+}
+
+.row-square {
+    background: linear-gradient(180deg, #ffffff 0%, #f4f6fa 100%);
+    border: 3.5px solid var(--row-main);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 74px;
+    color: var(--row-dark);
+    font-weight: 900;
+}
+
+.row-num {
+    font-size: 18px;
+    line-height: 1.1;
+}
+
+.row-emoji {
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.row-bridge {
+    background: var(--row-dark);
+    margin: 12px 0;
+}
+
+.row-bar {
+    background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+    border: 3.5px solid var(--row-main);
+    border-radius: var(--radius-sm);
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 74px;
+}
+
+.row-bar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.row-title {
+    font-size: 17px;
+    font-weight: 900;
+    color: var(--ink);
+}
+
+.row-desc {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.row-status-pill {
+    background: var(--row-soft);
+    color: var(--row-dark);
+    border: 1.5px solid var(--row-main);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.row-trigger[aria-expanded="true"] .row-bar {
+    background: var(--row-soft);
+}
+
+/* کشوی محتوا که دقیقاً زیر همان ردیف باز می‌شود */
+.row-drawer {
+    display: none;
+    background: var(--panel-bg);
+    border: 2px solid var(--row-main);
+    border-top: 4px solid var(--row-main);
+    border-radius: var(--radius-md);
+    margin-top: 8px;
+    padding: 18px;
+    box-shadow: var(--shadow-drawer);
+}
+
+.row-drawer.open {
+    display: block;
+    animation: fadeSlide 0.22s ease;
+}
+
+@keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* آکاردئون داخلی درس‌ها و بخش‌ها */
+.level-switcher-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.lvl-filter-btn {
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    background: #f8fafc;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.lvl-filter-btn.active {
+    background: var(--row-main);
+    color: #ffffff;
+    border-color: var(--row-main);
+}
+
+.lesson-item {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    background: #fcfdff;
+    overflow: hidden;
+}
+
+.lesson-head-btn {
+    width: 100%;
+    padding: 11px 14px;
+    background: #f5f8fc;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: right;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--ink);
+    cursor: pointer;
+}
+
+.lesson-head-btn.open {
+    background: var(--row-soft);
+    color: var(--row-dark);
+}
+
+.lesson-body {
+    display: none;
+    padding: 14px;
+    border-top: 1px solid var(--border);
+    background: #ffffff;
+}
+
+.lesson-body.open {
+    display: block;
+}
+
+.sub-card {
+    background: #f9fbfe;
+    border: 1px solid var(--border);
+    border-inline-start: 4px solid var(--row-main);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+}
+
+.sub-card h4 {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: var(--row-dark);
+    margin-bottom: 6px;
+}
+
+.line-row,
+.vocab-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid #e7ecf3;
+    margin-bottom: 6px;
+}
+
+.audio-group {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.btn-audio-de,
+.btn-audio-fa,
+.btn-primary,
+.btn-secondary {
+    border: none;
+    border-radius: 7px;
+    padding: 6px 11px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btn-audio-de {
+    background: #1d5b93;
+    color: #fff;
+}
+
+.btn-audio-fa {
+    background: #377b32;
+    color: #fff;
+}
+
+.btn-primary {
+    background: var(--row-main);
+    color: #fff;
+    padding: 8px 15px;
+    font-size: 13px;
+}
+
+.btn-secondary {
+    background: #e9eef5;
+    color: var(--ink);
+    padding: 8px 14px;
+    font-size: 13px;
+}
+
+.btn-audio-de:hover,
+.btn-audio-fa:hover,
+.btn-primary:hover,
+.btn-secondary:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #cfd8e6;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 14px;
+    background: #fff;
+    color: var(--ink);
+    margin: 6px 0 10px;
+}
+
+.result-banner {
+    background: #fff8e6;
+    border: 1px solid #edd082;
+    border-inline-start: 4px solid #d87a28;
+    border-radius: 9px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-weight: 700;
+    font-size: 13.5px;
+}
+
+.video-frame {
+    width: 100%;
+    max-width: 680px;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 10px;
+    display: block;
+    margin: 8px 0;
+}
+
+/* فوتر کوچک با ساعت و تاریخ زنده در پایین */
+.site-footer {
+    max-width: 980px;
+    margin: 22px auto 0;
+    padding: 10px 16px;
+    background: #13233c;
+    color: #e6eef9;
+    border-radius: var(--radius-sm);
+    border-top: 3px solid #e6b447;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 12.5px;
+    font-weight: 700;
+}
+
+.clock-pill {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffd875;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 600px) {
+    .row-trigger {
+        grid-template-columns: 60px 8px 1fr;
+    }
+    .row-square {
+        min-height: 64px;
+    }
+    .row-bar {
+        min-height: 64px;
+        padding: 10px 12px;
+    }
+    .row-title {
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+    <header class="site-header">
+        <div class="brand-block">
+            <div class="brand-kicker">👑 مدیر سایت: KING ASAD</div>
+            <h1 class="site-title">مرکز آموزش زبان آلمانی – KING ASAD</h1>
+            <p class="site-subtitle">۱۲۹ درس جامع از سطح A1 تا C1 • تلفظ آلمانی و فارسی • فرهنگ لغت • ویدیو و آزمون</p>
+        </div>
+        <div class="header-controls">
+            <div class="level-tabs" id="quickLevelJump">
+                <button type="button" class="lvl-chip active" data-level="ALL">همه (۱۲۹)</button>
+                <button type="button" class="lvl-chip" data-level="A1">A1</button>
+                <button type="button" class="lvl-chip" data-level="A2">A2</button>
+                <button type="button" class="lvl-chip" data-level="B1">B1</button>
+                <button type="button" class="lvl-chip" data-level="B2">B2</button>
+                <button type="button" class="lvl-chip" data-level="C1">C1</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="stacked-rows" id="mainRows">
+        <!-- چوکات ۰۱: سطوح و ۱۲۹ درس -->
+        <section class="row-group" data-color="blue" id="group-lessons">
+            <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-lessons" onclick="toggleMainRow('lessons')">
+                <span class="row-square">
+                    <span class="row-num">01</span>
+                    <span class="row-emoji">📚</span>
+                </span>
+                <span class="row-bridge"></span>
+                <span class="row-bar">
+                    <span class="row-bar-content">
+                        <span class="row-title">سطوح و درس‌ها (A1 تا C1 – ۱۲۹ درس)</span>
+                        <span class="row-desc">مکالمه، واژگان، گرامر و تمرین تعاملی با صدای آلمانی و فارسی</span>
+                    </span>
+                    <span class="row-status-pill" id="pill-lessons">باز کردن</span>
+                </span>
+            </button>
+            <div class="row-drawer" id="drawer-lessons"></div>
+        </section>
+
+        <!-- چوکات ۰۲: فرهنگ لغت، ترجمه و تلفظ دوطرفه -->
+        <section class="row-group" data-color="rose" id="group-dictionary">
+            <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-dictionary" onclick="toggleMainRow('dictionary')">
+                <span class="row-square">
+                    <span class="row-num">02</span>
+                    <span class="row-emoji">🌐</span>
+                </span>
+                <span class="row-bridge"></span>
+                <span class="row-bar">
+                    <span class="row-bar-content">
+                        <span class="row-title">فرهنگ لغت، ترجمه آنلاین و تلفظ صوتی</span>
+                        <span class="row-desc">جستجو و ترجمه بین آلمانی و فارسی + پخش صدای هر دو زبان</span>
+                    </span>
+                    <span class="row-status-pill" id="pill-dictionary">باز کردن</span>
+                </span>
+            </button>
+            <div class="row-drawer" id="drawer-dictionary"></div>
+        </section>
+
+        <!-- چوکات ۰۳: ویدیوهای آموزشی A1 تا C1 -->
+        <section class="row-group" data-color="orange" id="group-videos">
+            <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-videos" onclick="toggleMainRow('videos')">
+                <span class="row-square">
+                    <span class="row-num">03</span>
+                    <span class="row-emoji">🎬</span>
+                </span>
+                <span class="row-bridge"></span>
+                <span class="row-bar">
+                    <span class="row-bar-content">
+                        <span class="row-title">ویدیوهای آموزشی سطوح A1 تا C1</span>
+                        <span class="row-desc">منابع ویدیویی و تمرینی تفکیک‌شده برای هر سطح</span>
+                    </span>
+                    <span class="row-status-pill" id="pill-videos">باز کردن</span>
+                </span>
+            </button>
+            <div class="row-drawer" id="drawer-videos"></div>
+        </section>
+
+        <!-- چوکات ۰۴: آزمون‌ها و ثبت پیشرفت -->
+        <section class="row-group" data-color="green" id="group-quiz">
+            <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-quiz" onclick="toggleMainRow('quiz')">
+                <span class="row-square">
+                    <span class="row-num">04</span>
+                    <span class="row-emoji">✍️</span>
+                </span>
+                <span class="row-bridge"></span>
+                <span class="row-bar">
+                    <span class="row-bar-content">
+                        <span class="row-title">آزمون‌های سطح‌بندی و پیشرفت</span>
+                        <span class="row-desc">آزمون‌های A1 تا C1 همراه با صدای سؤال‌ها و ذخیره امتیاز</span>
+                    </span>
+                    <span class="row-status-pill" id="pill-quiz">باز کردن</span>
+                </span>
+            </button>
+            <div class="row-drawer" id="drawer-quiz"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <span>KING ASAD • آموزش زبان آلمانی (A1–C1)</span>
+        <span class="clock-pill" id="liveClockDate">در حال بارگذاری ساعت و تاریخ...</span>
+    </footer>
+</div>
+
+<script>
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
 const levelVideos = {
-    A1: {
-        id: '4-eDoThe6qo',
-        title: 'Nicos Weg A1 - Deutsche Welle',
-        link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789'
-    },
-    A2: {
-        id: 'Lg5P2w_Ro1c',
-        title: 'Nicos Weg A2 - Deutsche Welle',
-        link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789'
-    },
-    B1: {
-        id: 'LkufozluseI',
-        title: 'Nicos Weg B1 - Deutsche Welle',
-        link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789'
-    },
-    B2: {
-        id: null,
-        title: 'Deutsch lernen B2 - Goethe-Institut',
-        link: 'https://www.goethe.de/de/spr/ueb.html'
-    },
-    C1: {
-        id: null,
-        title: 'Deutsch lernen C1 - Goethe-Institut',
-        link: 'https://www.goethe.de/de/spr/ueb.html'
-    }
+    A1: { id: '4-eDoThe6qo', title: 'Nicos Weg A1 - Deutsche Welle', link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789' },
+    A2: { id: 'Lg5P2w_Ro1c', title: 'Nicos Weg A2 - Deutsche Welle', link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789' },
+    B1: { id: 'LkufozluseI', title: 'Nicos Weg B1 - Deutsche Welle', link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789' },
+    B2: { id: null, title: 'Deutsch lernen B2 - Goethe-Institut', link: 'https://www.goethe.de/de/spr/ueb.html' },
+    C1: { id: null, title: 'Deutsch lernen C1 - Goethe-Institut', link: 'https://www.goethe.de/de/spr/ueb.html' }
 };
 
 const levelDescriptions = {
-    A1: 'سطح مقدماتی: آشنایی با حروف، معرفی خود، اعداد، زمان و مکالمات روزمره بسیار ساده.',
-    A2: 'سطح پایه پیشرفته: صحبت درباره روتین روزانه، خرید، سفر، سلامت و نوشتن پیام‌های ساده.',
-    B1: 'سطح متوسط: بیان نظر، استدلال ساده، موقعیت‌های شغلی و اجتماعی و درک متن‌های روزمره.',
-    B2: 'سطح متوسط رو به بالا: بحث‌های تحلیلی، مسائل اجتماعی و فناوری، متن‌های رسمی و استدلال دقیق.',
-    C1: 'سطح پیشرفته: زبان علمی و دانشگاهی، تحلیل انتقادی، ظرافت‌های معنایی و نگارش تخصصی.'
+    A1: 'سطح مقدماتی (۱۹ درس): آشنایی با معرفی خود، اعداد، زمان، خانواده، خرید و مکالمات ساده روزمره.',
+    A2: 'سطح پایه پیشرفته (۲۰ درس): روتین روزانه، مسکن، سفر، سلامت، کار، ایمیل و برنامه‌ریزی.',
+    B1: 'سطح متوسط (۳۰ درس): بیان نظر، استدلال، محیط زیست، مهاجرت، کار و موقعیت‌های اجتماعی.',
+    B2: 'سطح متوسط رو به بالا (۳۰ درس): بحث تحلیلی، فناوری، اقتصاد، ارتباطات رسمی و استدلال دقیق.',
+    C1: 'سطح پیشرفته (۳۰ درس): زبان علمی و دانشگاهی، تحلیل انتقادی، ظرافت معنایی و نگارش تخصصی.'
 };
 
 const lessonTitles = {
@@ -185,23 +781,6 @@ const dialogTemplates = {
     ]
 };
 
-function buildLessonData() {
-    const result = {};
-    LEVELS.forEach(level => {
-        const bank = vocabularyBanks[level];
-        result[level] = lessonTitles[level].map((title, index) => {
-            const start = (index * 3) % bank.length;
-            const words = Array.from({ length: 5 }, (_, n) => bank[(start + n) % bank.length]);
-            const dialog = dialogTemplates[level].map(line => [line[0], line[1]]);
-            const grammar = grammarByLevel[level][index % grammarByLevel[level].length];
-            return { title, words, dialog, grammar };
-        });
-    });
-    return result;
-}
-
-const lessonData = buildLessonData();
-
 const quizData = {
     A1: [
         ['Was bedeutet „Guten Morgen“?',['صبح بخیر','شب بخیر','خداحافظ'],0],
@@ -240,571 +819,400 @@ const quizData = {
     ]
 };
 
-LEVELS.forEach(level => {
-    quizData[level] = {
-        questions: quizData[level].map(q => ({ question:q[0], options:q[1], correct:q[2] })),
-        finished: false
-    };
-});
-
-function element(id) {
-    return document.getElementById(id);
-}
-
-function safeText(tag, text) {
-    const node = document.createElement(tag);
-    node.textContent = String(text ?? '');
-    return node;
-}
-
-function makeButton(text, handler, className) {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.textContent = text;
-    if (className) button.className = className;
-    button.addEventListener('click', handler);
-    return button;
-}
-
-/* =========================================
-   نمایش بخش‌ها در همان صفحه بدون تغییر آدرس
-========================================= */
-
-window.showPage = function(pageId) {
-    document.querySelectorAll('.page').forEach(page => {
-        page.classList.remove('active');
-        page.style.display = 'none';
-    });
-    const page = element(pageId);
-    if (!page) return;
-    page.classList.add('active');
-    page.style.display = 'block';
-    if (pageId === 'homePage') showProgress();
-    if (pageId === 'dictionaryPage') renderDictionaryList();
-};
-
-/* =========================================
-   سطح و درس‌ها: باز و بسته شدن آکاردئونی به ترتیب
-========================================= */
-
-let activeLevel = null;
-const openLessonByLevel = {};
-
-window.showLevelLessons = function(level) {
-    if (!LEVELS.includes(level)) return;
-
-    const isSameLevel = activeLevel === level;
-    activeLevel = isSameLevel ? null : level;
-
-    LEVELS.forEach(name => {
-        const box = element(name.toLowerCase() + 'LessonsContainer');
-        if (!box) return;
-        if (name === activeLevel) {
-            box.style.display = 'block';
-            box.classList.add('open-box');
-        } else {
-            box.style.display = 'none';
-            box.classList.remove('open-box');
-        }
-    });
-};
-
-function renderLessons() {
+function buildLessonData() {
+    const result = {};
     LEVELS.forEach(level => {
-        const container = element(level.toLowerCase() + 'LessonsContainer');
-        if (!container) return;
-
-        container.replaceChildren();
-        container.style.display = 'none';
-        openLessonByLevel[level] = null;
-
-        const headerBox = document.createElement('div');
-        headerBox.className = 'section-desc-box';
-        headerBox.appendChild(safeText('h3', 'سطح ' + level + ' (' + lessonData[level].length + ' درس)'));
-        headerBox.appendChild(safeText('p', levelDescriptions[level] || ''));
-        container.appendChild(headerBox);
-
-        lessonData[level].forEach((data, index) => {
-            const number = index + 1;
-
-            const itemWrapper = document.createElement('div');
-            itemWrapper.className = 'lesson-accordion-item';
-            itemWrapper.dataset.lessonIndex = String(number);
-
-            const button = makeButton(
-                'درس ' + number + ': ' + data.title,
-                () => toggleLessonAccordion(level, number, data, itemWrapper),
-                'lesson-card'
-            );
-
-            const bodyBox = document.createElement('div');
-            bodyBox.className = 'lesson-accordion-body';
-            bodyBox.style.display = 'none';
-
-            itemWrapper.appendChild(button);
-            itemWrapper.appendChild(bodyBox);
-            container.appendChild(itemWrapper);
+        const bank = vocabularyBanks[level];
+        result[level] = lessonTitles[level].map((title, index) => {
+            const start = (index * 3) % bank.length;
+            const words = Array.from({ length: 5 }, (_, n) => bank[(start + n) % bank.length]);
+            const dialog = dialogTemplates[level].map(line => [line[0], line[1]]);
+            const grammar = grammarByLevel[level][index % grammarByLevel[level].length];
+            return { title, words, dialog, grammar };
         });
     });
+    return result;
 }
 
-function toggleLessonAccordion(level, number, data, itemWrapper) {
-    const container = element(level.toLowerCase() + 'LessonsContainer');
-    if (!container) return;
+const lessonData = buildLessonData();
+let activeRowKey = null;
+let selectedLevelFilter = 'ALL';
 
-    const targetBody = itemWrapper.querySelector('.lesson-accordion-body');
-    const isAlreadyOpen = openLessonByLevel[level] === number;
-
-    // بستن تمام درس‌های باز در این سطح تا تنها درس انتخاب‌شده باز بماند
-    container.querySelectorAll('.lesson-accordion-item').forEach(wrapper => {
-        const body = wrapper.querySelector('.lesson-accordion-body');
-        const btn = wrapper.querySelector('.lesson-card');
-        if (body) {
-            body.style.display = 'none';
-            body.replaceChildren();
-        }
-        if (btn) btn.classList.remove('active-lesson');
-    });
-
-    if (isAlreadyOpen) {
-        openLessonByLevel[level] = null;
-        return;
-    }
-
-    openLessonByLevel[level] = number;
-    const activeBtn = itemWrapper.querySelector('.lesson-card');
-    if (activeBtn) activeBtn.classList.add('active-lesson');
-
-    if (targetBody) {
-        populateLessonContent(level, number, data, targetBody);
-        targetBody.style.display = 'block';
-    }
+function escapeAttr(str) {
+    return String(str ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
 }
 
-function createLevelVideo(level) {
-    const info = levelVideos[level];
-    const box = document.createElement('div');
-    box.className = 'content-card';
-    box.appendChild(safeText('h3', 'منبع ویدیویی سطح ' + level));
-    box.appendChild(safeText('p', info.title));
-
-    if (info.id) {
-        const frameWrap = document.createElement('div');
-        frameWrap.style.cssText = 'position:relative;width:100%;padding-top:56.25%;overflow:hidden;border-radius:12px;';
-        const video = document.createElement('iframe');
-        video.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(info.id);
-        video.title = info.title;
-        video.loading = 'lazy';
-        video.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-        video.allowFullscreen = true;
-        video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
-        frameWrap.appendChild(video);
-        box.appendChild(frameWrap);
-    } else {
-        box.appendChild(safeText('p', 'برای این سطح لینک رسمی منابع آموزشی نمایش داده می‌شود.'));
-    }
-
-    const link = document.createElement('a');
-    link.href = info.link;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.textContent = 'باز کردن منبع آموزشی رسمی ' + level;
-    link.style.display = 'block';
-    link.style.marginTop = '12px';
-    box.appendChild(link);
-    return box;
-}
-
-function populateLessonContent(level, number, data, detail) {
-    detail.appendChild(safeText('h2', 'درس ' + number + ' - سطح ' + level + ': ' + data.title));
-    detail.appendChild(safeText('p', 'توضیحات درس: در این بخش مکالمه، واژگان کلیدی، نکته گرامری و تمرین کوتاه همین درس قرار دارد.'));
-
-    detail.appendChild(createLevelVideo(level));
-
-    const conversationBox = document.createElement('div');
-    conversationBox.className = 'content-card';
-    conversationBox.appendChild(safeText('h3', 'مکالمه با ترجمه فارسی'));
-    data.dialog.forEach(line => {
-        conversationBox.appendChild(safeText('p', '🇩🇪 ' + line[0]));
-        conversationBox.appendChild(safeText('p', '🇦🇫 ' + line[1]));
-        conversationBox.appendChild(makeButton('شنیدن آلمانی', () => window.speakGerman(line[0])));
-    });
-    detail.appendChild(conversationBox);
-
-    const wordsBox = document.createElement('div');
-    wordsBox.className = 'content-card';
-    wordsBox.appendChild(safeText('h3', 'لغات و معنی فارسی'));
-    data.words.forEach(word => {
-        const row = document.createElement('div');
-        row.style.marginBottom = '10px';
-        row.appendChild(safeText('span', word[0] + ' = ' + word[1] + ' '));
-        row.appendChild(makeButton('تلفظ', () => window.speakGerman(word[0])));
-        wordsBox.appendChild(row);
-    });
-    detail.appendChild(wordsBox);
-
-    const grammarBox = document.createElement('div');
-    grammarBox.className = 'content-card';
-    grammarBox.appendChild(safeText('h3', 'گرامر درس'));
-    grammarBox.appendChild(safeText('p', data.grammar));
-    detail.appendChild(grammarBox);
-
-    const practice = document.createElement('div');
-    practice.className = 'content-card';
-    practice.appendChild(safeText('h3', 'تمرین درس'));
-    practice.appendChild(safeText('p', 'معنی این واژه آلمانی را به فارسی بنویسید:'));
-    const selectedWord = data.words[0];
-    practice.appendChild(safeText('h4', selectedWord[0]));
-
-    const answer = document.createElement('input');
-    answer.type = 'text';
-    answer.placeholder = 'معنی فارسی را بنویسید';
-    answer.autocomplete = 'off';
-    practice.appendChild(answer);
-
-    const result = document.createElement('p');
-    practice.appendChild(makeButton('بررسی پاسخ', () => {
-        const normalize = value => value.trim().toLocaleLowerCase('fa').replace(/\s+/g, ' ');
-        if (normalize(answer.value) === normalize(selectedWord[1])) {
-            result.textContent = 'آفرین! پاسخ درست است.';
-        } else {
-            result.textContent = 'پاسخ درست: ' + selectedWord[1];
-        }
-    }));
-    practice.appendChild(result);
-    detail.appendChild(practice);
-
-    detail.appendChild(makeButton('بستن درس', () => {
-        detail.style.display = 'none';
-        detail.replaceChildren();
-        openLessonByLevel[level] = null;
-        const btn = detail.parentElement?.querySelector('.lesson-card');
-        if (btn) btn.classList.remove('active-lesson');
-    }, 'action'));
-}
-
-/* =========================================
-   مکالمه‌های عمومی
-========================================= */
-
-function renderConversation() {
-    const container = element('conversationContent');
-    if (!container) return;
-    const conversations = [
-        ['Guten Tag!','روز بخیر!'],
-        ['Wie heißt du?','نامت چیست؟'],
-        ['Ich heiße Ahmad.','نام من احمد است.'],
-        ['Wie geht es dir?','حالت چطور است؟'],
-        ['Mir geht es gut, danke.','من خوب هستم، تشکر.'],
-        ['Woher kommst du?','اهل کجا هستی؟'],
-        ['Ich komme aus Afghanistan.','من اهل افغانستان هستم.'],
-        ['Wo wohnst du?','کجا زندگی می‌کنی؟'],
-        ['Ich wohne in Deutschland.','من در آلمان زندگی می‌کنم.'],
-        ['Auf Wiedersehen!','خداحافظ!']
-    ];
-    container.replaceChildren();
-    conversations.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'conversation-card';
-        card.appendChild(safeText('h3', item[0]));
-        card.appendChild(safeText('p', item[1]));
-        card.appendChild(makeButton('شنیدن تلفظ', () => window.speakGerman(item[0])));
-        container.appendChild(card);
-    });
-}
-
-/* =========================================
-   گرامر عمومی
-========================================= */
-
-function renderGrammar() {
-    const container = element('grammarContent');
-    if (!container) return;
-    const items = [
-        ['فعل sein','فعل sein به معنی بودن است.','Ich bin müde.','من خسته هستم.'],
-        ['فعل haben','فعل haben به معنی داشتن است.','Ich habe ein Buch.','من یک کتاب دارم.'],
-        ['حروف تعریف','اسم‌ها جنس دستوری دارند.','der Mann, die Frau, das Kind','مرد، زن، کودک'],
-        ['صرف فعل','فعل با فاعل تغییر می‌کند.','Ich lerne Deutsch.','من آلمانی یاد می‌گیرم.'],
-        ['ساختار جمله','در جمله خبری ساده فعل معمولاً جایگاه دوم است.','Heute lerne ich Deutsch.','امروز آلمانی یاد می‌گیرم.'],
-        ['زمان Perfekt','برای بیان بسیاری از اتفاقات گذشته استفاده می‌شود.','Ich habe Deutsch gelernt.','من آلمانی یاد گرفتم.']
-    ];
-    container.replaceChildren();
-    items.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'grammar-card';
-        card.appendChild(safeText('h3', item[0]));
-        card.appendChild(safeText('p', item[1]));
-        card.appendChild(safeText('p', 'مثال: ' + item[2]));
-        card.appendChild(safeText('p', 'ترجمه: ' + item[3]));
-        card.appendChild(makeButton('شنیدن مثال', () => window.speakGerman(item[2])));
-        container.appendChild(card);
-    });
-}
-
-/* =========================================
-   ویدیوهای صفحه ویدیوها
-========================================= */
-
-function renderVideos() {
-    LEVELS.forEach(level => {
-        const container = element('videos' + level);
-        if (!container) return;
-        container.replaceChildren();
-        container.style.display = 'none';
-        container.appendChild(createLevelVideo(level));
-    });
-}
-
-window.showVideoLevel = function(level) {
-    if (!LEVELS.includes(level)) return;
-    LEVELS.forEach(name => {
-        const box = element('videos' + name);
-        if (box) box.style.display = name === level ? 'block' : 'none';
-    });
-};
-
-/* =========================================
-   آزمون‌ها
-========================================= */
-
-window.openQuiz = function(level) {
-    document.querySelectorAll('.quiz-box').forEach(box => box.style.display = 'none');
-    const box = element('quiz-' + level);
-    const questions = element('questions-' + level);
-    const result = element('result-' + level);
-    if (!box || !questions || !result || !quizData[level]) return;
-
-    box.style.display = 'block';
-    questions.replaceChildren();
-    result.textContent = '';
-    quizData[level].finished = false;
-
-    quizData[level].questions.forEach((question, index) => {
-        const card = document.createElement('div');
-        card.className = 'quiz-question';
-        card.appendChild(safeText('h3', (index + 1) + '. ' + question.question));
-        question.options.forEach((option, i) => {
-            const label = document.createElement('label');
-            const radio = document.createElement('input');
-            radio.type = 'radio';
-            radio.name = 'question-' + level + '-' + index;
-            radio.value = String(i);
-            label.append(radio, document.createTextNode(' ' + option));
-            card.appendChild(label);
-            card.appendChild(document.createElement('br'));
-        });
-        questions.appendChild(card);
-    });
-
-    questions.appendChild(makeButton('ثبت پاسخ‌ها', () => window.submitQuiz(level)));
-};
-
-window.submitQuiz = function(level) {
-    const quiz = quizData[level];
-    if (!quiz || quiz.finished) return;
-
-    let score = 0;
-    let unanswered = 0;
-    quiz.questions.forEach((question, index) => {
-        const selected = document.querySelector('input[name="question-' + level + '-' + index + '"]:checked');
-        if (!selected) unanswered++;
-        else if (Number(selected.value) === question.correct) score++;
-    });
-
-    if (unanswered) {
-        alert('لطفاً به تمام سؤال‌ها پاسخ دهید.');
-        return;
-    }
-
-    quiz.finished = true;
-    const points = score * 10;
-    const result = element('result-' + level);
-    if (result) {
-        result.textContent = 'امتیاز شما: ' + points + ' از ۵۰';
-        result.textContent += points >= 40 ? ' تبریک! موفق شدید.' : ' دوباره تمرین کنید.';
-    }
-    saveQuizProgress(level, points);
-    if (points >= 40) showCelebration(level, points);
-};
-
-function showCelebration(level, score) {
-    const old = element('celebration');
-    if (old) old.remove();
-
-    const overlay = document.createElement('div');
-    overlay.id = 'celebration';
-    overlay.style.cssText = 'position:fixed;inset:0;background:#000b;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
-
-    const message = document.createElement('div');
-    message.style.cssText = 'background:white;padding:30px;border-radius:20px;text-align:center;color:#142b52;';
-    message.appendChild(safeText('h2', 'تبریک! شما موفق شدید!'));
-    message.appendChild(safeText('p', 'آزمون ' + level));
-    message.appendChild(safeText('h3', 'امتیاز: ' + score + ' از ۵۰'));
-    message.appendChild(makeButton('بستن', () => overlay.remove()));
-    overlay.appendChild(message);
-    document.body.appendChild(overlay);
-}
-
-function saveQuizProgress(level, score) {
-    try {
-        const progress = JSON.parse(localStorage.getItem('kingAsadProgress') || '{}');
-        progress[level] = { score, date:new Date().toLocaleDateString() };
-        localStorage.setItem('kingAsadProgress', JSON.stringify(progress));
-    } catch (error) {
-        console.warn('ذخیره پیشرفت انجام نشد.', error);
-    }
-}
-
-function showProgress() {
-    const container = element('homeProgress');
-    if (!container) return;
-    let progress = {};
-    try {
-        progress = JSON.parse(localStorage.getItem('kingAsadProgress') || '{}');
-    } catch (error) {
-        progress = {};
-    }
-
-    container.replaceChildren();
-    LEVELS.forEach(level => {
-        const card = document.createElement('div');
-        card.className = 'progress-box';
-        card.appendChild(safeText('h3', 'سطح ' + level));
-        const saved = progress[level];
-        card.appendChild(safeText('p', saved ? 'آخرین امتیاز: ' + saved.score + ' از ۵۰' : 'هنوز آزمونی انجام نشده است.'));
-        const bar = document.createElement('div');
-        bar.className = 'progress-bar';
-        const fill = document.createElement('div');
-        fill.className = 'progress-fill';
-        fill.style.width = saved ? Math.min(100, Math.max(0, Number(saved.score) * 2)) + '%' : '0%';
-        bar.appendChild(fill);
-        card.appendChild(bar);
-        container.appendChild(card);
-    });
-}
-
-window.speakGerman = function(text) {
+function speakText(text, lang = 'de-DE') {
+    const clean = String(text ?? '').trim();
+    if (!clean) return;
     if (!('speechSynthesis' in window)) {
         alert('مرورگر شما از پخش صدا پشتیبانی نمی‌کند.');
         return;
     }
     window.speechSynthesis.cancel();
-    const speech = new SpeechSynthesisUtterance(text);
-    speech.lang = 'de-DE';
-    speech.rate = 0.85;
-    window.speechSynthesis.speak(speech);
+    const utterance = new SpeechSynthesisUtterance(clean);
+    utterance.lang = lang;
+    utterance.rate = lang === 'de-DE' ? 0.85 : 0.95;
+    window.speechSynthesis.speak(utterance);
+}
+
+function toggleMainRow(key, forceOpen = false) {
+    const shouldOpen = forceOpen ? true : (activeRowKey !== key);
+    activeRowKey = shouldOpen ? key : null;
+
+    ['lessons', 'dictionary', 'videos', 'quiz'].forEach(k => {
+        const group = document.getElementById('group-' + k);
+        const trigger = group?.querySelector('.row-trigger');
+        const drawer = document.getElementById('drawer-' + k);
+        const pill = document.getElementById('pill-' + k);
+        const isOpen = (activeRowKey === k);
+
+        if (trigger) trigger.setAttribute('aria-expanded', String(isOpen));
+        if (pill) pill.textContent = isOpen ? 'بستن' : 'باز کردن';
+        if (drawer) {
+            drawer.classList.toggle('open', isOpen);
+            if (isOpen && !drawer.dataset.rendered) {
+                renderDrawerContent(k, drawer);
+                drawer.dataset.rendered = '1';
+            }
+        }
+    });
+}
+
+function renderDrawerContent(key, drawer) {
+    if (key === 'lessons') {
+        drawer.innerHTML = buildLessonsDrawerHtml();
+        bindLessonAccordions(drawer);
+    } else if (key === 'dictionary') {
+        drawer.innerHTML = buildDictionaryDrawerHtml();
+        renderDictionaryMatches('');
+    } else if (key === 'videos') {
+        drawer.innerHTML = buildVideosDrawerHtml();
+    } else if (key === 'quiz') {
+        drawer.innerHTML = buildQuizDrawerHtml();
+    }
+}
+
+function buildLessonsDrawerHtml() {
+    const levelsToShow = selectedLevelFilter === 'ALL' ? LEVELS : [selectedLevelFilter];
+    let html = `
+        <div class="level-switcher-bar">
+            <button type="button" class="lvl-filter-btn ${selectedLevelFilter === 'ALL' ? 'active' : ''}" onclick="setLevelFilter('ALL')">همه سطوح (۱۲۹ درس)</button>
+            ${LEVELS.map(lvl => `
+                <button type="button" class="lvl-filter-btn ${selectedLevelFilter === lvl ? 'active' : ''}" onclick="setLevelFilter('${lvl}')">
+                    سطح ${lvl} (${lessonData[lvl].length})
+                </button>
+            `).join('')}
+        </div>
+    `;
+
+    levelsToShow.forEach(lvl => {
+        html += `
+            <div class="sub-card">
+                <h4>سطح ${lvl} – ${lessonData[lvl].length} درس</h4>
+                <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">${levelDescriptions[lvl]}</p>
+                <div class="level-lessons-list" data-level="${lvl}">
+                    ${lessonData[lvl].map((les, idx) => {
+                        const num = idx + 1;
+                        return `
+                            <div class="lesson-item">
+                                <button type="button" class="lesson-head-btn" onclick="toggleLessonItem(this, '${lvl}', ${num})">
+                                    <span>درس ${num}: ${les.title}</span>
+                                    <span>+</span>
+                                </button>
+                                <div class="lesson-body" id="les-body-${lvl}-${num}"></div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+        `;
+    });
+
+    return html;
+}
+
+window.setLevelFilter = function(lvl) {
+    selectedLevelFilter = lvl;
+    document.querySelectorAll('#quickLevelJump .lvl-chip').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.level === lvl);
+    });
+    const drawer = document.getElementById('drawer-lessons');
+    if (drawer) {
+        drawer.innerHTML = buildLessonsDrawerHtml();
+        drawer.classList.add('open');
+        bindLessonAccordions(drawer);
+    }
+    if (activeRowKey !== 'lessons') {
+        toggleMainRow('lessons', true);
+    }
 };
 
-/* =========================================
-   فرهنگ لغات: نمایش فوری لیست واژگان + جستجو + ترجمه
-========================================= */
+function bindLessonAccordions(container) {
+    container.querySelectorAll('.lesson-head-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const parentList = btn.closest('.level-lessons-list');
+            const body = btn.nextElementSibling;
+            const willOpen = !body.classList.contains('open');
 
-function getAllDictionaryEntries() {
-    const seen = new Set();
-    const entries = [];
-    LEVELS.forEach(level => {
-        (vocabularyBanks[level] || []).forEach(([de, fa]) => {
-            const key = `${level}|${de}|${fa}`;
-            if (!seen.has(key)) {
-                seen.add(key);
-                entries.push({ level, de, fa });
+            if (parentList) {
+                parentList.querySelectorAll('.lesson-body').forEach(b => {
+                    b.classList.remove('open');
+                    b.innerHTML = '';
+                });
+                parentList.querySelectorAll('.lesson-head-btn').forEach(h => {
+                    h.classList.remove('open');
+                    if (h.lastElementChild) h.lastElementChild.textContent = '+';
+                });
+            }
+
+            if (willOpen && body) {
+                const lvl = parentList.dataset.level;
+                const index = Array.from(parentList.querySelectorAll('.lesson-head-btn')).indexOf(btn);
+                const data = lessonData[lvl][index];
+                body.innerHTML = buildLessonDetailHtml(lvl, index + 1, data);
+                body.classList.add('open');
+                btn.classList.add('open');
+                if (btn.lastElementChild) btn.lastElementChild.textContent = '−';
             }
         });
     });
-    return entries;
 }
 
-function renderDictionaryList(filterQuery = '') {
-    let listBox = element('dictionaryWordList');
-    const dictPage = element('dictionaryPage');
+function buildLessonDetailHtml(lvl, num, data) {
+    const sampleWord = data.words[0];
+    return `
+        <div class="sub-card">
+            <h4>💬 مکالمه درس ${num} (${lvl})</h4>
+            ${data.dialog.map(line => `
+                <div class="line-row">
+                    <div>
+                        <div><strong>🇩🇪 ${line[0]}</strong></div>
+                        <div style="color:var(--muted);font-size:13px;">🇦🇫 ${line[1]}</div>
+                    </div>
+                    <div class="audio-group">
+                        <button type="button" class="btn-audio-de" onclick="speakText('${escapeAttr(line[0])}','de-DE')">🔊 آلمانی</button>
+                        <button type="button" class="btn-audio-fa" onclick="speakText('${escapeAttr(line[1])}','fa-IR')">🔊 فارسی</button>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
 
-    if (!listBox && dictPage) {
-        listBox = document.createElement('div');
-        listBox.id = 'dictionaryWordList';
-        listBox.className = 'dictionary-list';
-        dictPage.appendChild(listBox);
-    }
-    if (!listBox) return;
+        <div class="sub-card">
+            <h4>📖 واژگان کلیدی</h4>
+            ${data.words.map(w => `
+                <div class="vocab-row">
+                    <span><strong>${w[0]}</strong> = ${w[1]}</span>
+                    <div class="audio-group">
+                        <button type="button" class="btn-audio-de" onclick="speakText('${escapeAttr(w[0])}','de-DE')">🔊 آلمانی</button>
+                        <button type="button" class="btn-audio-fa" onclick="speakText('${escapeAttr(w[1])}','fa-IR')">🔊 فارسی</button>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
 
-    const q = filterQuery.trim().toLowerCase();
-    const entries = getAllDictionaryEntries().filter(item => {
-        if (!q) return true;
-        return item.de.toLowerCase().includes(q) || item.fa.toLowerCase().includes(q) || item.level.toLowerCase().includes(q);
-    });
+        <div class="sub-card">
+            <h4>📐 نکته گرامری</h4>
+            <p style="font-size:13.5px;">${data.grammar}</p>
+        </div>
 
-    listBox.replaceChildren();
-    listBox.appendChild(safeText('h3', 'واژگان آماده فرهنگ لغت (' + entries.length + ' واژه)'));
-    listBox.appendChild(safeText('p', 'توضیحات: روی دکمه تلفظ بزنید تا کلمه آلمانی خوانده شود یا کلمه دلخواه را جستجو و ترجمه کنید.'));
-
-    entries.slice(0, 40).forEach(item => {
-        const row = document.createElement('div');
-        row.className = 'dictionary-item';
-        row.appendChild(safeText('span', `[${item.level}] ${item.de} — ${item.fa} `));
-        row.appendChild(makeButton('تلفظ', () => window.speakGerman(item.de)));
-        listBox.appendChild(row);
-    });
+        <div class="sub-card">
+            <h4>✏️ تمرین سریع</h4>
+            <p style="font-size:13.5px;">معنی فارسی کلمه <strong>${sampleWord[0]}</strong> را بنویسید:</p>
+            <input type="text" id="ans-${lvl}-${num}" placeholder="معنی فارسی را وارد کنید...">
+            <button type="button" class="btn-primary" onclick="checkLessonWord('${lvl}', ${num}, '${escapeAttr(sampleWord[1])}')">بررسی پاسخ</button>
+            <div id="res-${lvl}-${num}" style="margin-top:8px;font-weight:700;font-size:13px;"></div>
+        </div>
+    `;
 }
 
-async function translateText(text, source, target) {
-    const url = 'https://api.mymemory.translated.net/get?q=' +
-        encodeURIComponent(text) + '&langpair=' +
-        encodeURIComponent(source + '|' + target);
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Translation error');
-    const data = await response.json();
-    return data.responseData && data.responseData.translatedText ? data.responseData.translatedText : '';
-}
-
-window.searchDictionary = async function() {
-    const input = element('dictionaryInput');
-    const source = element('dictionarySource');
-    const target = element('dictionaryTarget');
-    const result = element('dictionaryResult');
-    if (!input || !source || !target || !result) return;
-
-    const word = input.value.trim();
-    renderDictionaryList(word);
-
-    if (!word) {
-        result.textContent = 'تمام واژگان ذخیره‌شده نمایش داده شدند. برای ترجمه آنلاین کلمه‌ای وارد کنید.';
-        return;
-    }
-
-    // اول در واژگان داخلی بررسی می‌شود تا بدون نیاز به اینترنت هم نتیجه فوری بدهد
-    const localMatch = getAllDictionaryEntries().find(
-        item => item.de.toLowerCase() === word.toLowerCase() || item.fa.trim() === word
-    );
-
-    if (source.value === target.value) {
-        result.textContent = 'زبان مبدأ و مقصد باید متفاوت باشند.';
-        return;
-    }
-
-    result.textContent = localMatch
-        ? `نتیجه داخلی: ${localMatch.de} = ${localMatch.fa} (در حال بررسی ترجمه آنلاین...)`
-        : 'در حال ترجمه...';
-
-    try {
-        const translated = await translateText(word, source.value, target.value);
-        result.textContent = translated || (localMatch ? `${localMatch.de} = ${localMatch.fa}` : 'ترجمه پیدا نشد.');
-    } catch (error) {
-        result.textContent = localMatch
-            ? `${localMatch.de} = ${localMatch.fa} (حالت آفلاین)`
-            : 'ارتباط با سرویس ترجمه برقرار نشد. اینترنت را بررسی کنید.';
+window.checkLessonWord = function(lvl, num, expectedFa) {
+    const input = document.getElementById(`ans-${lvl}-${num}`);
+    const out = document.getElementById(`res-${lvl}-${num}`);
+    if (!input || !out) return;
+    const norm = s => s.trim().toLocaleLowerCase('fa').replace(/\s+/g, ' ');
+    if (norm(input.value) === norm(expectedFa)) {
+        out.style.color = '#2c6b27';
+        out.textContent = 'آفرین! پاسخ کاملاً درست است.';
+    } else {
+        out.style.color = '#b34712';
+        out.textContent = 'پاسخ صحیح: ' + expectedFa;
     }
 };
 
-document.addEventListener('DOMContentLoaded', function() {
-    renderLessons();
-    renderConversation();
-    renderGrammar();
-    renderVideos();
-    renderDictionaryList();
-    showProgress();
-    window.showPage('homePage');
+function buildDictionaryDrawerHtml() {
+    return `
+        <div class="sub-card">
+            <h4>🔎 جستجو و ترجمه دوزبانه‌ی آلمانی ↔ فارسی</h4>
+            <input type="text" id="dictQuery" placeholder="کلمه یا جمله را بنویسید (مثلاً: Hallo یا سلام)..." oninput="renderDictionaryMatches(this.value)">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <select id="dictFrom">
+                    <option value="de">مبدأ: آلمانی (de)</option>
+                    <option value="fa">مبدأ: فارسی (fa)</option>
+                </select>
+                <select id="dictTo">
+                    <option value="fa">مقصد: فارسی (fa)</option>
+                    <option value="de">مقصد: آلمانی (de)</option>
+                </select>
+            </div>
+            <div class="audio-group" style="margin-top:4px;">
+                <button type="button" class="btn-primary" onclick="runDictionaryTranslate()">ترجمه آنلاین و داخلی</button>
+                <button type="button" class="btn-audio-de" onclick="speakText(document.getElementById('dictQuery').value, 'de-DE')">🔊 تلفظ آلمانی</button>
+                <button type="button" class="btn-audio-fa" onclick="speakText(document.getElementById('dictQuery').value, 'fa-IR')">🔊 تلفظ فارسی</button>
+            </div>
+            <div class="result-banner" id="dictOutput">برای ترجمه کلمه‌ای وارد کنید یا از فهرست واژگان زیر بشنوید.</div>
+        </div>
+        <div class="sub-card" id="dictListBox"></div>
+    `;
+}
 
-    const dictInput = element('dictionaryInput');
-    if (dictInput) {
-        dictInput.addEventListener('input', () => renderDictionaryList(dictInput.value));
+function getAllWords() {
+    const list = [];
+    LEVELS.forEach(lvl => {
+        (vocabularyBanks[lvl] || []).forEach(([de, fa]) => list.push({ lvl, de, fa }));
+    });
+    return list;
+}
+
+window.renderDictionaryMatches = function(q = '') {
+    const box = document.getElementById('dictListBox');
+    if (!box) return;
+    const term = q.trim().toLowerCase();
+    const filtered = getAllWords().filter(item =>
+        !term || item.de.toLowerCase().includes(term) || item.fa.toLowerCase().includes(term) || item.lvl.toLowerCase().includes(term)
+    );
+    box.innerHTML = `<h4>📚 واژگان منتخب (${filtered.length} مورد)</h4>` + filtered.slice(0, 30).map(item => `
+        <div class="vocab-row">
+            <span><strong>[${item.lvl}] ${item.de}</strong> — ${item.fa}</span>
+            <div class="audio-group">
+                <button type="button" class="btn-audio-de" onclick="speakText('${escapeAttr(item.de)}','de-DE')">🔊 آلمانی</button>
+                <button type="button" class="btn-audio-fa" onclick="speakText('${escapeAttr(item.fa)}','fa-IR')">🔊 فارسی</button>
+            </div>
+        </div>
+    `).join('');
+};
+
+window.runDictionaryTranslate = async function() {
+    const input = document.getElementById('dictQuery');
+    const from = document.getElementById('dictFrom').value;
+    const to = document.getElementById('dictTo').value;
+    const out = document.getElementById('dictOutput');
+    if (!input || !out) return;
+
+    const text = input.value.trim();
+    if (!text) {
+        out.textContent = 'لطفاً ابتدا کلمه یا جمله را بنویسید.';
+        return;
     }
+    if (from === to) {
+        out.textContent = 'زبان مبدأ و مقصد را متفاوت انتخاب کنید.';
+        return;
+    }
+
+    const local = getAllWords().find(w => w.de.toLowerCase() === text.toLowerCase() || w.fa.trim() === text);
+    out.textContent = '⏳ در حال ترجمه...';
+
+    try {
+        const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${from}|${to}`);
+        const data = await res.json();
+        const translated = data?.responseData?.translatedText || '';
+        out.innerHTML = `${text} ➜ <strong>${translated || (local ? local.fa : 'یافت نشد')}</strong>`;
+    } catch {
+        out.textContent = local ? `${local.de} = ${local.fa} (حالت آفلاین)` : 'خطا در اتصال به سرویس ترجمه.';
+    }
+};
+
+function buildVideosDrawerHtml() {
+    return LEVELS.map(lvl => {
+        const info = levelVideos[lvl];
+        const embed = info.id
+            ? `<iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/${info.id}" title="${info.title}" allowfullscreen loading="lazy"></iframe>`
+            : `<p style="font-size:13px;color:var(--muted);margin:6px 0;">منبع رسمی تمرینی سطح ${lvl} از طریق لینک زیر در دسترس است.</p>`;
+        return `
+            <div class="sub-card">
+                <h4>سطح ${lvl} – ${info.title}</h4>
+                ${embed}
+                <a href="${info.link}" target="_blank" rel="noopener noreferrer" style="font-size:13px;font-weight:800;color:var(--row-dark);">باز کردن منبع آموزشی ${lvl} ↗</a>
+            </div>
+        `;
+    }).join('');
+}
+
+function buildQuizDrawerHtml() {
+    return LEVELS.map(lvl => {
+        const qs = quizData[lvl] || [];
+        return `
+            <div class="sub-card">
+                <h4>آزمون سطح ${lvl}</h4>
+                ${qs.map((q, idx) => `
+                    <div class="line-row" style="flex-direction:column;align-items:stretch;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+                            <strong>${idx + 1}. ${q[0]}</strong>
+                            <button type="button" class="btn-audio-de" onclick="speakText('${escapeAttr(q[0])}','de-DE')">🔊 صدا</button>
+                        </div>
+                        <div style="margin-top:6px;">
+                            ${q[1].map((opt, oIdx) => `
+                                <label style="display:block;margin:4px 0;font-size:13.5px;cursor:pointer;">
+                                    <input type="radio" name="q_${lvl}_${idx}" value="${oIdx}"> ${opt}
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('')}
+                <button type="button" class="btn-primary" onclick="gradeQuiz('${lvl}')">ثبت امتیاز ${lvl}</button>
+                <div id="qres-${lvl}" style="margin-top:8px;font-weight:800;font-size:13.5px;"></div>
+            </div>
+        `;
+    }).join('');
+}
+
+window.gradeQuiz = function(lvl) {
+    const qs = quizData[lvl] || [];
+    const out = document.getElementById('qres-' + lvl);
+    let score = 0;
+    for (let i = 0; i < qs.length; i++) {
+        const checked = document.querySelector(`input[name="q_${lvl}_${i}"]:checked`);
+        if (!checked) {
+            alert('لطفاً به تمام سؤال‌های این سطح پاسخ دهید.');
+            return;
+        }
+        if (Number(checked.value) === qs[i][2]) score++;
+    }
+    const pts = score * 10;
+    if (out) {
+        out.style.color = pts >= 40 ? '#2c6b27' : '#b34712';
+        out.textContent = `امتیاز شما: ${pts} از ۵۰ (${score} از ${qs.length} پاسخ صحیح)`;
+    }
+};
+
+document.querySelectorAll('#quickLevelJump .lvl-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+        setLevelFilter(btn.dataset.level);
+        const group = document.getElementById('group-lessons');
+        if (group) group.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
 });
+
+function updateClockAndDate() {
+    const el = document.getElementById('liveClockDate');
+    if (!el) return;
+    const now = new Date();
+    const dateStr = new Intl.DateTimeFormat('fa-IR', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    }).format(now);
+    const timeStr = new Intl.DateTimeFormat('fa-IR', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    }).format(now);
+    el.textContent = `${dateStr} | ${timeStr}`;
+}
+
+updateClockAndDate();
+setInterval(updateClockAndDate, 1000);
+</script>
+</body>
+</html>
