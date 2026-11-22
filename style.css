@@ -596,3 +596,14 @@ textarea:focus,
         font-size: 22px;
     }
 }
+
+main,
+.page,
+.page.active,
+.panel,
+.welcome-box {
+    background-color: #ffffff;
+    color: #17233c;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
