@@ -3,21 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KING ASAD – آموزش زبان آلمانی</title>
+<title>KING ASAD – مرکز آموزش زبان آلمانی (A1 تا C1)</title>
 <style>
 :root {
-    --navy: #0e2240;
+    --navy: #0c1f3d;
     --blue: #174b83;
     --teal: #087e91;
     --gold: #e9b949;
+    --gold-soft: #fff8e6;
     --bg: #eef3fa;
     --white: #ffffff;
     --surface: #f7faff;
     --text: #17233c;
-    --muted: #5b6d86;
+    --muted: #5a6d86;
     --border: #d5e1ef;
-    --radius: 14px;
-    --shadow: 0 6px 20px rgba(14, 34, 64, 0.08);
+    --success: #1f9d73;
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --shadow: 0 8px 24px rgba(12, 31, 61, 0.08);
 }
 
 * {
@@ -26,26 +29,40 @@
     padding: 0;
 }
 
-body {
+html, body {
     direction: rtl;
     font-family: Tahoma, "Vazirmatn", Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.85;
-    padding-bottom: 30px;
+    min-height: 100vh;
 }
 
+/* سربرگ */
 header {
-    background: linear-gradient(135deg, #0b182e, var(--blue), var(--teal));
+    background: linear-gradient(135deg, #091529, var(--blue), var(--teal));
     color: #ffffff;
     text-align: center;
-    padding: 28px 16px;
+    padding: 30px 16px;
     border-bottom: 4px solid var(--gold);
+}
+
+.logo {
+    display: inline-block;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ffd66b;
+    letter-spacing: 2px;
+    padding: 4px 16px;
+    border: 1px solid rgba(255, 214, 107, 0.45);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
+    margin-bottom: 8px;
 }
 
 header h1 {
     font-size: 25px;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 header p {
@@ -54,226 +71,80 @@ header p {
 }
 
 main {
-    max-width: 1050px;
-    margin: 20px auto;
+    max-width: 1120px;
+    margin: 22px auto;
     padding: 0 14px;
 }
 
-details.section-box {
+/* چوکات اصلی هر بخش */
+details.section-frame {
     background: var(--white);
     border: 1.5px solid var(--border);
-    border-radius: var(--radius);
-    margin-bottom: 16px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 18px;
     box-shadow: var(--shadow);
     overflow: hidden;
 }
 
-details.section-box > summary {
+details.section-frame > summary {
     list-style: none;
     cursor: pointer;
-    background: linear-gradient(135deg, var(--blue), var(--teal));
+    background: linear-gradient(135deg, var(--navy), var(--blue));
     color: #ffffff;
-    padding: 15px 18px;
-    font-size: 17px;
+    padding: 16px 20px;
+    font-size: 18px;
     font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid transparent;
 }
 
-details.section-box > summary::-webkit-details-marker {
+details.section-frame[open] > summary {
+    background: linear-gradient(135deg, var(--blue), var(--teal));
+    border-bottom-color: var(--gold);
+}
+
+details.section-frame > summary::-webkit-details-marker {
     display: none;
 }
 
-.section-content {
-    padding: 16px;
+.section-body {
+    padding: 18px;
 }
 
+/* کادر توضیحات زیر هر بخش */
 .desc-box {
     background: var(--surface);
     color: var(--muted);
     border: 1px solid var(--border);
-    border-right: 4px solid var(--gold);
-    border-radius: 10px;
-    padding: 11px 14px;
-    margin-bottom: 14px;
+    border-right: 5px solid var(--gold);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    margin-bottom: 16px;
     font-size: 14px;
 }
 
-details.level-box {
+/* چوکات هر سطح */
+details.level-frame {
     background: var(--surface);
     border: 1.5px solid var(--border);
-    border-radius: 12px;
-    margin-bottom: 12px;
+    border-radius: var(--radius-md);
+    margin-bottom: 14px;
     overflow: hidden;
 }
 
-details.level-box > summary {
+details.level-frame > summary {
+    list-style: none;
     cursor: pointer;
-    background: #eaf2fc;
+    background: #e8f1fc;
     color: var(--navy);
-    padding: 13px 16px;
+    padding: 14px 16px;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.level-inner {
-    padding: 14px;
-}
-
-details.lesson-box {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    margin-bottom: 10px;
-    overflow: hidden;
-}
-
-details.lesson-box > summary {
-    cursor: pointer;
-    background: #f5f9ff;
-    color: var(--blue);
-    padding: 11px 14px;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.lesson-inner {
-    padding: 12px 14px;
-    border-top: 1px solid var(--border);
-}
-
-.word-row {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 8px 12px;
-    margin: 7px 0;
-    font-size: 14px;
-}
-
-footer {
-    max-width: 1050px;
-    margin: 24px auto 0;
-    background: var(--navy);
-    color: #ffffff;
-    text-align: center;
-    padding: 18px;
-    border-radius: var(--radius);
-    border-top: 3px solid var(--gold);
-}
-</style>
-</head>
-<body>
-
-<header>
-    <h1>KING ASAD – آموزش زبان آلمانی</h1>
-    <p>Deutsch lernen – A1 | A2 | B1 | B2 | C1</p>
-</header>
-
-<main>
-    <!-- بخش درس‌ها -->
-    <details class="section-box" open>
-        <summary>📚 بخش درس‌ها (A1 تا C1)</summary>
-        <div class="section-content">
-            <div class="desc-box">توضیحات بخش: روی هر سطح کلیک کنید تا درس‌های آن باز شود و روی هر درس بزنید تا محتوای آن را ببینید.</div>
-
-            <details class="level-box">
-                <summary>سطح A1 (مقدماتی)</summary>
-                <div class="level-inner">
-                    <div class="desc-box">توضیحات سطح A1: آشنایی با احوال‌پرسی، معرفی خود و واژگان پایه روزمره.</div>
-
-                    <details class="lesson-box">
-                        <summary>درس ۱: سلام و معرفی خود</summary>
-                        <div class="lesson-inner">
-                            <div class="desc-box">توضیحات درس ۱: یادگیری مکالمه کوتاه و فعل‌های پرکاربرد معرفی خود.</div>
-                            <p>🇩🇪 Guten Tag! Ich heiße Asad. Und wie heißt du?</p>
-                            <p>🇦🇫 روز بخیر! نام من اسد است. و نام تو چیست؟</p>
-                            <div class="word-row">heißen = نام داشتن</div>
-                            <div class="word-row">kommen = آمدن</div>
-                            <div class="word-row">wohnen = سکونت داشتن</div>
-                        </div>
-                    </details>
-
-                    <details class="lesson-box">
-                        <summary>درس ۲: کشورها و ملیت‌ها</summary>
-                        <div class="lesson-inner">
-                            <div class="desc-box">توضیحات درس ۲: بیان محل زندگی و کشور مبدأ به زبان آلمانی.</div>
-                            <p>🇩🇪 Ich komme aus Afghanistan und wohne in Deutschland.</p>
-                            <p>🇦🇫 من اهل افغانستان هستم و در آلمان زندگی می‌کنم.</p>
-                            <div class="word-row">das Land = کشور</div>
-                            <div class="word-row">sprechen = صحبت کردن</div>
-                        </div>
-                    </details>
-                </div>
-            </details>
-
-            <details class="level-box">
-                <summary>سطح A2 (پایه پیشرفته)</summary>
-                <div class="level-inner">
-                    <div class="desc-box">توضیحات سطح A2: روتین روزانه، خرید، سفر و مکالمات کاربردی.</div>
-                    <details class="lesson-box">
-                        <summary>درس ۱: روتین روزانه</summary>
-                        <div class="lesson-inner">
-                            <div class="desc-box">توضیحات درس ۱: افعال جداشدنی و بیان کارهای روزانه.</div>
-                            <p>🇩🇪 Ich stehe um sieben Uhr auf und lerne Deutsch.</p>
-                            <p>🇦🇫 من ساعت هفت بیدار می‌شوم و آلمانی می‌خوانم.</p>
-                            <div class="word-row">aufstehen = از خواب برخاستن</div>
-                            <div class="word-row">einkaufen = خرید کردن</div>
-                        </div>
-                    </details>
-                </div>
-            </details>
-
-            <details class="level-box">
-                <summary>سطح B1 (متوسط)</summary>
-                <div class="level-inner">
-                    <div class="desc-box">توضیحات سطح B1: بیان نظر، دلیل آوردن و درک موضوعات اجتماعی و کاری.</div>
-                    <details class="lesson-box">
-                        <summary>درس ۱: بیان نظر و استدلال</summary>
-                        <div class="lesson-inner">
-                            <div class="desc-box">توضیحات درس ۱: ساختارهای بیان دیدگاه در گفت‌وگو.</div>
-                            <p>🇩🇪 Meiner Meinung nach ist regelmäßiges Üben sehr wichtig.</p>
-                            <p>🇦🇫 به نظر من تمرین منظم بسیار مهم است.</p>
-                            <div class="word-row">die Meinung = نظر</div>
-                            <div class="word-row">begründen = دلیل آوردن</div>
-                        </div>
-                    </details>
-                </div>
-            </details>
-
-            <details class="level-box">
-                <summary>سطح B2 و C1 (پیشرفته)</summary>
-                <div class="level-inner">
-                    <div class="desc-box">توضیحات سطوح B2 و C1: تحلیل متون رسمی، استدلال دقیق و زبان تخصصی.</div>
-                    <details class="lesson-box">
-                        <summary>درس ۱: استدلال و تحلیل</summary>
-                        <div class="lesson-inner">
-                            <div class="desc-box">توضیحات درس ۱: ارزیابی پیامدها و ساختارهای رسمی.</div>
-                            <p>🇩🇪 Entscheidend ist, die langfristigen Folgen sorgfältig abzuwägen.</p>
-                            <p>🇦🇫 مهم این است که پیامدهای درازمدت را با دقت بسنجیم.</p>
-                            <div class="word-row">abwägen = سنجیدن</div>
-                            <div class="word-row">die Schlussfolgerung = نتیجه‌گیری</div>
-                        </div>
-                    </details>
-                </div>
-            </details>
-        </div>
-    </details>
-
-    <!-- بخش فرهنگ لغات -->
-    <details class="section-box">
-        <summary>📖 بخش فرهنگ لغات</summary>
-        <div class="section-content">
-            <div class="desc-box">توضیحات بخش: واژگان پرکاربرد همراه با ترجمه فارسی در چوکات‌های منظم آماده شده‌اند.</div>
-            <div class="word-row">begrüßen = خوشامد گفتن</div>
-            <div class="word-row">die Familie = خانواده</div>
-            <div class="word-row">die Wohnung = آپارتمان</div>
-            <div class="word-row">die Erfahrung = تجربه</div>
-            <div class="word-row">die Nachhaltigkeit = پایداری</div>
-        </div>
-    </details>
-
-    <!-- بخش گرامر -->
-    <details class="section-box">
-        <summary>✍️ بخش گرامر</summary>
-        <div class="section-content">
-            <div class="desc-box">توضیحات بخش: نکات کلیدی قواعد آلمانی به زبان ساده توضیح داده شده‌اند.</div>
-            <div class="word-row">جایگاه فعل: در جمله خبری ساده،
+details.level-frame
