@@ -1,3555 +1,810 @@
 /* =========================================
-   KING ASAD
-   سیستم جامع آموزش زبان آلمانی
-   پنج سطح A1 تا C1
-   مجموع 129 درس
+   KING ASAD - سیستم اصلی آموزشگاه
+   نسخه پنج سطحی: A1 تا C1
+   آکاردئونی یکپارچه + فرهنگ لغت فعال
 ========================================= */
 
-// تنظیمات اصلی سیستم
-const KING_ASAD = {
+const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
-    name: 'KING ASAD',
-
-    LEVELS: ['A1', 'A2', 'B1', 'B2', 'C1'],
-
-    LESSON_COUNTS: {
-        A1: 19,
-        A2: 20,
-        B1: 30,
-        B2: 30,
-        C1: 30
+const levelVideos = {
+    A1: {
+        id: '4-eDoThe6qo',
+        title: 'Nicos Weg A1 - Deutsche Welle',
+        link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789'
     },
-
-    TOTAL_LESSONS: 129,
-
-    // ویدیوهای آموزشی هر سطح
-    levelVideos: {
-        A1: {
-            id: '4-eDoThe6qo',
-            title: 'آموزش زبان آلمانی A1',
-            url: 'https://youtu.be/4-eDoThe6qo'
-        },
-
-        A2: {
-            id: 'Lg5P2w_Ro1c',
-            title: 'آموزش زبان آلمانی A2',
-            url: 'https://youtu.be/Lg5P2w_Ro1c'
-        },
-
-        B1: {
-            id: 'LkufozluseI',
-            title: 'آموزش زبان آلمانی B1',
-            url: 'https://youtu.be/LkufozluseI'
-        },
-
-        B2: {
-            id: '',
-            title: 'آموزش زبان آلمانی B2',
-            url: ''
-        },
-
-        C1: {
-            id: '',
-            title: 'آموزش زبان آلمانی C1',
-            url: ''
-        }
+    A2: {
+        id: 'Lg5P2w_Ro1c',
+        title: 'Nicos Weg A2 - Deutsche Welle',
+        link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789'
     },
-
-    // اطلاعات آموزشی
-    language: 'Deutsch',
-
-    translationLanguage: 'فارسی',
-
-    version: '2.0'
+    B1: {
+        id: 'LkufozluseI',
+        title: 'Nicos Weg B1 - Deutsche Welle',
+        link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789'
+    },
+    B2: {
+        id: null,
+        title: 'Deutsch lernen B2 - Goethe-Institut',
+        link: 'https://www.goethe.de/de/spr/ueb.html'
+    },
+    C1: {
+        id: null,
+        title: 'Deutsch lernen C1 - Goethe-Institut',
+        link: 'https://www.goethe.de/de/spr/ueb.html'
+    }
 };
 
-// نمایش اطلاعات سیستم
-console.log('KING ASAD آماده شد.');
-console.log('تعداد سطوح:', KING_ASAD.LEVELS.length);
-console.log('مجموع درس‌ها:', KING_ASAD.TOTAL_LESSONS);
-/* =========================================
-   KING ASAD
-   بخش دوم: عنوان‌های ۱۲۹ درس
-   پنج سطح از A1 تا C1
-========================================= */
+const levelDescriptions = {
+    A1: 'سطح مقدماتی: آشنایی با حروف، معرفی خود، اعداد، زمان و مکالمات روزمره بسیار ساده.',
+    A2: 'سطح پایه پیشرفته: صحبت درباره روتین روزانه، خرید، سفر، سلامت و نوشتن پیام‌های ساده.',
+    B1: 'سطح متوسط: بیان نظر، استدلال ساده، موقعیت‌های شغلی و اجتماعی و درک متن‌های روزمره.',
+    B2: 'سطح متوسط رو به بالا: بحث‌های تحلیلی، مسائل اجتماعی و فناوری، متن‌های رسمی و استدلال دقیق.',
+    C1: 'سطح پیشرفته: زبان علمی و دانشگاهی، تحلیل انتقادی، ظرافت‌های معنایی و نگارش تخصصی.'
+};
 
-KING_ASAD.lessonTitles = {
-
+const lessonTitles = {
     A1: [
-        'سلام و معرفی خود',
-        'کشورها و ملیت‌ها',
-        'خانواده و دوستان',
-        'اعداد و سن',
-        'روزهای هفته و ماه‌ها',
-        'ساعت و زمان',
-        'غذا و نوشیدنی',
-        'در کافه و رستورانت',
-        'خرید از فروشگاه',
-        'رنگ‌ها و لباس‌ها',
-        'خانه و اتاق‌ها',
-        'وسایل خانه',
-        'شغل‌ها و محل کار',
-        'برنامه روزانه',
-        'حمل‌ونقل شهری',
-        'آب‌وهوا و فصل‌ها',
-        'بدن و سلامتی',
-        'قرار ملاقات',
-        'دعوت و خداحافظی'
+        'سلام و معرفی خود','کشورها و ملیت‌ها','خانواده و دوستان','اعداد و سن','روزهای هفته و ماه‌ها',
+        'ساعت و زمان','غذا و نوشیدنی','در کافه و رستورانت','خرید از فروشگاه','رنگ‌ها و لباس‌ها',
+        'خانه و اتاق‌ها','وسایل خانه','شغل‌ها و محل کار','برنامه روزانه','حمل‌ونقل شهری',
+        'آب‌وهوا و فصل‌ها','بدن و سلامتی','قرار ملاقات','دعوت و خداحافظی'
     ],
-
     A2: [
-        'روتین روزانه و عادت‌ها',
-        'خانه و جستجوی آپارتمان',
-        'خرید لباس و اندازه‌ها',
-        'خاطرات آخر هفته',
-        'سفر با قطار',
-        'رزرو هتل',
-        'در رستورانت سفارش دادن',
-        'آشپزی و دستور غذا',
-        'قرار داکتر',
-        'شرح درد و بیماری',
-        'آموزش و کورس زبان',
-        'کار و همکاران',
-        'نامه و ایمیل ساده',
-        'تلفن و پیام گذاشتن',
-        'تفریح و سرگرمی',
-        'ورزش و تناسب اندام',
-        'شهر و راهنمایی مسیر',
-        'مقایسه کالاها',
-        'دعوت به مهمانی',
-        'برنامه‌ریزی تعطیلات'
+        'روتین روزانه و عادت‌ها','خانه و جستجوی آپارتمان','خرید لباس و اندازه‌ها','خاطرات آخر هفته','سفر با قطار',
+        'رزرو هتل','در رستورانت سفارش دادن','آشپزی و دستور غذا','قرار داکتر','شرح درد و بیماری',
+        'آموزش و کورس زبان','کار و همکاران','نامه و ایمیل ساده','تلفن و پیام گذاشتن','تفریح و سرگرمی',
+        'ورزش و تناسب اندام','شهر و راهنمایی مسیر','مقایسه کالاها','دعوت به مهمانی','برنامه‌ریزی تعطیلات'
     ],
-
     B1: [
-        'بیان نظر و استدلال',
-        'محافظت از محیط زیست',
-        'درخواست کار و رزومه',
-        'مصاحبه شغلی',
-        'سلامت و سبک زندگی',
-        'رسانه و شبکه‌های اجتماعی',
-        'آموزش و انتخاب رشته',
-        'زندگی در شهر یا روستا',
-        'مهاجرت و سازگاری',
-        'فرهنگ و سنت‌ها',
-        'مصرف و خرید آگاهانه',
-        'تکنولوژی در زندگی',
-        'حل اختلاف و مذاکره',
-        'دوستی و روابط اجتماعی',
-        'برنامه‌ریزی آینده',
-        'تجربه‌های سفر',
-        'حوادث و گزارش رویداد',
-        'آگهی و تبلیغات',
-        'اجاره خانه و قرارداد',
-        'قوانین و حقوق شهروندی',
-        'تغذیه و عادت‌های سالم',
-        'حمل‌ونقل عمومی',
-        'داوطلبی و کمک اجتماعی',
-        'آب‌وهوا و تغییرات اقلیمی',
-        'کتاب و فیلم',
-        'آمادگی برای امتحان',
-        'جلسه و گفت‌وگوی گروهی',
-        'شکایت و درخواست رسمی',
-        'تصمیم‌گیری و پیامدها',
-        'هدف‌گذاری شخصی'
+        'بیان نظر و استدلال','محافظت از محیط زیست','درخواست کار و رزومه','مصاحبه شغلی','سلامت و سبک زندگی',
+        'رسانه و شبکه‌های اجتماعی','آموزش و انتخاب رشته','زندگی در شهر یا روستا','مهاجرت و سازگاری','فرهنگ و سنت‌ها',
+        'مصرف و خرید آگاهانه','تکنولوژی در زندگی','حل اختلاف و مذاکره','دوستی و روابط اجتماعی','برنامه‌ریزی آینده',
+        'تجربه‌های سفر','حوادث و گزارش رویداد','آگهی و تبلیغات','اجاره خانه و قرارداد','قوانین و حقوق شهروندی',
+        'تغذیه و عادت‌های سالم','حمل‌ونقل عمومی','داوطلبی و کمک اجتماعی','آب‌وهوا و تغییرات اقلیمی','کتاب و فیلم',
+        'آمادگی برای امتحان','جلسه و گفت‌وگوی گروهی','شکایت و درخواست رسمی','تصمیم‌گیری و پیامدها','هدف‌گذاری شخصی'
     ],
-
     B2: [
-        'استدلال پیچیده و دیدگاه‌ها',
-        'رسانه و سواد اطلاعاتی',
-        'اقتصاد و بازار کار',
-        'مدیریت پروژه',
-        'فرهنگ سازمانی',
-        'هوش مصنوعی و جامعه',
-        'حریم خصوصی دیجیتال',
-        'تغییرات اقلیمی و سیاست',
-        'انرژی‌های تجدیدپذیر',
-        'عدالت اجتماعی',
-        'آموزش عالی و پژوهش',
-        'مهاجرت و هویت',
-        'ارتباطات بین‌فرهنگی',
-        'رهبری و مسئولیت',
-        'مصالحه و حل تعارض',
-        'مصرف پایدار',
-        'شهرهای هوشمند',
-        'سلامت عمومی',
-        'اخلاق در علم',
-        'جهانی‌شدن',
-        'حقوق کار و قراردادها',
-        'تبلیغات و رفتار مصرف‌کننده',
-        'تاریخ و حافظه جمعی',
-        'هنر و نقد فرهنگی',
-        'علم و فناوری',
-        'ارائه و سخنرانی رسمی',
-        'گزارش‌نویسی تحلیلی',
-        'بحث و مناظره',
-        'فرضیه و پیامد احتمالی',
-        'زبان رسمی و غیررسمی'
+        'استدلال پیچیده و دیدگاه‌ها','رسانه و سواد اطلاعاتی','اقتصاد و بازار کار','مدیریت پروژه','فرهنگ سازمانی',
+        'هوش مصنوعی و جامعه','حریم خصوصی دیجیتال','تغییرات اقلیمی و سیاست','انرژی‌های تجدیدپذیر','عدالت اجتماعی',
+        'آموزش عالی و پژوهش','مهاجرت و هویت','ارتباطات بین‌فرهنگی','رهبری و مسئولیت','مصالحه و حل تعارض',
+        'مصرف پایدار','شهرهای هوشمند','سلامت عمومی','اخلاق در علم','جهانی‌شدن',
+        'حقوق کار و قراردادها','تبلیغات و رفتار مصرف‌کننده','تاریخ و حافظه جمعی','هنر و نقد فرهنگی','علم و فناوری',
+        'ارائه و سخنرانی رسمی','گزارش‌نویسی تحلیلی','بحث و مناظره','فرضیه و پیامد احتمالی','زبان رسمی و غیررسمی'
     ],
-
     C1: [
-        'زبان علمی و دانشگاهی',
-        'تحلیل انتقادی متون',
-        'بلاغت و فن بیان',
-        'ابهام و ظرافت معنایی',
-        'سبک‌شناسی نوشتار',
-        'مقاله پژوهشی',
-        'روش‌شناسی تحقیق',
-        'استدلال و مغالطه',
-        'گفتمان سیاسی و اجتماعی',
-        'اخلاق حرفه‌ای',
-        'تحلیل داده و تفسیر نتایج',
-        'نقد ادبی',
-        'زبان رسانه و چارچوب‌بندی',
-        'مذاکره پیشرفته',
-        'ارتباطات دیپلماتیک',
-        'اصطلاحات حقوقی',
-        'اقتصاد کلان و سیاست‌گذاری',
-        'فلسفه و جهان‌بینی',
-        'هویت و چندزبانگی',
-        'جامعه‌شناسی معاصر',
-        'فناوری و آینده انسان',
-        'زیست‌اخلاق و پزشکی',
-        'پایداری و مسئولیت جهانی',
-        'مدیریت بحران',
-        'ارائه تخصصی',
-        'نگارش گزارش مدیریتی',
-        'بازنویسی و خلاصه‌سازی',
-        'تحلیل سخنرانی',
-        'تفسیر ضمنی و کنایه',
-        'آمادگی آزمون پیشرفته'
-    ]
-
-};
-
-/* بررسی تعداد درس‌ها */
-KING_ASAD.validateLessonTitles = function () {
-    const expected = {
-        A1: 19,
-        A2: 20,
-        B1: 30,
-        B2: 30,
-        C1: 30
-    };
-
-    return Object.keys(expected).every(level =>
-        KING_ASAD.lessonTitles[level].length === expected[level]
-    );
-};
-
-console.log(
-    'KING ASAD - تعداد عنوان‌های درس:',
-    Object.values(KING_ASAD.lessonTitles)
-        .reduce((total, lessons) => total + lessons.length, 0)
-);
-/* =========================================
-   KING ASAD
-   بخش سوم: بانک واژگان پنج سطح
-========================================= */
-
-KING_ASAD.vocabularyBanks = {
-
-    A1: [
-        ['begrüßen', 'خوشامد گفتن'],
-        ['heißen', 'نام داشتن'],
-        ['kommen', 'آمدن'],
-        ['wohnen', 'سکونت داشتن'],
-        ['sprechen', 'صحبت کردن'],
-        ['die Familie', 'خانواده'],
-        ['der Freund', 'دوست'],
-        ['die Schwester', 'خواهر'],
-        ['der Bruder', 'برادر'],
-        ['das Kind', 'کودک'],
-        ['das Wasser', 'آب'],
-        ['das Brot', 'نان'],
-        ['der Apfel', 'سیب'],
-        ['der Kaffee', 'قهوه'],
-        ['bezahlen', 'پرداخت کردن'],
-        ['das Zimmer', 'اتاق'],
-        ['die Küche', 'آشپزخانه'],
-        ['die Wohnung', 'آپارتمان'],
-        ['der Tisch', 'میز'],
-        ['der Stuhl', 'چوکی'],
-        ['arbeiten', 'کار کردن'],
-        ['lernen', 'یاد گرفتن'],
-        ['fragen', 'پرسیدن'],
-        ['antworten', 'پاسخ دادن'],
-        ['verstehen', 'فهمیدن']
-    ],
-
-    A2: [
-        ['aufstehen', 'از خواب برخاستن'],
-        ['einkaufen', 'خرید کردن'],
-        ['vorbereiten', 'آماده کردن'],
-        ['vereinbaren', 'تعیین کردن'],
-        ['verschieben', 'به تعویق انداختن'],
-        ['die Unterkunft', 'محل اقامت'],
-        ['die Buchung', 'رزرو'],
-        ['die Verspätung', 'تأخیر'],
-        ['die Verbindung', 'ارتباط / مسیر'],
-        ['die Fahrkarte', 'تکت سفر'],
-        ['die Gesundheit', 'سلامتی'],
-        ['die Untersuchung', 'معاینه'],
-        ['die Ernährung', 'تغذیه'],
-        ['sich erholen', 'استراحت کردن'],
-        ['die Beschwerde', 'شکایت'],
-        ['die Ausbildung', 'آموزش حرفه‌ای'],
-        ['die Bewerbung', 'درخواست کار'],
-        ['der Arbeitsplatz', 'محل کار'],
-        ['die Erfahrung', 'تجربه'],
-        ['die Nachricht', 'پیام / خبر'],
-        ['empfehlen', 'توصیه کردن'],
-        ['vergleichen', 'مقایسه کردن'],
-        ['erreichen', 'رسیدن / تماس گرفتن'],
-        ['teilnehmen', 'شرکت کردن'],
-        ['erklären', 'توضیح دادن']
-    ],
-
-    B1: [
-        ['die Meinung', 'نظر'],
-        ['die Erfahrung', 'تجربه'],
-        ['die Entscheidung', 'تصمیم'],
-        ['die Voraussetzung', 'شرط لازم'],
-        ['die Auswirkung', 'پیامد'],
-        ['die Umwelt', 'محیط زیست'],
-        ['die Verschmutzung', 'آلودگی'],
-        ['die Maßnahme', 'اقدام'],
-        ['die Verantwortung', 'مسئولیت'],
-        ['die Möglichkeit', 'امکان'],
-        ['die Bewerbung', 'درخواست کار'],
-        ['der Lebenslauf', 'زندگی‌نامه کاری'],
-        ['das Vorstellungsgespräch', 'مصاحبه کاری'],
-        ['die Fähigkeit', 'توانایی'],
-        ['die Qualifikation', 'صلاحیت'],
-        ['begründen', 'دلیل آوردن'],
-        ['zustimmen', 'موافق بودن'],
-        ['widersprechen', 'مخالفت کردن'],
-        ['vermeiden', 'اجتناب کردن'],
-        ['berücksichtigen', 'در نظر گرفتن'],
-        ['obwohl', 'با وجود اینکه'],
-        ['während', 'در حالی که'],
-        ['deshalb', 'به همین دلیل'],
-        ['sobald', 'به محض اینکه'],
-        ['die Entwicklung', 'پیشرفت / توسعه']
-    ],
-
-    B2: [
-        ['die Auseinandersetzung', 'بحث و بررسی'],
-        ['die Rahmenbedingung', 'شرایط کلی'],
-        ['die Herausforderung', 'چالش'],
-        ['die Nachhaltigkeit', 'پایداری'],
-        ['die Wechselwirkung', 'تأثیر متقابل'],
-        ['die Datensicherheit', 'امنیت داده‌ها'],
-        ['die Chancengleichheit', 'برابری فرصت‌ها'],
-        ['die Maßnahme', 'اقدام'],
-        ['die Umsetzung', 'اجرا'],
-        ['die Wahrnehmung', 'برداشت / ادراک'],
-        ['abwägen', 'سنجیدن'],
-        ['hinterfragen', 'با دید انتقادی بررسی کردن'],
-        ['veranschaulichen', 'روشن ساختن'],
-        ['voraussetzen', 'پیش‌فرض گرفتن'],
-        ['sich auseinandersetzen', 'به بررسی پرداختن'],
-        ['infolgedessen', 'در نتیجه آن'],
-        ['demgegenüber', 'در مقابل آن'],
-        ['allerdings', 'با این حال'],
-        ['folglich', 'بنابراین'],
-        ['sofern', 'به شرط اینکه'],
-        ['die Stellungnahme', 'اظهارنظر رسمی'],
-        ['der Zusammenhang', 'ارتباط'],
-        ['die Voraussetzung', 'پیش‌شرط'],
-        ['die Erkenntnis', 'دریافت علمی'],
-        ['die Perspektive', 'دیدگاه']
-    ],
-
-    C1: [
-        ['die Schlussfolgerung', 'نتیجه‌گیری'],
-        ['die Argumentationslinie', 'خط استدلال'],
-        ['die Diskrepanz', 'ناهماهنگی'],
-        ['die Implikation', 'پیامد ضمنی'],
-        ['die Differenzierung', 'تفکیک دقیق'],
-        ['die Prämisse', 'مقدمه استدلال'],
-        ['die These', 'فرضیه / تز'],
-        ['die Evidenz', 'شواهد'],
-        ['die Methodik', 'روش‌شناسی'],
-        ['die Tragweite', 'دامنه اهمیت'],
-        ['relativieren', 'نسبی جلوه دادن'],
-        ['präzisieren', 'دقیق‌تر بیان کردن'],
-        ['kontextualisieren', 'در بافت قرار دادن'],
-        ['substanziieren', 'با شواهد پشتیبانی کردن'],
-        ['nuancieren', 'با ظرافت تفکیک کردن'],
-        ['nichtsdestoweniger', 'با وجود این'],
-        ['in Anbetracht', 'با در نظر گرفتن'],
-        ['demzufolge', 'بر این اساس'],
-        ['wenngleich', 'اگرچه'],
-        ['insofern', 'از این جهت'],
-        ['die Wechselwirkung', 'تأثیر متقابل'],
-        ['die Kontroverse', 'مناقشه'],
-        ['die Auslegung', 'تفسیر'],
-        ['die Verhältnismäßigkeit', 'تناسب'],
-        ['die Gültigkeit', 'اعتبار']
-    ]
-
-};
-
-/* بررسی تعداد واژگان */
-KING_ASAD.validateVocabulary = function () {
-    return KING_ASAD.LEVELS.every(level =>
-        Array.isArray(KING_ASAD.vocabularyBanks[level]) &&
-        KING_ASAD.vocabularyBanks[level].length >= 20
-    );
-};
-
-console.log('KING ASAD - بانک واژگان آماده شد.');
-/* =========================================
-   KING ASAD
-   بخش چهارم: گرامر و مکالمه‌ها
-========================================= */
-
-// گرامرهای هر سطح
-KING_ASAD.grammarByLevel = {
-
-    A1: [
-        {
-            title: 'فعل‌های sein و haben',
-            explanation: 'فعل sein برای معرفی و بیان وضعیت و فعل haben برای مالکیت استفاده می‌شود.',
-            examples: [
-                ['Ich bin Student.', 'من محصل هستم.'],
-                ['Ich habe ein Buch.', 'من یک کتاب دارم.']
-            ]
-        },
-        {
-            title: 'صرف فعل در زمان حال',
-            explanation: 'فعل در زبان آلمانی مطابق فاعل تغییر می‌کند.',
-            examples: [
-                ['Ich lerne Deutsch.', 'من آلمانی یاد می‌گیرم.'],
-                ['Du lernst Deutsch.', 'تو آلمانی یاد می‌گیری.']
-            ]
-        },
-        {
-            title: 'حروف تعریف der, die, das',
-            explanation: 'اسم‌های آلمانی دارای جنس دستوری هستند.',
-            examples: [
-                ['Der Mann', 'مرد'],
-                ['Die Frau', 'زن'],
-                ['Das Kind', 'کودک']
-            ]
-        },
-        {
-            title: 'جمله پرسشی',
-            explanation: 'برای پرسش می‌توان از کلمات پرسشی یا جابه‌جایی فعل و فاعل استفاده کرد.',
-            examples: [
-                ['Wie heißt du?', 'نامت چیست؟'],
-                ['Kommst du heute?', 'امروز می‌آیی؟']
-            ]
-        },
-        {
-            title: 'منفی‌سازی با nicht و kein',
-            explanation: 'nicht برای منفی‌کردن جمله و kein برای منفی‌کردن اسم به‌کار می‌رود.',
-            examples: [
-                ['Ich komme nicht.', 'من نمی‌آیم.'],
-                ['Ich habe kein Auto.', 'من موتر ندارم.']
-            ]
-        }
-    ],
-
-    A2: [
-        {
-            title: 'زمان گذشته Perfekt',
-            explanation: 'برای بیان بسیاری از رویدادهای گذشته از haben یا sein همراه Partizip II استفاده می‌شود.',
-            examples: [
-                ['Ich habe Deutsch gelernt.', 'من آلمانی یاد گرفتم.'],
-                ['Ich bin nach Berlin gefahren.', 'من به برلین سفر کردم.']
-            ]
-        },
-        {
-            title: 'افعال جداشدنی',
-            explanation: 'پیشوند فعل جداشدنی در جمله اصلی معمولاً به پایان جمله می‌رود.',
-            examples: [
-                ['Ich stehe um 7 Uhr auf.', 'من ساعت هفت بیدار می‌شوم.'],
-                ['Er kauft heute ein.', 'او امروز خرید می‌کند.']
-            ]
-        },
-        {
-            title: 'افعال مُدال',
-            explanation: 'افعال مُدال مانند können، müssen و dürfen با مصدر فعل اصلی استفاده می‌شوند.',
-            examples: [
-                ['Ich muss arbeiten.', 'من باید کار کنم.'],
-                ['Du kannst kommen.', 'تو می‌توانی بیایی.']
-            ]
-        },
-        {
-            title: 'حروف اضافه مکانی',
-            explanation: 'حروف اضافه مکانی مانند in، an و auf بسته به مفهوم جمله با حالت دستوری مناسب می‌آیند.',
-            examples: [
-                ['Ich bin in der Schule.', 'من در مکتب هستم.'],
-                ['Ich gehe in die Schule.', 'من به مکتب می‌روم.']
-            ]
-        },
-        {
-            title: 'جمله‌های فرعی با weil',
-            explanation: 'در جمله فرعی با weil، فعل صرف‌شده معمولاً به پایان جمله می‌رود.',
-            examples: [
-                ['Ich lerne, weil ich eine Prüfung habe.', 'من درس می‌خوانم، چون امتحان دارم.']
-            ]
-        }
-    ],
-
-    B1: [
-        {
-            title: 'جمله‌های فرعی با dass',
-            explanation: 'با dass می‌توان یک جمله فرعی برای بیان نظر یا اطلاعات ساخت. فعل به پایان جمله می‌رود.',
-            examples: [
-                ['Ich glaube, dass er heute kommt.', 'فکر می‌کنم که او امروز می‌آید.']
-            ]
-        },
-        {
-            title: 'جمله‌های شرطی با wenn',
-            explanation: 'wenn برای بیان شرط یا موقعیت تکرارشونده استفاده می‌شود.',
-            examples: [
-                ['Wenn ich Zeit habe, besuche ich dich.', 'اگر وقت داشته باشم، به دیدنت می‌آیم.']
-            ]
-        },
-        {
-            title: 'حالت مجهول Passiv',
-            explanation: 'ساختار رایج مجهول در زمان حال با werden و Partizip II ساخته می‌شود.',
-            examples: [
-                ['Das Haus wird gebaut.', 'خانه ساخته می‌شود.']
-            ]
-        },
-        {
-            title: 'جمله‌های موصولی',
-            explanation: 'جمله موصولی اطلاعات بیشتری درباره یک اسم می‌دهد و فعل در پایان می‌آید.',
-            examples: [
-                ['Das ist der Mann, der hier arbeitet.', 'این مردی است که اینجا کار می‌کند.']
-            ]
-        },
-        {
-            title: 'حروف اضافه با Genitiv',
-            explanation: 'برخی حروف اضافه مانند während و wegen با حالت Genitiv استفاده می‌شوند.',
-            examples: [
-                ['Wegen des Wetters bleiben wir zu Hause.', 'به‌خاطر هوا در خانه می‌مانیم.']
-            ]
-        }
-    ],
-
-    B2: [
-        {
-            title: 'Konjunktiv II',
-            explanation: 'برای بیان فرض، آرزو، پیشنهاد مؤدبانه و موقعیت غیرواقعی استفاده می‌شود.',
-            examples: [
-                ['Wenn ich mehr Zeit hätte, würde ich reisen.', 'اگر وقت بیشتری می‌داشتم، سفر می‌کردم.']
-            ]
-        },
-        {
-            title: 'Passiv در زمان‌های مختلف',
-            explanation: 'ساختار مجهول می‌تواند در زمان‌های مختلف برای تمرکز بر عمل یا نتیجه استفاده شود.',
-            examples: [
-                ['Das Problem wurde gelöst.', 'مشکل حل شد.'],
-                ['Das Problem ist gelöst worden.', 'مشکل حل شده است.']
-            ]
-        },
-        {
-            title: 'Nominalisierung',
-            explanation: 'در این ساختار، فعل یا صفت به اسم تبدیل می‌شود.',
-            examples: [
-                ['Nachdem er angekommen war ...', 'پس از آن‌که او رسیده بود ...'],
-                ['Nach seiner Ankunft ...', 'پس از رسیدن او ...']
-            ]
-        },
-        {
-            title: 'Partizipialkonstruktionen',
-            explanation: 'ساختارهای وصفی با Partizip می‌توانند جمله را فشرده‌تر کنند.',
-            examples: [
-                ['Die gestern veröffentlichte Studie ...', 'مطالعه‌ای که دیروز منتشر شد ...']
-            ]
-        },
-        {
-            title: 'Konnektoren',
-            explanation: 'پیونددهنده‌هایی مانند obwohl، dennoch و während رابطه میان ایده‌ها را نشان می‌دهند.',
-            examples: [
-                ['Obwohl es regnet, gehen wir spazieren.', 'با وجود این‌که باران می‌بارد، به قدم‌زدن می‌رویم.']
-            ]
-        }
-    ],
-
-    C1: [
-        {
-            title: 'Konjunktiv I و نقل قول غیرمستقیم',
-            explanation: 'Konjunktiv I به‌ویژه در گزارش‌ها و نقل قول غیرمستقیم کاربرد دارد.',
-            examples: [
-                ['Er sagt, er sei krank.', 'او می‌گوید که بیمار است.']
-            ]
-        },
-        {
-            title: 'پیونددهنده‌های پیشرفته',
-            explanation: 'ساختارهایی مانند insofern als، sofern و wenngleich برای بیان روابط دقیق منطقی استفاده می‌شوند.',
-            examples: [
-                ['Sofern alle zustimmen, beginnen wir.', 'به شرطی که همه موافقت کنند، شروع می‌کنیم.']
-            ]
-        },
-        {
-            title: 'Nominalstil',
-            explanation: 'در سبک اسمی، اطلاعات با اسم‌ها و ترکیب‌های اسمی بیان می‌شوند؛ این سبک در متون رسمی رایج است.',
-            examples: [
-                ['Die Durchführung der Untersuchung ist wichtig.', 'انجام بررسی مهم است.']
-            ]
-        },
-        {
-            title: 'ساختارهای پیچیده موصولی',
-            explanation: 'جمله‌های موصولی پیشرفته برای توضیح دقیق‌تر و ارتباط‌دادن چند ایده استفاده می‌شوند.',
-            examples: [
-                ['Die Frage, über die wir gesprochen haben, bleibt offen.', 'پرسشی که درباره آن صحبت کردیم، همچنان باز است.']
-            ]
-        },
-        {
-            title: 'ظرافت‌های معنایی و وجهی',
-            explanation: 'انتخاب فعل‌های وجهی و قیدها می‌تواند میزان اطمینان، احتمال یا دیدگاه گوینده را نشان دهد.',
-            examples: [
-                ['Er dürfte bereits angekommen sein.', 'احتمالاً او تا حالا رسیده است.']
-            ]
-        }
+        'زبان علمی و دانشگاهی','تحلیل انتقادی متون','بلاغت و فن بیان','ابهام و ظرافت معنایی','سبک‌شناسی نوشتار',
+        'مقاله پژوهشی','روش‌شناسی تحقیق','استدلال و مغالطه','گفتمان سیاسی و اجتماعی','اخلاق حرفه‌ای',
+        'تحلیل داده و تفسیر نتایج','نقد ادبی','زبان رسانه و چارچوب‌بندی','مذاکره پیشرفته','ارتباطات دیپلماتیک',
+        'اصطلاحات حقوقی','اقتصاد کلان و سیاست‌گذاری','فلسفه و جهان‌بینی','هویت و چندزبانگی','جامعه‌شناسی معاصر',
+        'فناوری و آینده انسان','زیست‌اخلاق و پزشکی','پایداری و مسئولیت جهانی','مدیریت بحران','ارائه تخصصی',
+        'نگارش گزارش مدیریتی','بازنویسی و خلاصه‌سازی','تحلیل سخنرانی','تفسیر ضمنی و کنایه','آمادگی آزمون پیشرفته'
     ]
 };
 
-
-// الگوهای مکالمه هر سطح
-KING_ASAD.dialogTemplates = {
-
+const vocabularyBanks = {
     A1: [
-        {
-            german: 'Guten Tag! Wie heißen Sie?',
-            persian: 'روز بخیر! نام شما چیست؟'
-        },
-        {
-            german: 'Ich heiße Ali. Und Sie?',
-            persian: 'نام من علی است. و شما؟'
-        },
-        {
-            german: 'Ich komme aus Afghanistan.',
-            persian: 'من از افغانستان هستم.'
-        }
+        ['begrüßen','خوشامد گفتن'],['heißen','نام داشتن'],['kommen','آمدن'],['wohnen','سکونت داشتن'],['sprechen','صحبت کردن'],
+        ['die Familie','خانواده'],['der Freund','دوست'],['die Schwester','خواهر'],['der Bruder','برادر'],['das Kind','کودک'],
+        ['das Wasser','آب'],['das Brot','نان'],['der Apfel','سیب'],['der Kaffee','قهوه'],['bezahlen','پرداخت کردن'],
+        ['das Zimmer','اتاق'],['die Küche','آشپزخانه'],['die Wohnung','آپارتمان'],['der Tisch','میز'],['der Stuhl','چوکی'],
+        ['arbeiten','کار کردن'],['lernen','یاد گرفتن'],['fragen','پرسیدن'],['antworten','پاسخ دادن'],['verstehen','فهمیدن']
     ],
-
     A2: [
-        {
-            german: 'Was hast du am Wochenende gemacht?',
-            persian: 'آخر هفته چه کار کردی؟'
-        },
-        {
-            german: 'Ich bin mit meiner Familie gereist.',
-            persian: 'من با خانواده‌ام سفر کردم.'
-        },
-        {
-            german: 'Wie war deine Reise?',
-            persian: 'سفرت چگونه بود؟'
-        }
+        ['aufstehen','از خواب برخاستن'],['einkaufen','خرید کردن'],['vorbereiten','آماده کردن'],['vereinbaren','تعیین کردن'],['verschieben','به تعویق انداختن'],
+        ['die Unterkunft','محل اقامت'],['die Buchung','رزرو'],['die Verspätung','تأخیر'],['die Verbindung','ارتباط / مسیر'],['die Fahrkarte','تکت سفر'],
+        ['die Gesundheit','سلامتی'],['die Untersuchung','معاینه'],['die Ernährung','تغذیه'],['sich erholen','استراحت و بهبود یافتن'],['die Beschwerde','شکایت'],
+        ['die Ausbildung','آموزش حرفه‌ای'],['die Bewerbung','درخواست کار'],['der Arbeitsplatz','محل کار'],['die Erfahrung','تجربه'],['die Nachricht','پیام / خبر'],
+        ['empfehlen','توصیه کردن'],['vergleichen','مقایسه کردن'],['erreichen','رسیدن / تماس گرفتن'],['teilnehmen','شرکت کردن'],['erklären','توضیح دادن']
     ],
-
     B1: [
-        {
-            german: 'Was hältst du von sozialen Medien?',
-            persian: 'درباره رسانه‌های اجتماعی چه نظری داری؟'
-        },
-        {
-            german: 'Ich finde sie nützlich, aber manchmal problematisch.',
-            persian: 'من آن‌ها را مفید می‌دانم، اما گاهی مشکل‌ساز هستند.'
-        },
-        {
-            german: 'Da stimme ich dir teilweise zu.',
-            persian: 'تا اندازه‌ای با تو موافق هستم.'
-        }
+        ['die Meinung','نظر'],['die Erfahrung','تجربه'],['die Entscheidung','تصمیم'],['die Voraussetzung','شرط لازم'],['die Auswirkung','پیامد'],
+        ['die Umwelt','محیط زیست'],['die Verschmutzung','آلودگی'],['die Maßnahme','اقدام'],['die Verantwortung','مسئولیت'],['die Möglichkeit','امکان'],
+        ['die Bewerbung','درخواست کار'],['der Lebenslauf','زندگی‌نامه کاری'],['das Vorstellungsgespräch','مصاحبه کاری'],['die Fähigkeit','توانایی'],['die Qualifikation','صلاحیت'],
+        ['begründen','دلیل آوردن'],['zustimmen','موافق بودن'],['widersprechen','مخالفت کردن'],['vermeiden','اجتناب کردن'],['berücksichtigen','در نظر گرفتن'],
+        ['obwohl','با وجود اینکه'],['während','در حالی که'],['deshalb','به همین دلیل'],['sobald','به محض اینکه'],['die Entwicklung','پیشرفت / توسعه']
     ],
-
     B2: [
-        {
-            german: 'Welche Maßnahmen würden Sie vorschlagen?',
-            persian: 'چه اقداماتی را پیشنهاد می‌کنید؟'
-        },
-        {
-            german: 'Meiner Ansicht nach sollte man langfristig planen.',
-            persian: 'از نظر من باید برای درازمدت برنامه‌ریزی کرد.'
-        },
-        {
-            german: 'Das klingt überzeugend.',
-            persian: 'این قانع‌کننده به نظر می‌رسد.'
-        }
+        ['die Auseinandersetzung','بحث و بررسی'],['die Rahmenbedingung','شرایط کلی'],['die Herausforderung','چالش'],['die Nachhaltigkeit','پایداری'],['die Wechselwirkung','تأثیر متقابل'],
+        ['die Datensicherheit','امنیت داده‌ها'],['die Chancengleichheit','برابری فرصت‌ها'],['die Maßnahme','اقدام'],['die Umsetzung','اجرا'],['die Wahrnehmung','برداشت / ادراک'],
+        ['abwägen','سنجیدن'],['hinterfragen','با دید انتقادی بررسی کردن'],['veranschaulichen','روشن ساختن'],['voraussetzen','پیش‌فرض گرفتن'],['sich auseinandersetzen','به بررسی پرداختن'],
+        ['infolgedessen','در نتیجه آن'],['demgegenüber','در مقابل آن'],['allerdings','با این حال'],['folglich','بنابراین'],['sofern','به شرط اینکه'],
+        ['die Stellungnahme','اظهارنظر رسمی'],['der Zusammenhang','ارتباط'],['die Voraussetzung','پیش‌شرط'],['die Erkenntnis','دریافت علمی'],['die Perspektive','دیدگاه']
     ],
-
     C1: [
-        {
-            german: 'Inwiefern beeinflusst diese Entwicklung unsere Gesellschaft?',
-            persian: 'این تحول تا چه اندازه بر جامعه ما تأثیر می‌گذارد؟'
-        },
-        {
-            german: 'Das hängt maßgeblich von den Rahmenbedingungen ab.',
-            persian: 'این موضوع تا حد زیادی به شرایط چارچوبی بستگی دارد.'
-        },
-        {
-            german: 'Ich möchte diesen Aspekt näher erläutern.',
-            persian: 'می‌خواهم این جنبه را بیشتر توضیح بدهم.'
-        }
+        ['die Schlussfolgerung','نتیجه‌گیری'],['die Argumentationslinie','خط استدلال'],['die Diskrepanz','ناهماهنگی'],['die Implikation','پیامد ضمنی'],['die Differenzierung','تفکیک دقیق'],
+        ['die Prämisse','مقدمه استدلال'],['die These','فرضیه / تز'],['die Evidenz','شواهد'],['die Methodik','روش‌شناسی'],['die Tragweite','دامنه اهمیت'],
+        ['relativieren','نسبی جلوه دادن'],['präzisieren','دقیق‌تر بیان کردن'],['kontextualisieren','در بافت قرار دادن'],['substanziieren','با شواهد پشتیبانی کردن'],['nuancieren','با ظرافت تفکیک کردن'],
+        ['nichtsdestoweniger','با وجود این'],['in Anbetracht','با در نظر گرفتن'],['demzufolge','بر این اساس'],['wenngleich','اگرچه'],['insofern','از این جهت'],
+        ['die Wechselwirkung','تأثیر متقابل'],['die Kontroverse','مناقشه'],['die Auslegung','تفسیر'],['die Verhältnismäßigkeit','تناسب'],['die Gültigkeit','اعتبار']
     ]
 };
 
-console.log('KING ASAD: گرامر و مکالمه‌ها بارگذاری شدند.');
-/* =========================================
-   KING ASAD
-   بخش پنجم: سیستم اطلاعات درس‌ها
-========================================= */
+const grammarByLevel = {
+    A1: [
+        'در جمله خبری آلمانی، فعل صرف‌شده معمولاً در جایگاه دوم قرار می‌گیرد. مثال: Heute lerne ich Deutsch.',
+        'فعل‌های sein و haben صرف می‌شوند. مثال: Ich bin müde. / Ich habe Zeit.',
+        'برای پرسش بله/خیر، فعل صرف‌شده در ابتدای جمله می‌آید. مثال: Lernst du Deutsch?',
+        'حرف تعریف اسم‌ها der، die و das است و بهتر است هر اسم همراه حرف تعریف یاد گرفته شود.',
+        'برای منفی‌کردن اسم نامعین از kein و برای منفی‌کردن فعل یا صفت از nicht استفاده می‌شود.'
+    ],
+    A2: [
+        'در زمان Perfekt از haben یا sein همراه Partizip II استفاده می‌شود. مثال: Ich habe gelernt.',
+        'در جمله وابسته با weil یا dass، فعل صرف‌شده به پایان جمله می‌رود.',
+        'افعال جداشدنی در جمله اصلی پیشوند را به پایان جمله می‌فرستند. مثال: Ich stehe früh auf.',
+        'حالت Dativ معمولاً برای گیرنده یا پس از برخی حروف اضافه می‌آید. مثال: mit dem Bus.',
+        'صفت پیش از اسم با توجه به حرف تعریف و حالت دستوری پسوند می‌گیرد.'
+    ],
+    B1: [
+        'با obwohl تضاد را بیان می‌کنیم؛ فعل جمله وابسته در پایان می‌آید.',
+        'ساختار Konjunktiv II برای درخواست مؤدبانه و موقعیت فرضی کاربرد دارد: Ich würde gern ...',
+        'جمله مجهول در زمان حال با werden و Partizip II ساخته می‌شود.',
+        'حروف ربط deshalb و trotzdem ترتیب جمله اصلی را حفظ می‌کنند و فعل در جایگاه دوم می‌ماند.',
+        'برای بیان هدف می‌توان از um ... zu همراه مصدر استفاده کرد.'
+    ],
+    B2: [
+        'ساختارهای اسمی‌سازی، متن رسمی و دانشگاهی را فشرده‌تر می‌کنند؛ مانند die Durchführung der Untersuchung.',
+        'در ساختار Passiv با فعل وجهی، مصدر مجهول در پایان می‌آید: Das Problem muss gelöst werden.',
+        'Partizipialattribute اطلاعات را فشرده می‌کنند و در نوشتار رسمی کاربرد دارند.',
+        'قیدها و عبارت‌های پیوندی مانند folglich، hingegen و darüber hinaus رابطه منطقی ایده‌ها را مشخص می‌کنند.',
+        'Konjunktiv I برای بازگویی غیرمستقیم گفته دیگران، به‌ویژه در گزارش رسمی، استفاده می‌شود.'
+    ],
+    C1: [
+        'در نوشتار دانشگاهی، ادعا باید با محدودکننده‌هایی مانند tendenziell یا unter bestimmten Bedingungen دقیق شود.',
+        'ساختارهای موصولی گسترده می‌توانند اطلاعات توضیحی پیچیده را به جمله اضافه کنند.',
+        'Konjunktiv I برای نقل غیرمستقیم و فاصله‌گذاری نویسنده از محتوای نقل‌شده کاربرد دارد.',
+        'Nominalstil و Verbalstil دو شیوه متفاوت بیان‌اند؛ انتخاب آن‌ها به هدف و مخاطب متن بستگی دارد.',
+        'برای استدلال منسجم، ادعا، شاهد، توضیح و نتیجه‌گیری باید از هم تفکیک شوند.'
+    ]
+};
 
-// ساخت اطلاعات درس‌ها برای پنج سطح
-KING_ASAD.buildLessonData = function () {
+const dialogTemplates = {
+    A1: [
+        ['Guten Tag! Können Sie mir bitte helfen?','روز بخیر! می‌توانید لطفاً به من کمک کنید؟'],
+        ['Ja, natürlich. Was möchten Sie wissen?','بلی، البته. چه چیزی می‌خواهید بدانید؟'],
+        ['Ich lerne Deutsch und möchte mehr üben.','من آلمانی یاد می‌گیرم و می‌خواهم بیشتر تمرین کنم.']
+    ],
+    A2: [
+        ['Können wir darüber sprechen?','می‌توانیم درباره آن صحبت کنیم؟'],
+        ['Ja, gern. Was ist passiert?','بلی، با خوشحالی. چه اتفاقی افتاده است؟'],
+        ['Ich möchte eine passende Lösung finden.','می‌خواهم یک راه‌حل مناسب پیدا کنم.']
+    ],
+    B1: [
+        ['Wie beurteilen Sie diese Situation?','این وضعیت را چگونه ارزیابی می‌کنید؟'],
+        ['Meiner Ansicht nach gibt es mehrere Möglichkeiten.','از دیدگاه من چندین امکان وجود دارد.'],
+        ['Könnten Sie Ihre Meinung genauer begründen?','می‌توانید نظر خود را دقیق‌تر توضیح دهید؟']
+    ],
+    B2: [
+        ['Welche Faktoren sollten wir dabei berücksichtigen?','در این مورد کدام عوامل را باید در نظر بگیریم؟'],
+        ['Entscheidend ist, die langfristigen Folgen abzuwägen.','مهم این است که پیامدهای درازمدت را بسنجیم.'],
+        ['Dem stimme ich teilweise zu, allerdings sehe ich auch Risiken.','تا اندازه‌ای موافقم، با این حال خطرهایی نیز می‌بینم.']
+    ],
+    C1: [
+        ['Wie lässt sich diese These wissenschaftlich einordnen?','این فرضیه را چگونه می‌توان از دید علمی بررسی کرد؟'],
+        ['Zunächst müsste man die zugrunde liegenden Annahmen präzisieren.','نخست باید فرض‌های بنیادی را دقیق‌تر تعریف کرد.'],
+        ['Das ist überzeugend, sofern die angeführten Belege tragfähig sind.','این قانع‌کننده است، به شرطی که شواهد ارائه‌شده معتبر باشند.']
+    ]
+};
 
+function buildLessonData() {
     const result = {};
-
-    KING_ASAD.LEVELS.forEach(level => {
-
-        result[level] = [];
-
-        const titles = KING_ASAD.lessonTitles[level];
-        const grammarList = KING_ASAD.grammarByLevel[level];
-        const dialogList = KING_ASAD.dialogTemplates[level];
-        const vocabularyList = KING_ASAD.vocabularyBanks[level];
-
-        for (let i = 0; i < KING_ASAD.LESSON_COUNTS[level]; i++) {
-
-            const grammar = grammarList[i % grammarList.length];
-            const dialog = dialogList[i % dialogList.length];
-
-            const start = (i * 3) % vocabularyList.length;
-
-            const words = [];
-
-            for (let j = 0; j < 5; j++) {
-                words.push(
-                    vocabularyList[(start + j) % vocabularyList.length]
-                );
-            }
-
-            result[level].push({
-                id: `${level}-${i + 1}`,
-                level: level,
-                lessonNumber: i + 1,
-                title: titles[i],
-                words: words,
-                dialog: [
-                    {
-                        german: dialog.german,
-                        persian: dialog.persian
-                    }
-                ],
-                grammar: grammar,
-                exercises: [
-                    {
-                        type: 'translation',
-                        question: `معنی عبارت «${words[0][0]}» چیست؟`,
-                        answer: words[0][1]
-                    },
-                    {
-                        type: 'translation',
-                        question: `معنی عبارت «${words[1][0]}» چیست؟`,
-                        answer: words[1][1]
-                    }
-                ]
-            });
-        }
-    });
-
-    return result;
-};
-
-
-// ذخیره اطلاعات تمام درس‌ها
-KING_ASAD.lessonData = KING_ASAD.buildLessonData();
-
-
-// دریافت اطلاعات یک درس مشخص
-KING_ASAD.getLesson = function (level, lessonNumber) {
-
-    if (!KING_ASAD.lessonData[level]) {
-        return null;
-    }
-
-    return KING_ASAD.lessonData[level][lessonNumber - 1] || null;
-};
-
-
-// دریافت تمام درس‌های یک سطح
-KING_ASAD.getLessonsByLevel = function (level) {
-
-    return KING_ASAD.lessonData[level] || [];
-};
-
-
-// شمارش درس‌های ساخته‌شده
-KING_ASAD.getTotalLessons = function () {
-
-    return KING_ASAD.LEVELS.reduce((total, level) => {
-        return total + KING_ASAD.lessonData[level].length;
-    }, 0);
-};
-
-
-// بررسی صحت اطلاعات
-KING_ASAD.validateLessons = function () {
-
-    const total = KING_ASAD.getTotalLessons();
-
-    console.log('تعداد درس‌های ساخته‌شده:', total);
-
-    KING_ASAD.LEVELS.forEach(level => {
-        console.log(
-            level,
-            'تعداد درس:',
-            KING_ASAD.lessonData[level].length
-        );
-    });
-
-    return total === KING_ASAD.TOTAL_LESSONS;
-};
-
-
-console.log(
-    'KING ASAD: اطلاعات درس‌ها ساخته شد.',
-    KING_ASAD.getTotalLessons()
-);
-/* =========================================
-   KING ASAD
-   بخش ششم: آزمون اختصاصی درس‌ها
-========================================= */
-
-// ساخت سؤال‌های آزمون برای یک درس
-KING_ASAD.createLessonQuiz = function (level, lessonNumber) {
-
-    const lesson = KING_ASAD.getLesson(level, lessonNumber);
-
-    if (!lesson || !lesson.words || lesson.words.length < 2) {
-        return [];
-    }
-
-    const allWords = KING_ASAD.LEVELS.flatMap(currentLevel => {
-        return KING_ASAD.vocabularyBanks[currentLevel];
-    });
-
-    return lesson.words.map((word, index) => {
-
-        const correctAnswer = word[1];
-
-        const wrongAnswers = allWords
-            .map(item => item[1])
-            .filter(answer => answer !== correctAnswer)
-            .filter((answer, position, array) => {
-                return array.indexOf(answer) === position;
-            });
-
-        const choices = [correctAnswer];
-
-        let offset = (lessonNumber * 3 + index * 5) % wrongAnswers.length;
-
-        while (choices.length < 4 && wrongAnswers.length > 0) {
-            const candidate = wrongAnswers[offset % wrongAnswers.length];
-
-            if (!choices.includes(candidate)) {
-                choices.push(candidate);
-            }
-
-            offset++;
-        }
-
-        // مرتب‌سازی ثابت گزینه‌ها برای هر سؤال
-        const shift = (lessonNumber + index) % choices.length;
-        const orderedChoices = [
-            ...choices.slice(shift),
-            ...choices.slice(0, shift)
-        ];
-
-        return {
-            question: `معنی عبارت «${word[0]}» چیست؟`,
-            options: orderedChoices,
-            correctAnswer: correctAnswer
-        };
-    });
-};
-
-
-// بررسی پاسخ‌های آزمون
-
-
-/* =========================================
-   KING ASAD
-   بررسی پاسخ‌های آزمون و ساختار درس‌ها
-========================================= */
-
-// بررسی پاسخ‌های آزمون یک درس
-KING_ASAD.checkLessonQuiz = function (level, lessonNumber, answers) {
-    const questions = KING_ASAD.createLessonQuiz(level, lessonNumber);
-
-    if (!Array.isArray(answers) || answers.length !== questions.length) {
-        return {
-            success: false,
-            message: 'لطفاً به تمام سؤال‌ها پاسخ دهید.'
-        };
-    }
-
-    let score = 0;
-
-    const results = questions.map((question, index) => {
-        const correct = answers[index] === question.correctAnswer;
-
-        if (correct) {
-            score++;
-        }
-
-        return {
-            question: question.question,
-            userAnswer: answers[index],
-            correctAnswer: question.correctAnswer,
-            correct: correct
-        };
-    });
-
-    const percentage = questions.length
-        ? Math.round((score / questions.length) * 100)
-        : 0;
-
-    return {
-        success: true,
-        level: level,
-        lessonNumber: lessonNumber,
-        totalQuestions: questions.length,
-        correctAnswers: score,
-        wrongAnswers: questions.length - score,
-        percentage: percentage,
-        passed: percentage >= 60,
-        results: results
-    };
-};
-
-
-
-// بررسی صحت ساختار ۱۲۹ درس
-KING_ASAD.checkLessonStructure = function () {
-    const errors = [];
-
-    KING_ASAD.LEVELS.forEach(level => {
-        const lessons = KING_ASAD.getLessonsByLevel(level);
-
-        if (lessons.length !== KING_ASAD.LESSON_COUNTS[level]) {
-            errors.push('تعداد درس‌های ' + level + ' درست نیست.');
-        }
-
-        lessons.forEach(lesson => {
-            if (!lesson.title || !lesson.words || !lesson.words.length) {
-                errors.push('اطلاعات درس ' + lesson.id + ' ناقص است.');
-            }
-
-            if (!lesson.grammar || !lesson.dialog || !lesson.dialog.length) {
-                errors.push('محتوای درس ' + lesson.id + ' ناقص است.');
-            }
+    LEVELS.forEach(level => {
+        const bank = vocabularyBanks[level];
+        result[level] = lessonTitles[level].map((title, index) => {
+            const start = (index * 3) % bank.length;
+            const words = Array.from({ length: 5 }, (_, n) => bank[(start + n) % bank.length]);
+            const dialog = dialogTemplates[level].map(line => [line[0], line[1]]);
+            const grammar = grammarByLevel[level][index % grammarByLevel[level].length];
+            return { title, words, dialog, grammar };
         });
     });
-
-    return {
-        valid: errors.length === 0,
-        errors: errors,
-        totalLessons: KING_ASAD.getTotalLessons()
-    };
-};
-
-
-// نمایش نتیجه آزمون در کنسول
-KING_ASAD.printQuizResult = function (result) {
-    if (!result || !result.success) {
-        console.log(
-            result ? result.message : 'نتیجه آزمون موجود نیست.'
-        );
-        return;
-    }
-
-    console.log('نتیجه آزمون KING ASAD');
-    console.log('سطح:', result.level);
-    console.log('شماره درس:', result.lessonNumber);
-    console.log('تعداد سؤال‌ها:', result.totalQuestions);
-    console.log('پاسخ درست:', result.correctAnswers);
-    console.log('پاسخ نادرست:', result.wrongAnswers);
-    console.log('درصد موفقیت:', result.percentage + '%');
-    console.log(
-        'وضعیت:',
-        result.passed ? 'قبول شد' : 'نیاز به تمرین بیشتر'
-    );
-};
-
-console.log('KING ASAD: سیستم آزمون درس‌ها آماده شد.');
-/* =========================================
-   KING ASAD
-   بخش هفتم: ذخیره پیشرفت شاگردان
-========================================= */
-
-// نام محل ذخیره اطلاعات
-KING_ASAD.progressStorageKey = 'KING_ASAD_STUDENT_PROGRESS_V2';
-
-
-// خواندن اطلاعات ذخیره‌شده
-KING_ASAD.loadProgress = function () {
-
-    try {
-        const saved = localStorage.getItem(
-            KING_ASAD.progressStorageKey
-        );
-
-        if (!saved) {
-            return {
-                completedLessons: [],
-                quizResults: {}
-            };
-        }
-
-        const progress = JSON.parse(saved);
-
-        return {
-            completedLessons: Array.isArray(progress.completedLessons)
-                ? progress.completedLessons
-                : [],
-
-            quizResults:
-                progress.quizResults &&
-                typeof progress.quizResults === 'object'
-                    ? progress.quizResults
-                    : {}
-        };
-
-    } catch (error) {
-        console.error('خطا در خواندن پیشرفت:', error);
-
-        return {
-            completedLessons: [],
-            quizResults: {}
-        };
-    }
-};
-
-
-// اطلاعات پیشرفت شاگرد
-KING_ASAD.studentProgress = KING_ASAD.loadProgress();
-
-
-// ذخیره اطلاعات پیشرفت
-KING_ASAD.saveProgress = function () {
-
-    try {
-        localStorage.setItem(
-            KING_ASAD.progressStorageKey,
-            JSON.stringify(KING_ASAD.studentProgress)
-        );
-
-        return true;
-
-    } catch (error) {
-        console.error('خطا در ذخیره پیشرفت:', error);
-        return false;
-    }
-};
-
-
-// ثبت تکمیل یک درس
-KING_ASAD.completeLesson = function (level, lessonNumber) {
-
-    const lesson = KING_ASAD.getLesson(level, lessonNumber);
-
-    if (!lesson) {
-        return false;
-    }
-
-    const lessonId = `${level}-${lessonNumber}`;
-
-    if (!KING_ASAD.studentProgress.completedLessons.includes(lessonId)) {
-
-        KING_ASAD.studentProgress.completedLessons.push(lessonId);
-
-    }
-
-    return KING_ASAD.saveProgress();
-};
-
-
-// بررسی تکمیل‌شدن درس
-KING_ASAD.isLessonCompleted = function (level, lessonNumber) {
-
-    const lessonId = `${level}-${lessonNumber}`;
-
-    return KING_ASAD.studentProgress.completedLessons.includes(
-        lessonId
-    );
-};
-
-
-// ذخیره نتیجه آزمون
-KING_ASAD.saveLessonQuizResult = function (result) {
-
-    if (!result || !result.success) {
-        return false;
-    }
-
-    const key = `${result.level}-${result.lessonNumber}`;
-
-    KING_ASAD.studentProgress.quizResults[key] = {
-        score: result.correctAnswers,
-        total: result.totalQuestions,
-        percentage: result.percentage,
-        passed: result.passed,
-        date: new Date().toISOString()
-    };
-
-    return KING_ASAD.saveProgress();
-};
-
-
-// محاسبه پیشرفت یک سطح
-KING_ASAD.getLevelProgress = function (level) {
-
-    const total = KING_ASAD.LESSON_COUNTS[level];
-
-    if (!total) {
-        return 0;
-    }
-
-    const completed = KING_ASAD.studentProgress.completedLessons
-        .filter(id => id.startsWith(level + '-'))
-        .length;
-
-    return Math.round((completed / total) * 100);
-};
-
-
-// محاسبه پیشرفت کل آموزشگاه
-KING_ASAD.getOverallProgress = function () {
-
-    const total = KING_ASAD.TOTAL_LESSONS;
-
-    const completed =
-        KING_ASAD.studentProgress.completedLessons.length;
-
-    return Math.round((completed / total) * 100);
-};
-
-
-// دریافت گزارش پیشرفت
-KING_ASAD.getProgressReport = function () {
-
-    const report = {};
-
-    KING_ASAD.LEVELS.forEach(level => {
-
-        report[level] = {
-            totalLessons: KING_ASAD.LESSON_COUNTS[level],
-            completedLessons:
-                KING_ASAD.studentProgress.completedLessons
-                    .filter(id => id.startsWith(level + '-'))
-                    .length,
-            percentage: KING_ASAD.getLevelProgress(level)
-        };
-
-    });
-
-    return {
-        levels: report,
-        overallPercentage: KING_ASAD.getOverallProgress()
-    };
-};
-
-
-console.log('KING ASAD: سیستم ذخیره پیشرفت آماده شد.');
-/* =========================================
-   KING ASAD
-   بخش هشتم: سیستم تلفظ صوتی آلمانی
-========================================= */
-
-// تنظیمات صوتی
-KING_ASAD.speechSettings = {
-    language: 'de-DE',
-    rate: 0.85,
-    pitch: 1,
-    volume: 1
-};
-
-
-// بررسی پشتیبانی مرورگر از تلفظ صوتی
-KING_ASAD.isSpeechSupported = function () {
-
-    return (
-        typeof window !== 'undefined' &&
-        'speechSynthesis' in window &&
-        'SpeechSynthesisUtterance' in window
-    );
-};
-
-
-// دریافت صدای آلمانی
-KING_ASAD.getGermanVoice = function () {
-
-    if (!KING_ASAD.isSpeechSupported()) {
-        return null;
-    }
-
-    const voices = window.speechSynthesis.getVoices();
-
-    return voices.find(voice => {
-        return voice.lang.toLowerCase().startsWith('de');
-    }) || null;
-};
-
-
-// پخش تلفظ آلمانی
-KING_ASAD.speakGerman = function (text, options = {}) {
-
-    if (!KING_ASAD.isSpeechSupported()) {
-        console.warn('مرورگر شما از تلفظ صوتی پشتیبانی نمی‌کند.');
-        return false;
-    }
-
-    if (typeof text !== 'string' || !text.trim()) {
-        console.warn('متن برای تلفظ موجود نیست.');
-        return false;
-    }
-
-    window.speechSynthesis.cancel();
-
-    const utterance = new SpeechSynthesisUtterance(text);
-
-    const settings = {
-        ...KING_ASAD.speechSettings,
-        ...options
-    };
-
-    utterance.lang = settings.language;
-    utterance.rate = settings.rate;
-    utterance.pitch = settings.pitch;
-    utterance.volume = settings.volume;
-
-    const germanVoice = KING_ASAD.getGermanVoice();
-
-    if (germanVoice) {
-        utterance.voice = germanVoice;
-    }
-
-    window.speechSynthesis.speak(utterance);
-
-    return true;
-};
-
-
-// توقف تلفظ
-KING_ASAD.stopSpeaking = function () {
-
-    if (!KING_ASAD.isSpeechSupported()) {
-        return false;
-    }
-
-    window.speechSynthesis.cancel();
-
-    return true;
-};
-
-
-// خواندن آهسته برای تمرین تلفظ
-KING_ASAD.speakSlowly = function (text) {
-
-    return KING_ASAD.speakGerman(text, {
-        rate: 0.65
-    });
-};
-
-
-// خواندن با سرعت طبیعی
-KING_ASAD.speakNormally = function (text) {
-
-    return KING_ASAD.speakGerman(text, {
-        rate: 1
-    });
-};
-
-
-// خواندن واژگان یک درس
-KING_ASAD.speakLessonWords = function (level, lessonNumber) {
-
-    const lesson = KING_ASAD.getLesson(level, lessonNumber);
-
-    if (!lesson) {
-        return false;
-    }
-
-    const words = lesson.words
-        .map(word => word[0])
-        .join('. ');
-
-    return KING_ASAD.speakGerman(words);
-};
-
-
-// خواندن مکالمه یک درس
-KING_ASAD.speakLessonDialog = function (level, lessonNumber) {
-
-    const lesson = KING_ASAD.getLesson(level, lessonNumber);
-
-    if (!lesson || !lesson.dialog) {
-        return false;
-    }
-
-    const conversation = lesson.dialog
-        .map(line => line.german)
-        .join('. ');
-
-    return KING_ASAD.speakGerman(conversation);
-};
-
-
-// آماده‌سازی صداهای مرورگر
-if (KING_ASAD.isSpeechSupported()) {
-
-    window.speechSynthesis.onvoiceschanged = function () {
-        KING_ASAD.getGermanVoice();
-    };
-
+    return result;
 }
 
+const lessonData = buildLessonData();
 
-console.log('KING ASAD: سیستم تلفظ آلمانی آماده شد.');
-/* =========================================
-   KING ASAD
-   بخش نهم: فرهنگ لغت آلمانی به فارسی
-========================================= */
-
-// ساخت فهرست واژگان از تمام سطوح
-KING_ASAD.buildDictionary = function () {
-
-    const dictionary = [];
-
-    KING_ASAD.LEVELS.forEach(level => {
-
-        const words = KING_ASAD.vocabularyBanks[level] || [];
-
-        words.forEach(word => {
-
-            if (Array.isArray(word) && word.length >= 2) {
-
-                dictionary.push({
-                    german: word[0],
-                    persian: word[1],
-                    level: level
-                });
-
-            }
-
-        });
-
-    });
-
-    return dictionary;
+const quizData = {
+    A1: [
+        ['Was bedeutet „Guten Morgen“?',['صبح بخیر','شب بخیر','خداحافظ'],0],
+        ['Wie heißt du?',['چند سال داری؟','نامت چیست؟','کجا هستی؟'],1],
+        ['Was bedeutet „Danke“?',['لطفاً','ببخشید','تشکر'],2],
+        ['Ich ___ aus Afghanistan.',['komme','kommt','kommen'],0],
+        ['Wie geht es dir?',['حالت چطور است؟','نامت چیست؟','کجا کار می‌کنی؟'],0]
+    ],
+    A2: [
+        ['Ich ___ gestern nach Berlin gefahren.',['bin','habe','ist'],0],
+        ['Was bedeutet „Einkaufen“?',['خوابیدن','خرید کردن','درس خواندن'],1],
+        ['Er ___ jeden Tag Deutsch.',['lernen','lernst','lernt'],2],
+        ['Was bedeutet „die Wohnung“?',['آپارتمان','مدرسه','بیمارستان'],0],
+        ['Ich habe gestern Fußball ___.',['spiele','gespielt','spielen'],1]
+    ],
+    B1: [
+        ['Wenn ich Zeit hätte, ___ ich reisen.',['werde','würde','bin'],1],
+        ['Was bedeutet „obwohl“?',['زیرا','اگر','با وجود اینکه'],2],
+        ['Er sagt, dass er krank ___.',['ist','sein','bist'],0],
+        ['Was bedeutet „die Erfahrung“?',['تجربه','تصمیم','سفر'],0],
+        ['Nachdem ich gegessen hatte, ___ ich spazieren.',['gehe','ging','gehen'],1]
+    ],
+    B2: [
+        ['Was bedeutet „abwägen“?',['سنجیدن','فراموش کردن','تکرار کردن'],0],
+        ['Die Ergebnisse müssen sorgfältig ___.',['analysiert werden','analysieren','analysiert haben'],0],
+        ['„Hingegen“ drückt meistens ___ aus.',['einen Gegensatz','einen Wunsch','eine Zeit'],0],
+        ['Was bedeutet „Nachhaltigkeit“?',['پایداری','سرعت','مالکیت'],0],
+        ['Er behauptet, die Zahlen ___ korrekt.',['seien','sind','wären'],0]
+    ],
+    C1: [
+        ['Was bedeutet „die Schlussfolgerung“?',['نتیجه‌گیری','پیش‌فرض','مخالفت'],0],
+        ['„Wenngleich“ bedeutet ___.',['اگرچه','بنابراین','در نتیجه'],0],
+        ['Eine Prämisse ist ___.',['eine Grundannahme','ein Ergebnis','eine Übersetzung'],0],
+        ['Was bedeutet „präzisieren“?',['دقیق‌تر بیان کردن','پنهان کردن','رد کردن'],0],
+        ['Konjunktiv I wird häufig für ___ verwendet.',['indirekte Rede','Befehle','Vergleiche'],0]
+    ]
 };
 
-
-// ذخیره فرهنگ لغت
-KING_ASAD.dictionary = KING_ASAD.buildDictionary();
-
-
-
-// جست‌وجوی واژه در فرهنگ لغات داخلی
-KING_ASAD.searchDictionary = function (searchText) {
-
-    if (
-        typeof searchText !== 'string' ||
-        !searchText.trim()
-    ) {
-        return [];
-    }
-
-    const query = searchText.trim().toLowerCase();
-
-    return KING_ASAD.dictionary.filter(item => {
-
-        return (
-            item.german.toLowerCase().includes(query) ||
-            item.persian.toLowerCase().includes(query)
-        );
-
-    });
-
-};
-
-// جست‌وجوی آنلاین برای واژه‌های خارج از ۱۲۹ درس
-KING_ASAD.translateOnline = async function (
-    text,
-    source = 'auto',
-    target = 'de'
-) {
-
-    if (!text || !text.trim()) {
-        throw new Error('لطفاً متن را وارد کنید.');
-    }
-
-    const response = await fetch(
-        'https://king-asad-translator.onrender.com/translate',
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                q: text.trim(),
-                source: source,
-                target: target,
-                format: 'text'
-            })
-        }
-    );
-
-    if (!response.ok) {
-        throw new Error('خطا در ارتباط با سرور مترجم.');
-    }
-
-    const data = await response.json();
-
-    if (!data.translatedText) {
-        throw new Error('ترجمه‌ای دریافت نشد.');
-    }
-
-    return data.translatedText;
-};
-
-
-
-// دریافت معنی دقیق یک واژه
-KING_ASAD.getWordMeaning = function (germanWord) {
-
-    if (typeof germanWord !== 'string') {
-        return null;
-    }
-
-    const query = germanWord.trim().toLowerCase();
-
-    return KING_ASAD.dictionary.find(item => {
-
-        return item.german.toLowerCase() === query;
-
-    }) || null;
-
-};
-
-
-// جست‌وجوی واژه در درس‌های یک سطح
-KING_ASAD.searchLevelDictionary = function (level, searchText) {
-
-    if (!KING_ASAD.lessonData[level]) {
-        return [];
-    }
-
-    if (typeof searchText !== 'string' || !searchText.trim()) {
-        return [];
-    }
-
-    const query = searchText.trim().toLowerCase();
-    const results = [];
-
-    KING_ASAD.lessonData[level].forEach(lesson => {
-
-        lesson.words.forEach(word => {
-
-            if (
-                word[0].toLowerCase().includes(query) ||
-                word[1].toLowerCase().includes(query)
-            ) {
-
-                results.push({
-                    german: word[0],
-                    persian: word[1],
-                    level: level,
-                    lessonNumber: lesson.lessonNumber,
-                    lessonTitle: lesson.title
-                });
-
-            }
-
-        });
-
-    });
-
-    return results;
-
-};
-
-
-// خواندن تلفظ واژه از فرهنگ لغت
-KING_ASAD.speakDictionaryWord = function (germanWord) {
-
-    return KING_ASAD.speakGerman(germanWord);
-
-};
-
-
-// دریافت تعداد واژه‌های فرهنگ لغت
-KING_ASAD.getDictionaryCount = function () {
-
-    return KING_ASAD.dictionary.length;
-
-};
-
-
-console.log(
-    'KING ASAD: فرهنگ لغت آماده شد.',
-    'تعداد واژه‌ها:',
-    KING_ASAD.getDictionaryCount()
-);
-/* =========================================
-   KING ASAD
-   بخش دهم: سیستم ترجمه آلمانی و فارسی
-========================================= */
-
-// تنظیمات ترجمه
-KING_ASAD.translationSettings = {
-    sourceLanguage: 'de',
-    targetLanguage: 'fa',
-    maximumLength: 5000
-};
-
-
-// ترجمه با فرهنگ لغت داخلی
-KING_ASAD.translateWithDictionary = function (text) {
-
-    if (typeof text !== 'string' || !text.trim()) {
-        return '';
-    }
-
-    const words = text.trim().split(/(\s+|[.,!?;:]+)/);
-
-    return words.map(part => {
-
-        const cleanWord = part.toLowerCase();
-
-        const found = KING_ASAD.dictionary.find(item => {
-            return item.german.toLowerCase() === cleanWord;
-        });
-
-        return found ? found.persian : part;
-
-    }).join('');
-};
-
-
-// ترجمه متن
-KING_ASAD.translateText = function (text, direction = 'de-fa') {
-
-    if (typeof text !== 'string' || !text.trim()) {
-        return {
-            success: false,
-            message: 'لطفاً متن مورد نظر را وارد کنید.'
-        };
-    }
-
-    if (text.length > KING_ASAD.translationSettings.maximumLength) {
-        return {
-            success: false,
-            message: 'متن واردشده بیش از اندازه طولانی است.'
-        };
-    }
-
-    if (direction === 'de-fa') {
-
-        const translated = KING_ASAD.translateWithDictionary(text);
-
-        return {
-            success: true,
-            direction: direction,
-            originalText: text,
-            translatedText: translated,
-            method: 'internal-dictionary'
-        };
-
-    }
-
-    if (direction === 'fa-de') {
-
-        const translated = text.split(/(\s+|[.,!?;:]+)/).map(part => {
-
-            const cleanWord = part.trim();
-
-            const found = KING_ASAD.dictionary.find(item => {
-                return item.persian === cleanWord;
-            });
-
-            return found ? found.german : part;
-
-        }).join('');
-
-        return {
-            success: true,
-            direction: direction,
-            originalText: text,
-            translatedText: translated,
-            method: 'internal-dictionary'
-        };
-
-    }
-
-    return {
-        success: false,
-        message: 'جهت ترجمه معتبر نیست.'
+LEVELS.forEach(level => {
+    quizData[level] = {
+        questions: quizData[level].map(q => ({ question:q[0], options:q[1], correct:q[2] })),
+        finished: false
     };
-};
+});
 
-
-// آماده‌سازی ترجمه برای سرویس خارجی
-KING_ASAD.prepareExternalTranslation = function (text, direction = 'de-fa') {
-
-    if (typeof text !== 'string' || !text.trim()) {
-        return null;
-    }
-
-    return {
-        text: text.trim(),
-        sourceLanguage: direction === 'de-fa' ? 'de' : 'fa',
-        targetLanguage: direction === 'de-fa' ? 'fa' : 'de'
-    };
-};
-
-
-// ترجمه یک واژه
-KING_ASAD.translateWord = function (word) {
-
-    const found = KING_ASAD.getWordMeaning(word);
-
-    if (!found) {
-        return {
-            success: false,
-            message: 'این واژه در فرهنگ لغت موجود نیست.'
-        };
-    }
-
-    return {
-        success: true,
-        german: found.german,
-        persian: found.persian,
-        level: found.level
-    };
-};
-
-
-console.log('KING ASAD: سیستم ترجمه آماده شد.');
-/* =========================================
-   KING ASAD
-   بخش یازدهم: مدیریت و نمایش درس‌ها
-========================================= */
-
-// دریافت عنوان سطح
-KING_ASAD.getLevelName = function (level) {
-
-    const names = {
-        A1: 'مقدماتی اول',
-        A2: 'مقدماتی دوم',
-        B1: 'متوسط اول',
-        B2: 'متوسط دوم',
-        C1: 'پیشرفته'
-    };
-
-    return names[level] || 'سطح نامشخص';
-};
-
-
-// دریافت خلاصه یک سطح
-KING_ASAD.getLevelSummary = function (level) {
-
-    const lessons = KING_ASAD.getLessonsByLevel(level);
-
-    return {
-        level: level,
-        name: KING_ASAD.getLevelName(level),
-        totalLessons: lessons.length,
-        completedLessons: lessons.filter(lesson => {
-            return KING_ASAD.isLessonCompleted(
-                level,
-                lesson.lessonNumber
-            );
-        }).length,
-        progress: KING_ASAD.getLevelProgress(level)
-    };
-};
-
-
-// ساخت فهرست درس‌های یک سطح
-KING_ASAD.createLessonList = function (level) {
-
-    const lessons = KING_ASAD.getLessonsByLevel(level);
-
-    return lessons.map(lesson => ({
-        id: lesson.id,
-        number: lesson.lessonNumber,
-        title: lesson.title,
-        completed: KING_ASAD.isLessonCompleted(
-            level,
-            lesson.lessonNumber
-        )
-    }));
-};
-
-
-// دریافت جزئیات کامل یک درس
-KING_ASAD.getLessonDetails = function (level, lessonNumber) {
-
-    const lesson = KING_ASAD.getLesson(level, lessonNumber);
-
-    if (!lesson) {
-        return null;
-    }
-
-    return {
-        id: lesson.id,
-        level: lesson.level,
-        levelName: KING_ASAD.getLevelName(level),
-        lessonNumber: lesson.lessonNumber,
-        title: lesson.title,
-        words: lesson.words,
-        dialog: lesson.dialog,
-        grammar: lesson.grammar,
-        exercises: lesson.exercises,
-        completed: KING_ASAD.isLessonCompleted(
-            level,
-            lessonNumber
-        ),
-        quiz: KING_ASAD.createLessonQuiz(
-            level,
-            lessonNumber
-        )
-    };
-};
-
-
-// دریافت فهرست تمام سطوح
-KING_ASAD.getAllLevelsSummary = function () {
-
-    return KING_ASAD.LEVELS.map(level => {
-        return KING_ASAD.getLevelSummary(level);
-    });
-};
-
-
-// دریافت درس بعدی
-KING_ASAD.getNextLesson = function (level, lessonNumber) {
-
-    const nextNumber = lessonNumber + 1;
-
-    if (nextNumber > KING_ASAD.LESSON_COUNTS[level]) {
-        return null;
-    }
-
-    return KING_ASAD.getLessonDetails(level, nextNumber);
-};
-
-
-// دریافت درس قبلی
-KING_ASAD.getPreviousLesson = function (level, lessonNumber) {
-
-    const previousNumber = lessonNumber - 1;
-
-    if (previousNumber < 1) {
-        return null;
-    }
-
-    return KING_ASAD.getLessonDetails(level, previousNumber);
-};
-
-
-
-/* بررسی ساختار همه درس‌ها
-   استفاده از تابع اصلی برای جلوگیری از تعریف تکراری
-*/
-KING_ASAD.validateAllLessons = function () {
-    return KING_ASAD.checkLessonStructure();
-};
-
-console.log('KING ASAD: سیستم مدیریت درس‌ها آماده شد.');
-
-/* =========================================
-   KING ASAD
-   بخش دوازدهم: مدیریت ویدیوهای آموزشی
-========================================= */
-
-KING_ASAD.videoLibrary = {
-    A1: [{
-        title: 'آموزش زبان آلمانی A1',
-        provider: 'YouTube',
-        videoId: '4-eDoThe6qo',
-        url: 'https://youtu.be/4-eDoThe6qo',
-        type: 'YouTube'
-    }],
-
-    A2: [{
-        title: 'آموزش زبان آلمانی A2',
-        provider: 'YouTube',
-        videoId: 'Lg5P2w_Ro1c',
-        url: 'https://youtu.be/Lg5P2w_Ro1c',
-        type: 'YouTube'
-    }],
-
-    B1: [{
-        title: 'آموزش زبان آلمانی B1',
-        provider: 'YouTube',
-        videoId: 'LkufozluseI',
-        url: 'https://youtu.be/LkufozluseI',
-        type: 'YouTube'
-    }],
-
-    B2: [{
-        title: 'آموزش زبان آلمانی B2',
-        provider: 'YouTube',
-        videoId: 'OOOogcObFig',
-        url: 'https://youtu.be/OOOogcObFig',
-        type: 'YouTube'
-    }],
-
-    C1: [{
-        title: 'آموزش زبان آلمانی C1',
-        provider: 'YouTube',
-        videoId: 'ULKkrkIJ0h8',
-        url: 'https://youtu.be/ULKkrkIJ0h8',
-        type: 'YouTube'
-    }]
-};
-
-// دریافت ویدیوهای یک سطح
-KING_ASAD.getLevelVideos = function (level) {
-    if (!KING_ASAD.LEVELS.includes(level)) {
-        return [];
-    }
-
-    return KING_ASAD.videoLibrary[level] || [];
-};
-
-// دریافت ویدیوی اصلی یک سطح
-KING_ASAD.getMainVideo = function (level) {
-    const videos = KING_ASAD.getLevelVideos(level);
-    return videos.length ? videos[0] : null;
-};
-
-// ساخت لینک پخش ویدیو
-KING_ASAD.getVideoEmbedUrl = function (video) {
-    if (!video || !video.videoId) {
-        return null;
-    }
-
-    return 'https://www.youtube.com/embed/' + video.videoId;
-};
-
-// دریافت جزئیات ویدیوی یک سطح
-KING_ASAD.getVideoDetails = function (level) {
-    const video = KING_ASAD.getMainVideo(level);
-
-    if (!video) {
-        return null;
-    }
-
-    return {
-        level: level,
-        levelName: KING_ASAD.getLevelName(level),
-        title: video.title,
-        provider: video.provider,
-        videoId: video.videoId,
-        url: video.url,
-        embedUrl: KING_ASAD.getVideoEmbedUrl(video),
-        type: video.type
-    };
-};
-
-// دریافت همه ویدیوهای آموزشگاه
-KING_ASAD.getAllVideos = function () {
-    const result = [];
-
-    KING_ASAD.LEVELS.forEach(level => {
-        KING_ASAD.getLevelVideos(level).forEach(video => {
-            result.push({
-                level: level,
-                levelName: KING_ASAD.getLevelName(level),
-                ...video
-            });
-        });
-    });
-
-    return result;
-};
-
-// بررسی کتابخانه ویدیوها
-KING_ASAD.validateVideoLibrary = function () {
-    const errors = [];
-
-    KING_ASAD.LEVELS.forEach(level => {
-        if (!Array.isArray(KING_ASAD.videoLibrary[level])) {
-            errors.push('ویدیوهای سطح ' + level + ' تعریف نشده است.');
-        }
-    });
-
-    return {
-        valid: errors.length === 0,
-        errors: errors,
-        totalVideos: KING_ASAD.getAllVideos().length
-    };
-};
-
-console.log(
-    'KING ASAD: کتابخانه پنج ویدیو آماده شد.',
-    KING_ASAD.getAllVideos()
-
-);
-
-
-/* =========================================
-   KING ASAD
-   بخش سیزدهم: نمایش و پخش ویدیوها
-========================================= */
-
-// ساخت کارت ویدیوی آموزشی
-KING_ASAD.createVideoCard = function (level, video) {
-    if (!video) return null;
-
-    const card = document.createElement('div');
-    card.className = 'king-video-card';
-
-    const title = document.createElement('h3');
-    title.textContent =
-        video.title || ('آموزش زبان آلمانی ' + level);
-
-    card.appendChild(title);
-
-    // دریافت شناسه ویدیو
-    let videoId = video.videoId || video.id || '';
-
-    if (!videoId && video.url) {
-        const match = video.url.match(
-            /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&?\/]+)/
-        );
-
-        if (match) {
-            videoId = match[1];
-        }
-    }
-
-    // نمایش ویدیوی یوتیوب
-    if (videoId) {
-        const iframe = document.createElement('iframe');
-
-        iframe.src =
-            'https://www.youtube.com/embed/' + videoId;
-
-        iframe.title = title.textContent;
-        iframe.allow =
-            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-
-        iframe.allowFullscreen = true;
-        iframe.loading = 'lazy';
-        iframe.style.width = '100%';
-        iframe.style.aspectRatio = '16 / 9';
-        iframe.style.border = '0';
-        iframe.style.borderRadius = '12px';
-
-        card.appendChild(iframe);
-    }
-
-    // لینک بازکردن ویدیو
-    if (video.url) {
-        const link = document.createElement('a');
-
-        link.href = video.url;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.textContent = 'بازکردن ویدیو در یوتیوب';
-
-        card.appendChild(link);
-    }
-
-    return card;
-};
-
-
-// نمایش ویدیوهای یک سطح
-KING_ASAD.renderLevelVideos = function (level, container) {
-    if (!KING_ASAD.LEVELS.includes(level)) {
-        return false;
-    }
-
-    const target = typeof container === 'string'
-        ? document.querySelector(container)
-        : container;
-
-    if (!target) return false;
-
-    target.replaceChildren();
-
-    const heading = document.createElement('h2');
-    heading.textContent = 'ویدیوهای سطح ' + level;
-    target.appendChild(heading);
-
-    const videos = KING_ASAD.getLevelVideos(level);
-
-    if (!videos.length) {
-        const message = document.createElement('p');
-        message.textContent = 'ویدیویی برای این سطح ثبت نشده است.';
-        target.appendChild(message);
-        return false;
-    }
-
-    videos.forEach(video => {
-        const card = KING_ASAD.createVideoCard(level, video);
-
-        if (card) {
-            target.appendChild(card);
-        }
-    });
-
-    return true;
-};
-
-
-// بازکردن صفحه ویدیوی یک سطح
-KING_ASAD.openVideoPage = function (level) {
-    const video = KING_ASAD.getMainVideo(level);
-
-    if (!video || !video.url) {
-        return false;
-    }
-
-    window.open(
-        video.url,
-        '_blank',
-        'noopener,noreferrer'
-    );
-
-    return true;
-};
-
-
-// اتصال دکمه‌های انتخاب سطح به ویدیوها
-KING_ASAD.bindVideoButtons = function () {
-    document.querySelectorAll('[data-video-level]').forEach(button => {
-        if (button.dataset.kingVideoBound === 'true') {
-            return;
-        }
-
-        button.dataset.kingVideoBound = 'true';
-
-        button.addEventListener('click', function () {
-            const level = this.dataset.videoLevel;
-            const container =
-                document.querySelector('#videoContainer');
-
-            KING_ASAD.renderLevelVideos(level, container);
-        });
-    });
-};
-
-console.log('KING ASAD: نمایش و پخش ویدیوها آماده شد.');
-
-/* =========================================
-   KING ASAD
-   بخش چهاردهم: کارت‌های درس‌ها
-========================================= */
-
-// ساخت کارت یک درس
-KING_ASAD.createLessonCard = function (level, lessonNumber) {
-
-    const lesson = KING_ASAD.getLesson(level, lessonNumber);
-
-    if (!lesson) {
-        return null;
-    }
-
-    const card = document.createElement('div');
-    card.className = 'king-lesson-card';
-
-    card.dataset.level = level;
-    card.dataset.lesson = lessonNumber;
-
-    const title = document.createElement('h3');
-    title.textContent =
-        `درس ${lessonNumber}: ${lesson.title}`;
-
-    const levelText = document.createElement('p');
-    levelText.textContent =
-        KING_ASAD.getLevelName(level);
-
-    const status = document.createElement('p');
-    status.className = 'king-lesson-status';
-
-    const completed = KING_ASAD.isLessonCompleted(
-        level,
-        lessonNumber
-    );
-
-    status.textContent = completed
-        ? 'تکمیل‌شده'
-        : 'تکمیل‌نشده';
-
-    status.dataset.status = completed
-        ? 'completed'
-        : 'pending';
-
-    const openButton = document.createElement('button');
-    openButton.type = 'button';
-    openButton.textContent = 'مشاهده درس';
-
-    openButton.addEventListener('click', function () {
-
-        if (typeof window.showLessonDetail === 'function') {
-            window.showLessonDetail(level, lessonNumber);
-        } else {
-            KING_ASAD.openLesson(level, lessonNumber);
-        }
-
-    });
-
-    card.append(
-        title,
-        levelText,
-        status,
-        openButton
-    );
-
-    return card;
-};
-
-
-// نمایش کارت‌های یک سطح
-KING_ASAD.renderLessonCards = function (level, container) {
-
-    if (!KING_ASAD.LEVELS.includes(level)) {
-        return false;
-    }
-
-    const target = typeof container === 'string'
-        ? document.querySelector(container)
-        : container;
-
-    if (!target) {
-        return false;
-    }
-
-    target.replaceChildren();
-
-    const heading = document.createElement('h2');
-
-    heading.textContent =
-        'درس‌های سطح ' + level;
-
-    target.appendChild(heading);
-
-    KING_ASAD.getLessonsByLevel(level).forEach(lesson => {
-
-        const card = KING_ASAD.createLessonCard(
-            level,
-            lesson.lessonNumber
-        );
-
-        if (card) {
-            target.appendChild(card);
-        }
-
-    });
-
-    return true;
-};
-
-
-// بازکردن جزئیات درس
-KING_ASAD.openLesson = function (level, lessonNumber) {
-
-    const details = KING_ASAD.getLessonDetails(
-        level,
-        lessonNumber
-    );
-
-    if (!details) {
-        return false;
-    }
-
-    KING_ASAD.currentLesson = details;
-
-    if (typeof window.renderKingAsadLesson === 'function') {
-        window.renderKingAsadLesson(details);
-        return true;
-    }
-
-    console.log('درس انتخاب‌شده:', details);
-
-    return true;
-};
-
-
-// تازه‌سازی وضعیت کارت‌های درس
-KING_ASAD.refreshLessonCards = function () {
-
-    document.querySelectorAll('.king-lesson-card').forEach(card => {
-
-        const level = card.dataset.level;
-        const lessonNumber = Number(card.dataset.lesson);
-
-        const status = card.querySelector(
-            '.king-lesson-status'
-        );
-
-        if (!status) {
-            return;
-        }
-
-        const completed = KING_ASAD.isLessonCompleted(
-            level,
-            lessonNumber
-        );
-
-        status.textContent = completed
-            ? 'تکمیل‌شده'
-            : 'تکمیل‌نشده';
-
-        status.dataset.status = completed
-            ? 'completed'
-            : 'pending';
-
-    });
-
-};
-
-console.log('KING ASAD: کارت‌های درس‌ها آماده شدند.');
-/* =========================================
-   KING ASAD
-   بخش پانزدهم: نمایش محتوای کامل درس
-========================================= */
-
-// ساخت بخش عنوان درس
-KING_ASAD.renderLessonHeading = function (lesson) {
-
-    const heading = document.createElement('div');
-    heading.className = 'king-lesson-heading';
-
-    const title = document.createElement('h2');
-    title.textContent =
-        `درس ${lesson.lessonNumber}: ${lesson.title}`;
-
-    const level = document.createElement('p');
-    level.textContent =
-        KING_ASAD.getLevelName(lesson.level);
-
-    heading.append(title, level);
-
-    return heading;
-};
-
-
-// نمایش واژگان درس
-KING_ASAD.renderLessonVocabulary = function (lesson) {
-
-    const section = document.createElement('section');
-    section.className = 'king-lesson-vocabulary';
-
-    const heading = document.createElement('h3');
-    heading.textContent = 'واژگان درس';
-
-    section.appendChild(heading);
-
-    lesson.words.forEach((word, index) => {
-
-        const item = document.createElement('div');
-        item.className = 'king-vocabulary-item';
-
-        const german = document.createElement('strong');
-        german.textContent = word[0];
-
-        const persian = document.createElement('p');
-        persian.textContent = word[1];
-
-        const speakButton = document.createElement('button');
-        speakButton.type = 'button';
-        speakButton.textContent = 'شنیدن تلفظ';
-
-        speakButton.addEventListener('click', function () {
-            KING_ASAD.speakGerman(word[0]);
-        });
-
-        item.append(german, persian, speakButton);
-
-        section.appendChild(item);
-
-    });
-
-    return section;
-};
-
-
-// نمایش مکالمه درس
-KING_ASAD.renderLessonConversation = function (lesson) {
-
-    const section = document.createElement('section');
-    section.className = 'king-lesson-conversation';
-
-    const heading = document.createElement('h3');
-    heading.textContent = 'مکالمه آموزشی';
-
-    section.appendChild(heading);
-
-    lesson.dialog.forEach(line => {
-
-        const item = document.createElement('div');
-        item.className = 'king-dialog-item';
-
-        const german = document.createElement('p');
-        german.textContent = line.german;
-
-        const persian = document.createElement('p');
-        persian.textContent = line.persian;
-
-        item.append(german, persian);
-
-        section.appendChild(item);
-
-    });
-
-    const speakButton = document.createElement('button');
-    speakButton.type = 'button';
-    speakButton.textContent = 'شنیدن مکالمه';
-
-    speakButton.addEventListener('click', function () {
-        KING_ASAD.speakLessonDialog(
-            lesson.level,
-            lesson.lessonNumber
-        );
-    });
-
-    section.appendChild(speakButton);
-
-    return section;
-};
-
-
-// نمایش گرامر درس
-KING_ASAD.renderLessonGrammar = function (lesson) {
-
-    const section = document.createElement('section');
-    section.className = 'king-lesson-grammar';
-
-    const heading = document.createElement('h3');
-    heading.textContent = 'گرامر درس';
-
-    const title = document.createElement('h4');
-    title.textContent = lesson.grammar.title;
-
-    const explanation = document.createElement('p');
-    explanation.textContent = lesson.grammar.explanation;
-
-    section.append(heading, title, explanation);
-
-    if (Array.isArray(lesson.grammar.examples)) {
-
-        lesson.grammar.examples.forEach(example => {
-
-            const item = document.createElement('div');
-
-            const german = document.createElement('p');
-            german.textContent = example[0];
-
-            const persian = document.createElement('p');
-            persian.textContent = example[1];
-
-            item.append(german, persian);
-
-            section.appendChild(item);
-
-        });
-
-    }
-
-    return section;
-};
-
-
-// نمایش تمرین‌های درس
-KING_ASAD.renderLessonExercises = function (lesson) {
-
-    const section = document.createElement('section');
-    section.className = 'king-lesson-exercises';
-
-    const heading = document.createElement('h3');
-    heading.textContent = 'تمرین‌های درس';
-
-    section.appendChild(heading);
-
-    lesson.exercises.forEach((exercise, index) => {
-
-        const item = document.createElement('div');
-
-        const question = document.createElement('p');
-        question.textContent =
-            `${index + 1}. ${exercise.question}`;
-
-        const answer = document.createElement('button');
-        answer.type = 'button';
-        answer.textContent = 'نمایش پاسخ';
-
-        const result = document.createElement('p');
-        result.hidden = true;
-        result.textContent = exercise.answer;
-
-        answer.addEventListener('click', function () {
-
-            result.hidden = !result.hidden;
-
-            answer.textContent = result.hidden
-                ? 'نمایش پاسخ'
-                : 'پنهان‌کردن پاسخ';
-
-        });
-
-        item.append(question, answer, result);
-
-        section.appendChild(item);
-
-    });
-
-    return section;
-};
-
-
-// نمایش کامل یک درس
-KING_ASAD.renderKingAsadLesson = function (lesson) {
-
-    if (!lesson) {
-        return false;
-    }
-
-    const container = document.querySelector('#lessonDetail');
-
-    if (!container) {
-        console.warn(
-            'محل نمایش درس با شناسه lessonDetail پیدا نشد.'
-        );
-
-        return false;
-    }
-
-    container.replaceChildren();
-
-    container.appendChild(
-        KING_ASAD.renderLessonHeading(lesson)
-    );
-
-    container.appendChild(
-        KING_ASAD.renderLessonVocabulary(lesson)
-    );
-
-    container.appendChild(
-        KING_ASAD.renderLessonConversation(lesson)
-    );
-
-    container.appendChild(
-        KING_ASAD.renderLessonGrammar(lesson)
-    );
-
-    container.appendChild(
-        KING_ASAD.renderLessonExercises(lesson)
-    );
-
-    const completeButton = document.createElement('button');
-
-    completeButton.type = 'button';
-    completeButton.textContent = 'تکمیل این درس';
-
-    completeButton.addEventListener('click', function () {
-
-        const saved = KING_ASAD.completeLesson(
-            lesson.level,
-            lesson.lessonNumber
-        );
-
-        if (saved) {
-            completeButton.textContent = 'درس تکمیل شد';
-            KING_ASAD.refreshLessonCards();
-        }
-
-    });
-
-    container.appendChild(completeButton);
-
-    return true;
-};
-
-
-console.log('KING ASAD: نمایش کامل درس‌ها آماده شد.');
-/* =========================================
-   KING ASAD
-   بخش شانزدهم: آزمون تعاملی
-========================================= */
-
-// ساخت صفحه آزمون
-KING_ASAD.renderLessonQuiz = function (level, lessonNumber) {
-
-    const container = document.querySelector('#quizContainer');
-
-    if (!container) {
-        console.warn('محل نمایش آزمون پیدا نشد.');
-        return false;
-    }
-
-    const questions = KING_ASAD.createLessonQuiz(
-        level,
-        lessonNumber
-    );
-
-    if (!questions.length) {
-        return false;
-    }
-
-    container.replaceChildren();
-
-    let currentAnswers = [];
-
-    const heading = document.createElement('h2');
-    heading.textContent =
-        `آزمون درس ${lessonNumber} - سطح ${level}`;
-
-    container.appendChild(heading);
-
-    const form = document.createElement('form');
-
-    questions.forEach((question, index) => {
-
-        const questionBox = document.createElement('fieldset');
-
-        const questionTitle = document.createElement('legend');
-
-        questionTitle.textContent =
-            `${index + 1}. ${question.question}`;
-
-        questionBox.appendChild(questionTitle);
-
-        question.options.forEach((option, optionIndex) => {
-
-            const label = document.createElement('label');
-
-            const radio = document.createElement('input');
-
-            radio.type = 'radio';
-            radio.name = `question-${index}`;
-            radio.value = option;
-            radio.required = true;
-
-            radio.addEventListener('change', function () {
-                currentAnswers[index] = option;
-            });
-
-            label.append(
-                radio,
-                document.createTextNode(' ' + option)
-            );
-
-            questionBox.appendChild(label);
-
-            questionBox.appendChild(
-                document.createElement('br')
-            );
-
-        });
-
-        form.appendChild(questionBox);
-
-    });
-
-    const submitButton = document.createElement('button');
-
-    submitButton.type = 'submit';
-    submitButton.textContent = 'ثبت پاسخ‌ها و مشاهده نتیجه';
-
-    form.appendChild(submitButton);
-
-    const resultBox = document.createElement('div');
-
-    resultBox.className = 'king-quiz-result';
-
-    form.addEventListener('submit', function (event) {
-
-        event.preventDefault();
-
-        const result = KING_ASAD.checkLessonQuiz(
-            level,
-            lessonNumber,
-            currentAnswers
-        );
-
-        if (!result.success) {
-            resultBox.textContent = result.message;
-            return;
-        }
-
-        KING_ASAD.saveLessonQuizResult(result);
-
-        resultBox.replaceChildren();
-
-        const score = document.createElement('h3');
-
-        score.textContent =
-            `نمره شما: ${result.correctAnswers} از ${result.totalQuestions}`;
-
-        const percentage = document.createElement('p');
-
-        percentage.textContent =
-            `درصد موفقیت: ${result.percentage}%`;
-
-        const status = document.createElement('p');
-
-        status.textContent = result.passed
-            ? 'تبریک! شما در آزمون موفق شدید.'
-            : 'نیاز به تمرین بیشتر دارید.';
-
-        resultBox.append(score, percentage, status);
-
-        result.results.forEach((item, index) => {
-
-            const detail = document.createElement('p');
-
-            detail.textContent =
-                `${index + 1}. ${item.correct ? 'درست' : 'نادرست'} - پاسخ صحیح: ${item.correctAnswer}`;
-
-            resultBox.appendChild(detail);
-
-        });
-
-        submitButton.disabled = true;
-
-    });
-
-    container.append(form, resultBox);
-
-    return true;
-};
-
-
-// بازکردن آزمون یک درس
-KING_ASAD.openLessonQuiz = function (level, lessonNumber) {
-
-    return KING_ASAD.renderLessonQuiz(
-        level,
-        lessonNumber
-    );
-
-};
-
-
-console.log('KING ASAD: آزمون تعاملی آماده شد.');
-/* =========================================
-   KING ASAD
-   بخش هفدهم: داشبورد پیشرفت شاگردان
-========================================= */
-
-// ساخت نوار پیشرفت
-KING_ASAD.createProgressBar = function (percentage) {
-
-    const wrapper = document.createElement('div');
-    wrapper.className = 'king-progress-wrapper';
-
-    const bar = document.createElement('div');
-    bar.className = 'king-progress-bar';
-
-    const fill = document.createElement('div');
-    fill.className = 'king-progress-fill';
-
-    const safePercentage = Math.max(
-        0,
-        Math.min(100, Number(percentage) || 0)
-    );
-
-    fill.style.width = safePercentage + '%';
-
-    bar.appendChild(fill);
-
-    const label = document.createElement('p');
-    label.textContent = safePercentage + '% تکمیل شده';
-
-    wrapper.append(bar, label);
-
-    return wrapper;
-};
-
-
-// ساخت کارت پیشرفت یک سطح
-KING_ASAD.createLevelProgressCard = function (level) {
-
-    const summary = KING_ASAD.getLevelSummary(level);
-
-    const card = document.createElement('div');
-    card.className = 'king-progress-card';
-
-    const title = document.createElement('h3');
-    title.textContent = level + ' - ' + summary.name;
-
-    const completed = document.createElement('p');
-
-    completed.textContent =
-        `${summary.completedLessons} از ${summary.totalLessons} درس تکمیل شده`;
-
-    card.append(
-        title,
-        completed,
-        KING_ASAD.createProgressBar(summary.progress)
-    );
-
-    return card;
-};
-
-
-// نمایش داشبورد پیشرفت
-KING_ASAD.renderProgressDashboard = function (container) {
-
-    const target = typeof container === 'string'
-        ? document.querySelector(container)
-        : container;
-
-    if (!target) {
-        console.warn('محل نمایش داشبورد پیدا نشد.');
-        return false;
-    }
-
-    target.replaceChildren();
-
-    const heading = document.createElement('h2');
-    heading.textContent = 'داشبورد پیشرفت KING ASAD';
-
-    target.appendChild(heading);
-
-    const overall = KING_ASAD.getOverallProgress();
-
-    const overallTitle = document.createElement('h3');
-    overallTitle.textContent = 'پیشرفت کل آموزشگاه';
-
-    const overallText = document.createElement('p');
-
-    overallText.textContent =
-        `${KING_ASAD.studentProgress.completedLessons.length} از ${KING_ASAD.TOTAL_LESSONS} درس تکمیل شده`;
-
-    target.append(
-        overallTitle,
-        overallText,
-        KING_ASAD.createProgressBar(overall)
-    );
-
-    const levelsTitle = document.createElement('h3');
-    levelsTitle.textContent = 'پیشرفت در پنج سطح'; 
-
-    target.appendChild(levelsTitle);
-
-    KING_ASAD.LEVELS.forEach(level => {
-
-        target.appendChild(
-            KING_ASAD.createLevelProgressCard(level)
-        );
-
-    });
-
-    return true;
-};
-
-
-// نمایش گزارش آزمون‌ها
-KING_ASAD.renderQuizHistory = function (container) {
-
-    const target = typeof container === 'string'
-        ? document.querySelector(container)
-        : container;
-
-    if (!target) {
-        return false;
-    }
-
-    target.replaceChildren();
-
-    const heading = document.createElement('h3');
-    heading.textContent = 'تاریخچه آزمون‌ها';
-
-    target.appendChild(heading);
-
-    const results = KING_ASAD.studentProgress.quizResults;
-
-    const keys = Object.keys(results);
-
-    if (!keys.length) {
-
-        const empty = document.createElement('p');
-        empty.textContent = 'هنوز آزمونی ثبت نشده است.';
-
-        target.appendChild(empty);
-
-        return true;
-    }
-
-    keys.forEach(key => {
-
-        const result = results[key];
-
-        const item = document.createElement('div');
-
-        const title = document.createElement('strong');
-        title.textContent = 'درس ' + key;
-
-        const score = document.createElement('p');
-
-        score.textContent =
-            `نمره: ${result.score} از ${result.total} - ${result.percentage}%`;
-
-        item.append(title, score);
-
-        target.appendChild(item);
-
-    });
-
-    return true;
-};
-
-
-// تازه‌سازی داشبورد
-KING_ASAD.refreshProgressDashboard = function () {
-
-    return KING_ASAD.renderProgressDashboard(
-        '#progressDashboard'
-    );
-
-};
-
-
-console.log('KING ASAD: داشبورد پیشرفت آماده شد.');
-
-
-/* =========================================
-   KING ASAD
-   بخش بیستم: اتصال و راه‌اندازی اصلاح‌شده
-========================================= */
-
-// نگهداری تابع اصلی نمایش درس
-KING_ASAD.renderLessonWithoutQuiz =
-    KING_ASAD.renderKingAsadLesson;
-
-// افزودن دکمه آزمون به درس
-KING_ASAD.renderKingAsadLesson = function (lesson) {
-
-    const rendered =
-        KING_ASAD.renderLessonWithoutQuiz(lesson);
-
-    if (!rendered) return false;
-
-    const container =
-        document.querySelector('#lessonDetail');
-
-    if (!container) return false;
-
-    const completeButton =
-        Array.from(container.querySelectorAll('button'))
-        .find(button =>
-            button.textContent.trim() === 'تکمیل این درس'
-        );
-
-    if (completeButton) {
-        completeButton.addEventListener('click', function () {
-            KING_ASAD.refreshProgressDashboard();
-        });
-    }
-
-    const quizButton = document.createElement('button');
-
-    quizButton.type = 'button';
-    quizButton.textContent = 'شروع آزمون این درس';
-
-    quizButton.addEventListener('click', function () {
-
-        KING_ASAD.openLessonQuiz(
-            lesson.level,
-            lesson.lessonNumber
-        );
-
-        document.querySelector('#quizContainer')
-            ?.scrollIntoView({ behavior: 'smooth' });
-    });
-
-    container.appendChild(quizButton);
-
-    return true;
-};
-
-// اتصال نمایش درس
-window.renderKingAsadLesson = function (lesson) {
-    return KING_ASAD.renderKingAsadLesson(lesson);
-};
-
-// تازه‌سازی پس از ثبت آزمون
-KING_ASAD.saveQuizResultOriginal =
-    KING_ASAD.saveLessonQuizResult;
-
-KING_ASAD.saveLessonQuizResult = function (result) {
-
-    const saved =
-        KING_ASAD.saveQuizResultOriginal(result);
-
-    KING_ASAD.renderQuizHistory('#quizHistory');
-    KING_ASAD.refreshProgressDashboard();
-
-    return saved;
-};
-
-
-// اتصال دکمه‌های سطوح
-KING_ASAD.bindLevelButtons = function () {
-
-    document.querySelectorAll('[data-level]').forEach(button => {
-
-        if (button.dataset.kingLevelBound === 'true') return;
-
-        button.dataset.kingLevelBound = 'true';
-
-        button.addEventListener('click', function () {
-
-            const level = this.dataset.level;
-
-            const success = KING_ASAD.renderLessonCards(
-                level,
-                '#lessonCards'
-            );
-
-            if (success) {
-                document.querySelector('#lessonCards')
-                    ?.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-};
-
-// راه‌اندازی
-KING_ASAD.initialize = function () {
-
-    console.log('KING ASAD شروع شد.');
-
-    KING_ASAD.bindLevelButtons();
-    KING_ASAD.bindVideoButtons();
-
-    KING_ASAD.refreshProgressDashboard();
-    KING_ASAD.renderQuizHistory('#quizHistory');
-
-    console.log('مجموع درس‌ها:', KING_ASAD.getTotalLessons());
-
-    return true;
-};
-
-// اجرای خودکار
-if (document.readyState === 'loading') {
-
-    document.addEventListener(
-        'DOMContentLoaded',
-        KING_ASAD.initialize
-    );
-
-} else {
-
-    KING_ASAD.initialize();
+function element(id) {
+    return document.getElementById(id);
 }
 
-/* =========================================
-   KING ASAD
-   اصلاح اتصال HTML و JavaScript
-========================================= */
-
-// 1. نمایش صفحات سایت
-window.showPage = function (pageId) {
-
-    const pages = document.querySelectorAll('.page');
-    const selectedPage = document.getElementById(pageId);
-
-    if (!selectedPage) {
-        console.error('صفحه پیدا نشد:', pageId);
-        return false;
-    }
-
-    pages.forEach(page => page.classList.remove('active'));
-
-    selectedPage.classList.add('active');
-
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-
-    return true;
-};
-
-
-// 2. نمایش درس‌های یک سطح
-window.showLevelLessons = function (level) {
-
-    window.showPage('lessonsPage');
-
-    const success = KING_ASAD.renderLessonCards(
-        level,
-        '#lessonCards'
-    );
-
-    if (success) {
-        document.querySelector('#lessonCards')
-            ?.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    return success;
-};
-
-window.searchDictionary = async function () {
-
-    const input = document.querySelector('#dictionaryInput');
-    const resultBox = document.querySelector('#dictionaryResult');
-
-    if (!input || !resultBox) return false;
-
-    const query = input.value.trim();
-
-    resultBox.replaceChildren();
-
-    if (!query) {
-        resultBox.textContent = 'لطفاً یک واژه وارد کنید.';
-        return false;
-    }
-
-    // ابتدا جست‌وجو در فرهنگ لغات ۱۲۹ درس
-    const results = KING_ASAD.searchDictionary(query);
-
-    if (results.length) {
-
-        results.forEach(item => {
-
-            const entry = document.createElement('div');
-
-            const german = document.createElement('strong');
-            german.textContent = item.german;
-
-            const persian = document.createElement('p');
-            persian.textContent = item.persian;
-
-            const level = document.createElement('small');
-            level.textContent = 'سطح: ' + item.level;
-
-            const speak = document.createElement('button');
-            speak.type = 'button';
-            speak.textContent = 'شنیدن تلفظ';
-
-            speak.addEventListener('click', function () {
-                KING_ASAD.speakGerman(item.german);
-            });
-
-            entry.append(german, persian, level, speak);
-            resultBox.appendChild(entry);
-        });
-
-        return true;
-    }
-
-    // اگر واژه در درس‌ها نبود، ترجمه آنلاین
-    resultBox.textContent = 'در حال جست‌وجوی آنلاین...';
-
-    try {
-
-        const translated = await KING_ASAD.translateOnline(
-            query,
-            'auto',
-            'de'
-        );
-
-        resultBox.replaceChildren();
-
-        const entry = document.createElement('div');
-
-        const title = document.createElement('strong');
-        title.textContent = 'ترجمه آنلاین:';
-
-        const translation = document.createElement('p');
-        translation.textContent = translated;
-
-        entry.append(title, translation);
-        resultBox.appendChild(entry);
-
-        return true;
-
-    } catch (error) {
-
-        resultBox.textContent =
-            'ترجمه انجام نشد. لطفاً دوباره تلاش کنید.';
-
-        console.error(error);
-        return false;
-    }
-};
-
-
-// 4. بازکردن آزمون یک سطح
-window.openQuiz = function (level) {
-
-    if (!KING_ASAD.LEVELS.includes(level)) {
-        return false;
-    }
-
-    window.showPage('lessonsPage');
-
-    KING_ASAD.renderLessonCards(level, '#lessonCards');
-
-    const lessons = KING_ASAD.getLessonsByLevel(level);
-
-    const nextLesson = lessons.find(lesson =>
-        !KING_ASAD.isLessonCompleted(
-            level,
-            lesson.lessonNumber
-        )
-    );
-
-    const lessonNumber = nextLesson
-        ? nextLesson.lessonNumber
-        : 1;
-
-    KING_ASAD.openLessonQuiz(level, lessonNumber);
-
-    document.querySelector('#quizContainer')
-        ?.scrollIntoView({ behavior: 'smooth' });
-
-    return true;
-};
-
-
-// 5. اتصال داشبورد پیشرفت به صفحه خانه
-KING_ASAD.renderHomeProgress = function () {
-
-    return KING_ASAD.renderProgressDashboard(
-        '#homeProgress'
-    );
-};
-
-
-// 6. تازه‌سازی داشبورد خانه و بخش درس‌ها
-KING_ASAD.refreshAllDashboards = function () {
-
-    KING_ASAD.renderHomeProgress();
-    KING_ASAD.refreshProgressDashboard();
-    KING_ASAD.renderQuizHistory('#quizHistory');
-
-    return true;
-};
-
-
-// اجرای داشبورد خانه
-KING_ASAD.renderHomeProgress();
-
-console.log('KING ASAD: توابع اتصال HTML اصلاح شدند.');
-
-/* =========================================
-   KING ASAD
-   پنج چوکات مستقل برای پنج سطح
-   نمایش درس‌ها زیر سطح مربوطه
-========================================= */
-
-// ساخت کارت مستقل هر درس
-KING_ASAD.createLessonCard = function (level, lessonNumber) {
-
-    const lesson = KING_ASAD.getLessonDetails(
-        level,
-        lessonNumber
-    );
-
-    if (!lesson) return null;
-
-    const card = document.createElement('div');
-    card.className = 'king-lesson-card';
-    card.dataset.level = level;
-    card.dataset.lesson = lessonNumber;
-
-    const title = document.createElement('h3');
-    title.textContent =
-        `درس ${lessonNumber}: ${lesson.title}`;
-
-    const status = document.createElement('p');
-    status.className = 'king-lesson-status';
-    status.textContent = KING_ASAD.isLessonCompleted(
-        level,
-        lessonNumber
-    ) ? 'تکمیل‌شده' : 'تکمیل‌نشده';
-
+function safeText(tag, text) {
+    const node = document.createElement(tag);
+    node.textContent = String(text ?? '');
+    return node;
+}
+
+function makeButton(text, handler, className) {
     const button = document.createElement('button');
     button.type = 'button';
-    button.textContent = 'مشاهده درس';
+    button.textContent = text;
+    if (className) button.className = className;
+    button.addEventListener('click', handler);
+    return button;
+}
 
-    const panel = document.createElement('div');
-    panel.className = 'king-inline-lesson-content';
-    panel.hidden = true;
+/* =========================================
+   نمایش بخش‌ها در همان صفحه بدون تغییر آدرس
+========================================= */
 
-    button.addEventListener('click', function () {
-
-        panel.hidden = !panel.hidden;
-
-        button.textContent = panel.hidden
-            ? 'مشاهده درس'
-            : 'بستن درس';
-
-        card.classList.toggle('is-open', !panel.hidden);
+window.showPage = function(pageId) {
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+        page.style.display = 'none';
     });
-
-    panel.append(
-        KING_ASAD.renderLessonHeading(lesson),
-        KING_ASAD.renderLessonVocabulary(lesson),
-        KING_ASAD.renderLessonConversation(lesson),
-        KING_ASAD.renderLessonGrammar(lesson),
-        KING_ASAD.renderLessonExercises(lesson)
-    );
-
-    const completeButton = document.createElement('button');
-    completeButton.type = 'button';
-    completeButton.textContent = 'تکمیل این درس';
-
-    completeButton.addEventListener('click', function () {
-        if (KING_ASAD.completeLesson(level, lessonNumber)) {
-            status.textContent = 'تکمیل‌شده';
-            completeButton.textContent = 'درس تکمیل شد';
-            KING_ASAD.refreshAllDashboards?.();
-        }
-    });
-
-    const quizButton = document.createElement('button');
-    quizButton.type = 'button';
-    quizButton.textContent = 'شروع آزمون این درس';
-
-    quizButton.addEventListener('click', function () {
-        KING_ASAD.openLessonQuiz(level, lessonNumber);
-    });
-
-    panel.append(completeButton, quizButton);
-    card.append(title, status, button, panel);
-
-    return card;
+    const page = element(pageId);
+    if (!page) return;
+    page.classList.add('active');
+    page.style.display = 'block';
+    if (pageId === 'homePage') showProgress();
+    if (pageId === 'dictionaryPage') renderDictionaryList();
 };
 
+/* =========================================
+   سطح و درس‌ها: باز و بسته شدن آکاردئونی به ترتیب
+========================================= */
 
-// ساخت پنج چوکات مستقل سطح‌ها
-KING_ASAD.renderAllLevelSections = function () {
+let activeLevel = null;
+const openLessonByLevel = {};
 
-    const container = document.querySelector('#lessonCards');
+window.showLevelLessons = function(level) {
+    if (!LEVELS.includes(level)) return;
 
-    if (!container) return false;
+    const isSameLevel = activeLevel === level;
+    activeLevel = isSameLevel ? null : level;
 
-    container.replaceChildren();
+    LEVELS.forEach(name => {
+        const box = element(name.toLowerCase() + 'LessonsContainer');
+        if (!box) return;
+        if (name === activeLevel) {
+            box.style.display = 'block';
+            box.classList.add('open-box');
+        } else {
+            box.style.display = 'none';
+            box.classList.remove('open-box');
+        }
+    });
+};
 
-    KING_ASAD.LEVELS.forEach((level, index) => {
+function renderLessons() {
+    LEVELS.forEach(level => {
+        const container = element(level.toLowerCase() + 'LessonsContainer');
+        if (!container) return;
 
-        const section = document.createElement('section');
-        section.className = 'king-level-section';
-        section.id = 'king-level-' + level;
+        container.replaceChildren();
+        container.style.display = 'none';
+        openLessonByLevel[level] = null;
 
-        const heading = document.createElement('h2');
-        heading.textContent =
-            `سطح ${index + 1} - ${level}`;
+        const headerBox = document.createElement('div');
+        headerBox.className = 'section-desc-box';
+        headerBox.appendChild(safeText('h3', 'سطح ' + level + ' (' + lessonData[level].length + ' درس)'));
+        headerBox.appendChild(safeText('p', levelDescriptions[level] || ''));
+        container.appendChild(headerBox);
 
-        const count = document.createElement('p');
-        count.textContent =
-            KING_ASAD.LESSON_COUNTS[level] + ' درس';
+        lessonData[level].forEach((data, index) => {
+            const number = index + 1;
 
-        const lessonsBox = document.createElement('div');
-        lessonsBox.className = 'king-level-lessons';
+            const itemWrapper = document.createElement('div');
+            itemWrapper.className = 'lesson-accordion-item';
+            itemWrapper.dataset.lessonIndex = String(number);
 
-        KING_ASAD.getLessonsByLevel(level).forEach(lesson => {
-
-            const card = KING_ASAD.createLessonCard(
-                level,
-                lesson.lessonNumber
+            const button = makeButton(
+                'درس ' + number + ': ' + data.title,
+                () => toggleLessonAccordion(level, number, data, itemWrapper),
+                'lesson-card'
             );
 
-            if (card) lessonsBox.appendChild(card);
-        });
+            const bodyBox = document.createElement('div');
+            bodyBox.className = 'lesson-accordion-body';
+            bodyBox.style.display = 'none';
 
-        section.append(heading, count, lessonsBox);
-        container.appendChild(section);
+            itemWrapper.appendChild(button);
+            itemWrapper.appendChild(bodyBox);
+            container.appendChild(itemWrapper);
+        });
+    });
+}
+
+function toggleLessonAccordion(level, number, data, itemWrapper) {
+    const container = element(level.toLowerCase() + 'LessonsContainer');
+    if (!container) return;
+
+    const targetBody = itemWrapper.querySelector('.lesson-accordion-body');
+    const isAlreadyOpen = openLessonByLevel[level] === number;
+
+    // بستن تمام درس‌های باز در این سطح تا تنها درس انتخاب‌شده باز بماند
+    container.querySelectorAll('.lesson-accordion-item').forEach(wrapper => {
+        const body = wrapper.querySelector('.lesson-accordion-body');
+        const btn = wrapper.querySelector('.lesson-card');
+        if (body) {
+            body.style.display = 'none';
+            body.replaceChildren();
+        }
+        if (btn) btn.classList.remove('active-lesson');
     });
 
-    return true;
-};
-
-
-// دکمه‌های انتخاب سطح فقط به چوکات همان سطح بروند
-KING_ASAD.bindLevelButtons = function () {
-
-    document.querySelectorAll('#lessonsPage [data-level]')
-        .forEach(oldButton => {
-
-            const button = oldButton.cloneNode(true);
-            oldButton.replaceWith(button);
-
-            button.addEventListener('click', function () {
-
-                const level = this.dataset.level;
-
-                document.querySelector('#king-level-' + level)
-                    ?.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-            });
-        });
-};
-
-
-// ورود به صفحه درس‌ها از صفحه خانه
-window.showLevelLessons = function (level) {
-
-    window.showPage('lessonsPage');
-
-    document.querySelector('#king-level-' + level)
-        ?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-
-    return true;
-};
-
-
-// ظاهر منظم پنج سطح و کارت‌های درس
-const kingLevelStyle = document.createElement('style');
-
-kingLevelStyle.textContent = `
-.king-level-section {
-    display: block;
-    width: 100%;
-    margin: 22px 0;
-    padding: 18px;
-    background: #ffffff;
-    border: 2px solid #214b80;
-    border-radius: 15px;
-    box-shadow: 0 3px 12px #00000012;
-    scroll-margin-top: 15px;
-}
-
-.king-level-section > h2 {
-    background: #214b80;
-    color: white;
-    padding: 12px;
-    border-radius: 9px;
-}
-
-.king-level-lessons {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-}
-
-.king-level-lessons .king-lesson-card {
-    width: 100%;
-    padding: 15px;
-    background: #f4f7fc;
-    border: 1px solid #cbd8ea;
-    border-radius: 11px;
-}
-
-.king-inline-lesson-content {
-    margin-top: 12px;
-    padding: 14px;
-    background: white;
-    border: 1px solid #e5b94c;
-    border-radius: 10px;
-}
-
-.king-inline-lesson-content[hidden] {
-    display: none !important;
-}
-
-.king-lesson-card.is-open {
-    border: 2px solid #e5b94c;
-}
-
-.king-inline-lesson-content section {
-    margin: 12px 0;
-    padding: 12px;
-    border: 1px solid #dce5f3;
-    border-radius: 9px;
-}
-
-@media (max-width: 600px) {
-    .king-level-section {
-        padding: 10px;
-    }
-
-    .king-level-lessons .king-lesson-card {
-        padding: 12px;
-    }
-}
-`;
-
-document.head.appendChild(kingLevelStyle);
-
-
-// نمایش تمام پنج سطح
-KING_ASAD.renderAllLevelSections();
-
-console.log('KING ASAD: پنج سطح مستقل آماده شدند.');
-
-/* =====================================
-   KING ASAD - فرهنگ لغت داخلی و مترجم آنلاین
-===================================== */
-
-const KING_ASAD_TRANSLATOR_URL =
-    'https://king-asad-translator.onrender.com';
-
-const KING_ASAD_LANGUAGES = {
-    fa: 'فارسی',
-    de: 'آلمانی',
-    en: 'انگلیسی',
-    tr: 'ترکی',
-    ar: 'عربی',
-    ur: 'اردو',
-    ps: 'پشتو'
-};
-
-// تنظیم زبان‌های فرهنگ لغت
-(function setupKingAsadTranslator() {
-    const source = document.getElementById('dictionarySource');
-    const target = document.getElementById('dictionaryTarget');
-
-    if (!source || !target) return;
-
-    source.replaceChildren();
-    target.replaceChildren();
-
-    Object.entries(KING_ASAD_LANGUAGES).forEach(([code, name]) => {
-        source.add(new Option(name, code));
-        target.add(new Option(name, code));
-    });
-
-    source.value = 'fa';
-    target.value = 'de';
-})();
-
-// جست‌وجو در فرهنگ لغت داخلی و مترجم آنلاین
-window.searchDictionary = async function () {
-    const input = document.getElementById('dictionaryInput');
-    const result = document.getElementById('dictionaryResult');
-    const source = document.getElementById('dictionarySource');
-    const target = document.getElementById('dictionaryTarget');
-
-    if (!input || !result || !source || !target) return;
-
-    const text = input.value.trim();
-
-    result.replaceChildren();
-
-    if (!text) {
-        result.textContent = 'لطفاً یک کلمه یا جمله وارد کنید.';
+    if (isAlreadyOpen) {
+        openLessonByLevel[level] = null;
         return;
     }
+
+    openLessonByLevel[level] = number;
+    const activeBtn = itemWrapper.querySelector('.lesson-card');
+    if (activeBtn) activeBtn.classList.add('active-lesson');
+
+    if (targetBody) {
+        populateLessonContent(level, number, data, targetBody);
+        targetBody.style.display = 'block';
+    }
+}
+
+function createLevelVideo(level) {
+    const info = levelVideos[level];
+    const box = document.createElement('div');
+    box.className = 'content-card';
+    box.appendChild(safeText('h3', 'منبع ویدیویی سطح ' + level));
+    box.appendChild(safeText('p', info.title));
+
+    if (info.id) {
+        const frameWrap = document.createElement('div');
+        frameWrap.style.cssText = 'position:relative;width:100%;padding-top:56.25%;overflow:hidden;border-radius:12px;';
+        const video = document.createElement('iframe');
+        video.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(info.id);
+        video.title = info.title;
+        video.loading = 'lazy';
+        video.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        video.allowFullscreen = true;
+        video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+        frameWrap.appendChild(video);
+        box.appendChild(frameWrap);
+    } else {
+        box.appendChild(safeText('p', 'برای این سطح لینک رسمی منابع آموزشی نمایش داده می‌شود.'));
+    }
+
+    const link = document.createElement('a');
+    link.href = info.link;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = 'باز کردن منبع آموزشی رسمی ' + level;
+    link.style.display = 'block';
+    link.style.marginTop = '12px';
+    box.appendChild(link);
+    return box;
+}
+
+function populateLessonContent(level, number, data, detail) {
+    detail.appendChild(safeText('h2', 'درس ' + number + ' - سطح ' + level + ': ' + data.title));
+    detail.appendChild(safeText('p', 'توضیحات درس: در این بخش مکالمه، واژگان کلیدی، نکته گرامری و تمرین کوتاه همین درس قرار دارد.'));
+
+    detail.appendChild(createLevelVideo(level));
+
+    const conversationBox = document.createElement('div');
+    conversationBox.className = 'content-card';
+    conversationBox.appendChild(safeText('h3', 'مکالمه با ترجمه فارسی'));
+    data.dialog.forEach(line => {
+        conversationBox.appendChild(safeText('p', '🇩🇪 ' + line[0]));
+        conversationBox.appendChild(safeText('p', '🇦🇫 ' + line[1]));
+        conversationBox.appendChild(makeButton('شنیدن آلمانی', () => window.speakGerman(line[0])));
+    });
+    detail.appendChild(conversationBox);
+
+    const wordsBox = document.createElement('div');
+    wordsBox.className = 'content-card';
+    wordsBox.appendChild(safeText('h3', 'لغات و معنی فارسی'));
+    data.words.forEach(word => {
+        const row = document.createElement('div');
+        row.style.marginBottom = '10px';
+        row.appendChild(safeText('span', word[0] + ' = ' + word[1] + ' '));
+        row.appendChild(makeButton('تلفظ', () => window.speakGerman(word[0])));
+        wordsBox.appendChild(row);
+    });
+    detail.appendChild(wordsBox);
+
+    const grammarBox = document.createElement('div');
+    grammarBox.className = 'content-card';
+    grammarBox.appendChild(safeText('h3', 'گرامر درس'));
+    grammarBox.appendChild(safeText('p', data.grammar));
+    detail.appendChild(grammarBox);
+
+    const practice = document.createElement('div');
+    practice.className = 'content-card';
+    practice.appendChild(safeText('h3', 'تمرین درس'));
+    practice.appendChild(safeText('p', 'معنی این واژه آلمانی را به فارسی بنویسید:'));
+    const selectedWord = data.words[0];
+    practice.appendChild(safeText('h4', selectedWord[0]));
+
+    const answer = document.createElement('input');
+    answer.type = 'text';
+    answer.placeholder = 'معنی فارسی را بنویسید';
+    answer.autocomplete = 'off';
+    practice.appendChild(answer);
+
+    const result = document.createElement('p');
+    practice.appendChild(makeButton('بررسی پاسخ', () => {
+        const normalize = value => value.trim().toLocaleLowerCase('fa').replace(/\s+/g, ' ');
+        if (normalize(answer.value) === normalize(selectedWord[1])) {
+            result.textContent = 'آفرین! پاسخ درست است.';
+        } else {
+            result.textContent = 'پاسخ درست: ' + selectedWord[1];
+        }
+    }));
+    practice.appendChild(result);
+    detail.appendChild(practice);
+
+    detail.appendChild(makeButton('بستن درس', () => {
+        detail.style.display = 'none';
+        detail.replaceChildren();
+        openLessonByLevel[level] = null;
+        const btn = detail.parentElement?.querySelector('.lesson-card');
+        if (btn) btn.classList.remove('active-lesson');
+    }, 'action'));
+}
+
+/* =========================================
+   مکالمه‌های عمومی
+========================================= */
+
+function renderConversation() {
+    const container = element('conversationContent');
+    if (!container) return;
+    const conversations = [
+        ['Guten Tag!','روز بخیر!'],
+        ['Wie heißt du?','نامت چیست؟'],
+        ['Ich heiße Ahmad.','نام من احمد است.'],
+        ['Wie geht es dir?','حالت چطور است؟'],
+        ['Mir geht es gut, danke.','من خوب هستم، تشکر.'],
+        ['Woher kommst du?','اهل کجا هستی؟'],
+        ['Ich komme aus Afghanistan.','من اهل افغانستان هستم.'],
+        ['Wo wohnst du?','کجا زندگی می‌کنی؟'],
+        ['Ich wohne in Deutschland.','من در آلمان زندگی می‌کنم.'],
+        ['Auf Wiedersehen!','خداحافظ!']
+    ];
+    container.replaceChildren();
+    conversations.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'conversation-card';
+        card.appendChild(safeText('h3', item[0]));
+        card.appendChild(safeText('p', item[1]));
+        card.appendChild(makeButton('شنیدن تلفظ', () => window.speakGerman(item[0])));
+        container.appendChild(card);
+    });
+}
+
+/* =========================================
+   گرامر عمومی
+========================================= */
+
+function renderGrammar() {
+    const container = element('grammarContent');
+    if (!container) return;
+    const items = [
+        ['فعل sein','فعل sein به معنی بودن است.','Ich bin müde.','من خسته هستم.'],
+        ['فعل haben','فعل haben به معنی داشتن است.','Ich habe ein Buch.','من یک کتاب دارم.'],
+        ['حروف تعریف','اسم‌ها جنس دستوری دارند.','der Mann, die Frau, das Kind','مرد، زن، کودک'],
+        ['صرف فعل','فعل با فاعل تغییر می‌کند.','Ich lerne Deutsch.','من آلمانی یاد می‌گیرم.'],
+        ['ساختار جمله','در جمله خبری ساده فعل معمولاً جایگاه دوم است.','Heute lerne ich Deutsch.','امروز آلمانی یاد می‌گیرم.'],
+        ['زمان Perfekt','برای بیان بسیاری از اتفاقات گذشته استفاده می‌شود.','Ich habe Deutsch gelernt.','من آلمانی یاد گرفتم.']
+    ];
+    container.replaceChildren();
+    items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'grammar-card';
+        card.appendChild(safeText('h3', item[0]));
+        card.appendChild(safeText('p', item[1]));
+        card.appendChild(safeText('p', 'مثال: ' + item[2]));
+        card.appendChild(safeText('p', 'ترجمه: ' + item[3]));
+        card.appendChild(makeButton('شنیدن مثال', () => window.speakGerman(item[2])));
+        container.appendChild(card);
+    });
+}
+
+/* =========================================
+   ویدیوهای صفحه ویدیوها
+========================================= */
+
+function renderVideos() {
+    LEVELS.forEach(level => {
+        const container = element('videos' + level);
+        if (!container) return;
+        container.replaceChildren();
+        container.style.display = 'none';
+        container.appendChild(createLevelVideo(level));
+    });
+}
+
+window.showVideoLevel = function(level) {
+    if (!LEVELS.includes(level)) return;
+    LEVELS.forEach(name => {
+        const box = element('videos' + name);
+        if (box) box.style.display = name === level ? 'block' : 'none';
+    });
+};
+
+/* =========================================
+   آزمون‌ها
+========================================= */
+
+window.openQuiz = function(level) {
+    document.querySelectorAll('.quiz-box').forEach(box => box.style.display = 'none');
+    const box = element('quiz-' + level);
+    const questions = element('questions-' + level);
+    const result = element('result-' + level);
+    if (!box || !questions || !result || !quizData[level]) return;
+
+    box.style.display = 'block';
+    questions.replaceChildren();
+    result.textContent = '';
+    quizData[level].finished = false;
+
+    quizData[level].questions.forEach((question, index) => {
+        const card = document.createElement('div');
+        card.className = 'quiz-question';
+        card.appendChild(safeText('h3', (index + 1) + '. ' + question.question));
+        question.options.forEach((option, i) => {
+            const label = document.createElement('label');
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = 'question-' + level + '-' + index;
+            radio.value = String(i);
+            label.append(radio, document.createTextNode(' ' + option));
+            card.appendChild(label);
+            card.appendChild(document.createElement('br'));
+        });
+        questions.appendChild(card);
+    });
+
+    questions.appendChild(makeButton('ثبت پاسخ‌ها', () => window.submitQuiz(level)));
+};
+
+window.submitQuiz = function(level) {
+    const quiz = quizData[level];
+    if (!quiz || quiz.finished) return;
+
+    let score = 0;
+    let unanswered = 0;
+    quiz.questions.forEach((question, index) => {
+        const selected = document.querySelector('input[name="question-' + level + '-' + index + '"]:checked');
+        if (!selected) unanswered++;
+        else if (Number(selected.value) === question.correct) score++;
+    });
+
+    if (unanswered) {
+        alert('لطفاً به تمام سؤال‌ها پاسخ دهید.');
+        return;
+    }
+
+    quiz.finished = true;
+    const points = score * 10;
+    const result = element('result-' + level);
+    if (result) {
+        result.textContent = 'امتیاز شما: ' + points + ' از ۵۰';
+        result.textContent += points >= 40 ? ' تبریک! موفق شدید.' : ' دوباره تمرین کنید.';
+    }
+    saveQuizProgress(level, points);
+    if (points >= 40) showCelebration(level, points);
+};
+
+function showCelebration(level, score) {
+    const old = element('celebration');
+    if (old) old.remove();
+
+    const overlay = document.createElement('div');
+    overlay.id = 'celebration';
+    overlay.style.cssText = 'position:fixed;inset:0;background:#000b;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
+
+    const message = document.createElement('div');
+    message.style.cssText = 'background:white;padding:30px;border-radius:20px;text-align:center;color:#142b52;';
+    message.appendChild(safeText('h2', 'تبریک! شما موفق شدید!'));
+    message.appendChild(safeText('p', 'آزمون ' + level));
+    message.appendChild(safeText('h3', 'امتیاز: ' + score + ' از ۵۰'));
+    message.appendChild(makeButton('بستن', () => overlay.remove()));
+    overlay.appendChild(message);
+    document.body.appendChild(overlay);
+}
+
+function saveQuizProgress(level, score) {
+    try {
+        const progress = JSON.parse(localStorage.getItem('kingAsadProgress') || '{}');
+        progress[level] = { score, date:new Date().toLocaleDateString() };
+        localStorage.setItem('kingAsadProgress', JSON.stringify(progress));
+    } catch (error) {
+        console.warn('ذخیره پیشرفت انجام نشد.', error);
+    }
+}
+
+function showProgress() {
+    const container = element('homeProgress');
+    if (!container) return;
+    let progress = {};
+    try {
+        progress = JSON.parse(localStorage.getItem('kingAsadProgress') || '{}');
+    } catch (error) {
+        progress = {};
+    }
+
+    container.replaceChildren();
+    LEVELS.forEach(level => {
+        const card = document.createElement('div');
+        card.className = 'progress-box';
+        card.appendChild(safeText('h3', 'سطح ' + level));
+        const saved = progress[level];
+        card.appendChild(safeText('p', saved ? 'آخرین امتیاز: ' + saved.score + ' از ۵۰' : 'هنوز آزمونی انجام نشده است.'));
+        const bar = document.createElement('div');
+        bar.className = 'progress-bar';
+        const fill = document.createElement('div');
+        fill.className = 'progress-fill';
+        fill.style.width = saved ? Math.min(100, Math.max(0, Number(saved.score) * 2)) + '%' : '0%';
+        bar.appendChild(fill);
+        card.appendChild(bar);
+        container.appendChild(card);
+    });
+}
+
+window.speakGerman = function(text) {
+    if (!('speechSynthesis' in window)) {
+        alert('مرورگر شما از پخش صدا پشتیبانی نمی‌کند.');
+        return;
+    }
+    window.speechSynthesis.cancel();
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = 'de-DE';
+    speech.rate = 0.85;
+    window.speechSynthesis.speak(speech);
+};
+
+/* =========================================
+   فرهنگ لغات: نمایش فوری لیست واژگان + جستجو + ترجمه
+========================================= */
+
+function getAllDictionaryEntries() {
+    const seen = new Set();
+    const entries = [];
+    LEVELS.forEach(level => {
+        (vocabularyBanks[level] || []).forEach(([de, fa]) => {
+            const key = `${level}|${de}|${fa}`;
+            if (!seen.has(key)) {
+                seen.add(key);
+                entries.push({ level, de, fa });
+            }
+        });
+    });
+    return entries;
+}
+
+function renderDictionaryList(filterQuery = '') {
+    let listBox = element('dictionaryWordList');
+    const dictPage = element('dictionaryPage');
+
+    if (!listBox && dictPage) {
+        listBox = document.createElement('div');
+        listBox.id = 'dictionaryWordList';
+        listBox.className = 'dictionary-list';
+        dictPage.appendChild(listBox);
+    }
+    if (!listBox) return;
+
+    const q = filterQuery.trim().toLowerCase();
+    const entries = getAllDictionaryEntries().filter(item => {
+        if (!q) return true;
+        return item.de.toLowerCase().includes(q) || item.fa.toLowerCase().includes(q) || item.level.toLowerCase().includes(q);
+    });
+
+    listBox.replaceChildren();
+    listBox.appendChild(safeText('h3', 'واژگان آماده فرهنگ لغت (' + entries.length + ' واژه)'));
+    listBox.appendChild(safeText('p', 'توضیحات: روی دکمه تلفظ بزنید تا کلمه آلمانی خوانده شود یا کلمه دلخواه را جستجو و ترجمه کنید.'));
+
+    entries.slice(0, 40).forEach(item => {
+        const row = document.createElement('div');
+        row.className = 'dictionary-item';
+        row.appendChild(safeText('span', `[${item.level}] ${item.de} — ${item.fa} `));
+        row.appendChild(makeButton('تلفظ', () => window.speakGerman(item.de)));
+        listBox.appendChild(row);
+    });
+}
+
+async function translateText(text, source, target) {
+    const url = 'https://api.mymemory.translated.net/get?q=' +
+        encodeURIComponent(text) + '&langpair=' +
+        encodeURIComponent(source + '|' + target);
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Translation error');
+    const data = await response.json();
+    return data.responseData && data.responseData.translatedText ? data.responseData.translatedText : '';
+}
+
+window.searchDictionary = async function() {
+    const input = element('dictionaryInput');
+    const source = element('dictionarySource');
+    const target = element('dictionaryTarget');
+    const result = element('dictionaryResult');
+    if (!input || !source || !target || !result) return;
+
+    const word = input.value.trim();
+    renderDictionaryList(word);
+
+    if (!word) {
+        result.textContent = 'تمام واژگان ذخیره‌شده نمایش داده شدند. برای ترجمه آنلاین کلمه‌ای وارد کنید.';
+        return;
+    }
+
+    // اول در واژگان داخلی بررسی می‌شود تا بدون نیاز به اینترنت هم نتیجه فوری بدهد
+    const localMatch = getAllDictionaryEntries().find(
+        item => item.de.toLowerCase() === word.toLowerCase() || item.fa.trim() === word
+    );
 
     if (source.value === target.value) {
-        result.textContent = 'زبان مبدأ و مقصد یکسان است.';
+        result.textContent = 'زبان مبدأ و مقصد باید متفاوت باشند.';
         return;
     }
 
-    // مرحله اول: جست‌وجو در فرهنگ لغت داخلی
-    try {
-        if (
-            window.KING_ASAD &&
-            typeof KING_ASAD.searchDictionary === 'function'
-        ) {
-            const matches = KING_ASAD.searchDictionary(text);
-
-            if (Array.isArray(matches) && matches.length > 0) {
-                const heading = document.createElement('h3');
-                heading.textContent = 'نتایج فرهنگ لغت KING ASAD';
-                result.appendChild(heading);
-
-                matches.slice(0, 20).forEach(item => {
-                    const card = document.createElement('div');
-                    card.style.padding = '12px';
-                    card.style.margin = '8px 0';
-                    card.style.border = '1px solid #c9a227';
-                    card.style.borderRadius = '10px';
-
-                    const german = document.createElement('p');
-                    german.textContent =
-                        'آلمانی: ' + (item.german || '');
-
-                    const persian = document.createElement('p');
-                    persian.textContent =
-                        'فارسی: ' + (item.persian || '');
-
-                    card.append(german, persian);
-
-                    if (item.level) {
-                        const level = document.createElement('small');
-                        level.textContent = 'سطح: ' + item.level;
-                        card.appendChild(level);
-                    }
-
-                    result.appendChild(card);
-                });
-
-                return;
-            }
-        }
-    } catch (error) {
-        console.error('خطای فرهنگ لغت داخلی:', error);
-    }
-
-    // مرحله دوم: ترجمه آنلاین در صورت پیدا نشدن کلمه
-    const loading = document.createElement('p');
-    loading.textContent = 'در حال جست‌وجو و ترجمه آنلاین...';
-    result.appendChild(loading);
+    result.textContent = localMatch
+        ? `نتیجه داخلی: ${localMatch.de} = ${localMatch.fa} (در حال بررسی ترجمه آنلاین...)`
+        : 'در حال ترجمه...';
 
     try {
-        const response = await fetch(
-            KING_ASAD_TRANSLATOR_URL + '/translate',
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    q: text,
-                    source: source.value,
-                    target: target.value,
-                    format: 'text'
-                })
-            }
-        );
-
-        if (!response.ok) {
-            throw new Error('خطای سرور: ' + response.status);
-        }
-
-        const data = await response.json();
-
-        if (!data.translatedText) {
-            throw new Error('ترجمه دریافت نشد.');
-        }
-
-        result.replaceChildren();
-
-        const heading = document.createElement('h3');
-        heading.textContent = 'نتیجه ترجمه آنلاین';
-
-        const original = document.createElement('p');
-        original.textContent = 'متن اصلی: ' + text;
-
-        const translated = document.createElement('p');
-        translated.textContent =
-            'ترجمه: ' + data.translatedText;
-
-        result.append(heading, original, translated);
-
+        const translated = await translateText(word, source.value, target.value);
+        result.textContent = translated || (localMatch ? `${localMatch.de} = ${localMatch.fa}` : 'ترجمه پیدا نشد.');
     } catch (error) {
-        result.replaceChildren();
-
-        const message = document.createElement('p');
-        message.textContent =
-            'کلمه در فرهنگ لغت داخلی پیدا نشد و ترجمه آنلاین هم انجام نشد. ' +
-            'لطفاً کمی بعد دوباره تلاش کنید.';
-
-        result.appendChild(message);
-        console.error('خطای مترجم آنلاین:', error);
+        result.textContent = localMatch
+            ? `${localMatch.de} = ${localMatch.fa} (حالت آفلاین)`
+            : 'ارتباط با سرویس ترجمه برقرار نشد. اینترنت را بررسی کنید.';
     }
 };
 
-console.log('KING ASAD: فرهنگ لغت داخلی و مترجم آنلاین فعال شد.');
+document.addEventListener('DOMContentLoaded', function() {
+    renderLessons();
+    renderConversation();
+    renderGrammar();
+    renderVideos();
+    renderDictionaryList();
+    showProgress();
+    window.showPage('homePage');
 
+    const dictInput = element('dictionaryInput');
+    if (dictInput) {
+        dictInput.addEventListener('input', () => renderDictionaryList(dictInput.value));
+    }
+});
