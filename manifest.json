@@ -1,0 +1,25 @@
+
+{
+  "name": "KING ASAD - DEUTSCH LERNEN",
+  "short_name": "KING ASAD",
+  "description": "Deutsch lernen mit KING ASAD - آموزش زبان آلمانی",
+  "start_url": "/KING-ASAD-DEUTSCH-LERNEN/",
+  "scope": "/KING-ASAD-DEUTSCH-LERNEN/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#101827",
+  "theme_color": "#101827",
+  "lang": "fa",
+  "icons": [
+    {
+      "src": "/KING-ASAD-DEUTSCH-LERNEN/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/KING-ASAD-DEUTSCH-LERNEN/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
