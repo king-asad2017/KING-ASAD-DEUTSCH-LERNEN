@@ -32,46 +32,45 @@
 html, body {
     direction: rtl;
     font-family: Tahoma, "Vazirmatn", Arial, sans-serif;
-    background-color: var(--bg) !important;
-    color: var(--text) !important;
+    background-color: var(--bg);
+    color: var(--text);
     line-height: 1.85;
     min-height: 100vh;
 }
 
 .main-header {
-    background: linear-gradient(135deg, #0b182e, var(--blue), var(--teal)) !important;
-    color: #ffffff !important;
+    background: linear-gradient(135deg, #0b182e, var(--blue), var(--teal));
+    color: #ffffff;
     text-align: center;
-    padding: 32px 16px;
+    padding: 28px 16px;
     border-bottom: 4px solid var(--gold);
 }
 
 .logo {
     display: inline-block;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: bold;
-    color: #ffd66b !important;
+    color: #ffd66b;
     letter-spacing: 2px;
     padding: 4px 16px;
     border: 1px solid rgba(255, 214, 107, 0.45);
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.07);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .main-header h1 {
-    font-size: 26px;
-    margin-bottom: 6px;
-    color: #ffffff !important;
+    font-size: 24px;
+    margin-bottom: 4px;
 }
 
 .main-header p {
-    color: #e4f0ff !important;
+    color: #e4f0ff;
     font-size: 14px;
 }
 
 .main-nav {
-    background: var(--navy) !important;
+    background: var(--navy);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -83,7 +82,7 @@ html, body {
     border-bottom: 2px solid rgba(233, 185, 73, 0.45);
 }
 
-button {
+.btn {
     font-family: inherit;
     cursor: pointer;
     border: none;
@@ -92,31 +91,47 @@ button {
     font-size: 14px;
     font-weight: bold;
     background: linear-gradient(135deg, var(--blue), var(--teal));
-    color: #ffffff !important;
+    color: #ffffff;
     transition: 0.2s ease;
+    display: inline-block;
 }
 
-button:hover {
+.btn:hover {
     transform: translateY(-2px);
     filter: brightness(1.06);
 }
 
-.main-nav button {
-    background: #ffffff !important;
-    color: var(--navy) !important;
+.nav-btn {
+    background: #ffffff;
+    color: var(--navy);
 }
 
-.main-nav button:hover,
-.main-nav button.active-nav {
-    background: var(--gold) !important;
-    color: var(--navy) !important;
+.nav-btn:hover,
+.nav-btn.active-nav {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+.status-bar {
+    max-width: 1140px;
+    margin: 14px auto 0;
+    padding: 0 14px;
+}
+
+.status-box {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--teal);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: var(--muted);
 }
 
 main {
     max-width: 1140px;
     margin: 0 auto;
-    padding: 22px 14px;
-    background: transparent !important;
+    padding: 16px 14px 24px;
 }
 
 .page {
@@ -124,12 +139,12 @@ main {
 }
 
 .page.active {
-    display: block !important;
+    display: block;
 }
 
 .panel {
-    background: var(--white) !important;
-    color: var(--text) !important;
+    background: var(--white);
+    color: var(--text);
     border: 1.5px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 22px;
@@ -149,8 +164,8 @@ main {
     border: 1px solid var(--border);
     border-right: 5px solid var(--gold);
     border-radius: var(--radius-md);
-    padding: 13px 16px;
-    margin: 10px 0 18px;
+    padding: 12px 16px;
+    margin: 10px 0 16px;
     font-size: 14px;
 }
 
@@ -158,7 +173,7 @@ main {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 12px;
-    margin: 16px 0;
+    margin: 14px 0;
 }
 
 .level-card {
@@ -181,11 +196,16 @@ main {
 }
 
 .level-lessons-box {
-    margin-top: 18px;
-    padding: 18px;
+    margin-top: 16px;
+    padding: 16px;
     background: var(--surface);
     border: 1.5px solid var(--border);
     border-radius: var(--radius-md);
+    display: none;
+}
+
+.level-lessons-box.show {
+    display: block;
 }
 
 .lesson-item {
@@ -202,21 +222,26 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #f4f8ff !important;
-    color: var(--navy) !important;
+    background: #f4f8ff;
+    color: var(--navy);
     border-radius: 0;
     padding: 14px 16px;
 }
 
 .lesson-btn.open {
-    background: linear-gradient(135deg, var(--blue), var(--teal)) !important;
-    color: #ffffff !important;
+    background: linear-gradient(135deg, var(--blue), var(--teal));
+    color: #ffffff;
 }
 
 .lesson-body {
     padding: 16px;
     border-top: 2px solid var(--gold);
     background: #fcfdff;
+    display: none;
+}
+
+.lesson-body.show {
+    display: block;
 }
 
 .sub-card,
@@ -244,7 +269,7 @@ main {
 input, select {
     width: 100%;
     padding: 12px;
-    margin: 8px 0 14px;
+    margin: 8px 0 12px;
     border: 1.5px solid var(--border);
     border-radius: 10px;
     font-family: inherit;
@@ -259,7 +284,7 @@ input, select {
     border-right: 5px solid var(--gold);
     border-radius: var(--radius-md);
     padding: 14px 16px;
-    margin: 14px 0;
+    margin: 12px 0;
     font-weight: bold;
 }
 
@@ -290,11 +315,11 @@ input, select {
 }
 
 .main-footer {
-    background: var(--navy) !important;
-    color: #ffffff !important;
+    background: var(--navy);
+    color: #ffffff;
     text-align: center;
-    padding: 24px 16px;
-    margin-top: 32px;
+    padding: 22px 16px;
+    margin-top: 28px;
     border-top: 4px solid var(--gold);
 }
 
@@ -322,28 +347,32 @@ input, select {
     <p>Deutsch lernen – A1 | A2 | B1 | B2 | C1</p>
 </header>
 
-<nav class="main-nav">
-    <button type="button" data-nav="homePage" onclick="showPage('homePage')">خانه</button>
-    <button type="button" data-nav="lessonsPage" onclick="showPage('lessonsPage')">درس‌ها</button>
-    <button type="button" data-nav="videosPage" onclick="showPage('videosPage')">ویدیوها</button>
-    <button type="button" data-nav="conversationPage" onclick="showPage('conversationPage')">مکالمه</button>
-    <button type="button" data-nav="grammarPage" onclick="showPage('grammarPage')">گرامر</button>
-    <button type="button" data-nav="dictionaryPage" onclick="showPage('dictionaryPage')">فرهنگ لغات</button>
-    <button type="button" data-nav="quizPage" onclick="showPage('quizPage')">آزمون‌ها</button>
+<nav class="main-nav" id="mainNav">
+    <button type="button" class="btn nav-btn active-nav" data-page="homePage">خانه</button>
+    <button type="button" class="btn nav-btn" data-page="lessonsPage">درس‌ها</button>
+    <button type="button" class="btn nav-btn" data-page="videosPage">ویدیوها</button>
+    <button type="button" class="btn nav-btn" data-page="conversationPage">مکالمه</button>
+    <button type="button" class="btn nav-btn" data-page="grammarPage">گرامر</button>
+    <button type="button" class="btn nav-btn" data-page="dictionaryPage">فرهنگ لغات</button>
+    <button type="button" class="btn nav-btn" data-page="quizPage">آزمون‌ها</button>
 </nav>
 
-<main>
+<div class="status-bar">
+    <div class="status-box" id="statusBox">وضعیت: صفحه خانه فعال است. روی هر بخش کلیک کنید.</div>
+</div>
+
+<main id="appMain">
     <!-- صفحه اصلی -->
     <section id="homePage" class="page active">
         <div class="panel">
             <h2>به آموزشگاه آنلاین KING ASAD خوش آمدید</h2>
             <div class="desc-box">توضیحات بخش: در این صفحه می‌توانید وارد سطوح مختلف شوید و وضعیت پیشرفت آزمون‌های خود را در یک نگاه ببینید.</div>
             <div class="level-grid">
-                <div class="level-card"><h3>سطح A1</h3><p>مقدماتی</p><button type="button" onclick="openLevelDirectly('A1')">ورود به A1</button></div>
-                <div class="level-card"><h3>سطح A2</h3><p>پایه پیشرفته</p><button type="button" onclick="openLevelDirectly('A2')">ورود به A2</button></div>
-                <div class="level-card"><h3>سطح B1</h3><p>متوسط</p><button type="button" onclick="openLevelDirectly('B1')">ورود به B1</button></div>
-                <div class="level-card"><h3>سطح B2</h3><p>متوسط رو به بالا</p><button type="button" onclick="openLevelDirectly('B2')">ورود به B2</button></div>
-                <div class="level-card"><h3>سطح C1</h3><p>پیشرفته</p><button type="button" onclick="openLevelDirectly('C1')">ورود به C1</button></div>
+                <div class="level-card"><h3>سطح A1</h3><p>مقدماتی</p><button type="button" class="btn" data-open-level="A1">ورود به A1</button></div>
+                <div class="level-card"><h3>سطح A2</h3><p>پایه پیشرفته</p><button type="button" class="btn" data-open-level="A2">ورود به A2</button></div>
+                <div class="level-card"><h3>سطح B1</h3><p>متوسط</p><button type="button" class="btn" data-open-level="B1">ورود به B1</button></div>
+                <div class="level-card"><h3>سطح B2</h3><p>متوسط رو به بالا</p><button type="button" class="btn" data-open-level="B2">ورود به B2</button></div>
+                <div class="level-card"><h3>سطح C1</h3><p>پیشرفته</p><button type="button" class="btn" data-open-level="C1">ورود به C1</button></div>
             </div>
         </div>
 
@@ -360,18 +389,18 @@ input, select {
             <h2>درس‌های زبان آلمانی</h2>
             <div class="desc-box">توضیحات بخش: ابتدا سطح را انتخاب کنید تا چوکات درس‌های همان سطح باز شود. با کلیک روی هر درس، محتوای آن باز می‌شود و با کلیک روی درس بعدی یا کلیک دوباره، درس باز شده بسته می‌شود.</div>
             <div class="level-grid">
-                <div class="level-card"><h3>A1</h3><p>۱۹ درس</p><button type="button" onclick="showLevelLessons('A1')">درس‌های A1</button></div>
-                <div class="level-card"><h3>A2</h3><p>۲۰ درس</p><button type="button" onclick="showLevelLessons('A2')">درس‌های A2</button></div>
-                <div class="level-card"><h3>B1</h3><p>۳۰ درس</p><button type="button" onclick="showLevelLessons('B1')">درس‌های B1</button></div>
-                <div class="level-card"><h3>B2</h3><p>۳۰ درس</p><button type="button" onclick="showLevelLessons('B2')">درس‌های B2</button></div>
-                <div class="level-card"><h3>C1</h3><p>۳۰ درس</p><button type="button" onclick="showLevelLessons('C1')">درس‌های C1</button></div>
+                <div class="level-card"><h3>A1</h3><p>۱۹ درس</p><button type="button" class="btn" data-level="A1">درس‌های A1</button></div>
+                <div class="level-card"><h3>A2</h3><p>۲۰ درس</p><button type="button" class="btn" data-level="A2">درس‌های A2</button></div>
+                <div class="level-card"><h3>B1</h3><p>۳۰ درس</p><button type="button" class="btn" data-level="B1">درس‌های B1</button></div>
+                <div class="level-card"><h3>B2</h3><p>۳۰ درس</p><button type="button" class="btn" data-level="B2">درس‌های B2</button></div>
+                <div class="level-card"><h3>C1</h3><p>۳۰ درس</p><button type="button" class="btn" data-level="C1">درس‌های C1</button></div>
             </div>
 
-            <div id="a1LessonsContainer" class="level-lessons-box" style="display:none"></div>
-            <div id="a2LessonsContainer" class="level-lessons-box" style="display:none"></div>
-            <div id="b1LessonsContainer" class="level-lessons-box" style="display:none"></div>
-            <div id="b2LessonsContainer" class="level-lessons-box" style="display:none"></div>
-            <div id="c1LessonsContainer" class="level-lessons-box" style="display:none"></div>
+            <div id="a1LessonsContainer" class="level-lessons-box"></div>
+            <div id="a2LessonsContainer" class="level-lessons-box"></div>
+            <div id="b1LessonsContainer" class="level-lessons-box"></div>
+            <div id="b2LessonsContainer" class="level-lessons-box"></div>
+            <div id="c1LessonsContainer" class="level-lessons-box"></div>
         </div>
     </section>
 
@@ -381,11 +410,11 @@ input, select {
             <h2>ویدیوها و منابع آموزشی</h2>
             <div class="desc-box">توضیحات بخش: سطح مورد نظر را انتخاب کنید تا منبع آموزشی و ویدیوی همان سطح در همین چوکات نمایش داده شود.</div>
             <div class="level-grid">
-                <button type="button" onclick="showVideoLevel('A1')">A1</button>
-                <button type="button" onclick="showVideoLevel('A2')">A2</button>
-                <button type="button" onclick="showVideoLevel('B1')">B1</button>
-                <button type="button" onclick="showVideoLevel('B2')">B2</button>
-                <button type="button" onclick="showVideoLevel('C1')">C1</button>
+                <button type="button" class="btn" data-video-level="A1">A1</button>
+                <button type="button" class="btn" data-video-level="A2">A2</button>
+                <button type="button" class="btn" data-video-level="B1">B1</button>
+                <button type="button" class="btn" data-video-level="B2">B2</button>
+                <button type="button" class="btn" data-video-level="C1">C1</button>
             </div>
             <div id="videosA1" style="display:none"></div>
             <div id="videosA2" style="display:none"></div>
@@ -396,263 +425,4 @@ input, select {
     </section>
 
     <!-- بخش مکالمه -->
-    <section id="conversationPage" class="page">
-        <div class="panel">
-            <h2>مکالمه‌های روزمره آلمانی</h2>
-            <div class="desc-box">توضیحات بخش: جملات کاربردی آلمانی همراه با معنی فارسی و دکمه شنیدن تلفظ قرار گرفته‌اند.</div>
-            <div id="conversationContent"></div>
-        </div>
-    </section>
-
-    <!-- بخش گرامر -->
-    <section id="grammarPage" class="page">
-        <div class="panel">
-            <h2>آموزش گرامر آلمانی</h2>
-            <div class="desc-box">توضیحات بخش: نکات مهم قواعد زبان آلمانی همراه با مثال و ترجمه برای یادگیری سریع‌تر آورده شده‌اند.</div>
-            <div id="grammarContent"></div>
-        </div>
-    </section>
-
-    <!-- بخش فرهنگ لغات -->
-    <section id="dictionaryPage" class="page">
-        <div class="panel">
-            <h2>فرهنگ لغات و ترجمه</h2>
-            <div class="desc-box">توضیحات بخش: لیست واژگان آماده در پایین قابل مشاهده است؛ می‌توانید کلمه را جستجو کنید، تلفظ بشنوید یا ترجمه آنلاین بگیرید.</div>
-            <input id="dictionaryInput" type="text" placeholder="کلمه آلمانی یا فارسی را بنویسید...">
-            <select id="dictionarySource">
-                <option value="fa">مبدأ: فارسی</option>
-                <option value="de">مبدأ: آلمانی</option>
-                <option value="en">مبدأ: انگلیسی</option>
-            </select>
-            <select id="dictionaryTarget">
-                <option value="de">مقصد: آلمانی</option>
-                <option value="fa">مقصد: فارسی</option>
-                <option value="en">مقصد: انگلیسی</option>
-            </select>
-            <button type="button" onclick="searchDictionary()">جستجو و ترجمه</button>
-            <div id="dictionaryResult" class="dict-result">کلمه‌ای بنویسید یا از لیست زیر استفاده کنید.</div>
-            <div id="dictionaryWordList"></div>
-        </div>
-    </section>
-
-    <!-- بخش آزمون‌ها -->
-    <section id="quizPage" class="page">
-        <div class="panel">
-            <h2>آزمون‌های آموزشی</h2>
-            <div class="desc-box">توضیحات بخش: سطح آزمون را انتخاب کنید و به ۵ سؤال پاسخ دهید تا امتیاز شما ثبت شود.</div>
-            <div class="level-grid">
-                <button type="button" onclick="openQuiz('A1')">آزمون A1</button>
-                <button type="button" onclick="openQuiz('A2')">آزمون A2</button>
-                <button type="button" onclick="openQuiz('B1')">آزمون B1</button>
-                <button type="button" onclick="openQuiz('B2')">آزمون B2</button>
-                <button type="button" onclick="openQuiz('C1')">آزمون C1</button>
-            </div>
-            <div id="quiz-A1" class="quiz-box" style="display:none"><h3>آزمون A1</h3><div id="questions-A1"></div><div id="result-A1"></div></div>
-            <div id="quiz-A2" class="quiz-box" style="display:none"><h3>آزمون A2</h3><div id="questions-A2"></div><div id="result-A2"></div></div>
-            <div id="quiz-B1" class="quiz-box" style="display:none"><h3>آزمون B1</h3><div id="questions-B1"></div><div id="result-B1"></div></div>
-            <div id="quiz-B2" class="quiz-box" style="display:none"><h3>آزمون B2</h3><div id="questions-B2"></div><div id="result-B2"></div></div>
-            <div id="quiz-C1" class="quiz-box" style="display:none"><h3>آزمون C1</h3><div id="questions-C1"></div><div id="result-C1"></div></div>
-        </div>
-    </section>
-</main>
-
-<footer class="main-footer">
-    <p>KING ASAD – آموزش زبان آلمانی</p>
-</footer>
-
-<script>
-const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1'];
-
-const levelVideos = {
-    A1: { id: '4-eDoThe6qo', title: 'Nicos Weg A1 - Deutsche Welle', link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789' },
-    A2: { id: 'Lg5P2w_Ro1c', title: 'Nicos Weg A2 - Deutsche Welle', link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789' },
-    B1: { id: 'LkufozluseI', title: 'Nicos Weg B1 - Deutsche Welle', link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789' },
-    B2: { id: null, title: 'Deutsch lernen B2 - Goethe-Institut', link: 'https://www.goethe.de/de/spr/ueb.html' },
-    C1: { id: null, title: 'Deutsch lernen C1 - Goethe-Institut', link: 'https://www.goethe.de/de/spr/ueb.html' }
-};
-
-const lessonTitles = {
-    A1: ['سلام و معرفی خود','کشورها و ملیت‌ها','خانواده و دوستان','اعداد و سن','روزهای هفته و ماه‌ها','ساعت و زمان','غذا و نوشیدنی','در کافه و رستورانت','خرید از فروشگاه','رنگ‌ها و لباس‌ها','خانه و اتاق‌ها','وسایل خانه','شغل‌ها و محل کار','برنامه روزانه','حمل‌ونقل شهری','آب‌وهوا و فصل‌ها','بدن و سلامتی','قرار ملاقات','دعوت و خداحافظی'],
-    A2: ['روتین روزانه و عادت‌ها','خانه و جستجوی آپارتمان','خرید لباس و اندازه‌ها','خاطرات آخر هفته','سفر با قطار','رزرو هتل','در رستورانت سفارش دادن','آشپزی و دستور غذا','قرار داکتر','شرح درد و بیماری','آموزش و کورس زبان','کار و همکاران','نامه و ایمیل ساده','تلفن و پیام گذاشتن','تفریح و سرگرمی','ورزش و تناسب اندام','شهر و راهنمایی مسیر','مقایسه کالاها','دعوت به مهمانی','برنامه‌ریزی تعطیلات'],
-    B1: ['بیان نظر و استدلال','محافظت از محیط زیست','درخواست کار و رزومه','مصاحبه شغلی','سلامت و سبک زندگی','رسانه و شبکه‌های اجتماعی','آموزش و انتخاب رشته','زندگی در شهر یا روستا','مهاجرت و سازگاری','فرهنگ و سنت‌ها','مصرف و خرید آگاهانه','تکنولوژی در زندگی','حل اختلاف و مذاکره','دوستی و روابط اجتماعی','برنامه‌ریزی آینده','تجربه‌های سفر','حوادث و گزارش رویداد','آگهی و تبلیغات','اجاره خانه و قرارداد','قوانین و حقوق شهروندی','تغذیه و عادت‌های سالم','حمل‌ونقل عمومی','داوطلبی و کمک اجتماعی','آب‌وهوا و تغییرات اقلیمی','کتاب و فیلم','آمادگی برای امتحان','جلسه و گفت‌وگوی گروهی','شکایت و درخواست رسمی','تصمیم‌گیری و پیامدها','هدف‌گذاری شخصی'],
-    B2: ['استدلال پیچیده و دیدگاه‌ها','رسانه و سواد اطلاعاتی','اقتصاد و بازار کار','مدیریت پروژه','فرهنگ سازمانی','هوش مصنوعی و جامعه','حریم خصوصی دیجیتال','تغییرات اقلیمی و سیاست','انرژی‌های تجدیدپذیر','عدالت اجتماعی','آموزش عالی و پژوهش','مهاجرت و هویت','ارتباطات بین‌فرهنگی','رهبری و مسئولیت','مصالحه و حل تعارض','مصرف پایدار','شهرهای هوشمند','سلامت عمومی','اخلاق در علم','جهانی‌شدن','حقوق کار و قراردادها','تبلیغات و رفتار مصرف‌کننده','تاریخ و حافظه جمعی','هنر و نقد فرهنگی','علم و فناوری','ارائه و سخنرانی رسمی','گزارش‌نویسی تحلیلی','بحث و مناظره','فرضیه و پیامد احتمالی','زبان رسمی و غیررسمی'],
-    C1: ['زبان علمی و دانشگاهی','تحلیل انتقادی متون','بلاغت و فن بیان','ابهام و ظرافت معنایی','سبک‌شناسی نوشتار','مقاله پژوهشی','روش‌شناسی تحقیق','استدلال و مغالطه','گفتمان سیاسی و اجتماعی','اخلاق حرفه‌ای','تحلیل داده و تفسیر نتایج','نقد ادبی','زبان رسانه و چارچوب‌بندی','مذاکره پیشرفته','ارتباطات دیپلماتیک','اصطلاحات حقوقی','اقتصاد کلان و سیاست‌گذاری','فلسفه و جهان‌بینی','هویت و چندزبانگی','جامعه‌شناسی معاصر','فناوری و آینده انسان','زیست‌اخلاق و پزشکی','پایداری و مسئولیت جهانی','مدیریت بحران','ارائه تخصصی','نگارش گزارش مدیریتی','بازنویسی و خلاصه‌سازی','تحلیل سخنرانی','تفسیر ضمنی و کنایه','آمادگی آزمون پیشرفته']
-};
-
-const vocabularyBanks = {
-    A1: [['begrüßen','خوشامد گفتن'],['heißen','نام داشتن'],['kommen','آمدن'],['wohnen','سکونت داشتن'],['sprechen','صحبت کردن'],['die Familie','خانواده'],['der Freund','دوست'],['die Schwester','خواهر'],['der Bruder','برادر'],['das Kind','کودک'],['das Wasser','آب'],['das Brot','نان'],['der Apfel','سیب'],['der Kaffee','قهوه'],['bezahlen','پرداخت کردن']],
-    A2: [['aufstehen','از خواب برخاستن'],['einkaufen','خرید کردن'],['vorbereiten','آماده کردن'],['vereinbaren','تعیین کردن'],['verschieben','به تعویق انداختن'],['die Unterkunft','محل اقامت'],['die Buchung','رزرو'],['die Verspätung','تأخیر'],['die Verbindung','مسیر'],['die Fahrkarte','تکت سفر'],['die Gesundheit','سلامتی'],['die Untersuchung','معاینه'],['die Ernährung','تغذیه'],['sich erholen','استراحت کردن'],['die Beschwerde','شکایت']],
-    B1: [['die Meinung','نظر'],['die Erfahrung','تجربه'],['die Entscheidung','تصمیم'],['die Voraussetzung','شرط لازم'],['die Auswirkung','پیامد'],['die Umwelt','محیط زیست'],['die Verschmutzung','آلودگی'],['die Maßnahme','اقدام'],['die Verantwortung','مسئولیت'],['die Möglichkeit','امکان'],['die Bewerbung','درخواست کار'],['der Lebenslauf','رزومه'],['das Vorstellungsgespräch','مصاحبه کاری'],['die Fähigkeit','توانایی'],['die Qualifikation','صلاحیت']],
-    B2: [['die Auseinandersetzung','بحث و بررسی'],['die Rahmenbedingung','شرایط کلی'],['die Herausforderung','چالش'],['die Nachhaltigkeit','پایداری'],['die Wechselwirkung','تأثیر متقابل'],['die Datensicherheit','امنیت داده‌ها'],['die Chancengleichheit','برابری فرصت‌ها'],['die Umsetzung','اجرا'],['die Wahrnehmung','برداشت'],['abwägen','سنجیدن'],['hinterfragen','بررسی انتقادی کردن'],['veranschaulichen','روشن ساختن'],['infolgedessen','در نتیجه آن'],['allerdings','با این حال'],['folglich','بنابراین']],
-    C1: [['die Schlussfolgerung','نتیجه‌گیری'],['die Argumentationslinie','خط استدلال'],['die Diskrepanz','ناهماهنگی'],['die Implikation','پیامد ضمنی'],['die Differenzierung','تفکیک دقیق'],['die Prämisse','مقدمه استدلال'],['die These','فرضیه'],['die Evidenz','شواهد'],['die Methodik','روش‌شناسی'],['die Tragweite','دامنه اهمیت'],['relativieren','نسبی جلوه دادن'],['präzisieren','دقیق‌تر بیان کردن'],['kontextualisieren','در بافت قرار دادن'],['nichtsdestoweniger','با وجود این'],['wenngleich','اگرچه']]
-};
-
-const grammarByLevel = {
-    A1: ['در جمله خبری آلمانی، فعل صرف‌شده معمولاً در جایگاه دوم قرار می‌گیرد. مثال: Heute lerne ich Deutsch.', 'فعل‌های sein و haben صرف می‌شوند. مثال: Ich bin müde. / Ich habe Zeit.', 'برای پرسش بله/خیر، فعل در ابتدای جمله می‌آید. مثال: Lernst du Deutsch?'],
-    A2: ['در زمان Perfekt از haben یا sein همراه Partizip II استفاده می‌شود. مثال: Ich habe gelernt.', 'در جمله وابسته با weil یا dass، فعل به پایان جمله می‌رود.', 'افعال جداشدنی در جمله اصلی پیشوند را به آخر جمله می‌فرستند. مثال: Ich stehe früh auf.'],
-    B1: ['با obwohl تضاد بیان می‌شود و فعل جمله وابسته در پایان می‌آید.', 'ساختار Konjunktiv II برای درخواست مؤدبانه یا حالت فرضی به کار می‌رود.', 'حروف ربط deshalb و trotzdem جایگاه فعل را دوم نگه می‌دارند.'],
-    B2: ['ساختارهای اسمی‌سازی متن‌های رسمی را فشرده و دقیق می‌کنند.', 'در ساختار Passiv با فعل وجهی، مصدر مجهول در پایان جمله قرار می‌گیرد.', 'قیدهای پیوندی مانند folglich و hingegen ارتباط منطقی را مشخص می‌کنند.'],
-    C1: ['در متن‌های علمی، ادعا با عبارت‌هایی مانند tendenziell دقیق‌تر می‌شود.', 'Konjunktiv I برای نقل غیرمستقیم و حفظ فاصله تحلیلی کاربرد دارد.', 'تفکیک ادعا، شاهد و نتیجه‌گیری ستون استدلال منسجم است.']
-};
-
-const dialogTemplates = {
-    A1: [['Guten Tag! Können Sie mir bitte helfen?','روز بخیر! می‌توانید لطفاً به من کمک کنید؟'],['Ja, natürlich. Was möchten Sie wissen?','بلی، البته. چه چیزی می‌خواهید بدانید؟']],
-    A2: [['Können wir darüber sprechen?','می‌توانیم درباره آن صحبت کنیم؟'],['Ja, gern. Was ist passiert?','بلی، با خوشحالی. چه اتفاقی افتاده است؟']],
-    B1: [['Wie beurteilen Sie diese Situation?','این وضعیت را چگونه ارزیابی می‌کنید؟'],['Meiner Ansicht nach gibt es mehrere Möglichkeiten.','از دیدگاه من چندین امکان وجود دارد.']],
-    B2: [['Welche Faktoren sollten wir dabei berücksichtigen?','کدام عوامل را باید در نظر بگیریم؟'],['Entscheidend ist, die langfristigen Folgen abzuwägen.','مهم سنجیدن پیامدهای درازمدت است.']],
-    C1: [['Wie lässt sich diese These wissenschaftlich einordnen?','این فرضیه چگونه از نظر علمی بررسی می‌شود؟'],['Zunächst müsste man die Annahmen präzisieren.','ابتدا باید فرض‌ها دقیق‌تر بیان شوند.']]
-};
-
-const quizData = {
-    A1: [['Was bedeutet „Guten Morgen“?',['صبح بخیر','شب بخیر','خداحافظ'],0],['Wie heißt du?',['چند سال داری؟','نامت چیست؟','کجا هستی؟'],1],['Was bedeutet „Danke“?',['لطفاً','ببخشید','تشکر'],2],['Ich ___ aus Afghanistan.',['komme','kommt','kommen'],0],['Wie geht es dir?',['حالت چطور است؟','نامت چیست؟','کجا کار می‌کنی؟'],0]],
-    A2: [['Ich ___ gestern nach Berlin gefahren.',['bin','habe','ist'],0],['Was bedeutet „Einkaufen“?',['خوابیدن','خرید کردن','درس خواندن'],1],['Er ___ jeden Tag Deutsch.',['lernen','lernst','lernt'],2],['Was bedeutet „die Wohnung“?',['آپارتمان','مدرسه','بیمارستان'],0],['Ich habe gestern Fußball ___.',['spiele','gespielt','spielen'],1]],
-    B1: [['Wenn ich Zeit hätte, ___ ich reisen.',['werde','würde','bin'],1],['Was bedeutet „obwohl“?',['زیرا','اگر','با وجود اینکه'],2],['Er sagt, dass er krank ___.',['ist','sein','bist'],0],['Was bedeutet „die Erfahrung“?',['تجربه','تصمیم','سفر'],0],['Nachdem ich gegessen hatte, ___ ich spazieren.',['gehe','ging','gehen'],1]],
-    B2: [['Was bedeutet „abwägen“?',['سنجیدن','فراموش کردن','تکرار کردن'],0],['Die Ergebnisse müssen sorgfältig ___.',['analysiert werden','analysieren','analysiert haben'],0],['„Hingegen“ drückt meistens ___ aus.',['einen Gegensatz','einen Wunsch','eine Zeit'],0],['Was bedeutet „Nachhaltigkeit“?',['پایداری','سرعت','مالکیت'],0],['Er behauptet, die Zahlen ___ korrekt.',['seien','sind','wären'],0]],
-    C1: [['Was bedeutet „die Schlussfolgerung“?',['نتیجه‌گیری','پیش‌فرض','مخالفت'],0],['„Wenngleich“ bedeutet ___.',['اگرچه','بنابراین','در نتیجه'],0],['Eine Prämisse ist ___.',['eine Grundannahme','ein Ergebnis','eine Übersetzung'],0],['Was bedeutet „präzisieren“?',['دقیق‌تر بیان کردن','پنهان کردن','رد کردن'],0],['Konjunktiv I wird häufig für ___ verwendet.',['indirekte Rede','Befehle','Vergleiche'],0]]
-};
-
-const $ = id => document.getElementById(id);
-
-function el(tag, text, className) {
-    const node = document.createElement(tag);
-    if (text !== undefined) node.textContent = String(text);
-    if (className) node.className = className;
-    return node;
-}
-
-function btn(text, onClick, className) {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.textContent = text;
-    if (className) b.className = className;
-    b.addEventListener('click', onClick);
-    return b;
-}
-
-window.showPage = function(pageId) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    const target = $(pageId) || $('homePage');
-    target.classList.add('active');
-
-    document.querySelectorAll('.main-nav button').forEach(b => {
-        b.classList.toggle('active-nav', b.dataset.nav === pageId);
-    });
-
-    if (pageId === 'homePage') renderProgress();
-    if (pageId === 'dictionaryPage') renderDictionary(($('dictionaryInput') || {}).value || '');
-};
-
-window.openLevelDirectly = function(level) {
-    window.showPage('lessonsPage');
-    window.showLevelLessons(level);
-};
-
-let currentLevelOpen = null;
-const currentLessonOpen = {};
-
-window.showLevelLessons = function(level) {
-    currentLevelOpen = currentLevelOpen === level ? null : level;
-    LEVELS.forEach(lvl => {
-        const box = $(lvl.toLowerCase() + 'LessonsContainer');
-        if (box) box.style.display = lvl === currentLevelOpen ? 'block' : 'none';
-    });
-};
-
-function renderLessons() {
-    LEVELS.forEach(level => {
-        const container = $(level.toLowerCase() + 'LessonsContainer');
-        if (!container) return;
-        container.replaceChildren();
-        currentLessonOpen[level] = null;
-
-        const titles = lessonTitles[level] || [];
-        const bank = vocabularyBanks[level] || [];
-        const gramList = grammarByLevel[level] || [];
-        const dialogs = dialogTemplates[level] || [];
-
-        container.appendChild(el('div', `توضیحات سطح ${level}: این سطح شامل ${titles.length} درس است. روی هر درس کلیک کنید تا در همان چوکات باز شود.`, 'desc-box'));
-
-        titles.forEach((title, idx) => {
-            const lessonNum = idx + 1;
-            const words = Array.from({ length: 5 }, (_, k) => bank[(idx * 2 + k) % bank.length]);
-            const grammar = gramList[idx % gramList.length];
-
-            const item = el('div', undefined, 'lesson-item');
-            const body = el('div', undefined, 'lesson-body');
-            body.style.display = 'none';
-
-            const headerBtn = btn(`درس ${lessonNum}: ${title}`, () => {
-                const isOpen = currentLessonOpen[level] === lessonNum;
-
-                container.querySelectorAll('.lesson-body').forEach(b => {
-                    b.style.display = 'none';
-                    b.replaceChildren();
-                });
-                container.querySelectorAll('.lesson-btn').forEach(hb => hb.classList.remove('open'));
-
-                if (!isOpen) {
-                    currentLessonOpen[level] = lessonNum;
-                    headerBtn.classList.add('open');
-                    buildLessonBody(body, level, lessonNum, title, words, dialogs, grammar);
-                    body.style.display = 'block';
-                } else {
-                    currentLessonOpen[level] = null;
-                }
-            }, 'lesson-btn');
-
-            item.append(headerBtn, body);
-            container.appendChild(item);
-        });
-    });
-}
-
-function buildLessonBody(body, level, num, title, words, dialogs, grammar) {
-    body.appendChild(el('div', `توضیحات درس ${num} (${level} – ${title}): مکالمه، واژگان، نکته گرامری و تمرین همین درس را در ادامه ببینید.`, 'desc-box'));
-
-    const convCard = el('div', undefined, 'sub-card');
-    convCard.appendChild(el('h3', 'مکالمه درس'));
-    dialogs.forEach(([de, fa]) => {
-        convCard.appendChild(el('p', '🇩🇪 ' + de));
-        convCard.appendChild(el('p', '🇦🇫 ' + fa));
-        convCard.appendChild(btn('شنیدن تلفظ', () => speakGerman(de)));
-    });
-    body.appendChild(convCard);
-
-    const wordCard = el('div', undefined, 'sub-card');
-    wordCard.appendChild(el('h3', 'لغات کلیدی'));
-    words.forEach(([de, fa]) => {
-        const row = el('div', undefined, 'dict-item');
-        row.appendChild(el('span', `${de} = ${fa}`));
-        row.appendChild(btn('تلفظ', () => speakGerman(de)));
-        wordCard.appendChild(row);
-    });
-    body.appendChild(wordCard);
-
-    const gramCard = el('div', undefined, 'sub-card');
-    gramCard.appendChild(el('h3', 'گرامر درس'));
-    gramCard.appendChild(el('p', grammar));
-    body.appendChild(gramCard);
-
-    const pracCard = el('div', undefined, 'sub-card');
-    pracCard.appendChild(el('h3', 'تمرین کوتاه'));
-    const targetWord = words[0];
-    pracCard.appendChild(el('p', `معنی فارسی «${targetWord[0]}» چیست؟`));
-    const inp = document.createElement('input');
-    inp.placeholder = 'معنی فارسی را بنویسید';
-    const fb = el('p', '');
-    pracCard.append(inp, btn('بررسی', () => {
-        const norm = s => s.trim().toLocaleLowerCase('fa').replace(/\s+/g, ' ');
-        fb.textContent = norm(inp.value) === norm(targetWord[1]) ? 'آفرین! درست است.' : `پاسخ درست: ${targetWord[1]}`;
-    }), fb);
-    body.appendChild(pracCard);
-
-    body.appendChild(btn('بستن درس', () => {
-        body.style.display = 'none';
-        body.replaceChildren();
-        currentLessonOpen[level] = null;
-        body.previousSibling.classList.remove('open');
-    }));
-}
-
-function renderVideos() {
-    LEVELS.forEach(level
+    <section
