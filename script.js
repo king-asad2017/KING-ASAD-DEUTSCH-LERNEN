@@ -2992,8 +2992,6 @@ window.showLevelLessons = function (level) {
     return success;
 };
 
-};
-
 window.searchDictionary = async function () {
 
     const input = document.querySelector('#dictionaryInput');
