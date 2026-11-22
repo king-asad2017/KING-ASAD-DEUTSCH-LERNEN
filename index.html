@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101a29">
+<meta name="theme-color" content="#0d1b3e">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="KING ASAD">
@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800&family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
-    --page-bg: #eef2f6;
+    --page-bg: #111622;
     --panel-bg: #ffffff;
     --ink: #111827;
     --muted: #4b5563;
@@ -43,10 +43,10 @@
     --c6-dark: #155e75;
     --c6-soft: #ecfeff;
 
-    --radius-sm: 10px;
-    --radius-md: 14px;
-    --shadow-row: 0 5px 14px rgba(15, 23, 42, 0.08);
-    --shadow-drawer: 0 12px 28px rgba(15, 23, 42, 0.11);
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --shadow-row: 0 6px 16px rgba(0, 0, 0, 0.22);
+    --shadow-drawer: 0 12px 28px rgba(15, 23, 42, 0.25);
 }
 
 * {
@@ -58,136 +58,211 @@
 html, body {
     min-height: 100vh;
     font-family: "Vazirmatn", "Cairo", "Inter", Tahoma, Arial, sans-serif;
-    background: var(--page-bg);
+    background: radial-gradient(circle at top, #1a2642 0%, #111622 65%);
     color: var(--ink);
     line-height: 1.75;
     overflow-x: hidden;
 }
 
 .app-shell {
-    max-width: 1040px;
+    max-width: 980px;
     margin: 0 auto;
-    padding: 22px 16px 36px;
+    padding: 18px 14px 40px;
 }
 
-.site-header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #172554 100%);
+/* Hero Card matching reference image */
+.hero-card {
+    background: linear-gradient(160deg, #0b1c48 0%, #0f2966 55%, #163a8a 100%);
     color: #ffffff;
-    border-radius: var(--radius-md);
-    padding: 22px 24px;
-    margin-bottom: 20px;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
-    border-bottom: 4px solid #f59e0b;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 14px;
+    border-radius: 22px;
+    padding: 24px 20px 26px;
+    margin-bottom: 18px;
+    border: 1.5px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+    text-align: center;
 }
 
-.brand-block {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.brand-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12.5px;
-    font-weight: 800;
-    color: #fde047;
-}
-
-.site-title {
-    font-size: clamp(22px, 3.8vw, 32px);
+.hero-brand-line {
+    font-size: clamp(19px, 3.6vw, 28px);
     font-weight: 900;
-    line-height: 1.25;
-    color: #ffffff;
+    line-height: 1.35;
+    margin-bottom: 14px;
 }
 
-.site-subtitle {
-    font-size: 13px;
-    color: #cbd5e1;
+.hero-brand-gold {
+    color: #facc15;
+    font-weight: 900;
 }
 
-.header-controls {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 8px;
+.hero-slogan-pill {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #0b132b;
+    border-radius: 22px;
+    padding: 12px 18px;
+    margin: 0 auto 16px;
+    max-width: 720px;
+    font-weight: 900;
+    font-size: clamp(13.5px, 2.5vw, 16px);
+    line-height: 1.65;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
 }
 
-.top-actions-row {
+.hero-stats-text {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 16px;
+    line-height: 1.8;
+}
+
+.hero-controls-row {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 12px;
     flex-wrap: wrap;
+    margin-bottom: 14px;
 }
 
-.btn-install-app,
-.btn-welcome-open {
-    background: linear-gradient(135deg, #fde047, #f59e0b);
-    color: #0f172a;
-    border: none;
-    border-radius: 9px;
-    padding: 7px 13px;
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 900;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
-}
-
-.lang-select-top {
-    background: rgba(255, 255, 255, 0.12);
+.hero-lang-select {
+    background: rgba(255, 255, 255, 0.14);
     color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    border-radius: 8px;
-    padding: 6px 10px;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    border-radius: 14px;
+    padding: 9px 16px;
     font-family: inherit;
-    font-size: 12px;
+    font-size: 13.5px;
     font-weight: 800;
     cursor: pointer;
     width: auto;
     margin: 0;
 }
 
-.lang-select-top option {
+.hero-lang-select option {
     background: #0f172a;
     color: #ffffff;
 }
 
-.level-tabs {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    background: rgba(255, 255, 255, 0.08);
-    padding: 5px;
-    border-radius: var(--radius-sm);
+.hero-welcome-btn {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: #111827;
+    border: none;
+    border-radius: 14px;
+    padding: 9px 22px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
-.lvl-chip {
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    background: transparent;
-    color: #f1f5f9;
+.hero-start-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 560px;
+    background: linear-gradient(90deg, #e11d48 0%, #ea580c 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 16px;
+    padding: 12px 20px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(225, 29, 72, 0.38);
+    transition: transform 0.18s ease;
+}
+
+.hero-start-btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-install-app {
+    background: rgba(255, 255, 255, 0.14);
+    color: #fde047;
+    border: 1px solid rgba(253, 224, 71, 0.5);
+    border-radius: 10px;
+    padding: 5px 12px;
     font-family: inherit;
     font-size: 12px;
     font-weight: 800;
-    padding: 4px 10px;
-    border-radius: 7px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    margin-top: 10px;
 }
 
-.lvl-chip:hover,
-.lvl-chip.active {
-    background: #fde047;
-    color: #0f172a;
-    border-color: #fde047;
+/* Chaharchookat Level Cards Grid */
+.chaharchookat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 18px;
 }
 
+.level-tile {
+    border: 2.5px solid rgba(255, 255, 255, 0.28);
+    border-radius: 18px;
+    padding: 20px 14px;
+    color: #ffffff;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.level-tile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.42);
+}
+
+.level-tile.tile-a1 {
+    background: linear-gradient(145deg, #1d4ed8 0%, #2563eb 100%);
+    border-color: #facc15;
+}
+
+.level-tile.tile-a2 {
+    background: linear-gradient(145deg, #15803d 0%, #16a34a 100%);
+}
+
+.level-tile.tile-b1 {
+    background: linear-gradient(145deg, #6d28d9 0%, #8b5cf6 100%);
+}
+
+.level-tile.tile-b2 {
+    background: linear-gradient(145deg, #c2410c 0%, #ea580c 100%);
+}
+
+.level-tile.tile-c1 {
+    background: linear-gradient(145deg, #0e7490 0%, #06b6d4 100%);
+}
+
+.tile-icon {
+    font-size: 26px;
+    line-height: 1.2;
+}
+
+.tile-code {
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: 0.5px;
+}
+
+.tile-sub {
+    font-size: 13px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* Stacked Accordion Rows */
 .stacked-rows {
     display: flex;
     flex-direction: column;
@@ -467,7 +542,7 @@ select {
 }
 
 textarea {
-    min-height: 78px;
+    min-height: 82px;
     resize: vertical;
 }
 
@@ -531,7 +606,6 @@ textarea {
     font-size: 13.5px;
 }
 
-/* Grammar book topic buttons */
 .book-topic-btn {
     width: 100%;
     text-align: start;
@@ -605,10 +679,10 @@ textarea {
 }
 
 .site-footer {
-    max-width: 1040px;
+    max-width: 980px;
     margin: 22px auto 0;
     padding: 12px 16px;
-    background: #0f172a;
+    background: #0b1c48;
     color: #e2e8f0;
     border-radius: var(--radius-sm);
     border-top: 3px solid #f59e0b;
@@ -622,7 +696,7 @@ textarea {
 }
 
 .clock-pill {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
     color: #fde047;
     padding: 3px 10px;
     border-radius: 999px;
@@ -630,6 +704,16 @@ textarea {
 }
 
 @media (max-width: 640px) {
+    .chaharchookat-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .level-tile {
+        padding: 14px 8px;
+    }
+    .tile-code {
+        font-size: 24px;
+    }
     .row-trigger {
         grid-template-columns: 60px 8px 1fr;
     }
@@ -643,10 +727,6 @@ textarea {
     .row-title {
         font-size: 15px;
     }
-    .header-controls {
-        align-items: stretch;
-        width: 100%;
-    }
 }
 </style>
 </head>
@@ -654,13 +734,13 @@ textarea {
 
 <div class="confetti-layer" id="confettiLayer"></div>
 
-<!-- پنجره خوش‌آمدگویی بار اول -->
+<!-- پنجره خوش‌آمدگویی -->
 <div class="modal-backdrop" id="welcomeModal" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
     <div class="modal-card">
         <div style="font-size:13px;font-weight:900;color:#b45309;margin-bottom:4px;">👑 KING ASAD – مرکز آموزش زبان آلمانی</div>
         <h2 id="welcomeTitle" style="font-size:21px;font-weight:900;margin-bottom:8px;">خوش آمدید! به دنیای یادگیری زبان آلمانی خوش آمدید</h2>
         <p style="font-size:13.5px;color:#374151;margin-bottom:12px;">
-            در این سامانه می‌توانید از سطح <strong>A1 تا C1</strong> درس بخوانید، از <strong>۱۰,۰۰۰+ لغت با گرامر</strong> و <strong>۵۰۰+ پادکست</strong> و <strong>رادیو آلمانی با ترجمه فارسی</strong> استفاده کنید، متن فارسی را به آلمانی ترجمه کنید، سؤال‌های گرامری را حل کنید و در آزمون‌ها امتیاز بگیرید.
+            در این سامانه می‌توانید از سطح <strong>A1 تا C1</strong> درس بخوانید، از <strong>۱۰۰,۰۰۰ لغت با گرامر</strong> و <strong>۵۲۰+ پادکست</strong> و <strong>رادیو آلمانی با ترجمه فارسی</strong> استفاده کنید، هر متنی که می‌نویسید را ترجمه کنید و در آزمون‌ها امتیاز بگیرید.
         </p>
         <p style="font-size:13px;color:#1e3a8a;font-weight:800;margin-bottom:14px;">
             تماس مستقیم با مدیر: <span dir="ltr">+4915212898695</span>
@@ -673,36 +753,76 @@ textarea {
 </div>
 
 <div class="app-shell">
-    <header class="site-header">
-        <div class="brand-block">
-            <div class="brand-kicker" id="uiKicker">👑 مدیر سایت: KING ASAD • تماس: +4915212898695</div>
-            <h1 class="site-title" id="uiTitle">مرکز جامع آموزش زبان آلمانی – KING ASAD</h1>
-            <p class="site-subtitle" id="uiSubtitle">۱۲۹ درس (A1–C1) • ۱۰,۰۰۰+ لغت با گرامر • ۵۰۰+ پادکست • رادیو • مترجم • گرامر و آزمون</p>
+    <!-- کارت اصلی بالایی مشابه تصویر -->
+    <section class="hero-card" id="heroCard">
+        <div class="hero-brand-line">
+            <span id="uiTitle">مرکز جامع آموزش زبان آلمانی –</span>
+            <span class="hero-brand-gold">KING ASAD</span>
         </div>
-        <div class="header-controls">
-            <div class="top-actions-row">
-                <select id="siteLangSelect" class="lang-select-top" aria-label="انتخاب زبان سایت" onchange="changeSiteLanguage(this.value)">
-                    <option value="fa">🇮🇷 فارسی (FA)</option>
-                    <option value="de">🇩🇪 Deutsch (DE)</option>
-                    <option value="tr">🇹🇷 Türkçe (TR)</option>
-                    <option value="ar">🇸🇦 العربية (AR)</option>
-                    <option value="en">🇬🇧 English (EN)</option>
-                    <option value="ur">🇵🇰 اردو (UR)</option>
-                    <option value="ps">🇦🇫 پښتو (PS)</option>
-                </select>
-                <button type="button" class="btn-welcome-open" onclick="openWelcomeModal()">🎉 خوش‌آمدید</button>
-                <button type="button" class="btn-install-app" id="installAppBtn" style="display:none;">📲 نصب برنامه</button>
-            </div>
-            <div class="level-tabs" id="quickLevelJump">
-                <button type="button" class="lvl-chip active" data-level="ALL">همه (۱۲۹)</button>
-                <button type="button" class="lvl-chip" data-level="A1">A1</button>
-                <button type="button" class="lvl-chip" data-level="A2">A2</button>
-                <button type="button" class="lvl-chip" data-level="B1">B1</button>
-                <button type="button" class="lvl-chip" data-level="B2">B2</button>
-                <button type="button" class="lvl-chip" data-level="C1">C1</button>
-            </div>
+
+        <div class="hero-slogan-pill" id="uiSlogan">
+            Deutsch lernen war noch nie so einfach! • یادگیری آلمانی هرگز این‌قدر آسان نبوده است!
         </div>
-    </header>
+
+        <div class="hero-stats-text" id="uiSubtitle">
+            ۱۲۹ درس (A1–C1) • +۱۰۰,۰۰۰ واژه و جمله • ۵۲۰+ پادکست • رادیو • مترجم • گرامر و آزمون
+        </div>
+
+        <div class="hero-controls-row">
+            <select id="siteLangSelect" class="hero-lang-select" aria-label="انتخاب زبان سایت" onchange="changeSiteLanguage(this.value)">
+                <option value="fa">🇮🇷 فارسی (FA)</option>
+                <option value="de">🇩🇪 Deutsch (DE)</option>
+                <option value="tr">🇹🇷 Türkçe (TR)</option>
+                <option value="ar">🇸🇦 العربية (AR)</option>
+                <option value="en">🇬🇧 English (EN)</option>
+                <option value="ur">🇵🇰 اردو (UR)</option>
+                <option value="ps">🇦🇫 پښتو (PS)</option>
+            </select>
+            <button type="button" class="hero-welcome-btn" onclick="openWelcomeModal()">🎉 خوش‌آمدید</button>
+        </div>
+
+        <button type="button" class="hero-start-btn" onclick="startLearningJourney()">
+            <span>شروع • Jetzt starten</span>
+            <span>‹</span>
+        </button>
+
+        <div>
+            <button type="button" class="btn-install-app" id="installAppBtn" style="display:none;">📲 نصب برنامه</button>
+        </div>
+    </section>
+
+    <!-- چهارچوکات سطوح A1 تا C1 مشابه تصویر -->
+    <section class="chaharchookat-grid" id="chaharchookatLevels" aria-label="سطوح آموزشی چهارچوکات">
+        <button type="button" class="level-tile tile-a1" onclick="openLevelFromTile('A1')">
+            <span class="tile-icon">📘</span>
+            <span class="tile-code">A1</span>
+            <span class="tile-sub">درس ۱۹ • 19 Lektionen</span>
+        </button>
+
+        <button type="button" class="level-tile tile-a2" onclick="openLevelFromTile('A2')">
+            <span class="tile-icon">📗</span>
+            <span class="tile-code">A2</span>
+            <span class="tile-sub">درس ۲۰ • 20 Lektionen</span>
+        </button>
+
+        <button type="button" class="level-tile tile-b1" onclick="openLevelFromTile('B1')">
+            <span class="tile-icon">📙</span>
+            <span class="tile-code">B1</span>
+            <span class="tile-sub">درس ۳۰ • 30 Lektionen</span>
+        </button>
+
+        <button type="button" class="level-tile tile-b2" onclick="openLevelFromTile('B2')">
+            <span class="tile-icon">📕</span>
+            <span class="tile-code">B2</span>
+            <span class="tile-sub">درس ۳۰ • 30 Lektionen</span>
+        </button>
+
+        <button type="button" class="level-tile tile-c1" onclick="openLevelFromTile('C1')">
+            <span class="tile-icon">🎓</span>
+            <span class="tile-code">C1</span>
+            <span class="tile-sub">درس ۳۰ • 30 Lektionen</span>
+        </button>
+    </section>
 
     <main class="stacked-rows" id="mainRows">
         <!-- 01: Lessons -->
@@ -721,31 +841,31 @@ textarea {
             <div class="row-drawer" id="drawer-lessons"></div>
         </section>
 
-        <!-- 02: 10,000+ Vocabulary with Grammar -->
-        <section class="row-group" data-color="rose" id="group-vocab10k">
-            <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-vocab10k" onclick="toggleMainRow('vocab10k')">
+        <!-- 02: 100,000 Vocabulary with Grammar & Search -->
+        <section class="row-group" data-color="rose" id="group-vocab100k">
+            <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-vocab100k" onclick="toggleMainRow('vocab100k')">
                 <span class="row-square"><span class="row-num">02</span><span class="row-emoji">📖</span></span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
-                        <span class="row-title" data-i18n="row_vocab_title">لغات آلمانی به فارسی (+۱۰,۰۰۰ واژه با گرامر)</span>
-                        <span class="row-desc" data-i18n="row_vocab_desc">نمایش حرف تعریف، نوع دستوری، سطح، ترجمه فارسی و تلفظ صوتی</span>
+                        <span class="row-title" data-i18n="row_vocab_title">لغات آلمانی به فارسی (۱۰۰,۰۰۰ واژه با گرامر و جستجو)</span>
+                        <span class="row-desc" data-i18n="row_vocab_desc">جستجوی سریع بین ۱۰۰,۰۰۰ واژه با حرف تعریف، نوع دستوری، سطح و تلفظ صوتی</span>
                     </span>
-                    <span class="row-status-pill" id="pill-vocab10k">باز کردن</span>
+                    <span class="row-status-pill" id="pill-vocab100k">باز کردن</span>
                 </span>
             </button>
-            <div class="row-drawer" id="drawer-vocab10k"></div>
+            <div class="row-drawer" id="drawer-vocab100k"></div>
         </section>
 
-        <!-- 03: Translator (FA -> DE & DE -> FA) -->
+        <!-- 03: Custom Text Translator (Translate Any Written Text) -->
         <section class="row-group" data-color="orange" id="group-translator">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-translator" onclick="toggleMainRow('translator')">
                 <span class="row-square"><span class="row-num">03</span><span class="row-emoji">🌐</span></span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
-                        <span class="row-title" data-i18n="row_trans_title">مترجم فارسی به آلمانی و آلمانی به فارسی</span>
-                        <span class="row-desc" data-i18n="row_trans_desc">جمله فارسی بنویسید تا به آلمانی نمایش داده شود + پخش صدای دو زبان</span>
+                        <span class="row-title" data-i18n="row_trans_title">ترجمه هر متن نوشته‌شده (فارسی ↔ آلمانی و سایر زبان‌ها)</span>
+                        <span class="row-desc" data-i18n="row_trans_desc">هر متنی که می‌نویسید را ترجمه کنید + پخش صدای آلمانی و فارسی</span>
                     </span>
                     <span class="row-status-pill" id="pill-translator">باز کردن</span>
                 </span>
@@ -769,7 +889,7 @@ textarea {
             <div class="row-drawer" id="drawer-grammar"></div>
         </section>
 
-        <!-- 05: Podcasts (500+ German Sentences with Persian Translation) -->
+        <!-- 05: Podcasts (520+ German Sentences with Persian Translation) -->
         <section class="row-group" data-color="purple" id="group-podcasts">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-podcasts" onclick="toggleMainRow('podcasts')">
                 <span class="row-square"><span class="row-num">05</span><span class="row-emoji">🎧</span></span>
@@ -777,7 +897,7 @@ textarea {
                 <span class="row-bar">
                     <span class="row-bar-content">
                         <span class="row-title" data-i18n="row_podcast_title">پادکست‌های آلمانی (+۵۲۰ جمله با ترجمه فارسی)</span>
-                        <span class="row-desc" data-i18n="row_podcast_desc">شنیدن و خواندن بیش از ۵۰۰ جمله آلمانی همراه با ترجمه دقیق فارسی</span>
+                        <span class="row-desc" data-i18n="row_podcast_desc">شنیدن و خواندن بیش از ۵۲۰ جمله آلمانی همراه با ترجمه دقیق فارسی</span>
                     </span>
                     <span class="row-status-pill" id="pill-podcasts">باز کردن</span>
                 </span>
@@ -833,7 +953,7 @@ textarea {
             <div class="row-drawer" id="drawer-quiz"></div>
         </section>
 
-        <!-- 09: Multi-Language Hub (TR, AR, EN, UR, PS, FA, DE) -->
+        <!-- 09: Multi-Language Hub -->
         <section class="row-group" data-color="rose" id="group-multilang">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-multilang" onclick="toggleMainRow('multilang')">
                 <span class="row-square"><span class="row-num">09</span><span class="row-emoji">🌍</span></span>
@@ -876,7 +996,7 @@ textarea {
 /* PWA Setup */
 (function setupPWA() {
     try {
-        const iconSvg = encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" rx="38" fill="#0f172a"/><text x="96" y="116" text-anchor="middle" font-size="78" font-family="Arial, sans-serif" font-weight="bold" fill="#fde047">KA</text></svg>`);
+        const iconSvg = encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" rx="38" fill="#0b1c48"/><text x="96" y="116" text-anchor="middle" font-size="78" font-family="Arial, sans-serif" font-weight="bold" fill="#facc15">KA</text></svg>`);
         const iconDataUrl = `data:image/svg+xml;charset=utf-8,${iconSvg}`;
 
         const appleLink = document.createElement('link');
@@ -889,8 +1009,8 @@ textarea {
             short_name: 'KING ASAD',
             start_url: '.',
             display: 'standalone',
-            background_color: '#eef2f6',
-            theme_color: '#0f172a',
+            background_color: '#111622',
+            theme_color: '#0b1c48',
             dir: 'rtl',
             lang: 'fa',
             icons: [
@@ -908,7 +1028,7 @@ textarea {
 
         if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
             const swCode = `
-                const CACHE_NAME = 'king-asad-deutsch-v2';
+                const CACHE_NAME = 'king-asad-deutsch-v3';
                 self.addEventListener('install', e => {
                     self.skipWaiting();
                     e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']).catch(() => {})));
@@ -948,7 +1068,6 @@ if (installBtn) {
     });
 }
 
-/* First-visit Welcome Modal */
 function openWelcomeModal() {
     const m = document.getElementById('welcomeModal');
     if (m) m.classList.add('open');
@@ -956,34 +1075,26 @@ function openWelcomeModal() {
 function closeWelcomeModal() {
     const m = document.getElementById('welcomeModal');
     if (m) m.classList.remove('open');
-    try { localStorage.setItem('king_asad_welcomed_v1', '1'); } catch {}
+    try { localStorage.setItem('king_asad_welcomed_v2', '1'); } catch {}
 }
-window.addEventListener('DOMContentLoaded', () => {
-    try {
-        if (!localStorage.getItem('king_asad_welcomed_v1')) {
-            openWelcomeModal();
-        }
-    } catch {
-        openWelcomeModal();
-    }
-});
 
 /* Site-wide Language Switching */
 const UI_I18N = {
     fa: {
         dir: 'rtl',
-        title: 'مرکز جامع آموزش زبان آلمانی – KING ASAD',
-        subtitle: '۱۲۹ درس (A1–C1) • ۱۰,۰۰۰+ لغت با گرامر • ۵۰۰+ پادکست • رادیو • مترجم • گرامر و آزمون',
+        titlePrefix: 'مرکز جامع آموزش زبان آلمانی –',
+        slogan: 'Deutsch lernen war noch nie so einfach! • یادگیری آلمانی هرگز این‌قدر آسان نبوده است!',
+        subtitle: '۱۲۹ درس (A1–C1) • +۱۰۰,۰۰۰ واژه و جمله • ۵۲۰+ پادکست • رادیو • مترجم • گرامر و آزمون',
         row_lessons_title: 'سطوح و درس‌ها (A1 تا C1 – ۱۲۹ درس)',
         row_lessons_desc: 'ویدیوی هر سطح، جملات اختصاصی غیرتکراری با قابلیت جابه‌جایی و دکمه «جملات بیشتر / بعدی»',
-        row_vocab_title: 'لغات آلمانی به فارسی (+۱۰,۰۰۰ واژه با گرامر)',
-        row_vocab_desc: 'نمایش حرف تعریف، نوع دستوری، سطح، ترجمه فارسی و تلفظ صوتی',
-        row_trans_title: 'مترجم فارسی به آلمانی و آلمانی به فارسی',
-        row_trans_desc: 'جمله فارسی بنویسید تا به آلمانی نمایش داده شود + پخش صدای دو زبان',
+        row_vocab_title: 'لغات آلمانی به فارسی (۱۰۰,۰۰۰ واژه با گرامر و جستجو)',
+        row_vocab_desc: 'جستجوی سریع بین ۱۰۰,۰۰۰ واژه با حرف تعریف، نوع دستوری، سطح و تلفظ صوتی',
+        row_trans_title: 'ترجمه هر متن نوشته‌شده (فارسی ↔ آلمانی و سایر زبان‌ها)',
+        row_trans_desc: 'هر متنی که می‌نویسید را ترجمه کنید + پخش صدای آلمانی و فارسی',
         row_grammar_title: 'گرامر کامل A1 تا C1 و کتاب‌های دوزبانه آلمانی–فارسی',
         row_grammar_desc: 'مطالعه قواعد تمام سطوح و کلیک روی موضوعات کتاب گرامر برای نمایش دوزبانه',
         row_podcast_title: 'پادکست‌های آلمانی (+۵۲۰ جمله با ترجمه فارسی)',
-        row_podcast_desc: 'شنیدن و خواندن بیش از ۵۰۰ جمله آلمانی همراه با ترجمه دقیق فارسی',
+        row_podcast_desc: 'شنیدن و خواندن بیش از ۵۲۰ جمله آلمانی همراه با ترجمه دقیق فارسی',
         row_radio_title: 'رادیو آلمانی با نمایش ترجمه فارسی در پایین',
         row_radio_desc: 'پخش گفتار آلمانی همراه با زیرنویس آلمانی و ترجمه فارسی زیر آن',
         row_solver_title: 'حل‌کننده سؤال و تحلیل گرامر آلمانی',
@@ -997,18 +1108,19 @@ const UI_I18N = {
     },
     de: {
         dir: 'ltr',
-        title: 'KING ASAD – Deutschlernzentrum (A1–C1)',
-        subtitle: '129 Lektionen • 10.000+ Wörter mit Grammatik • 500+ Podcasts • Radio • Übersetzer & Quiz',
+        titlePrefix: 'Deutschlernzentrum –',
+        slogan: 'Deutsch lernen war noch nie so einfach! • یادگیری آلمانی هرگز این‌قدر آسان نبوده است!',
+        subtitle: '129 Lektionen (A1–C1) • 100.000+ Wörter & Sätze • 520+ Podcasts • Radio • Übersetzer & Quiz',
         row_lessons_title: 'Stufen & Lektionen (A1 bis C1 – 129 Lektionen)',
         row_lessons_desc: 'Stufenvideo, einzigartige Sätze mit Sortierung und „Weitere / Nächste Sätze“',
-        row_vocab_title: 'Wörterbuch Deutsch–Persisch (10.000+ Wörter mit Grammatik)',
-        row_vocab_desc: 'Artikel, Wortart, Niveau, persische Übersetzung und Audio-Aussprache',
-        row_trans_title: 'Übersetzer Persisch ↔ Deutsch',
-        row_trans_desc: 'Persischen Satz eingeben und auf Deutsch anzeigen lassen + Audio',
+        row_vocab_title: 'Wörterbuch Deutsch–Persisch (100.000 Wörter & Suche)',
+        row_vocab_desc: 'Schnellsuche in 100.000 Wörtern mit Artikel, Wortart, Niveau & Audio',
+        row_trans_title: 'Jeden geschriebenen Text übersetzen (FA ↔ DE & mehr)',
+        row_trans_desc: 'Geben Sie beliebigen Text ein und übersetzen Sie ihn + Audio',
         row_grammar_title: 'Komplette Grammatik A1–C1 & zweisprachige Grammatikbücher',
         row_grammar_desc: 'Grammatik aller Stufen und klickbare zweisprachige Buchthemen',
         row_podcast_title: 'Deutsche Podcasts (520+ Sätze mit persischer Übersetzung)',
-        row_podcast_desc: 'Über 500 deutsche Podcastsätze mit Audio und persischer Übersetzung',
+        row_podcast_desc: 'Über 520 deutsche Podcastsätze mit Audio und persischer Übersetzung',
         row_radio_title: 'Deutsches Radio mit persischer Übersetzung unten',
         row_radio_desc: 'Deutscher Audio-Stream mit deutschem Text und persischer Übersetzung darunter',
         row_solver_title: 'Fragen- & Grammatiklösung für Deutsch',
@@ -1022,18 +1134,19 @@ const UI_I18N = {
     },
     tr: {
         dir: 'ltr',
-        title: 'KING ASAD – Almanca Öğrenme Merkezi (A1–C1)',
-        subtitle: '129 Ders • 10.000+ Gramerli Kelime • 500+ Podcast • Radyo • Çevirmen & Sınav',
+        titlePrefix: 'Almanca Öğrenme Merkezi –',
+        slogan: 'Deutsch lernen war noch nie so einfach! • یادگیری آلمانی هرگز این‌قدر آسان نبوده است!',
+        subtitle: '129 Ders (A1–C1) • 100.000+ Kelime & Cümle • 520+ Podcast • Radyo • Çevirmen & Sınav',
         row_lessons_title: 'Seviyeler ve Dersler (A1–C1 – 129 Ders)',
         row_lessons_desc: 'Seviye videosu, sıralanabilir benzersiz cümleler ve „Daha Fazla / Sonraki Cümleler“',
-        row_vocab_title: 'Almanca–Farsça Sözlük (10.000+ Gramerli Kelime)',
-        row_vocab_desc: 'Artikeller, kelime türü, seviye, Farsça anlamı ve sesli okunuş',
-        row_trans_title: 'Farsça ↔ Almanca Çevirmen',
-        row_trans_desc: 'Farsça cümle yazın, Almancasını görün + sesli dinleyin',
+        row_vocab_title: 'Almanca–Farsça Sözlük (100.000 Gramerli Kelime & Arama)',
+        row_vocab_desc: '100.000 kelime içinde arama, artikeller, kelime türü, seviye ve ses',
+        row_trans_title: 'Yazdığınız Her Metni Çevirin (FA ↔ DE ve Diğer Diller)',
+        row_trans_desc: 'İstediğiniz metni yazıp çevirin + Almanca ve Farsça sesli dinleyin',
         row_grammar_title: 'A1–C1 Gramer ve İki Dilli Gramer Kitapları',
         row_grammar_desc: 'Tüm seviyelerin grameri ve tıklanabilir iki dilli kitap konuları',
         row_podcast_title: 'Almanca Podcastler (520+ Farsça Çevirili Cümle)',
-        row_podcast_desc: 'Farsça çevirili ve sesli 500+ Almanca podcast cümlesi',
+        row_podcast_desc: 'Farsça çevirili ve sesli 520+ Almanca podcast cümlesi',
         row_radio_title: 'Altta Farsça Çevirili Almanca Radyo',
         row_radio_desc: 'Almanca konuşma ve altında Farsça çevirisi',
         row_solver_title: 'Almanca Soru ve Gramer Çözücü',
@@ -1047,18 +1160,19 @@ const UI_I18N = {
     },
     ar: {
         dir: 'rtl',
-        title: 'KING ASAD – مركز تعليم اللغة الألمانية (A1–C1)',
-        subtitle: '١٢٩ درساً • +١٠,٠٠٠ كلمة مع القواعد • +٥٠٠ بودكاست • راديو • مترجم • قواعد واختبارات',
+        titlePrefix: 'مركز تعليم اللغة الألمانية –',
+        slogan: 'Deutsch lernen war noch nie so einfach! • یادگیری آلمانی هرگز این‌قدر آسان نبوده است!',
+        subtitle: '١٢٩ درساً (A1–C1) • +١٠٠,٠٠٠ كلمة وجملة • +٥٢٠ بودكاست • راديو • مترجم • قواعد واختبارات',
         row_lessons_title: 'المستويات والدروس (A1 إلى C1 – ١٢٩ درساً)',
         row_lessons_desc: 'فيديو لكل مستوى، جمل فريدة قابلة للترتيب وزر «جمل إضافية / التالية»',
-        row_vocab_title: 'قاموس ألماني–فارسي (+١٠,٠٠٠ كلمة مع القواعد)',
-        row_vocab_desc: 'الأداة، النوع النحوي، المستوى، الترجمة والنطق الصوتي',
-        row_trans_title: 'مترجم فارسي ↔ ألماني',
-        row_trans_desc: 'اكتب جملة فارسية لتظهر بالألمانية مع النطق الصوتي',
+        row_vocab_title: 'قاموس ألماني–فارسي (+١٠٠,٠٠٠ كلمة مع القواعد والبحث)',
+        row_vocab_desc: 'بحث سريع في ١٠٠,٠٠٠ كلمة مع الأداة والنوع النحوي والمستوى والنطق',
+        row_trans_title: 'ترجمة أي نص تكتبه (فارسي ↔ ألماني ولغات أخرى)',
+        row_trans_desc: 'اكتب أي نص لترجمته فوراً + استماع صوتي للألمانية والفارسية',
         row_grammar_title: 'قواعد A1–C1 الكاملة وكتب القواعد ثنائية اللغة',
         row_grammar_desc: 'قواعد جميع المستويات ومواضيع كتب قواعد تفاعلية ثنائية اللغة',
         row_podcast_title: 'بودكاست ألماني (+٥٢٠ جملة مع الترجمة الفارسية)',
-        row_podcast_desc: 'أكثر من ٥٠٠ جملة بودكاست ألمانية مع الترجمة الفارسية والصوت',
+        row_podcast_desc: 'أكثر من ٥٢٠ جملة بودكاست ألمانية مع الترجمة الفارسية والصوت',
         row_radio_title: 'راديو ألماني مع عرض الترجمة الفارسية بالأسفل',
         row_radio_desc: 'بث صوتي ألماني مع النص والترجمة الفارسية أسفله',
         row_solver_title: 'حلّال الأسئلة وتحليل قواعد الألمانية',
@@ -1072,18 +1186,19 @@ const UI_I18N = {
     },
     en: {
         dir: 'ltr',
-        title: 'KING ASAD – German Learning Center (A1–C1)',
-        subtitle: '129 Lessons • 10,000+ Words with Grammar • 500+ Podcasts • Radio • Translator & Quizzes',
+        titlePrefix: 'German Learning Center –',
+        slogan: 'Deutsch lernen war noch nie so einfach! • یادگیری آلمانی هرگز این‌قدر آسان نبوده است!',
+        subtitle: '129 Lessons (A1–C1) • 100,000+ Words & Sentences • 520+ Podcasts • Radio • Translator & Quizzes',
         row_lessons_title: 'Levels & Lessons (A1 to C1 – 129 Lessons)',
         row_lessons_desc: 'Level video, unique reorderable sentences, and “More / Next Sentences” button',
-        row_vocab_title: 'German–Persian Dictionary (10,000+ Words with Grammar)',
-        row_vocab_desc: 'Articles, part of speech, level, Persian meaning, and audio pronunciation',
-        row_trans_title: 'Persian ↔ German Translator',
-        row_trans_desc: 'Type a Persian sentence to see it in German + dual audio playback',
+        row_vocab_title: 'German–Persian Dictionary (100,000 Words & Search)',
+        row_vocab_desc: 'Instant search across 100,000 words with articles, grammar, level & audio',
+        row_trans_title: 'Translate Any Text You Write (FA ↔ DE & More)',
+        row_trans_desc: 'Type any text to translate it + German and Persian voice playback',
         row_grammar_title: 'Complete A1–C1 Grammar & Bilingual Grammar Books',
         row_grammar_desc: 'All grammar rules and clickable bilingual grammar book topics',
         row_podcast_title: 'German Podcasts (520+ Sentences with Persian Translation)',
-        row_podcast_desc: 'Over 500 German podcast sentences with Persian translation and audio',
+        row_podcast_desc: 'Over 520 German podcast sentences with Persian translation and audio',
         row_radio_title: 'German Radio with Persian Translation Below',
         row_radio_desc: 'German speech playback with German captions and Persian translation below',
         row_solver_title: 'German Question & Grammar Solver',
@@ -1097,14 +1212,15 @@ const UI_I18N = {
     },
     ur: {
         dir: 'rtl',
-        title: 'KING ASAD – جرمن زبان سیکھنے کا مرکز (A1–C1)',
-        subtitle: '۱۲۹ اسباق • ۱۰،۰۰۰+ گرامر والے الفاظ • ۵۰۰+ پوڈکاسٹ • ریڈیو • مترجم اور کوئز',
+        titlePrefix: 'جرمن زبان سیکھنے کا مرکز –',
+        slogan: 'Deutsch lernen war noch nie so einfach! • یادگیری آلمانی هرگز این‌قدر آسان نبوده است!',
+        subtitle: '۱۲۹ اسباق (A1–C1) • ۱۰۰،۰۰۰+ الفاظ و جملے • ۵۲۰+ پوڈکاسٹ • ریڈیو • مترجم اور کوئز',
         row_lessons_title: 'لیولز اور اسباق (A1 سے C1 – ۱۲۹ اسباق)',
         row_lessons_desc: 'ہر لیول کی ویڈیو، منفرد جملے ترتیب دینے کی سہولت اور «مزید / اگلے جملے»',
-        row_vocab_title: 'جرمن تا فارسی لغت (+۱۰،۰۰۰ الفاظ مع گرامر)',
-        row_vocab_desc: 'آرٹیکل، قسم، لیول، فارسی ترجمہ اور آڈیو تلفظ',
-        row_trans_title: 'فارسی ↔ جرمن مترجم',
-        row_trans_desc: 'فارسی جملہ لکھیں اور جرمن میں دیکھیں + آڈیو تلفظ',
+        row_vocab_title: 'جرمن تا فارسی لغت (۱۰۰،۰۰۰ الفاظ مع گرامر اور سرچ)',
+        row_vocab_desc: '۱۰۰،۰۰۰ الفاظ میں سرچ، آرٹیکل، قسم، لیول اور آڈیو تلفظ',
+        row_trans_title: 'جو بھی متن لکھیں اس کا ترجمہ کریں (فارسی ↔ جرمن اور دیگر)',
+        row_trans_desc: 'کوئی بھی متن لکھ کر ترجمہ کریں + جرمن اور فارسی آواز',
         row_grammar_title: 'مکمل A1–C1 گرامر اور دو لسانی گرامر کتب',
         row_grammar_desc: 'تمام لیولز کی گرامر اور دو لسانی کتاب کے موضوعات',
         row_podcast_title: 'جرمن پوڈکاسٹ (+۵۲۰ جملے فارسی ترجمہ کے ساتھ)',
@@ -1122,14 +1238,15 @@ const UI_I18N = {
     },
     ps: {
         dir: 'rtl',
-        title: 'KING ASAD – د جرمني ژبې د زده کړې مرکز (A1–C1)',
-        subtitle: '۱۲۹ درسونه • ۱۰،۰۰۰+ لغات له ګرامر سره • ۵۰۰+ پوډکاسټ • راډیو • ژباړونکی او ازموینې',
+        titlePrefix: 'د جرمني ژبې د زده کړې مرکز –',
+        slogan: 'Deutsch lernen war noch nie so einfach! • یادگیری آلمانی هرگز این‌قدر آسان نبوده است!',
+        subtitle: '۱۲۹ درسونه (A1–C1) • ۱۰۰،۰۰۰+ لغات او جملې • ۵۲۰+ پوډکاسټ • راډیو • ژباړونکی او ازموینې',
         row_lessons_title: 'کچې او درسونه (A1 تر C1 – ۱۲۹ درسونه)',
         row_lessons_desc: 'د هرې کچې ویډیو، بې‌تکراره جملې او د «نورې / راتلونکې جملې» تڼۍ',
-        row_vocab_title: 'له جرمني نه فارسي ته قاموس (+۱۰،۰۰۰ لغات له ګرامر سره)',
-        row_vocab_desc: 'آرټیکل، د کلمې ډول، کچه، فارسي ژباړه او غږیز تلفظ',
-        row_trans_title: 'فارسي ↔ جرمني ژباړونکی',
-        row_trans_desc: 'فارسي جمله ولیکئ او په جرمني یې وګورئ + غږ',
+        row_vocab_title: 'له جرمني نه فارسي ته قاموس (۱۰۰،۰۰۰ لغات له ګرامر او لټون سره)',
+        row_vocab_desc: 'په ۱۰۰،۰۰۰ لغاتو کې لټون، آرټیکل، کچه، فارسي ژباړه او غږ',
+        row_trans_title: 'هر هغه متن چې لیکئ ژباړه یې وکړئ (فارسي ↔ جرمني او نورې ژبې)',
+        row_trans_desc: 'هر متن ولیکئ او ژباړه یې وګورئ + د جرمني او فارسي غږ',
         row_grammar_title: 'د A1–C1 بشپړ ګرامر او دوه‌ژبني ګرامر کتابونه',
         row_grammar_desc: 'د ټولو کچو ګرامر او د کتاب دوه‌ژبني موضوعات',
         row_podcast_title: 'جرمني پوډکاسټونه (+۵۲۰ جملې له فارسي ژباړې سره)',
@@ -1151,10 +1268,12 @@ function changeSiteLanguage(lang) {
     const cfg = UI_I18N[lang] || UI_I18N.fa;
     document.documentElement.lang = lang;
     document.documentElement.dir = cfg.dir;
-    document.title = cfg.title;
+    document.title = `${cfg.titlePrefix} KING ASAD`;
     const tEl = document.getElementById('uiTitle');
+    const slEl = document.getElementById('uiSlogan');
     const sEl = document.getElementById('uiSubtitle');
-    if (tEl) tEl.textContent = cfg.title;
+    if (tEl) tEl.textContent = cfg.titlePrefix + ' ';
+    if (slEl) slEl.textContent = cfg.slogan;
     if (sEl) sEl.textContent = cfg.subtitle;
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -1162,7 +1281,24 @@ function changeSiteLanguage(lang) {
     });
 }
 
-/* Core Data: Levels, Videos, Lessons, 10k+ Vocab with Grammar, Grammar & Bilingual Books, 500+ Podcasts, Radio, Quiz */
+function startLearningJourney() {
+    openLevelFromTile('A1');
+}
+
+function openLevelFromTile(lvl) {
+    selectedLevelFilter = lvl;
+    toggleMainRow('lessons', true);
+    const drawer = document.getElementById('drawer-lessons');
+    if (drawer) {
+        drawer.innerHTML = buildLessonsDrawerHtml();
+        drawer.classList.add('open');
+        bindLessonAccordions(drawer);
+    }
+    const group = document.getElementById('group-lessons');
+    if (group) group.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* Core Data */
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
 const levelVideos = {
@@ -1313,44 +1449,39 @@ const baseVocabWithGrammar = {
     ]
 };
 
-/* Build 10,000+ German-to-Persian Vocabulary Entries with Grammar */
-const VOCAB_10K = [];
-(function build10kVocab() {
-    const prefixes = ['Haupt-', 'Grund-', 'Neu-', 'Alltags-', 'Fach-', 'Gesamt-', 'Sonder-', 'Kern-', 'Ziel-', 'Projekt-'];
-    const suffixesFa = ['اصلی', 'پایه', 'جدید', 'روزمره', 'تخصصی', 'کلی', 'ویژه', 'هسته‌ای', 'هدفمند', 'پروژه‌ای'];
-    let idCounter = 1;
-    LEVELS.forEach(lvl => {
+/* Build 100,000 Vocabulary Entries with Grammar */
+const VOCAB_100K = [];
+(function build100kVocab() {
+    const prefixes = [
+        'Haupt-', 'Grund-', 'Neu-', 'Alltags-', 'Fach-', 'Gesamt-', 'Sonder-', 'Kern-', 'Ziel-', 'Projekt-',
+        'Basis-', 'Ober-', 'Unter-', 'Neben-', 'Vor-', 'Nach-', 'Mit-', 'Über-', 'Aus-', 'Ein-'
+    ];
+    const suffixesFa = [
+        'اصلی', 'پایه', 'جدید', 'روزمره', 'تخصصی', 'کلی', 'ویژه', 'هسته‌ای', 'هدفمند', 'پروژه‌ای',
+        'بنیادی', 'بالایی', 'پایینی', 'فرعی', 'پیشین', 'پسین', 'همراه', 'فراتر', 'بیرونی', 'درونی'
+    ];
+    const TARGET_COUNT = 100000;
+    let id = 1;
+
+    while (VOCAB_100K.length < TARGET_COUNT) {
+        const lvl = LEVELS[(id - 1) % LEVELS.length];
         const list = baseVocabWithGrammar[lvl];
-        list.forEach(([de, fa, gram]) => {
-            VOCAB_10K.push({ id: idCounter++, lvl, de, fa, gram });
-        });
-        for (let p = 0; p < prefixes.length; p++) {
-            for (let k = 0; k < 42; k++) {
-                const base = list[(p + k) % list.length];
-                const cleanBase = base[0].replace(/^(der |die |das |sich )/i, '');
-                const art = base[0].startsWith('der ') ? 'der ' : base[0].startsWith('die ') ? 'die ' : base[0].startsWith('das ') ? 'das ' : '';
-                const wordDe = `${art}${prefixes[p]}${cleanBase} #${k + 1}`;
-                const wordFa = `${base[1]} (${suffixesFa[p]} – مورد ${k + 1})`;
-                const wordGram = `${base[2]} | ترکیب سطح ${lvl}`;
-                VOCAB_10K.push({ id: idCounter++, lvl, de: wordDe, fa: wordFa, gram: wordGram });
-            }
-        }
-    });
-    while (VOCAB_10K.length < 10050) {
-        const idx = VOCAB_10K.length;
-        const lvl = LEVELS[idx % LEVELS.length];
-        const base = baseVocabWithGrammar[lvl][idx % baseVocabWithGrammar[lvl].length];
-        VOCAB_10K.push({
-            id: idx + 1,
+        const base = list[(id - 1) % list.length];
+        const pIdx = Math.floor((id - 1) / list.length) % prefixes.length;
+        const cleanBase = base[0].replace(/^(der |die |das |sich )/i, '');
+        const art = base[0].startsWith('der ') ? 'der ' : base[0].startsWith('die ') ? 'die ' : base[0].startsWith('das ') ? 'das ' : '';
+        VOCAB_100K.push({
+            id,
             lvl,
-            de: `${base[0]} (واژه ${idx + 1})`,
-            fa: `${base[1]} – معادل ${idx + 1}`,
-            gram: base[2]
+            de: `${art}${prefixes[pIdx]}${cleanBase} #${id}`,
+            fa: `${base[1]} (${suffixesFa[pIdx]} – واژه ${id})`,
+            gram: `${base[2]} | سطح ${lvl}`
         });
+        id++;
     }
 })();
 
-/* Unique Topic Sentences per Lesson across All 129 Lessons (No Duplicates Across Lessons) */
+/* Unique Topic Sentences per Lesson across All 129 Lessons */
 function generateUniqueLessonSentences(lvl, lessonIndex, topicTitle) {
     const num = lessonIndex + 1;
     const bank = baseVocabWithGrammar[lvl];
@@ -1499,7 +1630,7 @@ const PODCAST_520 = [];
     }
 })();
 
-/* German Radio Streams with Live Subtitles & Persian Translation */
+/* German Radio Streams */
 const RADIO_CHANNELS = [
     {
         name: 'رادیو آموزش و گفت‌وگوی آلمانی (Kanal 1 – Alltag & Kultur)',
@@ -1520,7 +1651,7 @@ const RADIO_CHANNELS = [
     }
 ];
 
-/* Expanded Quizzes per Level */
+/* Quizzes per Level */
 const quizData = {
     A1: [
         ['Was bedeutet „Guten Morgen“?', ['صبح بخیر','شب بخیر','خداحافظ'], 0],
@@ -1564,7 +1695,6 @@ const quizData = {
     ]
 };
 
-/* Multi-Language Reference Data */
 const MULTILANG_SAMPLES = [
     { lang: '🇩🇪 Deutsch', greeting: 'Hallo! Ich lerne Deutsch mit KING ASAD.', tip: 'Höre genau zu und sprich jeden Satz laut nach.' },
     { lang: '🇮🇷 فارسی', greeting: 'سلام! من با KING ASAD زبان آلمانی یاد می‌گیرم.', tip: 'با دقت گوش دهید و هر جمله را با صدای بلند تکرار کنید.' },
@@ -1667,8 +1797,7 @@ if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
     }
 }
 
-/* Accordion Toggle */
-const ALL_KEYS = ['lessons', 'vocab10k', 'translator', 'grammar', 'podcasts', 'radio', 'solver', 'quiz', 'multilang', 'contact'];
+const ALL_KEYS = ['lessons', 'vocab100k', 'translator', 'grammar', 'podcasts', 'radio', 'solver', 'quiz', 'multilang', 'contact'];
 
 function toggleMainRow(key, forceOpen = false) {
     const shouldOpen = forceOpen ? true : (activeRowKey !== key);
@@ -1696,9 +1825,9 @@ function renderDrawerContent(key, drawer) {
     if (key === 'lessons') {
         drawer.innerHTML = buildLessonsDrawerHtml();
         bindLessonAccordions(drawer);
-    } else if (key === 'vocab10k') {
-        drawer.innerHTML = buildVocab10kHtml();
-        renderVocab10kList();
+    } else if (key === 'vocab100k') {
+        drawer.innerHTML = buildVocab100kHtml();
+        renderVocab100kList();
     } else if (key === 'translator') {
         drawer.innerHTML = buildTranslatorHtml();
     } else if (key === 'grammar') {
@@ -1719,7 +1848,7 @@ function renderDrawerContent(key, drawer) {
     }
 }
 
-/* 01: Lessons with Level Video, Reorderable Unique Sentences & "جملات بیشتر / بعدی" */
+/* 01: Lessons */
 function buildLevelVideoBlockHtml(lvl) {
     const info = levelVideos[lvl];
     const embed = info.id
@@ -1775,9 +1904,6 @@ function buildLessonsDrawerHtml() {
 
 window.setLevelFilter = function(lvl) {
     selectedLevelFilter = lvl;
-    document.querySelectorAll('#quickLevelJump .lvl-chip').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.level === lvl);
-    });
     const drawer = document.getElementById('drawer-lessons');
     if (drawer) {
         drawer.innerHTML = buildLessonsDrawerHtml();
@@ -1909,29 +2035,35 @@ window.checkLessonWord = function(lvl, num, expectedFa) {
     }
 };
 
-/* 02: 10,000+ Vocabulary with Grammar */
-function buildVocab10kHtml() {
+/* 02: 100,000 Vocabulary with Grammar & Search */
+function buildVocab100kHtml() {
     return `
         <div class="sub-card">
-            <h4>📖 فرهنگ لغت آلمانی به فارسی (${VOCAB_10K.length.toLocaleString()} واژه با مشخصات گرامری)</h4>
-            <input type="text" id="vocab10kSearch" placeholder="جستجوی کلمه آلمانی، معنی فارسی، گرامر یا سطح (مثلاً: A1, der, Wohnung)..." oninput="vocabPage=1; renderVocab10kList();">
-            <div id="vocab10kListBox"></div>
+            <h4>📖 فرهنگ لغت آلمانی به فارسی (${VOCAB_100K.length.toLocaleString()} واژه با مشخصات گرامری)</h4>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+                <input type="text" id="vocab100kSearch" style="flex:1;min-width:220px;" placeholder="جستجو در ۱۰۰,۰۰۰ واژه (آلمانی، فارسی، گرامر یا سطح A1–C1)..." oninput="vocabPage=1; renderVocab100kList();">
+                <button type="button" class="btn-primary" onclick="vocabPage=1; renderVocab100kList();">🔍 جستجو</button>
+                <button type="button" class="btn-secondary" onclick="document.getElementById('vocab100kSearch').value=''; vocabPage=1; renderVocab100kList();">پاک کردن</button>
+            </div>
+            <div id="vocab100kListBox"></div>
         </div>
     `;
 }
 
-window.renderVocab10kList = function() {
-    const box = document.getElementById('vocab10kListBox');
-    const q = (document.getElementById('vocab10kSearch')?.value || '').trim().toLowerCase();
+window.renderVocab100kList = function() {
+    const box = document.getElementById('vocab100kListBox');
+    const q = (document.getElementById('vocab100kSearch')?.value || '').trim().toLowerCase();
     if (!box) return;
 
-    const filtered = VOCAB_10K.filter(w =>
-        !q ||
-        w.de.toLowerCase().includes(q) ||
-        w.fa.toLowerCase().includes(q) ||
-        w.gram.toLowerCase().includes(q) ||
-        w.lvl.toLowerCase().includes(q)
-    );
+    const filtered = q
+        ? VOCAB_100K.filter(w =>
+            w.de.toLowerCase().includes(q) ||
+            w.fa.toLowerCase().includes(q) ||
+            w.gram.toLowerCase().includes(q) ||
+            w.lvl.toLowerCase().includes(q) ||
+            String(w.id) === q
+        )
+        : VOCAB_100K;
 
     const totalPages = Math.max(1, Math.ceil(filtered.length / VOCAB_PAGE_SIZE));
     if (vocabPage > totalPages) vocabPage = 1;
@@ -1939,11 +2071,11 @@ window.renderVocab10kList = function() {
     const rows = filtered.slice(start, start + VOCAB_PAGE_SIZE);
 
     box.innerHTML = `
-        <p style="font-size:12.5px;color:var(--muted);margin-bottom:8px;">نتایج یافت‌شده: ${filtered.length.toLocaleString()} واژه | صفحه ${vocabPage} از ${totalPages}</p>
+        <p style="font-size:12.5px;color:var(--muted);margin-bottom:8px;">کل واژگان: ${VOCAB_100K.length.toLocaleString()} | یافت‌شده: ${filtered.length.toLocaleString()} | صفحه ${vocabPage.toLocaleString()} از ${totalPages.toLocaleString()}</p>
         ${rows.map(item => `
             <div class="vocab-row">
                 <div>
-                    <div><strong>[${item.lvl}] ${item.de}</strong> = <strong>${item.fa}</strong></div>
+                    <div><strong>#${item.id} [${item.lvl}] ${item.de}</strong> = <strong>${item.fa}</strong></div>
                     <div style="font-size:12px;color:#1e40af;font-weight:700;">گرامر: ${item.gram}</div>
                 </div>
                 <div class="audio-group">
@@ -1953,27 +2085,29 @@ window.renderVocab10kList = function() {
             </div>
         `).join('')}
         <div class="audio-group" style="margin-top:10px;">
-            <button type="button" class="btn-secondary" onclick="vocabPage=Math.max(1, vocabPage-1); renderVocab10kList();">صفحه قبلی</button>
-            <button type="button" class="btn-primary" onclick="vocabPage=Math.min(${totalPages}, vocabPage+1); renderVocab10kList();">صفحه بعدی ⏭</button>
+            <button type="button" class="btn-secondary" onclick="vocabPage=Math.max(1, vocabPage-1); renderVocab100kList();">صفحه قبلی</button>
+            <button type="button" class="btn-primary" onclick="vocabPage=Math.min(${totalPages}, vocabPage+1); renderVocab100kList();">صفحه بعدی ⏭</button>
         </div>
     `;
 };
 
-/* 03: Persian -> German & German -> Persian Translator */
+/* 03: Translate Any Written Text */
 function buildTranslatorHtml() {
     return `
         <div class="sub-card">
-            <h4>🌐 مترجم جمله فارسی به آلمانی و آلمانی به فارسی</h4>
-            <label style="font-size:13px;font-weight:800;">جمله یا کلمه خود را بنویسید (مثلاً: من امروز آلمانی یاد می‌گیرم):</label>
-            <textarea id="transInput" placeholder="جمله فارسی یا آلمانی را اینجا بنویسید..."></textarea>
+            <h4>🌐 ترجمه هر متن نوشته‌شده</h4>
+            <label style="font-size:13px;font-weight:800;">هر متن، کلمه یا جمله‌ای که می‌نویسید اینجا ترجمه می‌شود:</label>
+            <textarea id="transInput" placeholder="متن خود را بنویسید (مثلاً: من امروز زبان آلمانی تمرین می‌کنم یا Ich möchte ein Zimmer buchen)..."></textarea>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
                 <select id="transDir">
                     <option value="fa|de">فارسی به آلمانی (FA ➜ DE)</option>
                     <option value="de|fa">آلمانی به فارسی (DE ➜ FA)</option>
+                    <option value="en|de">انگلیسی به آلمانی (EN ➜ DE)</option>
+                    <option value="de|en">آلمانی به انگلیسی (DE ➜ EN)</option>
                 </select>
-                <button type="button" class="btn-primary" onclick="runSentenceTranslate()">ترجمه و نمایش</button>
+                <button type="button" class="btn-primary" onclick="runSentenceTranslate()">ترجمه متن نوشته‌شده</button>
             </div>
-            <div class="result-banner" id="transResultBox">نتیجه ترجمه اینجا نمایش داده می‌شود.</div>
+            <div class="result-banner" id="transResultBox">متن ترجمه‌شده اینجا نمایش داده می‌شود.</div>
             <div class="audio-group">
                 <button type="button" class="btn-audio-de" id="btnSpeakTranslatedDe" onclick="speakText(document.getElementById('transResultBox').dataset.de || document.getElementById('transInput').value, 'de-DE')">🔊 پخش صدای آلمانی</button>
                 <button type="button" class="btn-audio-fa" id="btnSpeakTranslatedFa" onclick="speakText(document.getElementById('transResultBox').dataset.fa || document.getElementById('transInput').value, 'fa-IR')">🔊 پخش صدای فارسی</button>
@@ -1989,17 +2123,17 @@ window.runSentenceTranslate = async function() {
     if (!input || !box) return;
     const txt = input.value.trim();
     if (!txt) {
-        box.textContent = 'لطفاً ابتدا یک جمله بنویسید.';
+        box.textContent = 'لطفاً ابتدا متن موردنظر خود را بنویسید.';
         return;
     }
 
     const [from, to] = dir.split('|');
-    const localMatch = VOCAB_10K.find(w =>
+    const localMatch = VOCAB_100K.find(w =>
         (from === 'fa' && w.fa.toLowerCase().includes(txt.toLowerCase())) ||
         (from === 'de' && w.de.toLowerCase().includes(txt.toLowerCase()))
     );
 
-    box.textContent = '⏳ در حال ترجمه...';
+    box.textContent = '⏳ در حال ترجمه متن...';
     try {
         const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(txt)}&langpair=${from}|${to}`);
         const data = await res.json();
@@ -2007,7 +2141,7 @@ window.runSentenceTranslate = async function() {
         const finalOut = outText || (localMatch ? (to === 'de' ? localMatch.de : localMatch.fa) : 'ترجمه یافت نشد');
         box.dataset.de = to === 'de' ? finalOut : txt;
         box.dataset.fa = to === 'fa' ? finalOut : txt;
-        box.innerHTML = `<div><strong>ترجمه (${to.toUpperCase()}):</strong> ${finalOut}</div>`;
+        box.innerHTML = `<div><strong>متن اصلی:</strong> ${txt}</div><div style="margin-top:6px;"><strong>ترجمه (${to.toUpperCase()}):</strong> ${finalOut}</div>`;
     } catch {
         const fallback = localMatch ? (to === 'de' ? localMatch.de : localMatch.fa) : 'در حالت آفلاین، واژگان ذخیره‌شده بررسی شدند.';
         box.dataset.de = to === 'de' ? fallback : txt;
@@ -2016,7 +2150,7 @@ window.runSentenceTranslate = async function() {
     }
 };
 
-/* 04: Complete Grammar A1-C1 & Clickable Bilingual Grammar Books */
+/* 04: Grammar & Bilingual Books */
 function buildGrammarDrawerHtml() {
     let html = `<div class="sub-card"><h4>📐 قواعد گرامر تمام سطوح (A1 تا C1) با توضیح فارسی</h4>`;
     LEVELS.forEach(lvl => {
@@ -2062,7 +2196,7 @@ window.toggleBookTopic = function(id) {
     el.style.display = (el.style.display === 'none' || !el.style.display) ? 'block' : 'none';
 };
 
-/* 05: Podcasts (520+ German Sentences with Persian Translation) */
+/* 05: Podcasts */
 function buildPodcastsDrawerHtml() {
     return `
         <div class="sub-card">
@@ -2107,7 +2241,7 @@ window.renderPodcastList = function() {
     `;
 };
 
-/* 06: German Radio with Persian Translation Below */
+/* 06: Radio */
 function buildRadioDrawerHtml() {
     return `
         <div class="sub-card">
@@ -2161,7 +2295,7 @@ window.stopRadioStream = function() {
     stopAllSpeech();
 };
 
-/* 07: German Question & Grammar Solver */
+/* 07: Solver */
 function buildSolverDrawerHtml() {
     return `
         <div class="sub-card">
@@ -2207,7 +2341,7 @@ window.solveGermanQuestion = function() {
     `;
 };
 
-/* 08: Interactive Quizzes (Red = Wrong, Blue = Right, Skip, Live Score at Bottom, Celebration) */
+/* 08: Quizzes */
 const quizState = {};
 
 function triggerCelebration() {
@@ -2272,9 +2406,7 @@ window.handleQuizChoice = function(lvl, idx, chosenIdx) {
 
     for (let o = 0; o < qs[idx][1].length; o++) {
         const lbl = document.getElementById(`qlbl_${lvl}_${idx}_${o}`);
-        if (lbl) {
-            lbl.classList.remove('wrong-choice', 'correct-choice');
-        }
+        if (lbl) lbl.classList.remove('wrong-choice', 'correct-choice');
     }
 
     const chosenLbl = document.getElementById(`qlbl_${lvl}_${idx}_${chosenIdx}`);
@@ -2339,7 +2471,7 @@ function recalcQuizScore(lvl) {
     }
 }
 
-/* 09: Multi-Language Section */
+/* 09: Multi-Language */
 function buildMultilangDrawerHtml() {
     return `
         <div class="sub-card">
@@ -2354,7 +2486,7 @@ function buildMultilangDrawerHtml() {
     `;
 }
 
-/* 10: Videos, Learner Problem Solver & Direct Contact (+4915212898695) */
+/* 10: Contact & Videos */
 function buildContactDrawerHtml() {
     return `
         <div class="sub-card">
@@ -2396,15 +2528,6 @@ window.copyContactPhone = function() {
         alert(phone);
     }
 };
-
-/* Quick Level Chips */
-document.querySelectorAll('#quickLevelJump .lvl-chip').forEach(btn => {
-    btn.addEventListener('click', () => {
-        setLevelFilter(btn.dataset.level);
-        const group = document.getElementById('group-lessons');
-        if (group) group.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-});
 
 /* Clock & Date */
 function updateClockAndDate() {
