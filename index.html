@@ -408,9 +408,7 @@ footer{
  <p>KING ASAD – آموزش زبان آلمانی</p>
  <p>© 2026 KING ASAD – All Rights Reserved</p>
 </footer>
-
-<script src="script.js?v=7"></script>
-
+<script src="script.js?v=8"></script>
 <script>
 /* نمایش صفحه‌ها */
 function showPage(pageId) {
@@ -428,20 +426,48 @@ function showPage(pageId) {
 
 /* نمایش درس‌های هر سطح */
 function showLevelLessons(level) {
- showPage('lessonsPage');
+    showPage('lessonsPage');
 
- setTimeout(function() {
-  var section = document.getElementById('king-level-' + level);
+    var rendered = false;
 
-  if (section) {
-   section.scrollIntoView({
-    behavior:'smooth',
-    block:'start'
-   });
-  } else {
-   console.error('سطح پیدا نشد:', level);
-  }
- }, 300);
+    try {
+        if (
+            window.KING_ASAD &&
+            typeof window.KING_ASAD.renderAllLevelSections === 'function'
+        ) {
+            rendered = window.KING_ASAD.renderAllLevelSections();
+        }
+
+        if (
+            !rendered &&
+            window.KING_ASAD &&
+            typeof window.KING_ASAD.renderLessonCards === 'function'
+        ) {
+            rendered = window.KING_ASAD.renderLessonCards(
+                level,
+                '#lessonCards'
+            );
+        }
+    } catch (error) {
+        console.error('خطای نمایش درس‌ها:', error);
+    }
+
+    setTimeout(function () {
+        var section = document.getElementById('king-level-' + level);
+        var container = document.getElementById('lessonCards');
+
+        if (section) {
+            section.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        } else if (container) {
+            container.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }, 300);
 }
 
 /* نمایش ویدیوهای هر سطح */
