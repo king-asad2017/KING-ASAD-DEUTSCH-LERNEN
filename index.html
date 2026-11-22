@@ -9,20 +9,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;600;700&family=Vazirmatn:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-    --navy: #091830;
+    --navy: #070d19;
+    --navy-soft: #0e1a2f;
     --blue: #144985;
     --teal: #087e91;
-    --gold: #f0be4d;
-    --gold-soft: rgba(255, 246, 219, 0.94);
-    --card-bg: rgba(255, 255, 255, 0.93);
-    --surface-bg: rgba(244, 248, 255, 0.95);
+    --gold: #f5c451;
+    --gold-bright: #ffd97d;
+    --gold-border: rgba(245, 196, 81, 0.38);
+    --gold-soft: rgba(255, 246, 219, 0.96);
+    --card-bg: rgba(14, 26, 47, 0.92);
+    --surface-bg: rgba(244, 248, 255, 0.96);
     --text: #132038;
+    --text-light: #f3f6fc;
     --muted: #52647e;
     --border: rgba(20, 73, 133, 0.18);
-    --success: #1b9b70;
     --radius-lg: 18px;
     --radius-md: 12px;
-    --shadow: 0 12px 30px rgba(6, 16, 34, 0.22);
+    --shadow: 0 14px 32px rgba(4, 10, 22, 0.42);
+    --shadow-gold: 0 0 22px rgba(245, 196, 81, 0.18);
 }
 
 * {
@@ -37,20 +41,22 @@ html, body {
     color: var(--text);
     line-height: 1.85;
     background:
-        linear-gradient(135deg, rgba(9, 24, 48, 0.84), rgba(20, 73, 133, 0.72)),
+        radial-gradient(circle at 12% 10%, rgba(245, 196, 81, 0.12), transparent 38%),
+        linear-gradient(135deg, rgba(7, 13, 25, 0.88), rgba(20, 73, 133, 0.76)),
         url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80") center / cover fixed no-repeat;
 }
 
-/* نوار بالا و انتخاب زبان */
+/* نوار بالا و نام مدیر سایت */
 .top-bar {
-    background: rgba(9, 24, 48, 0.92);
-    backdrop-filter: blur(8px);
+    background: rgba(7, 13, 25, 0.94);
+    backdrop-filter: blur(12px);
     color: #fff;
-    border-bottom: 3px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
     padding: 14px 18px;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
 .top-inner {
@@ -67,21 +73,33 @@ html, body {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-wrap: wrap;
 }
 
 .logo-badge {
-    background: linear-gradient(135deg, var(--gold), #ffd97d);
+    background: linear-gradient(135deg, var(--gold), var(--gold-bright));
     color: var(--navy);
     font-weight: 800;
-    padding: 5px 14px;
+    padding: 6px 15px;
     border-radius: 999px;
-    font-size: 14px;
-    letter-spacing: 1px;
+    font-size: 13.5px;
+    box-shadow: var(--shadow-gold);
+}
+
+.admin-pill {
+    background: rgba(245, 196, 81, 0.14);
+    border: 1px solid var(--gold-border);
+    color: var(--gold-bright);
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 999px;
 }
 
 .brand-title {
     font-size: 19px;
     font-weight: 800;
+    color: var(--text-light);
 }
 
 .lang-switcher {
@@ -102,7 +120,7 @@ html, body {
     margin: 0;
     padding: 7px 12px;
     border-radius: 9px;
-    border: 1px solid rgba(240, 190, 77, 0.55);
+    border: 1px solid var(--gold-border);
     background: #102649;
     color: #fff;
     font-weight: 700;
@@ -119,46 +137,47 @@ main {
 .top-four-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 14px;
-    margin-bottom: 20px;
+    gap: 15px;
+    margin-bottom: 22px;
 }
 
 .top-box {
     background: var(--card-bg);
-    backdrop-filter: blur(8px);
-    border: 1.5px solid rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+    border: 1.5px solid var(--gold-border);
     border-top: 4px solid var(--gold);
     border-radius: var(--radius-md);
-    padding: 16px;
+    padding: 18px 16px;
     box-shadow: var(--shadow);
     cursor: pointer;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
 }
 
 .top-box:hover {
-    transform: translateY(-3px);
-    border-top-color: var(--teal);
+    transform: translateY(-4px);
+    border-color: var(--gold-bright);
+    box-shadow: var(--shadow), var(--shadow-gold);
 }
 
 .top-box h3 {
-    color: var(--blue);
+    color: var(--gold-bright);
     font-size: 16px;
     font-weight: 800;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 .top-box p {
-    color: var(--muted);
+    color: #cbd8ee;
     font-size: 13px;
 }
 
 /* چوکات بخش‌ها */
 details.sec-box {
-    background: var(--card-bg);
+    background: var(--surface-bg);
     backdrop-filter: blur(8px);
-    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    border: 1.5px solid var(--gold-border);
     border-radius: var(--radius-lg);
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     box-shadow: var(--shadow);
     overflow: hidden;
 }
@@ -166,11 +185,12 @@ details.sec-box {
 details.sec-box > summary {
     list-style: none;
     cursor: pointer;
-    background: linear-gradient(135deg, var(--navy), var(--blue));
+    background: linear-gradient(135deg, var(--navy-soft), var(--blue));
     color: #fff;
     padding: 15px 18px;
     font-size: 16px;
     font-weight: 700;
+    border-bottom: 1px solid rgba(245, 196, 81, 0.22);
 }
 
 details.sec-box[open] > summary {
@@ -186,23 +206,32 @@ details.sec-box > summary::-webkit-details-marker {
     padding: 16px;
 }
 
+/* چهار چوکات در هر بخش */
+.four-box-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
 .desc-box {
-    background: var(--surface-bg);
+    background: #fff;
     color: var(--muted);
     border: 1px solid var(--border);
     border-inline-start: 4px solid var(--gold);
     border-radius: var(--radius-md);
-    padding: 11px 15px;
-    margin-bottom: 14px;
+    padding: 12px 15px;
     font-size: 13.5px;
+    box-shadow: 0 4px 14px rgba(9, 24, 48, 0.06);
 }
 
 details.lvl-box {
-    background: var(--surface-bg);
+    background: #fff;
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     margin-bottom: 10px;
     overflow: hidden;
+    box-shadow: 0 5px 16px rgba(9, 24, 48, 0.06);
 }
 
 details.lvl-box > summary {
@@ -211,6 +240,7 @@ details.lvl-box > summary {
     color: var(--navy);
     padding: 12px 15px;
     font-weight: 700;
+    border-inline-start: 4px solid var(--gold);
 }
 
 .lvl-body {
@@ -234,8 +264,8 @@ details.les-box > summary {
 }
 
 details.les-box[open] > summary {
-    background: var(--blue);
-    color: #fff;
+    background: linear-gradient(135deg, var(--navy-soft), var(--blue));
+    color: var(--gold-bright);
 }
 
 .les-body {
@@ -246,10 +276,11 @@ details.les-box[open] > summary {
 .card {
     background: #fff;
     border: 1px solid var(--border);
-    border-inline-start: 4px solid var(--teal);
+    border-top: 3px solid var(--gold);
     border-radius: 10px;
     padding: 12px 14px;
     margin: 8px 0;
+    box-shadow: 0 4px 12px rgba(9, 24, 48, 0.05);
 }
 
 .word-row {
@@ -258,8 +289,9 @@ details.les-box[open] > summary {
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
-    background: var(--surface-bg);
+    background: #f8fbff;
     border: 1px solid var(--border);
+    border-inline-start: 3px solid var(--gold);
     border-radius: 9px;
     padding: 9px 12px;
     margin: 7px 0;
@@ -286,17 +318,19 @@ details.les-box[open] > summary {
 button {
     font-family: inherit;
     cursor: pointer;
-    border: none;
+    border: 1px solid rgba(245, 196, 81, 0.35);
     border-radius: 8px;
     padding: 8px 13px;
     font-weight: 700;
     font-size: 13px;
-    background: linear-gradient(135deg, var(--blue), var(--teal));
+    background: linear-gradient(135deg, var(--navy-soft), var(--blue));
     color: #fff;
+    transition: transform 0.18s ease, filter 0.18s ease;
 }
 
 button:hover {
-    filter: brightness(1.08);
+    filter: brightness(1.12);
+    transform: translateY(-1px);
 }
 
 input, select {
@@ -325,7 +359,7 @@ input, select {
     width: 100%;
     max-width: 680px;
     aspect-ratio: 16 / 9;
-    border: 0;
+    border: 2px solid var(--gold-border);
     border-radius: 10px;
     display: block;
     margin: 10px 0;
@@ -334,17 +368,21 @@ input, select {
 footer {
     max-width: 1140px;
     margin: 0 auto;
-    background: rgba(9, 24, 48, 0.94);
+    background: rgba(7, 13, 25, 0.95);
     color: #fff;
     text-align: center;
     padding: 18px;
     border-radius: var(--radius-md);
-    border-top: 3px solid var(--gold);
+    border-top: 2px solid var(--gold);
+    box-shadow: var(--shadow);
 }
 
 @media (max-width: 900px) {
     .top-four-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .four-box-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -361,6 +399,7 @@ footer {
     <div class="top-inner">
         <div class="brand-wrap">
             <span class="logo-badge">KING ASAD</span>
+            <span class="admin-pill" id="uiAdminTag">مدیر سایت: KING ASAD</span>
             <span class="brand-title" id="uiSiteTitle">مرکز آموزش زبان آلمانی</span>
         </div>
         <div class="lang-switcher">
@@ -402,7 +441,12 @@ footer {
     <details id="secLessons" class="sec-box" open>
         <summary id="sumLessons">📚 بخش درس‌ها (A1 تا C1)</summary>
         <div class="sec-body">
-            <div class="desc-box" id="descLessons">توضیحات بخش: روی هر سطح کلیک کنید و سپس روی هر درس بزنید تا در همان چوکات باز شود؛ با باز شدن درس بعدی، درس قبلی به ترتیب بسته می‌شود و هر کلمه دکمه صدا دارد.</div>
+            <div class="four-box-grid">
+                <div class="desc-box" id="descLessons">توضیحات بخش: روی هر سطح کلیک کنید و سپس روی هر درس بزنید تا در همان چوکات باز شود؛ با باز شدن درس بعدی، درس قبلی به ترتیب بسته می‌شود و هر کلمه دکمه صدا دارد.</div>
+                <div class="desc-box">چوکات ۱: سطوح A1 تا C1 با دسته‌بندی منظم و آکاردئونی</div>
+                <div class="desc-box">چوکات ۲: بسته‌شدن خودکار درس قبلی هنگام باز کردن درس جدید</div>
+                <div class="desc-box">چوکات ۳: پخش تلفظ صوتی آلمانی برای واژگان هر درس</div>
+            </div>
             <div id="allLevelsContainer"></div>
         </div>
     </details>
@@ -411,7 +455,12 @@ footer {
     <details id="secDict" class="sec-box">
         <summary id="sumDict">🌐 بخش فرهنگ لغت و ترجمه آنلاین</summary>
         <div class="sec-body">
-            <div class="desc-box" id="descDict">توضیحات بخش: هر کلمه یا عبارت را وارد کنید تا ترجمه آن پیدا شود؛ روی دکمه صدا بزنید تا کلمه خوانده شود.</div>
+            <div class="four-box-grid">
+                <div class="desc-box" id="descDict">توضیحات بخش: هر کلمه یا عبارت را وارد کنید تا ترجمه آن پیدا شود؛ روی دکمه صدا بزنید تا کلمه خوانده شود.</div>
+                <div class="desc-box">چوکات ۱: ترجمه چندزبانه فوری بین زبان‌ها</div>
+                <div class="desc-box">چوکات ۲: فیلتر سریع واژگان ذخیره‌شده</div>
+                <div class="desc-box">چوکات ۳: شنیدن تلفظ کلمه واردشده و ترجمه</div>
+            </div>
             <input id="dictInput" type="text" placeholder="کلمه یا جمله را بنویسید...">
             <select id="dictFrom">
                 <option value="de">آلمانی (de)</option>
@@ -444,7 +493,12 @@ footer {
     <details id="secVideos" class="sec-box">
         <summary id="sumVideos">🎬 ویدیوهای آموزشی (A1 | A2 | B1 | B2 | C1)</summary>
         <div class="sec-body">
-            <div class="desc-box" id="descVideos">توضیحات بخش: ویدیوهای هر سطح در چوکات مخصوص خود قرار گرفته‌اند. لینک‌های ویدیوی خود را بفرستید تا در A1 تا C1 جایگذاری کنم.</div>
+            <div class="four-box-grid">
+                <div class="desc-box" id="descVideos">توضیحات بخش: ویدیوهای هر سطح در چوکات مخصوص خود قرار گرفته‌اند. لینک‌های ویدیوی خود را بفرستید تا در A1 تا C1 جایگذاری کنم.</div>
+                <div class="desc-box">چوکات ۱: پخش مستقیم ویدیوهای آموزشی A1 تا B1</div>
+                <div class="desc-box">چوکات ۲: منابع تمرینی و رسمی سطوح B2 و C1</div>
+                <div class="desc-box">چوکات ۳: دسترسی سریع به لینک هر سطح در پنجره جدید</div>
+            </div>
             <div id="videosByLevel"></div>
         </div>
     </details>
@@ -453,7 +507,12 @@ footer {
     <details id="secQuiz" class="sec-box">
         <summary id="sumQuiz">✍️ بخش آزمون‌ها و تمرین صوتی</summary>
         <div class="sec-body">
-            <div class="desc-box" id="descQuiz">توضیحات بخش: سطح آزمون را باز کنید، صدای سؤال یا گزینه را بشنوید و امتیاز خود را ثبت کنید.</div>
+            <div class="four-box-grid">
+                <div class="desc-box" id="descQuiz">توضیحات بخش: سطح آزمون را باز کنید، صدای سؤال یا گزینه را بشنوید و امتیاز خود را ثبت کنید.</div>
+                <div class="desc-box">چوکات ۱: آزمون‌های چندگزینه‌ای از سطح A1 تا C1</div>
+                <div class="desc-box">چوکات ۲: پخش صوتی سؤال‌های آلمانی</div>
+                <div class="desc-box">چوکات ۳: محاسبه و نمایش فوری امتیاز آزمون</div>
+            </div>
             <div id="quizzesContainer"></div>
         </div>
     </details>
@@ -476,217 +535,5 @@ const levelVideoConfig = {
 };
 
 const uiTexts = {
-    fa: { dir: 'rtl', title: 'مرکز آموزش زبان آلمانی', langLabel: 'زبان رابط:', b1t: '📚 سطوح و درس‌ها', b1d: 'باز و بسته شدن ترتیبی درس‌ها از A1 تا C1', b2t: '🌐 فرهنگ لغت و ترجمه', b2d: 'ترجمه آنلاین، جستجو و صدای هر کلمه', b3t: '🎬 ویدیوهای A1–C1', b3d: 'ویدیوهای آموزشی تفکیک‌شده برای هر سطح', b4t: '✍️ آزمون‌ها و تلفظ', b4d: 'سنجش مهارت همراه با صدای کلمات' },
-    ps: { dir: 'rtl', title: 'د جرمني ژبې د زده کړې مرکز', langLabel: 'د ژبې انتخاب:', b1t: '📚 کچې او درسونه', b1d: 'له A1 تر C1 د درسونو پرله‌پسې پرانیستل او تړل', b2t: '🌐 قاموس او ژباړه', b2d: 'آنلاین ژباړه، لټون او د هرې وییکي غږ', b3t: '🎬 د A1–C1 ویډیوګانې', b3d: 'د هرې کچې لپاره ځانګړې تعلیمي ویډیوګانې', b4t: '✍️ ازموینې او تلفظ', b4d: 'د کلمو له غږ سره د مهارت ارزونه' },
-    tr: { dir: 'ltr', title: 'Almanca Öğrenme Merkezi', langLabel: 'Dil:', b1t: '📚 Seviyeler ve Dersler', b1d: 'A1–C1 arası sıralı açılıp kapanan dersler', b2t: '🌐 Sözlük ve Çeviri', b2d: 'Çevrimiçi çeviri, arama ve her kelimede ses', b3t: '🎬 A1–C1 Videoları', b3d: 'Her seviye için özel eğitim videoları', b4t: '✍️ Sınavlar ve Ses', b4d: 'Kelime seslendirmeli seviye testleri' },
-    ar: { dir: 'rtl', title: 'مركز تعليم اللغة الألمانية', langLabel: 'لغة الواجهة:', b1t: '📚 المستويات والدروس', b1d: 'فتح وإغلاق الدروس بالتسلسل من A1 إلى C1', b2t: '🌐 القاموس والترجمة', b2d: 'ترجمة فورية وبحث ونطق صوتي لكل كلمة', b3t: '🎬 فيديوهات A1–C1', b3d: 'فيديوهات تعليمية مخصصة لكل مستوى', b4t: '✍️ الاختبارات والنطق', b4d: 'اختبارات مع نطق صوتي للكلمات' },
-    en: { dir: 'ltr', title: 'German Learning Center', langLabel: 'Language:', b1t: '📚 Levels & Lessons', b1d: 'Sequential accordion lessons from A1 to C1', b2t: '🌐 Dictionary & Translate', b2d: 'Online translation, search & audio for every word', b3t: '🎬 A1–C1 Videos', b3d: 'Dedicated learning videos for each level', b4t: '✍️ Quizzes & Audio', b4d: 'Level quizzes with spoken word audio' },
-    ur: { dir: 'rtl', title: 'جرمن زبان سیکھنے کا مرکز', langLabel: 'زبان:', b1t: '📚 سطح اور اسباق', b1d: 'A1 سے C1 تک ترتیب وار کھلنے اور بند ہونے والے اسباق', b2t: '🌐 لغت اور ترجمہ', b2d: 'آن لائن ترجمہ، تلاش اور ہر لفظ کی آواز', b3t: '🎬 A1–C1 ویڈیوز', b3d: 'ہر سطح کے لیے مخصوص تعلیمی ویڈیوز', b4t: '✍️ کوئز اور تلفظ', b4d: 'الفاظ کی آواز کے ساتھ ٹیسٹ' }
-};
-
-const lessonsData = {
-    A1: ['سلام و معرفی خود','کشورها و ملیت‌ها','خانواده و دوستان','اعداد و سن','روزهای هفته و ماه‌ها','ساعت و زمان','غذا و نوشیدنی','در کافه و رستورانت','خرید از فروشگاه','رنگ‌ها و لباس‌ها','خانه و اتاق‌ها','وسایل خانه','شغل‌ها و محل کار','برنامه روزانه','حمل‌ونقل شهری','آب‌وهوا و فصل‌ها','بدن و سلامتی','قرار ملاقات','دعوت و خداحافظی'],
-    A2: ['روتین روزانه','جستجوی آپارتمان','خرید لباس','خاطرات آخر هفته','سفر با قطار','رزرو هتل','سفارش در رستورانت','آشپزی','قرار داکتر','شرح بیماری','کورس زبان','محل کار','ایمیل ساده','تلفن و پیام','سرگرمی','ورزش','مسیر شهر','مقایسه کالا','دعوت به مهمانی','برنامه تعطیلات'],
-    B1: ['بیان نظر','محیط زیست','درخواست کار','مصاحبه شغلی','سبک زندگی','شبکه‌های اجتماعی','انتخاب رشته','شهر یا روستا','مهاجرت','فرهنگ و سنت','خرید آگاهانه','تکنولوژی','مذاکره','روابط اجتماعی','برنامه آینده','تجربه سفر','گزارش رویداد','تبلیغات','اجاره خانه','حقوق شهروندی','تغذیه سالم','حمل‌ونقل عمومی','کمک اجتماعی','تغییرات اقلیمی','کتاب و فیلم','آمادگی امتحان','جلسه گروهی','درخواست رسمی','تصمیم‌گیری','هدف‌گذاری'],
-    B2: ['استدلال پیچیده','سواد اطلاعاتی','اقتصاد و کار','مدیریت پروژه','فرهنگ سازمانی','هوش مصنوعی','حریم خصوصی','سیاست اقلیمی','انرژی پاک','عدالت اجتماعی','آموزش عالی','هویت و مهاجرت','ارتباط بین‌فرهنگی','رهبری','حل تعارض','مصرف پایدار','شهر هوشمند','سلامت عمومی','اخلاق علم','جهانی‌شدن','حقوق کار','رفتار مصرف‌کننده','تاریخ و حافظه','نقد فرهنگی','علم و فناوری','سخنرانی رسمی','گزارش تحلیلی','مناظره','فرضیه','زبان رسمی'],
-    C1: ['زبان دانشگاهی','تحلیل متون','بلاغت و بیان','ظرافت معنایی','سبک‌شناسی','مقاله پژوهشی','روش تحقیق','منطق و استدلال','گفتمان اجتماعی','اخلاق حرفه‌ای','تحلیل داده','نقد ادبی','زبان رسانه','مذاکره پیشرفته','دیپلماسی','اصطلاحات حقوقی','اقتصاد کلان','فلسفه','چندزبانگی','جامعه‌شناسی','آینده فناوری','زیست‌اخلاق','مسئولیت جهانی','مدیریت بحران','ارائه تخصصی','گزارش مدیریتی','خلاصه‌سازی','تحلیل سخنرانی','کنایه و تفسیر','آزمون پیشرفته']
-};
-
-const vocabData = {
-    A1: [['Guten Tag','روز بخیر'],['heißen','نام داشتن'],['kommen','آمدن'],['wohnen','زندگی کردن'],['sprechen','صحبت کردن'],['das Wasser','آب'],['das Brot','نان'],['der Kaffee','قهوه']],
-    A2: [['aufstehen','بیدار شدن'],['einkaufen','خرید کردن'],['die Buchung','رزرو'],['die Fahrkarte','بلیت / تکت'],['die Gesundheit','سلامتی'],['die Bewerbung','درخواست کار'],['empfehlen','توصیه کردن'],['vergleichen','مقایسه کردن']],
-    B1: [['die Meinung','نظر'],['die Erfahrung','تجربه'],['die Entscheidung','تصمیم'],['die Umwelt','محیط زیست'],['die Verantwortung','مسئولیت'],['begründen','دلیل آوردن'],['obwohl','با وجود اینکه'],['deshalb','به همین دلیل']],
-    B2: [['die Herausforderung','چالش'],['die Nachhaltigkeit','پایداری'],['abwägen','سنجیدن'],['die Maßnahme','اقدام'],['die Umsetzung','اجرا'],['infolgedessen','در نتیجه آن'],['allerdings','با این حال'],['folglich','بنابراین']],
-    C1: [['die Schlussfolgerung','نتیجه‌گیری'],['die Prämisse','مقدمه استدلال'],['die These','فرضیه'],['präzisieren','دقیق‌تر بیان کردن'],['relativieren','نسبی جلوه دادن'],['wenngleich','اگرچه'],['die Kontroverse','مناقشه'],['die Gültigkeit','اعتبار']]
-};
-
-const quizQuestions = {
-    A1: [['Was bedeutet „Guten Morgen“?',['صبح بخیر','شب بخیر','خداحافظ'],0],['Wie heißt du?',['چند سال داری؟','نامت چیست؟','کجا هستی؟'],1]],
-    A2: [['Was bedeutet „Einkaufen“?',['خوابیدن','خرید کردن','درس خواندن'],1],['Was bedeutet „die Buchung“?',['رزرو','تأخیر','بلیت'],0]],
-    B1: [['Was bedeutet „die Meinung“?',['نظر','تجربه','تصمیم'],0],['Was bedeutet „obwohl“?',['زیرا','اگر','با وجود اینکه'],2]],
-    B2: [['Was bedeutet „abwägen“?',['سنجیدن','تکرار کردن','فراموش کردن'],0],['Was bedeutet „Nachhaltigkeit“?',['پایداری','سرعت','مالکیت'],0]],
-    C1: [['Was bedeutet „die Schlussfolgerung“?',['نتیجه‌گیری','پیش‌فرض','مخالفت'],0],['Was bedeutet „präzisieren“?',['دقیق‌تر بیان کردن','رد کردن','پنهان کردن'],0]]
-};
-
-function speakText(text, lang = 'de-DE') {
-    try {
-        if (!('speechSynthesis' in window) || !text) return;
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = lang;
-        u.rate = 0.85;
-        window.speechSynthesis.speak(u);
-    } catch (e) {}
-}
-
-function openSection(id) {
-    document.querySelectorAll('details.sec-box').forEach(d => d.open = (d.id === id));
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function renderLessons() {
-    const root = document.getElementById('allLevelsContainer');
-    if (!root) return;
-    let html = '';
-    LEVELS.forEach(lvl => {
-        const list = lessonsData[lvl] || [];
-        const bank = vocabData[lvl] || [['Deutsch','آلمانی']];
-        html += `<details class="lvl-box"><summary>سطح ${lvl} (${list.length} درس)</summary><div class="lvl-body">`;
-        html += `<div class="desc-box">توضیحات سطح ${lvl}: با کلیک روی هر درس، محتوای آن باز می‌شود و با کلیک روی درس بعدی، درس قبلی بسته می‌گردد.</div>`;
-        list.forEach((title, idx) => {
-            const w = bank[idx % bank.length];
-            const safeDe = w[0].replace(/'/g, '');
-            html += `<details class="les-box"><summary>درس ${idx + 1}: ${title}</summary><div class="les-body">`;
-            html += `<div class="desc-box">توضیحات درس ${idx + 1} (${lvl}): کلمه کلیدی را بشنوید و تمرین کنید.</div>`;
-            html += `<div class="word-row"><div class="word-text"><span class="de-word">${w[0]}</span><span class="tr-word">= ${w[1]}</span></div><button type="button" onclick="speakText('${safeDe}','de-DE')">🔊 صدا</button></div>`;
-            html += `</div></details>`;
-        });
-        html += `</div></details>`;
-    });
-    root.innerHTML = html;
-
-    root.querySelectorAll('details.les-box').forEach(d => {
-        d.addEventListener('toggle', () => {
-            if (!d.open || !d.parentElement) return;
-            d.parentElement.querySelectorAll('details.les-box').forEach(other => {
-                if (other !== d && other.open) other.open = false;
-            });
-        });
-    });
-}
-
-function renderDictList(filter = '') {
-    const box = document.getElementById('dictList');
-    if (!box) return;
-    const q = filter.trim().toLowerCase();
-    let html = '<div class="desc-box">توضیحات واژگان: روی «🔊 صدا» بزنید تا تلفظ کلمه پخش شود.</div>';
-    LEVELS.forEach(lvl => {
-        (vocabData[lvl] || []).forEach(([de, fa]) => {
-            if (!q || de.toLowerCase().includes(q) || fa.includes(filter.trim()) || lvl.toLowerCase().includes(q)) {
-                const safeDe = de.replace(/'/g, '');
-                html += `<div class="word-row"><div class="word-text"><span class="de-word">[${lvl}] ${de}</span><span class="tr-word">— ${fa}</span></div><button type="button" onclick="speakText('${safeDe}','de-DE')">🔊 صدا</button></div>`;
-            }
-        });
-    });
-    box.innerHTML = html;
-}
-
-async function translateWord() {
-    const inp = document.getElementById('dictInput');
-    const fromLang = document.getElementById('dictFrom').value;
-    const toLang = document.getElementById('dictTo').value;
-    const resBox = document.getElementById('dictResult');
-    if (!inp || !resBox) return;
-
-    const text = inp.value.trim();
-    renderDictList(text);
-    if (!text) {
-        resBox.textContent = 'لطفاً یک کلمه یا عبارت بنویسید.';
-        return;
-    }
-
-    resBox.textContent = '⏳ در حال دریافت ترجمه...';
-
-    // تلاش با Google Translate endpoint و fallback به MyMemory
-    try {
-        const gUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${encodeURIComponent(fromLang)}&tl=${encodeURIComponent(toLang)}&dt=t&q=${encodeURIComponent(text)}`;
-        const gResp = await fetch(gUrl);
-        if (gResp.ok) {
-            const gData = await gResp.json();
-            const translated = (gData[0] || []).map(part => part[0]).join('').trim();
-            if (translated) {
-                resBox.innerHTML = `<div>${text} ➜ <strong>${translated}</strong> <button type="button" onclick="speakText('${translated.replace(/'/g, '')}','${toLang}')">🔊 صدا</button></div>`;
-                return;
-            }
-        }
-    } catch (e) {}
-
-    try {
-        const mUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${encodeURIComponent(fromLang + '|' + toLang)}`;
-        const mResp = await fetch(mUrl);
-        const mData = await mResp.json();
-        const t = mData.responseData && mData.responseData.translatedText ? mData.responseData.translatedText : 'ترجمه‌ای یافت نشد.';
-        resBox.textContent = `${text} ➜ ${t}`;
-    } catch (e) {
-        resBox.textContent = 'اتصال به سرویس ترجمه برقرار نشد.';
-    }
-}
-
-function renderVideos() {
-    const box = document.getElementById('videosByLevel');
-    if (!box) return;
-    box.innerHTML = LEVELS.map(lvl => {
-        const cfg = levelVideoConfig[lvl];
-        const embedHtml = cfg.youtubeId
-            ? `<iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/${cfg.youtubeId}" allowfullscreen></iframe>`
-            : `<div class="desc-box">${cfg.note}</div>`;
-        return `<details class="lvl-box"><summary>ویدیوی سطح ${lvl}</summary><div class="lvl-body"><div class="desc-box">توضیحات سطح ${lvl}: ${cfg.note}</div>${embedHtml}<a href="${cfg.url}" target="_blank" rel="noopener noreferrer">باز کردن لینک منبع سطح ${lvl}</a></div></details>`;
-    }).join('');
-}
-
-function renderQuizzes() {
-    const box = document.getElementById('quizzesContainer');
-    if (!box) return;
-    box.innerHTML = LEVELS.map(lvl => {
-        const qs = quizQuestions[lvl] || [];
-        return `<details class="lvl-box"><summary>آزمون سطح ${lvl}</summary><div class="lvl-body"><div class="desc-box">توضیحات آزمون ${lvl}: روی دکمه صدای هر سؤال بزنید تا خوانده شود.</div>` +
-            qs.map((q, idx) => {
-                const safeQ = q[0].replace(/'/g, '');
-                return `<div class="card"><div class="word-row"><strong>${idx + 1}. ${q[0]}</strong><button type="button" onclick="speakText('${safeQ}','de-DE')">🔊 صدا</button></div>` +
-                    q[1].map((opt, oIdx) => `<label style="display:block;margin:5px 0"><input type="radio" name="qz_${lvl}_${idx}" value="${oIdx}"> ${opt}</label>`).join('') +
-                    `</div>`;
-            }).join('') +
-            `<button type="button" onclick="checkQuiz('${lvl}')">ثبت امتیاز ${lvl}</button><div id="qzRes_${lvl}" class="result-box" style="display:none"></div></div></details>`;
-    }).join('');
-}
-
-function checkQuiz(lvl) {
-    const qs = quizQuestions[lvl] || [];
-    let ok = 0;
-    for (let i = 0; i < qs.length; i++) {
-        const picked = document.querySelector(`input[name="qz_${lvl}_${i}"]:checked`);
-        if (!picked) { alert('لطفاً به همه سؤال‌ها پاسخ دهید.'); return; }
-        if (Number(picked.value) === qs[i][2]) ok++;
-    }
-    const res = document.getElementById('qzRes_' + lvl);
-    if (res) {
-        res.style.display = 'block';
-        res.textContent = `امتیاز شما در سطح ${lvl}: ${ok} از ${qs.length}`;
-    }
-}
-
-function applyLanguage(lang) {
-    const cfg = uiTexts[lang] || uiTexts.fa;
-    document.documentElement.lang = lang;
-    document.documentElement.dir = cfg.dir;
-    document.body.dir = cfg.dir;
-    document.getElementById('uiSiteTitle').textContent = cfg.title;
-    document.getElementById('uiLangLabel').textContent = cfg.langLabel;
-    document.getElementById('box1Title').textContent = cfg.b1t;
-    document.getElementById('box1Desc').textContent = cfg.b1d;
-    document.getElementById('box2Title').textContent = cfg.b2t;
-    document.getElementById('box2Desc').textContent = cfg.b2d;
-    document.getElementById('box3Title').textContent = cfg.b3t;
-    document.getElementById('box3Desc').textContent = cfg.b3d;
-    document.getElementById('box4Title').textContent = cfg.b4t;
-    document.getElementById('box4Desc').textContent = cfg.b4d;
-}
-
-renderLessons();
-renderDictList('');
-renderVideos();
-renderQuizzes();
-applyLanguage('fa');
-
-document.getElementById('uiLangSelect').addEventListener('change', e => applyLanguage(e.target.value));
-document.getElementById('dictInput').addEventListener('input', e => renderDictList(e.target.value));
-document.getElementById('btnTranslate').addEventListener('click', translateWord);
-document.getElementById('btnSpeakInput').addEventListener('click', () => {
-    const val = document.getElementById('dictInput').value.trim();
-    const lang = document.getElementById('dictFrom').value || 'de';
-    speakText(val, lang);
-});
-</script>
-</body>
-</html>
+    fa: { dir: 'rtl', admin: 'مدیر سایت: KING ASAD', title: 'مرکز آموزش زبان آلمانی', langLabel: 'زبان رابط:', b1t: '📚 سطوح و درس‌ها', b1d: 'باز و بسته شدن ترتیبی درس‌ها از A1 تا C1', b2t: '🌐 فرهنگ لغت و ترجمه', b2d: 'ترجمه آنلاین، جستجو و صدای هر کلمه', b3t: '🎬 ویدیوهای A1–C1', b3d: 'ویدیوهای آموزشی تفکیک‌شده برای هر سطح', b4t: '✍️ آزمون‌ها و تلفظ', b4d: 'سنجش مهارت همراه با صدای کلمات' },
+    ps: { dir: 'rtl', admin: 'د سایټ مدیر: KING ASAD', title: 'د جرمني ژبې د زده کړې مرکز', langLabel: 'د ژبې انتخاب:', b1t: '📚 کچې او درسونه', b1d: 'له A1 تر C1 د درسونو پرله‌پسې پرانیستل او تړل', b2t: '🌐 قاموس او ژباړه', b2d: 'آنلاین ژباړه، لټون او د هرې وییکي غږ', b3t: '🎬 د A1–C1 ویډیوګانې', b3d: 'د هرې کچې لپاره ځانګړې تعلیمي ویډیوګانې', b4t: '✍️ ازموینې او تلفظ', b4d: 'د کلمو له غږ سره د مهارت ارزونه
