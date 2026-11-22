@@ -1,25 +1,598 @@
-.section-desc-box,
-.content-card,
-.dictionary-list,
-.dictionary-item {
-    border: 1px solid rgba(212, 175, 55, 0.35);
-    border-radius: 14px;
-    padding: 14px 16px;
-    margin: 12px 0;
-    background: rgba(20, 43, 82, 0.04);
+/* =========================================
+   KING ASAD - استایل یکپارچه آموزشگاه
+   طراحی مدرن، چوکات‌بندی منظم و راست‌به‌چپ
+========================================= */
+
+:root {
+    --king-navy: #0f2342;
+    --king-blue: #174b83;
+    --king-teal: #087e91;
+    --king-gold: #e9b949;
+    --king-gold-soft: #fff8e6;
+    --king-bg: #eef3fa;
+    --king-card: #ffffff;
+    --king-surface: #f7faff;
+    --king-text: #17233c;
+    --king-muted: #5c6e87;
+    --king-border: #d7e3f1;
+    --king-success: #1f9d73;
+    --king-radius-lg: 18px;
+    --king-radius-md: 12px;
+    --king-shadow: 0 8px 24px rgba(15, 35, 66, 0.08);
+    --king-shadow-hover: 0 14px 30px rgba(15, 35, 66, 0.14);
 }
 
-.lesson-accordion-item {
+/* تنظیمات عمومی */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    direction: rtl;
+}
+
+body {
+    font-family: Tahoma, "Vazirmatn", Arial, sans-serif;
+    background: var(--king-bg);
+    color: var(--king-text);
+    line-height: 1.85;
+    min-height: 100vh;
+    direction: rtl;
+}
+
+/* سربرگ اصلی */
+.main-header,
+.king-header {
+    background: linear-gradient(135deg, #0c1930, var(--king-blue), var(--king-teal));
+    color: #ffffff;
+    text-align: center;
+    padding: 34px 18px;
+    border-bottom: 4px solid var(--king-gold);
+    box-shadow: var(--king-shadow);
+}
+
+.logo {
+    display: inline-block;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffd66b;
+    letter-spacing: 2px;
+    padding: 4px 16px;
+    border: 1px solid rgba(255, 214, 107, 0.45);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
     margin-bottom: 10px;
 }
 
+.main-header h1,
+.king-header h1 {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.main-header p,
+.king-header p {
+    font-size: 15px;
+    color: #e4f0ff;
+}
+
+/* منوی اصلی */
+.main-nav {
+    background: var(--king-navy);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 13px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid rgba(233, 185, 73, 0.45);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+}
+
+/* دکمه‌های عمومی */
+button,
+.king-button {
+    font-family: inherit;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--king-blue), var(--king-teal));
+    color: #ffffff;
+    transition: all 0.25s ease;
+}
+
+button:hover,
+.king-button:hover {
+    background: linear-gradient(135deg, var(--king-teal), var(--king-blue));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(15, 35, 66, 0.16);
+}
+
+.main-nav button {
+    background: #ffffff;
+    color: var(--king-navy);
+    border-color: rgba(233, 185, 73, 0.35);
+}
+
+.main-nav button:hover {
+    background: var(--king-gold);
+    color: var(--king-navy);
+    border-color: var(--king-gold);
+}
+
+/* محتوای اصلی */
+main,
+.king-container {
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 24px 16px;
+}
+
+.page {
+    display: none;
+    animation: pageAppear 0.35s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes pageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* چوکات توضیح زیر هر بخش */
+.section-desc-box {
+    background: var(--king-surface);
+    border: 1px solid var(--king-border);
+    border-right: 5px solid var(--king-gold);
+    border-radius: var(--king-radius-md);
+    padding: 15px 18px;
+    margin-bottom: 18px;
+}
+
+.section-desc-box h3 {
+    color: var(--king-blue);
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+
+.section-desc-box p {
+    color: var(--king-muted);
+    font-size: 14px;
+}
+
+/* بخش خوش‌آمدگویی */
+.welcome-box {
+    background: linear-gradient(135deg, #ffffff, #e8f4ff);
+    border: 1px solid var(--king-border);
+    border-right: 6px solid var(--king-teal);
+    border-radius: var(--king-radius-lg);
+    padding: 26px;
+    margin-bottom: 24px;
+    box-shadow: var(--king-shadow);
+}
+
+.welcome-box h2 {
+    color: var(--king-blue);
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.welcome-box p {
+    color: var(--king-muted);
+}
+
+/* کارت‌های صفحه اصلی */
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin: 22px 0;
+}
+
+.home-card {
+    background: var(--king-card);
+    border: 1.5px solid var(--king-border);
+    border-radius: var(--king-radius-md);
+    padding: 22px 16px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: var(--king-shadow);
+    transition: all 0.25s ease;
+}
+
+.home-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--king-teal);
+    box-shadow: var(--king-shadow-hover);
+}
+
+.home-card .symbol {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.home-card h3 {
+    color: var(--king-blue);
+    margin-bottom: 6px;
+    font-size: 18px;
+}
+
+.home-card p {
+    color: var(--king-muted);
+    font-size: 13px;
+}
+
+/* پنل‌ها و بخش‌های چوکات‌بندی‌شده */
+.panel,
+.king-section {
+    background: var(--king-card);
+    border: 1.5px solid var(--king-border);
+    border-radius: var(--king-radius-lg);
+    padding: 24px;
+    margin: 20px 0;
+    box-shadow: var(--king-shadow);
+}
+
+.panel h2,
+.king-section h2 {
+    color: var(--king-blue);
+    margin-bottom: 6px;
+}
+
+.panel > p,
+.king-section > p {
+    color: var(--king-muted);
+    font-size: 14px;
+    margin-bottom: 14px;
+}
+
+/* دکمه بازگشت */
+.back-button {
+    background: #e6eef8;
+    color: var(--king-navy);
+    border: 1px solid #c9d8eb;
+    margin-bottom: 16px;
+}
+
+.back-button:hover {
+    background: #d5e3f4;
+    color: var(--king-navy);
+}
+
+/* انتخاب سطح */
+.level-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.level-grid button {
+    background: linear-gradient(135deg, var(--king-blue), var(--king-teal));
+    color: #ffffff;
+    padding: 15px 10px;
+    font-size: 15px;
+    border-radius: var(--king-radius-md);
+}
+
+.level-grid button:hover {
+    background: var(--king-gold);
+    color: var(--king-navy);
+}
+
+/* ساختار آکاردئونی سطح و درس‌ها */
+[id$="LessonsContainer"] {
+    margin-top: 18px;
+    padding: 18px;
+    background: var(--king-surface);
+    border: 1.5px solid var(--king-border);
+    border-radius: var(--king-radius-md);
+}
+
+.lesson-accordion-item {
+    border: 1px solid var(--king-border);
+    border-radius: var(--king-radius-md);
+    background: var(--king-card);
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(15, 35, 66, 0.04);
+}
+
+.lesson-card {
+    width: 100%;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5f9ff;
+    color: var(--king-navy);
+    border: none;
+    border-radius: 0;
+    padding: 15px 18px;
+    font-size: 15px;
+}
+
+.lesson-card:hover {
+    background: #e7f2ff;
+    color: var(--king-blue);
+    transform: none;
+    box-shadow: none;
+}
+
 .lesson-card.active-lesson {
-    outline: 2px solid #d4af37;
+    background: linear-gradient(135deg, var(--king-blue), var(--king-teal));
+    color: #ffffff;
 }
 
 .lesson-accordion-body {
-    border-right: 3px solid #d4af37;
-    padding: 12px;
-    margin-top: 6px;
+    padding: 18px;
+    border-top: 2px solid var(--king-gold);
+    background: #fcfdff;
+}
+
+.content-card,
+.king-lesson-card,
+.king-video-card {
+    background: var(--king-card);
+    border: 1px solid var(--king-border);
+    border-right: 4px solid var(--king-teal);
+    border-radius: var(--king-radius-md);
+    padding: 16px 18px;
+    margin: 14px 0;
+    box-shadow: 0 3px 12px rgba(15, 35, 66, 0.04);
+}
+
+.content-card h3 {
+    color: var(--king-blue);
+    margin-bottom: 8px;
+    font-size: 17px;
+}
+
+.content-card p {
+    margin: 6px 0;
+}
+
+/* کارت‌های زبان و فرهنگ لغات */
+.language-grid,
+.king-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 18px 0;
+}
+
+.language-card {
+    background: var(--king-surface);
+    border: 1.5px solid var(--king-border);
+    border-radius: var(--king-radius-md);
+    padding: 18px 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.language-card:hover {
+    background: #e9f5fa;
+    border-color: var(--king-teal);
+    transform: translateY(-4px);
+}
+
+.language-card .flag {
+    display: block;
+    font-size: 34px;
+    margin-bottom: 6px;
+}
+
+input,
+select,
+textarea,
+.king-input {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 14px;
+    margin: 10px 0 14px;
+    border: 1.5px solid var(--king-border);
     border-radius: 10px;
+    background: #ffffff;
+    color: var(--king-text);
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+.king-input:focus {
+    border-color: var(--king-teal);
+    box-shadow: 0 0 0 3px rgba(8, 126, 145, 0.14);
+}
+
+.translation-result,
+.dictionary-list {
+    background: var(--king-surface);
+    border: 1.5px solid var(--king-border);
+    border-right: 5px solid var(--king-teal);
+    border-radius: var(--king-radius-md);
+    padding: 18px;
+    margin-top: 18px;
+}
+
+.dictionary-item,
+.king-vocabulary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    background: #ffffff;
+    border: 1px solid var(--king-border);
+    border-radius: 10px;
+    padding: 11px 14px;
+    margin: 10px 0;
+}
+
+/* آزمون‌ها */
+.quiz-box {
+    border-top: 4px solid var(--king-teal);
+    margin-top: 18px;
+}
+
+.quiz-question,
+.king-quiz-question {
+    background: var(--king-surface);
+    border: 1px solid var(--king-border);
+    border-radius: var(--king-radius-md);
+    padding: 16px;
+    margin: 14px 0;
+}
+
+.quiz-question label,
+.king-quiz-question label {
+    display: block;
+    padding: 6px 0;
+    cursor: pointer;
+}
+
+/* ویدیوها، مکالمه، گرامر و پیشرفت */
+.video-section {
+    background: var(--king-surface);
+    border: 1px solid var(--king-border);
+    border-radius: var(--king-radius-md);
+    padding: 18px;
+    margin: 15px 0;
+}
+
+.conversation-card,
+.grammar-card {
+    background: var(--king-surface);
+    border: 1px solid var(--king-border);
+    border-right: 4px solid var(--king-teal);
+    border-radius: var(--king-radius-md);
+    padding: 16px;
+    margin: 14px 0;
+}
+
+.progress-box,
+.king-progress-card {
+    background: var(--king-surface);
+    border: 1px solid var(--king-border);
+    border-radius: var(--king-radius-md);
+    padding: 16px;
+    margin: 12px 0;
+}
+
+.progress-bar,
+.king-progress-bar {
+    height: 12px;
+    background: #dce6f2;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.progress-fill,
+.king-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--king-teal), var(--king-success));
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+.note {
+    background: var(--king-gold-soft);
+    border: 1px solid #f0d797;
+    border-right: 4px solid var(--king-gold);
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+/* پاصفحه */
+.main-footer,
+.king-footer {
+    background: var(--king-navy);
+    color: #ffffff;
+    text-align: center;
+    padding: 26px 16px;
+    margin-top: 36px;
+    border-top: 4px solid var(--king-gold);
+}
+
+.main-footer h3 {
+    color: #ffd66b;
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.main-footer p,
+.king-footer p {
+    color: #dce8f6;
+    font-size: 13px;
+    margin: 4px 0;
+}
+
+/* واکنش‌گرایی موبایل و تبلت */
+@media (max-width: 900px) {
+    .level-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .home-grid,
+    .language-grid,
+    .king-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .main-header h1,
+    .king-header h1 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 520px) {
+    .home-grid,
+    .language-grid,
+    .king-grid,
+    .level-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-nav {
+        position: static;
+    }
+
+    .panel,
+    .king-section {
+        padding: 16px;
+    }
+
+    .welcome-box {
+        padding: 18px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
 }
