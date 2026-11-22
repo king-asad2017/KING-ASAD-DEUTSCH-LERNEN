@@ -3310,3 +3310,122 @@ document.head.appendChild(kingLevelStyle);
 KING_ASAD.renderAllLevelSections();
 
 console.log('KING ASAD: پنج سطح مستقل آماده شدند.');
+
+/* =====================================
+   KING ASAD - اتصال مترجم LibreTranslate
+===================================== */
+
+const KING_ASAD_TRANSLATOR_URL =
+    'https://king-asad-translator.onrender.com';
+
+const KING_ASAD_LANGUAGES = {
+    fa: 'فارسی',
+    de: 'آلمانی',
+    en: 'انگلیسی',
+    tr: 'ترکی',
+    ar: 'عربی',
+    ur: 'اردو',
+    ps: 'پشتو'
+};
+
+// اضافه‌کردن زبان‌ها به فهرست انتخاب
+(function setupKingAsadTranslator() {
+    const source = document.getElementById('dictionarySource');
+    const target = document.getElementById('dictionaryTarget');
+
+    if (!source || !target) return;
+
+    source.replaceChildren();
+    target.replaceChildren();
+
+    Object.entries(KING_ASAD_LANGUAGES).forEach(([code, name]) => {
+        source.add(new Option(name, code));
+        target.add(new Option(name, code));
+    });
+
+    source.value = 'fa';
+    target.value = 'de';
+})();
+
+// ترجمه متن با سرور
+window.searchDictionary = async function () {
+    const input = document.getElementById('dictionaryInput');
+    const result = document.getElementById('dictionaryResult');
+    const source = document.getElementById('dictionarySource');
+    const target = document.getElementById('dictionaryTarget');
+
+    if (!input || !result || !source || !target) return;
+
+    const text = input.value.trim();
+
+    result.replaceChildren();
+
+    if (!text) {
+        result.textContent = 'لطفاً کلمه یا جمله را وارد کنید.';
+        return;
+    }
+
+    if (source.value === target.value) {
+        result.textContent = 'زبان مبدأ و مقصد یکسان است.';
+        return;
+    }
+
+    const loading = document.createElement('p');
+    loading.textContent = 'در حال ترجمه... لطفاً صبر کنید.';
+    result.appendChild(loading);
+
+    try {
+        const response = await fetch(
+            KING_ASAD_TRANSLATOR_URL + '/translate',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    q: text,
+                    source: source.value,
+                    target: target.value,
+                    format: 'text'
+                })
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error('خطای سرور: ' + response.status);
+        }
+
+        const data = await response.json();
+
+        if (!data.translatedText) {
+            throw new Error('ترجمه دریافت نشد.');
+        }
+
+        result.replaceChildren();
+
+        const heading = document.createElement('h3');
+        heading.textContent = 'نتیجه ترجمه';
+
+        const original = document.createElement('p');
+        original.textContent = 'متن اصلی: ' + text;
+
+        const translated = document.createElement('p');
+        translated.textContent =
+            'ترجمه: ' + data.translatedText;
+
+        result.append(heading, original, translated);
+
+    } catch (error) {
+        result.replaceChildren();
+
+        const message = document.createElement('p');
+        message.textContent =
+            'ترجمه انجام نشد: ' + error.message +
+            ' لطفاً اتصال سرور و پشتیبانی زبان‌ها را بررسی کنید.';
+
+        result.appendChild(message);
+    }
+};
+
+console.log('KING ASAD: مترجم آنلاین متصل شد.');
+
