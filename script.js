@@ -2849,12 +2849,19 @@ KING_ASAD.renderKingAsadLesson = function (lesson) {
         .find(button =>
             button.textContent.trim() === 'تکمیل این درس'
     if (completeButton) {
+        
+    const completeButton =
+        Array.from(container.querySelectorAll('button'))
+        .find(button =>
+            button.textContent.trim() === 'تکمیل این درس'
+        );
+
+    if (completeButton) {
         completeButton.addEventListener('click', function () {
             KING_ASAD.refreshProgressDashboard();
         });
     }
 
-    const quizButton = document.createElement('button');
 
     quizButton.type = 'button';
     quizButton.textContent = 'شروع آزمون این درس';
