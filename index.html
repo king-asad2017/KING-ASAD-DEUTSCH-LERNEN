@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#13233c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KING ASAD">
 <title>KING ASAD – آموزش زبان آلمانی</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -104,6 +108,19 @@ html, body {
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
+}
+
+.btn-install-app {
+    background: linear-gradient(135deg, #ffd875, #e6b447);
+    color: #13233c;
+    border: none;
+    border-radius: 9px;
+    padding: 8px 14px;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .level-tabs {
@@ -517,6 +534,7 @@ select {
             <p class="site-subtitle">۱۲۹ درس جامع از سطح A1 تا C1 • تلفظ آلمانی و فارسی • فرهنگ لغت • ویدیو و آزمون</p>
         </div>
         <div class="header-controls">
+            <button type="button" class="btn-install-app" id="installAppBtn" style="display:none;">📲 نصب برنامه در گوشی</button>
             <div class="level-tabs" id="quickLevelJump">
                 <button type="button" class="lvl-chip active" data-level="ALL">همه (۱۲۹)</button>
                 <button type="button" class="lvl-chip" data-level="A1">A1</button>
@@ -609,6 +627,85 @@ select {
 </div>
 
 <script>
+/* ثبت خودکار PWA Manifest و Service Worker برای نصب شبیه اپلیکیشن */
+(function setupPWA() {
+    try {
+        const iconSvg = encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" rx="38" fill="#13233c"/><text x="96" y="116" text-anchor="middle" font-size="78" font-family="Arial, sans-serif" font-weight="bold" fill="#ffd875">KA</text></svg>`);
+        const iconDataUrl = `data:image/svg+xml;charset=utf-8,${iconSvg}`;
+
+        const appleLink = document.createElement('link');
+        appleLink.rel = 'apple-touch-icon';
+        appleLink.href = iconDataUrl;
+        document.head.appendChild(appleLink);
+
+        const manifestObj = {
+            name: 'KING ASAD – مرکز آموزش زبان آلمانی',
+            short_name: 'KING ASAD',
+            start_url: '.',
+            display: 'standalone',
+            background_color: '#f1f3f6',
+            theme_color: '#13233c',
+            dir: 'rtl',
+            lang: 'fa',
+            icons: [
+                { src: iconDataUrl, sizes: '192x192', type: 'image/svg+xml', purpose: 'any' },
+                { src: iconDataUrl, sizes: '512x512', type: 'image/svg+xml', purpose: 'any' }
+            ]
+        };
+
+        const manifestBlob = new Blob([JSON.stringify(manifestObj)], { type: 'application/manifest+json' });
+        const manifestUrl = URL.createObjectURL(manifestBlob);
+        const manifestLink = document.createElement('link');
+        manifestLink.rel = 'manifest';
+        manifestLink.href = manifestUrl;
+        document.head.appendChild(manifestLink);
+
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            const swCode = `
+                const CACHE_NAME = 'king-asad-deutsch-v1';
+                self.addEventListener('install', e => {
+                    self.skipWaiting();
+                    e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']).catch(() => {})));
+                });
+                self.addEventListener('activate', e => {
+                    e.waitUntil(self.clients.claim());
+                });
+                self.addEventListener('fetch', e => {
+                    if (e.request.method !== 'GET') return;
+                    e.respondWith(
+                        fetch(e.request).catch(() => caches.match(e.request))
+                    );
+                });
+            `;
+            const swBlob = new Blob([swCode], { type: 'application/javascript' });
+            const swUrl = URL.createObjectURL(swBlob);
+            navigator.serviceWorker.register(swUrl).catch(() => {});
+        }
+    } catch {}
+})();
+
+let deferredInstallPrompt = null;
+const installBtn = document.getElementById('installAppBtn');
+
+window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    if (installBtn) installBtn.style.display = 'inline-block';
+});
+
+if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+        if (deferredInstallPrompt) {
+            deferredInstallPrompt.prompt();
+            await deferredInstallPrompt.userChoice;
+            deferredInstallPrompt = null;
+            installBtn.style.display = 'none';
+        } else {
+            alert('در اندروید از منوی مرورگر «Add to Home screen / نصب برنامه» و در آیفون در Safari از دکمه Share گزینه «Add to Home Screen» را بزنید.');
+        }
+    });
+}
+
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
 const levelVideos = {
