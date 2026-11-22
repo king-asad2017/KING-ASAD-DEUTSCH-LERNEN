@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KING ASAD – مرکز آموزش زبان آلمانی (A1 تا C1)</title>
+<title>KING ASAD – آموزش زبان آلمانی</title>
 <style>
 :root {
     --navy: #0c1f3d;
     --blue: #174b83;
     --teal: #087e91;
     --gold: #e9b949;
-    --gold-soft: #fff8e6;
     --bg: #eef3fa;
     --white: #ffffff;
     --surface: #f7faff;
@@ -18,133 +17,154 @@
     --muted: #5a6d86;
     --border: #d5e1ef;
     --success: #1f9d73;
-    --radius-lg: 18px;
-    --radius-md: 12px;
-    --shadow: 0 8px 24px rgba(12, 31, 61, 0.08);
 }
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
     direction: rtl;
-    font-family: Tahoma, "Vazirmatn", Arial, sans-serif;
+    font-family: Tahoma, Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.85;
+    line-height: 1.8;
     min-height: 100vh;
 }
-
-/* سربرگ */
 header {
     background: linear-gradient(135deg, #091529, var(--blue), var(--teal));
-    color: #ffffff;
+    color: #fff;
     text-align: center;
-    padding: 30px 16px;
+    padding: 26px 15px;
     border-bottom: 4px solid var(--gold);
 }
-
 .logo {
     display: inline-block;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: bold;
     color: #ffd66b;
-    letter-spacing: 2px;
-    padding: 4px 16px;
-    border: 1px solid rgba(255, 214, 107, 0.45);
+    padding: 3px 14px;
+    border: 1px solid rgba(255,214,107,0.45);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.07);
     margin-bottom: 8px;
 }
-
-header h1 {
-    font-size: 25px;
-    margin-bottom: 4px;
-}
-
-header p {
-    color: #e4f0ff;
-    font-size: 14px;
-}
-
-main {
-    max-width: 1120px;
-    margin: 22px auto;
-    padding: 0 14px;
-}
-
-/* چوکات اصلی هر بخش */
-details.section-frame {
+main { max-width: 1080px; margin: 20px auto; padding: 0 12px; }
+details.sec {
     background: var(--white);
     border: 1.5px solid var(--border);
-    border-radius: var(--radius-lg);
-    margin-bottom: 18px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-}
-
-details.section-frame > summary {
-    list-style: none;
-    cursor: pointer;
-    background: linear-gradient(135deg, var(--navy), var(--blue));
-    color: #ffffff;
-    padding: 16px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid transparent;
-}
-
-details.section-frame[open] > summary {
-    background: linear-gradient(135deg, var(--blue), var(--teal));
-    border-bottom-color: var(--gold);
-}
-
-details.section-frame > summary::-webkit-details-marker {
-    display: none;
-}
-
-.section-body {
-    padding: 18px;
-}
-
-/* کادر توضیحات زیر هر بخش */
-.desc-box {
-    background: var(--surface);
-    color: var(--muted);
-    border: 1px solid var(--border);
-    border-right: 5px solid var(--gold);
-    border-radius: var(--radius-md);
-    padding: 12px 16px;
-    margin-bottom: 16px;
-    font-size: 14px;
-}
-
-/* چوکات هر سطح */
-details.level-frame {
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius-md);
+    border-radius: 14px;
     margin-bottom: 14px;
     overflow: hidden;
 }
-
-details.level-frame > summary {
-    list-style: none;
+details.sec > summary {
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    color: #fff;
+    padding: 14px 18px;
+    font-weight: bold;
+    font-size: 16px;
+}
+details.sec[open] > summary {
+    background: linear-gradient(135deg, var(--blue), var(--teal));
+    border-bottom: 2px solid var(--gold);
+}
+.sec-body { padding: 16px; }
+.desc {
+    background: var(--surface);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--gold);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+details.lvl {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+details.lvl > summary {
     cursor: pointer;
     background: #e8f1fc;
     color: var(--navy);
-    padding: 14px 16px;
+    padding: 12px 15px;
     font-weight: bold;
-    font-size: 16px;
+}
+.lvl-body { padding: 12px; }
+details.les {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+details.les > summary {
+    cursor: pointer;
+    background: #f5f9ff;
+    padding: 10px 14px;
+    font-weight: bold;
+    font-size: 14px;
+}
+details.les[open] > summary {
+    background: var(--blue);
+    color: #fff;
+}
+.les-body { padding: 12px; border-top: 1px solid var(--border); }
+.card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--teal);
+    border-radius: 9px;
+    padding: 12px;
+    margin: 8px 0;
+}
+.item {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 6px 0;
 }
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-weight: bold;
+    background: var(--blue);
+    color: #fff;
+}
+button:hover { background: var(--teal); }
+input, select {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 8px 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    background: #fff;
+}
+.bar { height: 11px; background: #dce6f2; border-radius: 999px; overflow: hidden; margin-top: 6px; }
+.fill { height: 100%; background: var(--success); }
+footer {
+    max-width: 1080px;
+    margin: 20px auto;
+    background: var(--navy);
+    color: #fff;
+    text-align: center;
+    padding: 16px;
+    border-radius: 12px;
+    border-top: 3px solid var(--gold);
+}
+</style>
+</head>
+<body>
 
-details.level-frame
+<header>
+    <div class="logo">KING ASAD</div>
+    <h1>مرکز آموزش آنلاین
