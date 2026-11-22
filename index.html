@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KING ASAD – آموزش زبان آلمانی</title>
+<title>KING ASAD – آموزش زبان آلمانی (A1 تا C1)</title>
 <style>
 :root {
     --navy: #0c1f3d;
     --blue: #174b83;
     --teal: #087e91;
     --gold: #e9b949;
+    --gold-soft: #fff8e6;
     --bg: #eef3fa;
     --white: #ffffff;
     --surface: #f7faff;
@@ -17,106 +18,166 @@
     --muted: #5a6d86;
     --border: #d5e1ef;
     --success: #1f9d73;
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --shadow: 0 8px 24px rgba(12, 31, 61, 0.08);
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 html, body {
     direction: rtl;
     font-family: Tahoma, Arial, sans-serif;
-    background: var(--bg);
+    background-color: var(--bg);
     color: var(--text);
-    line-height: 1.8;
+    line-height: 1.85;
     min-height: 100vh;
 }
+
 header {
     background: linear-gradient(135deg, #091529, var(--blue), var(--teal));
-    color: #fff;
+    color: #ffffff;
     text-align: center;
-    padding: 26px 15px;
+    padding: 28px 16px;
     border-bottom: 4px solid var(--gold);
 }
+
 .logo {
     display: inline-block;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
     color: #ffd66b;
-    padding: 3px 14px;
-    border: 1px solid rgba(255,214,107,0.45);
+    letter-spacing: 2px;
+    padding: 4px 16px;
+    border: 1px solid rgba(255, 214, 107, 0.45);
     border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
     margin-bottom: 8px;
 }
-main { max-width: 1080px; margin: 20px auto; padding: 0 12px; }
-details.sec {
+
+header h1 {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+header p {
+    color: #e4f0ff;
+    font-size: 14px;
+}
+
+main {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 14px 30px;
+}
+
+details.sec-box {
     background: var(--white);
     border: 1.5px solid var(--border);
-    border-radius: 14px;
-    margin-bottom: 14px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
     overflow: hidden;
 }
-details.sec > summary {
+
+details.sec-box > summary {
+    list-style: none;
     cursor: pointer;
     background: linear-gradient(135deg, var(--navy), var(--blue));
-    color: #fff;
-    padding: 14px 18px;
+    color: #ffffff;
+    padding: 15px 18px;
+    font-size: 17px;
     font-weight: bold;
-    font-size: 16px;
 }
-details.sec[open] > summary {
+
+details.sec-box[open] > summary {
     background: linear-gradient(135deg, var(--blue), var(--teal));
     border-bottom: 2px solid var(--gold);
 }
-.sec-body { padding: 16px; }
-.desc {
+
+details.sec-box > summary::-webkit-details-marker {
+    display: none;
+}
+
+.sec-body {
+    padding: 16px;
+}
+
+.desc-box {
     background: var(--surface);
     color: var(--muted);
     border: 1px solid var(--border);
     border-right: 4px solid var(--gold);
-    border-radius: 10px;
-    padding: 10px 14px;
-    margin-bottom: 12px;
+    border-radius: var(--radius-md);
+    padding: 11px 15px;
+    margin-bottom: 14px;
     font-size: 14px;
 }
-details.lvl {
+
+details.lvl-box {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     margin-bottom: 10px;
     overflow: hidden;
 }
-details.lvl > summary {
+
+details.lvl-box > summary {
     cursor: pointer;
     background: #e8f1fc;
     color: var(--navy);
     padding: 12px 15px;
     font-weight: bold;
 }
-.lvl-body { padding: 12px; }
-details.les {
+
+.lvl-body {
+    padding: 12px;
+}
+
+details.les-box {
     background: var(--white);
     border: 1px solid var(--border);
-    border-radius: 9px;
+    border-radius: 10px;
     margin-bottom: 8px;
     overflow: hidden;
 }
-details.les > summary {
+
+details.les-box > summary {
     cursor: pointer;
     background: #f5f9ff;
-    padding: 10px 14px;
+    padding: 11px 14px;
     font-weight: bold;
     font-size: 14px;
 }
-details.les[open] > summary {
+
+details.les-box[open] > summary {
     background: var(--blue);
-    color: #fff;
+    color: #ffffff;
 }
-.les-body { padding: 12px; border-top: 1px solid var(--border); }
+
+.les-body {
+    padding: 12px 14px;
+    border-top: 1px solid var(--border);
+}
+
 .card {
     background: var(--white);
     border: 1px solid var(--border);
     border-right: 4px solid var(--teal);
-    border-radius: 9px;
-    padding: 12px;
+    border-radius: 10px;
+    padding: 12px 14px;
     margin: 8px 0;
 }
+
+.card h4 {
+    color: var(--blue);
+    margin-bottom: 6px;
+}
+
 .item {
     display: flex;
     justify-content: space-between;
@@ -128,18 +189,24 @@ details.les[open] > summary {
     border-radius: 8px;
     padding: 8px 12px;
     margin: 6px 0;
+    font-size: 14px;
 }
+
 button {
     font-family: inherit;
     cursor: pointer;
     border: none;
     border-radius: 8px;
-    padding: 7px 12px;
+    padding: 8px 13px;
     font-weight: bold;
     background: var(--blue);
-    color: #fff;
+    color: #ffffff;
 }
-button:hover { background: var(--teal); }
+
+button:hover {
+    background: var(--teal);
+}
+
 input, select {
     width: 100%;
     padding: 10px 12px;
@@ -147,18 +214,43 @@ input, select {
     border: 1px solid var(--border);
     border-radius: 8px;
     font-family: inherit;
-    background: #fff;
+    font-size: 14px;
+    background: #ffffff;
+    color: var(--text);
 }
-.bar { height: 11px; background: #dce6f2; border-radius: 999px; overflow: hidden; margin-top: 6px; }
-.fill { height: 100%; background: var(--success); }
+
+.result-box {
+    background: var(--gold-soft);
+    border: 1px solid #edd392;
+    border-right: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.bar {
+    height: 11px;
+    background: #dce6f2;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 6px;
+}
+
+.fill {
+    height: 100%;
+    background: var(--success);
+}
+
 footer {
-    max-width: 1080px;
-    margin: 20px auto;
+    max-width: 1100px;
+    margin: 0 auto;
     background: var(--navy);
-    color: #fff;
+    color: #ffffff;
     text-align: center;
-    padding: 16px;
-    border-radius: 12px;
+    padding: 18px;
+    border-radius: var(--radius-md);
     border-top: 3px solid var(--gold);
 }
 </style>
@@ -167,4 +259,244 @@ footer {
 
 <header>
     <div class="logo">KING ASAD</div>
-    <h1>مرکز آموزش آنلاین
+    <h1>مرکز آموزش آنلاین زبان آلمانی</h1>
+    <p>Deutsch lernen – A1 | A2 | B1 | B2 | C1</p>
+</header>
+
+<main>
+    <details class="sec-box" open>
+        <summary>🏠 صفحه اصلی و پیشرفت آموزشی</summary>
+        <div class="sec-body">
+            <div class="desc-box">توضیحات بخش: در این چوکات وضعیت پیشرفت و آخرین امتیاز آزمون‌های هر پنج سطح نمایش داده می‌شود.</div>
+            <div id="homeProgress"></div>
+        </div>
+    </details>
+
+    <details class="sec-box">
+        <summary>📚 بخش درس‌ها (A1 تا C1)</summary>
+        <div class="sec-body">
+            <div class="desc-box">توضیحات بخش: سطح مورد نظر را باز کنید و روی درس کلیک کنید تا در همان جا باز شود؛ با باز شدن درس بعدی، درس قبلی به ترتیب بسته می‌شود.</div>
+            <div id="allLevelsContainer"></div>
+        </div>
+    </details>
+
+    <details class="sec-box">
+        <summary>📖 بخش فرهنگ لغات و جستجو</summary>
+        <div class="sec-body">
+            <div class="desc-box">توضیحات بخش: تمام واژگان ذخیره‌شده همراه با معنی فارسی و تلفظ آلمانی در این بخش نمایش داده می‌شوند.</div>
+            <input id="dictionaryInput" type="text" placeholder="جستجوی کلمه آلمانی یا فارسی...">
+            <div id="dictionaryResult" class="result-box">همه واژگان در پایین نمایش داده شده‌اند.</div>
+            <div id="dictionaryWordList"></div>
+        </div>
+    </details>
+
+    <details class="sec-box">
+        <summary>🗣️ بخش مکالمه‌های روزمره</summary>
+        <div class="sec-body">
+            <div class="desc-box">توضیحات بخش: عبارت‌های کاربردی روزمره همراه با ترجمه فارسی و تلفظ آلمانی.</div>
+            <div id="conversationContent"></div>
+        </div>
+    </details>
+
+    <details class="sec-box">
+        <summary>📘 بخش آموزش گرامر</summary>
+        <div class="sec-body">
+            <div class="desc-box">توضیحات بخش: قواعد مهم زبان آلمانی در سطوح مختلف همراه با مثال.</div>
+            <div id="grammarContent"></div>
+        </div>
+    </details>
+
+    <details class="sec-box">
+        <summary>✍️ بخش آزمون‌های سطح‌بندی</summary>
+        <div class="sec-body">
+            <div class="desc-box">توضیحات بخش: آزمون سطح دلخواه را باز کنید، به سؤال‌ها پاسخ دهید و امتیاز بگیرید.</div>
+            <div id="quizzesContent"></div>
+        </div>
+    </details>
+</main>
+
+<footer>
+    <p>KING ASAD – آموزش زبان آلمانی</p>
+</footer>
+
+<script>
+const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1'];
+
+const lessonsMap = {
+    A1: ['سلام و معرفی خود','کشورها و ملیت‌ها','خانواده و دوستان','اعداد و سن','روزهای هفته و ماه‌ها','ساعت و زمان','غذا و نوشیدنی','در کافه و رستورانت','خرید از فروشگاه','رنگ‌ها و لباس‌ها','خانه و اتاق‌ها','وسایل خانه','شغل‌ها و محل کار','برنامه روزانه','حمل‌ونقل شهری','آب‌وهوا و فصل‌ها','بدن و سلامتی','قرار ملاقات','دعوت و خداحافظی'],
+    A2: ['روتین روزانه','جستجوی آپارتمان','خرید لباس','خاطرات آخر هفته','سفر با قطار','رزرو هتل','سفارش در رستورانت','آشپزی','قرار داکتر','شرح بیماری','کورس زبان','محل کار','ایمیل ساده','تلفن و پیام','سرگرمی','ورزش','مسیر شهر','مقایسه کالا','دعوت به مهمانی','برنامه تعطیلات'],
+    B1: ['بیان نظر','محیط زیست','درخواست کار','مصاحبه شغلی','سبک زندگی','شبکه‌های اجتماعی','انتخاب رشته','شهر یا روستا','مهاجرت','فرهنگ و سنت','خرید آگاهانه','تکنولوژی','مذاکره','روابط اجتماعی','برنامه آینده','تجربه سفر','گزارش رویداد','تبلیغات','اجاره خانه','حقوق شهروندی','تغذیه سالم','حمل‌ونقل عمومی','کمک اجتماعی','تغییرات اقلیمی','کتاب و فیلم','آمادگی امتحان','جلسه گروهی','درخواست رسمی','تصمیم‌گیری','هدف‌گذاری'],
+    B2: ['استدلال پیچیده','سواد اطلاعاتی','اقتصاد و کار','مدیریت پروژه','فرهنگ سازمانی','هوش مصنوعی','حریم خصوصی','سیاست اقلیمی','انرژی پاک','عدالت اجتماعی','آموزش عالی','هویت و مهاجرت','ارتباط بین‌فرهنگی','رهبری','حل تعارض','مصرف پایدار','شهر هوشمند','سلامت عمومی','اخلاق علم','جهانی‌شدن','حقوق کار','رفتار مصرف‌کننده','تاریخ و حافظه','نقد فرهنگی','علم و فناوری','سخنرانی رسمی','گزارش تحلیلی','مناظره','فرضیه','زبان رسمی'],
+    C1: ['زبان دانشگاهی','تحلیل متون','بلاغت و بیان','ظرافت معنایی','سبک‌شناسی','مقاله پژوهشی','روش تحقیق','منطق و استدلال','گفتمان اجتماعی','اخلاق حرفه‌ای','تحلیل داده','نقد ادبی','زبان رسانه','مذاکره پیشرفته','دیپلماسی','اصطلاحات حقوقی','اقتصاد کلان','فلسفه','چندزبانگی','جامعه‌شناسی','آینده فناوری','زیست‌اخلاق','مسئولیت جهانی','مدیریت بحران','ارائه تخصصی','گزارش مدیریتی','خلاصه‌سازی','تحلیل سخنرانی','کنایه و تفسیر','آزمون پیشرفته']
+};
+
+const wordsMap = {
+    A1: [['begrüßen','خوشامد گفتن'],['heißen','نام داشتن'],['kommen','آمدن'],['wohnen','سکونت داشتن'],['sprechen','صحبت کردن'],['die Familie','خانواده'],['das Wasser','آب'],['das Brot','نان']],
+    A2: [['aufstehen','بیدار شدن'],['einkaufen','خرید کردن'],['die Buchung','رزرو'],['die Fahrkarte','تکت سفر'],['die Gesundheit','سلامتی'],['die Bewerbung','درخواست کار'],['empfehlen','توصیه کردن'],['vergleichen','مقایسه کردن']],
+    B1: [['die Meinung','نظر'],['die Erfahrung','تجربه'],['die Entscheidung','تصمیم'],['die Umwelt','محیط زیست'],['die Verantwortung','مسئولیت'],['begründen','دلیل آوردن'],['obwohl','با وجود اینکه'],['deshalb','به همین دلیل']],
+    B2: [['die Herausforderung','چالش'],['die Nachhaltigkeit','پایداری'],['abwägen','سنجیدن'],['die Maßnahme','اقدام'],['die Umsetzung','اجرا'],['infolgedessen','در نتیجه آن'],['allerdings','با این حال'],['folglich','بنابراین']],
+    C1: [['die Schlussfolgerung','نتیجه‌گیری'],['die Prämisse','مقدمه استدلال'],['die These','فرضیه'],['präzisieren','دقیق‌تر بیان کردن'],['relativieren','نسبی جلوه دادن'],['wenngleich','اگرچه'],['die Kontroverse','مناقشه'],['die Gültigkeit','اعتبار']]
+};
+
+const grammarMap = {
+    A1: ['در جمله خبری ساده، فعل معمولاً در جایگاه دوم قرار می‌گیرد. مثال: Heute lerne ich Deutsch.', 'حرف تعریف اسم‌ها der، die و das است.'],
+    A2: ['در زمان Perfekt از haben یا sein همراه Partizip II استفاده می‌شود.', 'در جمله وابسته با weil یا dass فعل به پایان جمله می‌رود.'],
+    B1: ['با obwohl تضاد بیان می‌شود و فعل جمله وابسته در پایان می‌آید.', 'ساختار Konjunktiv II برای درخواست مؤدبانه به کار می‌رود.'],
+    B2: ['ساختارهای اسمی‌سازی متن‌های رسمی را فشرده می‌کنند.', 'قیدهای پیوندی مانند folglich و hingegen ارتباط منطقی را نشان می‌دهند.'],
+    C1: ['در نوشتار علمی، ادعا با عبارت‌های دقیق‌کننده محدود می‌شود.', 'Konjunktiv I برای نقل غیرمستقیم کاربرد دارد.']
+};
+
+const quizMap = {
+    A1: [['Was bedeutet „Guten Morgen“?',['صبح بخیر','شب بخیر','خداحافظ'],0],['Wie heißt du?',['چند سال داری؟','نامت چیست؟','کجا هستی؟'],1],['Was bedeutet „Danke“?',['لطفاً','ببخشید','تشکر'],2]],
+    A2: [['Was bedeutet „Einkaufen“?',['خوابیدن','خرید کردن','درس خواندن'],1],['Was bedeutet „die Buchung“?',['رزرو','تأخیر','تکت'],0],['Was bedeutet „empfehlen“?',['توصیه کردن','فراموش کردن','پاک کردن'],0]],
+    B1: [['Was bedeutet „die Meinung“?',['نظر','تجربه','تصمیم'],0],['Was bedeutet „obwohl“?',['زیرا','اگر','با وجود اینکه'],2],['Was bedeutet „begründen“?',['دلیل آوردن','خوابیدن','خرید کردن'],0]],
+    B2: [['Was bedeutet „abwägen“?',['سنجیدن','تکرار کردن','فراموش کردن'],0],['Was bedeutet „Nachhaltigkeit“?',['پایداری','سرعت','مالکیت'],0],['Was bedeutet „folglich“?',['بنابراین','هرگز','دیروز'],0]],
+    C1: [['Was bedeutet „die Schlussfolgerung“?',['نتیجه‌گیری','پیش‌فرض','مخالفت'],0],['Was bedeutet „präzisieren“?',['دقیق‌تر بیان کردن','رد کردن','پنهان کردن'],0],['Was bedeutet „wenngleich“?',['اگرچه','بنابراین','امروز'],0]]
+};
+
+function speakGerman(text) {
+    try {
+        if (!('speechSynthesis' in window)) return;
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = 'de-DE';
+        u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+    } catch (e) {}
+}
+
+function renderLessons() {
+    const root = document.getElementById('allLevelsContainer');
+    if (!root) return;
+    let html = '';
+    LEVELS.forEach(lvl => {
+        const list = lessonsMap[lvl] || [];
+        const bank = wordsMap[lvl] || [['Deutsch','آلمانی']];
+        const grams = grammarMap[lvl] || ['تمرین مستمر داشته باشید.'];
+        html += `<details class="lvl-box"><summary>سطح ${lvl} (${list.length} درس)</summary><div class="lvl-body">`;
+        html += `<div class="desc-box">توضیحات سطح ${lvl}: روی هر درس کلیک کنید تا در همان چوکات باز شود.</div>`;
+        list.forEach((title, i) => {
+            const w = bank[i % bank.length];
+            const g = grams[i % grams.length];
+            html += `<details class="les-box"><summary>درس ${i + 1}: ${title}</summary><div class="les-body">`;
+            html += `<div class="desc-box">توضیحات درس ${i + 1} (${lvl}): واژه کلیدی و نکته گرامری این درس.</div>`;
+            html += `<div class="card"><div class="item"><span>${w[0]} = ${w[1]}</span><button type="button" onclick="speakGerman('${w[0].replace(/'/g, '')}')">تلفظ</button></div><p>${g}</p></div>`;
+            html += `</div></details>`;
+        });
+        html += `</div></details>`;
+    });
+    root.innerHTML = html;
+
+    root.querySelectorAll('details.les-box').forEach(d => {
+        d.addEventListener('toggle', () => {
+            if (!d.open) return;
+            const parent = d.parentElement;
+            if (!parent) return;
+            parent.querySelectorAll('details.les-box').forEach(other => {
+                if (other !== d && other.open) other.open = false;
+            });
+        });
+    });
+}
+
+function renderDictionary(q = '') {
+    const box = document.getElementById('dictionaryWordList');
+    const res = document.getElementById('dictionaryResult');
+    if (!box) return;
+    const term = q.trim().toLowerCase();
+    let html = '';
+    let count = 0;
+    LEVELS.forEach(lvl => {
+        (wordsMap[lvl] || []).forEach(([de, fa]) => {
+            if (!term || de.toLowerCase().includes(term) || fa.includes(q.trim()) || lvl.toLowerCase().includes(term)) {
+                count++;
+                html += `<div class="item"><span>[${lvl}] ${de} — ${fa}</span><button type="button" onclick="speakGerman('${de.replace(/'/g, '')}')">تلفظ</button></div>`;
+            }
+        });
+    });
+    if (res) {
+        res.textContent = term ? `نتیجه جستجو برای «${q.trim()}»: ${count} واژه پیدا شد.` : `همه واژگان (${count} مورد) در پایین نمایش داده شده‌اند.`;
+    }
+    box.innerHTML = html || '<div class="desc-box">واژه‌ای با این عبارت پیدا نشد.</div>';
+}
+
+function renderConversations() {
+    const box = document.getElementById('conversationContent');
+    if (!box) return;
+    const convs = [
+        ['Guten Tag!', 'روز بخیر!'],
+        ['Wie heißt du?', 'نامت چیست؟'],
+        ['Ich komme aus Afghanistan.', 'من اهل افغانستان هستم.'],
+        ['Wie geht es dir?', 'حالت چطور است؟'],
+        ['Auf Wiedersehen!', 'خداحافظ!']
+    ];
+    box.innerHTML = convs.map(([de, fa]) =>
+        `<div class="card"><div class="item"><div><strong>${de}</strong><p>${fa}</p></div><button type="button" onclick="speakGerman('${de.replace(/'/g, '')}')">تلفظ</button></div></div>`
+    ).join('');
+}
+
+function renderGrammar() {
+    const box = document.getElementById('grammarContent');
+    if (!box) return;
+    box.innerHTML = LEVELS.map(lvl =>
+        `<div class="card"><h4>سطح ${lvl}</h4>${(grammarMap[lvl] || []).map(x => `<p>• ${x}</p>`).join('')}</div>`
+    ).join('');
+}
+
+function renderQuizzes() {
+    const box = document.getElementById('quizzesContent');
+    if (!box) return;
+    box.innerHTML = LEVELS.map(lvl => {
+        const qs = quizMap[lvl] || [];
+        return `<details class="lvl-box"><summary>آزمون سطح ${lvl}</summary><div class="lvl-body">` +
+            qs.map((q, idx) =>
+                `<div class="card"><p><strong>${idx + 1}. ${q[0]}</strong></p>` +
+                q[1].map((opt, oIdx) => `<label style="display:block;margin:4px 0"><input type="radio" name="q_${lvl}_${idx}" value="${oIdx}"> ${opt}</label>`).join('') +
+                `</div>`
+            ).join('') +
+            `<button type="button" onclick="gradeQuiz('${lvl}')">ثبت امتیاز ${lvl}</button><p id="qres_${lvl}" style="margin-top:8px;font-weight:bold"></p></div></details>`;
+    }).join('');
+}
+
+function gradeQuiz(lvl) {
+    const qs = quizMap[lvl] || [];
+    let ok = 0;
+    for (let i = 0; i < qs.length; i++) {
+        const sel = document.querySelector(`input[name="q_${lvl}_${i}"]:checked`);
+        if (!sel) { alert('لطفاً به همه سؤال‌ها پاسخ دهید.'); return; }
+        if (Number(sel.value) === qs[i][2]) ok++;
+    }
+    const pct = qs.length ? Math.round((ok / qs.length) * 100) : 0;
+    const out = document.getElementById('qres_' + lvl);
+    if (out) out.textContent = `نتیجه شما: ${ok} از ${qs.length} (${pct}%)`;
+    try {
+        const s = JSON.parse(localStorage.getItem('kingAsadPct') || '{}');
+        s[lvl] = pct;
+        localStorage.setItem('kingAsadPct', JSON.stringify(s));
+    } catch (e) {}
+    renderProgress();
+}
+
+function renderProgress() {
+    const box = document.getElementById('homeProgress');
+    if (!box) return;
+    let s = {};
+    try { s = JSON.parse(localStorage.getItem('kingAsadPct') || '{}'); } catch (e) {}
+    box.innerHTML = LEVELS.map(lvl => {
+        const pct = Number(s[lvl] || 0);
+        return `<div class="card"><h4>سطح ${lvl}</h4><p>پیشرفت آزمون: ${pct}%</p><div class="bar"><div class="fill" style="width:${pct}%"></div></div></div>`;
+    }).join('');
+}
+
+try { renderLessons(); } catch (e) {}
+try { renderDictionary(''); } catch (e) {}
+try { renderConversations(); } catch (e) {}
+try { renderGrammar(); } catch (e) {}
+try { renderQuizzes(); } catch (e) {}
+try { renderProgress(); } catch (e) {}
+
+const inp = document.getElementById('dictionaryInput');
+if (inp) inp.addEventListener('input', () => renderDictionary(inp.value));
+</script>
+</body>
+</html>
