@@ -1,9 +1,11 @@
 
-/* تنظیمات عمومی */
+/* =====================================
+   KING ASAD
+   طراحی کامل آموزشگاه زبان آلمانی
+===================================== */
+
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 html {
@@ -11,87 +13,88 @@ html {
 }
 
 body {
+    margin: 0;
+    padding: 0;
+    direction: rtl;
     font-family: Tahoma, Arial, sans-serif;
-    background: #f1f5fb;
-    color: #17233c;
+    background: #f1f4f9;
+    color: #24344d;
     line-height: 1.8;
-    min-height: 100vh;
 }
 
-/* سربرگ اصلی */
+/* سربرگ */
+
 .main-header {
-    background: linear-gradient(135deg, #101d3d, #174b83, #087e91);
-    color: white;
+    padding: 30px 15px;
     text-align: center;
-    padding: 35px 15px;
-    border-bottom: 5px solid #e9b949;
+    color: white;
+    background: linear-gradient(135deg, #10264a, #214b80);
 }
 
 .logo {
     font-size: 30px;
     font-weight: bold;
-    color: #ffd66b;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+    color: #f5d477;
 }
 
 .main-header h1 {
-    font-size: 27px;
-    margin-bottom: 8px;
+    margin: 10px 0;
+    font-size: 25px;
 }
 
 .main-header p {
-    font-size: 15px;
-    color: #e3efff;
+    margin: 5px;
+    color: #e4eaf4;
 }
 
 /* منوی اصلی */
+
 .main-nav {
-    background: #142b4d;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 9px;
-    padding: 13px;
+    gap: 8px;
+    padding: 12px;
+    background: #142b52;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 button {
-    font-family: inherit;
     cursor: pointer;
-    border: none;
-    border-radius: 9px;
-    padding: 11px 17px;
+    font-family: inherit;
     font-size: 14px;
-    font-weight: bold;
-    transition: 0.25s ease;
+    transition: 0.2s ease;
 }
 
 .main-nav button {
-    background: #ffffff;
-    color: #18385f;
+    padding: 9px 14px;
+    border: 1px solid #d9b95d;
+    border-radius: 8px;
+    background: #203d69;
+    color: white;
 }
 
 .main-nav button:hover {
-    background: #e9b949;
-    color: #142b4d;
-    transform: translateY(-2px);
+    background: #d9b95d;
+    color: #142b52;
 }
 
 /* محتوای اصلی */
+
 main {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1150px;
+    min-height: 65vh;
     margin: auto;
-    padding: 22px 15px;
+    padding: 18px;
 }
 
 .page {
     display: none;
-    animation: pageAppear 0.4s ease;
+    animation: pageAppear 0.35s ease;
 }
 
 .page.active {
@@ -101,574 +104,399 @@ main {
 @keyframes pageAppear {
     from {
         opacity: 0;
-        transform: translateY(12px);
+        transform: translateY(8px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* بخش خوش‌آمدگویی */
+/* خوش‌آمدگویی */
+
 .welcome-box {
-    background: linear-gradient(135deg, #ffffff, #e4f3ff);
-    border-right: 6px solid #087e91;
-    border-radius: 16px;
-    padding: 28px;
+    padding: 25px;
     margin-bottom: 25px;
-    box-shadow: 0 5px 18px rgba(20,50,90,0.08);
+    text-align: center;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #18365f, #315b91);
+    color: white;
+    box-shadow: 0 5px 15px #00000015;
 }
 
 .welcome-box h2 {
-    color: #174b83;
-    font-size: 24px;
-    margin-bottom: 10px;
+    color: #f5d477;
 }
 
-.welcome-box p {
-    color: #53647c;
-}
+/* کارت سطح‌ها */
 
-/* کارت‌های صفحه اصلی */
-.home-grid {
+.level-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-    margin: 25px 0;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
 }
 
-.home-card {
-    background: #ffffff;
-    border: 1px solid #e1e9f3;
-    border-radius: 15px;
-    padding: 23px 17px;
+.level-card {
+    padding: 18px 12px;
     text-align: center;
-    cursor: pointer;
-    box-shadow: 0 5px 16px rgba(20,50,90,0.07);
-    transition: 0.3s ease;
+    background: white;
+    border: 1px solid #dce4ef;
+    border-radius: 13px;
+    box-shadow: 0 3px 10px #0000000c;
+    transition: transform 0.2s ease;
 }
 
-.home-card:hover {
-    transform: translateY(-6px);
-    border-color: #087e91;
-    box-shadow: 0 10px 25px rgba(20,50,90,0.13);
+.level-card:hover {
+    transform: translateY(-4px);
 }
 
-.home-card .symbol {
-    font-size: 39px;
-    margin-bottom: 8px;
+.level-card h3 {
+    color: #214b80;
+    font-size: 25px;
+    margin: 5px;
 }
 
-.home-card h3 {
-    color: #174b83;
-    margin-bottom: 8px;
-    font-size: 18px;
+.level-card p {
+    color: #66758a;
 }
 
-.home-card p {
-    color: #68788e;
-    font-size: 13px;
+/* دکمه‌ها */
+
+button.action,
+.level-card button,
+.king-lesson-card button,
+#lessonDetail button,
+#quizContainer button,
+.video-box button {
+    padding: 10px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    background: #214b80;
+    color: white;
+}
+
+button:hover {
+    filter: brightness(1.1);
+}
+
+button:active {
+    transform: scale(0.97);
 }
 
 /* پنل‌ها */
+
 .panel {
-    background: #ffffff;
-    border: 1px solid #e0e8f2;
-    border-radius: 15px;
-    padding: 24px;
+    padding: 18px;
     margin: 20px 0;
-    box-shadow: 0 5px 18px rgba(20,50,90,0.06);
+    background: white;
+    border: 1px solid #dce4ef;
+    border-radius: 13px;
+    box-shadow: 0 3px 12px #0000000c;
 }
 
-.panel h2 {
-    color: #174b83;
-    margin-bottom: 12px;
-}
-
+.panel h2,
 .panel h3 {
-    color: #087e91;
-    margin: 15px 0 8px;
+    color: #214b80;
 }
 
-/* دکمه بازگشت */
-.back-button {
-    background: #e8eef7;
-    color: #18385f;
-    margin: 8px 0 15px;
-}
+/* کارت درس‌ها */
 
-.back-button:hover {
-    background: #d3e2f4;
-}
-
-/* انتخاب سطح */
-.level-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.level-grid button {
-    background: linear-gradient(135deg, #174b83, #087e91);
-    color: white;
-    padding: 18px 12px;
-    font-size: 16px;
-}
-
-.level-grid button:hover {
-    background: #e9b949;
-    color: #142b4d;
-}
-
-/* کارت‌های زبان */
-.language-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
+.king-level-section {
+    width: 100%;
     margin: 22px 0;
+    padding: 16px;
+    background: white;
+    border: 2px solid #214b80;
+    border-radius: 15px;
+    scroll-margin-top: 90px;
 }
 
-.language-card {
-    background: #f7faff;
-    border: 2px solid #e1eaf5;
-    border-radius: 14px;
-    padding: 20px 12px;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.language-card:hover {
-    background: #e8f5fa;
-    border-color: #087e91;
-    transform: translateY(-5px);
-}
-
-.language-card .flag {
-    display: block;
-    font-size: 38px;
-    margin-bottom: 8px;
-}
-
-.language-card h3 {
-    color: #174b83;
-    margin: 5px 0;
-}
-
-.language-card p {
-    color: #68788e;
-    font-size: 14px;
-}
-
-/* دکمه‌ها و ورودی‌ها */
-button:not(.main-nav button):not(.level-grid button):not(.back-button) {
-    background: linear-gradient(135deg, #174b83, #087e91);
+.king-level-section > h2 {
+    padding: 12px;
     color: white;
+    background: #214b80;
+    border-radius: 9px;
 }
 
-button:not(.main-nav button):not(.level-grid button):not(.back-button):hover {
-    opacity: 0.88;
-    transform: translateY(-2px);
+.king-level-lessons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
 }
 
-input,
-select,
-textarea {
+.king-lesson-card {
+    padding: 15px;
+    background: #f5f7fb;
+    border: 1px solid #cbd8ea;
+    border-radius: 11px;
+}
+
+.king-lesson-card h3 {
+    color: #214b80;
+}
+
+.king-lesson-status {
+    color: #65758c;
+    font-size: 13px;
+}
+
+.king-inline-lesson-content {
+    margin-top: 12px;
+    padding: 14px;
+    background: white;
+    border: 1px solid #e5b94c;
+    border-radius: 10px;
+}
+
+.king-inline-lesson-content[hidden] {
+    display: none !important;
+}
+
+.king-inline-lesson-content section {
+    margin: 12px 0;
+    padding: 12px;
+    background: #fafbfd;
+    border: 1px solid #e1e7ef;
+    border-radius: 9px;
+}
+
+.king-lesson-card.is-open {
+    border: 2px solid #d9b95d;
+}
+
+/* واژگان */
+
+.king-vocabulary-item {
+    margin: 10px 0;
+    padding: 12px;
+    background: #f4f7fc;
+    border-radius: 8px;
+}
+
+.king-vocabulary-item strong {
+    color: #214b80;
+    font-size: 17px;
+}
+
+/* مکالمه */
+
+.king-dialog-item {
+    margin: 10px 0;
+    padding: 10px;
+    border-right: 4px solid #d9b95d;
+    background: #f5f7fb;
+    border-radius: 7px;
+}
+
+.king-dialog-item p {
+    margin: 4px;
+}
+
+/* گرامر */
+
+.king-lesson-grammar {
+    border-right: 4px solid #214b80;
+}
+
+/* تمرین‌ها */
+
+.king-lesson-exercises {
+    border-right: 4px solid #d9b95d;
+}
+
+/* فرهنگ لغات */
+
+#dictionaryPage {
+    padding: 15px;
+    background: white;
+    border-radius: 14px;
+}
+
+#dictionaryInput,
+#dictionarySource,
+#dictionaryTarget {
     display: block;
     width: 100%;
-    max-width: 100%;
-    padding: 13px;
-    margin: 10px 0 17px;
-    border: 1px solid #cbd8e8;
-    border-radius: 9px;
-    background: #ffffff;
-    color: #17233c;
+    max-width: 550px;
+    margin: 8px 0 15px;
+    padding: 12px;
     font-family: inherit;
     font-size: 15px;
-    outline: none;
+    border: 1px solid #bdcadd;
+    border-radius: 8px;
+    background: white;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
-    border-color: #087e91;
-    box-shadow: 0 0 0 3px rgba(8,126,145,0.12);
-}
-
-/* نتیجه فرهنگ لغات */
 .translation-result {
-    background: #f1f8ff;
-    border: 1px solid #cbdff2;
-    border-right: 5px solid #087e91;
-    border-radius: 12px;
-    padding: 20px;
-    margin-top: 20px;
-}
-
-.translation-result h3 {
-    color: #174b83;
-}
-
-.translation-result p {
-    margin: 8px 0;
-    overflow-wrap: anywhere;
-}
-
-/* درس‌ها */
-.lesson-card {
-    background: #f8fbff;
-    border: 1px solid #dce7f3;
-    border-radius: 12px;
-    padding: 17px;
-    margin: 15px 0;
-}
-
-.lesson-card h3 {
-    color: #174b83;
-}
-
-.lesson-card p {
-    margin: 8px 0;
-}
-
-/* آزمون‌ها */
-.quiz-box {
-    border-top: 4px solid #087e91;
-}
-
-.quiz-question {
-    background: #f5f8fd;
-    border-radius: 10px;
+    margin-top: 18px;
     padding: 15px;
-    margin: 12px 0;
+    background: #f5f7fb;
+    border-radius: 10px;
 }
 
-.quiz-question label {
-    display: block;
-    padding: 6px 0;
-    cursor: pointer;
+.translation-result > div {
+    padding: 12px;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 8px;
+}
+
+.translation-result strong {
+    color: #214b80;
 }
 
 /* ویدیوها */
-.video-section {
-    background: #f7faff;
-    border: 1px solid #dce7f3;
-    border-radius: 12px;
-    padding: 18px;
-    margin: 15px 0;
-}
 
-.video-section iframe {
-    width: 100%;
-    max-width: 700px;
-    aspect-ratio: 16 / 9;
-    border: 0;
-    border-radius: 10px;
-}
-
-/* مکالمه و گرامر */
-.conversation-card,
-.grammar-card {
-    background: #f7faff;
-    border-right: 4px solid #087e91;
-    border-radius: 10px;
-    padding: 16px;
-    margin: 13px 0;
-}
-
-/* پیشرفت آموزشی */
-.progress-box {
-    background: #f1f5fb;
-    border-radius: 10px;
+.video-box {
+    display: none;
+    margin: 20px 0;
     padding: 15px;
-    margin: 12px 0;
+    background: white;
+    border-radius: 12px;
 }
 
-.progress-bar {
-    height: 12px;
-    background: #dce5f1;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-top: 8px;
+.video-box.active {
+    display: block;
 }
 
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #087e91, #20a77c);
-    border-radius: 20px;
+.video-box iframe {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    margin: 15px auto;
+    border: none;
+    border-radius: 10px;
 }
 
-/* پیام‌ها */
-.note {
-    background: #fff8e6;
-    border-right: 4px solid #e9b949;
-    padding: 13px;
-    border-radius: 8px;
+/* آزمون */
+
+#quizContainer fieldset {
     margin: 15px 0;
+    padding: 15px;
+    border: 1px solid #cbd8ea;
+    border-radius: 10px;
 }
 
-/* پاصفحه */
-.main-footer {
-    background: #142b4d;
-    color: #ffffff;
-    text-align: center;
-    padding: 28px 15px;
-    margin-top: 35px;
+#quizContainer legend {
+    color: #214b80;
+    font-weight: bold;
 }
 
-.main-footer h3 {
-    color: #ffd66b;
-    font-size: 23px;
-    margin-bottom: 8px;
+#quizContainer label {
+    display: inline-block;
+    margin: 7px;
 }
 
-.main-footer p {
-    color: #dce8f6;
-    font-size: 13px;
-    margin: 5px 0;
-}
-
-/* موبایل و تبلت */
-@media (max-width: 800px) {
-    .home-grid,
-    .language-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .level-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .main-header h1 {
-        font-size: 22px;
-    }
-}
-
-@media (max-width: 500px) {
-    .home-grid,
-    .language-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .main-nav {
-        position: relative;
-    }
-
-    .main-nav button {
-        flex: 1 1 42%;
-        font-size: 12px;
-        padding: 10px 7px;
-    }
-
-    main {
-        padding: 12px 10px;
-    }
-
-    .panel {
-        padding: 16px;
-    }
-
-    .welcome-box {
-        padding: 20px;
-    }
-
-    .welcome-box h2 {
-        font-size: 20px;
-    }
-
-    .logo {
-        font-size: 25px;
-    }
-}
-/* =========================================
-   KING ASAD
-   بخش هجدهم: طراحی حرفه‌ای آموزشگاه
-========================================= */
-
-:root {
-    --king-primary: #173b68;
-    --king-secondary: #2469a8;
-    --king-gold: #e5ad42;
-    --king-background: #f3f6fb;
-    --king-white: #ffffff;
-    --king-text: #263448;
-    --king-border: #dce4ef;
-    --king-success: #21966b;
-    --king-radius: 16px;
-    --king-shadow: 0 8px 25px rgba(20, 48, 80, 0.09);
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background: var(--king-background);
-    color: var(--king-text);
-    font-family: Arial, sans-serif;
-    direction: rtl;
-}
-
-.king-container {
-    width: min(1100px, 94%);
-    margin: 25px auto;
-}
-
-.king-header {
-    padding: 28px 20px;
-    text-align: center;
-    color: white;
-    background: linear-gradient(
-        135deg,
-        var(--king-primary),
-        var(--king-secondary)
-    );
-    border-radius: var(--king-radius);
-    box-shadow: var(--king-shadow);
-}
-
-.king-header h1 {
-    margin: 0 0 10px;
-    font-size: 30px;
-}
-
-.king-header p {
-    margin: 0;
-    color: #e8eef8;
-}
-
-.king-section {
-    margin-top: 25px;
-    padding: 22px;
-    background: var(--king-white);
-    border: 1px solid var(--king-border);
-    border-radius: var(--king-radius);
-    box-shadow: var(--king-shadow);
-}
-
-.king-section h2,
-.king-section h3 {
-    color: var(--king-primary);
-}
-
-.king-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-}
-
-.king-progress-card,
-.king-lesson-card,
-.king-video-card {
-    padding: 20px;
-    background: var(--king-white);
-    border: 1px solid var(--king-border);
-    border-radius: var(--king-radius);
-    box-shadow: var(--king-shadow);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.king-progress-card:hover,
-.king-lesson-card:hover,
-.king-video-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(20, 48, 80, 0.14);
-}
+/* پیشرفت */
 
 .king-progress-wrapper {
-    margin: 14px 0;
+    margin: 15px 0;
 }
 
 .king-progress-bar {
-    height: 12px;
+    width: 100%;
+    height: 13px;
     overflow: hidden;
-    background: #e8edf5;
+    background: #e2e8f0;
     border-radius: 20px;
 }
 
 .king-progress-fill {
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        var(--king-success),
-        #57c99b
-    );
+    background: linear-gradient(90deg, #214b80, #d9b95d);
     border-radius: 20px;
     transition: width 0.5s ease;
 }
 
-.king-progress-wrapper p {
-    margin: 8px 0;
-    font-size: 13px;
-    color: var(--king-secondary);
+.king-progress-card {
+    margin: 12px 0;
+    padding: 12px;
+    background: #f5f7fb;
+    border-radius: 9px;
 }
 
-.king-button,
-button {
-    padding: 11px 20px;
-    color: white;
-    background: var(--king-primary);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
+/* ورودی‌های عمومی */
 
-.king-button:hover,
-button:hover {
-    background: var(--king-secondary);
-}
-
-.king-input,
 input,
-textarea,
-select {
-    max-width: 100%;
-    padding: 12px;
-    border: 1px solid var(--king-border);
-    border-radius: 9px;
-    box-sizing: border-box;
+select,
+textarea {
+    font-family: inherit;
 }
 
-.king-vocabulary-item {
-    margin: 8px 0;
-    padding: 12px;
-    background: #f5f8fc;
-    border-radius: 9px;
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #d9b95d;
+    border-color: #214b80;
 }
 
-.king-quiz-question {
-    margin: 15px 0;
-    padding: 16px;
-    background: #f7f9fc;
-    border: 1px solid var(--king-border);
-    border-radius: 12px;
-}
+/* پاورقی */
 
-.king-quiz-question label {
-    display: block;
-    margin: 10px 0;
-    cursor: pointer;
-}
-
-.king-footer {
+footer {
+    padding: 22px;
     margin-top: 30px;
-    padding: 20px;
     text-align: center;
+    background: #142b52;
     color: white;
-    background: var(--king-primary);
-    border-radius: var(--king-radius);
 }
+
+footer p {
+    margin: 5px;
+}
+
+/* موبایل */
 
 @media (max-width: 650px) {
-    .king-grid {
-        grid-template-columns: 1fr;
+
+    .main-header {
+        padding: 22px 10px;
     }
 
-    .king-header h1 {
-        font-size: 24px;
+    .main-header h1 {
+        font-size: 19px;
     }
 
-    .king-section {
-        padding: 15px;
+    .logo {
+        font-size: 25px;
+    }
+
+    .main-nav {
+        position: relative;
+        gap: 6px;
+    }
+
+    .main-nav button {
+        flex: 1 1 28%;
+        padding: 9px 5px;
+        font-size: 12px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .level-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    .level-card {
+        padding: 13px 7px;
+    }
+
+    .king-level-section {
+        padding: 10px;
+    }
+
+    .king-lesson-card {
+        padding: 11px;
+    }
+
+    .panel {
+        padding: 12px;
     }
 }
