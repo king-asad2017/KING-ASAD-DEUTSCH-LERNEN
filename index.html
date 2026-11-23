@@ -387,7 +387,7 @@ html, body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Live Dual Online Voice Relay Styles */
+/* Live Dual Online + Offline Voice Relay Styles */
 .online-call-banner {
     background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);
     color: #ffffff;
@@ -408,6 +408,30 @@ html, body {
     border-radius: 999px;
     font-size: 12px;
     font-weight: 800;
+}
+
+.quick-phrases-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.quick-phrase-chip {
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+    padding: 5px 11px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.quick-phrase-chip:hover {
+    background: rgba(250, 204, 21, 0.25);
+    border-color: #facc15;
 }
 
 .live-voice-grid {
@@ -469,11 +493,13 @@ html, body {
 }
 
 .mic-btn.mic-call {
-    background: #0d9488;
+    background: #f59e0b;
+    color: #0f172a;
 }
 
 .mic-btn.listening {
     background: #dc2626 !important;
+    color: #ffffff !important;
     animation: pulseMic 1.1s infinite;
 }
 
@@ -877,7 +903,7 @@ textarea {
         <div style="font-size:13px;font-weight:900;color:#b45309;margin-bottom:4px;">👑 KING ASAD – مرکز آموزش زبان آلمانی</div>
         <h2 id="welcomeTitle" style="font-size:21px;font-weight:900;margin-bottom:8px;">خوش آمدید! به دنیای یادگیری زبان آلمانی خوش آمدید</h2>
         <p style="font-size:13.5px;color:#374151;margin-bottom:12px;">
-            در این سامانه می‌توانید از سطح <strong>A1 تا C1</strong> درس بخوانید، از <strong>۱۰۰,۰۰۰ لغت با گرامر</strong> و <strong>۵۲۰+ پادکست</strong> و <strong>رادیو آلمانی با ترجمه فارسی</strong> استفاده کنید، از <strong>گفت‌وگوی صوتی آنلاین دوطرفه (هر زبان ↔ آلمانی)</strong> بهره ببرید و در آزمون‌ها امتیاز بگیرید.
+            در این سامانه می‌توانید از سطح <strong>A1 تا C1</strong> درس بخوانید، از <strong>۱۰۰,۰۰۰ لغت با گرامر</strong> و <strong>۵۲۰+ پادکست</strong> و <strong>رادیو آلمانی با ترجمه فارسی</strong> استفاده کنید، از <strong>مترجم و گفت‌وگوی صوتی آنلاین و آفلاین (هر زبان ↔ آلمانی)</strong> بهره ببرید و در آزمون‌ها امتیاز بگیرید.
         </p>
         <p style="font-size:13px;color:#1e3a8a;font-weight:800;margin-bottom:14px;">
             تماس مستقیم با مدیر: <span dir="ltr">+4915212898695</span>
@@ -902,7 +928,7 @@ textarea {
         </div>
 
         <div class="hero-stats-text" id="uiSubtitle">
-            ۱۲۹ درس (A1–C1) • +۱۰۰,۰۰۰ واژه و جمله • ۵۲۰+ پادکست • رادیو • گفت‌وگوی صوتی آنلاین • گرامر و آزمون
+            ۱۲۹ درس (A1–C1) • +۱۰۰,۰۰۰ واژه و جمله • ۵۲۰+ پادکست • رادیو • گفت‌وگوی صوتی آنلاین و آفلاین • گرامر و آزمون
         </div>
 
         <div class="hero-controls-row">
@@ -990,15 +1016,15 @@ textarea {
             <div class="row-drawer" id="drawer-vocab100k"></div>
         </section>
 
-        <!-- 03: Online Two-Way Voice Conversation (Any Selected Language <-> German) -->
+        <!-- 03: Online + Offline Two-Way Voice & Help Translator -->
         <section class="row-group" data-color="teal" data-row-key="live_voice" id="group-live_voice">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-live_voice">
                 <span class="row-square"><span class="row-num">03</span><span class="row-emoji">🎙️</span></span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
-                        <span class="row-title" data-i18n="row_live_voice_title">گفت‌وگوی صوتی آنلاین هم‌زمان (هر زبان ↔ آلمانی با پخش صدا)</span>
-                        <span class="row-desc" data-i18n="row_live_voice_desc">دریافت صدا از هر دو طرف و انتقال هم‌زمان صوتی؛ فارسی به آلمانی و آلمانی به زبان انتخابی شما</span>
+                        <span class="row-title" data-i18n="row_live_voice_title">مترجم و گفت‌وگوی صوتی آنلاین و آفلاین (هر زبان ↔ آلمانی)</span>
+                        <span class="row-desc" data-i18n="row_live_voice_desc">شروع با یک کلیک، پخش هم‌زمان صدای فارسی و آلمانی، و کارکرد حتی بدون اینترنت برای حل مشکلات تازه‌واردان</span>
                     </span>
                     <span class="row-status-pill" id="pill-live_voice">باز کردن</span>
                 </span>
@@ -1153,6 +1179,133 @@ var VOICE_LANGUAGES = [
     { code: 'en', speechLang: 'en-US', label: '🇬🇧 انگلیسی (EN)' },
     { code: 'ur', speechLang: 'ur-PK', label: '🇵🇰 اردو (UR)' }
 ];
+
+/* Offline Phrasebook & Word Dictionary for Newcomers in Germany (Works Without Internet) */
+var OFFLINE_PHRASES = [
+    { fa: 'کمک می‌خواهم، من آلمانی بلد نیستم', de: 'Bitte helfen Sie mir, ich spreche kein Deutsch.' },
+    { fa: 'من تازه به آلمان آمده‌ام', de: 'Ich bin neu in Deutschland.' },
+    { fa: 'آیا کسی فارسی یا انگلیسی صحبت می‌کند؟', de: 'Spricht hier jemand Persisch oder Englisch?' },
+    { fa: 'من به داکتر نیاز دارم، حالم خوب نیست', de: 'Ich brauche einen Arzt, mir geht es nicht gut.' },
+    { fa: 'آمبولانس خبر کنید، وضعیت اضطراری است', de: 'Rufen Sie einen Krankenwagen, es ist ein Notfall.' },
+    { fa: 'ببخشید، آدرس این مکان کجاست؟', de: 'Entschuldigung, wo ist diese Adresse?' },
+    { fa: 'من در اداره / قرار ملاقات دارم', de: 'Ich habe einen Termin im Amt.' },
+    { fa: 'لطفاً آرام‌تر و واضح‌تر صحبت کنید', de: 'Bitte sprechen Sie langsamer und deutlicher.' },
+    { fa: 'این چقدر می‌شود؟ آیا کارت قبول می‌کنید؟', de: 'Wie viel kostet das? Nehmen Sie Karte?' },
+    { fa: 'من دنبال آپارتمان یا اتاق برای کرایه هستم', de: 'Ich suche eine Wohnung oder ein Zimmer zur Miete.' },
+    { fa: 'ایستگاه قطار یا اتوبوس کجاست؟', de: 'Wo ist der Bahnhof oder die Bushaltestelle?' },
+    { fa: 'متشکرم، خیلی لطف کردید', de: 'Vielen Dank, das ist sehr nett von Ihnen.' }
+];
+
+var OFFLINE_WORD_MAP_FA_TO_DE = {
+    'سلام': 'Hallo',
+    'درود': 'Hallo',
+    'صبح بخیر': 'Guten Morgen',
+    'روز بخیر': 'Guten Tag',
+    'عصر بخیر': 'Guten Abend',
+    'شب بخیر': 'Gute Nacht',
+    'خداحافظ': 'Auf Wiedersehen',
+    'بای': 'Tschüss',
+    'ممنون': 'Danke',
+    'متشکرم': 'Vielen Dank',
+    'لطفاً': 'Bitte',
+    'ببخشید': 'Entschuldigung',
+    'بله': 'Ja',
+    'نه': 'Nein',
+    'خیر': 'Nein',
+    'کمک': 'Hilfe',
+    'داکتر': 'Arzt',
+    'دکتر': 'Arzt',
+    'بیمارستان': 'Krankenhaus',
+    'داروخانه': 'Apotheke',
+    'پولیس': 'Polizei',
+    'پلیس': 'Polizei',
+    'آدرس': 'Adresse',
+    'کجا': 'Wo',
+    'چرا': 'Warum',
+    'چطور': 'Wie',
+    'چند': 'Wie viel',
+    'قیمت': 'Preis',
+    'آب': 'Wasser',
+    'غذا': 'Essen',
+    'نان': 'Brot',
+    'خانه': 'Haus',
+    'آپارتمان': 'Wohnung',
+    'کار': 'Arbeit',
+    'وقت': 'Termin',
+    'قرار': 'Termin',
+    'امروز': 'heute',
+    'فردا': 'morgen',
+    'دیروز': 'gestern',
+    'من': 'ich',
+    'شما': 'Sie',
+    'تو': 'du',
+    'او': 'er / sie',
+    'ما': 'wir',
+    'خوب': 'gut',
+    'بد': 'schlecht',
+    'بیمار': 'krank',
+    'خسته': 'müde',
+    'آلمانی': 'Deutsch',
+    'فارسی': 'Persisch'
+};
+
+function translateOfflineSmart(text, fromLang, toLang) {
+    var clean = String(text || '').trim();
+    if (!clean) return '';
+    if (fromLang === toLang) return clean;
+
+    var lower = clean.toLowerCase();
+
+    /* Exact or partial phrase match for newcomers */
+    for (var i = 0; i < OFFLINE_PHRASES.length; i++) {
+        var item = OFFLINE_PHRASES[i];
+        if (fromLang === 'fa' && toLang === 'de') {
+            if (clean.indexOf(item.fa) !== -1 || item.fa.indexOf(clean) !== -1) {
+                return item.de;
+            }
+        }
+        if (fromLang === 'de' && toLang === 'fa') {
+            if (lower.indexOf(item.de.toLowerCase()) !== -1 || item.de.toLowerCase().indexOf(lower) !== -1) {
+                return item.fa;
+            }
+        }
+    }
+
+    if (fromLang === 'fa' && toLang === 'de') {
+        var wordsFa = clean.replace(/[؟!.,،؛:]/g, ' ').split(/\s+/);
+        var mappedDe = [];
+        for (var w = 0; w < wordsFa.length; w++) {
+            var wf = wordsFa[w].trim();
+            if (!wf) continue;
+            if (OFFLINE_WORD_MAP_FA_TO_DE[wf]) {
+                mappedDe.push(OFFLINE_WORD_MAP_FA_TO_DE[wf]);
+            } else {
+                mappedDe.push(wf);
+            }
+        }
+        return mappedDe.length ? mappedDe.join(' ') : clean;
+    }
+
+    if (fromLang === 'de' && toLang === 'fa') {
+        var reverseMap = {};
+        for (var k in OFFLINE_WORD_MAP_FA_TO_DE) {
+            if (OFFLINE_WORD_MAP_FA_TO_DE.hasOwnProperty(k)) {
+                var deVal = OFFLINE_WORD_MAP_FA_TO_DE[k].toLowerCase();
+                if (!reverseMap[deVal]) reverseMap[deVal] = k;
+            }
+        }
+        var wordsDe = lower.replace(/[?!.,;:]/g, ' ').split(/\s+/);
+        var mappedFa = [];
+        for (var d = 0; d < wordsDe.length; d++) {
+            var wd = wordsDe[d].trim();
+            if (!wd) continue;
+            mappedFa.push(reverseMap[wd] || wd);
+        }
+        return mappedFa.length ? mappedFa.join(' ') : clean;
+    }
+
+    return clean;
+}
 
 var levelVideos = {
     A1: { id: '4-eDoThe6qo', title: 'Nicos Weg A1 - Deutsche Welle', link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789' },
@@ -1568,7 +1721,7 @@ var radioTimer = null;
 var radioIndex = 0;
 var quizState = {};
 
-/* Online Two-Way Voice Relay State */
+/* Dual Voice + Offline Relay State */
 var activeRecognition = null;
 var activeMicMode = null; // 'user_to_de' or 'de_to_user'
 var selectedPartnerLang = 'fa';
@@ -1646,6 +1799,7 @@ function playFallbackAudio(text, shortLang, onDone) {
     }
 }
 
+/* Unified Voice Playback: Works for Persian (fa-IR), German (de-DE), and Other Languages */
 function speakText(text, lang, onDone) {
     var clean = (text === null || text === undefined) ? '' : String(text).trim();
     if (!clean) {
@@ -1654,42 +1808,64 @@ function speakText(text, lang, onDone) {
     }
     var langStr = lang || 'de-DE';
     var shortLang = langStr.split('-')[0].toLowerCase() || 'de';
-
-    /* Prefer cloud/online TTS first for reliable cross-language voice output */
-    if (navigator.onLine !== false) {
-        playFallbackAudio(clean, shortLang, onDone);
-        return;
-    }
-
-    if (!window.speechSynthesis || typeof SpeechSynthesisUtterance === 'undefined') {
-        playFallbackAudio(clean, shortLang, onDone);
-        return;
-    }
+    var doneCalled = false;
+    var finish = function() {
+        if (!doneCalled) {
+            doneCalled = true;
+            if (typeof onDone === 'function') onDone();
+        }
+    };
 
     try {
-        stopAllSpeech();
-        var utterance = new SpeechSynthesisUtterance(clean);
-        utterance.lang = langStr;
-        utterance.rate = shortLang === 'de' ? 0.92 : 0.98;
-        var voice = pickBestVoice(langStr);
-        if (voice) {
-            utterance.voice = voice;
-            utterance.lang = voice.lang;
-        }
-        var doneCalled = false;
-        var finish = function() {
-            if (!doneCalled) {
-                doneCalled = true;
-                if (typeof onDone === 'function') onDone();
+        if (window.speechSynthesis && typeof SpeechSynthesisUtterance !== 'undefined') {
+            stopAllSpeech();
+            var utterance = new SpeechSynthesisUtterance(clean);
+            utterance.lang = langStr;
+            utterance.rate = shortLang === 'de' ? 0.92 : 0.96;
+            var voice = pickBestVoice(langStr);
+            if (voice) {
+                utterance.voice = voice;
+                utterance.lang = voice.lang;
             }
-        };
-        utterance.onend = finish;
-        utterance.onerror = function() { playFallbackAudio(clean, shortLang, finish); };
-        window.speechSynthesis.speak(utterance);
-        setTimeout(finish, Math.min(9000, Math.max(2200, clean.length * 95)));
-    } catch (e) {
-        playFallbackAudio(clean, shortLang, onDone);
+            var fallbackTimer = setTimeout(function() {
+                if (!doneCalled) {
+                    if (navigator.onLine !== false) {
+                        playFallbackAudio(clean, shortLang, finish);
+                    } else {
+                        finish();
+                    }
+                }
+            }, Math.min(4500, Math.max(1600, clean.length * 75)));
+
+            utterance.onend = function() {
+                clearTimeout(fallbackTimer);
+                finish();
+            };
+            utterance.onerror = function() {
+                clearTimeout(fallbackTimer);
+                if (navigator.onLine !== false) {
+                    playFallbackAudio(clean, shortLang, finish);
+                } else {
+                    finish();
+                }
+            };
+
+            window.speechSynthesis.speak(utterance);
+            return;
+        }
+    } catch (e) {}
+
+    if (navigator.onLine !== false) {
+        playFallbackAudio(clean, shortLang, finish);
+    } else {
+        finish();
     }
+}
+
+if (window.speechSynthesis && typeof window.speechSynthesis.onvoiceschanged !== 'undefined') {
+    window.speechSynthesis.onvoiceschanged = function() {
+        window.speechSynthesis.getVoices();
+    };
 }
 
 /* Accordion Toggle */
@@ -1746,7 +1922,7 @@ function renderDrawerContent(key, drawer) {
     }
 }
 
-/* 03: Online Two-Way Voice Relay (Any Selected Language <-> German) */
+/* 03: Online + Offline Two-Way Voice Relay (Any Selected Language <-> German) */
 function buildLiveVoiceDrawerHtml() {
     var langCfg = getVoiceLangConfig(selectedPartnerLang);
     var opts = '';
@@ -1755,25 +1931,35 @@ function buildLiveVoiceDrawerHtml() {
         opts += '<option value="' + vl.code + '"' + (vl.code === selectedPartnerLang ? ' selected' : '') + '>' + vl.label + '</option>';
     }
 
+    var quickChips = '';
+    for (var q = 0; q < 6; q++) {
+        var ph = OFFLINE_PHRASES[q];
+        quickChips += '<button type="button" class="quick-phrase-chip" onclick="useQuickHelpPhrase(\'' + escapeAttr(ph.fa) + '\')">' + ph.fa + '</button>';
+    }
+
     return (
         '<div class="sub-card" id="liveVoiceContainer">' +
             '<div class="online-call-banner">' +
                 '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;">' +
                     '<div>' +
-                        '<div style="font-size:16px;font-weight:900;">🎙️ گفت‌وگوی صوتی آنلاین دوطرفه (هر زبان ↔ آلمانی)</div>' +
-                        '<div style="font-size:12.5px;color:#cbd5e1;margin-top:2px;">صحبت شما به آلمانی منتقل و پخش می‌شود؛ صحبت آلمانی طرف مقابل به زبان انتخابی شما منتقل و پخش می‌شود.</div>' +
+                        '<div style="font-size:16px;font-weight:900;">🎙️ مترجم و گفت‌وگوی صوتی آنلاین و آفلاین (هر زبان ↔ آلمانی)</div>' +
+                        '<div style="font-size:12.5px;color:#cbd5e1;margin-top:2px;">مناسب برای تازه‌واردان در آلمان: با یک کلیک زبان را انتخاب و شروع کنید؛ هم صدای فارسی و هم آلمانی پخش می‌شود و در صورت نبود اینترنت، مترجم آفلاین داخلی فعال می‌ماند.</div>' +
                     '</div>' +
-                    '<span class="online-badge" id="onlineConnBadge">● آنلاین و آماده</span>' +
+                    '<span class="online-badge" id="onlineConnBadge">● بررسی وضعیت...</span>' +
                 '</div>' +
                 '<div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;">' +
                     '<select id="partnerLangSelect" style="margin:0;background:#ffffff;color:#0f172a;font-weight:800;" onchange="changePartnerLanguage(this.value)">' + opts + '</select>' +
-                    '<button type="button" class="mic-btn mic-call" id="btnStartOnlineCall" onclick="startOnlineTwoWayCall()">▶ شروع گفت‌وگوی آنلاین</button>' +
-                    '<button type="button" class="btn-secondary" onclick="stopOnlineConversation()">⏹ قطع صدا / توقف</button>' +
+                    '<button type="button" class="mic-btn mic-call" id="btnStartOnlineCall" onclick="startOnlineTwoWayCall()">⚡ شروع یک‌کلیکی گفت‌وگو</button>' +
+                    '<button type="button" class="btn-secondary" onclick="stopOnlineConversation()">⏹ توقف</button>' +
+                '</div>' +
+                '<div class="quick-phrases-bar">' +
+                    '<span style="font-size:12px;font-weight:800;color:#fde047;align-self:center;">عبارات فوری (آفلاین و صوتی):</span>' +
+                    quickChips +
                 '</div>' +
             '</div>' +
 
             '<div class="live-status-bar" id="liveVoiceStatusBar">' +
-                '<span id="liveVoiceStatusText">وضعیت: آماده برای دریافت صدا از هر دو طرف (' + langCfg.label + ' ⇄ 🇩🇪 آلمانی)</span>' +
+                '<span id="liveVoiceStatusText">وضعیت: آماده (' + langCfg.label + ' ⇄ 🇩🇪 آلمانی)</span>' +
                 '<div class="audio-group">' +
                     '<button type="button" class="btn-secondary" id="btnToggleAutoTurn" onclick="toggleAutoContinuousMode()">🔄 گفت‌وگوی پیوسته: روشن</button>' +
                     '<button type="button" class="btn-secondary" id="btnToggleVoiceOnly" onclick="toggleVoiceOnlyMode()">🔇 حالت بدون متن: خاموش</button>' +
@@ -1788,7 +1974,7 @@ function buildLiveVoiceDrawerHtml() {
                         '<button type="button" class="mic-btn mic-user" id="micBtnUser" onclick="startVoiceCapture(\'user_to_de\')">🎤 صحبت شما</button>' +
                     '</div>' +
                     '<div class="voice-optional-text">' +
-                        '<textarea id="userSpeechBox" placeholder="گفتار شما یا متن دلخواه..."></textarea>' +
+                        '<textarea id="userSpeechBox" placeholder="صحبت کنید یا عبارت فارسی / زبان خود را بنویسید..."></textarea>' +
                         '<div class="result-banner" id="userToDeBox">انتقال صوتی آلمانی آماده است.</div>' +
                     '</div>' +
                     '<div class="audio-group">' +
@@ -1803,12 +1989,12 @@ function buildLiveVoiceDrawerHtml() {
                         '<button type="button" class="mic-btn mic-de" id="micBtnDe" onclick="startVoiceCapture(\'de_to_user\')">🎤 صحبت آلمانی</button>' +
                     '</div>' +
                     '<div class="voice-optional-text">' +
-                        '<textarea id="deSpeechBox" placeholder="گفتار آلمانی طرف مقابل یا متن آلمانی..."></textarea>' +
+                        '<textarea id="deSpeechBox" placeholder="صحبت آلمانی طرف مقابل یا جمله آلمانی را وارد کنید..."></textarea>' +
                         '<div class="result-banner" id="deToUserBox">انتقال صوتی به زبان انتخابی شما آماده است.</div>' +
                     '</div>' +
                     '<div class="audio-group">' +
                         '<button type="button" class="btn-primary" id="btnRelayToUser" onclick="relayVoiceAndSpeak(\'de_to_user\')">انتقال و پخش به زبان شما 🔊</button>' +
-                        '<button type="button" class="btn-audio-fa" id="btnReplayUser" onclick="replayLastVoice(\'de_to_user\')">🔊 پخش مجدد صدا</button>' +
+                        '<button type="button" class="btn-audio-fa" id="btnReplayUser" onclick="replayLastVoice(\'de_to_user\')">🔊 پخش صدای ' + langCfg.label + '</button>' +
                     '</div>' +
                 '</div>' +
             '</div>' +
@@ -1821,12 +2007,18 @@ function buildLiveVoiceDrawerHtml() {
     );
 }
 
+window.useQuickHelpPhrase = function(faPhrase) {
+    var uBox = document.getElementById('userSpeechBox');
+    if (uBox) uBox.value = faPhrase;
+    relayVoiceAndSpeak('user_to_de', faPhrase);
+};
+
 function refreshOnlineBadge() {
     var badge = document.getElementById('onlineConnBadge');
     if (!badge) return;
     var isOnline = (navigator.onLine !== false);
-    badge.textContent = isOnline ? '● آنلاین و متصل' : '○ بدون اتصال اینترنت';
-    badge.style.color = isOnline ? '#6ee7b7' : '#fca5a5';
+    badge.textContent = isOnline ? '● آنلاین + مترجم آفلاین فعال' : '⚡ حالت آفلاین (بدون اینترنت) فعال';
+    badge.style.color = isOnline ? '#6ee7b7' : '#fde047';
 }
 
 window.changePartnerLanguage = function(code) {
@@ -1834,9 +2026,14 @@ window.changePartnerLanguage = function(code) {
     var cfg = getVoiceLangConfig(selectedPartnerLang);
     var uLbl = document.getElementById('labelUserSide');
     var dLbl = document.getElementById('labelDeSide');
+    var rBtn = document.getElementById('btnReplayUser');
     if (uLbl) uLbl.textContent = 'طرف ۱ – شما (' + cfg.label + ' ➔ 🇩🇪 آلمانی)';
     if (dLbl) dLbl.textContent = 'طرف ۲ – مقابل (🇩🇪 آلمانی ➔ ' + cfg.label + ')';
-    setLiveStatus('زبان گفت‌وگو روی ' + cfg.label + ' ⇄ 🇩🇪 آلمانی تنظیم شد.');
+    if (rBtn) rBtn.textContent = '🔊 پخش صدای ' + cfg.label;
+    setLiveStatus('زبان روی ' + cfg.label + ' ⇄ 🇩🇪 آلمانی تنظیم شد.');
+    if (onlineSessionActive) {
+        startVoiceCapture('user_to_de');
+    }
 };
 
 window.toggleAutoContinuousMode = function() {
@@ -1903,20 +2100,23 @@ window.stopOnlineConversation = function() {
     setLiveStatus('گفت‌وگو و میکروفون متوقف شد.');
 };
 
+/* One-Click Start */
 window.startOnlineTwoWayCall = function() {
-    if (navigator.onLine === false) {
-        setLiveStatus('اتصال اینترنت برقرار نیست؛ برای ترجمه و پخش آنلاین صدا اینترنت لازم است.');
-        return;
+    var sel = document.getElementById('partnerLangSelect');
+    if (sel && sel.value) {
+        selectedPartnerLang = sel.value;
+        changePartnerLanguage(selectedPartnerLang);
     }
     onlineSessionActive = true;
-    setLiveStatus('گفت‌وگوی آنلاین شروع شد؛ ابتدا شما صحبت کنید...');
+    var cfg = getVoiceLangConfig(selectedPartnerLang);
+    setLiveStatus('شروع شد (' + cfg.label + ' ⇄ 🇩🇪 آلمانی) — صحبت کنید یا عبارت را بزنید.');
     startVoiceCapture('user_to_de');
 };
 
 window.startVoiceCapture = function(mode) {
     var SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRec) {
-        setLiveStatus('مرورگر شما میکروفون زنده را پشتیبانی نمی‌کند؛ می‌توانید متن را وارد و انتقال صوتی بزنید.');
+        setLiveStatus('میکروفون مستقیم در این مرورگر در دسترس نیست؛ متن را بنویسید یا دکمه پخش را بزنید.');
         return;
     }
     if (activeRecognition) {
@@ -1943,7 +2143,7 @@ window.startVoiceCapture = function(mode) {
 
     setLiveStatus(mode === 'user_to_de'
         ? 'در حال شنیدن صدای شما (' + partnerCfg.label + ') برای انتقال به آلمانی...'
-        : 'در حال شنیدن صدای آلمانی طرف مقابل برای انتقال به ' + partnerCfg.label + '...');
+        : 'در حال شنیدن صدای آلمانی برای انتقال به ' + partnerCfg.label + '...');
 
     var finalTranscript = '';
 
@@ -1967,11 +2167,10 @@ window.startVoiceCapture = function(mode) {
         }
     };
 
-    rec.onerror = function(ev) {
-        var errCode = ev && ev.error ? ev.error : 'unknown';
+    rec.onerror = function() {
         activeMicMode = null;
         updateMicButtonsVisual();
-        setLiveStatus('خطای میکروفون (' + errCode + ') — در صورت نیاز متن را بنویسید یا دوباره دکمه صدا را بزنید.');
+        setLiveStatus('میکروفون متوقف شد — می‌توانید متن را بنویسید یا دوباره میکروفون را بزنید.');
     };
 
     rec.onend = function() {
@@ -1992,7 +2191,7 @@ window.startVoiceCapture = function(mode) {
                 }
             }, 600);
         } else {
-            setLiveStatus('صدایی دریافت نشد؛ دکمه میکروفون را بزنید.');
+            setLiveStatus('آماده برای گفت‌وگو.');
         }
     };
 
@@ -2001,11 +2200,12 @@ window.startVoiceCapture = function(mode) {
     } catch (e) {
         activeMicMode = null;
         updateMicButtonsVisual();
-        setLiveStatus('امکان باز کردن میکروفون وجود نداشت.');
+        setLiveStatus('میکروفون باز نشد؛ از کادر متنی یا دکمه پخش استفاده کنید.');
     }
 };
 
-function translateOnlineText(text, fromLang, toLang, callback) {
+/* Smart Translation: Online First, Automatic Offline Fallback When Offline */
+function translateSmart(text, fromLang, toLang, callback) {
     var clean = String(text || '').trim();
     if (!clean) {
         callback('');
@@ -2016,19 +2216,36 @@ function translateOnlineText(text, fromLang, toLang, callback) {
         return;
     }
 
+    var offlineResult = translateOfflineSmart(clean, fromLang, toLang);
+
+    if (navigator.onLine === false) {
+        callback(offlineResult);
+        return;
+    }
+
     var url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(clean) + '&langpair=' + encodeURIComponent(fromLang) + '|' + encodeURIComponent(toLang);
+    var timedOut = false;
+    var timer = setTimeout(function() {
+        timedOut = true;
+        callback(offlineResult);
+    }, 3200);
+
     fetch(url)
         .then(function(res) { return res.json(); })
         .then(function(data) {
+            if (timedOut) return;
+            clearTimeout(timer);
             var translated = (data && data.responseData && data.responseData.translatedText) ? data.responseData.translatedText.trim() : '';
             if (!translated || translated.toUpperCase().indexOf('MYMEMORY WARNING') === 0) {
-                callback(clean);
+                callback(offlineResult);
             } else {
                 callback(translated);
             }
         })
         .catch(function() {
-            callback(clean);
+            if (timedOut) return;
+            clearTimeout(timer);
+            callback(offlineResult);
         });
 }
 
@@ -2043,7 +2260,7 @@ window.relayVoiceAndSpeak = function(mode, presetText) {
         : (inputEl ? inputEl.value.trim() : '');
 
     if (!sourceText) {
-        setLiveStatus('ابتدا صحبت کنید یا متنی برای انتقال وارد کنید.');
+        setLiveStatus('ابتدا صحبت کنید یا عبارتی بنویسید.');
         return;
     }
     if (inputEl && !inputEl.value.trim()) {
@@ -2055,10 +2272,10 @@ window.relayVoiceAndSpeak = function(mode, presetText) {
     var speakLang = isUserToDe ? 'de-DE' : partnerCfg.speechLang;
 
     setLiveStatus(isUserToDe
-        ? 'در حال انتقال آنلاین صدا به آلمانی...'
-        : 'در حال انتقال آنلاین صدای آلمانی به ' + partnerCfg.label + '...');
+        ? 'در حال انتقال به آلمانی...'
+        : 'در حال انتقال به ' + partnerCfg.label + '...');
 
-    translateOnlineText(sourceText, fromLang, toLang, function(translatedText) {
+    translateSmart(sourceText, fromLang, toLang, function(translatedText) {
         if (outEl) {
             outEl.setAttribute('data-speak', translatedText);
             outEl.textContent = translatedText;
@@ -2087,7 +2304,7 @@ window.relayVoiceAndSpeak = function(mode, presetText) {
                     if (autoContinuousConversation && !activeMicMode && document.getElementById('drawer-live_voice').classList.contains('open')) {
                         startVoiceCapture(nextMode);
                     }
-                }, 450);
+                }, 500);
             } else {
                 setLiveStatus('انتقال صوتی انجام شد.');
             }
@@ -2108,7 +2325,7 @@ function renderLiveConversationFeed() {
     var feed = document.getElementById('liveChatFeed');
     if (!feed) return;
     if (!liveConversationHistory.length) {
-        feed.innerHTML = '<div style="font-size:13px;color:var(--muted);">گفت‌وگوی صوتی زنده هنوز آغازی نداشته است.</div>';
+        feed.innerHTML = '<div style="font-size:13px;color:var(--muted);">گفت‌وگوی صوتی هنوز آغازی نداشته است.</div>';
         return;
     }
     var html = '';
@@ -2120,7 +2337,7 @@ function renderLiveConversationFeed() {
                 '<div style="font-size:11.5px;color:var(--muted);font-weight:800;">' +
                     (isUser ? ('طرف ۱ (' + turn.partnerLabel + ' ➔ 🇩🇪 آلمانی)') : ('طرف ۲ (🇩🇪 آلمانی ➔ ' + turn.partnerLabel + ')')) + ' • ' + turn.time +
                 '</div>' +
-                '<div style="margin-top:4px;font-size:13.5px;"><strong>صدا / متن اصلی:</strong> ' + turn.source + '</div>' +
+                '<div style="margin-top:4px;font-size:13.5px;"><strong>متن / گفتار اصلی:</strong> ' + turn.source + '</div>' +
                 '<div style="margin-top:3px;font-size:14px;font-weight:900;color:' + (isUser ? '#1d4ed8' : '#15803d') + ';">' +
                     '<strong>ترجمه پخش‌شده:</strong> ' + turn.translated +
                 '</div>' +
@@ -2400,9 +2617,9 @@ window.renderVocab100kList = function() {
 function buildTranslatorHtml() {
     return (
         '<div class="sub-card">' +
-            '<h4>🌐 ترجمه متنی هر جمله یا متن نوشته‌شده</h4>' +
+            '<h4>🌐 ترجمه متنی هر جمله یا متن نوشته‌شده (آنلاین و آفلاین)</h4>' +
             '<label style="font-size:13px;font-weight:800;">هر متن، کلمه یا جمله‌ای که می‌نویسید اینجا ترجمه می‌شود:</label>' +
-            '<textarea id="transInput" placeholder="متن خود را بنویسید (مثلاً: من امروز زبان آلمانی تمرین می‌کنم یا Ich möchte ein Zimmer buchen)..."></textarea>' +
+            '<textarea id="transInput" placeholder="متن خود را بنویسید (مثلاً: من به داکتر نیاز دارم یا Ich möchte ein Zimmer buchen)..."></textarea>' +
             '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">' +
                 '<select id="transDir">' +
                     '<option value="fa|de">فارسی به آلمانی (FA ➜ DE)</option>' +
@@ -2436,7 +2653,7 @@ window.runSentenceTranslate = function() {
     var to = parts[1];
 
     box.textContent = '⏳ در حال ترجمه متن...';
-    translateOnlineText(txt, from, to, function(finalOut) {
+    translateSmart(txt, from, to, function(finalOut) {
         box.setAttribute('data-de', to === 'de' ? finalOut : txt);
         box.setAttribute('data-fa', to === 'fa' ? finalOut : txt);
         box.innerHTML = '<div><strong>متن اصلی:</strong> ' + txt + '</div><div style="margin-top:6px;"><strong>ترجمه (' + to.toUpperCase() + '):</strong> ' + finalOut + '</div>';
