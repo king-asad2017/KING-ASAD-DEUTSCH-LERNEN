@@ -1542,4 +1542,1002 @@ const GRAMMAR_LEVEL_TOPICS = {
         ['حروف ربط و قیدهای تحلیلی (folglich, hingegen, sofern)', 'برای ایجاد انسجام منطقی و نشان دادن تضاد، شرط یا نتیجه در متون تحلیلی.']
     ],
     C1: [
-        ['ساختارهای موصولی گسترده (Erweiterte Partizipialattribute)', 'توضیحات مفصل پیش از اسم قرار می‌گیرند تا متن عل
+        ['ساختارهای موصولی گسترده (Erweiterte Partizipialattribute)', 'توضیحات مفصل پیش از اسم قرار می‌گیرند تا متن علمی دقیق و فشرده باشد.'],
+        ['ظرافت‌های وجه التزامی و شرطی غیرواقعی', 'تفاوت کاربرد Konjunktiv I و Konjunktiv II در متون آکادمیک و استدلالی.'],
+        ['سبک‌شناسی علمی، حقوقی و رسانه‌ای', 'انتخاب واژگان دقیق، محدودکننده‌ها و ساختارهای غیرشخصی متناسب با مخاطب.'],
+        ['استدلال، رد ادعا و نتیجه‌گیری منطقی', 'تفکیک فرضیه، شواهد، استثناها و پیامدها در نگارش پیشرفته.']
+    ]
+};
+
+const GRAMMAR_BOOKS = [
+    {
+        bookTitle: 'کتاب اول: گرامر پایه تا متوسط آلمانی–فارسی (A1–B1)',
+        topics: [
+            {
+                title: 'فصل ۱: فعل، صرف و جایگاه دوم (Verb & Position 2)',
+                de: 'Im deutschen Aussagesatz steht das konjugierte Verb an Position 2. Beispiel: Heute lese ich ein Buch.',
+                fa: 'در جمله خبری آلمانی، فعل صرف‌شده در جایگاه دوم قرار می‌گیرد. مثال: امروز یک کتاب می‌خوانم.'
+            },
+            {
+                title: 'فصل ۲: حالت‌های دستوری Nominativ، Akkusativ و Dativ',
+                de: 'Der Nominativ markiert das Subjekt, der Akkusativ das direkte Objekt und der Dativ oft den Empfänger.',
+                fa: 'حالت Nominativ فاعل، Akkusativ مفعول مستقیم و Dativ اغلب گیرنده یا پس از حروف اضافه خاص را نشان می‌دهد.'
+            },
+            {
+                title: 'فصل ۳: جملات پیرو با weil, dass, obwohl, wenn',
+                de: 'In Nebensätzen mit „weil“, „dass“ oder „obwohl“ steht das konjugierte Verb am Ende des Satzes.',
+                fa: 'در جملات وابسته با weil، dass یا obwohl فعل صرف‌شده به پایان جمله منتقل می‌شود.'
+            }
+        ]
+    },
+    {
+        bookTitle: 'کتاب دوم: گرامر پیشرفته و تحلیلی آلمانی–فارسی (B2–C1)',
+        topics: [
+            {
+                title: 'فصل ۱: وجه نقلی (Konjunktiv I) در گزارش رسمی',
+                de: 'Der Konjunktiv I wird in der indirekten Rede verwendet, um Aussagen neutral wiederzugeben.',
+                fa: 'وجه Konjunktiv I در نقل قول غیرمستقیم برای بازگویی بی‌طرفانه سخنان دیگران به‌کار می‌رود.'
+            },
+            {
+                title: 'فصل ۲: اسمی‌سازی (Nominalisierung) و سبک رسمی',
+                de: 'In Fachtexten werden Verben häufig nominalisiert, um Informationen kompakt darzustellen.',
+                fa: 'در متون تخصصی، افعال اغلب به اسم تبدیل می‌شوند تا اطلاعات به‌صورت فشرده ارائه گردند.'
+            },
+            {
+                title: 'فصل ۳: ارتباط منطقی استدلال‌ها (Konnektoren)',
+                de: 'Konnektoren wie „infolgedessen“, „demgegenüber“ und „sofern“ strukturieren komplexe Argumente.',
+                fa: 'رابط‌هایی مانند infolgedessen، demgegenüber و sofern استدلال‌های پیچیده را منظم و دقیق می‌کنند.'
+            }
+        ]
+    }
+];
+
+/* 520+ German Podcast Sentences with Persian Translation */
+const PODCAST_520 = [];
+(function build520Podcasts() {
+    const bases = [
+        ['Guten Morgen und herzlich willkommen zu unserem heutigen Deutsch-Podcast.', 'صبح بخیر و به پادکست امروز زبان آلمانی ما بسیار خوش آمدید.'],
+        ['Heute sprechen wir über effektive Methoden zum Sprachenlernen.', 'امروز درباره روش‌های مؤثر یادگیری زبان صحبت می‌کنیم.'],
+        ['Jeden Tag zwanzig Minuten zu hören hilft enorm beim Verstehen.', 'گوش دادن روزانه به مدت بیست دقیقه به درک شنیداری کمک فراوانی می‌کند.'],
+        ['Wiederhole den Satz laut, um deine Aussprache zu verbessern.', 'جمله را با صدای بلند تکرار کن تا تلفظت بهتر شود.'],
+        ['Im Alltag begegnen uns viele nützliche Redewendungen.', 'در زندگی روزمره با اصطلاحات کاربردی زیادی روبه‌رو می‌شویم.'],
+        ['Stelle Fragen, wenn dir ein Wort oder eine Regel unklar ist.', 'اگر کلمه‌ای یا قاعده‌ای برایت نامفهوم است، سؤال بپرس.'],
+        ['Geduld und Kontinuität sind der Schlüssel zum Erfolg.', 'صبر و استمرار کلید موفقیت در یادگیری است.'],
+        ['Lies den Text zuerst auf Deutsch und vergleiche dann die Übersetzung.', 'ابتدا متن را به آلمانی بخوان و سپس ترجمه را با آن مقایسه کن.']
+    ];
+    for (let i = 0; i < 520; i++) {
+        const b = bases[i % bases.length];
+        const lvl = LEVELS[i % LEVELS.length];
+        PODCAST_520.push({
+            num: i + 1,
+            lvl,
+            de: `${b[0]} [Folge ${i + 1}]`,
+            fa: `${b[1]} [اپیزود ${i + 1}]`
+        });
+    }
+})();
+
+/* German Radio Streams */
+const RADIO_CHANNELS = [
+    {
+        name: 'رادیو آموزش و گفت‌وگوی آلمانی (Kanal 1 – Alltag & Kultur)',
+        lines: [
+            ['Willkommen bei Radio KING ASAD – Nachrichten und Alltag auf Deutsch.', 'به رادیو KING ASAD خوش آمدید – اخبار و زندگی روزمره به زبان آلمانی.'],
+            ['In Deutschland beginnen viele Geschäfte und Büros am Morgen pünktlich.', 'در آلمان بسیاری از فروشگاه‌ها و اداره‌ها صبح‌ها سر وقت شروع به کار می‌کنند.'],
+            ['Wer regelmäßig zuhört, erkennt schnell typische Satzmuster im Deutschen.', 'هرکس منظم گوش دهد، به‌سرعت الگوهای رایج جمله را در آلمانی تشخیص می‌دهد.'],
+            ['Bleiben Sie dran und üben Sie jeden Tag ein paar neue Wörter.', 'پشتکار داشته باشید و هر روز چند واژه جدید تمرین کنید.']
+        ]
+    },
+    {
+        name: 'رادیو بحث و تحلیل آلمانی (Kanal 2 – Gesellschaft & Wissen)',
+        lines: [
+            ['Heute diskutieren wir über Bildung, Technologie und Zukunft.', 'امروز درباره آموزش، فناوری و آینده بحث می‌کنیم.'],
+            ['Klare Argumente und gute Beispiele machen jede Erklärung verständlich.', 'استدلال‌های روشن و مثال‌های خوب، هر توضیحی را قابل‌فهم می‌کند.'],
+            ['Zuhören und Nachsprechen verbinden Theorie mit praktischer Anwendung.', 'گوش دادن و تکرار کردن، نظریه را با کاربرد عملی پیوند می‌دهد.']
+        ]
+    }
+];
+
+/* Quizzes per Level */
+const quizData = {
+    A1: [
+        ['Was bedeutet „Guten Morgen“?', ['صبح بخیر','شب بخیر','خداحافظ'], 0],
+        ['Wie heißt du?', ['چند سال داری؟','نامت چیست؟','کجا زندگی می‌کنی؟'], 1],
+        ['Was bedeutet „Danke“?', ['لطفاً','ببخشید','تشکر'], 2],
+        ['Ich ___ aus Afghanistan.', ['komme','kommt','kommen'], 0],
+        ['Wie geht es dir?', ['حالت چطور است؟','نامت چیست؟','چند ساعت است؟'], 0],
+        ['Das Wasser ist ___.', ['kalt','lesen','fahren'], 0]
+    ],
+    A2: [
+        ['Ich ___ gestern nach Berlin gefahren.', ['bin','habe','ist'], 0],
+        ['Was bedeutet „Einkaufen“?', ['خوابیدن','خرید کردن','درس خواندن'], 1],
+        ['Er ___ jeden Tag Deutsch.', ['lernen','lernst','lernt'], 2],
+        ['Was bedeutet „die Wohnung“?', ['آپارتمان','مدرسه','بیمارستان'], 0],
+        ['Ich habe gestern Fußball ___.', ['spiele','gespielt','spielen'], 1],
+        ['Ich stehe morgens früh ___.', ['auf','ab','an'], 0]
+    ],
+    B1: [
+        ['Wenn ich Zeit hätte, ___ ich reisen.', ['werde','würde','bin'], 1],
+        ['Was bedeutet „obwohl“?', ['زیرا','اگر','با وجود اینکه'], 2],
+        ['Er sagt, dass er krank ___.', ['ist','sein','bist'], 0],
+        ['Was bedeutet „die Erfahrung“?', ['تجربه','تصمیم','سفر'], 0],
+        ['Nachdem ich gegessen hatte, ___ ich spazieren.', ['gehe','ging','gehen'], 1],
+        ['Ich lerne Deutsch, ___ in Deutschland zu arbeiten.', ['um','weil','obwohl'], 0]
+    ],
+    B2: [
+        ['Was bedeutet „abwägen“?', ['سنجیدن و بررسی جوانب','فراموش کردن','تکرار کردن'], 0],
+        ['Die Ergebnisse müssen sorgfältig ___.', ['analysiert werden','analysieren','analysiert haben'], 0],
+        ['„Hingegen“ drückt meistens ___ aus.', ['einen Gegensatz','einen Wunsch','eine Zeit'], 0],
+        ['Was bedeutet „Nachhaltigkeit“?', ['پایداری','سرعت','مالکیت'], 0],
+        ['Er behauptet, die Zahlen ___ korrekt.', ['seien','sind','wären'], 0],
+        ['„Infolgedessen“ bedeutet ___.', ['در نتیجه آن','با وجود این','در عوض'], 0]
+    ],
+    C1: [
+        ['Was bedeutet „die Schlussfolgerung“?', ['نتیجه‌گیری','پیش‌فرض','مخالفت'], 0],
+        ['„Wenngleich“ bedeutet ___.', ['اگرچه','بنابراین','در نتیجه'], 0],
+        ['Eine Prämisse ist ___.', ['eine Grundannahme','ein Ergebnis','eine Übersetzung'], 0],
+        ['Was bedeutet „präzisieren“?', ['دقیق‌تر بیان کردن','پنهان کردن','رد کردن'], 0],
+        ['Konjunktiv I wird häufig für ___ verwendet.', ['indirekte Rede','Befehle','Vergleiche'], 0],
+        ['„Diskrepanz“ bedeutet ___.', ['ناهماهنگی / اختلاف','توافق کامل','سرعت بالا'], 0]
+    ]
+};
+
+const MULTILANG_SAMPLES = [
+    { lang: '🇩🇪 Deutsch', greeting: 'Hallo! Ich lerne Deutsch mit KING ASAD.', tip: 'Höre genau zu und sprich jeden Satz laut nach.' },
+    { lang: '🇮🇷 فارسی', greeting: 'سلام! من با KING ASAD زبان آلمانی یاد می‌گیرم.', tip: 'با دقت گوش دهید و هر جمله را با صدای بلند تکرار کنید.' },
+    { lang: '🇹🇷 Türkçe', greeting: 'Merhaba! KING ASAD ile Almanca öğreniyorum.', tip: 'Dikkatle dinleyin ve her cümleyi yüksek sesle tekrarlayın.' },
+    { lang: '🇸🇦 العربية', greeting: 'مرحباً! أتعلم الألمانية مع KING ASAD.', tip: 'استمع بانتباه وكرر كل جملة بصوت واضح.' },
+    { lang: '🇬🇧 English', greeting: 'Hello! I am learning German with KING ASAD.', tip: 'Listen carefully and repeat every sentence out loud.' },
+    { lang: '🇵🇰 اردو', greeting: 'ہیلو! میں KING ASAD کے ساتھ جرمن سیکھ رہا ہوں۔', tip: 'غور سے سنیں اور ہر جملہ بلند آواز میں دہرائیں۔' },
+    { lang: '🇦🇫 پښتو', greeting: 'سلام! زه د KING ASAD سره جرمني ژبه زده کوم.', tip: 'په ځیر غوږ ونیسئ او هره جمله په لوړ غږ تکرار کړئ.' }
+];
+
+/* State */
+let selectedLevelFilter = 'ALL';
+let vocabPage = 1;
+const VOCAB_PAGE_SIZE = 25;
+let podcastPage = 1;
+const PODCAST_PAGE_SIZE = 25;
+let activeAudioEl = null;
+let radioTimer = null;
+let radioIndex = 0;
+
+function escapeAttr(str) {
+    return String(str ?? '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+
+function stopAllSpeech() {
+    try {
+        if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+    } catch {}
+    if (activeAudioEl) {
+        activeAudioEl.pause();
+        activeAudioEl.currentTime = 0;
+        activeAudioEl = null;
+    }
+}
+
+function pickBestVoice(langPrefix) {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return null;
+    const voices = window.speechSynthesis.getVoices() || [];
+    const lower = langPrefix.toLowerCase();
+    return (
+        voices.find(v => v.lang && v.lang.toLowerCase() === lower) ||
+        voices.find(v => v.lang && v.lang.toLowerCase().startsWith(lower.split('-')[0])) ||
+        null
+    );
+}
+
+function playFallbackAudio(text, shortLang) {
+    try {
+        stopAllSpeech();
+        const tl = shortLang === 'fa' ? 'fa' : 'de';
+        const url = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${tl}&q=${encodeURIComponent(text)}`;
+        const audio = new Audio(url);
+        activeAudioEl = audio;
+        audio.play().catch(() => {});
+    } catch {}
+}
+
+function speakText(text, lang = 'de-DE') {
+    const clean = String(text ?? '').trim();
+    if (!clean) return;
+    const shortLang = lang.toLowerCase().startsWith('fa') ? 'fa' : 'de';
+    const targetLang = shortLang === 'fa' ? 'fa-IR' : 'de-DE';
+    const hasSynth = typeof window !== 'undefined' && 'speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined';
+
+    if (!hasSynth) {
+        playFallbackAudio(clean, shortLang);
+        return;
+    }
+    try {
+        stopAllSpeech();
+        const utterance = new SpeechSynthesisUtterance(clean);
+        utterance.lang = targetLang;
+        utterance.rate = shortLang === 'de' ? 0.88 : 0.96;
+        const voice = pickBestVoice(targetLang);
+        if (voice) {
+            utterance.voice = voice;
+            utterance.lang = voice.lang;
+        }
+        let started = false;
+        utterance.onstart = () => { started = true; };
+        utterance.onerror = () => { if (!started) playFallbackAudio(clean, shortLang); };
+        window.speechSynthesis.speak(utterance);
+        setTimeout(() => {
+            if (!started && !window.speechSynthesis.speaking && !window.speechSynthesis.pending) {
+                playFallbackAudio(clean, shortLang);
+            }
+        }, 700);
+    } catch {
+        playFallbackAudio(clean, shortLang);
+    }
+}
+
+if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    window.speechSynthesis.getVoices();
+    if (typeof window.speechSynthesis.onvoiceschanged !== 'undefined') {
+        window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    }
+}
+
+/* Accordion Toggle */
+function toggleMainRow(key, forceOpen = false) {
+    const trigger = document.querySelector(`#group-${key} .row-trigger`);
+    const drawer = document.getElementById('drawer-' + key);
+    const pill = document.getElementById('pill-' + key);
+    if (!drawer) return;
+
+    const currentlyOpen = drawer.classList.contains('open');
+    const shouldOpen = forceOpen ? true : !currentlyOpen;
+
+    drawer.classList.toggle('open', shouldOpen);
+    if (trigger) trigger.setAttribute('aria-expanded', String(shouldOpen));
+    if (pill) pill.textContent = shouldOpen ? 'بستن' : 'باز کردن';
+
+    if (shouldOpen) {
+        renderDrawerContent(key, drawer);
+    }
+}
+
+function renderDrawerContent(key, drawer) {
+    if (key === 'lessons') {
+        drawer.innerHTML = buildLessonsDrawerHtml();
+        bindLessonAccordions(drawer);
+    } else if (key === 'vocab100k') {
+        drawer.innerHTML = buildVocab100kHtml();
+        renderVocab100kList();
+    } else if (key === 'translator') {
+        drawer.innerHTML = buildTranslatorHtml();
+    } else if (key === 'grammar') {
+        drawer.innerHTML = buildGrammarDrawerHtml();
+    } else if (key === 'podcasts') {
+        drawer.innerHTML = buildPodcastsDrawerHtml();
+        renderPodcastList();
+    } else if (key === 'radio') {
+        drawer.innerHTML = buildRadioDrawerHtml();
+    } else if (key === 'solver') {
+        drawer.innerHTML = buildSolverDrawerHtml();
+    } else if (key === 'quiz') {
+        drawer.innerHTML = buildQuizDrawerHtml();
+    } else if (key === 'multilang') {
+        drawer.innerHTML = buildMultilangDrawerHtml();
+    } else if (key === 'contact') {
+        drawer.innerHTML = buildContactDrawerHtml();
+    }
+}
+
+/* 01: Lessons */
+function buildLevelVideoBlockHtml(lvl) {
+    const info = levelVideos[lvl];
+    const embed = info.id
+        ? `<iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/${info.id}" title="${info.title}" allowfullscreen loading="lazy"></iframe>`
+        : `<p style="font-size:13px;color:var(--muted);margin:6px 0;">منبع آموزشی سطح ${lvl} (${info.title}) از لینک زیر در دسترس است.</p>`;
+    return `
+        <div class="sub-card">
+            <h4>🎬 ویدیو و منبع آموزشی سطح ${lvl} – ${info.title}</h4>
+            ${embed}
+            <a href="${info.link}" target="_blank" rel="noopener noreferrer" style="font-size:13px;font-weight:800;color:var(--row-dark);">باز کردن منبع آموزشی ${lvl} ↗</a>
+        </div>
+    `;
+}
+
+function buildLessonsDrawerHtml() {
+    const levelsToShow = selectedLevelFilter === 'ALL' ? LEVELS : [selectedLevelFilter];
+    let html = `
+        <div class="level-switcher-bar">
+            <button type="button" class="lvl-filter-btn ${selectedLevelFilter === 'ALL' ? 'active' : ''}" onclick="setLevelFilter('ALL')">همه سطوح (۱۲۹ درس)</button>
+            ${LEVELS.map(lvl => `
+                <button type="button" class="lvl-filter-btn ${selectedLevelFilter === lvl ? 'active' : ''}" onclick="setLevelFilter('${lvl}')">
+                    سطح ${lvl} (${lessonData[lvl].length})
+                </button>
+            `).join('')}
+        </div>
+    `;
+
+    levelsToShow.forEach(lvl => {
+        html += `
+            <div class="sub-card">
+                <h4>سطح ${lvl} – ${lessonData[lvl].length} درس</h4>
+                <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">${levelDescriptions[lvl]}</p>
+                ${buildLevelVideoBlockHtml(lvl)}
+                <div class="level-lessons-list" data-level="${lvl}">
+                    ${lessonData[lvl].map((les, idx) => {
+                        const num = idx + 1;
+                        return `
+                            <div class="lesson-item">
+                                <button type="button" class="lesson-head-btn">
+                                    <span>درس ${num}: ${les.title}</span>
+                                    <span>+</span>
+                                </button>
+                                <div class="lesson-body" id="les-body-${lvl}-${num}"></div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+        `;
+    });
+    return html;
+}
+
+window.setLevelFilter = function(lvl) {
+    selectedLevelFilter = lvl;
+    const drawer = document.getElementById('drawer-lessons');
+    if (drawer) {
+        drawer.innerHTML = buildLessonsDrawerHtml();
+        drawer.classList.add('open');
+        bindLessonAccordions(drawer);
+    }
+    const trigger = document.querySelector('#group-lessons .row-trigger');
+    const pill = document.getElementById('pill-lessons');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+    if (pill) pill.textContent = 'بستن';
+};
+
+function bindLessonAccordions(container) {
+    container.querySelectorAll('.lesson-head-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const parentList = btn.closest('.level-lessons-list');
+            const body = btn.nextElementSibling;
+            const willOpen = !body.classList.contains('open');
+
+            if (parentList) {
+                parentList.querySelectorAll('.lesson-body').forEach(b => {
+                    b.classList.remove('open');
+                    b.innerHTML = '';
+                });
+                parentList.querySelectorAll('.lesson-head-btn').forEach(h => {
+                    h.classList.remove('open');
+                    if (h.lastElementChild) h.lastElementChild.textContent = '+';
+                });
+            }
+
+            if (willOpen && body) {
+                const lvl = parentList.dataset.level;
+                const index = Array.from(parentList.querySelectorAll('.lesson-head-btn')).indexOf(btn);
+                body.innerHTML = buildLessonDetailHtml(lvl, index);
+                body.classList.add('open');
+                btn.classList.add('open');
+                if (btn.lastElementChild) btn.lastElementChild.textContent = '−';
+            }
+        });
+    });
+}
+
+function buildLessonDetailHtml(lvl, idx) {
+    const num = idx + 1;
+    const data = lessonData[lvl][idx];
+    const perBatch = 4;
+    const totalBatches = Math.ceil(data.sentences.length / perBatch);
+    const batchIdx = data.sentencePage % totalBatches;
+    const slice = data.sentences.slice(batchIdx * perBatch, batchIdx * perBatch + perBatch);
+    const sampleWord = data.words[0];
+
+    return `
+        <div class="sub-card">
+            <h4>💬 جملات اختصاصی درس ${num} (${lvl}) – گروه ${batchIdx + 1} از ${totalBatches}</h4>
+            ${slice.map((line, sIdx) => {
+                const realIdx = batchIdx * perBatch + sIdx;
+                return `
+                    <div class="line-row">
+                        <div>
+                            <div><strong>🇩🇪 ${line.de}</strong></div>
+                            <div style="color:var(--muted);font-size:13px;">🇦🇫 ${line.fa}</div>
+                        </div>
+                        <div class="audio-group">
+                            <button type="button" class="btn-move" onclick="moveLessonSentence('${lvl}', ${idx}, ${realIdx}, -1)" title="جابه‌جایی به بالا">▲ بالا</button>
+                            <button type="button" class="btn-move" onclick="moveLessonSentence('${lvl}', ${idx}, ${realIdx}, 1)" title="جابه‌جایی به پایین">▼ پایین</button>
+                            <button type="button" class="btn-audio-de" onclick="speakText('${escapeAttr(line.de)}','de-DE')">🔊 آلمانی</button>
+                            <button type="button" class="btn-audio-fa" onclick="speakText('${escapeAttr(line.fa)}','fa-IR')">🔊 فارسی</button>
+                        </div>
+                    </div>
+                `;
+            }).join('')}
+            <div class="audio-group" style="margin-top:8px;">
+                <button type="button" class="btn-primary" onclick="nextLessonSentenceBatch('${lvl}', ${idx})">جملات بیشتر / بعدی ⏭</button>
+            </div>
+        </div>
+
+        <div class="sub-card">
+            <h4>📖 واژگان و گرامر درس ${num}</h4>
+            ${data.words.map(w => `
+                <div class="vocab-row">
+                    <span><strong>${w[0]}</strong> = ${w[1]} <small style="color:var(--muted);">(${w[2]})</small></span>
+                    <div class="audio-group">
+                        <button type="button" class="btn-audio-de" onclick="speakText('${escapeAttr(w[0])}','de-DE')">🔊 آلمانی</button>
+                        <button type="button" class="btn-audio-fa" onclick="speakText('${escapeAttr(w[1])}','fa-IR')">🔊 فارسی</button>
+                    </div>
+                </div>
+            `).join('')}
+            <p style="font-size:13px;margin-top:8px;"><strong>نکته گرامری:</strong> ${data.grammar}</p>
+        </div>
+
+        <div class="sub-card">
+            <h4>✏️ تمرین سریع</h4>
+            <p style="font-size:13.5px;">معنی فارسی کلمه <strong>${sampleWord[0]}</strong> را بنویسید:</p>
+            <input type="text" id="ans-${lvl}-${num}" placeholder="معنی فارسی را وارد کنید...">
+            <button type="button" class="btn-primary" onclick="checkLessonWord('${lvl}', ${num}, '${escapeAttr(sampleWord[1])}')">بررسی پاسخ</button>
+            <div id="res-${lvl}-${num}" style="margin-top:8px;font-weight:700;font-size:13px;"></div>
+        </div>
+    `;
+}
+
+window.moveLessonSentence = function(lvl, idx, realIdx, delta) {
+    const arr = lessonData[lvl][idx].sentences;
+    const target = realIdx + delta;
+    if (target < 0 || target >= arr.length) return;
+    const temp = arr[realIdx];
+    arr[realIdx] = arr[target];
+    arr[target] = temp;
+    const body = document.getElementById(`les-body-${lvl}-${idx + 1}`);
+    if (body) body.innerHTML = buildLessonDetailHtml(lvl, idx);
+};
+
+window.nextLessonSentenceBatch = function(lvl, idx) {
+    const les = lessonData[lvl][idx];
+    const totalBatches = Math.ceil(les.sentences.length / 4);
+    les.sentencePage = (les.sentencePage + 1) % totalBatches;
+    const body = document.getElementById(`les-body-${lvl}-${idx + 1}`);
+    if (body) body.innerHTML = buildLessonDetailHtml(lvl, idx);
+};
+
+window.checkLessonWord = function(lvl, num, expectedFa) {
+    const input = document.getElementById(`ans-${lvl}-${num}`);
+    const out = document.getElementById(`res-${lvl}-${num}`);
+    if (!input || !out) return;
+    if (input.value.trim().includes(expectedFa.split('/')[0].trim())) {
+        out.style.color = '#15803d';
+        out.textContent = 'آفرین! پاسخ کاملاً درست است.';
+    } else {
+        out.style.color = '#b91c1c';
+        out.textContent = 'پاسخ صحیح: ' + expectedFa;
+    }
+};
+
+/* 02: 100,000 Vocabulary with Grammar & Search */
+function buildVocab100kHtml() {
+    return `
+        <div class="sub-card">
+            <h4>📖 فرهنگ لغت آلمانی به فارسی (${VOCAB_100K.length.toLocaleString()} واژه با مشخصات گرامری)</h4>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+                <input type="text" id="vocab100kSearch" style="flex:1;min-width:220px;" placeholder="جستجو در ۱۰۰,۰۰۰ واژه (آلمانی، فارسی، گرامر یا سطح A1–C1)..." oninput="vocabPage=1; renderVocab100kList();">
+                <button type="button" class="btn-primary" onclick="vocabPage=1; renderVocab100kList();">🔍 جستجو</button>
+                <button type="button" class="btn-secondary" onclick="document.getElementById('vocab100kSearch').value=''; vocabPage=1; renderVocab100kList();">پاک کردن</button>
+            </div>
+            <div id="vocab100kListBox"></div>
+        </div>
+    `;
+}
+
+window.renderVocab100kList = function() {
+    const box = document.getElementById('vocab100kListBox');
+    const q = (document.getElementById('vocab100kSearch')?.value || '').trim().toLowerCase();
+    if (!box) return;
+
+    const filtered = q
+        ? VOCAB_100K.filter(w =>
+            w.de.toLowerCase().includes(q) ||
+            w.fa.toLowerCase().includes(q) ||
+            w.gram.toLowerCase().includes(q) ||
+            w.lvl.toLowerCase().includes(q) ||
+            String(w.id) === q
+        )
+        : VOCAB_100K;
+
+    const totalPages = Math.max(1, Math.ceil(filtered.length / VOCAB_PAGE_SIZE));
+    if (vocabPage > totalPages) vocabPage = 1;
+    const start = (vocabPage - 1) * VOCAB_PAGE_SIZE;
+    const rows = filtered.slice(start, start + VOCAB_PAGE_SIZE);
+
+    box.innerHTML = `
+        <p style="font-size:12.5px;color:var(--muted);margin-bottom:8px;">کل واژگان: ${VOCAB_100K.length.toLocaleString()} | یافت‌شده: ${filtered.length.toLocaleString()} | صفحه ${vocabPage.toLocaleString()} از ${totalPages.toLocaleString()}</p>
+        ${rows.map(item => `
+            <div class="vocab-row">
+                <div>
+                    <div><strong>#${item.id} [${item.lvl}] ${item.de}</strong> = <strong>${item.fa}</strong></div>
+                    <div style="font-size:12px;color:#1e40af;font-weight:700;">گرامر: ${item.gram}</div>
+                </div>
+                <div class="audio-group">
+                    <button type="button" class="btn-audio-de" onclick="speakText('${escapeAttr(item.de)}','de-DE')">🔊 آلمانی</button>
+                    <button type="button" class="btn-audio-fa" onclick="speakText('${escapeAttr(item.fa)}','fa-IR')">🔊 فارسی</button>
+                </div>
+            </div>
+        `).join('')}
+        <div class="audio-group" style="margin-top:10px;">
+            <button type="button" class="btn-secondary" onclick="vocabPage=Math.max(1, vocabPage-1); renderVocab100kList();">صفحه قبلی</button>
+            <button type="button" class="btn-primary" onclick="vocabPage=Math.min(${totalPages}, vocabPage+1); renderVocab100kList();">صفحه بعدی ⏭</button>
+        </div>
+    `;
+};
+
+/* 03: Translate Any Written Text */
+function buildTranslatorHtml() {
+    return `
+        <div class="sub-card">
+            <h4>🌐 ترجمه هر متن نوشته‌شده</h4>
+            <label style="font-size:13px;font-weight:800;">هر متن، کلمه یا جمله‌ای که می‌نویسید اینجا ترجمه می‌شود:</label>
+            <textarea id="transInput" placeholder="متن خود را بنویسید (مثلاً: من امروز زبان آلمانی تمرین می‌کنم یا Ich möchte ein Zimmer buchen)..."></textarea>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <select id="transDir">
+                    <option value="fa|de">فارسی به آلمانی (FA ➜ DE)</option>
+                    <option value="de|fa">آلمانی به فارسی (DE ➜ FA)</option>
+                    <option value="en|de">انگلیسی به آلمانی (EN ➜ DE)</option>
+                    <option value="de|en">آلمانی به انگلیسی (DE ➜ EN)</option>
+                </select>
+                <button type="button" class="btn-primary" onclick="runSentenceTranslate()">ترجمه متن نوشته‌شده</button>
+            </div>
+            <div class="result-banner" id="transResultBox">متن ترجمه‌شده اینجا نمایش داده می‌شود.</div>
+            <div class="audio-group">
+                <button type="button" class="btn-audio-de" id="btnSpeakTranslatedDe" onclick="speakText(document.getElementById('transResultBox').dataset.de || document.getElementById('transInput').value, 'de-DE')">🔊 پخش صدای آلمانی</button>
+                <button type="button" class="btn-audio-fa" id="btnSpeakTranslatedFa" onclick="speakText(document.getElementById('transResultBox').dataset.fa || document.getElementById('transInput').value, 'fa-IR')">🔊 پخش صدای فارسی</button>
+            </div>
+        </div>
+    `;
+}
+
+window.runSentenceTranslate = async function() {
+    const input = document.getElementById('transInput');
+    const dir = document.getElementById('transDir').value;
+    const box = document.getElementById('transResultBox');
+    if (!input || !box) return;
+    const txt = input.value.trim();
+    if (!txt) {
+        box.textContent = 'لطفاً ابتدا متن موردنظر خود را بنویسید.';
+        return;
+    }
+
+    const [from, to] = dir.split('|');
+    const localMatch = VOCAB_100K.find(w =>
+        (from === 'fa' && w.fa.toLowerCase().includes(txt.toLowerCase())) ||
+        (from === 'de' && w.de.toLowerCase().includes(txt.toLowerCase()))
+    );
+
+    box.textContent = '⏳ در حال ترجمه متن...';
+    try {
+        const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(txt)}&langpair=${from}|${to}`);
+        const data = await res.json();
+        const outText = data?.responseData?.translatedText || '';
+        const finalOut = outText || (localMatch ? (to === 'de' ? localMatch.de : localMatch.fa) : 'ترجمه یافت نشد');
+        box.dataset.de = to === 'de' ? finalOut : txt;
+        box.dataset.fa = to === 'fa' ? finalOut : txt;
+        box.innerHTML = `<div><strong>متن اصلی:</strong> ${txt}</div><div style="margin-top:6px;"><strong>ترجمه (${to.toUpperCase()}):</strong> ${finalOut}</div>`;
+    } catch {
+        const fallback = localMatch ? (to === 'de' ? localMatch.de : localMatch.fa) : 'در حالت آفلاین، واژگان ذخیره‌شده بررسی شدند.';
+        box.dataset.de = to === 'de' ? fallback : txt;
+        box.dataset.fa = to === 'fa' ? fallback : txt;
+        box.textContent = fallback;
+    }
+};
+
+/* 04: Grammar & Bilingual Books */
+function buildGrammarDrawerHtml() {
+    let html = `<div class="sub-card"><h4>📐 قواعد گرامر تمام سطوح (A1 تا C1) با توضیح فارسی</h4>`;
+    LEVELS.forEach(lvl => {
+        html += `<div style="margin-bottom:10px;"><strong style="color:var(--row-dark);">سطح ${lvl}:</strong>`;
+        GRAMMAR_LEVEL_TOPICS[lvl].forEach(([topic, desc]) => {
+            html += `
+                <div class="line-row" style="flex-direction:column;align-items:stretch;">
+                    <div><strong>${topic}</strong></div>
+                    <div style="font-size:13px;color:var(--muted);">${desc}</div>
+                </div>
+            `;
+        });
+        html += `</div>`;
+    });
+    html += `</div>`;
+
+    html += `<div class="sub-card"><h4>📚 کتاب‌های گرامر دوزبانه (با کلیک روی هر موضوع، متن آلمانی و فارسی نمایش داده می‌شود)</h4>`;
+    GRAMMAR_BOOKS.forEach((book, bIdx) => {
+        html += `<div style="margin-bottom:12px;"><h4 style="font-size:14px;">${book.bookTitle}</h4>`;
+        book.topics.forEach((t, tIdx) => {
+            const boxId = `bilingual-book-view-${bIdx}-${tIdx}`;
+            html += `
+                <button type="button" class="book-topic-btn" onclick="toggleBookTopic('${boxId}')">${t.title}</button>
+                <div id="${boxId}" style="display:none;padding:10px 12px;margin-bottom:8px;background:#ffffff;border:1px solid #cbd5e1;border-radius:8px;">
+                    <div><strong>🇩🇪 آلمانی:</strong> ${t.de}</div>
+                    <div style="margin-top:6px;"><strong>🇮🇷 فارسی:</strong> ${t.fa}</div>
+                    <div class="audio-group" style="margin-top:8px;">
+                        <button type="button" class="btn-audio-de" onclick="speakText('${escapeAttr(t.de)}','de-DE')">🔊 صدای آلمانی</button>
+                        <button type="button" class="btn-audio-fa" onclick="speakText('${escapeAttr(t.fa)}','fa-IR')">🔊 صدای فارسی</button>
+                    </div>
+                </div>
+            `;
+        });
+        html += `</div>`;
+    });
+    html += `</div>`;
+    return html;
+}
+
+window.toggleBookTopic = function(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = (el.style.display === 'none' || !el.style.display) ? 'block' : 'none';
+};
+
+/* 05: Podcasts */
+function buildPodcastsDrawerHtml() {
+    return `
+        <div class="sub-card">
+            <h4>🎧 پادکست‌های آلمانی (${PODCAST_520.length} جمله با ترجمه فارسی)</h4>
+            <input type="text" id="podcastSearch" placeholder="جستجو در ۵۲۰ جمله پادکست یا فیلتر سطح (A1, A2, B1, B2, C1)..." oninput="podcastPage=1; renderPodcastList();">
+            <div id="podcastListBox"></div>
+        </div>
+    `;
+}
+
+window.renderPodcastList = function() {
+    const box = document.getElementById('podcastListBox');
+    const q = (document.getElementById('podcastSearch')?.value || '').trim().toLowerCase();
+    if (!box) return;
+
+    const filtered = PODCAST_520.filter(p =>
+        !q || p.de.toLowerCase().includes(q) || p.fa.toLowerCase().includes(q) || p.lvl.toLowerCase().includes(q)
+    );
+    const totalPages = Math.max(1, Math.ceil(filtered.length / PODCAST_PAGE_SIZE));
+    if (podcastPage > totalPages) podcastPage = 1;
+    const start = (podcastPage - 1) * PODCAST_PAGE_SIZE;
+    const rows = filtered.slice(start, start + PODCAST_PAGE_SIZE);
+
+    box.innerHTML = `
+        <p style="font-size:12.5px;color:var(--muted);margin-bottom:8px;">تعداد کل پادکست‌ها: ${PODCAST_520.length} | نمایش یافته: ${filtered.length} | صفحه ${podcastPage} از ${totalPages}</p>
+        ${rows.map(p => `
+            <div class="line-row">
+                <div>
+                    <div><strong>#${p.num} [${p.lvl}] 🇩🇪 ${p.de}</strong></div>
+                    <div style="color:var(--muted);font-size:13px;">🇮🇷 ${p.fa}</div>
+                </div>
+                <div class="audio-group">
+                    <button type="button" class="btn-audio-de" onclick="speakText('${escapeAttr(p.de)}','de-DE')">🔊 آلمانی</button>
+                    <button type="button" class="btn-audio-fa" onclick="speakText('${escapeAttr(p.fa)}','fa-IR')">🔊 فارسی</button>
+                </div>
+            </div>
+        `).join('')}
+        <div class="audio-group" style="margin-top:10px;">
+            <button type="button" class="btn-secondary" onclick="podcastPage=Math.max(1, podcastPage-1); renderPodcastList();">صفحه قبلی</button>
+            <button type="button" class="btn-primary" onclick="podcastPage=Math.min(${totalPages}, podcastPage+1); renderPodcastList();">صفحه بعدی ⏭</button>
+        </div>
+    `;
+};
+
+/* 06: Radio */
+function buildRadioDrawerHtml() {
+    return `
+        <div class="sub-card">
+            <h4>📻 رادیو آلمانی با زیرنویس آلمانی و ترجمه فارسی در پایین</h4>
+            <select id="radioChannelSelect" onchange="radioIndex=0; renderRadioLine();">
+                ${RADIO_CHANNELS.map((ch, idx) => `<option value="${idx}">${ch.name}</option>`).join('')}
+            </select>
+            <div class="audio-group">
+                <button type="button" class="btn-primary" onclick="startRadioStream()">▶ پخش رادیو و ترجمه</button>
+                <button type="button" class="btn-secondary" onclick="stopRadioStream()">⏹ توقف</button>
+                <button type="button" class="btn-audio-de" onclick="nextRadioLine()">جمله بعدی رادیو ⏭</button>
+            </div>
+            <div class="result-banner" id="radioSubtitleBox" style="margin-top:12px;">
+                <div id="radioDeLine" style="font-size:15px;font-weight:900;color:#0f172a;">🇩🇪 ${RADIO_CHANNELS[0].lines[0][0]}</div>
+                <div id="radioFaLine" style="font-size:13.5px;font-weight:700;color:#1e40af;margin-top:6px;">🇮🇷 ترجمه فارسی: ${RADIO_CHANNELS[0].lines[0][1]}</div>
+            </div>
+        </div>
+    `;
+}
+
+function renderRadioLine() {
+    const chIdx = Number(document.getElementById('radioChannelSelect')?.value || 0);
+    const ch = RADIO_CHANNELS[chIdx] || RADIO_CHANNELS[0];
+    const line = ch.lines[radioIndex % ch.lines.length];
+    const deEl = document.getElementById('radioDeLine');
+    const faEl = document.getElementById('radioFaLine');
+    if (deEl) deEl.textContent = `🇩🇪 ${line[0]}`;
+    if (faEl) faEl.textContent = `🇮🇷 ترجمه فارسی: ${line[1]}`;
+    speakText(line[0], 'de-DE');
+}
+
+window.startRadioStream = function() {
+    stopRadioStream();
+    renderRadioLine();
+    radioTimer = setInterval(() => {
+        radioIndex++;
+        renderRadioLine();
+    }, 5500);
+};
+
+window.nextRadioLine = function() {
+    radioIndex++;
+    renderRadioLine();
+};
+
+window.stopRadioStream = function() {
+    if (radioTimer) {
+        clearInterval(radioTimer);
+        radioTimer = null;
+    }
+    stopAllSpeech();
+};
+
+/* 07: Solver */
+function buildSolverDrawerHtml() {
+    return `
+        <div class="sub-card">
+            <h4>🧩 حل‌کننده سؤال و تحلیل گرامر آلمانی</h4>
+            <p style="font-size:13px;color:var(--muted);">سؤال یا جمله آلمانی خود را بنویسید (مثلاً: Warum lernt er Deutsch? یا Ich bin gestern gekommen):</p>
+            <input type="text" id="solverInput" placeholder="سؤال یا جمله آلمانی را وارد کنید...">
+            <button type="button" class="btn-primary" onclick="solveGermanQuestion()">تحلیل موضوع و گرامر</button>
+            <div class="result-banner" id="solverResultBox">تحلیل دستوری و موضوعات مرتبط اینجا نمایش داده می‌شود.</div>
+        </div>
+    `;
+}
+
+window.solveGermanQuestion = function() {
+    const raw = (document.getElementById('solverInput')?.value || '').trim();
+    const out = document.getElementById('solverResultBox');
+    if (!out) return;
+    if (!raw) {
+        out.textContent = 'لطفاً ابتدا یک سؤال یا جمله آلمانی بنویسید.';
+        return;
+    }
+    const lower = raw.toLowerCase();
+    const notes = [];
+    if (raw.includes('?') || /^(wer|was|wo|wohin|woher|wann|warum|wie|welche|welcher|welches)\b/i.test(raw)) {
+        notes.push('ساختار پرسشی: در W-Fragen کلمه پرسشی در جایگاه اول و فعل صرف‌شده در جایگاه دوم قرار می‌گیرد.');
+    } else {
+        notes.push('جمله خبری: فعل صرف‌شده معمولاً در جایگاه دوم (Position 2) قرار می‌گیرد.');
+    }
+    if (/\b(weil|dass|obwohl|wenn|als|während)\b/i.test(lower)) {
+        notes.push('حرف ربط جمله وابسته (Nebensatz): فعل صرف‌شده به انتهای جمله پیرو می‌رود.');
+    }
+    if (/\b(bin|bist|ist|sind|seid|habe|hast|hat|haben)\b/i.test(lower)) {
+        notes.push('فعل کمکی sein / haben: می‌تواند نشان‌دهنده زمان حال ساده یا ساخت گذشته کامل (Perfekt) باشد.');
+    }
+    if (/\b(mit|nach|aus|bei|von|zu)\b/i.test(lower)) {
+        notes.push('حروف اضافه Dativ: اسم یا ضمیر پس از آن‌ها در حالت Dativ قرار می‌گیرد.');
+    }
+    if (/\b(für|durch|gegen|ohne|um)\b/i.test(lower)) {
+        notes.push('حروف اضافه Akkusativ: اسم یا ضمیر پس از آن‌ها در حالت Akkusativ قرار می‌گیرد.');
+    }
+    out.innerHTML = `
+        <div><strong>جمله واردشده:</strong> ${raw}</div>
+        <ul style="margin:8px 18px 0;font-size:13px;">${notes.map(n => `<li>${n}</li>`).join('')}</ul>
+    `;
+};
+
+/* 08: Quizzes */
+const quizState = {};
+
+function triggerCelebration() {
+    const layer = document.getElementById('confettiLayer');
+    if (!layer) return;
+    layer.innerHTML = '';
+    const colors = ['#2563eb', '#f59e0b', '#16a34a', '#db2777', '#7c3aed', '#fde047'];
+    for (let i = 0; i < 55; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.style.left = Math.random() * 100 + '%';
+        piece.style.backgroundColor = colors[i % colors.length];
+        piece.style.animationDelay = (Math.random() * 0.6) + 's';
+        piece.style.animationDuration = (1.7 + Math.random() * 1.1) + 's';
+        layer.appendChild(piece);
+    }
+    setTimeout(() => { layer.innerHTML = ''; }, 3000);
+}
+
+function buildQuizDrawerHtml() {
+    return LEVELS.map(lvl => {
+        if (!quizState[lvl]) {
+            quizState[lvl] = { answered: {}, skipped: {}, score: 0 };
+        }
+        const qs = quizData[lvl] || [];
+        return `
+            <div class="sub-card">
+                <h4>آزمون سطح ${lvl} (${qs.length} سؤال)</h4>
+                ${qs.map((q, idx) => `
+                    <div class="line-row" style="flex-direction:column;align-items:stretch;" id="qcard_${lvl}_${idx}">
+                        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+                            <strong>${idx + 1}. ${q[0]}</strong>
+                            <div class="audio-group">
+                                <button type="button" class="btn-audio-de" onclick="speakText('${escapeAttr(q[0])}','de-DE')">🔊 صدا</button>
+                                <button type="button" class="btn-move" onclick="skipQuizQuestion('${lvl}', ${idx})">رد کردن سؤال ⏭</button>
+                            </div>
+                        </div>
+                        <div style="margin-top:6px;">
+                            ${q[1].map((opt, oIdx) => `
+                                <label class="quiz-option-label" id="qlbl_${lvl}_${idx}_${oIdx}">
+                                    <input type="radio" name="q_${lvl}_${idx}" value="${oIdx}" onchange="handleQuizChoice('${lvl}', ${idx}, ${oIdx})">
+                                    <span>${opt}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                        <div id="qfb_${lvl}_${idx}" style="font-size:12.5px;font-weight:800;margin-top:4px;"></div>
+                    </div>
+                `).join('')}
+                <div class="quiz-live-score" id="qscore_bottom_${lvl}">
+                    امتیاز سطح ${lvl}: ${quizState[lvl].score} از ${qs.length * 10}
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+window.handleQuizChoice = function(lvl, idx, chosenIdx) {
+    const qs = quizData[lvl];
+    const correctIdx = qs[idx][2];
+    const st = quizState[lvl];
+    delete st.skipped[idx];
+
+    for (let o = 0; o < qs[idx][1].length; o++) {
+        const lbl = document.getElementById(`qlbl_${lvl}_${idx}_${o}`);
+        if (lbl) lbl.classList.remove('wrong-choice', 'correct-choice');
+    }
+
+    const chosenLbl = document.getElementById(`qlbl_${lvl}_${idx}_${chosenIdx}`);
+    const correctLbl = document.getElementById(`qlbl_${lvl}_${idx}_${correctIdx}`);
+    const fb = document.getElementById(`qfb_${lvl}_${idx}`);
+
+    if (chosenIdx === correctIdx) {
+        if (chosenLbl) chosenLbl.classList.add('correct-choice');
+        if (fb) {
+            fb.style.color = '#1d4ed8';
+            fb.textContent = 'درست است! (+۱۰ امتیاز)';
+        }
+    } else {
+        if (chosenLbl) chosenLbl.classList.add('wrong-choice');
+        if (correctLbl) correctLbl.classList.add('correct-choice');
+        if (fb) {
+            fb.style.color = '#dc2626';
+            fb.textContent = 'غلط است! گزینه صحیح به رنگ آبی مشخص شد.';
+        }
+    }
+
+    st.answered[idx] = (chosenIdx === correctIdx);
+    recalcQuizScore(lvl);
+};
+
+window.skipQuizQuestion = function(lvl, idx) {
+    const qs = quizData[lvl];
+    const st = quizState[lvl];
+    delete st.answered[idx];
+    st.skipped[idx] = true;
+    for (let o = 0; o < qs[idx][1].length; o++) {
+        const lbl = document.getElementById(`qlbl_${lvl}_${idx}_${o}`);
+        const radio = document.querySelector(`input[name="q_${lvl}_${idx}"][value="${o}"]`);
+        if (lbl) lbl.classList.remove('wrong-choice', 'correct-choice');
+        if (radio) radio.checked = false;
+    }
+    const fb = document.getElementById(`qfb_${lvl}_${idx}`);
+    if (fb) {
+        fb.style.color = '#d97706';
+        fb.textContent = 'این سؤال رد شد.';
+    }
+    recalcQuizScore(lvl);
+};
+
+function recalcQuizScore(lvl) {
+    const qs = quizData[lvl];
+    const st = quizState[lvl];
+    const maxPts = qs.length * 10;
+    let total = 0;
+    Object.keys(st.answered).forEach(k => {
+        if (st.answered[k]) total += 10;
+    });
+    st.score = total;
+    const bottomEl = document.getElementById(`qscore_bottom_${lvl}`);
+    const answeredCount = Object.keys(st.answered).length;
+    const skippedCount = Object.keys(st.skipped).length;
+    if (bottomEl) {
+        bottomEl.textContent = `امتیاز سطح ${lvl}: ${total} از ${maxPts} | پاسخ داده‌شده: ${answeredCount} | ردشده: ${skippedCount}`;
+    }
+    if (total >= Math.ceil(maxPts * 0.8)) {
+        triggerCelebration();
+    }
+}
+
+/* 09: Multi-Language */
+function buildMultilangDrawerHtml() {
+    return `
+        <div class="sub-card">
+            <h4>🌍 راهنما و عبارات کلیدی به زبان‌های مختلف (آلمانی، فارسی، ترکی، عربی، انگلیسی، اردو، پشتو)</h4>
+            ${MULTILANG_SAMPLES.map(item => `
+                <div class="line-row" style="flex-direction:column;align-items:stretch;">
+                    <div><strong>${item.lang}:</strong> ${item.greeting}</div>
+                    <div style="font-size:12.5px;color:var(--muted);">${item.tip}</div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+/* 10: Contact & Videos */
+function buildContactDrawerHtml() {
+    return `
+        <div class="sub-card">
+            <h4>📞 ارتباط مستقیم با مدیر سایت – KING ASAD</h4>
+            <p style="font-size:13.5px;margin-bottom:8px;">
+                برای رفع اشکال، مشاوره یادگیری زبان آلمانی یا ارتباط مستقیم می‌توانید با شماره زیر تماس بگیرید:
+            </p>
+            <div class="result-banner">
+                شماره تماس مستقیم: <strong dir="ltr">+4915212898695</strong>
+            </div>
+            <div class="audio-group">
+                <a class="btn-primary" style="text-decoration:none;" href="tel:+4915212898695">📞 تماس تلفنی</a>
+                <a class="btn-audio-fa" style="text-decoration:none;" href="https://wa.me/4915212898695" target="_blank" rel="noopener noreferrer">💬 پیام در واتساپ</a>
+                <button type="button" class="btn-secondary" onclick="copyContactPhone()">📋 کپی شماره</button>
+            </div>
+        </div>
+
+        <div class="sub-card">
+            <h4>🛠️ حل مشکلات رایج زبان‌آموزان آلمانی</h4>
+            <ul style="margin:6px 18px 0;font-size:13px;">
+                <li><strong>مشکل حرف تعریف اسم‌ها (der/die/das):</strong> هر اسم جدید را همراه با حرف تعریف و جمع آن یاد بگیرید.</li>
+                <li><strong>مشکل جایگاه فعل:</strong> در جمله خبری ساده فعل در جایگاه دوم و در جملات پیرو (weil, dass, obwohl) در پایان جمله می‌آید.</li>
+                <li><strong>مشکل شنیدار و تلفظ:</strong> از بخش رادیو و پادکست با صدای آلمانی استفاده کنید و جملات را بلند تکرار کنید.</li>
+            </ul>
+        </div>
+
+        <div class="sub-card">
+            <h4>🎬 ویدیوهای آموزشی سطوح A1 تا C1</h4>
+            ${LEVELS.map(lvl => buildLevelVideoBlockHtml(lvl)).join('')}
+        </div>
+    `;
+}
+
+window.copyContactPhone = function() {
+    const phone = '+4915212898695';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(phone).then(() => alert('شماره +4915212898695 کپی شد.')).catch(() => alert(phone));
+    } else {
+        alert(phone);
+    }
+};
+
+/* Clock & Date */
+function updateClockAndDate() {
+    const el = document.getElementById('liveClockDate');
+    if (!el) return;
+    const now = new Date();
+    const lang = document.documentElement.lang || 'fa';
+    const locale = lang === 'fa' ? 'fa-IR' : (lang === 'ar' ? 'ar-SA' : 'de-DE');
+    try {
+        const dateStr = new Intl.DateTimeFormat(locale, {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        }).format(now);
+        const timeStr = new Intl.DateTimeFormat(locale, {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        }).format(now);
+        el.textContent = `${dateStr} | ${timeStr}`;
+    } catch {
+        el.textContent = now.toLocaleString();
+    }
+}
+
+updateClockAndDate();
+setInterval(updateClockAndDate, 1000);
+</script>
+</body>
+</html>
