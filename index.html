@@ -387,7 +387,7 @@ html, body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* AI Voice Companion Stage (Voice-First, Zero Text Needed) */
+/* AI Voice Companion Stage */
 .ai-voice-stage {
     background: linear-gradient(145deg, #071936 0%, #0f294a 60%, #11385e 100%);
     color: #ffffff;
@@ -970,7 +970,7 @@ textarea {
             <div class="row-drawer" id="drawer-vocab100k"></div>
         </section>
 
-        <!-- 03: AI Live Voice Companion (Voice-Only, Dari/Persian <-> German & Other Languages) -->
+        <!-- 03: AI Live Voice Companion -->
         <section class="row-group" data-color="teal" data-row-key="live_voice" id="group-live_voice">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-live_voice">
                 <span class="row-square"><span class="row-num">03</span><span class="row-emoji">🤖</span></span>
@@ -978,7 +978,7 @@ textarea {
                 <span class="row-bar">
                     <span class="row-bar-content">
                         <span class="row-title">دستیار صوتی زنده هوش مصنوعی (دری/فارسی ↔ آلمانی بدون نیاز به متن)</span>
-                        <span class="row-desc">شما به دری صحبت کنید به آلمانی گفته می‌شود؛ طرف مقابل آلمانی بگوید به دری گفته می‌شود</span>
+                        <span class="row-desc">بعد از گرفتن صدا، ترجمه به زبان انتخاب‌شده با صدا پخش می‌شود</span>
                     </span>
                     <span class="row-status-pill" id="pill-live_voice">باز کردن</span>
                 </span>
@@ -1126,16 +1126,15 @@ textarea {
 var LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
 var AI_LANGUAGES = [
-    { code: 'fa', speechLang: 'fa-IR', label: '🇦🇫🇮🇷 دری / فارسی' },
-    { code: 'de', speechLang: 'de-DE', label: '🇩🇪 آلمانی (Deutsch)' },
-    { code: 'ps', speechLang: 'ps-AF', label: '🇦🇫 پشتو' },
-    { code: 'tr', speechLang: 'tr-TR', label: '🇹🇷 ترکی' },
-    { code: 'ar', speechLang: 'ar-SA', label: '🇸🇦 عربی' },
-    { code: 'en', speechLang: 'en-US', label: '🇬🇧 انگلیسی' },
-    { code: 'ur', speechLang: 'ur-PK', label: '🇵🇰 اردو' }
+    { code: 'fa', speechLang: 'fa-IR', ttsLang: 'fa', label: '🇦🇫🇮🇷 دری / فارسی' },
+    { code: 'de', speechLang: 'de-DE', ttsLang: 'de', label: '🇩🇪 آلمانی (Deutsch)' },
+    { code: 'ps', speechLang: 'ps-AF', ttsLang: 'ps', label: '🇦🇫 پشتو' },
+    { code: 'tr', speechLang: 'tr-TR', ttsLang: 'tr', label: '🇹🇷 ترکی' },
+    { code: 'ar', speechLang: 'ar-SA', ttsLang: 'ar', label: '🇸🇦 عربی' },
+    { code: 'en', speechLang: 'en-US', ttsLang: 'en', label: '🇬🇧 انگلیسی' },
+    { code: 'ur', speechLang: 'ur-PK', ttsLang: 'ur', label: '🇵🇰 اردو' }
 ];
 
-/* Offline Phrasebook & Dictionary for Newcomers Without Internet */
 var OFFLINE_PHRASES = [
     { fa: 'کمک می‌خواهم، من زبان آلمانی بلد نیستم', de: 'Bitte helfen Sie mir, ich spreche kein Deutsch.' },
     { fa: 'من تازه به آلمان آمده‌ام', de: 'Ich bin neu in Deutschland.' },
@@ -1667,7 +1666,8 @@ var aiRecognizer = null;
 var aiSpeaking = false;
 var aiShowOptionalText = false;
 var aiLastSpokenResult = '';
-var aiLastSpokenLang = 'de-DE';
+var aiLastSpokenLangCode = 'de';
+var aiLastSpokenSpeechLang = 'de-DE';
 
 function getAiLangConfig(code) {
     for (var i = 0; i < AI_LANGUAGES.length; i++) {
@@ -1713,36 +1713,57 @@ function pickBestVoice(langPrefix) {
     return null;
 }
 
-function playOnlineVoiceChunk(text, shortLang, onDone) {
-    try {
-        var tl = shortLang || 'de';
-        var url = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=' + encodeURIComponent(tl) + '&q=' + encodeURIComponent(text);
-        var audio = new Audio(url);
-        activeAudioEl = audio;
-        var doneOnce = false;
-        var finish = function() {
-            if (!doneOnce) {
-                doneOnce = true;
-                aiSpeaking = false;
-                updateAiOrbVisual();
-                if (typeof onDone === 'function') onDone();
-            }
-        };
-        audio.onended = finish;
-        audio.onerror = finish;
-        var p = audio.play();
-        if (p && p.catch) {
-            p.catch(function() { finish(); });
+function splitTextForTts(text, maxLen) {
+    var clean = String(text || '').trim();
+    if (!clean) return [];
+    var limit = maxLen || 175;
+    if (clean.length <= limit) return [clean];
+    var chunks = [];
+    var start = 0;
+    while (start < clean.length) {
+        var end = Math.min(clean.length, start + limit);
+        if (end < clean.length) {
+            var spaceIdx = clean.lastIndexOf(' ', end);
+            if (spaceIdx > start + 30) end = spaceIdx;
         }
-        setTimeout(finish, Math.min(11000, Math.max(2400, text.length * 105)));
-    } catch (e) {
+        var piece = clean.slice(start, end).trim();
+        if (piece) chunks.push(piece);
+        start = end;
+    }
+    return chunks;
+}
+
+function playTtsChunksSequentially(chunks, ttsLang, index, onDone) {
+    if (index >= chunks.length) {
         aiSpeaking = false;
         updateAiOrbVisual();
         if (typeof onDone === 'function') onDone();
+        return;
+    }
+    try {
+        var chunk = chunks[index];
+        var url = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=' + encodeURIComponent(ttsLang) + '&q=' + encodeURIComponent(chunk);
+        var audio = new Audio(url);
+        activeAudioEl = audio;
+        var movedNext = false;
+        var goNext = function() {
+            if (movedNext) return;
+            movedNext = true;
+            playTtsChunksSequentially(chunks, ttsLang, index + 1, onDone);
+        };
+        audio.onended = goNext;
+        audio.onerror = goNext;
+        var p = audio.play();
+        if (p && p.catch) {
+            p.catch(function() { goNext(); });
+        }
+        setTimeout(goNext, Math.min(11000, Math.max(2500, chunk.length * 115)));
+    } catch (e) {
+        playTtsChunksSequentially(chunks, ttsLang, index + 1, onDone);
     }
 }
 
-/* Reliable Voice Output for Dari/Persian, German & Other Languages */
+/* Guaranteed Playback After Speech Capture */
 function speakText(text, lang, onDone) {
     var clean = (text === null || text === undefined) ? '' : String(text).trim();
     if (!clean) {
@@ -1764,35 +1785,47 @@ function speakText(text, lang, onDone) {
         }
     };
 
+    /* For Persian/Dari or other languages without guaranteed local voice, or whenever online TTS is available, play reliably */
+    var localVoice = pickBestVoice(langStr);
+    var preferOnlineTts = (!localVoice && navigator.onLine !== false) || (shortLang === 'fa' && !localVoice && navigator.onLine !== false);
+
+    if (preferOnlineTts) {
+        var chunks = splitTextForTts(clean, 175);
+        playTtsChunksSequentially(chunks, shortLang, 0, finish);
+        return;
+    }
+
     try {
         if (window.speechSynthesis && typeof SpeechSynthesisUtterance !== 'undefined') {
-            window.speechSynthesis.cancel();
             var utterance = new SpeechSynthesisUtterance(clean);
             utterance.lang = langStr;
-            utterance.rate = shortLang === 'de' ? 0.92 : 0.95;
-            var voice = pickBestVoice(langStr);
-            if (voice) {
-                utterance.voice = voice;
-                utterance.lang = voice.lang;
+            utterance.rate = shortLang === 'de' ? 0.92 : 0.96;
+            if (localVoice) {
+                utterance.voice = localVoice;
+                utterance.lang = localVoice.lang;
             }
-            var fallbackTimer = setTimeout(function() {
-                if (!doneCalled) {
+
+            var started = false;
+            utterance.onstart = function() { started = true; };
+
+            var safetyTimer = setTimeout(function() {
+                if (!doneCalled && !started) {
                     if (navigator.onLine !== false) {
-                        playOnlineVoiceChunk(clean, shortLang, finish);
+                        playTtsChunksSequentially(splitTextForTts(clean, 175), shortLang, 0, finish);
                     } else {
                         finish();
                     }
                 }
-            }, Math.min(4200, Math.max(1500, clean.length * 70)));
+            }, 1400);
 
             utterance.onend = function() {
-                clearTimeout(fallbackTimer);
+                clearTimeout(safetyTimer);
                 finish();
             };
             utterance.onerror = function() {
-                clearTimeout(fallbackTimer);
+                clearTimeout(safetyTimer);
                 if (navigator.onLine !== false) {
-                    playOnlineVoiceChunk(clean, shortLang, finish);
+                    playTtsChunksSequentially(splitTextForTts(clean, 175), shortLang, 0, finish);
                 } else {
                     finish();
                 }
@@ -1804,7 +1837,7 @@ function speakText(text, lang, onDone) {
     } catch (e) {}
 
     if (navigator.onLine !== false) {
-        playOnlineVoiceChunk(clean, shortLang, finish);
+        playTtsChunksSequentially(splitTextForTts(clean, 175), shortLang, 0, finish);
     } else {
         finish();
     }
@@ -1870,7 +1903,7 @@ function renderDrawerContent(key, drawer) {
     }
 }
 
-/* 03: AI Live Voice Companion (Voice-First, No Text Needed) */
+/* 03: AI Live Voice Companion */
 function buildAiLiveVoiceDrawerHtml() {
     var myCfg = getAiLangConfig(aiMyLang);
     var otherCfg = getAiLangConfig(aiOtherLang);
@@ -1888,7 +1921,7 @@ function buildAiLiveVoiceDrawerHtml() {
             '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">' +
                 '<div>' +
                     '<div style="font-size:17px;font-weight:900;">🤖 دستیار صوتی زنده هوش مصنوعی (گفت‌وگوی صوتی بدون متن)</div>' +
-                    '<div style="font-size:12.5px;color:#bae6fd;margin-top:2px;">شما به زبان خود (مثلاً دری) حرف بزنید، هوش مصنوعی به زبان طرف مقابل (مثلاً آلمانی) می‌گوید؛ طرف مقابل آلمانی بگوید، به دری برای شما می‌گوید.</div>' +
+                    '<div style="font-size:12.5px;color:#bae6fd;margin-top:2px;">بعد از گرفتن صدا، ترجمه به زبان انتخاب‌شده با صدا پخش می‌شود؛ شما به دری حرف بزنید به آلمانی گفته می‌شود و طرف مقابل آلمانی بگوید به دری گفته می‌شود.</div>' +
                 '</div>' +
                 '<span id="aiNetBadge" style="background:rgba(16,185,129,0.2);color:#6ee7b7;border:1px solid #34d399;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:800;">● آماده</span>' +
             '</div>' +
@@ -1911,7 +1944,7 @@ function buildAiLiveVoiceDrawerHtml() {
                     '<span id="aiOrbLabel">شروع گفت‌وگو</span>' +
                 '</button>' +
                 '<div id="aiLiveHeadline" style="margin-top:14px;font-size:15px;font-weight:900;color:#fde047;">دکمه را بزنید و مستقیم صحبت کنید (' + myCfg.label + ' ⇄ ' + otherCfg.label + ')</div>' +
-                '<div id="aiLiveSubline" style="margin-top:4px;font-size:12.5px;color:#cbd5e1;">نیازی به تایپ یا خواندن متن نیست؛ صدا خودکار ترجمه و پخش می‌شود.</div>' +
+                '<div id="aiLiveSubline" style="margin-top:4px;font-size:12.5px;color:#cbd5e1;">پس از شنیدن صدا، ترجمه بلافاصله با صدای بلند پخش می‌شود.</div>' +
             '</div>' +
 
             '<div class="ai-two-sides-row">' +
@@ -1952,10 +1985,6 @@ function refreshAiNetBadge() {
 window.setAiLanguages = function(myCode, otherCode) {
     aiMyLang = myCode || 'fa';
     aiOtherLang = otherCode || 'de';
-    var myCfg = getAiLangConfig(aiMyLang);
-    var otherCfg = getAiLangConfig(aiOtherLang);
-    var h = document.getElementById('aiLiveHeadline');
-    if (h) h.textContent = 'دکمه را بزنید و مستقیم صحبت کنید (' + myCfg.label + ' ⇄ ' + otherCfg.label + ')';
     var drawer = document.getElementById('drawer-live_voice');
     if (drawer && drawer.classList.contains('open')) {
         drawer.innerHTML = buildAiLiveVoiceDrawerHtml();
@@ -2081,16 +2110,65 @@ window.aiSpeakTurn = function(turnWho) {
     updateAiOrbVisual();
     setAiStatusLines(
         aiCurrentTurn === 'me'
-            ? 'شما صحبت کنید (' + myCfg.label + ') ➔ ترجمه صوتی به ' + otherCfg.label
-            : 'طرف مقابل صحبت کند (' + otherCfg.label + ') ➔ ترجمه صوتی به ' + myCfg.label,
+            ? 'شما صحبت کنید (' + myCfg.label + ') ➔ پخش صوتی به ' + otherCfg.label
+            : 'طرف مقابل صحبت کند (' + otherCfg.label + ') ➔ پخش صوتی به ' + myCfg.label,
         'در حال گوش دادن به صدا...'
     );
 
     var heardText = '';
+    var processedResult = false;
+
+    var handleCapturedSpeech = function(spokenStr) {
+        if (processedResult) return;
+        processedResult = true;
+
+        var cleanSpoken = String(spokenStr || '').trim();
+        if (!cleanSpoken) {
+            if (aiSessionActive) {
+                setTimeout(function() {
+                    if (aiSessionActive && !aiRecognizer && !aiSpeaking) {
+                        aiSpeakTurn(aiCurrentTurn);
+                    }
+                }, 450);
+            }
+            return;
+        }
+
+        var heardEl = document.getElementById('aiOptHeard');
+        if (heardEl) heardEl.textContent = cleanSpoken;
+
+        setAiStatusLines('در حال انتقال به ' + targetCfg.label + '...', 'لطفاً صبر کنید...');
+
+        translateAiUtterance(cleanSpoken, speakCfg.code, targetCfg.code, function(translatedOut) {
+            var finalSaid = String(translatedOut || cleanSpoken).trim();
+            aiLastSpokenResult = finalSaid;
+            aiLastSpokenLangCode = targetCfg.ttsLang;
+            aiLastSpokenSpeechLang = targetCfg.speechLang;
+
+            var trEl = document.getElementById('aiOptTranslated');
+            if (trEl) trEl.textContent = finalSaid;
+
+            setAiStatusLines('🔊 در حال پخش صدا به زبان ' + targetCfg.label + '...', finalSaid);
+
+            speakText(finalSaid, targetCfg.speechLang, function() {
+                if (aiSessionActive) {
+                    var nextTurn = (aiCurrentTurn === 'me') ? 'other' : 'me';
+                    aiCurrentTurn = nextTurn;
+                    setTimeout(function() {
+                        if (aiSessionActive && !aiRecognizer && !aiSpeaking) {
+                            aiSpeakTurn(nextTurn);
+                        }
+                    }, 400);
+                }
+            });
+        });
+    };
 
     rec.onresult = function(event) {
         if (event.results && event.results.length > 0 && event.results[0].length > 0) {
             heardText = String(event.results[0][0].transcript || '').trim();
+            try { rec.stop(); } catch (e) {}
+            handleCapturedSpeech(heardText);
         }
     };
 
@@ -2109,45 +2187,15 @@ window.aiSpeakTurn = function(turnWho) {
     rec.onend = function() {
         aiRecognizer = null;
         updateAiOrbVisual();
-
-        if (!heardText) {
-            if (aiSessionActive) {
-                setTimeout(function() {
-                    if (aiSessionActive && !aiRecognizer && !aiSpeaking) {
-                        aiSpeakTurn(aiCurrentTurn);
-                    }
-                }, 500);
-            }
-            return;
-        }
-
-        var heardEl = document.getElementById('aiOptHeard');
-        if (heardEl) heardEl.textContent = heardText;
-
-        setAiStatusLines('هوش مصنوعی در حال انتقال صدا به ' + targetCfg.label + '...', 'لطفاً کمی صبر کنید...');
-
-        translateAiUtterance(heardText, speakCfg.code, targetCfg.code, function(translatedOut) {
-            var finalSaid = translatedOut || heardText;
-            aiLastSpokenResult = finalSaid;
-            aiLastSpokenLang = targetCfg.speechLang;
-
-            var trEl = document.getElementById('aiOptTranslated');
-            if (trEl) trEl.textContent = finalSaid;
-
-            setAiStatusLines('پخش صدای ' + targetCfg.label + '...', 'گوش دهید...');
-
-            speakText(finalSaid, targetCfg.speechLang, function() {
-                if (aiSessionActive) {
-                    var nextTurn = (aiCurrentTurn === 'me') ? 'other' : 'me';
-                    aiCurrentTurn = nextTurn;
-                    setTimeout(function() {
-                        if (aiSessionActive && !aiRecognizer && !aiSpeaking) {
-                            aiSpeakTurn(nextTurn);
-                        }
-                    }, 350);
+        if (heardText && !processedResult) {
+            handleCapturedSpeech(heardText);
+        } else if (!processedResult && aiSessionActive) {
+            setTimeout(function() {
+                if (aiSessionActive && !aiRecognizer && !aiSpeaking) {
+                    aiSpeakTurn(aiCurrentTurn);
                 }
-            });
-        });
+            }, 500);
+        }
     };
 
     try {
@@ -2208,7 +2256,7 @@ function translateAiUtterance(text, fromCode, toCode, callback) {
 
 window.replayLastAiVoice = function() {
     if (!aiLastSpokenResult) return;
-    speakText(aiLastSpokenResult, aiLastSpokenLang);
+    speakText(aiLastSpokenResult, aiLastSpokenSpeechLang);
 };
 
 /* 01: Lessons */
