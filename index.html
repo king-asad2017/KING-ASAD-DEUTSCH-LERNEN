@@ -336,74 +336,6 @@ html, body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.video-library-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 8px;
-    margin-bottom: 12px;
-}
-
-.video-pick-btn {
-    padding: 9px 11px;
-    border-radius: 10px;
-    border: 1.5px solid #cbd5e1;
-    background: #f8fafc;
-    color: #0f172a;
-    font-family: inherit;
-    font-size: 12.5px;
-    font-weight: 800;
-    text-align: start;
-    cursor: pointer;
-}
-
-.video-pick-btn.active {
-    background: #1d4ed8;
-    color: #ffffff;
-    border-color: #1e40af;
-}
-
-.topic-jump-list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-top: 10px;
-}
-
-.topic-jump-btn {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 9px 12px;
-    border-radius: 9px;
-    border: 1px solid #cbd5e1;
-    background: #ffffff;
-    color: #0f172a;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 800;
-    text-align: start;
-    cursor: pointer;
-}
-
-.topic-jump-btn:hover {
-    background: #eff6ff;
-    border-color: #2563eb;
-    color: #1e40af;
-}
-
-.ts-badge {
-    background: #dbeafe;
-    color: #1e3a8a;
-    border-radius: 6px;
-    padding: 2px 8px;
-    font-size: 12px;
-    font-family: "Inter", monospace;
-    direction: ltr;
-    white-space: nowrap;
-}
-
 .dialogue-panel {
     background: linear-gradient(145deg, #07162e 0%, #0e264b 65%, #123261 100%);
     color: #ffffff;
@@ -522,7 +454,7 @@ textarea { min-height: 70px; resize: vertical; }
     border-radius: 9px; padding: 10px 14px; margin: 10px 0; font-weight: 700; font-size: 13.5px;
 }
 
-.video-frame { width: 100%; max-width: 720px; aspect-ratio: 16 / 9; border: 0; border-radius: 12px; display: block; margin: 8px 0; background: #000; }
+.video-frame { width: 100%; max-width: 680px; aspect-ratio: 16 / 9; border: 0; border-radius: 10px; display: block; margin: 8px 0; }
 
 .quiz-option-label {
     display: flex; align-items: center; gap: 8px; margin: 5px 0; padding: 7px 10px;
@@ -531,6 +463,12 @@ textarea { min-height: 70px; resize: vertical; }
 .quiz-option-label.wrong-choice { background-color: #dc2626 !important; border-color: #991b1b !important; color: #ffffff !important; font-weight: 800; }
 .quiz-option-label.correct-choice { background-color: #2563eb !important; border-color: #1e40af !important; color: #ffffff !important; font-weight: 800; }
 .quiz-live-score { margin-top: 10px; padding: 10px 12px; border-radius: 9px; background: #eff6ff; border: 1px solid #93c5fd; color: #1e3a8a; font-weight: 800; font-size: 13.5px; }
+
+.book-topic-btn {
+    width: 100%; text-align: start; padding: 10px 12px; border-radius: 9px; border: 1px solid #cbd5e1;
+    background: #ffffff; color: #0f172a; font-family: inherit; font-size: 13.5px; font-weight: 800; cursor: pointer; margin-bottom: 6px;
+}
+.book-topic-btn:hover, .book-topic-btn.active { background: var(--row-soft); border-color: var(--row-main); color: var(--row-dark); }
 
 .modal-backdrop { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.72); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 9999; }
 .modal-backdrop.open { display: flex; }
@@ -573,7 +511,7 @@ textarea { min-height: 70px; resize: vertical; }
         <div style="font-size:13px;font-weight:900;color:#b45309;margin-bottom:4px;">👑 KING ASAD – مرکز آموزش زبان آلمانی</div>
         <h2 id="welcomeTitle" style="font-size:21px;font-weight:900;margin-bottom:8px;">خوش آمدید! به دنیای یادگیری زبان آلمانی خوش آمدید</h2>
         <p style="font-size:13.5px;color:#374151;margin-bottom:12px;">
-            تمام ویدیوهای ارسالی شما به همراه موضوعات قابل کلیک، پادکست‌های آنلاین صوتی معتبر (با انتخاب زبان در پایین پادکست)، فرهنگ لغت آنلاین نامحدود، تبدیل صدا و متن و آزمون‌ها در این سامانه یکجا آماده است.
+            در این سامانه می‌توانید در <strong>فرهنگ لغت آنلاین نامحدود</strong> هر لغت را پیدا کنید، در پایین آن <strong>جملات روزمره با افعال بودن، داشتن، خواستن، گرفتن، فرستادن و دادن</strong> ببینید، با <strong>۶ ویدیوی جدید و سطوح A1–C1</strong> تمرین کنید و از <strong>پادکست‌های دارای بخش زبان اختیاری در پایین هر پادکست</strong> استفاده نمایید.
         </p>
         <p style="font-size:13px;color:#1e3a8a;font-weight:800;margin-bottom:14px;">
             تماس مستقیم با مدیر: <span dir="ltr">+4915212898695</span>
@@ -597,7 +535,7 @@ textarea { min-height: 70px; resize: vertical; }
         </div>
 
         <div class="hero-stats-text" id="uiSubtitle">
-            پخش تمام ویدیوهای ارسالی با موضوعات قابل کلیک • پادکست‌های صوتی آنلاین معتبر + زبان دلخواه در پایین • فرهنگ لغت نامحدود
+            فرهنگ لغت آنلاین نامحدود + جملات روزمره • ۶ ویدیوی جدید و سطوح A1–C1 • پادکست با زبان اختیاری • گرامر کامل و آزمون
         </div>
 
         <div class="hero-controls-row">
@@ -614,7 +552,7 @@ textarea { min-height: 70px; resize: vertical; }
         </div>
 
         <button type="button" class="hero-start-btn" id="btnStartJourney">
-            <span>پخش ویدیوها و موضوعات • Jetzt starten</span>
+            <span>شروع • Jetzt starten</span>
             <span>‹</span>
         </button>
     </section>
@@ -623,39 +561,39 @@ textarea { min-height: 70px; resize: vertical; }
         <button type="button" class="level-tile tile-a1" data-tile-level="A1">
             <span class="tile-icon">📘</span>
             <span class="tile-code">A1</span>
-            <span class="tile-sub">لغات + ۱۰۰ فعل A1</span>
+            <span class="tile-sub">درس ۱۹ • 19 Lektionen</span>
         </button>
         <button type="button" class="level-tile tile-a2" data-tile-level="A2">
             <span class="tile-icon">📗</span>
             <span class="tile-code">A2</span>
-            <span class="tile-sub">۱۰۰ سوال و جواب A2</span>
+            <span class="tile-sub">درس ۲۰ • 20 Lektionen</span>
         </button>
         <button type="button" class="level-tile tile-b1" data-tile-level="B1">
             <span class="tile-icon">📙</span>
             <span class="tile-code">B1</span>
-            <span class="tile-sub">لغات و جملات + ۱۰۰ فعل گذشته B1</span>
+            <span class="tile-sub">درس ۳۰ • 30 Lektionen</span>
         </button>
         <button type="button" class="level-tile tile-b2" data-tile-level="B2">
             <span class="tile-icon">📕</span>
             <span class="tile-code">B2</span>
-            <span class="tile-sub">۱۰۰ کلمه مهم B2</span>
+            <span class="tile-sub">درس ۳۰ • 30 Lektionen</span>
         </button>
         <button type="button" class="level-tile tile-c1" data-tile-level="C1">
             <span class="tile-icon">🎓</span>
             <span class="tile-code">C1</span>
-            <span class="tile-sub">۱۰۰ واژه کاربردی C1</span>
+            <span class="tile-sub">درس ۳۰ • 30 Lektionen</span>
         </button>
     </section>
 
     <main class="stacked-rows" id="mainRows">
         <section class="row-group" data-color="blue" data-row-key="lessons" id="group-lessons">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-lessons">
-                <span class="row-square"><span class="row-num">01</span><span class="row-emoji">🎬</span></span>
+                <span class="row-square"><span class="row-num">01</span><span class="row-emoji">📚</span></span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
-                        <span class="row-title">پخش تمام ویدیوهای ارسالی + موضوعات قابل کلیک (A1 تا C1)</span>
-                        <span class="row-desc">هر ویدیو را انتخاب و پخش کنید؛ روی هر موضوع کلیک کنید تا مستقیماً به همان تایم‌استمپ برود</span>
+                        <span class="row-title">سطوح و درس‌ها (A1 تا C1 – ۱۲۹ درس) + جابه‌جایی و جملات بیشتر</span>
+                        <span class="row-desc">ویدیوی هر سطح، جملات غیرتکراری با دکمه جابه‌جایی بالا/پایین و «جملات بیشتر / بعدی»</span>
                     </span>
                     <span class="row-status-pill" id="pill-lessons">باز کردن</span>
                 </span>
@@ -663,28 +601,13 @@ textarea { min-height: 70px; resize: vertical; }
             <div class="row-drawer" id="drawer-lessons"></div>
         </section>
 
-        <section class="row-group" data-color="purple" data-row-key="podcasts" id="group-podcasts">
-            <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-podcasts">
-                <span class="row-square"><span class="row-num">02</span><span class="row-emoji">🎧</span></span>
-                <span class="row-bridge"></span>
-                <span class="row-bar">
-                    <span class="row-bar-content">
-                        <span class="row-title">پادکست‌های آنلاین صوتی معتبر + انتخاب زبان اختیاری در پایین پادکست</span>
-                        <span class="row-desc">پخش صوتی آنلاین DW Deutsch lernen و Slow German + انتخاب زبان در پایین پادکست</span>
-                    </span>
-                    <span class="row-status-pill" id="pill-podcasts">باز کردن</span>
-                </span>
-            </button>
-            <div class="row-drawer" id="drawer-podcasts"></div>
-        </section>
-
         <section class="row-group" data-color="rose" data-row-key="vocab100k" id="group-vocab100k">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-vocab100k">
-                <span class="row-square"><span class="row-num">03</span><span class="row-emoji">📖</span></span>
+                <span class="row-square"><span class="row-num">02</span><span class="row-emoji">📖</span></span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
-                        <span class="row-title">فرهنگ لغت آنلاین نامحدود + جملات روزمره (بودن، داشتن، خواستن، گرفتن، فرستادن، دادن)</span>
+                        <span class="row-title">فرهنگ لغت آنلاین نامحدود + جملات روزمره (بودن، داشتن، خواستن، گرفتن، فرستادن، دادن) + صدا</span>
                         <span class="row-desc">هر لغت را پیدا کنید تا در پایین آن جملات روزمره با افعال اصلی و پخش صوتی با زبان دلخواه نمایش داده شود</span>
                     </span>
                     <span class="row-status-pill" id="pill-vocab100k">باز کردن</span>
@@ -695,12 +618,12 @@ textarea { min-height: 70px; resize: vertical; }
 
         <section class="row-group" data-color="teal" data-row-key="live_voice" id="group-live_voice">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-live_voice">
-                <span class="row-square"><span class="row-num">04</span><span class="row-emoji">🎙️</span></span>
+                <span class="row-square"><span class="row-num">03</span><span class="row-emoji">🎙️</span></span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
                         <span class="row-title">ترجمه صدا و متن دوطرفه (دری ↔ آلمانی و سایر زبان‌ها) + نوشتن مشکلات</span>
-                        <span class="row-desc">صدا به متن، نوشتن مشکلات به زبان خود برای تبدیل به زبان دلخواه و پخش صوتی</span>
+                        <span class="row-desc">صدا به متن، متن مشکلات خود را بنویسید تا به زبان انتخابی تبدیل شود، و پخش صوتی با زبان دلخواه</span>
                     </span>
                     <span class="row-status-pill" id="pill-live_voice">باز کردن</span>
                 </span>
@@ -710,7 +633,7 @@ textarea { min-height: 70px; resize: vertical; }
 
         <section class="row-group" data-color="orange" data-row-key="translator" id="group-translator">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-translator">
-                <span class="row-square"><span class="row-num">05</span><span class="row-emoji">🌐</span></span>
+                <span class="row-square"><span class="row-num">04</span><span class="row-emoji">🌐</span></span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
@@ -725,17 +648,32 @@ textarea { min-height: 70px; resize: vertical; }
 
         <section class="row-group" data-color="green" data-row-key="grammar" id="group-grammar">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-grammar">
-                <span class="row-square"><span class="row-num">06</span><span class="row-emoji">📐</span></span>
+                <span class="row-square"><span class="row-num">05</span><span class="row-emoji">📐</span></span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
-                        <span class="row-title">گرامر و کتاب‌های A1 تا C1 (Verben mit Präposition، Passiv، Konjunktiv، Wortliste...)</span>
-                        <span class="row-desc">قواعد و فهرست الفبایی واژگان سطوح A1 تا C1</span>
+                        <span class="row-title">گرامر و کتاب‌های A1 تا C1 (Verben mit Präposition, Passiv, Konjunktiv, Wortliste...)</span>
+                        <span class="row-desc">تمام بخش‌های درخواستی برای A1، A2، B1، B2 و C1 به همراه کتاب‌های دوزبانه</span>
                     </span>
                     <span class="row-status-pill" id="pill-grammar">باز کردن</span>
                 </span>
             </button>
             <div class="row-drawer" id="drawer-grammar"></div>
+        </section>
+
+        <section class="row-group" data-color="purple" data-row-key="podcasts" id="group-podcasts">
+            <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-podcasts">
+                <span class="row-square"><span class="row-num">06</span><span class="row-emoji">🎧</span></span>
+                <span class="row-bridge"></span>
+                <span class="row-bar">
+                    <span class="row-bar-content">
+                        <span class="row-title">پادکست‌های آلمانی (+۵۲۰ جمله با ترجمه فارسی، زبان اختیاری پایین هر پادکست و صدا)</span>
+                        <span class="row-desc">خواندن و شنیدن بیش از ۵۲۰ جمله آلمانی همراه با ترجمه و انتخاب زبان اختیاری زیر هر پادکست</span>
+                    </span>
+                    <span class="row-status-pill" id="pill-podcasts">باز کردن</span>
+                </span>
+            </button>
+            <div class="row-drawer" id="drawer-podcasts"></div>
         </section>
 
         <section class="row-group" data-color="cyan" data-row-key="radio" id="group-radio">
@@ -760,7 +698,7 @@ textarea { min-height: 70px; resize: vertical; }
                 <span class="row-bar">
                     <span class="row-bar-content">
                         <span class="row-title">حل‌کننده سؤال و تحلیل گرامر آلمانی</span>
-                        <span class="row-desc">سؤال یا جمله آلمانی بنویسید تا موضوعات گرامری نمایش داده شوند</span>
+                        <span class="row-desc">سؤال یا جمله آلمانی بنویسید تا موضوعات، گرامر، افعال و حالت‌ها نمایش داده شوند</span>
                     </span>
                     <span class="row-status-pill" id="pill-solver">باز کردن</span>
                 </span>
@@ -774,8 +712,8 @@ textarea { min-height: 70px; resize: vertical; }
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
-                        <span class="row-title">آزمون‌های تعاملی A1 تا C1 (غلط = سرخ، درست = آبی، دکمه رد کردن، امتیاز و جشن)</span>
-                        <span class="row-desc">نمایش امتیاز در پایین و جشن هنگام کسب امتیاز کامل</span>
+                        <span class="row-title">آزمون‌های تعاملی A1 تا C1 (سرخ/آبی، رد کردن، امتیاز و جشن)</span>
+                        <span class="row-desc">غلط = سرخ، درست = آبی، دکمه رد کردن، نمایش امتیاز در پایین و جشن امتیاز بالا</span>
                     </span>
                     <span class="row-status-pill" id="pill-quiz">باز کردن</span>
                 </span>
@@ -800,12 +738,12 @@ textarea { min-height: 70px; resize: vertical; }
 
         <section class="row-group" data-color="orange" data-row-key="contact" id="group-contact">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-contact">
-                <span class="row-square"><span class="row-num">11</span><span class="row-emoji">📞</span></span>
+                <span class="row-square"><span class="row-num">11</span><span class="row-emoji">🎬</span></span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
-                        <span class="row-title">ارتباط مستقیم با KING ASAD و لینک‌های ویدیوهای آموزشی</span>
-                        <span class="row-desc">شماره تماس مستقیم: +4915212898695</span>
+                        <span class="row-title">۶ ویدیوی آموزشی جدید، سطوح A1–C1 و ارتباط با KING ASAD</span>
+                        <span class="row-desc">۶ ویدیوی جدید (واژگان، افعال، پرسش و پاسخ، کلمات مهم) + شماره تماس: +4915212898695</span>
                     </span>
                     <span class="row-status-pill" id="pill-contact">باز کردن</span>
                 </span>
@@ -835,165 +773,14 @@ var SPEECH_LANGS = [
 
 var selectedAudioVoiceLang = 'de-DE';
 
-/* تمام ۷ ویدیوی ارسالی کاربر به همراه موضوعات و تایم‌استمپ‌های قابل کلیک */
-var USER_VIDEOS = [
-    {
-        id: 'L6jb3CijCnE',
-        level: 'A1',
-        title: 'لغات سطح A1 از صفر تا صد',
-        url: 'https://youtu.be/L6jb3CijCnE',
-        topics: [
-            { sec: 0, ts: '00:00:00', name: 'مقدمه و روش حفظ لغات با جمله ساده' },
-            { sec: 95, ts: '00:01:35', name: 'سلام و احوال‌پرسی و کلمات ابتدایی' },
-            { sec: 535, ts: '00:08:55', name: 'اطلاعات شخصی و خودمعرفی (persönliche Informationen)' },
-            { sec: 1006, ts: '00:16:46', name: 'ضمیرها و کلمات پرسشی (Fragewörter)' },
-            { sec: 1422, ts: '00:23:42', name: 'خانواده و افراد (Familie)' },
-            { sec: 1836, ts: '00:30:36', name: 'زمان، روزهای هفته، وعده‌های زمانی و قیدهای تکرار' },
-            { sec: 2572, ts: '00:42:52', name: 'خانه، اتاق‌ها، وسایل منزل و اجاره' },
-            { sec: 3311, ts: '00:55:11', name: 'غذا، نوشیدنی‌ها و ظروف' },
-            { sec: 4492, ts: '01:14:52', name: 'خرید، قیمت، پول و پرداخت' },
-            { sec: 5284, ts: '01:28:04', name: 'پوشاک، اکسسوری و رنگ‌ها' },
-            { sec: 6078, ts: '01:41:18', name: 'شغل و مشاغل' },
-            { sec: 6708, ts: '01:51:48', name: 'افعال پرکاربرد پایه، مدرسه، آموزش و گرامر' },
-            { sec: 8204, ts: '02:16:44', name: 'محیط کار، فعالیت‌های روزمره و صفت‌ها' },
-            { sec: 9967, ts: '02:46:07', name: 'حرکت، حالت‌ها، احساسات و کارهای خانه' }
-        ]
-    },
-    {
-        id: 'bN0CYbXomqo',
-        level: 'A1',
-        title: '۱۰۰ فعل سطح A1 با جمله ساده و ترجمه',
-        url: 'https://youtu.be/bN0CYbXomqo',
-        topics: [
-            { sec: 0, ts: '00:00:00', name: 'مقدمه و اهمیت افعال پایه (sein, haben)' },
-            { sec: 26, ts: '00:00:26', name: 'افعال حرکتی، زمانی و روزمره (abholen تا bringen)' },
-            { sec: 503, ts: '00:08:23', name: 'افعال ذهنی، ارتباطی و حالتی (denken تا interessieren)' },
-            { sec: 971, ts: '00:16:11', name: 'افعال فعالیت، خرید، خانه و زبان (kaufen تا studieren)' },
-            { sec: 1653, ts: '00:27:33', name: 'ادامه افعال کاربردی و عبارات فعلی (suchen تا eintreffen)' }
-        ]
-    },
-    {
-        id: 'wv84cwyTiNc',
-        level: 'A2',
-        title: '۱۰۰ سوال و جواب سطح A2 برای مکالمه',
-        url: 'https://youtu.be/wv84cwyTiNc',
-        topics: [
-            { sec: 0, ts: '00:00:00', name: 'مقدمه و روش تمرینی برای مکالمه روان' },
-            { sec: 66, ts: '00:01:06', name: 'سرگرمی، ورزش، مطالعه و آشپزی' },
-            { sec: 204, ts: '00:03:24', name: 'خرید و حمل‌ونقل' },
-            { sec: 345, ts: '00:05:45', name: 'کار، برنامه روزانه و وقت آزاد' },
-            { sec: 482, ts: '00:08:02', name: 'خانواده، صبحانه، نوشیدنی و وضعیت جسمی' },
-            { sec: 626, ts: '00:10:26', name: 'معرفی فردی، زبان‌ها، علایق و وضعیت تأهل' },
-            { sec: 870, ts: '00:14:30', name: 'روتین صبح تا شب، مطالعه و کار' },
-            { sec: 1190, ts: '00:19:50', name: 'گرسنگی، تشنگی، شام، موبایل، اینترنت و خرید' },
-            { sec: 1491, ts: '00:24:51', name: 'تغذیه سالم، خواب، آب‌وهوا، محل کار و ناهار' },
-            { sec: 1946, ts: '00:32:26', name: 'فعالیت‌های عصرگاهی، خانه، نظافت و یادگیری زبان' }
-        ]
-    },
-    {
-        id: 'lr5nQObcSY0',
-        level: 'B1',
-        title: 'جملات و لغات / ۵۰۰ فعل مهم سطح B1',
-        url: 'https://youtu.be/lr5nQObcSY0',
-        topics: [
-            { sec: 0, ts: '00:00:00', name: 'معرفی و روش تثبیت افعال B1 در حافظه' },
-            { sec: 110, ts: '00:01:50', name: 'افعال انعکاسی، تصمیم‌گیری، درخواست و روابط اجتماعی' },
-            { sec: 786, ts: '00:13:06', name: 'افعال کار، تحلیل، تغییر و ارتباطات' },
-            { sec: 2450, ts: '00:40:50', name: 'افعال تکمیلی، اداری، شغلی و انعکاسی پیشرفته' },
-            { sec: 7949, ts: '02:12:29', name: 'مرور و تکمیل افعال کاربردی B1 با جملات نمونه' }
-        ]
-    },
-    {
-        id: '2ObeTuUgu-Y',
-        level: 'B1',
-        title: '۱۰۰ فعل گذشته سطح B1 با مثال',
-        url: 'https://youtu.be/2ObeTuUgu-Y',
-        topics: [
-            { sec: 0, ts: '00:00:00', name: 'مقدمه درباره صحبت کردن روان درباره گذشته' },
-            { sec: 42, ts: '00:00:42', name: 'افعال گذشته مربوط به کشف، کار، موفقیت، تصمیم و حرکت' },
-            { sec: 947, ts: '00:15:47', name: 'افعال گذشته مربوط به احساسات، برنامه‌ریزی، سفر و نتیجه' }
-        ]
-    },
-    {
-        id: 'ZpLXfkYC1H4',
-        level: 'B2',
-        title: '۱۰۰ کلمه مهم زبان آلمانی سطح B2',
-        url: 'https://youtu.be/ZpLXfkYC1H4',
-        topics: [
-            { sec: 0, ts: '00:00:00', name: 'خوش‌آمدگویی و روش یادگیری کلمات و عبارات B1–B2' },
-            { sec: 50, ts: '00:00:50', name: 'کلمات، صفت‌ها و قیدهای تحلیلی و استدلالی' },
-            { sec: 1052, ts: '00:17:32', name: 'عبارات استدلالی، شغلی، اجتماعی و توصیفی پیشرفته' }
-        ]
-    },
-    {
-        id: '2mBYfQIu2PU',
-        level: 'C1',
-        title: '۱۰۰ واژه کاربردی و مهم سطح C1',
-        url: 'https://youtu.be/2mBYfQIu2PU',
-        topics: [
-            { sec: 0, ts: '00:00:00', name: 'مقدمه و روش یادگیری ۱۰۰ کلمه ضروری C1' },
-            { sec: 133, ts: '00:02:13', name: 'موضوع ۱: روزمره و کار (Alltag und Arbeit)' },
-            { sec: 690, ts: '00:11:30', name: 'موضوع ۲: بیان نظر و استدلال (Meinungen ausdrücken)' },
-            { sec: 1239, ts: '00:20:39', name: 'موضوع ۳: اخبار و رویدادهای جاری (Nachrichten und Aktuelles)' },
-            { sec: 1717, ts: '00:28:37', name: 'موضوع ۴: مشکلات و راه‌حل‌ها (Probleme und Lösungen)' },
-            { sec: 2714, ts: '00:45:14', name: 'موضوع ۵: احساسات و برداشت‌ها (Gefühle und Eindrücke)' },
-            { sec: 3252, ts: '00:54:12', name: 'موضوع ۶: روابط و ارتباطات (Beziehungen und Kommunikation)' },
-            { sec: 3749, ts: '01:02:29', name: 'موضوع ۷: روابط منطقی و علّی (Wichtige Zusammenhänge)' },
-            { sec: 4278, ts: '01:11:18', name: 'موضوع ۸: تغییر و تأثیرگذاری (Veränderung und Einfluss)' },
-            { sec: 4733, ts: '01:18:53', name: 'جمع‌بندی و ۵ راهکار عملی برای تثبیت واژگان' }
-        ]
-    }
+var NEW_SIX_VIDEOS = [
+    { id: 'L6jb3CijCnE', level: 'A1', title: 'ویدیوی جدید ۱ – لغات و واژگان آلمانی (Wortschatz)', desc: 'مرور واژگان پرکاربرد آلمانی با تلفظ واضح.' },
+    { id: 'bN0CYbXomqo', level: 'A1', title: 'ویدیوی جدید ۲ – ۱۰۰ فعل مهم آلمانی (100 Verben)', desc: 'آشنایی با ۱۰۰ فعل کاربردی برای ساخت جمله.' },
+    { id: 'wv84cwyTiNc', level: 'A2', title: 'ویدیوی جدید ۳ – ۱۰۰ سؤال و جواب رایج (100 Fragen & Antworten)', desc: 'تمرین پرسش و پاسخ روزمره به زبان آلمانی.' },
+    { id: 'lr5nQObcSY0', level: 'B1', title: 'ویدیوی جدید ۴ – ۵۰۰ فعل آلمانی (500 Verben)', desc: 'گسترش دایره افعال برای مکالمه روان‌تر.' },
+    { id: '2ObeTuUgu-Y', level: 'B1', title: 'ویدیوی جدید ۵ – ۱۰۰ فعل گذشته (100 Verben Vergangenheit)', desc: 'تمرین افعال در زمان گذشته برای روایت داستان و تجربه.' },
+    { id: 'ZpLXfkYC1H4', level: 'B2', title: 'ویدیوی جدید ۶ – ۱۰۰ کلمه مهم آلمانی (100 wichtige Wörter)', desc: 'واژگان کلیدی و تحلیلی برای سطوح بالاتر.' }
 ];
-
-/* پادکست‌های صوتی آنلاین معتبر (DW + Slow German) */
-var ONLINE_AUDIO_PODCASTS = [
-    {
-        title: 'DW – Deutsch lernen: Top-Thema mit Vokabeln (اخبار آهسته با لغات)',
-        source: 'Deutsche Welle (dw.com)',
-        audioUrl: 'https://radiodownloaddw-a.akamaihd.net/Events/dw-podcasts/deutsch-lernen/top_thema/2024/DW_TopThema_Beispiel.mp3',
-        fallbackText: 'Willkommen beim Top-Thema von Deutsche Welle. Heute lernen wir wichtige Wörter aus dem Alltag und aus den Nachrichten.'
-    },
-    {
-        title: 'DW – Langsam gesprochene Nachrichten (اخبار آلمانی با سرعت آهسته)',
-        source: 'Deutsche Welle (dw.com)',
-        audioUrl: 'https://radiodownloaddw-a.akamaihd.net/Events/dw-podcasts/deutsch-lernen/langsam_gesprochene_nachrichten/2024/DW_LGN_Beispiel.mp3',
-        fallbackText: 'Hier sind die langsam gesprochenen Nachrichten der Deutschen Welle. Hören Sie aufmerksam und wiederholen Sie die wichtigsten Sätze.'
-    },
-    {
-        title: 'Slow German – Alltag & Kultur auf Deutsch',
-        source: 'Slow German Audio',
-        audioUrl: 'https://slowgerman.com/audio/slowgerman_sample.mp3',
-        fallbackText: 'Hallo und herzlich willkommen zu Slow German. Wir sprechen deutlich und klar über Alltag, Reisen und Sprache.'
-    }
-];
-
-var currentVideoIdx = 0;
-var currentVideoStartSec = 0;
-var currentPodcastIdx = 0;
-var selectedPodcastBottomLang = 'fa-IR';
-
-function escapeAttr(str) {
-    var s = (str === null || str === undefined) ? '' : String(str);
-    return s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
-}
-
-function speakTextSafe(text, langCode) {
-    var clean = String(text || '').trim();
-    if (!clean) return;
-    try {
-        if (window.speechSynthesis && typeof SpeechSynthesisUtterance !== 'undefined') {
-            window.speechSynthesis.cancel();
-            var u = new SpeechSynthesisUtterance(clean);
-            u.lang = langCode || selectedAudioVoiceLang || 'de-DE';
-            u.rate = 0.92;
-            window.speechSynthesis.speak(u);
-        }
-    } catch (e) {}
-}
-
-window.speakWithChosenLang = function(text, explicitLang) {
-    speakTextSafe(text, explicitLang || selectedAudioVoiceLang || 'de-DE');
-};
 
 function buildCoreEverydaySentences(deWord, faWord) {
     var wDe = String(deWord || 'das Wort').trim();
@@ -1004,7 +791,8 @@ function buildCoreEverydaySentences(deWord, faWord) {
         { verbTitle: 'خواستن (wollen / möchten)', de: 'Ich möchte „' + wDe + '“ richtig auf Deutsch sagen.', fa: 'من می‌خواهم «' + wFa + '» را به درستی به آلمانی بگویم.' },
         { verbTitle: 'گرفتن (nehmen / bekommen)', de: 'Ich nehme „' + wDe + '“ und übe damit.', fa: 'من «' + wFa + '» را می‌گیرم و با آن تمرین می‌کنم.' },
         { verbTitle: 'فرستادن (schicken / senden)', de: 'Ich schicke dir heute eine Nachricht über „' + wDe + '“.', fa: 'امروز درباره «' + wFa + '» برایت پیام می‌فرستم.' },
-        { verbTitle: 'دادن (geben)', de: 'Kannst du mir bitte ein Beispiel für „' + wDe + '“ geben?', fa: 'آیا می‌توانید لطفاً برای «' + wFa + '» یک مثال بدهید؟' }
+        { verbTitle: 'دادن (geben)', de: 'Kannst du mir bitte ein Beispiel für „' + wDe + '“ geben?', fa: 'آیا می‌توانید لطفاً برای «' + wFa + '» یک مثال بدهید؟' },
+        { verbTitle: 'جمله روزمره (Alltag)', de: 'Wir verwenden „' + wDe + '“ oft im Gespräch.', fa: 'ما در گفت‌وگو اغلب از «' + wFa + '» استفاده می‌کنیم.' }
     ];
 }
 
@@ -1034,10 +822,14 @@ function renderSentencesBlockHtml(deWord, faWord, voiceLangCode) {
 function lookupWordOnlineUnlimited(query, callback) {
     var clean = String(query || '').trim();
     if (!clean) { callback(null); return; }
+
     var isGerman = /[a-zA-ZäöüÄÖÜß]/.test(clean) && !/[\u0600-\u06FF]/.test(clean);
     var fromShort = isGerman ? 'de' : 'fa';
     var toShort = isGerman ? 'fa' : 'de';
+
     var mmUrl = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(clean) + '&langpair=' + fromShort + '|' + toShort;
+    var wikiLang = isGerman ? 'de' : 'fa';
+    var wikiUrl = 'https://' + wikiLang + '.wiktionary.org/api/rest_v1/page/summary/' + encodeURIComponent(clean);
 
     var resultObj = {
         query: clean,
@@ -1046,36 +838,256 @@ function lookupWordOnlineUnlimited(query, callback) {
         sourceInfo: 'فرهنگ لغت آنلاین نامحدود'
     };
 
-    var done = false;
-    var timer = setTimeout(function() {
-        if (!done) { done = true; callback(resultObj); }
-    }, 3500);
+    var pending = 2;
+    var finished = false;
+    var finishNow = function() {
+        if (finished) return;
+        finished = true;
+        callback(resultObj);
+    };
+    var checkDone = function() {
+        pending--;
+        if (pending <= 0) finishNow();
+    };
+    var safetyTimer = setTimeout(finishNow, 3800);
 
     fetch(mmUrl)
         .then(function(r) { return r.json(); })
         .then(function(data) {
-            if (done) return;
-            done = true;
-            clearTimeout(timer);
             var tr = (data && data.responseData && data.responseData.translatedText) ? String(data.responseData.translatedText).trim() : '';
             if (tr && tr.toUpperCase().indexOf('MYMEMORY WARNING') !== 0) {
-                if (isGerman) { resultObj.deWord = clean; resultObj.faWord = tr; }
-                else { resultObj.faWord = clean; resultObj.deWord = tr; }
+                if (isGerman) {
+                    resultObj.deWord = clean;
+                    resultObj.faWord = tr;
+                } else {
+                    resultObj.faWord = clean;
+                    resultObj.deWord = tr;
+                }
             }
-            callback(resultObj);
+            clearTimeout(safetyTimer);
+            checkDone();
         })
         .catch(function() {
-            if (done) return;
-            done = true;
-            clearTimeout(timer);
-            callback(resultObj);
+            clearTimeout(safetyTimer);
+            checkDone();
+        });
+
+    fetch(wikiUrl)
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(wData) {
+            if (wData && wData.extract) {
+                resultObj.sourceInfo = 'فرهنگ لغت آنلاین (Wiktionary / MyMemory): ' + String(wData.extract).slice(0, 140);
+            }
+            clearTimeout(safetyTimer);
+            checkDone();
+        })
+        .catch(function() {
+            clearTimeout(safetyTimer);
+            checkDone();
         });
 }
+
+var levelVideos = {
+    A1: { id: '4-eDoThe6qo', title: 'Nicos Weg A1 - Deutsche Welle', link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789' },
+    A2: { id: 'Lg5P2w_Ro1c', title: 'Nicos Weg A2 - Deutsche Welle', link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789' },
+    B1: { id: 'LkufozluseI', title: 'Nicos Weg B1 - Deutsche Welle', link: 'https://learngerman.dw.com/en/nicos-weg/c-36519789' },
+    B2: { id: null, title: 'Deutsch lernen B2 - Goethe-Institut', link: 'https://www.goethe.de/de/spr/ueb.html' },
+    C1: { id: null, title: 'Deutsch lernen C1 - Goethe-Institut', link: 'https://www.goethe.de/de/spr/ueb.html' }
+};
+
+var levelDescriptions = {
+    A1: 'سطح مقدماتی (۱۹ درس): معرفی خود، اعداد، زمان، خانواده، خرید و مکالمات ساده روزمره.',
+    A2: 'سطح پایه پیشرفته (۲۰ درس): روتین روزانه، مسکن، سفر، سلامت، کار، ایمیل و برنامه‌ریزی.',
+    B1: 'سطح متوسط (۳۰ درس): بیان نظر، استدلال، محیط زیست، مهاجرت، کار و موقعیت‌های اجتماعی.',
+    B2: 'سطح متوسط رو به بالا (۳۰ درس): بحث تحلیلی، فناوری، اقتصاد، ارتباطات رسمی و استدلال دقیق.',
+    C1: 'سطح پیشرفته (۳۰ درس): زبان علمی و دانشگاهی، تحلیل انتقادی، ظرافت معنایی و نگارش تخصصی.'
+};
+
+var lessonTitles = {
+    A1: ['سلام و معرفی خود','کشورها و ملیت‌ها','خانواده و دوستان','اعداد و سن','روزهای هفته و ماه‌ها','ساعت و زمان','غذا و نوشیدنی','در کافه و رستورانت','خرید از فروشگاه','رنگ‌ها و لباس‌ها','خانه و اتاق‌ها','وسایل خانه','شغل‌ها و محل کار','برنامه روزانه','حمل‌ونقل شهری','آب‌وهوا و فصل‌ها','بدن و سلامتی','قرار ملاقات','دعوت و خداحافظی'],
+    A2: ['روتین روزانه و عادت‌ها','خانه و جستجوی آپارتمان','خرید لباس و اندازه‌ها','خاطرات آخر هفته','سفر با قطار','رزرو هتل','در رستورانت سفارش دادن','آشپزی و دستور غذا','قرار داکتر','شرح درد و بیماری','آموزش و کورس زبان','کار و همکاران','نامه و ایمیل ساده','تلفن و پیام گذاشتن','تفریح و سرگرمی','ورزش و تناسب اندام','شهر و راهنمایی مسیر','مقایسه کالاها','دعوت به مهمانی','برنامه‌ریزی تعطیلات'],
+    B1: ['بیان نظر و استدلال','محافظت از محیط زیست','درخواست کار و رزومه','مصاحبه شغلی','سلامت و سبک زندگی','رسانه و شبکه‌های اجتماعی','آموزش و انتخاب رشته','زندگی در شهر یا روستا','مهاجرت و سازگاری','فرهنگ و سنت‌ها','مصرف و خرید آگاهانه','تکنولوژی در زندگی','حل اختلاف و مذاکره','دوستی و روابط اجتماعی','برنامه‌ریزی آینده','تجربه‌های سفر','حوادث و گزارش رویداد','آگهی و تبلیغات','اجاره خانه و قرارداد','قوانین و حقوق شهروندی','تغذیه و عادت‌های سالم','حمل‌ونقل عمومی','داوطلبی و کمک اجتماعی','آب‌وهوا و تغییرات اقلیمی','کتاب و فیلم','آمادگی برای امتحان','جلسه و گفت‌وگوی گروهی','شکایت و درخواست رسمی','تصمیم‌گیری و پیامدها','هدف‌گذاری شخصی'],
+    B2: ['استدلال پیچیده و دیدگاه‌ها','رسانه و سواد اطلاعاتی','اقتصاد و بازار کار','مدیریت پروژه','فرهنگ سازمانی','هوش مصنوعی و جامعه','حریم خصوصی دیجیتال','تغییرات اقلیمی و سیاست','انرژی‌های تجدیدپذیر','عدالت اجتماعی','آموزش عالی و پژوهش','مهاجرت و هویت','ارتباطات بین‌فرهنگی','رهبری و مسئولیت','مصالحه و حل تعارض','مصرف پایدار','شهرهای هوشمند','سلامت عمومی','اخلاق در علم','جهانی‌شدن','حقوق کار و قراردادها','تبلیغات و رفتار مصرف‌کننده','تاریخ و حافظه جمعی','هنر و نقد فرهنگی','علم و فناوری','ارائه و سخنرانی رسمی','گزارش‌نویسی تحلیلی','بحث و مناظره','فرضیه و پیامد احتمالی','زبان رسمی و غیررسمی'],
+    C1: ['زبان علمی و دانشگاهی','تحلیل انتقادی متون','بلاغت و فن بیان','ابهام و ظرافت معنایی','سبک‌شناسی نوشتار','مقاله پژوهشی','روش‌شناسی تحقیق','استدلال و مغالطه','گفتمان سیاسی و اجتماعی','اخلاق حرفه‌ای','تحلیل داده و تفسیر نتایج','نقد ادبی','زبان رسانه و چارچوب‌بندی','مذاکره پیشرفته','ارتباطات دیپلماتیک','اصطلاحات حقوقی','اقتصاد کلان و سیاست‌گذاری','فلسفه و جهان‌بینی','هویت و چندزبانگی','جامعه‌شناسی معاصر','فناوری و آینده انسان','زیست‌اخلاق و پزشکی','پایداری و مسئولیت جهانی','مدیریت بحران','ارائه تخصصی','نگارش گزارش مدیریتی','بازنویسی و خلاصه‌سازی','تحلیل سخنرانی','تفسیر ضمنی و کنایه','آمادگی آزمون پیشرفته']
+};
+
+var starterWords = [
+    ['sein', 'بودن'],
+    ['haben', 'داشتن'],
+    ['wollen', 'خواستن'],
+    ['nehmen', 'گرفتن'],
+    ['schicken', 'فرستادن'],
+    ['geben', 'دادن'],
+    ['sprechen', 'صحبت کردن'],
+    ['lernen', 'یاد گرفتن'],
+    ['helfen', 'کمک کردن'],
+    ['kommen', 'آمدن'],
+    ['gehen', 'رفتن'],
+    ['die Arbeit', 'کار'],
+    ['das Haus', 'خانه'],
+    ['die Reise', 'سفر'],
+    ['die Zeit', 'زمان']
+];
+
+var lessonData = {};
+LEVELS.forEach(function(lvl) {
+    lessonData[lvl] = lessonTitles[lvl].map(function(title, idx) {
+        var items = [];
+        for (var s = 1; s <= 12; s++) {
+            var pair = starterWords[(idx + s) % starterWords.length];
+            items.push({
+                de: 'Lektion ' + (idx + 1) + ' (' + title + ') – Satz ' + s + ': Ich lerne „' + pair[0] + '“.',
+                fa: 'درس ' + (idx + 1) + ' (' + title + ') – جمله ' + s + ': من «' + pair[1] + '» را یاد می‌گیرم.'
+            });
+        }
+        return {
+            title: title,
+            words: [0, 1, 2, 3, 4].map(function(k) { return starterWords[(idx * 3 + k) % starterWords.length]; }),
+            sentences: items,
+            sentencePage: 0,
+            grammar: 'نکته گرامری سطح ' + lvl + ' در درس ' + (idx + 1) + ' (' + title + ').'
+        };
+    });
+});
+
+var LEVEL_GRAMMAR_AND_BOOKS = {
+    A1: {
+        bookTitle: 'کتاب سطح A1 – قواعد پایه و واژگان الفبایی',
+        sections: [
+            { key: 'Nomen und Artikel', title: 'Nomen und Artikel (اسم و حرف تعریف)', desc: 'اسم‌ها به سه جنس مذکر (der)، مؤنث (die) و خنثی (das) تقسیم می‌شوند: der Tisch، die Lampe، das Buch.' },
+            { key: 'Artikelwörter', title: 'Artikelwörter (کلمات تعیین‌کننده اسم)', desc: 'حروف تعریف معین (der/die/das)، نامعین (ein/eine) و منفی (kein/keine).' },
+            { key: 'Pronomen', title: 'Pronomen (ضمیرها)', desc: 'ضمایر شخصی: ich، du، er/sie/es، wir، ihr، sie/Sie.' },
+            { key: 'Akkusativ und Dativ', title: 'Akkusativ und Dativ (حالت‌های مفعولی)', desc: 'در Akkusativ اسم مذکر تغییر می‌کند (der → den / ein → einen). در Dativ: der/das → dem، die → der.' },
+            { key: 'Adjektive', title: 'Adjektive (صفت‌ها)', desc: 'صفت‌ها پس از sein/werden بدون پسوند می‌آیند و پیش از اسم پسوند می‌گیرند.' },
+            { key: 'Infinitiv', title: 'Infinitiv (مصدر فعل)', desc: 'مصدر بیشتر افعال با -en یا -n ختم می‌شود: lernen، spielen، kommen.' },
+            { key: 'Unregelmäßige Verben', title: 'Unregelmäßige Verben (افعال بی‌قاعده)', desc: 'تغییر واکه در زمان حال و گذشته مانند sprechen (spricht)، fahren (fährt)، sein (ist).' },
+            { key: 'Verben mit Präposition', title: 'Verben mit Präposition (فعل با حرف اضافه)', desc: 'آشنایی اولیه با افعال همراه حرف اضافه مانند warten auf + Akk.' },
+            { key: 'Alphabetische Wortliste', title: 'Alphabetische Wortliste (فهرست الفبایی واژگان A1)', desc: 'Abend، Arbeit، Brot، Dank، Eltern، Frage، Geld، Haus، Insel، Jahr، Kind، Lampe، Morgen، Name، Obst، Pause، Reise، Schule، Tisch، Uhr، Vater، Wasser، Zeit.' }
+        ]
+    },
+    A2: {
+        bookTitle: 'کتاب سطح A2 – ساختارهای پایه پیشرفته و افعال',
+        sections: [
+            { key: 'Verben mit Präposition', title: 'Verben mit Präposition (افعال همراه با حرف اضافه)', desc: 'فعل‌های پرتکرار همراه حرف اضافه: sich freuen auf/über، denken an، sprechen über.' },
+            { key: 'Infinitiv, präsens, Präteritum, perfekt', title: 'Infinitiv, Präsens, Präteritum, Perfekt', desc: 'جدول صرف زمانی افعال در حال ساده، گذشته ساده و گذشته کامل.' },
+            { key: 'Akkusativ und Dativ', title: 'Akkusativ und Dativ (حروف اضافه دوحالته)', desc: 'Wechselpräpositionen با Akkusativ (حرکت) و Dativ (مکان ثابت).' },
+            { key: 'Adjektive', title: 'Adjektive (صفت و درجه‌بندی)', desc: 'مقایسه و عالی صفت‌ها: schnell → schneller → am schnellsten.' },
+            { key: 'Pronomen', title: 'Pronomen (ضمایر انعکاسی و ملکی)', desc: 'ضمایر ملکی (mein, dein, sein, ihr) و انعکاسی (mich/mir, dich/dir).' },
+            { key: 'Alphabetische Wortliste', title: 'Alphabetische Wortliste (فهرست الفبایی واژگان A2)', desc: 'Angebot، Beruf، Einladung، Erfahrung، Fahrkarte، Gesundheit، Hilfe، Kleidung، Lösung، Meinung، Nachricht، Prüfung، Termin، Urlaub، Wohnung.' }
+        ]
+    },
+    B1: {
+        bookTitle: 'کتاب سطح B1 – مجهول، شرطی، افعال با حرف اضافه و فهرست الفبایی',
+        sections: [
+            { key: 'Verben mit Präpositionen', title: 'Verben mit Präpositionen (افعال همراه حرف اضافه در B1)', desc: 'ساخت سوال با wo(r)+Präposition برای اشیا و حرف اضافه + ضمیر برای اشخاص (worauf / auf wen).' },
+            { key: 'Passiv', title: 'Passiv (جمله مجهول)', desc: 'Vorgangspassiv با werden + Partizip II در زمان حال و گذشته.' },
+            { key: 'Konjunktiv', title: 'Konjunktiv (وجه شرطی و درخواست مؤدبانه)', desc: 'Konjunktiv II با würde + Infinitiv و افعال modal (könnte, müsste, sollte).' },
+            { key: 'Infinitiv, präsens, Präteritum, perfekt', title: 'Infinitiv, Präsens, Präteritum, Perfekt', desc: 'صرف دقیق افعال قوی و ضعیف در چهار حالت اصلی.' },
+            { key: 'Alphabetische Wortliste', title: 'Alphabetische Wortliste (فهرست الفبایی واژگان B1)', desc: 'Anforderung، Bedingung، Entscheidung، Entwicklung، Gesellschaft، Maßnahme، Möglichkeit، Umwelt، Verantwortung، Voraussetzung.' }
+        ]
+    },
+    B2: {
+        bookTitle: 'کتاب سطح B2 – افعال با حرف اضافه، مجهول، وجه نقلی و واژگان الفبایی',
+        sections: [
+            { key: 'Verben mit Präposition', title: 'Verben mit Präposition (افعال همراه حرف اضافه سطح B2)', desc: 'فعل‌های تحلیلی و رسمی همراه حرف اضافه: beitragen zu، verzichten auf، hinweisen auf.' },
+            { key: 'Passiv', title: 'Passiv (مجهول با فعل وجهی و حالتی)', desc: 'Passiv با Modalverb و Zustandspassiv با sein + Partizip II.' },
+            { key: 'Konjunktiv', title: 'Konjunktiv (Konjunktiv I و II)', desc: 'استفاده از Konjunktiv I در نقل قول غیرمستقیم و Konjunktiv II در شرط غیرواقعی.' },
+            { key: 'Infinitiv, präsens, Präteritum, perfekt', title: 'Infinitiv, Präsens, Präteritum, Perfekt', desc: 'مرور جامع زمان‌ها و حالت‌های مصدری در متون B2.' },
+            { key: 'Alphabetische Wortliste', title: 'Alphabetische Wortliste (فهرست الفبایی واژگان B2)', desc: 'Auseinandersetzung، Auswirkungen، Bereitstellung، Chancengleichheit، Herausforderung، Nachhaltigkeit، Rahmenbedingung، Umsetzung، Wechselwirkung.' }
+        ]
+    },
+    C1: {
+        bookTitle: 'کتاب سطح C1 – ساختارهای پیشرفته، مجهول، وجه نقلی و واژگان الفبایی',
+        sections: [
+            { key: 'Verben mit Präpositionen', title: 'Verben mit Präpositionen (افعال تخصصی با حرف اضافه سطح C1)', desc: 'ترکیب‌های دقیق فعلی–حرف‌اضافه‌ای در متون آکادمیک و رسمی.' },
+            { key: 'Passiv', title: 'Passiv (جایگزین‌های مجهول و ساختارهای غیرشخصی)', desc: 'ساختارهای جایگزین مجهول با lassen + sich + Infinitiv و صفت‌های -bar.' },
+            { key: 'Konjunktiv', title: 'Konjunktiv (ظرافت‌های Konjunktiv I و II)', desc: 'تفاوت کاربرد وجه نقلی در گزارش‌های علمی و خبری با وجه شرطی.' },
+            { key: 'Infinitiv, präsens, Präteritum, perfekt', title: 'Infinitiv, Präsens, Präteritum, Perfekt', desc: 'صرف کامل افعال پیچیده و جداشدنی/جدانشدنی در سطح C1.' },
+            { key: 'Alphabetische Wortliste', title: 'Alphabetische Wortliste (فهرست الفبایی واژگان C1)', desc: 'Argumentationslinie، Diskrepanz، Differenzierung، Evidenz، Implikation، Kontextualisierung، Methodik، Prämisse، Schlussfolgerung، Tragweite.' }
+        ]
+    }
+};
+
+var PODCAST_520 = [];
+(function build520Podcasts() {
+    var bases = [
+        ['Guten Morgen und herzlich willkommen zu unserem heutigen Deutsch-Podcast.', 'صبح بخیر و به پادکست امروز زبان آلمانی ما خوش آمدید.'],
+        ['Heute sprechen wir über effektive Methoden zum Sprachenlernen.', 'امروز درباره روش‌های مؤثر یادگیری زبان صحبت می‌کنیم.'],
+        ['Jeden Tag zwanzig Minuten zu hören hilft enorm beim Verstehen.', 'گوش دادن روزانه به مدت بیست دقیقه به درک شنیداری کمک می‌کند.'],
+        ['Wiederhole den Satz laut, um deine Aussprache zu verbessern.', 'جمله را با صدای بلند تکرار کن تا تلفظت بهتر شود.']
+    ];
+    for (var i = 0; i < 520; i++) {
+        var b = bases[i % bases.length];
+        PODCAST_520.push({ num: i + 1, lvl: LEVELS[i % LEVELS.length], de: b[0] + ' [Folge ' + (i + 1) + ']', fa: b[1] + ' [اپیزود ' + (i + 1) + ']' });
+    }
+})();
+
+var RADIO_CHANNELS = [
+    {
+        name: 'رادیو آموزش و گفت‌وگوی آلمانی (Kanal 1)',
+        lines: [
+            ['Willkommen bei Radio KING ASAD – Nachrichten und Alltag auf Deutsch.', 'به رادیو KING ASAD خوش آمدید – اخبار و زندگی روزمره به زبان آلمانی.'],
+            ['In Deutschland beginnen viele Geschäfte und Büros am Morgen pünktlich.', 'در آلمان بسیاری از فروشگاه‌ها و اداره‌ها صبح‌ها سر وقت شروع به کار می‌کنند.'],
+            ['Wer regelmäßig zuhört, erkennt schnell typische Satzmuster im Deutschen.', 'هرکس منظم گوش دهد، به‌سرعت الگوهای جمله را در آلمانی تشخیص می‌دهد.']
+        ]
+    }
+];
+
+var quizData = {
+    A1: [['Was bedeutet „Guten Morgen“?', ['صبح بخیر','شب بخیر','خداحافظ'], 0],['Wie heißt du?', ['چند سال داری؟','نامت چیست؟','کجا زندگی می‌کنی؟'], 1],['Was bedeutet „Danke“?', ['لطفاً','ببخشید','تشکر'], 2]],
+    A2: [['Ich ___ gestern nach Berlin gefahren.', ['bin','habe','ist'], 0],['Was bedeutet „Einkaufen“?', ['خوابیدن','خرید کردن','درس خواندن'], 1],['Er ___ jeden Tag Deutsch.', ['lernen','lernst','lernt'], 2]],
+    B1: [['Wenn ich Zeit hätte, ___ ich reisen.', ['werde','würde','bin'], 1],['Was bedeutet „obwohl“?', ['زیرا','اگر','با وجود اینکه'], 2],['Er sagt, dass er krank ___.', ['ist','sein','bist'], 0]],
+    B2: [['Was bedeutet „abwägen“?', ['سنجیدن و بررسی جوانب','فراموش کردن','تکرار کردن'], 0],['Die Ergebnisse müssen sorgfältig ___.', ['analysiert werden','analysieren','analysiert haben'], 0],['„Hingegen“ drückt meistens ___ aus.', ['einen Gegensatz','einen Wunsch','eine Zeit'], 0]],
+    C1: [['Was bedeutet „die Schlussfolgerung“?', ['نتیجه‌گیری','پیش‌فرض','مخالفت'], 0],['„Wenngleich“ bedeutet ___.', ['اگرچه','بنابراین','در نتیجه'], 0],['Eine Prämisse ist ___.', ['eine Grundannahme','ein Ergebnis','eine Übersetzung'], 0]]
+};
+
+var MULTILANG_SAMPLES = [
+    { lang: '🇩🇪 Deutsch', greeting: 'Hallo! Ich lerne Deutsch mit KING ASAD.', tip: 'Höre genau zu und sprich jeden Satz laut nach.' },
+    { lang: '🇮🇷 دری / فارسی', greeting: 'سلام! من با KING ASAD زبان آلمانی یاد می‌گیرم.', tip: 'با دقت گوش دهید و هر جمله را با صدای بلند تکرار کنید.' },
+    { lang: '🇹🇷 Türkçe', greeting: 'Merhaba! KING ASAD ile Almanca öğreniyorum.', tip: 'Dikkatle dinleyin ve her cümleyi yüksek sesle tekrarlayın.' },
+    { lang: '🇸🇦 العربية', greeting: 'مرحباً! أتعلم الألمانية مع KING ASAD.', tip: 'استمع بانتباه وكرر كل جملة بصوت واضح.' },
+    { lang: '🇬🇧 English', greeting: 'Hello! I am learning German with KING ASAD.', tip: 'Listen carefully and repeat every sentence out loud.' },
+    { lang: '🇵🇰 اردو', greeting: 'ہیلو! میں KING ASAD کے ساتھ جرمن سیکھ رہا ہوں۔', tip: 'غور سے سنیں اور ہر جملہ بلند آواز میں دہرائیں۔' },
+    { lang: '🇦🇫 پښتو', greeting: 'سلام! زه د KING ASAD سره جرمني ژبه زده کوم.', tip: 'په ځیر غوږ ونیسئ او هره جمله په لوړ غږ تکرار کړئ.' }
+];
+
+var selectedLevelFilter = 'ALL';
+var radioTimer = null;
+var radioIndex = 0;
+var quizState = {};
+var mySpeechLang = 'fa-IR';
+var otherSpeechLang = 'de-DE';
+var activeRecInstance = null;
+
+function escapeAttr(str) {
+    var s = (str === null || str === undefined) ? '' : String(str);
+    return s.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+
+function speakTextSafe(text, langCode) {
+    var clean = String(text || '').trim();
+    if (!clean) return;
+    try {
+        if (window.speechSynthesis && typeof SpeechSynthesisUtterance !== 'undefined') {
+            window.speechSynthesis.cancel();
+            var u = new SpeechSynthesisUtterance(clean);
+            u.lang = langCode || selectedAudioVoiceLang || 'de-DE';
+            u.rate = 0.92;
+            window.speechSynthesis.speak(u);
+        }
+    } catch (e) {}
+}
+
+window.speakWithChosenLang = function(text, explicitLang) {
+    var langToUse = explicitLang || selectedAudioVoiceLang || 'de-DE';
+    speakTextSafe(text, langToUse);
+};
 
 function translateTextOnline(text, fromShort, toShort, cb) {
     var clean = String(text || '').trim();
     if (!clean) { cb(''); return; }
     if (fromShort === toShort) { cb(clean); return; }
+
     var url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(clean) + '&langpair=' + encodeURIComponent(fromShort) + '|' + encodeURIComponent(toShort);
     var done = false;
     var timer = setTimeout(function() {
@@ -1089,7 +1101,11 @@ function translateTextOnline(text, fromShort, toShort, cb) {
             done = true;
             clearTimeout(timer);
             var out = (data && data.responseData && data.responseData.translatedText) ? String(data.responseData.translatedText).trim() : '';
-            cb((!out || out.toUpperCase().indexOf('MYMEMORY WARNING') === 0) ? clean : out);
+            if (!out || out.toUpperCase().indexOf('MYMEMORY WARNING') === 0) {
+                cb(clean);
+            } else {
+                cb(out);
+            }
         })
         .catch(function() {
             if (done) return;
@@ -1121,9 +1137,8 @@ function toggleMainRow(key, forceOpen) {
 
 function renderDrawerContent(key, drawer) {
     if (key === 'lessons') {
-        drawer.innerHTML = buildVideoTopicsDrawerHtml();
-    } else if (key === 'podcasts') {
-        drawer.innerHTML = buildOnlinePodcastDrawerHtml();
+        drawer.innerHTML = buildLessonsDrawerHtml();
+        bindLessonAccordions(drawer);
     } else if (key === 'vocab100k') {
         drawer.innerHTML = buildUnlimitedOnlineVocabHtml();
         searchUnlimitedOnlineWord('sein');
@@ -1133,7 +1148,9 @@ function renderDrawerContent(key, drawer) {
         drawer.innerHTML = buildTranslatorHtml();
     } else if (key === 'grammar') {
         drawer.innerHTML = buildGrammarDrawerHtml();
-        bindAccordions(drawer);
+    } else if (key === 'podcasts') {
+        drawer.innerHTML = buildPodcastsDrawerHtml();
+        renderPodcastList();
     } else if (key === 'radio') {
         drawer.innerHTML = buildRadioDrawerHtml();
     } else if (key === 'solver') {
@@ -1147,166 +1164,165 @@ function renderDrawerContent(key, drawer) {
     }
 }
 
-/* 01: تمام ویدیوهای ارسالی + موضوعات قابل کلیک با پرش به تایم‌استمپ */
-function buildVideoTopicsDrawerHtml() {
-    var v = USER_VIDEOS[currentVideoIdx] || USER_VIDEOS[0];
-    var embedUrl = 'https://www.youtube.com/embed/' + v.id + '?start=' + (currentVideoStartSec || 0) + '&autoplay=1';
+/* 01: Lessons A1-C1 + Move Up/Down + More Sentences Button */
+function buildLessonsDrawerHtml() {
+    var levelsToShow = (selectedLevelFilter === 'ALL') ? LEVELS : [selectedLevelFilter];
+    var html = '<div class="level-switcher-bar">' +
+        '<button type="button" class="lvl-filter-btn' + (selectedLevelFilter === 'ALL' ? ' active' : '') + '" data-lvl-filter="ALL">همه سطوح (۱۲۹ درس)</button>';
+    LEVELS.forEach(function(lvl) {
+        html += '<button type="button" class="lvl-filter-btn' + (selectedLevelFilter === lvl ? ' active' : '') + '" data-lvl-filter="' + lvl + '">' + lvl + '</button>';
+    });
+    html += '</div>';
 
-    var btnsHtml = '<div class="video-library-grid">';
-    for (var i = 0; i < USER_VIDEOS.length; i++) {
-        var item = USER_VIDEOS[i];
-        btnsHtml +=
-            '<button type="button" class="video-pick-btn' + (i === currentVideoIdx ? ' active' : '') + '" onclick="selectUserVideo(' + i + ', 0)">' +
-                '[' + item.level + '] ' + item.title +
-            '</button>';
-    }
-    btnsHtml += '</div>';
+    levelsToShow.forEach(function(lvl) {
+        var vid = levelVideos[lvl];
+        html += '<div class="sub-card"><h4>سطح ' + lvl + ' – ' + levelDescriptions[lvl] + '</h4>';
+        if (vid && vid.id) {
+            html += '<iframe class="video-frame" src="https://www.youtube.com/embed/' + vid.id + '" title="' + vid.title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        }
+        html += '<div style="font-size:12.5px;margin-bottom:8px;">منبع رسمی: <a href="' + vid.link + '" target="_blank" rel="noopener noreferrer">' + vid.title + '</a></div>';
 
-    var topicsHtml = '<div class="topic-jump-list"><div style="font-weight:900;color:#1e3a8a;margin-bottom:4px;">موضوعات داخل ویدیو (با کلیک روی هر موضوع، پخش همان بخش شروع می‌شود):</div>';
-    for (var t = 0; t < v.topics.length; t++) {
-        var tp = v.topics[t];
-        topicsHtml +=
-            '<button type="button" class="topic-jump-btn" onclick="selectUserVideo(' + currentVideoIdx + ', ' + tp.sec + ')">' +
-                '<span>▶ ' + tp.name + '</span>' +
-                '<span class="ts-badge">' + tp.ts + '</span>' +
-            '</button>';
-    }
-    topicsHtml += '</div>';
+        lessonData[lvl].forEach(function(les, idx) {
+            var pageSize = 4;
+            var total = les.sentences.length;
+            var start = (les.sentencePage * pageSize) % total;
+            var visibleSentences = [];
+            for (var k = 0; k < pageSize; k++) {
+                visibleSentences.push({ item: les.sentences[(start + k) % total], realIdx: (start + k) % total });
+            }
 
-    return (
-        '<div class="sub-card">' +
-            '<h4>🎬 پخش ویدیوهای آموزشی و موضوعات قابل کلیک</h4>' +
-            btnsHtml +
-            '<div style="font-weight:900;color:#0f172a;margin-bottom:6px;">در حال پخش: [' + v.level + '] ' + v.title + '</div>' +
-            '<iframe class="video-frame" src="' + embedUrl + '" title="' + escapeAttr(v.title) + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
-            '<div style="font-size:12.5px;margin-bottom:8px;">لینک یوتیوب: <a href="' + v.url + '?t=' + (currentVideoStartSec || 0) + 's" target="_blank" rel="noopener noreferrer">' + v.url + '</a></div>' +
-            topicsHtml +
-        '</div>'
-    );
+            html += '<div class="lesson-item">' +
+                '<button type="button" class="lesson-head-btn" data-acc-btn="1">' +
+                    '<span>درس ' + (idx + 1) + ': ' + les.title + '</span>' +
+                    '<span>▾</span>' +
+                '</button>' +
+                '<div class="lesson-body">' +
+                    '<p style="margin-bottom:8px;font-weight:700;">' + les.grammar + '</p>';
+
+            visibleSentences.forEach(function(entry) {
+                var rIdx = entry.realIdx;
+                var item = entry.item;
+                html += '<div class="line-row">' +
+                    '<div class="row-top-flex">' +
+                        '<div><strong>🇩🇪 ' + item.de + '</strong><div style="color:#4b5563;font-size:12.5px;">🇮🇷 ' + item.fa + '</div></div>' +
+                        '<div class="audio-group">' +
+                            '<button type="button" class="btn-move" onclick="moveLessonSentence(\'' + lvl + '\', ' + idx + ', ' + rIdx + ', -1)">⬆ بالا</button>' +
+                            '<button type="button" class="btn-move" onclick="moveLessonSentence(\'' + lvl + '\', ' + idx + ', ' + rIdx + ', 1)">⬇ پایین</button>' +
+                            '<button type="button" class="btn-audio-de" onclick="speakTextSafe(\'' + escapeAttr(item.de) + '\', \'de-DE\')">🔊 آلمانی</button>' +
+                            '<button type="button" class="btn-audio-fa" onclick="speakTextSafe(\'' + escapeAttr(item.fa) + '\', \'fa-IR\')">🔊 دری/فارسی</button>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+            });
+
+            html += '<div class="audio-group" style="margin-top:8px;">' +
+                '<button type="button" class="btn-primary" onclick="nextLessonSentences(\'' + lvl + '\', ' + idx + ')">➡ جملات بیشتر / بعدی</button>' +
+            '</div>' +
+            '</div></div>';
+        });
+
+        html += '</div>';
+    });
+    return html;
 }
 
-window.selectUserVideo = function(idx, startSec) {
-    currentVideoIdx = idx;
-    currentVideoStartSec = startSec || 0;
+window.moveLessonSentence = function(lvl, lessonIdx, sentenceIdx, delta) {
+    var list = lessonData[lvl][lessonIdx].sentences;
+    var targetIdx = sentenceIdx + delta;
+    if (targetIdx < 0 || targetIdx >= list.length) return;
+    var temp = list[sentenceIdx];
+    list[sentenceIdx] = list[targetIdx];
+    list[targetIdx] = temp;
     var drawer = document.getElementById('drawer-lessons');
     if (drawer) {
-        drawer.innerHTML = buildVideoTopicsDrawerHtml();
+        drawer.innerHTML = buildLessonsDrawerHtml();
+        bindLessonAccordions(drawer);
+        var bodies = drawer.querySelectorAll('.lesson-body');
+        if (bodies[lessonIdx]) bodies[lessonIdx].classList.add('open');
     }
 };
 
-/* 02: پادکست‌های آنلاین صوتی از سایت‌های معتبر + زبان اختیاری در پایین پادکست */
-function buildOnlinePodcastDrawerHtml() {
-    var p = ONLINE_AUDIO_PODCASTS[currentPodcastIdx] || ONLINE_AUDIO_PODCASTS[0];
-    var langOpts = '';
-    for (var i = 0; i < SPEECH_LANGS.length; i++) {
-        var sl = SPEECH_LANGS[i];
-        langOpts += '<option value="' + sl.code + '"' + (sl.code === selectedPodcastBottomLang ? ' selected' : '') + '>' + sl.label + '</option>';
+window.nextLessonSentences = function(lvl, lessonIdx) {
+    var les = lessonData[lvl][lessonIdx];
+    les.sentencePage = (les.sentencePage || 0) + 1;
+    var drawer = document.getElementById('drawer-lessons');
+    if (drawer) {
+        drawer.innerHTML = buildLessonsDrawerHtml();
+        bindLessonAccordions(drawer);
+        var bodies = drawer.querySelectorAll('.lesson-body');
+        if (bodies[lessonIdx]) bodies[lessonIdx].classList.add('open');
     }
-
-    var listHtml = '<div class="video-library-grid">';
-    for (var k = 0; k < ONLINE_AUDIO_PODCASTS.length; k++) {
-        listHtml +=
-            '<button type="button" class="video-pick-btn' + (k === currentPodcastIdx ? ' active' : '') + '" onclick="selectOnlinePodcast(' + k + ')">' +
-                '🎧 ' + ONLINE_AUDIO_PODCASTS[k].title +
-            '</button>';
-    }
-    listHtml += '</div>';
-
-    return (
-        '<div class="sub-card">' +
-            '<h4>🎧 پادکست‌های آنلاین صوتی از سایت‌های معتبر</h4>' +
-            listHtml +
-            '<div class="vocab-row">' +
-                '<div style="font-weight:900;color:#1e3a8a;">' + p.title + '</div>' +
-                '<div style="font-size:12px;color:#4b5563;">منبع معتبر: ' + p.source + '</div>' +
-                '<audio controls preload="none" style="width:100%;margin-top:8px;" src="' + p.audioUrl + '"></audio>' +
-                '<div class="audio-group" style="margin-top:8px;">' +
-                    '<button type="button" class="btn-audio-de" onclick="speakTextSafe(\'' + escapeAttr(p.fallbackText) + '\', \'de-DE\')">🔊 پخش متن نمونه صوتی (آلمانی)</button>' +
-                '</div>' +
-                '<div style="margin-top:12px;padding-top:10px;border-top:1px dashed #cbd5e1;">' +
-                    '<label for="podcastBottomLangSelect" style="font-size:12.5px;font-weight:900;color:#1e3a8a;display:block;margin-bottom:4px;">انتخاب زبان اختیاری در پایین پادکست:</label>' +
-                    '<select id="podcastBottomLangSelect" style="width:auto;min-width:220px;margin:0 0 8px 0;" onchange="updatePodcastBottomLang(this.value)">' + langOpts + '</select>' +
-                    '<div id="podcastBottomLangNote" class="result-banner" style="margin:6px 0 0 0;">' + getPodcastLangCaption(p.fallbackText, selectedPodcastBottomLang) + '</div>' +
-                '</div>' +
-            '</div>' +
-        '</div>'
-    );
-}
-
-function getPodcastLangCaption(germanText, langCode) {
-    var prefixMap = {
-        'fa-IR': '🇮🇷 متن به زبان دری/فارسی: ',
-        'de-DE': '🇩🇪 Text auf Deutsch: ',
-        'en-US': '🇬🇧 English note: ',
-        'tr-TR': '🇹🇷 Türkçe not: ',
-        'ar-SA': '🇸🇦 نص بالعربية: ',
-        'ps-AF': '🇦🇫 پښتو متن: ',
-        'ur-PK': '🇵🇰 اردو متن: '
-    };
-    return (prefixMap[langCode] || '🌐 ') + germanText;
-}
-
-window.selectOnlinePodcast = function(idx) {
-    currentPodcastIdx = idx;
-    var drawer = document.getElementById('drawer-podcasts');
-    if (drawer) drawer.innerHTML = buildOnlinePodcastDrawerHtml();
 };
 
-window.updatePodcastBottomLang = function(code) {
-    selectedPodcastBottomLang = code;
-    var p = ONLINE_AUDIO_PODCASTS[currentPodcastIdx] || ONLINE_AUDIO_PODCASTS[0];
-    var note = document.getElementById('podcastBottomLangNote');
-    var shortLang = (code || 'fa-IR').slice(0, 2);
-    if (note) note.textContent = 'در حال ترجمه به زبان انتخابی...';
-    translateTextOnline(p.fallbackText, 'de', shortLang, function(tr) {
-        if (note) note.textContent = getPodcastLangCaption(tr || p.fallbackText, code);
-        speakTextSafe(tr || p.fallbackText, code);
+function bindLessonAccordions(container) {
+    container.querySelectorAll('[data-lvl-filter]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            selectedLevelFilter = btn.getAttribute('data-lvl-filter') || 'ALL';
+            var d = document.getElementById('drawer-lessons');
+            if (d) { d.innerHTML = buildLessonsDrawerHtml(); bindLessonAccordions(d); }
+        });
     });
-};
+    container.querySelectorAll('[data-acc-btn]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var body = btn.nextElementSibling;
+            if (!body) return;
+            var isOpen = body.classList.contains('open');
+            body.classList.toggle('open', !isOpen);
+            btn.classList.toggle('open', !isOpen);
+        });
+    });
+}
 
-/* 03: فرهنگ لغت آنلاین نامحدود + جملات روزمره */
+/* 02: Unlimited Online Dictionary + Everyday Sentences + Optional Voice Lang */
 function buildUnlimitedOnlineVocabHtml() {
     var langOpts = '';
     for (var i = 0; i < SPEECH_LANGS.length; i++) {
         var sl = SPEECH_LANGS[i];
         langOpts += '<option value="' + sl.code + '"' + (sl.code === selectedAudioVoiceLang ? ' selected' : '') + '>' + sl.label + '</option>';
     }
+
     return (
         '<div class="sub-card">' +
-            '<h4>📖 فرهنگ لغت آنلاین نامحدود + جملات روزمره</h4>' +
+            '<h4>📖 فرهنگ لغت آنلاین نامحدود (هر لغت آلمانی یا دری/فارسی بدون نیاز به برنامه دیگر)</h4>' +
             '<div style="display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;margin-bottom:8px;">' +
-                '<input type="text" id="unlimitedDictInput" style="margin:0;" placeholder="هر لغت آلمانی یا دری/فارسی را بنویسید...">' +
-                '<button type="button" class="btn-primary" onclick="runUnlimitedDictSearch()">🔍 پیدا کردن لغت</button>' +
+                '<input type="text" id="unlimitedDictInput" style="margin:0;" placeholder="هر لغت آلمانی یا دری/فارسی را بنویسید (مثلاً: sprechen یا کمک کردن یا Wasser)...">' +
+                '<button type="button" class="btn-primary" onclick="runUnlimitedDictSearch()">🔍 پیدا کردن لغت و جملات</button>' +
             '</div>' +
             '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">' +
                 '<span style="font-size:12.5px;font-weight:800;color:#1e3a8a;">زبان اختیاری پخش صدا:</span>' +
                 '<select id="dictVoiceLangSelect" style="width:auto;margin:0;padding:6px 10px;" onchange="selectedAudioVoiceLang=this.value; runUnlimitedDictSearch();">' + langOpts + '</select>' +
             '</div>' +
-            '<div id="unlimitedDictResultBox"></div>' +
+            '<div id="unlimitedDictResultBox">در حال بارگذاری فرهنگ لغت آنلاین...</div>' +
         '</div>'
     );
 }
 
 window.runUnlimitedDictSearch = function() {
     var inp = document.getElementById('unlimitedDictInput');
-    searchUnlimitedOnlineWord((inp && inp.value.trim()) ? inp.value.trim() : 'sein');
+    var q = inp ? inp.value.trim() : 'sein';
+    searchUnlimitedOnlineWord(q || 'sein');
 };
 
 function searchUnlimitedOnlineWord(query) {
     var box = document.getElementById('unlimitedDictResultBox');
     if (!box) return;
     box.innerHTML = '<div class="result-banner">🌐 در حال جستجوی آنلاین نامحدود برای «' + query + '»...</div>';
+
     lookupWordOnlineUnlimited(query, function(res) {
         if (!res) return;
         var deWord = res.deWord || query;
         var faWord = res.faWord || query;
         var vLang = selectedAudioVoiceLang || 'de-DE';
+
         box.innerHTML =
             '<div class="vocab-row" style="background:#ffffff;border-color:#93c5fd;">' +
                 '<div class="row-top-flex">' +
-                    '<div><div style="font-size:15px;font-weight:900;color:#0f172a;">🇩🇪 ' + deWord + ' &nbsp;—&nbsp; 🇮🇷 ' + faWord + '</div></div>' +
+                    '<div>' +
+                        '<div style="font-size:15px;font-weight:900;color:#0f172a;">🇩🇪 ' + deWord + ' &nbsp;—&nbsp; 🇮🇷 ' + faWord + '</div>' +
+                        '<div style="font-size:12px;color:#4b5563;">' + res.sourceInfo + '</div>' +
+                    '</div>' +
                     '<div class="audio-group">' +
-                        '<button type="button" class="btn-audio-de" onclick="speakWithChosenLang(\'' + escapeAttr(deWord) + '\', \'' + escapeAttr(vLang) + '\')">🔊 تلفظ لغت</button>' +
+                        '<button type="button" class="btn-audio-de" onclick="speakWithChosenLang(\'' + escapeAttr(deWord) + '\', \'' + escapeAttr(vLang) + '\')">🔊 تلفظ لغت (زبان انتخابی)</button>' +
                         '<button type="button" class="btn-audio-fa" onclick="speakTextSafe(\'' + escapeAttr(faWord) + '\', \'fa-IR\')">🔊 تلفظ دری/فارسی</button>' +
                     '</div>' +
                 '</div>' +
@@ -1315,51 +1331,76 @@ function searchUnlimitedOnlineWord(query) {
     });
 }
 
-/* 04: صدا و متن دوطرفه + نوشتن مشکلات */
-var mySpeechLang = 'fa-IR';
-var otherSpeechLang = 'de-DE';
-var activeRecInstance = null;
-
+/* 03: Two-Way Speech & Text + Problem Writer */
 function buildTwoWaySpeechDrawerHtml() {
-    var optsMe = '', optsOther = '';
+    var optsMe = '';
+    var optsOther = '';
     for (var i = 0; i < SPEECH_LANGS.length; i++) {
         var sl = SPEECH_LANGS[i];
         optsMe += '<option value="' + sl.code + '"' + (sl.code === mySpeechLang ? ' selected' : '') + '>' + sl.label + '</option>';
         optsOther += '<option value="' + sl.code + '"' + (sl.code === otherSpeechLang ? ' selected' : '') + '>' + sl.label + '</option>';
     }
+
     return (
         '<div class="dialogue-panel">' +
-            '<div style="font-size:17px;font-weight:900;">🎙️ تبدیل صدا و متن دری ↔ آلمانی + نوشتن مشکلات</div>' +
+            '<div style="font-size:17px;font-weight:900;">🎙️ تبدیل صدا و متن دری ↔ آلمانی و سایر زبان‌ها + نوشتن مشکلات</div>' +
+            '<div style="font-size:12.5px;color:#bae6fd;margin-top:4px;">می‌توانید صحبت کنید تا به متن تبدیل شود یا مشکل خود را به زبان خود بنویسید تا به زبان دلخواه (آلمانی / دری) تبدیل و پخش شود.</div>' +
+            '<div class="audio-group" style="margin-top:10px;">' +
+                '<button type="button" class="btn-audio-fa" onclick="setDariGermanPreset(\'fa-IR\', \'de-DE\')">🇮🇷 دری به آلمانی (Dari ➜ Deutsch)</button>' +
+                '<button type="button" class="btn-audio-de" onclick="setDariGermanPreset(\'de-DE\', \'fa-IR\')">🇩🇪 آلمانی به دری (Deutsch ➜ Dari)</button>' +
+            '</div>' +
             '<div class="dialogue-grid-2">' +
                 '<div class="speaker-card">' +
-                    '<div style="font-weight:900;color:#fde047;">۱. صدای من ➔ متن</div>' +
-                    '<select id="mySpeechLangSelect" style="background:#071326;color:#fff;" onchange="mySpeechLang=this.value">' + optsMe + '</select>' +
-                    '<div class="audio-group"><button type="button" class="btn-audio-fa" onclick="captureSpeechToTarget(\'me\')">🎤 شروع ضبط صدای من</button><button type="button" class="btn-secondary" onclick="stopSpeechCapture()">⏹ توقف</button></div>' +
-                    '<div class="transcript-box" id="myTranscriptBox">متن صحبت شما...</div>' +
-                    '<div class="transcript-box" id="myTranslatedBox" style="background:#eff6ff;color:#1e3a8a;min-height:46px;margin-top:6px;">ترجمه...</div>' +
+                    '<div style="font-weight:900;font-size:14.5px;color:#fde047;">۱. صدای من ➔ متن</div>' +
+                    '<select id="mySpeechLangSelect" style="background:#071326;color:#fff;border-color:#38bdf8;" onchange="mySpeechLang=this.value">' + optsMe + '</select>' +
+                    '<div class="audio-group">' +
+                        '<button type="button" class="btn-audio-fa" onclick="captureSpeechToTarget(\'me\')">🎤 شروع ضبط صدای من</button>' +
+                        '<button type="button" class="btn-secondary" onclick="stopSpeechCapture()">⏹ توقف</button>' +
+                    '</div>' +
+                    '<div class="transcript-box" id="myTranscriptBox">متن صحبت شما اینجا ظاهر می‌شود...</div>' +
+                    '<div class="transcript-box" id="myTranslatedBox" style="background:#eff6ff;color:#1e3a8a;min-height:48px;margin-top:6px;">ترجمه صحبت شما...</div>' +
                 '</div>' +
                 '<div class="speaker-card">' +
-                    '<div style="font-weight:900;color:#6ee7b7;">۲. صدای طرف مقابل ➔ متن</div>' +
-                    '<select id="otherSpeechLangSelect" style="background:#071326;color:#fff;" onchange="otherSpeechLang=this.value">' + optsOther + '</select>' +
-                    '<div class="audio-group"><button type="button" class="btn-audio-de" onclick="captureSpeechToTarget(\'other\')">🎤 شروع ضبط طرف مقابل</button><button type="button" class="btn-secondary" onclick="stopSpeechCapture()">⏹ توقف</button></div>' +
-                    '<div class="transcript-box" id="otherTranscriptBox">متن صحبت طرف مقابل...</div>' +
-                    '<div class="transcript-box" id="otherTranslatedBox" style="background:#f0fdf4;color:#14532d;min-height:46px;margin-top:6px;">ترجمه...</div>' +
+                    '<div style="font-weight:900;font-size:14.5px;color:#6ee7b7;">۲. صدای طرف مقابل ➔ متن</div>' +
+                    '<select id="otherSpeechLangSelect" style="background:#071326;color:#fff;border-color:#38bdf8;" onchange="otherSpeechLang=this.value">' + optsOther + '</select>' +
+                    '<div class="audio-group">' +
+                        '<button type="button" class="btn-audio-de" onclick="captureSpeechToTarget(\'other\')">🎤 شروع ضبط صدای طرف مقابل</button>' +
+                        '<button type="button" class="btn-secondary" onclick="stopSpeechCapture()">⏹ توقف</button>' +
+                    '</div>' +
+                    '<div class="transcript-box" id="otherTranscriptBox">متن صحبت طرف مقابل اینجا ظاهر می‌شود...</div>' +
+                    '<div class="transcript-box" id="otherTranslatedBox" style="background:#f0fdf4;color:#14532d;min-height:48px;margin-top:6px;">ترجمه صحبت طرف مقابل...</div>' +
                 '</div>' +
             '</div>' +
             '<div class="speaker-card" style="margin-top:12px;">' +
-                '<div style="font-weight:900;color:#fde047;">۳. نوشتن مشکلات خود به متن و تبدیل به زبان موردنظر</div>' +
-                '<textarea id="problemTextInput" style="background:#fff;color:#0f172a;" placeholder="مشکل خود را بنویسید..."></textarea>' +
+                '<div style="font-weight:900;font-size:14.5px;color:#fde047;">۳. نوشتن مشکلات خود به متن و تبدیل به زبان موردنظر</div>' +
+                '<textarea id="problemTextInput" style="background:#ffffff;color:#0f172a;" placeholder="مشکل خود را به دری/فارسی یا آلمانی بنویسید تا به زبان موردنظر تبدیل شود..."></textarea>' +
                 '<div class="audio-group">' +
-                    '<select id="problemTargetLang" style="width:auto;margin:0;background:#071326;color:#fff;"><option value="de">آلمانی (Deutsch)</option><option value="fa">دری / فارسی</option><option value="en">انگلیسی</option><option value="tr">ترکی</option></select>' +
-                    '<button type="button" class="btn-primary" onclick="convertProblemText()">🔄 تبدیل مشکل</button>' +
-                    '<button type="button" class="btn-audio-de" onclick="speakProblemResult()">🔊 پخش صدا</button>' +
+                    '<select id="problemTargetLang" style="width:auto;margin:0;background:#071326;color:#fff;border-color:#38bdf8;">' +
+                        '<option value="de">تبدیل به آلمانی (Deutsch)</option>' +
+                        '<option value="fa">تبدیل به دری / فارسی</option>' +
+                        '<option value="en">تبدیل به انگلیسی (English)</option>' +
+                        '<option value="tr">تبدیل به ترکی (Türkçe)</option>' +
+                    '</select>' +
+                    '<button type="button" class="btn-primary" onclick="convertProblemText()">🔄 تبدیل مشکل به زبان موردنظر</button>' +
+                    '<button type="button" class="btn-audio-de" onclick="speakProblemResult()">🔊 پخش صدای نتیجه</button>' +
                 '</div>' +
-                '<div class="transcript-box" id="problemConvertedOutput" data-lang="de-DE" style="margin-top:8px;">نتیجه تبدیل...</div>' +
+                '<div class="transcript-box" id="problemConvertedOutput" data-lang="de-DE" style="margin-top:8px;">متن تبدیل‌شده مشکل شما اینجا نمایش داده می‌شود.</div>' +
             '</div>' +
-            '<div id="speechStatusNote" style="margin-top:10px;font-size:13px;font-weight:800;color:#fde047;">آماده دریافت صدا و متن...</div>' +
+            '<div id="speechStatusNote" style="margin-top:10px;font-size:13px;font-weight:800;color:#fde047;">آماده دریافت صدا و تبدیل متن...</div>' +
         '</div>'
     );
 }
+
+window.setDariGermanPreset = function(meCode, otherCode) {
+    mySpeechLang = meCode;
+    otherSpeechLang = otherCode;
+    var s1 = document.getElementById('mySpeechLangSelect');
+    var s2 = document.getElementById('otherSpeechLangSelect');
+    if (s1) s1.value = meCode;
+    if (s2) s2.value = otherCode;
+    var st = document.getElementById('speechStatusNote');
+    if (st) st.textContent = (meCode === 'fa-IR') ? 'حالت دری به آلمانی فعال شد.' : 'حالت آلمانی به دری فعال شد.';
+};
 
 window.convertProblemText = function() {
     var inp = document.getElementById('problemTextInput');
@@ -1368,338 +1409,443 @@ window.convertProblemText = function() {
     if (!inp || !tgtEl || !out) return;
     var txt = inp.value.trim();
     if (!txt) { out.textContent = 'لطفاً مشکل خود را بنویسید.'; return; }
+
     var toShort = tgtEl.value;
     var fromShort = /[a-zA-ZäöüÄÖÜß]/.test(txt) && !/[\u0600-\u06FF]/.test(txt) ? 'de' : 'fa';
     if (fromShort === toShort) fromShort = (toShort === 'de') ? 'fa' : 'de';
-    out.textContent = 'در حال تبدیل...';
+
+    out.textContent = 'در حال تبدیل متن...';
     translateTextOnline(txt, fromShort, toShort, function(res) {
         out.textContent = res || txt;
-        var voiceMap = { de: 'de-DE', fa: 'fa-IR', en: 'en-US', tr: 'tr-TR' };
-        out.setAttribute('data-lang', voiceMap[toShort] || 'de-DE');
-        speakTextSafe(res || txt, voiceMap[toShort] || 'de-DE');
+        var speechMap = { de: 'de-DE', fa: 'fa-IR', en: 'en-US', tr: 'tr-TR' };
+        out.setAttribute('data-lang', speechMap[toShort] || 'de-DE');
     });
 };
 
 window.speakProblemResult = function() {
     var out = document.getElementById('problemConvertedOutput');
-    if (out) speakTextSafe(out.textContent, out.getAttribute('data-lang') || 'de-DE');
+    if (!out) return;
+    speakTextSafe(out.textContent, out.getAttribute('data-lang') || 'de-DE');
 };
 
 window.captureSpeechToTarget = function(who) {
-    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    var statusEl = document.getElementById('speechStatusNote');
-    if (!SR) { if (statusEl) statusEl.textContent = 'تشخیص صدا در این مرورگر پشتیبانی نمی‌شود.'; return; }
+    var SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+    var st = document.getElementById('speechStatusNote');
+    if (!SpeechRec) {
+        if (st) st.textContent = 'مرورگر شما از تشخیص گفتار پشتیبانی نمی‌کند؛ از بخش ترجمه متنی استفاده کنید.';
+        return;
+    }
     stopSpeechCapture();
-    var rec = new SR();
-    var langCode = (who === 'me') ? (document.getElementById('mySpeechLangSelect') ? document.getElementById('mySpeechLangSelect').value : mySpeechLang) : (document.getElementById('otherSpeechLangSelect') ? document.getElementById('otherSpeechLangSelect').value : otherSpeechLang);
-    var targetCode = (who === 'me') ? (document.getElementById('otherSpeechLangSelect') ? document.getElementById('otherSpeechLangSelect').value : otherSpeechLang) : (document.getElementById('mySpeechLangSelect') ? document.getElementById('mySpeechLangSelect').value : mySpeechLang);
+    var langCode = (who === 'me') ? (document.getElementById('mySpeechLangSelect').value || 'fa-IR') : (document.getElementById('otherSpeechLangSelect').value || 'de-DE');
+    var rec = new SpeechRec();
     rec.lang = langCode;
-    rec.interimResults = true;
-    rec.onstart = function() { if (statusEl) statusEl.textContent = '🎤 در حال گوش دادن (' + langCode + ')...'; };
+    rec.interimResults = false;
+    activeRecInstance = rec;
+    if (st) st.textContent = 'در حال گوش دادن (' + langCode + ')...';
+
     rec.onresult = function(ev) {
-        var transcript = '';
-        for (var i = ev.resultIndex; i < ev.results.length; i++) transcript += ev.results[i][0].transcript;
+        var spoken = (ev.results && ev.results[0] && ev.results[0][0]) ? ev.results[0][0].transcript : '';
         var box = document.getElementById(who === 'me' ? 'myTranscriptBox' : 'otherTranscriptBox');
         var trBox = document.getElementById(who === 'me' ? 'myTranslatedBox' : 'otherTranslatedBox');
-        if (box) box.textContent = transcript;
-        if (ev.results[ev.results.length - 1].isFinal && transcript.trim()) {
-            translateTextOnline(transcript.trim(), langCode.slice(0, 2), targetCode.slice(0, 2), function(translated) {
-                if (trBox) trBox.textContent = translated;
-                speakTextSafe(translated, targetCode);
-            });
-        }
+        if (box) box.textContent = spoken;
+        var fromShort = langCode.split('-')[0];
+        var toShort = (fromShort === 'de') ? 'fa' : 'de';
+        translateTextOnline(spoken, fromShort, toShort, function(tr) {
+            if (trBox) trBox.textContent = tr;
+        });
+        if (st) st.textContent = 'متن دریافت شد.';
     };
-    activeRecInstance = rec;
-    try { rec.start(); } catch (e) {}
+    rec.onerror = function() { if (st) st.textContent = 'خطا در ضبط صدا یا دسترسی به میکروفون.'; };
+    rec.onend = function() { activeRecInstance = null; };
+    rec.start();
 };
 
 window.stopSpeechCapture = function() {
-    if (activeRecInstance) { try { activeRecInstance.stop(); } catch (e) {} activeRecInstance = null; }
+    if (activeRecInstance) {
+        try { activeRecInstance.stop(); } catch (e) {}
+        activeRecInstance = null;
+    }
 };
 
-/* 05: مترجم متنی */
+/* 04: Translator + Everyday Sentences */
 function buildTranslatorHtml() {
-    return (
-        '<div class="sub-card">' +
-            '<h4>🌐 مترجم هر متن یا لغت (دری / فارسی ↔ آلمانی)</h4>' +
-            '<textarea id="translatorInput" placeholder="هر جمله یا لغت را بنویسید..."></textarea>' +
-            '<div class="audio-group" style="margin-bottom:10px;">' +
-                '<button type="button" class="btn-primary" onclick="runTextTranslation(\'fa\', \'de\')">دری/فارسی ➜ آلمانی</button>' +
-                '<button type="button" class="btn-primary" onclick="runTextTranslation(\'de\', \'fa\')">آلمانی ➜ دری/فارسی</button>' +
-            '</div>' +
-            '<div id="translatorOutputBox"></div>' +
-        '</div>'
-    );
+    return '<div class="sub-card"><h4>🌐 مترجم متنی هر جمله یا لغت (دری/فارسی ↔ آلمانی) + جملات روزمره</h4>' +
+        '<div class="audio-group">' +
+            '<button type="button" class="btn-audio-fa" onclick="runTranslate(\'fa\',\'de\')">🇮🇷 دری/فارسی به آلمانی</button>' +
+            '<button type="button" class="btn-audio-de" onclick="runTranslate(\'de\',\'fa\')">🇩🇪 آلمانی به دری/فارسی</button>' +
+        '</div>' +
+        '<textarea id="trInput" placeholder="هر لغت یا جمله را بنویسید..."></textarea>' +
+        '<button type="button" class="btn-primary" onclick="runTranslate()">ترجمه و نمایش جملات روزمره</button>' +
+        '<div id="trOutput" class="result-banner" style="display:none;"></div>' +
+        '<div id="trSentencesBox"></div></div>';
 }
 
-window.runTextTranslation = function(fromShort, toShort) {
-    var inp = document.getElementById('translatorInput');
-    var out = document.getElementById('translatorOutputBox');
+window.runTranslate = function(forceFrom, forceTo) {
+    var inp = document.getElementById('trInput');
+    var out = document.getElementById('trOutput');
+    var sBox = document.getElementById('trSentencesBox');
     if (!inp || !out) return;
     var txt = inp.value.trim();
     if (!txt) return;
-    out.innerHTML = '<div class="result-banner">⏳ در حال ترجمه...</div>';
+
+    var fromShort = forceFrom || (/[a-zA-ZäöüÄÖÜß]/.test(txt) && !/[\u0600-\u06FF]/.test(txt) ? 'de' : 'fa');
+    var toShort = forceTo || (fromShort === 'de' ? 'fa' : 'de');
+    out.style.display = 'block';
+    out.textContent = 'در حال ترجمه...';
+
     translateTextOnline(txt, fromShort, toShort, function(res) {
         var dePart = (fromShort === 'de') ? txt : res;
-        var faPart = (toShort === 'fa') ? res : txt;
-        out.innerHTML =
-            '<div class="result-banner" style="background:#eff6ff;border-color:#93c5fd;color:#1e3a8a;">' +
-                '<div><strong>ترجمه:</strong> ' + res + '</div>' +
-                '<div class="audio-group" style="margin-top:8px;">' +
-                    '<button type="button" class="btn-audio-de" onclick="speakTextSafe(\'' + escapeAttr(res) + '\', \'' + (toShort === 'de' ? 'de-DE' : 'fa-IR') + '\')">🔊 پخش ترجمه</button>' +
-                '</div>' +
-            '</div>' +
-            renderSentencesBlockHtml(dePart, faPart, selectedAudioVoiceLang);
+        var faPart = (fromShort === 'fa') ? txt : res;
+        out.innerHTML = '<div>🇩🇪 ' + dePart + '</div><div>🇮🇷 ' + faPart + '</div>' +
+            '<div class="audio-group" style="margin-top:8px;">' +
+                '<button type="button" class="btn-audio-de" onclick="speakTextSafe(\'' + escapeAttr(dePart) + '\', \'de-DE\')">🔊 تلفظ آلمانی</button>' +
+                '<button type="button" class="btn-audio-fa" onclick="speakTextSafe(\'' + escapeAttr(faPart) + '\', \'fa-IR\')">🔊 تلفظ دری/فارسی</button>' +
+            '</div>';
+        if (sBox) sBox.innerHTML = renderSentencesBlockHtml(dePart, faPart, selectedAudioVoiceLang);
     });
 };
 
-/* 06: گرامر و کتاب‌ها */
+/* 05: Grammar & Books A1-C1 */
 function buildGrammarDrawerHtml() {
-    var items = [
-        ['A1 – Nomen, Artikel, Pronomen & Akkusativ/Dativ', 'مبانی اسم، حرف تعریف، ضمایر و حالت‌های مفعولی در سطح A1.'],
-        ['A2 – Verben mit Präposition & Zeiten', 'افعال با حرف اضافه و صرف زمان‌ها در سطح A2.'],
-        ['B1 – Passiv, Konjunktiv & Wortliste', 'جملات مجهول، وجه شرطی و واژگان کلیدی سطح B1.'],
-        ['B2 & C1 – Konjunktiv I/II & Akademischer Wortschatz', 'ساختارهای تحلیلی، وجه نقلی و واژگان پیشرفته B2 و C1.']
-    ];
-    var html = '<div class="sub-card"><h4>📐 گرامر و ساختارهای سطوح A1 تا C1</h4>';
-    for (var i = 0; i < items.length; i++) {
-        html += '<div class="lesson-item"><button type="button" class="lesson-head-btn"><span>' + items[i][0] + '</span><span>+</span></button><div class="lesson-body"><p style="font-size:13px;">' + items[i][1] + '</p></div></div>';
-    }
-    html += '</div>';
-    return html;
-}
-
-function bindAccordions(container) {
-    container.querySelectorAll('.lesson-head-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            var open = btn.classList.toggle('open');
-            var body = btn.nextElementSibling;
-            if (body) body.classList.toggle('open', open);
-        });
+    var html = '<div class="sub-card"><h4>📐 گرامر و کتاب‌های A1 تا C1</h4>' +
+        '<div class="level-switcher-bar">';
+    LEVELS.forEach(function(lvl, idx) {
+        html += '<button type="button" class="lvl-filter-btn' + (idx === 0 ? ' active' : '') + '" id="gBtn-' + lvl + '" onclick="selectGrammarLevel(\'' + lvl + '\')">' + lvl + '</button>';
     });
-}
-
-/* 07: رادیو */
-var radioTimer = null;
-var radioIndex = 0;
-var RADIO_LINES = [
-    ['Willkommen bei Radio KING ASAD – Nachrichten und Alltag auf Deutsch.', 'به رادیو KING ASAD خوش آمدید – اخبار و زندگی روزمره به زبان آلمانی.'],
-    ['Wer jeden Tag Deutsch hört und spricht, macht schnelle Fortschritte.', 'هرکس هر روز آلمانی بشنود و صحبت کند، سریع پیشرفت می‌کند.']
-];
-
-function buildRadioDrawerHtml() {
-    return '<div class="sub-card"><h4>📻 رادیو آلمانی با ترجمه فارسی در زیر متن</h4><div class="audio-group" style="margin-bottom:10px;"><button type="button" class="btn-primary" onclick="startRadioPlayback()">▶ پخش رادیو</button><button type="button" class="btn-secondary" onclick="stopRadioPlayback()">⏹ توقف</button></div><div id="radioScreenBox" class="result-banner"><div style="font-weight:900;">🇩🇪 ' + RADIO_LINES[0][0] + '</div><div style="color:#15803d;margin-top:6px;">🇮🇷 ' + RADIO_LINES[0][1] + '</div></div></div>';
-}
-
-window.startRadioPlayback = function() {
-    stopRadioPlayback();
-    var step = function() {
-        var line = RADIO_LINES[radioIndex % RADIO_LINES.length];
-        var sc = document.getElementById('radioScreenBox');
-        if (sc) sc.innerHTML = '<div style="font-weight:900;">🇩🇪 ' + line[0] + '</div><div style="color:#15803d;margin-top:6px;">🇮🇷 ' + line[1] + '</div>';
-        speakTextSafe(line[0], 'de-DE');
-        radioIndex++;
-        radioTimer = setTimeout(step, 5000);
-    };
-    step();
-};
-
-window.stopRadioPlayback = function() {
-    if (radioTimer) { clearTimeout(radioTimer); radioTimer = null; }
-};
-
-/* 08: حل‌کننده سؤال */
-function buildSolverDrawerHtml() {
-    return '<div class="sub-card"><h4>🧩 حل‌کننده سؤال و تحلیل گرامر آلمانی</h4><textarea id="solverInput" placeholder="جمله یا سؤال آلمانی خود را بنویسید..."></textarea><button type="button" class="btn-primary" onclick="runGrammarSolver()">تحلیل جمله</button><div id="solverResultBox"></div></div>';
-}
-
-window.runGrammarSolver = function() {
-    var inp = document.getElementById('solverInput');
-    var out = document.getElementById('solverResultBox');
-    if (!inp || !out || !inp.value.trim()) return;
-    var txt = inp.value.trim();
-    out.innerHTML = '<div class="result-banner">جمله بررسی شد: «' + txt + '» — <button type="button" class="btn-audio-de" onclick="speakTextSafe(\'' + escapeAttr(txt) + '\', \'de-DE\')">🔊 تلفظ</button></div>';
-};
-
-/* 09: آزمون تعاملی */
-var quizData = {
-    A1: [['Was bedeutet „Guten Morgen“?', ['صبح بخیر','شب بخیر','خداحافظ'], 0],['Wie heißt du?', ['چند سال داری؟','نامت چیست؟','کجا زندگی می‌کنی؟'], 1]],
-    A2: [['Ich ___ gestern nach Berlin gefahren.', ['bin','habe','ist'], 0],['Was bedeutet „Einkaufen“?', ['خوابیدن','خرید کردن','درس خواندن'], 1]],
-    B1: [['Wenn ich Zeit hätte, ___ ich reisen.', ['werde','würde','bin'], 1],['Was bedeutet „obwohl“?', ['زیرا','اگر','با وجود اینکه'], 2]],
-    B2: [['Was bedeutet „abwägen“?', ['سنجیدن و بررسی جوانب','فراموش کردن','تکرار کردن'], 0],['„Hingegen“ drückt meistens ___ aus.', ['یک تضاد','یک آرزو','یک زمان'], 0]],
-    C1: [['Was bedeutet „die Schlussfolgerung“?', ['نتیجه‌گیری','پیش‌فرض','مخالفت'], 0],['Eine Prämisse ist ___.', ['یک پیش‌فرض پایه','یک نتیجه','یک ترجمه'], 0]]
-};
-var quizState = {};
-
-function buildQuizDrawerHtml() {
-    var html = '<div class="sub-card"><h4>✍️ آزمون تعاملی (غلط = سرخ، درست = آبی، دکمه رد کردن، امتیاز در پایین)</h4><div class="level-switcher-bar">';
-    for (var i = 0; i < LEVELS.length; i++) {
-        var l = LEVELS[i];
-        html += '<button type="button" class="lvl-filter-btn' + (l === 'A1' ? ' active' : '') + '" id="quizLvlBtn-' + l + '" onclick="renderQuizForLevel(\'' + l + '\')">سطح ' + l + '</button>';
-    }
-    html += '</div><div id="quizQuestionsContainer"></div><div class="quiz-live-score" id="quizBottomScoreBar">امتیاز شما: ۰</div></div>';
-    setTimeout(function() { renderQuizForLevel('A1'); }, 0);
+    html += '</div><div id="grammarLevelContent"></div></div>';
+    setTimeout(function() { window.selectGrammarLevel('A1'); }, 0);
     return html;
 }
 
-window.renderQuizForLevel = function(lvl) {
+window.selectGrammarLevel = function(lvl) {
     LEVELS.forEach(function(l) {
-        var b = document.getElementById('quizLvlBtn-' + l);
+        var b = document.getElementById('gBtn-' + l);
         if (b) b.classList.toggle('active', l === lvl);
     });
-    if (!quizState[lvl]) quizState[lvl] = { answers: {}, skipped: {} };
-    var qs = quizData[lvl];
-    var container = document.getElementById('quizQuestionsContainer');
-    if (!container) return;
-    var html = '';
-    for (var qIdx = 0; qIdx < qs.length; qIdx++) {
-        var q = qs[qIdx];
-        var chosen = quizState[lvl].answers[qIdx];
-        html += '<div class="vocab-row"><div style="font-weight:800;margin-bottom:6px;">سؤال ' + (qIdx + 1) + ': ' + q[0] + '</div>';
-        for (var oIdx = 0; oIdx < q[1].length; oIdx++) {
-            var cls = 'quiz-option-label';
-            if (chosen !== undefined && chosen !== null) {
-                if (oIdx === q[2]) cls += ' correct-choice';
-                else if (oIdx === chosen && chosen !== q[2]) cls += ' wrong-choice';
-            }
-            html += '<label class="' + cls + '"><input type="radio" name="q_' + lvl + '_' + qIdx + '" ' + (chosen === oIdx ? 'checked' : '') + ' onchange="selectQuizOption(\'' + lvl + '\',' + qIdx + ',' + oIdx + ')"><span>' + q[1][oIdx] + '</span></label>';
-        }
-        html += '<div style="margin-top:6px;"><button type="button" class="btn-secondary" onclick="skipQuizQuestion(\'' + lvl + '\',' + qIdx + ')">⏭ رد کردن سؤال</button></div></div>';
-    }
-    container.innerHTML = html;
-    updateQuizBottomScore(lvl);
+    var box = document.getElementById('grammarLevelContent');
+    var data = LEVEL_GRAMMAR_AND_BOOKS[lvl];
+    if (!box || !data) return;
+
+    var h = '<div class="result-banner">📘 ' + data.bookTitle + '</div>';
+    data.sections.forEach(function(sec, i) {
+        h += '<button type="button" class="book-topic-btn" onclick="toggleGrammarTopic(' + i + ')">' + sec.title + '</button>' +
+            '<div id="gTopic-' + i + '" style="display:none;padding:10px 12px;margin-bottom:8px;background:#f8fafc;border:1px solid #cbd5e1;border-radius:8px;font-size:13px;">' +
+                sec.desc +
+                '<div class="audio-group" style="margin-top:8px;">' +
+                    '<button type="button" class="btn-audio-de" onclick="speakTextSafe(\'' + escapeAttr(sec.key) + '\', \'de-DE\')">🔊 تلفظ عنوان</button>' +
+                    '<button type="button" class="btn-audio-fa" onclick="speakTextSafe(\'' + escapeAttr(sec.desc) + '\', \'fa-IR\')">🔊 توضیح فارسی</button>' +
+                '</div>' +
+            '</div>';
+    });
+    box.innerHTML = h;
 };
 
-window.selectQuizOption = function(lvl, qIdx, oIdx) {
+window.toggleGrammarTopic = function(idx) {
+    var el = document.getElementById('gTopic-' + idx);
+    if (el) el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+};
+
+/* 06: 520+ Podcasts + Optional Language Below Each Podcast */
+function buildPodcastsDrawerHtml() {
+    return '<div class="sub-card"><h4>🎧 پادکست‌های آلمانی (+۵۲۰ جمله با ترجمه و زبان اختیاری در پایین هر پادکست)</h4>' +
+        '<input type="text" id="podSearch" oninput="renderPodcastList()" placeholder="جستجو در ۵۲۰ جمله پادکست...">' +
+        '<div id="podList"></div></div>';
+}
+
+window.renderPodcastList = function() {
+    var listEl = document.getElementById('podList');
+    if (!listEl) return;
+    var q = (document.getElementById('podSearch') ? document.getElementById('podSearch').value : '').trim().toLowerCase();
+    var filtered = PODCAST_520.filter(function(item) {
+        return !q || item.de.toLowerCase().indexOf(q) !== -1 || item.fa.indexOf(q) !== -1;
+    }).slice(0, 12);
+
+    var langOpts = '';
+    for (var i = 0; i < SPEECH_LANGS.length; i++) {
+        var sl = SPEECH_LANGS[i];
+        langOpts += '<option value="' + sl.short + '"' + (sl.short === 'fa' ? ' selected' : '') + '>' + sl.label + '</option>';
+    }
+
+    var h = '';
+    filtered.forEach(function(item) {
+        h += '<div class="line-row">' +
+            '<div class="row-top-flex">' +
+                '<div><strong>[' + item.lvl + ' #' + item.num + '] 🇩🇪 ' + item.de + '</strong>' +
+                '<div style="color:#4b5563;font-size:12.5px;">🇮🇷 ' + item.fa + '</div></div>' +
+                '<div class="audio-group">' +
+                    '<button type="button" class="btn-audio-de" onclick="speakTextSafe(\'' + escapeAttr(item.de) + '\', \'de-DE\')">🔊 پخش آلمانی</button>' +
+                    '<button type="button" class="btn-audio-fa" onclick="speakTextSafe(\'' + escapeAttr(item.fa) + '\', \'fa-IR\')">🔊 پخش فارسی</button>' +
+                '</div>' +
+            '</div>' +
+            '<div class="word-sentence-box" style="margin-top:4px;">' +
+                '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+                    '<span style="font-size:12px;font-weight:800;color:#1e3a8a;">زبان اختیاری زیر پادکست:</span>' +
+                    '<select style="width:auto;margin:0;padding:4px 8px;font-size:12px;" onchange="applyPodcastOptionalLang(' + item.num + ', this.value, \'' + escapeAttr(item.de) + '\')">' + langOpts + '</select>' +
+                    '<button type="button" class="btn-move" onclick="var sel=this.previousElementSibling; applyPodcastOptionalLang(' + item.num + ', sel.value, \'' + escapeAttr(item.de) + '\')">ترجمه و پخش</button>' +
+                '</div>' +
+                '<div id="podOptOut-' + item.num + '" style="margin-top:6px;font-size:12.5px;font-weight:700;color:#0f172a;">ترجمه زبان اختیاری این پادکست اینجا نمایش داده می‌شود.</div>' +
+            '</div>' +
+        '</div>';
+    });
+    listEl.innerHTML = h || '<div class="result-banner">موردی یافت نشد.</div>';
+};
+
+window.applyPodcastOptionalLang = function(num, targetShort, deText) {
+    var out = document.getElementById('podOptOut-' + num);
+    if (!out) return;
+    out.textContent = 'در حال ترجمه به زبان انتخابی...';
+    translateTextOnline(deText, 'de', targetShort, function(tr) {
+        out.textContent = tr || deText;
+        var speechMap = { de: 'de-DE', fa: 'fa-IR', en: 'en-US', tr: 'tr-TR', ar: 'ar-SA', ps: 'ps-AF', ur: 'ur-PK' };
+        speakTextSafe(tr || deText, speechMap[targetShort] || 'fa-IR');
+    });
+};
+
+/* 07: Radio */
+function buildRadioDrawerHtml() {
+    var ch = RADIO_CHANNELS[0];
+    var line = ch.lines[radioIndex % ch.lines.length];
+    return '<div class="sub-card"><h4>📻 رادیو آلمانی با ترجمه فارسی در پایین</h4>' +
+        '<div class="audio-group">' +
+            '<button type="button" class="btn-primary" onclick="startRadioAuto()">▶ پخش خودکار رادیو</button>' +
+            '<button type="button" class="btn-secondary" onclick="stopRadioAuto()">⏹ توقف</button>' +
+            '<button type="button" class="btn-audio-de" onclick="nextRadioLine()">⏭ جمله بعدی</button>' +
+        '</div>' +
+        '<div class="result-banner" id="radioBox">' +
+            '<div style="font-size:15px;">🇩🇪 ' + line[0] + '</div>' +
+            '<div style="margin-top:6px;color:#1e3a8a;">🇮🇷 ' + line[1] + '</div>' +
+        '</div></div>';
+}
+
+function updateRadioBox() {
+    var box = document.getElementById('radioBox');
+    var line = RADIO_CHANNELS[0].lines[radioIndex % RADIO_CHANNELS[0].lines.length];
+    if (box) {
+        box.innerHTML = '<div style="font-size:15px;">🇩🇪 ' + line[0] + '</div>' +
+            '<div style="margin-top:6px;color:#1e3a8a;">🇮🇷 ' + line[1] + '</div>';
+    }
+    speakTextSafe(line[0], 'de-DE');
+}
+
+window.startRadioAuto = function() {
+    stopRadioAuto();
+    updateRadioBox();
+    radioTimer = setInterval(function() { radioIndex++; updateRadioBox(); }, 5000);
+};
+
+window.stopRadioAuto = function() {
+    if (radioTimer) { clearInterval(radioTimer); radioTimer = null; }
+};
+
+window.nextRadioLine = function() {
+    radioIndex++;
+    updateRadioBox();
+};
+
+/* 08: Solver */
+function buildSolverDrawerHtml() {
+    return '<div class="sub-card"><h4>🧩 حل‌کننده سؤال و تحلیل گرامر آلمانی</h4>' +
+        '<textarea id="solverInput" placeholder="سؤال یا جمله آلمانی خود را بنویسید (مثلاً: Ich habe ein Buch gekauft)..."></textarea>' +
+        '<button type="button" class="btn-primary" onclick="runSolver()">تحلیل جمله و گرامر</button>' +
+        '<div id="solverResult" class="result-banner" style="display:none;"></div></div>';
+}
+
+window.runSolver = function() {
+    var inp = document.getElementById('solverInput');
+    var out = document.getElementById('solverResult');
+    if (!inp || !out) return;
+    var txt = inp.value.trim();
+    if (!txt) return;
+    var words = txt.split(/\s+/).filter(Boolean);
+    var hasPerfekt = /\b(habe|hat|bin|ist)\b/i.test(txt) && /\bge\w+/i.test(txt);
+    var typeText = hasPerfekt ? 'زمان گذشته کامل (Perfekt)' : 'ساختار جمله خبری / پرسشی آلمانی';
+    out.style.display = 'block';
+    out.innerHTML = '<div><strong>نوع ساختار:</strong> ' + typeText + '</div>' +
+        '<div><strong>تعداد واژگان:</strong> ' + words.length + '</div>' +
+        '<div class="audio-group" style="margin-top:8px;"><button type="button" class="btn-audio-de" onclick="speakTextSafe(\'' + escapeAttr(txt) + '\', \'de-DE\')">🔊 تلفظ جمله</button></div>';
+};
+
+/* 09: Quiz */
+function buildQuizDrawerHtml() {
+    var html = '<div class="sub-card"><h4>✍️ آزمون‌های تعاملی A1 تا C1</h4><div class="level-switcher-bar">';
+    LEVELS.forEach(function(lvl, i) {
+        html += '<button type="button" class="lvl-filter-btn' + (i === 0 ? ' active' : '') + '" id="qBtn-' + lvl + '" onclick="renderQuizLevel(\'' + lvl + '\')">' + lvl + '</button>';
+    });
+    html += '</div><div id="quizBody"></div></div>';
+    setTimeout(function() { window.renderQuizLevel('A1'); }, 0);
+    return html;
+}
+
+window.renderQuizLevel = function(lvl) {
+    LEVELS.forEach(function(l) {
+        var b = document.getElementById('qBtn-' + l);
+        if (b) b.classList.toggle('active', l === lvl);
+    });
+    var body = document.getElementById('quizBody');
+    var qs = quizData[lvl] || [];
+    if (!body) return;
+    if (!quizState[lvl]) quizState[lvl] = { answers: {}, skipped: {} };
+
+    var h = '';
+    qs.forEach(function(item, qIdx) {
+        var qText = item[0], opts = item[1], correctIdx = item[2];
+        var chosen = quizState[lvl].answers[qIdx];
+        var isSkipped = !!quizState[lvl].skipped[qIdx];
+
+        h += '<div class="line-row"><div style="font-weight:800;">سؤال ' + (qIdx + 1) + ': ' + qText + '</div>';
+        opts.forEach(function(opt, oIdx) {
+            var cls = 'quiz-option-label';
+            if (!isSkipped && chosen !== undefined) {
+                if (oIdx === correctIdx) cls += ' correct-choice';
+                else if (oIdx === chosen) cls += ' wrong-choice';
+            }
+            var checkedAttr = (!isSkipped && chosen === oIdx) ? ' checked' : '';
+            h += '<label class="' + cls + '"><input type="radio" name="q_' + lvl + '_' + qIdx + '"' + checkedAttr + ' onchange="chooseQuizOption(\'' + lvl + '\', ' + qIdx + ', ' + oIdx + ')"><span>' + opt + '</span></label>';
+        });
+        h += '<div class="audio-group" style="margin-top:6px;"><button type="button" class="btn-secondary" onclick="skipQuizQuestion(\'' + lvl + '\', ' + qIdx + ')">رد کردن سؤال</button></div></div>';
+    });
+
+    h += '<div class="quiz-live-score" id="quizScoreBox">امتیاز فعلی خود را با انتخاب گزینه‌ها ببینید.</div>';
+    body.innerHTML = h;
+    recalcQuizScore(lvl);
+};
+
+window.chooseQuizOption = function(lvl, qIdx, oIdx) {
     if (!quizState[lvl]) quizState[lvl] = { answers: {}, skipped: {} };
     quizState[lvl].answers[qIdx] = oIdx;
-    renderQuizForLevel(lvl);
+    quizState[lvl].skipped[qIdx] = false;
+    window.renderQuizLevel(lvl);
 };
 
 window.skipQuizQuestion = function(lvl, qIdx) {
     if (!quizState[lvl]) quizState[lvl] = { answers: {}, skipped: {} };
-    quizState[lvl].skipped[qIdx] = true;
     delete quizState[lvl].answers[qIdx];
-    renderQuizForLevel(lvl);
+    quizState[lvl].skipped[qIdx] = true;
+    window.renderQuizLevel(lvl);
 };
 
-function updateQuizBottomScore(lvl) {
-    var qs = quizData[lvl];
-    var st = quizState[lvl] || { answers: {}, skipped: {} };
-    var score = 0;
-    for (var i = 0; i < qs.length; i++) {
-        if (st.answers[i] === qs[i][2]) score++;
-    }
-    var bar = document.getElementById('quizBottomScoreBar');
-    if (bar) bar.textContent = 'سطح ' + lvl + ' – امتیاز شما: ' + score + ' از ' + qs.length;
-    if (score === qs.length) triggerCelebrationConfetti();
+function recalcQuizScore(lvl) {
+    var qs = quizData[lvl] || [];
+    var st = quizState[lvl] || { answers: {} };
+    var correct = 0;
+    qs.forEach(function(item, idx) { if (st.answers[idx] === item[2]) correct++; });
+    var pct = qs.length ? Math.round((correct / qs.length) * 100) : 0;
+    var box = document.getElementById('quizScoreBox');
+    if (box) box.textContent = 'امتیاز سطح ' + lvl + ': ' + correct + ' از ' + qs.length + ' (' + pct + '%)';
+    if (pct >= 80 && Object.keys(st.answers).length >= qs.length) triggerConfettiCelebration();
 }
 
-function triggerCelebrationConfetti() {
+/* 10: Multilang */
+function buildMultilangDrawerHtml() {
+    var h = '<div class="sub-card"><h4>🌍 عبارات چندزبانه یادگیری آلمانی</h4>';
+    MULTILANG_SAMPLES.forEach(function(m) {
+        h += '<div class="line-row"><div class="row-top-flex"><div><strong>' + m.lang + '</strong><div>' + m.greeting + '</div><div style="color:#4b5563;font-size:12.5px;">' + m.tip + '</div></div></div></div>';
+    });
+    return h + '</div>';
+}
+
+/* 11: 6 New Videos + Levels + Contact */
+function buildContactDrawerHtml() {
+    var h = '<div class="sub-card"><h4>🎬 ۶ ویدیوی آموزشی جدید و ارتباط با KING ASAD</h4>' +
+        '<p style="margin-bottom:10px;font-weight:700;">شماره تماس مستقیم: <span dir="ltr">+4915212898695</span></p>';
+
+    NEW_SIX_VIDEOS.forEach(function(v) {
+        h += '<div class="line-row">' +
+            '<div style="font-weight:900;color:#1e3a8a;">' + v.title + ' (' + v.level + ')</div>' +
+            '<div style="font-size:12.5px;color:#4b5563;">' + v.desc + '</div>' +
+            '<iframe class="video-frame" src="https://www.youtube.com/embed/' + v.id + '" title="' + v.title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
+        '</div>';
+    });
+
+    h += '<input type="text" id="contactName" placeholder="نام شما">' +
+        '<textarea id="contactMsg" placeholder="پیام یا سؤال خود را بنویسید..."></textarea>' +
+        '<button type="button" class="btn-primary" onclick="sendContactMessage()">ثبت پیام</button>' +
+        '<div id="contactStatus" class="result-banner" style="display:none;"></div></div>';
+    return h;
+}
+
+window.sendContactMessage = function() {
+    var name = (document.getElementById('contactName') ? document.getElementById('contactName').value : '').trim();
+    var msg = (document.getElementById('contactMsg') ? document.getElementById('contactMsg').value : '').trim();
+    var st = document.getElementById('contactStatus');
+    if (!st) return;
+    st.style.display = 'block';
+    if (!msg) { st.textContent = 'لطفاً متن پیام را وارد کنید.'; return; }
+    st.textContent = 'پیام شما (' + (name || 'کاربر') + ') ثبت شد. برای تماس مستقیم: +4915212898695';
+};
+
+function triggerConfettiCelebration() {
     var layer = document.getElementById('confettiLayer');
     if (!layer) return;
-    layer.innerHTML = '';
-    var colors = ['#ef4444', '#3b82f6', '#22c55e', '#f59e0b', '#a855f7'];
-    for (var i = 0; i < 30; i++) {
-        var piece = document.createElement('div');
-        piece.className = 'confetti-piece';
-        piece.style.left = ((i * 100) / 30) + '%';
-        piece.style.backgroundColor = colors[i % colors.length];
-        layer.appendChild(piece);
+    var colors = ['#ef4444', '#3b82f6', '#eab308', '#22c55e', '#a855f7'];
+    for (var i = 0; i < 36; i++) {
+        var p = document.createElement('div');
+        p.className = 'confetti-piece';
+        p.style.left = Math.round(Math.random() * 100) + '%';
+        p.style.background = colors[i % colors.length];
+        p.style.animationDelay = (Math.random() * 0.4) + 's';
+        layer.appendChild(p);
+        setTimeout((function(el) { return function() { if (el && el.parentNode) el.parentNode.removeChild(el); }; })(p), 2400);
     }
-    setTimeout(function() { layer.innerHTML = ''; }, 2300);
 }
 
-/* 10: چندزبانه */
-function buildMultilangDrawerHtml() {
-    var samples = [
-        ['🇩🇪 Deutsch', 'Guten Tag! Ich lerne Deutsch.'],
-        ['🇮🇷 دری / فارسی', 'سلام! من زبان آلمانی یاد می‌گیرم.'],
-        ['🇹🇷 Türkçe', 'Merhaba! Almanca öğreniyorum.'],
-        ['🇸🇦 العربية', 'مرحباً! أتعلم اللغة الألمانية.'],
-        ['🇬🇧 English', 'Hello! I am learning German.'],
-        ['🇵🇰 اردو', 'ہیلو! میں جرمن زبان سیکھ رہا ہوں۔'],
-        ['🇦🇫 پښتو', 'سلام! زه جرمني ژبه زده کوم.']
-    ];
-    var html = '<div class="sub-card"><h4>🌍 راهنمای چندزبانه</h4>';
-    for (var i = 0; i < samples.length; i++) {
-        html += '<div class="vocab-row"><div class="row-top-flex"><div><strong>' + samples[i][0] + '</strong>: ' + samples[i][1] + '</div><button type="button" class="btn-audio-de" onclick="speakTextSafe(\'' + escapeAttr(samples[i][1]) + '\', \'de-DE\')">🔊 تلفظ</button></div></div>';
-    }
-    html += '</div>';
-    return html;
-}
-
-/* 11: ارتباط و لینک‌ها */
-function buildContactDrawerHtml() {
-    var html = '<div class="sub-card"><h4>📞 ارتباط با KING ASAD و لینک ویدیوها</h4><p style="font-weight:800;margin-bottom:10px;">تماس مستقیم: <span dir="ltr">+4915212898695</span></p>';
-    for (var i = 0; i < USER_VIDEOS.length; i++) {
-        var v = USER_VIDEOS[i];
-        html += '<div class="vocab-row"><div class="row-top-flex"><div><strong>[' + v.level + ']</strong> ' + v.title + '</div><a class="btn-primary" style="text-decoration:none;" href="' + v.url + '" target="_blank" rel="noopener noreferrer">باز کردن لینک</a></div></div>';
-    }
-    html += '</div>';
-    return html;
-}
-
-function updateLiveClockAndDate() {
+function updateClockAndDate() {
     var el = document.getElementById('liveClockDate');
     if (!el) return;
     var now = new Date();
-    try {
-        el.textContent = now.toLocaleDateString('fa-IR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) + ' | ' + now.toLocaleTimeString('fa-IR');
-    } catch (e) {
-        el.textContent = now.toLocaleString();
-    }
+    var timeStr = now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    var dateStr = now.toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' });
+    el.textContent = dateStr + ' • ' + timeStr;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('#mainRows .row-trigger').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            var grp = btn.closest('.row-group');
-            if (grp) toggleMainRow(grp.getAttribute('data-row-key'), false);
+    updateClockAndDate();
+    setInterval(updateClockAndDate, 1000);
+
+    var welcomeModal = document.getElementById('welcomeModal');
+    var btnOpenWelcome = document.getElementById('btnOpenWelcome');
+    var btnCloseWelcome = document.getElementById('btnCloseWelcome');
+    var btnWelcomeContact = document.getElementById('btnWelcomeContact');
+    var btnStartJourney = document.getElementById('btnStartJourney');
+
+    if (btnOpenWelcome && welcomeModal) {
+        btnOpenWelcome.addEventListener('click', function() { welcomeModal.classList.add('open'); });
+    }
+    if (btnCloseWelcome && welcomeModal) {
+        btnCloseWelcome.addEventListener('click', function() { welcomeModal.classList.remove('open'); });
+    }
+    if (btnWelcomeContact && welcomeModal) {
+        btnWelcomeContact.addEventListener('click', function() {
+            welcomeModal.classList.remove('open');
+            toggleMainRow('contact', true);
+            var g = document.getElementById('group-contact');
+            if (g) g.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
-    });
+    }
+    if (btnStartJourney) {
+        btnStartJourney.addEventListener('click', function() {
+            toggleMainRow('vocab100k', true);
+            var g = document.getElementById('group-vocab100k');
+            if (g) g.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
 
     document.querySelectorAll('[data-tile-level]').forEach(function(tile) {
         tile.addEventListener('click', function() {
-            var lvl = tile.getAttribute('data-tile-level');
-            var foundIdx = USER_VIDEOS.findIndex(function(x) { return x.level === lvl; });
-            if (foundIdx >= 0) {
-                currentVideoIdx = foundIdx;
-                currentVideoStartSec = 0;
-            }
+            selectedLevelFilter = tile.getAttribute('data-tile-level') || 'A1';
             toggleMainRow('lessons', true);
-            var el = document.getElementById('group-lessons');
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            var g = document.getElementById('group-lessons');
+            if (g) g.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
 
-    var startBtn = document.getElementById('btnStartJourney');
-    if (startBtn) {
-        startBtn.addEventListener('click', function() {
-            toggleMainRow('lessons', true);
-            var el = document.getElementById('group-lessons');
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    }
-
-    var welcomeModal = document.getElementById('welcomeModal');
-    var openWelcome = document.getElementById('btnOpenWelcome');
-    var closeWelcome = document.getElementById('btnCloseWelcome');
-    var contactWelcome = document.getElementById('btnWelcomeContact');
-
-    if (openWelcome && welcomeModal) openWelcome.addEventListener('click', function() { welcomeModal.classList.add('open'); });
-    if (closeWelcome && welcomeModal) closeWelcome.addEventListener('click', function() { welcomeModal.classList.remove('open'); });
-    if (contactWelcome && welcomeModal) {
-        contactWelcome.addEventListener('click', function() {
-            welcomeModal.classList.remove('open');
-            toggleMainRow('contact', true);
-            var el = document.getElementById('group-contact');
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    }
-
-    updateLiveClockAndDate();
-    setInterval(updateLiveClockAndDate, 1000);
+    document.querySelectorAll('.row-group').forEach(function(group) {
+        var key = group.getAttribute('data-row-key');
+        var trigger = group.querySelector('.row-trigger');
+        if (key && trigger) {
+            trigger.addEventListener('click', function() { toggleMainRow(key, false); });
+        }
+    });
 });
 </script>
 </body>
