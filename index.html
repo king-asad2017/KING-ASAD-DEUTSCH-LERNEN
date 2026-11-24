@@ -90,7 +90,7 @@ body::before {
 }
 
 .nav-wrap {
-    max-width: 1360px;
+    max-width: 1380px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -155,7 +155,7 @@ body::before {
 }
 
 .main-shell {
-    max-width: 1360px;
+    max-width: 1380px;
     margin: 0 auto;
     padding: 18px 18px 52px;
     display: flex;
@@ -332,15 +332,15 @@ body.theme-modern-edu .hero-main-heading span { color: #0f172a; }
     font-variant-numeric: tabular-nums;
 }
 
-/* دو ردیف افقی ۵بخشی بزرگ و کنار هم */
-.five-big-row {
+/* دو ردیف افقی ۵تایی کنار هم */
+.horizontal-row-5 {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 14px;
     align-items: stretch;
 }
 
-.big-five-card {
+.section-horiz-card {
     height: 100%;
     min-height: 245px;
     border-radius: 22px;
@@ -359,38 +359,39 @@ body.theme-modern-edu .hero-main-heading span { color: #0f172a; }
     font-family: inherit;
 }
 
-body.theme-luxury-glass .big-five-card {
+body.theme-luxury-glass .section-horiz-card {
     backdrop-filter: blur(14px);
     animation: floatCard 4.5s ease-in-out infinite;
 }
-body.theme-luxury-glass .big-five-card:nth-child(2) { animation-delay: 0.4s; }
-body.theme-luxury-glass .big-five-card:nth-child(3) { animation-delay: 0.8s; }
-body.theme-luxury-glass .big-five-card:nth-child(4) { animation-delay: 1.2s; }
-body.theme-luxury-glass .big-five-card:nth-child(5) { animation-delay: 1.6s; }
+body.theme-luxury-glass .section-horiz-card:nth-child(2) { animation-delay: 0.4s; }
+body.theme-luxury-glass .section-horiz-card:nth-child(3) { animation-delay: 0.8s; }
+body.theme-luxury-glass .section-horiz-card:nth-child(4) { animation-delay: 1.2s; }
+body.theme-luxury-glass .section-horiz-card:nth-child(5) { animation-delay: 1.6s; }
 
 @keyframes floatCard {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-5px); }
 }
 
-.big-five-card:hover { transform: translateY(-4px); }
-.big-five-card.picked-main {
+.section-horiz-card:hover { transform: translateY(-4px); }
+.section-horiz-card.active-section-card {
     box-shadow: 0 0 0 4px #facc15, 0 18px 36px rgba(0, 0, 0, 0.52);
+    border-color: #facc15;
 }
 
-.b5-1 { background: linear-gradient(155deg, #6d28d9 0%, #2e1065 100%); }
-.b5-2 { background: linear-gradient(155deg, #15803d 0%, #052e16 100%); }
-.b5-3 { background: linear-gradient(155deg, #1d4ed8 0%, #172554 100%); }
-.b5-4 { background: linear-gradient(155deg, #d97706 0%, #78350f 100%); }
-.b5-5 { background: linear-gradient(155deg, #0f766e 0%, #042f2e 100%); }
+.sc-1 { background: linear-gradient(155deg, #6d28d9 0%, #2e1065 100%); }
+.sc-2 { background: linear-gradient(155deg, #15803d 0%, #052e16 100%); }
+.sc-3 { background: linear-gradient(155deg, #1d4ed8 0%, #172554 100%); }
+.sc-4 { background: linear-gradient(155deg, #d97706 0%, #78350f 100%); }
+.sc-5 { background: linear-gradient(155deg, #0f766e 0%, #042f2e 100%); }
 
-.b5-6 { background: linear-gradient(155deg, #0369a1 0%, #082f49 100%); }
-.b5-7 { background: linear-gradient(155deg, #be185d 0%, #500724 100%); }
-.b5-8 { background: linear-gradient(155deg, #4338ca 0%, #1e1b4b 100%); }
-.b5-9 { background: linear-gradient(155deg, #b91c1c 0%, #450a0a 100%); }
-.b5-10 { background: linear-gradient(155deg, #a16207 0%, #422006 100%); }
+.sc-6 { background: linear-gradient(155deg, #0369a1 0%, #082f49 100%); }
+.sc-7 { background: linear-gradient(155deg, #be185d 0%, #500724 100%); }
+.sc-8 { background: linear-gradient(155deg, #4338ca 0%, #1e1b4b 100%); }
+.sc-9 { background: linear-gradient(155deg, #b91c1c 0%, #450a0a 100%); }
+.sc-10 { background: linear-gradient(155deg, #a16207 0%, #422006 100%); }
 
-.b5-icon {
+.sc-icon {
     width: 64px;
     height: 64px;
     border-radius: 50%;
@@ -402,10 +403,10 @@ body.theme-luxury-glass .big-five-card:nth-child(5) { animation-delay: 1.6s; }
     flex-shrink: 0;
 }
 
-.b5-title-fa { font-size: 18px; font-weight: 900; line-height: 1.35; }
-.b5-sub-de { font-size: 13px; font-weight: 800; color: #f8fafc; opacity: 0.92; }
+.sc-title-fa { font-size: 18px; font-weight: 900; line-height: 1.35; }
+.sc-sub-de { font-size: 13px; font-weight: 800; color: #f8fafc; opacity: 0.92; }
 
-.b5-action-pill {
+.sc-pill {
     background: rgba(9, 13, 22, 0.88);
     color: #facc15;
     border: 1.5px solid rgba(250, 204, 21, 0.85);
@@ -416,7 +417,7 @@ body.theme-luxury-glass .big-five-card:nth-child(5) { animation-delay: 1.6s; }
     width: 100%;
 }
 
-/* پنل بازشونده محتوا */
+/* پنل بازشونده محتوای کامل هر بخش */
 .drawer-panel {
     display: none;
     background: var(--drawer-bg);
@@ -642,24 +643,20 @@ textarea { min-height: 95px; resize: vertical; }
 .quiz-option.wrong { background: #dc2626; color: #ffffff; border-color: #991b1b; }
 
 /* واکنش‌گرا در تبلت و موبایل */
-@media (max-width: 1180px) {
-    .five-big-row { grid-template-columns: repeat(3, 1fr); }
-}
-
 @media (max-width: 960px) {
     .hero-banner { grid-template-columns: 1fr; }
     .student-photo-box { max-width: 290px; margin: 0 auto; }
     .style-switcher-bar, .four-info-cols { grid-template-columns: repeat(2, 1fr); }
-    .five-big-row { grid-template-columns: repeat(2, 1fr); }
+    .horizontal-row-5 { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 600px) {
     .main-shell { padding: 12px 12px 40px; gap: 12px; }
-    .style-switcher-bar, .five-big-row, .four-info-cols, .two-way-cols {
+    .style-switcher-bar, .horizontal-row-5, .four-info-cols, .two-way-cols {
         grid-template-columns: 1fr;
         gap: 10px;
     }
-    .big-five-card { min-height: auto; padding: 18px 14px; }
+    .section-horiz-card { min-height: auto; padding: 18px 14px; }
     .search-bar-grid { grid-template-columns: 1fr; }
     .bottom-ribbon-bar { border-radius: 18px; }
 }
@@ -737,79 +734,79 @@ textarea { min-height: 95px; resize: vertical; }
         </div>
     </section>
 
-    <!-- ردیف اول: ۵ بخش اصلی بزرگ کنار هم -->
-    <section class="five-big-row" aria-label="ردیف اول بخش‌های اصلی">
-        <button type="button" class="big-five-card b5-1" id="mcard-podcasts" onclick="openSection('podcasts')">
-            <div class="b5-icon">🎧</div>
-            <div class="b5-title-fa">پادکست‌های آلمانی</div>
-            <div class="b5-sub-de">Deutsche Podcasts</div>
-            <div class="b5-action-pill">▶ شنیدن پادکست</div>
+    <!-- ردیف اول افقی: ۵ بخش مستقل کنار هم -->
+    <section class="horizontal-row-5" aria-label="ردیف اول افقی بخش‌های سایت">
+        <button type="button" class="section-horiz-card sc-1" id="mcard-podcasts" onclick="openSection('podcasts')">
+            <div class="sc-icon">🎧</div>
+            <div class="sc-title-fa">پادکست‌های آلمانی</div>
+            <div class="sc-sub-de">Deutsche Podcasts</div>
+            <div class="sc-pill">▶ شنیدن پادکست</div>
         </button>
 
-        <button type="button" class="big-five-card b5-2" id="mcard-levels" onclick="openSection('levels')">
-            <div class="b5-icon">📚</div>
-            <div class="b5-title-fa">درس‌های A1 تا C1</div>
-            <div class="b5-sub-de">Deutsch Kurse</div>
-            <div class="b5-action-pill">▶ شروع درس‌ها</div>
+        <button type="button" class="section-horiz-card sc-2" id="mcard-levels" onclick="openSection('levels')">
+            <div class="sc-icon">📚</div>
+            <div class="sc-title-fa">درس‌های A1 تا C1</div>
+            <div class="sc-sub-de">Deutsch Kurse</div>
+            <div class="sc-pill">▶ شروع درس‌ها</div>
         </button>
 
-        <button type="button" class="big-five-card b5-3" id="mcard-twoway" onclick="openSection('twoway')">
-            <div class="b5-icon">💬</div>
-            <div class="b5-title-fa">مکالمه و ترجمه فارسی</div>
-            <div class="b5-sub-de">Dialogue &amp; Übersetzung</div>
-            <div class="b5-action-pill">▶ ترجمه و مکالمه</div>
+        <button type="button" class="section-horiz-card sc-3" id="mcard-twoway" onclick="openSection('twoway')">
+            <div class="sc-icon">💬</div>
+            <div class="sc-title-fa">مکالمه و ترجمه فارسی</div>
+            <div class="sc-sub-de">Dialogue &amp; Übersetzung</div>
+            <div class="sc-pill">▶ ترجمه و مکالمه</div>
         </button>
 
-        <button type="button" class="big-five-card b5-4" id="mcard-quiz" onclick="openSection('quiz')">
-            <div class="b5-icon">📝</div>
-            <div class="b5-title-fa">تمرین و آزمون</div>
-            <div class="b5-sub-de">Übungen &amp; Tests</div>
-            <div class="b5-action-pill">▶ شروع آزمون</div>
+        <button type="button" class="section-horiz-card sc-4" id="mcard-quiz" onclick="openSection('quiz')">
+            <div class="sc-icon">📝</div>
+            <div class="sc-title-fa">تمرین و آزمون</div>
+            <div class="sc-sub-de">Übungen &amp; Tests</div>
+            <div class="sc-pill">▶ شروع آزمون</div>
         </button>
 
-        <button type="button" class="big-five-card b5-5" id="mcard-dict" onclick="openSection('dict')">
-            <div class="b5-icon">📖</div>
-            <div class="b5-title-fa">فرهنگ لغات آنلاین</div>
-            <div class="b5-sub-de">Online Wörterbuch</div>
-            <div class="b5-action-pill">▶ جستجوی لغت</div>
+        <button type="button" class="section-horiz-card sc-5" id="mcard-dict" onclick="openSection('dict')">
+            <div class="sc-icon">📖</div>
+            <div class="sc-title-fa">فرهنگ لغات آنلاین</div>
+            <div class="sc-sub-de">Online Wörterbuch</div>
+            <div class="sc-pill">▶ جستجوی لغت</div>
         </button>
     </section>
 
-    <!-- ردیف دوم: ۵ بخش اصلی بزرگ کنار هم -->
-    <section class="five-big-row" aria-label="ردیف دوم بخش‌های اصلی">
-        <button type="button" class="big-five-card b5-6" id="mcard-translator" onclick="openSection('translator')">
-            <div class="b5-icon">🌐</div>
-            <div class="b5-title-fa">مترجم نامحدود + عکس</div>
-            <div class="b5-sub-de">Übersetzer &amp; Foto-Scan</div>
-            <div class="b5-action-pill">▶ ترجمه و اسکن</div>
+    <!-- ردیف دوم افقی: ۵ بخش مستقل کنار هم -->
+    <section class="horizontal-row-5" aria-label="ردیف دوم افقی بخش‌های سایت">
+        <button type="button" class="section-horiz-card sc-6" id="mcard-translator" onclick="openSection('translator')">
+            <div class="sc-icon">🌐</div>
+            <div class="sc-title-fa">مترجم نامحدود + عکس</div>
+            <div class="sc-sub-de">Übersetzer &amp; Foto-Scan</div>
+            <div class="sc-pill">▶ ترجمه و اسکن</div>
         </button>
 
-        <button type="button" class="big-five-card b5-7" id="mcard-grammar" onclick="openSection('grammar')">
-            <div class="b5-icon">📐</div>
-            <div class="b5-title-fa">گرامر و کتاب A1–C1</div>
-            <div class="b5-sub-de">Grammatik &amp; Bücher</div>
-            <div class="b5-action-pill">▶ قواعد و کتاب‌ها</div>
+        <button type="button" class="section-horiz-card sc-7" id="mcard-grammar" onclick="openSection('grammar')">
+            <div class="sc-icon">📐</div>
+            <div class="sc-title-fa">گرامر و کتاب A1–C1</div>
+            <div class="sc-sub-de">Grammatik &amp; Bücher</div>
+            <div class="sc-pill">▶ قواعد و کتاب‌ها</div>
         </button>
 
-        <button type="button" class="big-five-card b5-8" id="mcard-solver" onclick="openSection('solver')">
-            <div class="b5-icon">🧩</div>
-            <div class="b5-title-fa">حل‌کننده سؤال و گرامر</div>
-            <div class="b5-sub-de">Aufgaben &amp; Tipps</div>
-            <div class="b5-action-pill">▶ حل تمرین</div>
+        <button type="button" class="section-horiz-card sc-8" id="mcard-solver" onclick="openSection('solver')">
+            <div class="sc-icon">🧩</div>
+            <div class="sc-title-fa">حل‌کننده سؤال و گرامر</div>
+            <div class="sc-sub-de">Aufgaben &amp; Tipps</div>
+            <div class="sc-pill">▶ حل تمرین</div>
         </button>
 
-        <button type="button" class="big-five-card b5-9" id="mcard-videos" onclick="openSection('videos')">
-            <div class="b5-icon">🎬</div>
-            <div class="b5-title-fa">ویدیوهای آموزشی</div>
-            <div class="b5-sub-de">Lernvideos A1–C1</div>
-            <div class="b5-action-pill">▶ تماشای ویدیو</div>
+        <button type="button" class="section-horiz-card sc-9" id="mcard-videos" onclick="openSection('videos')">
+            <div class="sc-icon">🎬</div>
+            <div class="sc-title-fa">ویدیوهای آموزشی</div>
+            <div class="sc-sub-de">Lernvideos A1–C1</div>
+            <div class="sc-pill">▶ تماشای ویدیو</div>
         </button>
 
-        <button type="button" class="big-five-card b5-10" id="mcard-worldinfo" onclick="openSection('worldinfo')">
-            <div class="b5-icon">🕒</div>
-            <div class="b5-title-fa">ساعت و تاریخ جهانی</div>
-            <div class="b5-sub-de">Weltzeit &amp; Info</div>
-            <div class="b5-action-pill">▶ مشاهده ساعت‌ها</div>
+        <button type="button" class="section-horiz-card sc-10" id="mcard-worldinfo" onclick="openSection('worldinfo')">
+            <div class="sc-icon">🕒</div>
+            <div class="sc-title-fa">ساعت و تاریخ جهانی</div>
+            <div class="sc-sub-de">Weltzeit &amp; Info</div>
+            <div class="sc-pill">▶ مشاهده ساعت‌ها</div>
         </button>
     </section>
 
@@ -822,7 +819,7 @@ textarea { min-height: 95px; resize: vertical; }
         <div id="drawerBody"></div>
     </section>
 
-    <!-- بخش چهارستونی افقی پایین صفحه با اندازه یکسان -->
+    <!-- چهار ستون افقی پایین صفحه با اندازه یکسان -->
     <section class="four-info-cols">
         <div class="info-col-box">
             <div class="info-col-title">⭐ Wichtige Links</div>
@@ -1008,10 +1005,7 @@ var TRAINING_VIDEOS = [
     { title: '۱۰۰ فعل گذشته آلمانی', id: '2ObeTuUgu-Y', start: 0, note: 'تمرین افعال گذشته' }
 ];
 
-/* وضعیت مرحله‌ای سطوح و درس‌ها:
-   - activeLevel: وقتی null باشد، لیست تمام سطح‌ها (A1–C1) نمایش داده می‌شود. وقتی سطحی انتخاب شود، درس‌های آن سطح نمایش داده می‌شود.
-   - activeLessonIndex: وقتی null باشد، لیست درس‌های سطح فعال نمایش داده می‌شود. وقتی عددی (0, 1, ...) باشد، فقط همان یک درس باز است و درس قبلی بسته می‌شود.
-*/
+var activeSectionId = null;
 var activeLevel = null;
 var activeLessonIndex = null;
 var lastVisitedLevel = 'A1';
@@ -1122,8 +1116,9 @@ window.jumpToLevel = function(lvl) {
 };
 
 window.openSection = function(sec) {
-    document.querySelectorAll('.big-five-card').forEach(function(c) {
-        c.classList.toggle('picked-main', c.id === 'mcard-' + sec);
+    activeSectionId = sec;
+    document.querySelectorAll('.section-horiz-card').forEach(function(c) {
+        c.classList.toggle('active-section-card', c.id === 'mcard-' + sec);
     });
 
     var panel = document.getElementById('drawerPanel');
@@ -1158,18 +1153,23 @@ window.openSection = function(sec) {
     else if (sec === 'videos') paintVideosSection(bodyEl);
     else if (sec === 'worldinfo') paintWorldInfoSection(bodyEl);
 
-    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var activeCard = document.getElementById('mcard-' + sec);
+    if (activeCard) {
+        activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
 };
 
 window.closeDrawerPanel = function() {
-    document.querySelectorAll('.big-five-card').forEach(function(c) { c.classList.remove('picked-main'); });
+    var targetCard = activeSectionId ? document.getElementById('mcard-' + activeSectionId) : null;
     var panel = document.getElementById('drawerPanel');
     if (panel) panel.classList.remove('open');
+    if (targetCard) {
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 };
 
 /* مدیریت دقیق سطوح و درس‌ها */
 function paintLevelsSection(container) {
-    /* حالت ۱: هیچ سطحی انتخاب نشده -> نمایش تمام سطح‌ها */
     if (!activeLevel) {
         var html = '<div style="font-size:14px;font-weight:800;color:#475569;margin-bottom:10px;">روی هر سطح کلیک کنید تا درس‌های همان سطح باز شود:</div>';
         html += '<div class="level-rows">';
@@ -1192,7 +1192,6 @@ function paintLevelsSection(container) {
     var meta = LEVEL_META[activeLevel];
     var list = LESSONS[activeLevel] || [];
 
-    /* حالت ۲: یک درس خاص انتخاب شده -> پنهان بودن سطوح و نمایش فقط محتوای همان درس */
     if (activeLessonIndex !== null && list[activeLessonIndex]) {
         var les = list[activeLessonIndex];
         var sampleDe = les.title + ' – Wir lernen Deutsch jeden Tag.';
@@ -1201,7 +1200,7 @@ function paintLevelsSection(container) {
         var lessonHtml = '<div class="nav-back-bar">' +
             '<span style="font-weight:900;color:#0b2144;">' + meta.fa + ' • ' + les.title + '</span>' +
             '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
-                '<button type="button" class="btn-back-step" onclick="backToLevelLessons()">← بازگشت به درس‌های ' + activeLevel + '</button>' +
+                '<button type="button" class="btn-back-step" onclick="backToLevelLessons()">← بستن درس و بازگشت به درس‌های ' + activeLevel + '</button>' +
                 '<button type="button" class="btn-blue" onclick="backToAllLevels()">← همه سطوح</button>' +
             '</div>' +
         '</div>';
@@ -1226,10 +1225,9 @@ function paintLevelsSection(container) {
         return;
     }
 
-    /* حالت ۳: سطح انتخاب شده است و لیست درس‌های همان سطح نمایش داده می‌شود (سطوح دیگر پنهان هستند) */
     var lvlHtml = '<div class="nav-back-bar">' +
         '<span style="font-weight:900;color:#0b2144;">' + meta.fa + ' • ' + meta.book + '</span>' +
-        '<button type="button" class="btn-back-step" onclick="backToAllLevels()">← بازگشت به تمام سطح‌ها (A1–C1)</button>' +
+        '<button type="button" class="btn-back-step" onclick="backToAllLevels()">← بستن درس‌های سطح و بازگشت به تمام سطح‌ها (A1–C1)</button>' +
     '</div>';
 
     lvlHtml += '<div class="lesson-list-stack">';
@@ -1252,7 +1250,6 @@ window.selectLevelStep = function(lvl) {
 };
 
 window.openSingleLessonStep = function(idx) {
-    /* با انتخاب درس جدید، هر درس قبلی بسته و جایگزین می‌شود */
     activeLessonIndex = idx;
     paintLevelsSection(document.getElementById('drawerBody'));
 };
