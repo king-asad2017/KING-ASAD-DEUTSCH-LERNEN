@@ -73,7 +73,7 @@ html, body {
     padding: 18px 14px 44px;
 }
 
-/* Poster-inspired Hero header with Student Study Photo + Flags */
+/* Hero header with Student Study Photo + Flags */
 .hero-card {
     position: relative;
     background:
@@ -203,26 +203,28 @@ html, body {
     transform: translateY(-2px);
 }
 
+/* Poster-style 3x3 Level Tiles Grid */
 .chaharchookat-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
     margin-bottom: 20px;
 }
 
 .level-tile {
-    border: 2.5px solid rgba(255, 255, 255, 0.32);
+    border: 2px solid rgba(255, 255, 255, 0.55);
     border-radius: 18px;
-    padding: 16px 12px;
+    padding: 0;
     color: #ffffff;
     font-family: inherit;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+    align-items: stretch;
+    justify-content: space-between;
     text-align: center;
+    background: rgba(255, 255, 255, 0.94);
+    overflow: hidden;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -232,15 +234,35 @@ html, body {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.42);
 }
 
-.level-tile.tile-a1 { background: linear-gradient(145deg, #1d4ed8 0%, #2563eb 100%); border-color: #facc15; }
-.level-tile.tile-a2 { background: linear-gradient(145deg, #15803d 0%, #16a34a 100%); }
-.level-tile.tile-b1 { background: linear-gradient(145deg, #6d28d9 0%, #8b5cf6 100%); }
-.level-tile.tile-b2 { background: linear-gradient(145deg, #c2410c 0%, #ea580c 100%); }
-.level-tile.tile-c1 { background: linear-gradient(145deg, #0e7490 0%, #06b6d4 100%); }
+.tile-top-bar {
+    padding: 7px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 900;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.tile-body-box {
+    padding: 14px 12px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #111827;
+}
+
+.level-tile.tile-a1 .tile-top-bar { background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%); }
+.level-tile.tile-a2 .tile-top-bar { background: linear-gradient(90deg, #166534 0%, #16a34a 100%); }
+.level-tile.tile-b1 .tile-top-bar { background: linear-gradient(90deg, #5b21b6 0%, #7c3aed 100%); }
+.level-tile.tile-b2 .tile-top-bar { background: linear-gradient(90deg, #9a3412 0%, #ea580c 100%); }
+.level-tile.tile-c1 .tile-top-bar { background: linear-gradient(90deg, #155e75 0%, #0891b2 100%); }
+.level-tile.tile-all .tile-top-bar { background: linear-gradient(90deg, #831843 0%, #db2777 100%); }
 
 .tile-icon { font-size: 24px; line-height: 1.2; }
-.tile-code { font-size: 25px; font-weight: 900; line-height: 1.15; }
-.tile-sub { font-size: 12px; font-weight: 800; color: rgba(255, 255, 255, 0.96); }
+.tile-code { font-size: 24px; font-weight: 900; line-height: 1.15; color: #1e1035; }
+.tile-sub { font-size: 12px; font-weight: 800; color: #4b5563; }
 
 /* Poster-inspired 3-Column Card Grid: 123 / 456 / 789 / ___ / ___ / ___ */
 .three-col-grid {
@@ -284,8 +306,8 @@ html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background: rgba(255, 255, 255, 0.92);
-    border: 2px solid rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.94);
+    border: 2px solid rgba(255, 255, 255, 0.7);
     border-radius: 18px;
     overflow: hidden;
     cursor: pointer;
@@ -319,7 +341,7 @@ html, body {
 }
 
 .row-num {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.22);
     padding: 2px 8px;
     border-radius: 8px;
     font-size: 13px;
@@ -349,11 +371,11 @@ html, body {
 .row-desc { font-size: 12px; color: var(--muted); font-weight: 600; line-height: 1.5; }
 
 .row-status-pill {
-    background: var(--row-soft);
-    color: var(--row-dark);
-    border: 1.5px solid var(--row-main);
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.45);
     border-radius: 999px;
-    padding: 3px 11px;
+    padding: 2px 10px;
     font-size: 11px;
     font-weight: 800;
     white-space: nowrap;
@@ -546,14 +568,14 @@ textarea { min-height: 70px; resize: vertical; }
 
 /* Poster-inspired Footer Pill */
 .site-footer {
-    max-width: 1120px; margin: 22px auto 0; padding: 13px 18px; background: rgba(24, 9, 53, 0.9); color: #ffffff;
+    max-width: 1120px; margin: 22px auto 0; padding: 13px 18px; background: rgba(24, 9, 53, 0.92); color: #ffffff;
     border-radius: 999px; border: 1.5px solid rgba(250, 204, 21, 0.55); display: flex; align-items: center;
     justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 12.5px; font-weight: 800;
 }
 .clock-pill { background: rgba(250, 204, 21, 0.18); color: #fde047; padding: 3px 12px; border-radius: 999px; font-variant-numeric: tabular-nums; }
 
 @media (max-width: 900px) {
-    .three-col-grid {
+    .three-col-grid, .chaharchookat-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -561,11 +583,10 @@ textarea { min-height: 70px; resize: vertical; }
     .dialogue-grid-2 { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-    .three-col-grid {
+    .three-col-grid, .chaharchookat-grid {
         grid-template-columns: 1fr;
     }
-    .level-tile { padding: 14px 8px; }
-    .tile-code { font-size: 24px; }
+    .tile-code { font-size: 22px; }
     .site-footer { border-radius: 16px; }
 }
 </style>
@@ -639,31 +660,49 @@ textarea { min-height: 70px; resize: vertical; }
         </button>
     </section>
 
-    <section class="chaharchookat-grid" id="chaharchookatLevels" aria-label="سطوح آموزشی چهارچوکات">
+    <!-- Poster 3x3 style boxes for levels & lessons opening -->
+    <section class="chaharchookat-grid" id="chaharchookatLevels" aria-label="چهارچوکات سطوح آموزشی">
         <button type="button" class="level-tile tile-a1" data-tile-level="A1">
-            <span class="tile-icon">📘</span>
-            <span class="tile-code" id="tileCode-A1">A1</span>
-            <span class="tile-sub" id="tileSub-A1">درس ۱۹ • 19 Lektionen</span>
+            <span class="tile-top-bar"><span>L1</span><span>📘</span></span>
+            <span class="tile-body-box">
+                <span class="tile-code" id="tileCode-A1">A1</span>
+                <span class="tile-sub" id="tileSub-A1">درس ۱۹ • 19 Lektionen</span>
+            </span>
         </button>
         <button type="button" class="level-tile tile-a2" data-tile-level="A2">
-            <span class="tile-icon">📗</span>
-            <span class="tile-code" id="tileCode-A2">A2</span>
-            <span class="tile-sub" id="tileSub-A2">درس ۲۰ • 20 Lektionen</span>
+            <span class="tile-top-bar"><span>L2</span><span>📗</span></span>
+            <span class="tile-body-box">
+                <span class="tile-code" id="tileCode-A2">A2</span>
+                <span class="tile-sub" id="tileSub-A2">درس ۲۰ • 20 Lektionen</span>
+            </span>
         </button>
         <button type="button" class="level-tile tile-b1" data-tile-level="B1">
-            <span class="tile-icon">📙</span>
-            <span class="tile-code" id="tileCode-B1">B1</span>
-            <span class="tile-sub" id="tileSub-B1">درس ۳۰ • 30 Lektionen</span>
+            <span class="tile-top-bar"><span>L3</span><span>📙</span></span>
+            <span class="tile-body-box">
+                <span class="tile-code" id="tileCode-B1">B1</span>
+                <span class="tile-sub" id="tileSub-B1">درس ۳۰ • 30 Lektionen</span>
+            </span>
         </button>
         <button type="button" class="level-tile tile-b2" data-tile-level="B2">
-            <span class="tile-icon">📕</span>
-            <span class="tile-code" id="tileCode-B2">B2</span>
-            <span class="tile-sub" id="tileSub-B2">درس ۳۰ • 30 Lektionen</span>
+            <span class="tile-top-bar"><span>L4</span><span>📕</span></span>
+            <span class="tile-body-box">
+                <span class="tile-code" id="tileCode-B2">B2</span>
+                <span class="tile-sub" id="tileSub-B2">درس ۳۰ • 30 Lektionen</span>
+            </span>
         </button>
         <button type="button" class="level-tile tile-c1" data-tile-level="C1">
-            <span class="tile-icon">🎓</span>
-            <span class="tile-code" id="tileCode-C1">C1</span>
-            <span class="tile-sub" id="tileSub-C1">درس ۳۰ • 30 Lektionen</span>
+            <span class="tile-top-bar"><span>L5</span><span>🎓</span></span>
+            <span class="tile-body-box">
+                <span class="tile-code" id="tileCode-C1">C1</span>
+                <span class="tile-sub" id="tileSub-C1">درس ۳۰ • 30 Lektionen</span>
+            </span>
+        </button>
+        <button type="button" class="level-tile tile-all" data-tile-level="ALL">
+            <span class="tile-top-bar"><span>ALL</span><span>📚</span></span>
+            <span class="tile-body-box">
+                <span class="tile-code" id="tileCode-ALL">A1–C1</span>
+                <span class="tile-sub" id="tileSub-ALL">همه ۱۲۹ درس • باز کردن درس‌ها</span>
+            </span>
         </button>
     </section>
 
@@ -680,7 +719,7 @@ textarea { min-height: 70px; resize: vertical; }
                 <span class="row-bar">
                     <span class="row-bar-content">
                         <span class="row-title" id="title-lessons">سطوح و درس‌ها (A1 تا C1 – ۱۲۹ درس)</span>
-                        <span class="row-desc" id="desc-lessons">ویدیوی هر درس طبق موضوع، توضیحات پایین درس و صفحه بعدی</span>
+                        <span class="row-desc" id="desc-lessons">شروع دقیق ویدیو طبق موضوع هر درس، توضیحات پایین درس و صفحه بعدی</span>
                     </span>
                 </span>
             </button>
@@ -908,8 +947,9 @@ var UI_TRANSLATIONS = {
         allLevelsBtn: 'همه سطوح (۱۲۹ درس)',
         nextPageBtn: '➡ صفحه بعدی',
         descLabel: '📌 توضیحات درس',
+        videoStartLabel: '⏱ شروع ویدیو از ثانیه',
         sections: {
-            lessons: ['سطوح و درس‌ها (A1 تا C1 – ۱۲۹ درس)', 'ویدیوی هر درس طبق موضوع، توضیحات پایین درس و صفحه بعدی'],
+            lessons: ['سطوح و درس‌ها (A1 تا C1 – ۱۲۹ درس)', 'شروع دقیق ویدیو طبق موضوع هر درس، توضیحات پایین درس و صفحه بعدی'],
             vocab100k: ['فرهنگ لغت آنلاین نامحدود + اسکن عکس', 'جستجوی هر لغت، اسکن عکس متن و جملات روزمره با صدا'],
             live_voice: ['ترجمه صدا و متن دوطرفه + نوشتن مشکلات', 'صدا به متن، نوشتن مشکلات و تبدیل به زبان دلخواه'],
             translator: ['مترجم نامحدود هر زبان به هر زبان + اسکن عکس', 'ترجمه خودکار متن اسکن‌شده، هر زبان به هر زبان و صدا'],
@@ -938,8 +978,9 @@ var UI_TRANSLATIONS = {
         allLevelsBtn: 'Alle Stufen (129 Lektionen)',
         nextPageBtn: '➡ Nächste Seite',
         descLabel: '📌 Beschreibung',
+        videoStartLabel: '⏱ Video-Start bei Sekunde',
         sections: {
-            lessons: ['Stufen & Lektionen (A1–C1 – 129 Lektionen)', 'Themenbezogenes Video, Erklärung unten & Nächste Seite'],
+            lessons: ['Stufen & Lektionen (A1–C1 – 129 Lektionen)', 'Themenbezogener Video-Start, Erklärung unten & Nächste Seite'],
             vocab100k: ['Online-Wörterbuch + Foto-Scan', 'Wörter suchen, Foto scannen & Alltagssätze mit Audio'],
             live_voice: ['Sprach- & Textübersetzung + Probleme schreiben', 'Sprache zu Text, Probleme eingeben & umwandeln'],
             translator: ['Unbegrenzter Übersetzer (alle Sprachen) + Foto-Scan', 'Automatische Übersetzung nach Foto-Scan & Audio'],
@@ -968,8 +1009,9 @@ var UI_TRANSLATIONS = {
         allLevelsBtn: 'All Levels (129 Lessons)',
         nextPageBtn: '➡ Next Page',
         descLabel: '📌 Lesson Notes',
+        videoStartLabel: '⏱ Video starts at second',
         sections: {
-            lessons: ['Levels & Lessons (A1–C1 – 129 Lessons)', 'Topic-matched lesson video, explanation below & Next Page'],
+            lessons: ['Levels & Lessons (A1–C1 – 129 Lessons)', 'Topic-matched video timestamp start, explanation & Next Page'],
             vocab100k: ['Unlimited Online Dictionary + Photo Scan', 'Look up any word, scan photo text & daily sentences with audio'],
             live_voice: ['Voice & Text Translation + Write Problems', 'Speech to text, write problems & convert to chosen language'],
             translator: ['Unlimited Any-to-Any Translator + Photo Scan', 'Auto-translate scanned text, any language & speech'],
@@ -998,8 +1040,9 @@ var UI_TRANSLATIONS = {
         allLevelsBtn: 'Tüm Seviyeler (129 Ders)',
         nextPageBtn: '➡ Sonraki Sayfa',
         descLabel: '📌 Ders Açıklaması',
+        videoStartLabel: '⏱ Video başlangıcı (sn)',
         sections: {
-            lessons: ['Seviyeler ve Dersler (A1–C1 – 129 Ders)', 'Konuya uygun ders videosu, altta açıklama ve Sonraki Sayfa'],
+            lessons: ['Seviyeler ve Dersler (A1–C1 – 129 Ders)', 'Konuya uygun video başlangıcı, altta açıklama ve Sonraki Sayfa'],
             vocab100k: ['Sınırsız Online Sözlük + Fotoğraf Tarama', 'Kelime arama, fotoğraf tarama ve sesli günlük cümleler'],
             live_voice: ['Ses ve Metin Çevirisi + Sorun Yazma', 'Sesten metne, sorun yazma ve seçilen dile çevirme'],
             translator: ['Sınırsız Çevirmen + Fotoğraf Tarama', 'Taranan metni otomatik çevirme + fotoğraf tarama ve ses'],
@@ -1028,8 +1071,9 @@ var UI_TRANSLATIONS = {
         allLevelsBtn: 'جميع المستويات (١٢٩ درساً)',
         nextPageBtn: '➡ الصفحة التالية',
         descLabel: '📌 شرح الدرس',
+        videoStartLabel: '⏱ يبدأ الفيديو من الثانية',
         sections: {
-            lessons: ['المستويات والدروس (A1 إلى C1 – ١٢٩ درساً)', 'فيديو حسب موضوع الدرس، شرح أسفل الدرس والصفحة التالية'],
+            lessons: ['المستويات والدروس (A1 إلى C1 – ١٢٩ درساً)', 'بدء الفيديو حسب موضوع الدرس، شرح أسفل الدرس والصفحة التالية'],
             vocab100k: ['قاموس أونلاين غير محدود + مسح الصور', 'بحث أي كلمة، مسح نص الصورة وجمل يومية مع الصوت'],
             live_voice: ['ترجمة الصوت والنص + كتابة المشكلات', 'تحويل الصوت لنص، كتابة المشكلات وتحويلها للغة المطلوبة'],
             translator: ['مترجم غير محدود لأي لغة + مسح الصور', 'ترجمة تلقائية للنص الممسوح من وإلى أي لغة + الصوت'],
@@ -1058,8 +1102,9 @@ var UI_TRANSLATIONS = {
         allLevelsBtn: 'ټولې کچې (۱۲۹ لوستونه)',
         nextPageBtn: '➡ بله پاڼه',
         descLabel: '📌 د لوست توضیحات',
+        videoStartLabel: '⏱ ویډیو له دې ثانیې پیلېږي',
         sections: {
-            lessons: ['کچې او لوستونه (A1 تر C1 – ۱۲۹ لوستونه)', 'د موضوع مطابق ویډیو، لاندې توضیحات او بله پاڼه'],
+            lessons: ['کچې او لوستونه (A1 تر C1 – ۱۲۹ لوستونه)', 'د موضوع مطابق د ویډیو پیل، لاندې توضیحات او بله پاڼه'],
             vocab100k: ['نامحدود آنلاین قاموس + د عکس سکین', 'د هرې کلمې موندل، د عکس سکین او ورځنۍ جملې'],
             live_voice: ['د غږ او متن ژباړه + د ستونزو لیکل', 'غږ په متن بدلول، ستونزې لیکل او ژباړل'],
             translator: ['نامحدود ژباړن + د عکس سکین', 'د سکین شوي متن خپله ژباړه + د عکس سکین او غږ'],
@@ -1088,8 +1133,9 @@ var UI_TRANSLATIONS = {
         allLevelsBtn: 'تمام لیولز (۱۲۹ اسباق)',
         nextPageBtn: '➡ اگلا صفحہ',
         descLabel: '📌 سبق کی تفصیل',
+        videoStartLabel: '⏱ ویڈیو شروع ہونے کا وقت (سیکنڈ)',
         sections: {
-            lessons: ['لیولز اور اسباق (A1 تا C1 – ۱۲۹ اسباق)', 'موضوع کے مطابق ویڈیو، نیچے تفصیل اور اگلا صفحہ'],
+            lessons: ['لیولز اور اسباق (A1 تا C1 – ۱۲۹ اسباق)', 'موضوع کے مطابق ویڈیو ٹائم اسٹارٹ، نیچے تفصیل اور اگلا صفحہ'],
             vocab100k: ['لامحدود آن لائن لغت + فوٹو اسکین', 'لفظ تلاش کریں، تصویر اسکین کریں اور روزمرہ جملے'],
             live_voice: ['آواز اور متن کا ترجمہ + مسائل لکھنا', 'آواز سے متن، مسائل لکھنا اور مطلوبہ زبان میں تبدیلی'],
             translator: ['لامحدود مترجم + فوٹو اسکین', 'اسکین متن کا خودکار ترجمہ + فوٹو اسکین اور آواز'],
@@ -1117,28 +1163,38 @@ var NEW_SIX_VIDEOS = [
     { id: 'ZpLXfkYC1H4', level: 'B2', title: 'ویدیوی جدید ۶ – ۱۰۰ کلمه مهم آلمانی (100 wichtige Wörter)', desc: 'واژگان کلیدی و تحلیلی برای سطوح بالاتر.' }
 ];
 
-/* Topic-matched video assignments per level and lesson (keeping all videos available and ordered by topic/level) */
-var LEVEL_TOPIC_VIDEO_MAP = {
-    A1: ['4-eDoThe6qo', 'L6jb3CijCnE', 'bN0CYbXomqo', 'wv84cwyTiNc'],
-    A2: ['Lg5P2w_Ro1c', 'wv84cwyTiNc', 'bN0CYbXomqo', 'L6jb3CijCnE'],
-    B1: ['LkufozluseI', 'lr5nQObcSY0', '2ObeTuUgu-Y', 'ZpLXfkYC1H4'],
-    B2: ['ZpLXfkYC1H4', 'lr5nQObcSY0', '2ObeTuUgu-Y', 'LkufozluseI'],
-    C1: ['lr5nQObcSY0', 'ZpLXfkYC1H4', '2ObeTuUgu-Y', 'LkufozluseI']
-};
-
-function getTopicVideoForLesson(lvl, idx, title) {
+/* Topic-matched video ID + start second per lesson */
+function getTopicVideoSpecForLesson(lvl, idx, title) {
     var t = String(title || '').toLowerCase();
+    var startSec = 15 + (idx * 25);
+
+    if (t.indexOf('سلام') !== -1 || t.indexOf('معرفی') !== -1) {
+        return { id: '4-eDoThe6qo', start: 12 };
+    }
+    if (t.indexOf('کشور') !== -1 || t.indexOf('ملیت') !== -1) {
+        return { id: '4-eDoThe6qo', start: 65 };
+    }
     if (t.indexOf('فعل') !== -1 || t.indexOf('گذشته') !== -1 || t.indexOf('برنامه') !== -1 || t.indexOf('روتین') !== -1) {
-        return (t.indexOf('گذشته') !== -1 || t.indexOf('خاطرات') !== -1) ? '2ObeTuUgu-Y' : ((lvl === 'B1' || lvl === 'C1') ? 'lr5nQObcSY0' : 'bN0CYbXomqo');
+        if (t.indexOf('گذشته') !== -1 || t.indexOf('خاطرات') !== -1) {
+            return { id: '2ObeTuUgu-Y', start: 20 + (idx * 15) };
+        }
+        return { id: (lvl === 'B1' || lvl === 'C1') ? 'lr5nQObcSY0' : 'bN0CYbXomqo', start: 18 + (idx * 20) };
     }
     if (t.indexOf('سؤال') !== -1 || t.indexOf('پرسش') !== -1 || t.indexOf('مکالمه') !== -1 || t.indexOf('قرار') !== -1) {
-        return 'wv84cwyTiNc';
+        return { id: 'wv84cwyTiNc', start: 15 + (idx * 18) };
     }
     if (t.indexOf('واژگان') !== -1 || t.indexOf('کلمه') !== -1 || t.indexOf('لغت') !== -1 || t.indexOf('خرید') !== -1 || t.indexOf('غذا') !== -1) {
-        return (lvl === 'B2' || lvl === 'C1') ? 'ZpLXfkYC1H4' : 'L6jb3CijCnE';
+        return { id: (lvl === 'B2' || lvl === 'C1') ? 'ZpLXfkYC1H4' : 'L6jb3CijCnE', start: 14 + (idx * 16) };
     }
-    var pool = LEVEL_TOPIC_VIDEO_MAP[lvl] || LEVEL_TOPIC_VIDEO_MAP.A1;
-    return pool[idx % pool.length];
+
+    var levelDefaultMap = {
+        A1: '4-eDoThe6qo',
+        A2: 'Lg5P2w_Ro1c',
+        B1: 'LkufozluseI',
+        B2: 'ZpLXfkYC1H4',
+        C1: 'lr5nQObcSY0'
+    };
+    return { id: levelDefaultMap[lvl] || '4-eDoThe6qo', start: startSec };
 }
 
 function buildCoreEverydaySentences(deWord, faWord) {
@@ -1299,9 +1355,11 @@ LEVELS.forEach(function(lvl) {
                 fa: 'درس ' + (idx + 1) + ' (' + title + ') – جمله ' + s + ': من «' + pair[1] + '» را یاد می‌گیرم.'
             });
         }
+        var spec = getTopicVideoSpecForLesson(lvl, idx, title);
         return {
             title: title,
-            videoId: getTopicVideoForLesson(lvl, idx, title),
+            videoId: spec.id,
+            videoStart: spec.start,
             words: [0, 1, 2, 3, 4].map(function(k) { return starterWords[(idx * 3 + k) % starterWords.length]; }),
             sentences: items,
             sentencePage: 0,
@@ -1480,7 +1538,6 @@ function applySiteLanguage(langCode) {
         if (pEl) pEl.textContent = (drawer && drawer.classList.contains('open')) ? pack.closeText : pack.openText;
     });
 
-    /* Re-render open drawers so lessons, grammar topics, quizzes & multilingual texts adapt to chosen language */
     Object.keys(pack.sections).forEach(function(key) {
         var drawer = document.getElementById('drawer-' + key);
         if (drawer && drawer.classList.contains('open')) {
@@ -1626,7 +1683,7 @@ function renderDrawerContent(key, drawer) {
     }
 }
 
-/* 01: Lessons A1-C1 + Topic Video + Description Below Lesson + Next Page + Keep Position */
+/* 01: Lessons A1-C1 + Topic Video Start + Description Below Lesson + Next Page + Keep Position */
 function buildLessonsDrawerHtml() {
     var pack = UI_TRANSLATIONS[currentSiteLang] || UI_TRANSLATIONS.fa;
     var levelsToShow = (selectedLevelFilter === 'ALL') ? LEVELS : [selectedLevelFilter];
@@ -1653,6 +1710,7 @@ function buildLessonsDrawerHtml() {
             var isOpen = !!les.open;
             var lessonDomId = 'lessonCard_' + lvl + '_' + idx;
             var activeVidId = les.videoId || (vid && vid.id) || '4-eDoThe6qo';
+            var startSec = les.videoStart || 0;
 
             html += '<div class="lesson-item" id="' + lessonDomId + '">' +
                 '<button type="button" class="lesson-head-btn' + (isOpen ? ' open' : '') + '" data-lvl="' + lvl + '" data-les-idx="' + idx + '">' +
@@ -1662,7 +1720,8 @@ function buildLessonsDrawerHtml() {
                 '<div class="lesson-body' + (isOpen ? ' open' : '') + '">';
 
             if (isOpen) {
-                html += '<iframe class="video-frame" src="https://www.youtube.com/embed/' + activeVidId + '" title="' + les.title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                html += '<div style="font-size:12px;font-weight:800;color:#1e3a8a;margin-bottom:4px;">' + pack.videoStartLabel + ': ' + startSec + 's</div>' +
+                    '<iframe class="video-frame" src="https://www.youtube.com/embed/' + activeVidId + '?start=' + startSec + '" title="' + les.title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
             }
 
             visibleSentences.forEach(function(entry) {
