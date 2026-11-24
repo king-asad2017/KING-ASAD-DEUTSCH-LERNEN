@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#071327">
+<meta name="theme-color" content="#060911">
 <title>KING ASAD DEUTSCH LERNEN – مرکز آموزشی و سایت آنلاین</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,12 +11,55 @@
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 <style>
 :root {
-    --dark-top: #071327;
-    --navy-mid: #102b54;
-    --soft-white: rgba(255, 255, 255, 0.95);
-    --ink-dark: #0f172a;
-    --gold: #facc15;
-    --gold-deep: #d97706;
+    --page-bg: #060911;
+    --page-grad: linear-gradient(165deg, rgba(6, 9, 17, 0.90) 0%, rgba(18, 22, 34, 0.84) 55%, rgba(250, 204, 21, 0.14) 100%);
+    --surface-bg: rgba(16, 20, 32, 0.92);
+    --surface-border: rgba(250, 204, 21, 0.55);
+    --accent: #facc15;
+    --accent-secondary: #f59e0b;
+    --text-on-dark: #ffffff;
+    --drawer-bg: rgba(255, 255, 255, 0.98);
+    --drawer-ink: #0f172a;
+}
+
+/* ۱. سبک مشکی و طلایی */
+body.theme-black-gold {
+    --page-bg: #060911;
+    --page-grad: linear-gradient(165deg, rgba(5, 8, 15, 0.91) 0%, rgba(24, 19, 8, 0.85) 55%, rgba(250, 204, 21, 0.16) 100%);
+    --surface-bg: rgba(13, 15, 23, 0.93);
+    --surface-border: rgba(250, 204, 21, 0.72);
+    --accent: #facc15;
+    --accent-secondary: #eab308;
+}
+
+/* ۲. سبک رنگ‌های پرچم آلمان (سیاه، سرخ و زرد) */
+body.theme-german {
+    --page-bg: #09090b;
+    --page-grad: linear-gradient(165deg, rgba(10, 10, 12, 0.90) 0%, rgba(127, 29, 29, 0.68) 52%, rgba(250, 204, 21, 0.24) 100%);
+    --surface-bg: rgba(18, 12, 14, 0.92);
+    --surface-border: #ef4444;
+    --accent: #facc15;
+    --accent-secondary: #dc2626;
+}
+
+/* ۳. سبک مدرن آموزشی (آبی و سفید) */
+body.theme-modern-edu {
+    --page-bg: #0c2340;
+    --page-grad: linear-gradient(165deg, rgba(12, 35, 64, 0.88) 0%, rgba(29, 78, 216, 0.78) 52%, rgba(248, 250, 252, 0.86) 100%);
+    --surface-bg: rgba(255, 255, 255, 0.94);
+    --surface-border: #2563eb;
+    --accent: #2563eb;
+    --accent-secondary: #0284c7;
+}
+
+/* ۴. سبک شیشه‌ای لوکس با نورپردازی و کارت‌های متحرک */
+body.theme-luxury-glass {
+    --page-bg: #070b19;
+    --page-grad: linear-gradient(155deg, rgba(15, 23, 42, 0.78) 0%, rgba(30, 58, 138, 0.65) 50%, rgba(250, 204, 21, 0.22) 100%);
+    --surface-bg: rgba(255, 255, 255, 0.16);
+    --surface-border: rgba(255, 255, 255, 0.55);
+    --accent: #fde047;
+    --accent-secondary: #38bdf8;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,20 +67,20 @@
 html, body {
     min-height: 100vh;
     font-family: "Vazirmatn", "Cairo", Tahoma, Arial, sans-serif;
-    background-color: var(--dark-top);
-    color: var(--ink-dark);
+    background-color: var(--page-bg);
+    color: var(--drawer-ink);
     line-height: 1.75;
     overflow-x: hidden;
     position: relative;
 }
 
-/* پس‌زمینه ترکیبی سیاه، آبی و سفید کم‌رنگ با عکس محصل‌ها */
+/* پس‌زمینه عکس محصل‌ها + گرادیانت سبک انتخاب‌شده */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     background-image:
-        linear-gradient(170deg, rgba(7, 19, 39, 0.88) 0%, rgba(16, 43, 84, 0.80) 48%, rgba(241, 245, 249, 0.88) 100%),
+        var(--page-grad),
         url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=70");
     background-size: cover;
     background-position: center;
@@ -46,19 +89,19 @@ body::before {
     pointer-events: none;
 }
 
-/* نوار ناوبری بالا شبیه تصویر */
-.top-navbar {
+/* نوار ناوبری بالا */
+.top-nav {
     position: sticky;
     top: 0;
     z-index: 60;
-    background: linear-gradient(90deg, rgba(5, 11, 24, 0.96) 0%, rgba(15, 36, 69, 0.96) 100%);
-    backdrop-filter: blur(10px);
-    border-bottom: 2px solid rgba(250, 204, 21, 0.45);
+    background: linear-gradient(90deg, rgba(5, 8, 15, 0.96) 0%, rgba(20, 24, 38, 0.96) 100%);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--surface-border);
     padding: 10px 18px;
 }
 
-.nav-inner {
-    max-width: 1220px;
+.nav-wrap {
+    max-width: 1240px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -67,28 +110,22 @@ body::before {
     flex-wrap: wrap;
 }
 
-.nav-brand {
+.brand-link {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #ffffff;
     text-decoration: none;
-    font-weight: 900;
+    color: #ffffff;
 }
 
-.nav-crown-logo {
-    font-size: 28px;
-    line-height: 1;
-}
-
-.nav-brand-text {
+.brand-title-box {
     font-family: "Cinzel", "Vazirmatn", sans-serif;
     font-size: 17px;
     font-weight: 900;
-    color: var(--gold);
+    color: var(--accent);
     line-height: 1.15;
 }
-.nav-brand-text small {
+.brand-title-box small {
     display: block;
     font-family: "Vazirmatn", sans-serif;
     font-size: 11px;
@@ -96,201 +133,263 @@ body::before {
     font-weight: 700;
 }
 
-.nav-links-group {
+.nav-menu {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 7px;
     flex-wrap: wrap;
 }
 
-.nav-pill-btn {
+.nav-btn {
     background: rgba(255, 255, 255, 0.1);
     color: #f8fafc;
     border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 999px;
-    padding: 6px 14px;
+    padding: 6px 13px;
     font-family: inherit;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 800;
     cursor: pointer;
-    transition: background 0.15s ease, transform 0.15s ease;
 }
-.nav-pill-btn:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-1px); }
-.nav-pill-btn.home-active {
+.nav-btn:hover { background: rgba(255, 255, 255, 0.2); }
+.nav-btn.home-pill {
     background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
     color: #091324;
     border-color: #fef08a;
     font-weight: 900;
 }
-.nav-pill-btn.admin-pill {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    color: var(--gold);
-    border: 1.5px solid var(--gold);
+.nav-btn.admin-pill {
+    background: #0f172a;
+    color: #facc15;
+    border: 1.5px solid #facc15;
     font-weight: 900;
 }
 
-/* کانتینر اصلی */
-.page-container {
-    max-width: 1220px;
+.main-shell {
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 18px 16px 48px;
+    padding: 16px 16px 48px;
 }
 
-/* بخش قهرمان شبیه تصویر با عکس محصل در کنار صفحه */
-.hero-showcase {
-    background: linear-gradient(135deg, rgba(14, 42, 82, 0.90) 0%, rgba(28, 78, 137, 0.84) 55%, rgba(241, 245, 249, 0.22) 100%);
-    border: 2px solid rgba(255, 255, 255, 0.35);
-    border-radius: 26px;
-    padding: 22px 24px;
-    margin-bottom: 20px;
-    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
+/* نوار انتخاب ۴ سبک طراحی */
+.style-switcher-bar {
     display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 22px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.style-choice-btn {
+    background: rgba(15, 23, 42, 0.88);
+    color: #ffffff;
+    border: 2px solid rgba(250, 204, 21, 0.45);
+    border-radius: 16px;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 900;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+}
+.style-choice-btn:hover { transform: translateY(-2px); }
+.style-choice-btn.active-style {
+    background: linear-gradient(135deg, #facc15 0%, #d97706 100%);
+    color: #090d16;
+    border-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.45);
+}
+.style-choice-btn small {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    opacity: 0.9;
+}
+
+/* بنر اصلی و عکس محصل */
+.hero-banner {
+    background: var(--surface-bg);
+    backdrop-filter: blur(12px);
+    border: 2px solid var(--surface-border);
+    border-radius: 26px;
+    padding: 20px 22px;
+    margin-bottom: 18px;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
+    display: grid;
+    grid-template-columns: 265px 1fr;
+    gap: 20px;
     align-items: center;
 }
 
-.student-side-card {
-    background: rgba(255, 255, 255, 0.94);
-    border: 2px solid rgba(250, 204, 21, 0.75);
-    border-radius: 22px;
-    padding: 10px;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-    text-align: center;
+body.theme-modern-edu .hero-banner {
+    color: #0f172a;
 }
 
-.student-side-img {
+.student-photo-box {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--accent);
+    border-radius: 20px;
+    padding: 8px;
+    text-align: center;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.32);
+}
+
+.student-photo-box img {
     width: 100%;
-    height: 230px;
+    height: 215px;
     object-fit: cover;
-    border-radius: 16px;
+    border-radius: 14px;
     display: block;
 }
 
-.student-side-caption {
-    margin-top: 8px;
-    font-size: 13px;
+.student-photo-box span {
+    display: block;
+    margin-top: 6px;
+    font-size: 12.5px;
     font-weight: 900;
     color: #0b2144;
 }
 
-.hero-center-content {
+.hero-center {
     text-align: center;
     color: #ffffff;
 }
-
-.hero-crown-top {
-    font-size: 36px;
-    line-height: 1;
-    margin-bottom: 4px;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+body.theme-modern-edu .hero-center {
+    color: #0f172a;
+    text-shadow: none;
 }
 
-.hero-flags-title {
+.cefr-top-pills {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+    justify-content: flex-end;
+    gap: 6px;
     flex-wrap: wrap;
+    margin-bottom: 6px;
 }
 
-.hero-flag {
-    font-size: clamp(30px, 4.5vw, 42px);
-    line-height: 1;
-}
-
-.hero-main-title {
-    font-family: "Cinzel", "Vazirmatn", sans-serif;
-    font-size: clamp(28px, 5vw, 48px);
+.cefr-mini-badge {
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 12.5px;
     font-weight: 900;
-    color: var(--gold);
-    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.65);
+    color: #ffffff;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+.cb-A1 { background: #16a34a; }
+.cb-A2 { background: #2563eb; }
+.cb-B1 { background: #eab308; color: #0f172a; }
+.cb-B2 { background: #7e22ce; }
+.cb-C1 { background: #dc2626; }
+
+.hero-main-heading {
+    font-family: "Cinzel", "Vazirmatn", sans-serif;
+    font-size: clamp(26px, 4.8vw, 46px);
+    font-weight: 900;
+    color: #facc15;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.65);
     line-height: 1.15;
 }
-.hero-main-title span {
+.hero-main-heading span {
     display: block;
     color: #ffffff;
-    font-size: clamp(22px, 3.8vw, 36px);
+    font-size: clamp(21px, 3.6vw, 34px);
 }
+body.theme-modern-edu .hero-main-heading { color: #1d4ed8; text-shadow: none; }
+body.theme-modern-edu .hero-main-heading span { color: #0f172a; }
 
-.hero-ribbon-de {
+.hero-slogan-gold {
     display: inline-block;
-    margin-top: 12px;
+    margin-top: 10px;
     background: linear-gradient(90deg, #f59e0b 0%, #fde047 50%, #f59e0b 100%);
     color: #0f172a;
     font-weight: 900;
-    font-size: clamp(14px, 2.2vw, 18px);
-    padding: 6px 22px;
+    font-size: clamp(14px, 2.1vw, 17.5px);
+    padding: 5px 20px;
     border-radius: 10px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
 }
 
-.hero-ribbon-fa {
+.hero-slogan-sub {
     display: block;
     width: fit-content;
-    margin: 10px auto 0;
-    background: rgba(7, 19, 39, 0.88);
+    margin: 8px auto 0;
+    background: rgba(7, 13, 25, 0.85);
     color: #ffffff;
-    border: 1.5px solid rgba(255, 255, 255, 0.35);
-    font-weight: 900;
-    font-size: clamp(14px, 2.3vw, 18px);
-    padding: 6px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 5px 18px;
     border-radius: 999px;
+    font-size: clamp(13.5px, 2vw, 17px);
+    font-weight: 900;
 }
 
-.hero-world-clock {
-    margin-top: 14px;
+.hero-world-time {
+    margin-top: 12px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
-    background: rgba(5, 11, 24, 0.84);
-    border: 1.5px solid rgba(250, 204, 21, 0.65);
-    color: var(--gold);
-    padding: 8px 18px;
+    background: rgba(5, 9, 17, 0.85);
+    border: 1.5px solid var(--accent);
+    color: #facc15;
+    padding: 7px 16px;
     border-radius: 14px;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 900;
     font-variant-numeric: tabular-nums;
 }
 
-/* چهار کارت بزرگ رنگی مطابق عکس */
-.four-color-cards {
+/* چهار بخش اصلی به‌صورت افقی در یک ردیف */
+.four-horizontal-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
-.color-feature-card {
+.horiz-main-card {
     border-radius: 20px;
-    padding: 18px 15px;
+    padding: 18px 14px;
     color: #ffffff;
     text-align: center;
     cursor: pointer;
     border: 2.5px solid rgba(255, 255, 255, 0.85);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.36);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     font-family: inherit;
 }
-.color-feature-card:hover { transform: translateY(-4px); }
-.color-feature-card.selected-feature {
-    box-shadow: 0 0 0 4px #facc15, 0 18px 34px rgba(0, 0, 0, 0.45);
+
+body.theme-luxury-glass .horiz-main-card {
+    backdrop-filter: blur(14px);
+    animation: floatCard 4.5s ease-in-out infinite;
+}
+body.theme-luxury-glass .horiz-main-card:nth-child(2) { animation-delay: 0.6s; }
+body.theme-luxury-glass .horiz-main-card:nth-child(3) { animation-delay: 1.2s; }
+body.theme-luxury-glass .horiz-main-card:nth-child(4) { animation-delay: 1.8s; }
+
+@keyframes floatCard {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
 }
 
-.card-theme-blue { background: linear-gradient(155deg, #1d4ed8 0%, #0f172a 100%); }
-.card-theme-green { background: linear-gradient(155deg, #15803d 0%, #064e3b 100%); }
-.card-theme-purple { background: linear-gradient(155deg, #7e22ce 0%, #3b0764 100%); }
-.card-theme-red { background: linear-gradient(155deg, #dc2626 0%, #7f1d1d 100%); }
+.horiz-main-card:hover { transform: translateY(-5px); }
+.horiz-main-card.picked-main {
+    box-shadow: 0 0 0 4px #facc15, 0 18px 36px rgba(0, 0, 0, 0.5);
+}
 
-.feature-icon-circle {
-    width: 58px;
-    height: 58px;
+.hcard-1 { background: linear-gradient(155deg, #6d28d9 0%, #2e1065 100%); }
+.hcard-2 { background: linear-gradient(155deg, #15803d 0%, #052e16 100%); }
+.hcard-3 { background: linear-gradient(155deg, #1d4ed8 0%, #172554 100%); }
+.hcard-4 { background: linear-gradient(155deg, #d97706 0%, #78350f 100%); }
+
+.hcard-icon {
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.18);
     display: flex;
@@ -300,61 +399,60 @@ body::before {
     margin-bottom: 8px;
 }
 
-.feature-en-title { font-size: 18px; font-weight: 900; line-height: 1.2; }
-.feature-fa-title { font-size: 14px; font-weight: 800; color: #f1f5f9; margin: 4px 0 12px; }
+.hcard-title-fa { font-size: 17px; font-weight: 900; line-height: 1.3; }
+.hcard-sub-de { font-size: 13px; font-weight: 800; color: #f8fafc; margin: 4px 0 12px; opacity: 0.92; }
 
-.feature-cta-pill {
-    background: linear-gradient(90deg, #111827 0%, #1f2937 100%);
-    color: var(--gold);
-    border: 1.5px solid rgba(250, 204, 21, 0.75);
+.hcard-action-pill {
+    background: rgba(9, 13, 22, 0.88);
+    color: #facc15;
+    border: 1.5px solid rgba(250, 204, 21, 0.8);
     border-radius: 999px;
-    padding: 6px 16px;
-    font-size: 13px;
+    padding: 6px 14px;
+    font-size: 12.5px;
     font-weight: 900;
     width: 100%;
 }
 
-/* نوار ابزارهای کامل آموزشی (تمامی بخش‌های درخواست‌شده) */
-.all-tools-bar {
+/* نوار ابزارهای تکمیلی تا هیچ بخشی حذف نشود */
+.full-features-strip {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
-.tool-quick-btn {
-    background: var(--soft-white);
+.feature-chip-btn {
+    background: rgba(255, 255, 255, 0.94);
     color: #0b2144;
     border: 2px solid #cbd5e1;
     border-radius: 14px;
-    padding: 11px 12px;
+    padding: 10px 12px;
     font-family: inherit;
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 900;
     cursor: pointer;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
-    transition: transform 0.15s ease, border-color 0.15s ease;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
 }
-.tool-quick-btn:hover { transform: translateY(-2px); border-color: #2563eb; }
-.tool-quick-btn.active-tool {
+.feature-chip-btn.active-chip {
     background: #0b2144;
-    color: var(--gold);
-    border-color: var(--gold);
+    color: #facc15;
+    border-color: #facc15;
 }
 
-/* پنل بازشونده محتوای کامل */
-.workspace-drawer {
+/* پنل بازشونده محتوا */
+.drawer-panel {
     display: none;
-    background: rgba(255, 255, 255, 0.98);
-    border: 2.5px solid #2563eb;
+    background: var(--drawer-bg);
+    color: var(--drawer-ink);
+    border: 2.5px solid var(--accent);
     border-radius: 22px;
     padding: 20px 18px;
-    margin-bottom: 22px;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    margin-bottom: 20px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
 }
-.workspace-drawer.open { display: block; }
+.drawer-panel.open { display: block; }
 
-.workspace-head {
+.drawer-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -365,13 +463,13 @@ body::before {
     margin-bottom: 16px;
 }
 
-.workspace-title {
-    font-size: clamp(18px, 2.8vw, 23px);
+.drawer-title {
+    font-size: clamp(18px, 2.8vw, 22px);
     font-weight: 900;
     color: #0b2144;
 }
 
-.btn-close-panel {
+.btn-close-box {
     background: #dc2626;
     color: #ffffff;
     border: none;
@@ -383,119 +481,81 @@ body::before {
     cursor: pointer;
 }
 
-/* بخش چهارستونی پایین صفحه شبیه تصویر */
-.bottom-four-grid {
+/* بخش چهارستونی پایین صفحه */
+.four-info-cols {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
-.bottom-info-col {
+.info-col-box {
     background: linear-gradient(180deg, #fef9c3 0%, #ffffff 22%);
     border: 2px solid rgba(217, 119, 6, 0.35);
     border-radius: 18px;
     padding: 15px 14px;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
 }
 
-.bottom-col-heading {
-    font-size: 16px;
+.info-col-title {
+    font-size: 15.5px;
     font-weight: 900;
     color: #0f172a;
     border-bottom: 2px solid #fde047;
-    padding-bottom: 8px;
+    padding-bottom: 7px;
     margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
 }
 
-.vorteile-list {
-    list-style: none;
-    font-size: 13.5px;
-    font-weight: 800;
-    color: #1e293b;
+.quick-links-list { list-style: none; font-size: 13.5px; font-weight: 800; }
+.quick-links-list li { margin-bottom: 6px; }
+.quick-links-list button {
+    background: none; border: none; color: #0f172a; font-family: inherit;
+    font-size: 13.5px; font-weight: 800; cursor: pointer; text-align: start;
 }
-.vorteile-list li {
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-.vorteile-list li::before {
-    content: "✔";
-    color: #16a34a;
-    font-weight: 900;
-}
+.quick-links-list button:hover { color: #1d4ed8; }
 
-.mini-clocks-grid {
+.clocks-2x2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     text-align: center;
 }
-
-.mini-clock-tile {
+.clock-cell {
     background: #f8fafc;
     border: 1px solid #cbd5e1;
     border-radius: 12px;
-    padding: 8px 6px;
+    padding: 7px 5px;
     font-variant-numeric: tabular-nums;
 }
-.mini-clock-place { font-size: 12px; font-weight: 900; color: #0f172a; }
-.mini-clock-time { font-size: 14px; font-weight: 900; color: #1d4ed8; }
+.clock-city { font-size: 11.5px; font-weight: 900; color: #0f172a; }
+.clock-val { font-size: 13.5px; font-weight: 900; color: #1d4ed8; }
 
-.info-notice-highlight {
-    text-align: center;
-    font-size: 13.5px;
-    font-weight: 800;
-    color: #0f172a;
-}
-.info-notice-highlight strong { color: #dc2626; font-size: 15px; display: block; margin: 4px 0; }
+.welcome-box-txt { text-align: center; font-size: 13.5px; font-weight: 800; color: #0f172a; }
+.welcome-box-txt strong { display: block; color: #b45309; font-size: 15px; margin: 6px 0; }
 
-.contact-btn-wa {
-    display: block;
-    width: 100%;
-    text-align: center;
-    text-decoration: none;
+.wa-link-btn {
+    display: block; width: 100%; text-align: center; text-decoration: none;
     background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
-    color: #ffffff;
-    border-radius: 12px;
-    padding: 9px 12px;
-    font-weight: 900;
-    font-size: 14px;
-    margin-top: 8px;
+    color: #ffffff; border-radius: 12px; padding: 9px 12px; font-weight: 900; font-size: 13.5px; margin-top: 8px;
 }
-
-.contact-btn-tg {
-    display: block;
-    width: 100%;
-    text-align: center;
-    text-decoration: none;
+.tg-link-btn {
+    display: block; width: 100%; text-align: center; text-decoration: none;
     background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
-    color: #ffffff;
-    border-radius: 12px;
-    padding: 9px 12px;
-    font-weight: 900;
-    font-size: 14px;
-    margin-top: 8px;
+    color: #ffffff; border-radius: 12px; padding: 9px 12px; font-weight: 900; font-size: 13.5px; margin-top: 8px;
 }
 
-/* فوتر نواری پایین شبیه تصویر */
-.footer-ribbon {
-    background: linear-gradient(90deg, #071327 0%, #1e293b 50%, #071327 100%);
-    border: 2px solid rgba(250, 204, 21, 0.55);
+.bottom-ribbon-bar {
+    background: linear-gradient(90deg, #070d19 0%, #1e293b 50%, #070d19 100%);
+    border: 2px solid rgba(250, 204, 21, 0.6);
     border-radius: 999px;
-    padding: 12px 20px;
+    padding: 12px 18px;
     text-align: center;
-    color: var(--gold);
+    color: #facc15;
     font-weight: 900;
-    font-size: clamp(14px, 2.4vw, 19px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    font-size: clamp(13.5px, 2.2vw, 18px);
 }
 
-/* استایل عناصر داخلی بخش‌ها */
+/* استایل عناصر داخلی */
 .level-rows { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
 .level-row-btn {
     display: flex; align-items: stretch; border-radius: 16px; overflow: hidden;
@@ -503,7 +563,7 @@ body::before {
     font-family: inherit; width: 100%;
 }
 .level-row-btn.active { border-color: #0b2144; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25); }
-.lvl-tag-col { min-width: 82px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; color: #ffffff; padding: 12px; }
+.lvl-tag-col { min-width: 80px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; color: #ffffff; padding: 12px; }
 .lvl-A1 .lvl-tag-col { background: #2563eb; }
 .lvl-A2 .lvl-tag-col { background: #16a34a; }
 .lvl-B1 .lvl-tag-col { background: #eab308; color: #0f172a; }
@@ -528,7 +588,7 @@ body::before {
 .btn-blue { background: #2563eb; }
 .btn-green { background: #16a34a; }
 .btn-teal { background: #0f766e; }
-.btn-dark { background: #0b2144; color: var(--gold); }
+.btn-dark { background: #0b2144; color: #facc15; }
 
 .btn-search-clear { background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); color: #ffffff; border: 2px solid #86efac; border-radius: 12px; padding: 11px 22px; font-family: inherit; font-size: 14.5px; font-weight: 900; cursor: pointer; white-space: nowrap; }
 
@@ -546,168 +606,191 @@ textarea { min-height: 95px; resize: vertical; }
 .quiz-option.wrong { background: #dc2626; color: #ffffff; border-color: #991b1b; }
 
 @media (max-width: 980px) {
-    .hero-showcase { grid-template-columns: 1fr; }
-    .student-side-card { max-width: 300px; margin: 0 auto; }
-    .four-color-cards, .bottom-four-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-banner { grid-template-columns: 1fr; }
+    .student-photo-box { max-width: 290px; margin: 0 auto; }
+    .style-switcher-bar, .four-horizontal-row, .four-info-cols { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
-    .four-color-cards, .bottom-four-grid, .two-way-cols { grid-template-columns: 1fr; }
+    .style-switcher-bar, .four-horizontal-row, .four-info-cols, .two-way-cols { grid-template-columns: 1fr; }
     .search-bar-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
-<body>
+<body class="theme-black-gold">
 
 <input type="file" id="ocrFileInput" accept="image/*" capture="environment" style="display:none;">
 
-<!-- نوار ناوبری بالا مطابق تصویر -->
-<nav class="top-navbar">
-    <div class="nav-inner">
-        <a href="#top" class="nav-brand" onclick="closeDrawerPanel()">
-            <span class="nav-crown-logo">👑</span>
-            <span class="nav-brand-text">KING ASAD <small>DEUTSCH LERNEN</small></span>
+<!-- نوار ناوبری بالا -->
+<nav class="top-nav">
+    <div class="nav-wrap">
+        <a href="#top" class="brand-link" onclick="closeDrawerPanel()">
+            <span style="font-size:28px;">👑</span>
+            <span class="brand-title-box">KING ASAD <small>DEUTSCH LERNEN</small></span>
         </a>
-        <div class="nav-links-group">
-            <button type="button" class="nav-pill-btn home-active" onclick="closeDrawerPanel()">🏠 Home</button>
-            <button type="button" class="nav-pill-btn" onclick="openSection('levels')">📚 Lernen</button>
-            <button type="button" class="nav-pill-btn" onclick="openSection('podcasts')">🎧 Podcast</button>
-            <button type="button" class="nav-pill-btn" onclick="openSection('solver')">🎮 Übungen</button>
-            <button type="button" class="nav-pill-btn" onclick="openSection('quiz')">🎓 Prüfung</button>
-            <button type="button" class="nav-pill-btn" onclick="openSection('grammar')">ℹ️ Info</button>
-            <button type="button" class="nav-pill-btn admin-pill" onclick="openSection('videos')">⚙ Admin</button>
+        <div class="nav-menu">
+            <button type="button" class="nav-btn home-pill" onclick="closeDrawerPanel()">🏠 Home</button>
+            <button type="button" class="nav-btn" onclick="openSection('levels')">📚 Lernen</button>
+            <button type="button" class="nav-btn" onclick="openSection('podcasts')">🎧 Podcast</button>
+            <button type="button" class="nav-btn" onclick="openSection('solver')">🎮 Übungen</button>
+            <button type="button" class="nav-btn" onclick="openSection('quiz')">🎓 Prüfung</button>
+            <button type="button" class="nav-btn" onclick="openSection('grammar')">ℹ️ Info</button>
+            <button type="button" class="nav-btn admin-pill" onclick="openSection('videos')">⚙ Admin</button>
         </div>
     </div>
 </nav>
 
-<div class="page-container" id="top">
-    <!-- بخش قهرمان با عکس محصل در کنار صفحه -->
-    <section class="hero-showcase">
-        <div class="student-side-card">
-            <img class="student-side-img" src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="محصل زبان آلمانی">
-            <div class="student-side-caption">🎓 محصل زبان آلمانی • KING ASAD</div>
+<div class="main-shell" id="top">
+    <!-- انتخاب‌گر ۴ سبک طراحی پیشنهادی -->
+    <section class="style-switcher-bar" aria-label="انتخاب سبک طراحی">
+        <button type="button" class="style-choice-btn active-style" id="st-black-gold" onclick="setSiteTheme('theme-black-gold', 'st-black-gold')">
+            👑 Black &amp; Gold
+            <small>مشکی و طلایی • لوکس و سلطنتی</small>
+        </button>
+        <button type="button" class="style-choice-btn" id="st-german" onclick="setSiteTheme('theme-german', 'st-german')">
+            🇩🇪 German Style
+            <small>سیاه، سرخ و زرد • پرچم آلمان</small>
+        </button>
+        <button type="button" class="style-choice-btn" id="st-modern-edu" onclick="setSiteTheme('theme-modern-edu', 'st-modern-edu')">
+            📘 Modern Education
+            <small>آبی و سفید • مدرن و آموزشی</small>
+        </button>
+        <button type="button" class="style-choice-btn" id="st-luxury-glass" onclick="setSiteTheme('theme-luxury-glass', 'st-luxury-glass')">
+            ✨ Luxury Glass
+            <small>شیشه‌ای، نورپردازی و متحرک</small>
+        </button>
+    </section>
+
+    <!-- بنر اصلی با نام سایت، پرچم‌ها، ساعت و تاریخ جهانی و عکس محصل -->
+    <section class="hero-banner">
+        <div class="student-photo-box">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="محصل زبان آلمانی">
+            <span>🎓 محصل زبان آلمانی • KING ASAD</span>
         </div>
 
-        <div class="hero-center-content">
-            <div class="hero-crown-top">👑</div>
-            <div class="hero-flags-title">
-                <span class="hero-flag">🇩🇪</span>
-                <h1 class="hero-main-title">KING ASAD <span>DEUTSCH LERNEN</span></h1>
-                <span class="hero-flag">🇦🇫</span>
+        <div class="hero-center">
+            <div class="cefr-top-pills">
+                <span class="cefr-mini-badge cb-A1" onclick="jumpToLevel('A1')">A1</span>
+                <span class="cefr-mini-badge cb-A2" onclick="jumpToLevel('A2')">A2</span>
+                <span class="cefr-mini-badge cb-B1" onclick="jumpToLevel('B1')">B1</span>
+                <span class="cefr-mini-badge cb-B2" onclick="jumpToLevel('B2')">B2</span>
+                <span class="cefr-mini-badge cb-C1" onclick="jumpToLevel('C1')">C1</span>
             </div>
-            <div class="hero-ribbon-de">Deutsch einfach – Schritt für Schritt!</div>
-            <div class="hero-ribbon-fa">🎧 آلمانی را آسان یاد بگیرید – قدم به قدم!</div>
-            <div class="hero-world-clock" id="worldClockLine">در حال دریافت ساعت و تاریخ روز جهانی...</div>
+
+            <div style="font-size:34px;line-height:1;">👑</div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+                <span style="font-size:32px;">🇩🇪</span>
+                <h1 class="hero-main-heading">KING ASAD <span>DEUTSCH LERNEN</span></h1>
+                <span style="font-size:32px;">🇦🇫</span>
+            </div>
+
+            <div class="hero-slogan-gold">Deutsch einfach – Schritt für Schritt!</div>
+            <div class="hero-slogan-sub">🎧 آلمانی را آسان یاد بگیرید – قدم به قدم!</div>
+            <div class="hero-world-time" id="worldClockBanner">در حال دریافت ساعت و تاریخ روز جهانی...</div>
         </div>
     </section>
 
-    <!-- چهار کارت بزرگ رنگی دقیقاً مطابق تصویر -->
-    <section class="four-color-cards">
-        <button type="button" class="color-feature-card card-theme-blue" id="feat-podcasts" onclick="openSection('podcasts')">
-            <div class="feature-icon-circle">🎧</div>
-            <div class="feature-en-title">Podcast Deutsch</div>
-            <div class="feature-fa-title">پادکست‌های آموزشی</div>
-            <div class="feature-cta-pill">▶ شنیدن الآن</div>
+    <!-- چهار بخش اصلی به‌صورت افقی در یک ردیف -->
+    <section class="four-horizontal-row">
+        <button type="button" class="horiz-main-card hcard-1" id="mcard-podcasts" onclick="openSection('podcasts')">
+            <div class="hcard-icon">🎧</div>
+            <div class="hcard-title-fa">پادکست‌های آلمانی</div>
+            <div class="hcard-sub-de">Deutsche Podcasts</div>
+            <div class="hcard-action-pill">▶ شنیدن پادکست</div>
         </button>
 
-        <button type="button" class="color-feature-card card-theme-green" id="feat-levels" onclick="openSection('levels')">
-            <div class="feature-icon-circle">📚</div>
-            <div class="feature-en-title">Deutsch Kurse</div>
-            <div class="feature-fa-title">دروس زبان آلمانی (A1–C1)</div>
-            <div class="feature-cta-pill">▶ شروع یادگیری</div>
+        <button type="button" class="horiz-main-card hcard-2" id="mcard-levels" onclick="openSection('levels')">
+            <div class="hcard-icon">📚</div>
+            <div class="hcard-title-fa">درس‌های A1 تا C1</div>
+            <div class="hcard-sub-de">Deutsch Kurse</div>
+            <div class="hcard-action-pill">▶ شروع درس‌ها</div>
         </button>
 
-        <button type="button" class="color-feature-card card-theme-purple" id="feat-dict" onclick="openSection('dict')">
-            <div class="feature-icon-circle">💬</div>
-            <div class="feature-en-title">Dialogue &amp; Sätze</div>
-            <div class="feature-fa-title">مکالمات، لغات و ترجمه</div>
-            <div class="feature-cta-pill">▶ مشاهده بیشتر</div>
+        <button type="button" class="horiz-main-card hcard-3" id="mcard-twoway" onclick="openSection('twoway')">
+            <div class="hcard-icon">💬</div>
+            <div class="hcard-title-fa">مکالمه و ترجمه فارسی</div>
+            <div class="hcard-sub-de">Dialogue &amp; Übersetzung</div>
+            <div class="hcard-action-pill">▶ ترجمه و لغت</div>
         </button>
 
-        <button type="button" class="color-feature-card card-theme-red" id="feat-quiz" onclick="openSection('quiz')">
-            <div class="feature-icon-circle">📝</div>
-            <div class="feature-en-title">Übungen &amp; Tests</div>
-            <div class="feature-fa-title">تمرین‌ها و آزمون‌ها</div>
-            <div class="feature-cta-pill">▶ شروع تمرین</div>
+        <button type="button" class="horiz-main-card hcard-4" id="mcard-quiz" onclick="openSection('quiz')">
+            <div class="hcard-icon">📝</div>
+            <div class="hcard-title-fa">تمرین و آزمون</div>
+            <div class="hcard-sub-de">Übungen &amp; Tests</div>
+            <div class="hcard-action-pill">▶ شروع آزمون</div>
         </button>
     </section>
 
-    <!-- نوار دسترسی سریع به تمامی بخش‌های کامل -->
-    <section class="all-tools-bar">
-        <button type="button" class="tool-quick-btn" id="qbtn-levels" onclick="openSection('levels')">📚 سطوح و درس‌ها (A1–C1)</button>
-        <button type="button" class="tool-quick-btn" id="qbtn-dict" onclick="openSection('dict')">📖 فرهنگ لغات آنلاین</button>
-        <button type="button" class="tool-quick-btn" id="qbtn-twoway" onclick="openSection('twoway')">🔄 ترجمه متن دوطرفه</button>
-        <button type="button" class="tool-quick-btn" id="qbtn-translator" onclick="openSection('translator')">🌐 مترجم نامحدود + عکس</button>
-        <button type="button" class="tool-quick-btn" id="qbtn-grammar" onclick="openSection('grammar')">📐 گرامر و کتاب A1–C1</button>
-        <button type="button" class="tool-quick-btn" id="qbtn-podcasts" onclick="openSection('podcasts')">🎧 پادکست deltalord.com</button>
-        <button type="button" class="tool-quick-btn" id="qbtn-solver" onclick="openSection('solver')">🧩 حل‌کننده سؤال و گرامر</button>
-        <button type="button" class="tool-quick-btn" id="qbtn-quiz" onclick="openSection('quiz')">✍️ آزمون‌های A1 الی C1</button>
-        <button type="button" class="tool-quick-btn" id="qbtn-videos" onclick="openSection('videos')">🎬 ویدیوهای آموزشی</button>
+    <!-- نوار دسترسی کامل به سایر بخش‌های سایت -->
+    <section class="full-features-strip">
+        <button type="button" class="feature-chip-btn" id="chip-dict" onclick="openSection('dict')">📖 فرهنگ لغات آنلاین</button>
+        <button type="button" class="feature-chip-btn" id="chip-translator" onclick="openSection('translator')">🌐 مترجم نامحدود + عکس</button>
+        <button type="button" class="feature-chip-btn" id="chip-grammar" onclick="openSection('grammar')">📐 گرامر و کتاب A1–C1</button>
+        <button type="button" class="feature-chip-btn" id="chip-solver" onclick="openSection('solver')">🧩 حل‌کننده سؤال و گرامر</button>
+        <button type="button" class="feature-chip-btn" id="chip-videos" onclick="openSection('videos')">🎬 ویدیوهای آموزشی</button>
     </section>
 
     <!-- پنجره بازشونده محتوای کامل هر بخش -->
-    <section class="workspace-drawer" id="workspaceDrawer">
-        <div class="workspace-head">
-            <h2 class="workspace-title" id="workspaceTitle">بخش آموزشی</h2>
-            <button type="button" class="btn-close-panel" onclick="closeDrawerPanel()">✕ بستن</button>
+    <section class="drawer-panel" id="drawerPanel">
+        <div class="drawer-head">
+            <h2 class="drawer-title" id="drawerHeading">بخش آموزشی</h2>
+            <button type="button" class="btn-close-box" onclick="closeDrawerPanel()">✕ بستن</button>
         </div>
-        <div id="workspaceBody"></div>
+        <div id="drawerBody"></div>
     </section>
 
-    <!-- بخش چهارستونی پایین صفحه دقیقاً مطابق تصویر -->
-    <section class="bottom-four-grid">
-        <div class="bottom-info-col">
-            <div class="bottom-col-heading">🏆 Unsere Vorteile</div>
-            <ul class="vorteile-list">
-                <li>Lernen von A1 bis C1</li>
-                <li>Audio &amp; Übersetzung</li>
-                <li>Interaktive Übungen</li>
-                <li>Live-Updates</li>
-                <li>100% Kostenlos</li>
+    <!-- بخش چهارستونی پایین صفحه -->
+    <section class="four-info-cols">
+        <div class="info-col-box">
+            <div class="info-col-title">⭐ Wichtige Links</div>
+            <ul class="quick-links-list">
+                <li><button type="button" onclick="openSection('grammar')">📐 Grammatik (گرامر A1–C1)</button></li>
+                <li><button type="button" onclick="openSection('levels')">📚 Vokabeln &amp; Kurse (درس‌ها)</button></li>
+                <li><button type="button" onclick="openSection('dict')">🔍 Online Wörterbuch (لغت‌نامه)</button></li>
+                <li><button type="button" onclick="openSection('solver')">💡 Deutsch Tipps (حل تمرین)</button></li>
             </ul>
         </div>
 
-        <div class="bottom-info-col">
-            <div class="bottom-col-heading">🕒 Online Uhren</div>
-            <div class="mini-clocks-grid">
-                <div class="mini-clock-tile">
-                    <div class="mini-clock-place">🇦🇫 Afghanistan</div>
-                    <div class="mini-clock-time" id="clk-af">--:--</div>
+        <div class="info-col-box">
+            <div class="info-col-title">🕒 Online Uhren</div>
+            <div class="clocks-2x2">
+                <div class="clock-cell">
+                    <div class="clock-city">🇦🇫 Afghanistan</div>
+                    <div class="clock-val" id="clk-af">--:--</div>
                 </div>
-                <div class="mini-clock-tile">
-                    <div class="mini-clock-place">🇮🇷 Iran</div>
-                    <div class="mini-clock-time" id="clk-ir">--:--</div>
+                <div class="clock-cell">
+                    <div class="clock-city">🇮🇷 Iran</div>
+                    <div class="clock-val" id="clk-ir">--:--</div>
                 </div>
-                <div class="mini-clock-tile">
-                    <div class="mini-clock-place">🇩🇪 Europa</div>
-                    <div class="mini-clock-time" id="clk-de">--:--</div>
+                <div class="clock-cell">
+                    <div class="clock-city">🇩🇪 Europa</div>
+                    <div class="clock-val" id="clk-de">--:--</div>
                 </div>
-                <div class="mini-clock-tile">
-                    <div class="mini-clock-place">🌍 Global UTC</div>
-                    <div class="mini-clock-time" id="clk-utc">--:--</div>
+                <div class="clock-cell">
+                    <div class="clock-city">🌍 Global UTC</div>
+                    <div class="clock-val" id="clk-utc">--:--</div>
                 </div>
             </div>
         </div>
 
-        <div class="bottom-info-col">
-            <div class="bottom-col-heading">📢 Wichtige Info</div>
-            <div class="info-notice-highlight">
-                جلسه هفتگی و تمرین آنلاین
-                <strong>هر چهارشنبه</strong>
-                <div>آلمانی را آسان و قدم به قدم با KING ASAD یاد بگیرید</div>
+        <div class="info-col-box">
+            <div class="info-col-title">📢 Willkommen!</div>
+            <div class="welcome-box-txt">
+                به سایت آموزشی
+                <strong>KING ASAD DEUTSCH LERNEN</strong>
+                <div>خوش آمدید! • جلسات تمرینی هر چهارشنبه</div>
             </div>
         </div>
 
-        <div class="bottom-info-col">
-            <div class="bottom-col-heading">📞 Kontakt</div>
-            <div style="font-size:13px;font-weight:800;color:#334155;text-align:center;">ارتباط و پشتیبانی آموزشی</div>
-            <a class="contact-btn-wa" href="https://wa.me/4915212898695" target="_blank" rel="noopener">💬 WhatsApp</a>
-            <a class="contact-btn-tg" href="https://t.me/" target="_blank" rel="noopener">✈ Telegram</a>
+        <div class="info-col-box">
+            <div class="info-col-title">📞 Kontakt</div>
+            <div style="font-size:12.5px;font-weight:800;color:#334155;text-align:center;">Bestellung &amp; Fragen</div>
+            <a class="wa-link-btn" href="https://wa.me/4915212898695" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <a class="tg-link-btn" href="https://t.me/" target="_blank" rel="noopener">✈ Telegram</a>
         </div>
     </section>
 
-    <!-- نوار پایین صفحه شبیه تصویر -->
-    <footer class="footer-ribbon">
-        ★ ★ ★ Lernen. Üben. Erfolgreich sein! ★ ★ ★
+    <footer class="bottom-ribbon-bar">
+        🎓 Lernen von Profis &nbsp;|&nbsp; 🛡️ 100% Kostenlos &nbsp;|&nbsp; 🚀 Schneller Erfolg — Viel Erfolg beim Deutschlernen! 💛
     </footer>
 </div>
 
@@ -848,6 +931,14 @@ var curQuizLevel = 'A1';
 var quizPicked = {};
 var pendingOcr = null;
 
+window.setSiteTheme = function(themeClass, btnId) {
+    document.body.classList.remove('theme-black-gold', 'theme-german', 'theme-modern-edu', 'theme-luxury-glass');
+    document.body.classList.add(themeClass);
+    document.querySelectorAll('.style-choice-btn').forEach(function(b) {
+        b.classList.toggle('active-style', b.id === btnId);
+    });
+};
+
 function readOutLoud(text, forcedLang) {
     var clean = String(text || '').trim();
     if (!clean) return;
@@ -932,33 +1023,38 @@ document.addEventListener('change', function(e) {
     }
 });
 
+window.jumpToLevel = function(lvl) {
+    curLevel = lvl;
+    openSection('levels');
+};
+
 window.openSection = function(sec) {
-    document.querySelectorAll('.tool-quick-btn').forEach(function(b) {
-        b.classList.toggle('active-tool', b.id === 'qbtn-' + sec);
+    document.querySelectorAll('.horiz-main-card').forEach(function(c) {
+        c.classList.toggle('picked-main', c.id === 'mcard-' + sec);
     });
-    document.querySelectorAll('.color-feature-card').forEach(function(c) {
-        c.classList.toggle('selected-feature', c.id === 'feat-' + sec);
+    document.querySelectorAll('.feature-chip-btn').forEach(function(b) {
+        b.classList.toggle('active-chip', b.id === 'chip-' + sec);
     });
 
-    var drawer = document.getElementById('workspaceDrawer');
-    var titleEl = document.getElementById('workspaceTitle');
-    var bodyEl = document.getElementById('workspaceBody');
-    if (!drawer || !titleEl || !bodyEl) return;
+    var panel = document.getElementById('drawerPanel');
+    var heading = document.getElementById('drawerHeading');
+    var bodyEl = document.getElementById('drawerBody');
+    if (!panel || !heading || !bodyEl) return;
 
     var titles = {
-        levels: '📚 سطوح و درس‌ها (A1 تا C1)',
+        podcasts: '🎧 پادکست‌های آلمانی (deltalord.com) + متن نوشتاری',
+        levels: '📚 درس‌های A1 تا C1 + مشخصات و ویدیو',
+        twoway: '💬 مکالمه و ترجمه متن دوطرفه',
+        quiz: '📝 تمرین و آزمون‌های سطح A1 الی C1',
         dict: '📖 فرهنگ لغات آنلاین',
-        twoway: '🔄 ترجمه متن دوطرفه',
         translator: '🌐 مترجم نامحدود هر زبان به هر زبان + اسکن عکس',
         grammar: '📐 گرامر و کتاب‌های A1 تا C1',
-        podcasts: '🎧 پادکست‌های هر سطح (deltalord.com) + متن نوشتاری',
         solver: '🧩 حل‌کننده نامحدود سؤال و گرامر + متن و اسکن عکس',
-        quiz: '✍️ آزمون‌های سطح A1 الی C1',
         videos: '🎬 مجموعه کامل ویدیوهای آموزشی'
     };
 
-    titleEl.textContent = titles[sec] || 'بخش آموزشی';
-    drawer.classList.add('open');
+    heading.textContent = titles[sec] || 'بخش آموزشی';
+    panel.classList.add('open');
 
     if (sec === 'levels') paintLevelsSection(bodyEl);
     else if (sec === 'dict') paintDictionarySection(bodyEl);
@@ -970,14 +1066,14 @@ window.openSection = function(sec) {
     else if (sec === 'quiz') paintQuizSection(bodyEl);
     else if (sec === 'videos') paintVideosSection(bodyEl);
 
-    drawer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
 
 window.closeDrawerPanel = function() {
-    document.querySelectorAll('.tool-quick-btn').forEach(function(b) { b.classList.remove('active-tool'); });
-    document.querySelectorAll('.color-feature-card').forEach(function(c) { c.classList.remove('selected-feature'); });
-    var drawer = document.getElementById('workspaceDrawer');
-    if (drawer) drawer.classList.remove('open');
+    document.querySelectorAll('.horiz-main-card').forEach(function(c) { c.classList.remove('picked-main'); });
+    document.querySelectorAll('.feature-chip-btn').forEach(function(b) { b.classList.remove('active-chip'); });
+    var panel = document.getElementById('drawerPanel');
+    if (panel) panel.classList.remove('open');
 };
 
 function paintLevelsSection(container) {
@@ -1033,7 +1129,7 @@ function paintLevelsSection(container) {
 
 window.pickLevel = function(lvl) {
     curLevel = lvl;
-    paintLevelsSection(document.getElementById('workspaceBody'));
+    paintLevelsSection(document.getElementById('drawerBody'));
 };
 
 window.toggleLessonAccordion = function(idx) {
@@ -1216,7 +1312,7 @@ function paintGrammarBooksSection(container) {
 
 window.pickGrammarLvl = function(lvl) {
     curGrammarLevel = lvl;
-    paintGrammarBooksSection(document.getElementById('workspaceBody'));
+    paintGrammarBooksSection(document.getElementById('drawerBody'));
 };
 
 function paintPodcastsSection(container) {
@@ -1249,7 +1345,7 @@ function paintPodcastsSection(container) {
 
 window.pickPodcastLvl = function(lvl) {
     curPodcastLevel = lvl;
-    paintPodcastsSection(document.getElementById('workspaceBody'));
+    paintPodcastsSection(document.getElementById('drawerBody'));
 };
 
 function paintSolverSection(container) {
@@ -1318,12 +1414,12 @@ function paintQuizSection(container) {
 
 window.pickQuizLvl = function(lvl) {
     curQuizLevel = lvl;
-    paintQuizSection(document.getElementById('workspaceBody'));
+    paintQuizSection(document.getElementById('drawerBody'));
 };
 
 window.chooseAnswer = function(lvl, qIdx, oIdx) {
     quizPicked[lvl + '_' + qIdx] = oIdx;
-    paintQuizSection(document.getElementById('workspaceBody'));
+    paintQuizSection(document.getElementById('drawerBody'));
 };
 
 function paintVideosSection(container) {
@@ -1340,7 +1436,7 @@ function paintVideosSection(container) {
 
 function refreshClocks() {
     var now = new Date();
-    var lineEl = document.getElementById('worldClockLine');
+    var lineEl = document.getElementById('worldClockBanner');
     if (lineEl) {
         var gDate = now.toLocaleDateString('en-GB', {
             weekday: 'long',
