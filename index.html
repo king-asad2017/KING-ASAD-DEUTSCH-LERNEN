@@ -4,52 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#061326">
-<title>KING ASAD – مرکز جامع آموزش زبان آلمانی (A1–C1)</title>
+<title>KING ASAD – مرکز آموزش زبان آلمانی (A1–C1)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800&family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 <style>
 :root {
-    --panel-bg: #0c2344;
-    --card-light: #ffffff;
+    --navy-bg: #07162e;
+    --navy-card: #0c2344;
+    --surface: #ffffff;
     --ink: #0f172a;
     --ink-light: #ffffff;
     --ink-muted: #cbd5e1;
     --gold: #facc15;
+    --blue: #2563eb;
+    --green: #16a34a;
+    --orange: #ea580c;
+    --rose: #db2777;
+    --purple: #7c3aed;
+    --cyan: #0891b2;
     --border-glow: rgba(56, 189, 248, 0.35);
-
-    --c1-main: #2563eb;
-    --c1-dark: #1e40af;
-    --c1-soft: #eff6ff;
-
-    --c2-main: #db2777;
-    --c2-dark: #9d174d;
-    --c2-soft: #fdf2f8;
-
-    --c3-main: #ea580c;
-    --c3-dark: #9a3412;
-    --c3-soft: #fff7ed;
-
-    --c4-main: #16a34a;
-    --c4-dark: #166534;
-    --c4-soft: #f0fdf4;
-
-    --c5-main: #7c3aed;
-    --c5-dark: #5b21b6;
-    --c5-soft: #f5f3ff;
-
-    --c6-main: #0891b2;
-    --c6-dark: #155e75;
-    --c6-soft: #ecfeff;
-
-    --c7-main: #0f766e;
-    --c7-dark: #115e59;
-    --c7-soft: #f0fdfa;
-
-    --radius-md: 18px;
-    --shadow-row: 0 10px 24px rgba(0, 0, 0, 0.36);
-    --shadow-drawer: 0 14px 32px rgba(0, 0, 0, 0.45);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -63,1401 +38,1119 @@ html, body {
     overflow-x: hidden;
 }
 
-.app-shell {
-    max-width: 1120px;
+.app-wrap {
+    max-width: 1080px;
     margin: 0 auto;
     padding: 18px 14px 48px;
+}
+
+.top-brand-box {
+    background: linear-gradient(155deg, rgba(12, 35, 68, 0.96) 0%, rgba(7, 22, 46, 0.98) 100%);
+    border: 1.5px solid var(--border-glow);
+    border-radius: 22px;
+    padding: 20px 18px;
+    margin-bottom: 18px;
+    text-align: center;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+
+.brand-title {
+    font-size: clamp(20px, 3.5vw, 28px);
+    font-weight: 900;
+    color: #ffffff;
+}
+.brand-title span { color: var(--gold); }
+
+.brand-sub {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-top: 6px;
+}
+
+/* گرید کارت‌های اصلی روی صفحه (فقط چند بخش منظم) */
+.main-tiles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.main-tile-card {
+    background: #ffffff;
+    color: #0f172a;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    border-radius: 18px;
+    padding: 16px 14px;
+    text-align: start;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    transition: transform 0.18s ease, border-color 0.18s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+}
+.main-tile-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+}
+.main-tile-card.active-tile {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.35), 0 14px 28px rgba(0, 0, 0, 0.45);
+}
+
+.tile-head-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.tile-badge {
+    background: #0c2344;
+    color: var(--gold);
+    font-size: 11.5px;
+    font-weight: 900;
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+.tile-name {
+    font-size: 15px;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.tile-hint {
+    font-size: 12px;
+    color: #475569;
+    font-weight: 700;
+}
+
+/* پنل بازشونده محتوا وقتی روی بخش کلیک می‌شود */
+.opened-section-panel {
+    display: none;
+    background: #ffffff;
+    color: #0f172a;
+    border: 2px solid var(--gold);
+    border-radius: 22px;
+    padding: 20px 18px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.52);
+    margin-bottom: 20px;
+}
+.opened-section-panel.open {
     display: block;
 }
 
-.hero-card {
-    background: linear-gradient(155deg, rgba(12, 35, 68, 0.96) 0%, rgba(7, 22, 46, 0.98) 100%);
+.panel-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.panel-heading {
+    font-size: 18px;
+    font-weight: 900;
+    color: #0c2344;
+}
+
+.btn-close-panel {
+    background: #ef4444;
     color: #ffffff;
-    border-radius: 24px;
-    padding: 24px 20px;
-    margin-bottom: 18px;
-    border: 1.5px solid var(--border-glow);
-    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.48);
-    text-align: center;
+    border: none;
+    border-radius: 10px;
+    padding: 7px 14px;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 900;
+    cursor: pointer;
 }
 
-.flags-strip {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;
-    background: rgba(6, 19, 38, 0.85); border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 999px; padding: 6px 14px; margin-bottom: 12px; font-size: 16px;
+/* نوار سطوح A1 تا C1 */
+.levels-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
 }
 
-.hero-brand-line { font-size: clamp(20px, 3.8vw, 30px); font-weight: 900; line-height: 1.35; margin-bottom: 10px; }
-.hero-brand-gold { color: var(--gold); font-weight: 900; }
-
-.hero-slogan-pill {
-    background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
-    color: #07162e; border-radius: 999px; padding: 9px 20px; margin: 0 auto 12px;
-    max-width: 780px; font-weight: 900; font-size: clamp(13px, 2.3vw, 15.5px);
+.lvl-btn {
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: 1.5px solid #cbd5e1;
+    background: #f1f5f9;
+    color: #0f172a;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 900;
+    cursor: pointer;
+}
+.lvl-btn.active {
+    background: #0c2344;
+    color: var(--gold);
+    border-color: #0c2344;
 }
 
-.hero-stats-text { font-size: 13px; font-weight: 700; color: var(--ink-muted); margin-bottom: 14px; }
-
-.hero-controls-row { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
-
-.hero-lang-select {
-    background: #061326; color: #ffffff; border: 1.5px solid rgba(56, 189, 248, 0.45);
-    border-radius: 14px; padding: 8px 14px; font-family: inherit; font-size: 13px; font-weight: 800; cursor: pointer; width: auto; margin: 0;
+/* کارت درس و مشخصات */
+.lesson-box {
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    margin-bottom: 10px;
+    background: #f8fafc;
+    overflow: hidden;
 }
 
-.hero-welcome-btn {
-    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); color: #07162e; border: none;
-    border-radius: 14px; padding: 8px 18px; font-family: inherit; font-size: 13.5px; font-weight: 900; cursor: pointer;
+.lesson-trigger {
+    width: 100%;
+    padding: 12px 14px;
+    background: #eff6ff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: start;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 900;
+    color: #0f172a;
+    cursor: pointer;
 }
 
-.hero-start-btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; max-width: 540px;
-    background: linear-gradient(90deg, #2563eb 0%, #0891b2 100%); color: #ffffff; border: 1px solid rgba(125,211,252,0.4);
-    border-radius: 16px; padding: 11px 20px; font-family: inherit; font-size: 15.5px; font-weight: 900; cursor: pointer;
+.lesson-details {
+    display: none;
+    padding: 14px;
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+}
+.lesson-details.open {
+    display: block;
 }
 
-/* سطوح در بالا شبیه عکس دوم با استایل سرمه‌ای/رنگی */
-.chaharchookat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin-bottom: 18px; }
-
-.level-tile {
-    border: 1.5px solid rgba(255, 255, 255, 0.55); border-radius: 18px; padding: 0;
-    font-family: inherit; cursor: pointer; display: flex; flex-direction: column; align-items: stretch;
-    justify-content: space-between; text-align: center; background: #ffffff;
-    overflow: hidden; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.36); transition: transform 0.2s ease;
-}
-.level-tile:hover { transform: translateY(-3px); }
-
-.tile-top-bar { padding: 7px 12px; display: flex; align-items: center; justify-content: space-between; font-weight: 900; font-size: 12px; color: #ffffff; }
-.tile-body-box { padding: 13px 12px 15px; display: flex; flex-direction: column; align-items: center; gap: 3px; color: #0f172a; }
-
-.level-tile.tile-a1 .tile-top-bar { background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%); }
-.level-tile.tile-a2 .tile-top-bar { background: linear-gradient(90deg, #166534 0%, #16a34a 100%); }
-.level-tile.tile-b1 .tile-top-bar { background: linear-gradient(90deg, #a16207 0%, #eab308 100%); }
-.level-tile.tile-b2 .tile-top-bar { background: linear-gradient(90deg, #9a3412 0%, #ea580c 100%); }
-.level-tile.tile-c1 .tile-top-bar { background: linear-gradient(90deg, #9d174d 0%, #db2777 100%); }
-.level-tile.tile-all .tile-top-bar { background: linear-gradient(90deg, #155e75 0%, #0891b2 100%); }
-
-.tile-code { font-size: 24px; font-weight: 900; line-height: 1.15; color: #07162e; }
-.tile-sub { font-size: 12px; font-weight: 800; color: #475569; }
-
-/* نمایشگر بالای درس‌ها شبیه تلویزیون / تابلو (مانند عکس اول) */
-.tv-stage-box {
-    background: linear-gradient(180deg, #091d3a 0%, #051124 100%);
-    border: 2px solid #38bdf8;
-    border-radius: 22px;
-    padding: 16px;
-    margin-bottom: 18px;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.52);
+.specs-grid {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #0f172a;
 }
 
-.tv-stage-header {
-    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.25); padding-bottom: 10px; margin-bottom: 12px;
-    font-size: 13px; font-weight: 800;
+.sentence-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.tv-stage-screen {
-    background: rgba(15, 44, 86, 0.72);
-    border: 1px solid rgba(125, 211, 252, 0.3);
-    border-radius: 16px;
-    padding: 16px;
-    text-align: center;
+.clickable-speech {
+    cursor: pointer;
+    border-bottom: 1px dashed #2563eb;
+}
+
+/* دکمه جستجوی واضح و پررنگ در فرهنگ لغات */
+.dict-search-bar {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 10px;
+    align-items: center;
     margin-bottom: 12px;
 }
 
-.tv-stage-de { font-size: clamp(19px, 3.5vw, 26px); font-weight: 900; color: #ffffff; direction: ltr; margin-bottom: 6px; }
-.tv-stage-fa { font-size: clamp(15px, 2.5vw, 18px); font-weight: 800; color: #fde047; }
-
-/* شبکه همه گزینه‌ها و کشوها */
-.three-col-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; align-items: start; }
-.grid-divider-line { grid-column: 1 / -1; border: none; border-top: 2px dashed rgba(56, 189, 248, 0.35); margin: 8px 0 4px; }
-.stacked-slot-item { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 12px; }
-
-.row-group { --row-main: var(--c1-main); --row-dark: var(--c1-dark); --row-soft: var(--c1-soft); }
-.row-group[data-color="blue"] { --row-main: var(--c1-main); --row-dark: var(--c1-dark); --row-soft: var(--c1-soft); }
-.row-group[data-color="rose"] { --row-main: var(--c2-main); --row-dark: var(--c2-dark); --row-soft: var(--c2-soft); }
-.row-group[data-color="orange"] { --row-main: var(--c3-main); --row-dark: var(--c3-dark); --row-soft: var(--c3-soft); }
-.row-group[data-color="green"] { --row-main: var(--c4-main); --row-dark: var(--c4-dark); --row-soft: var(--c4-soft); }
-.row-group[data-color="purple"] { --row-main: var(--c5-main); --row-dark: var(--c5-dark); --row-soft: var(--c5-soft); }
-.row-group[data-color="cyan"] { --row-main: var(--c6-main); --row-dark: var(--c6-dark); --row-soft: var(--c6-soft); }
-.row-group[data-color="teal"] { --row-main: var(--c7-main); --row-dark: var(--c7-dark); --row-soft: var(--c7-soft); }
-
-.row-trigger {
-    width: 100%; height: 100%; display: flex; flex-direction: column; background: rgba(255, 255, 255, 0.97);
-    border: 1.5px solid rgba(255, 255, 255, 0.85); border-radius: 18px; overflow: hidden; cursor: pointer;
-    text-align: start; font-family: inherit; box-shadow: var(--shadow-row); transition: transform 0.2s ease;
+.btn-search-prominent {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    color: #ffffff;
+    border: 2px solid #86efac;
+    border-radius: 12px;
+    padding: 11px 22px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(22, 163, 74, 0.35);
+    white-space: nowrap;
 }
-.row-trigger:hover { transform: translateY(-3px); }
-
-.row-card-header {
-    background: linear-gradient(90deg, var(--row-dark) 0%, var(--row-main) 100%);
-    color: #ffffff; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px;
+.btn-search-prominent:hover {
+    background: linear-gradient(135deg, #15803d 0%, #166534 100%);
 }
 
-.row-square { display: inline-flex; align-items: center; gap: 6px; font-weight: 900; }
-.row-num { background: rgba(255, 255, 255, 0.22); padding: 2px 8px; border-radius: 8px; font-size: 13px; }
-.row-emoji { font-size: 17px; }
+.btn-action {
+    border: none;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 900;
+    cursor: pointer;
+    color: #ffffff;
+    background: #2563eb;
+}
+.btn-action.green { background: #16a34a; }
+.btn-action.teal { background: #0f766e; }
+.btn-action.dark { background: #0c2344; color: var(--gold); }
 
-.row-bar { padding: 12px 14px 14px; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 10px; flex: 1; }
-.row-bar-content { display: flex; flex-direction: column; gap: 4px; }
-.row-title { font-size: 14.5px; font-weight: 900; color: var(--ink); line-height: 1.45; }
-.row-desc { font-size: 12px; color: #475569; font-weight: 600; line-height: 1.5; }
-
-.row-status-pill {
-    background: rgba(255, 255, 255, 0.18); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.45);
-    border-radius: 999px; padding: 2px 10px; font-size: 11px; font-weight: 800; white-space: nowrap;
+input[type="text"], textarea, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #94a3b8;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 13.5px;
+    background: #ffffff;
+    color: #0f172a;
 }
 
-.row-drawer {
-    grid-column: 1 / -1; display: none; background: var(--card-light); color: var(--ink);
-    border: 2px solid var(--row-main); border-top: 4px solid var(--row-main);
-    border-radius: var(--radius-md); margin-top: 4px; margin-bottom: 8px; padding: 18px; box-shadow: var(--shadow-drawer);
-}
-.row-drawer.open { display: block; }
-
-.level-switcher-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
-.lvl-filter-btn {
-    padding: 6px 14px; border-radius: 8px; border: 1.5px solid #cbd5e1;
-    background: #f8fafc; color: var(--ink); font-family: inherit; font-size: 12.5px; font-weight: 800; cursor: pointer;
-}
-.lvl-filter-btn.active { background: var(--row-main); color: #ffffff; border-color: var(--row-main); }
-
-.lesson-item { border: 1px solid #d8e0ea; border-radius: 10px; margin-bottom: 8px; background: #fcfdff; overflow: hidden; scroll-margin-top: 80px; }
-.lesson-head-btn {
-    width: 100%; padding: 11px 14px; background: #f5f8fc; border: none;
-    display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    text-align: start; font-family: inherit; font-size: 14px; font-weight: 800; color: var(--ink); cursor: pointer;
-}
-.lesson-head-btn.open { background: var(--row-soft); color: var(--row-dark); }
-.lesson-body { display: none; padding: 14px; border-top: 1px solid #d8e0ea; background: #ffffff; }
-.lesson-body.open { display: block; }
-
-.lesson-description-box {
-    background: #f0f9ff; border: 1px solid #bae6fd; border-inline-start: 4px solid #0284c7;
-    border-radius: 8px; padding: 10px 12px; margin: 10px 0; font-size: 13px; color: #0f172a;
+textarea {
+    min-height: 95px;
+    resize: vertical;
 }
 
-.video-cue-bar {
-    display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
-    background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px;
-    padding: 8px 10px; margin-bottom: 8px; font-size: 12px; font-weight: 800;
+.two-way-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
 }
 
-.sub-card {
-    background: #f9fbfe; border: 1px solid #d8e0ea; border-inline-start: 4px solid var(--row-main);
-    border-radius: 10px; padding: 12px 14px; margin-bottom: 12px;
+.box-card {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 12px;
 }
-.sub-card h4 { font-size: 14.5px; font-weight: 800; color: var(--row-dark); margin-bottom: 8px; }
 
-.line-row, .vocab-row {
-    display: flex; flex-direction: column; align-items: stretch; gap: 6px;
-    padding: 10px 12px; border-radius: 8px; background: #ffffff; border: 1px solid #e2e8f0; margin-bottom: 8px;
+.result-box {
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-inline-start: 4px solid #d97706;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #0f172a;
 }
-.row-top-flex { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 
-.word-sentence-box {
-    background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px;
-    padding: 8px 10px; font-size: 12.5px; color: #1e293b;
+.grammar-rule-card {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-inline-start: 4px solid #2563eb;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
 }
-.sentence-line-item {
-    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-    padding: 6px 8px; margin-bottom: 5px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px;
+
+.podcast-item-card {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
 }
-.verb-pill { background: #eff6ff; color: #1e3a8a; border: 1px solid #bfdbfe; border-radius: 6px; padding: 2px 8px; font-weight: 800; }
 
-.audio-group { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
-.btn-audio-de, .btn-audio-fa, .btn-primary, .btn-secondary, .btn-move, .btn-scan {
-    border: none; border-radius: 7px; padding: 6px 10px; font-family: inherit; font-size: 12px; font-weight: 800; cursor: pointer;
+.video-frame {
+    width: 100%;
+    max-width: 680px;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 12px;
+    display: block;
+    margin: 8px 0;
 }
-.btn-audio-de { background: #1d4ed8; color: #fff; }
-.btn-audio-fa { background: #15803d; color: #fff; }
-.btn-primary { background: var(--row-main); color: #fff; padding: 8px 15px; font-size: 13px; }
-.btn-secondary { background: #e2e8f0; color: var(--ink); padding: 8px 14px; font-size: 13px; }
-.btn-move { background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; padding: 4px 8px; font-size: 11.5px; }
-.btn-scan { background: #0f766e; color: #ffffff; padding: 8px 13px; font-size: 12.5px; }
 
-input[type="text"], input[type="number"], textarea, select {
-    width: 100%; padding: 10px 12px; border: 1.5px solid #cbd5e1; border-radius: 9px;
-    font-family: inherit; font-size: 13.5px; background: #fff; color: var(--ink); margin: 6px 0 10px;
+.quiz-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    cursor: pointer;
+    font-size: 13.5px;
 }
-textarea { min-height: 70px; resize: vertical; }
-
-.result-banner {
-    background: #fffbeb; border: 1px solid #fcd34d; border-inline-start: 4px solid #d97706;
-    border-radius: 9px; padding: 10px 14px; margin: 10px 0; font-weight: 700; font-size: 13.5px;
-}
-.video-frame { width: 100%; max-width: 680px; aspect-ratio: 16 / 9; border: 0; border-radius: 10px; display: block; margin: 8px 0; }
-
-.quiz-option-label { display: flex; align-items: center; gap: 8px; margin: 5px 0; padding: 7px 10px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 13.5px; cursor: pointer; }
-.quiz-option-label.wrong-choice { background-color: #dc2626 !important; border-color: #991b1b !important; color: #ffffff !important; font-weight: 800; }
-.quiz-option-label.correct-choice { background-color: #2563eb !important; border-color: #1e40af !important; color: #ffffff !important; font-weight: 800; }
-.quiz-live-score { margin-top: 10px; padding: 10px 12px; border-radius: 9px; background: #eff6ff; border: 1px solid #93c5fd; color: #1e3a8a; font-weight: 800; font-size: 13.5px; }
-
-.book-topic-btn {
-    width: 100%; text-align: start; padding: 10px 12px; border-radius: 9px; border: 1px solid #cbd5e1;
-    background: #ffffff; color: #0f172a; font-family: inherit; font-size: 13.5px; font-weight: 800; cursor: pointer; margin-bottom: 6px;
-}
-.book-topic-btn:hover, .book-topic-btn.active { background: var(--row-soft); border-color: var(--row-main); color: var(--row-dark); }
-
-.dialogue-panel { background: linear-gradient(145deg, #07162e 0%, #0e264b 65%, #123261 100%); color: #ffffff; border-radius: 16px; padding: 18px 16px; }
-.dialogue-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 12px; }
-.speaker-card { background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 14px; padding: 14px; }
-.transcript-box { background: #ffffff; color: #0f172a; border-radius: 10px; padding: 10px 12px; min-height: 64px; margin-top: 8px; font-size: 13.5px; font-weight: 700; }
-
-.modal-backdrop { position: fixed; inset: 0; background: rgba(4, 13, 28, 0.78); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 9999; }
-.modal-backdrop.open { display: flex; }
-.modal-card { background: #ffffff; color: #111827; max-width: 520px; width: 100%; border-radius: 16px; padding: 22px; border-top: 5px solid #f59e0b; }
+.quiz-opt.ok { background: #2563eb; color: #ffffff; border-color: #1e40af; font-weight: 900; }
+.quiz-opt.bad { background: #dc2626; color: #ffffff; border-color: #991b1b; font-weight: 900; }
 
 .site-footer {
-    max-width: 1120px; margin: 22px auto 0; padding: 13px 18px; background: rgba(6, 19, 38, 0.95); color: #ffffff;
-    border-radius: 999px; border: 1.5px solid rgba(56, 189, 248, 0.45); display: flex; align-items: center;
-    justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 12.5px; font-weight: 800;
+    max-width: 1080px;
+    margin: 16px auto 0;
+    padding: 12px 16px;
+    background: rgba(6, 19, 38, 0.95);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 999px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 800;
 }
-.clock-pill { background: rgba(250, 204, 21, 0.18); color: #fde047; padding: 3px 12px; border-radius: 999px; font-variant-numeric: tabular-nums; }
 
-@media (max-width: 900px) { .three-col-grid, .chaharchookat-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 720px) { .dialogue-grid-2 { grid-template-columns: 1fr; } }
+@media (max-width: 860px) {
+    .main-tiles-grid { grid-template-columns: repeat(2, 1fr); }
+    .two-way-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 600px) {
-    .three-col-grid, .chaharchookat-grid { grid-template-columns: 1fr; }
-    .tile-code { font-size: 22px; }
+    .main-tiles-grid { grid-template-columns: 1fr; }
+    .dict-search-bar { grid-template-columns: 1fr; }
     .site-footer { border-radius: 16px; }
 }
 </style>
 </head>
 <body>
 
-<input type="file" id="sharedOcrFileInput" accept="image/*" capture="environment" style="display:none;">
+<input type="file" id="ocrImagePicker" accept="image/*" capture="environment" style="display:none;">
 
-<div class="modal-backdrop" id="welcomeModal">
-    <div class="modal-card">
-        <div style="font-size:13px;font-weight:900;color:#b45309;margin-bottom:4px;">👑 KING ASAD – مرکز آموزش زبان آلمانی</div>
-        <h2 id="welcomeTitle" style="font-size:21px;font-weight:900;margin-bottom:8px;">خوش آمدید! به دنیای یادگیری زبان آلمانی خوش آمدید</h2>
-        <p style="font-size:13.5px;color:#374151;margin-bottom:12px;">
-            همه بخش‌ها و گزینه‌ها حفظ شده‌اند و استایل صفحه به سبک مدرن سرمه‌ای/طلایی هماهنگ شده است.
-        </p>
-        <p style="font-size:13px;color:#1e3a8a;font-weight:800;margin-bottom:14px;">
-            تماس مستقیم با مدیر: <span dir="ltr">+4915212898695</span>
-        </p>
-        <div class="audio-group">
-            <button type="button" class="btn-primary" id="btnCloseWelcome">شروع یادگیری</button>
-            <button type="button" class="btn-secondary" id="btnWelcomeContact">ارتباط با ما</button>
-        </div>
-    </div>
-</div>
+<div class="app-wrap">
+    <header class="top-brand-box">
+        <div class="brand-title">👑 <span>KING ASAD</span> – آموزش جامع زبان آلمانی (A1–C1)</div>
+        <div class="brand-sub">روی هر بخش کلیک کنید تا درس‌ها، مشخصات و ابزارها باز شوند • تماس: <span dir="ltr">+4915212898695</span></div>
+    </header>
 
-<div class="app-shell" id="appShell">
-    <section class="hero-card" id="heroCard">
-        <div class="flags-strip">
-            <span>🇩🇪</span><span>🇦🇫</span><span>🇮🇷</span><span>🇹🇷</span><span>🇸🇦</span><span>🇬🇧</span><span>🇵🇰</span><span>🇦🇹</span><span>🇨🇭</span>
-        </div>
-
-        <div class="hero-brand-line">
-            <span id="uiTitle">مرکز جامع آموزش زبان آلمانی – </span>
-            <span class="hero-brand-gold">KING ASAD</span>
-        </div>
-
-        <div class="hero-slogan-pill" id="uiSlogan">
-            Deutsch lernen war noch nie so einfach! • یادگیری آلمانی هرگز این‌قدر آسان نبوده است!
-        </div>
-
-        <div class="hero-stats-text" id="uiSubtitle">
-            Deutsche Welle (A1–B1) + ویدیوهای B2 و C1 • فرهنگ لغت آنلاین نامحدود + اسکن عکس • مترجم نامحدود • حل‌کننده سؤال و گرامر
-        </div>
-
-        <div class="hero-controls-row">
-            <select id="siteLangSelect" class="hero-lang-select">
-                <option value="fa">🇩🇪 🇦🇫 🇮🇷 دری / فارسی (FA)</option>
-                <option value="de">🇩🇪 Deutsch (DE)</option>
-                <option value="tr">🇹🇷 Türkçe (TR)</option>
-                <option value="ar">🇸🇦 العربية (AR)</option>
-                <option value="en">🇬🇧 English (EN)</option>
-                <option value="ur">🇵🇰 اردو (UR)</option>
-                <option value="ps">🇦🇫 پښتو (PS)</option>
-            </select>
-            <button type="button" class="hero-welcome-btn" id="btnOpenWelcome">🎉 خوش‌آمدید</button>
-        </div>
-
-        <button type="button" class="hero-start-btn" id="btnStartJourney">
-            <span id="uiStartText">شروع • Jetzt starten</span>
-            <span>‹</span>
-        </button>
-    </section>
-
-    <!-- سطوح در بالا (مانند عکس دوم) -->
-    <section class="chaharchookat-grid" id="chaharchookatLevels">
-        <button type="button" class="level-tile tile-a1" onclick="openLevelFromTile('A1')">
-            <span class="tile-top-bar"><span>DW A1</span><span>📘</span></span>
-            <span class="tile-body-box">
-                <span class="tile-code">A1</span>
-                <span class="tile-sub">درس ۱۹ • Deutsche Welle A1</span>
-            </span>
-        </button>
-        <button type="button" class="level-tile tile-a2" onclick="openLevelFromTile('A2')">
-            <span class="tile-top-bar"><span>DW A2</span><span>📗</span></span>
-            <span class="tile-body-box">
-                <span class="tile-code">A2</span>
-                <span class="tile-sub">درس ۲۰ • Deutsche Welle A2</span>
-            </span>
-        </button>
-        <button type="button" class="level-tile tile-b1" onclick="openLevelFromTile('B1')">
-            <span class="tile-top-bar"><span>DW B1</span><span>📙</span></span>
-            <span class="tile-body-box">
-                <span class="tile-code">B1</span>
-                <span class="tile-sub">درس ۳۰ • Deutsche Welle B1</span>
-            </span>
-        </button>
-        <button type="button" class="level-tile tile-b2" onclick="openLevelFromTile('B2')">
-            <span class="tile-top-bar"><span>VID B2</span><span>📕</span></span>
-            <span class="tile-body-box">
-                <span class="tile-code">B2</span>
-                <span class="tile-sub">درس ۳۰ • ویدیوی ویژه B2</span>
-            </span>
-        </button>
-        <button type="button" class="level-tile tile-c1" onclick="openLevelFromTile('C1')">
-            <span class="tile-top-bar"><span>VID C1</span><span>🎓</span></span>
-            <span class="tile-body-box">
-                <span class="tile-code">C1</span>
-                <span class="tile-sub">درس ۳۰ • ویدیوی ویژه C1</span>
-            </span>
-        </button>
-        <button type="button" class="level-tile tile-all" onclick="openLevelFromTile('ALL')">
-            <span class="tile-top-bar"><span>ALL</span><span>📚</span></span>
-            <span class="tile-body-box">
-                <span class="tile-code">A1–C1</span>
-                <span class="tile-sub">همه ۱۲۹ درس • باز کردن درس‌ها</span>
-            </span>
-        </button>
-    </section>
-
-    <!-- نمایشگر درشت درس در بالا (مانند عکس اول) -->
-    <section class="tv-stage-box" id="tvStage">
-        <div class="tv-stage-header">
-            <span style="color:#7dd3fc;">📺 نمایشگر زنده درس و جمله</span>
-            <span id="stageLessonLabel" style="color:#fde047;">سطح A1 • درس ۱: سلام و معرفی خود</span>
-            <div class="audio-group">
-                <button type="button" class="btn-audio-de" onclick="speakStageSentence('de')">🔊 آلمانی</button>
-                <button type="button" class="btn-audio-fa" onclick="speakStageSentence('fa')">🔊 فارسی</button>
+    <!-- فقط چند بخش اصلی روی صفحه؛ با کلیک روی هر کدام، درس‌ها و مشخصات باز می‌شود -->
+    <section class="main-tiles-grid" id="mainTilesGrid">
+        <button type="button" class="main-tile-card" id="tile-levels" onclick="openSection('levels')">
+            <div class="tile-head-row">
+                <span class="tile-badge">A1 • A2 • B1 • B2 • C1</span>
+                <span>📚</span>
             </div>
-        </div>
-        <div class="tv-stage-screen">
-            <div class="tv-stage-de" id="stageDeText">Guten Tag! Ich heiße Asad und lerne Deutsch.</div>
-            <div class="tv-stage-fa" id="stageFaText">روز بخیر! نام من اسد است و آلمانی یاد می‌گیرم.</div>
-        </div>
+            <div class="tile-name">سطوح و درس‌ها (A1 تا C1)</div>
+            <div class="tile-hint">کلیک کنید تا درس‌ها، مشخصات و ویدیوی هر درس باز شود</div>
+        </button>
+
+        <button type="button" class="main-tile-card" id="tile-dictionary" onclick="openSection('dictionary')">
+            <div class="tile-head-row">
+                <span class="tile-badge">جستجو + صدا</span>
+                <span>📖</span>
+            </div>
+            <div class="tile-name">فرهنگ لغات آنلاین</div>
+            <div class="tile-hint">جستجوی واضح لغت + کلیک روی متن برای خواندن با صدا</div>
+        </button>
+
+        <button type="button" class="main-tile-card" id="tile-twoway" onclick="openSection('twoway')">
+            <div class="tile-head-row">
+                <span class="tile-badge">دوطرفه + متن</span>
+                <span>🔄</span>
+            </div>
+            <div class="tile-name">ترجمه متن دوطرفه</div>
+            <div class="tile-hint">ترجمه متنی دوطرفه + خواندن متن با کلیک روی صدا</div>
+        </button>
+
+        <button type="button" class="main-tile-card" id="tile-translator" onclick="openSection('translator')">
+            <div class="tile-head-row">
+                <span class="tile-badge">نامحدود + اسکن</span>
+                <span>🌐</span>
+            </div>
+            <div class="tile-name">مترجم نامحدود هر زبان به هر زبان</div>
+            <div class="tile-hint">اسکن عکس + متن‌های نامحدود + پخش صدا</div>
+        </button>
+
+        <button type="button" class="main-tile-card" id="tile-grammar" onclick="openSection('grammar')">
+            <div class="tile-head-row">
+                <span class="tile-badge">قواعد + کتاب A1–C1</span>
+                <span>📐</span>
+            </div>
+            <div class="tile-name">گرامر و کتاب‌های A1 تا C1</div>
+            <div class="tile-hint">گرامرها، قواعد تفصیلی و کتاب‌های هر سطح</div>
+        </button>
+
+        <button type="button" class="main-tile-card" id="tile-podcasts" onclick="openSection('podcasts')">
+            <div class="tile-head-row">
+                <span class="tile-badge">deltalord.com</span>
+                <span>🎧</span>
+            </div>
+            <div class="tile-name">پادکست‌های هر سطح + متن نوشتاری</div>
+            <div class="tile-hint">پادکست‌های A1 تا C1 از deltalord.com با متن و صدا</div>
+        </button>
+
+        <button type="button" class="main-tile-card" id="tile-solver" onclick="openSection('solver')">
+            <div class="tile-head-row">
+                <span class="tile-badge">متن + اسکن عکس</span>
+                <span>🧩</span>
+            </div>
+            <div class="tile-name">حل‌کننده نامحدود سؤال و گرامر</div>
+            <div class="tile-hint">حل سؤال و توضیح گرامر با متن و اسکن عکس</div>
+        </button>
+
+        <button type="button" class="main-tile-card" id="tile-quiz" onclick="openSection('quiz')">
+            <div class="tile-head-row">
+                <span class="tile-badge">آزمون A1–C1</span>
+                <span>✍️</span>
+            </div>
+            <div class="tile-name">آزمون‌های سطح A1 الی C1</div>
+            <div class="tile-hint">آزمون‌های تستی هر سطح با نمره‌دهی فوری</div>
+        </button>
+
+        <button type="button" class="main-tile-card" id="tile-videos" onclick="openSection('videos')">
+            <div class="tile-head-row">
+                <span class="tile-badge">همه ویدیوها</span>
+                <span>🎬</span>
+            </div>
+            <div class="tile-name">مجموعه کامل ویدیوهای آموزشی</div>
+            <div class="tile-hint">همه ویدیوهای آموزشی موجود در سایت</div>
+        </button>
     </section>
 
-    <!-- همه گزینه‌ها و کشوها (هیچ گزینه و بخشی حذف نشده است) -->
-    <main class="three-col-grid" id="mainRows">
-        <!-- Row 1: 1 2 3 -->
-        <section class="row-group" data-color="blue" id="group-lessons">
-            <button type="button" class="row-trigger" onclick="toggleMainRow('lessons', false)">
-                <span class="row-card-header">
-                    <span class="row-square"><span class="row-num">01</span><span class="row-emoji">📚</span></span>
-                    <span class="row-status-pill" id="pill-lessons">باز کردن</span>
-                </span>
-                <span class="row-bar">
-                    <span class="row-bar-content">
-                        <span class="row-title" id="title-lessons">سطوح و درس‌ها (A1 تا C1 – ۱۲۹ درس)</span>
-                        <span class="row-desc" id="desc-lessons">ویدیوی موضوعی هر درس (DW برای A1–B1 و ویدیوی ویژه برای B2–C1)</span>
-                    </span>
-                </span>
-            </button>
-        </section>
-
-        <section class="row-group" data-color="rose" id="group-vocab100k">
-            <button type="button" class="row-trigger" onclick="toggleMainRow('vocab100k', false)">
-                <span class="row-card-header">
-                    <span class="row-square"><span class="row-num">02</span><span class="row-emoji">📖</span></span>
-                    <span class="row-status-pill" id="pill-vocab100k">باز کردن</span>
-                </span>
-                <span class="row-bar">
-                    <span class="row-bar-content">
-                        <span class="row-title" id="title-vocab100k">فرهنگ لغت آنلاین نامحدود + اسکن عکس</span>
-                        <span class="row-desc" id="desc-vocab100k">جستجوی هر لغت، اسکن عکس متن و جملات روزمره با صدا</span>
-                    </span>
-                </span>
-            </button>
-        </section>
-
-        <section class="row-group" data-color="teal" id="group-live_voice">
-            <button type="button" class="row-trigger" onclick="toggleMainRow('live_voice', false)">
-                <span class="row-card-header">
-                    <span class="row-square"><span class="row-num">03</span><span class="row-emoji">🎙️</span></span>
-                    <span class="row-status-pill" id="pill-live_voice">باز کردن</span>
-                </span>
-                <span class="row-bar">
-                    <span class="row-bar-content">
-                        <span class="row-title" id="title-live_voice">ترجمه صدا و متن دوطرفه + نوشتن مشکلات</span>
-                        <span class="row-desc" id="desc-live_voice">صدا به متن، نوشتن مشکلات و تبدیل به زبان دلخواه</span>
-                    </span>
-                </span>
-            </button>
-        </section>
-        <div class="row-drawer" id="drawer-live_voice"></div>
-        <div class="row-drawer" id="drawer-vocab100k"></div>
-        <div class="row-drawer" id="drawer-lessons"></div>
-
-        <!-- Row 2: 4 5 6 -->
-        <section class="row-group" data-color="orange" id="group-translator">
-            <button type="button" class="row-trigger" onclick="toggleMainRow('translator', false)">
-                <span class="row-card-header">
-                    <span class="row-square"><span class="row-num">04</span><span class="row-emoji">🌐</span></span>
-                    <span class="row-status-pill" id="pill-translator">باز کردن</span>
-                </span>
-                <span class="row-bar">
-                    <span class="row-bar-content">
-                        <span class="row-title" id="title-translator">مترجم نامحدود هر زبان به هر زبان + اسکن عکس</span>
-                        <span class="row-desc" id="desc-translator">ترجمه خودکار متن اسکن‌شده، هر زبان به هر زبان و صدا</span>
-                    </span>
-                </span>
-            </button>
-        </section>
-
-        <section class="row-group" data-color="green" id="group-grammar">
-            <button type="button" class="row-trigger" onclick="toggleMainRow('grammar', false)">
-                <span class="row-card-header">
-                    <span class="row-square"><span class="row-num">05</span><span class="row-emoji">📐</span></span>
-                    <span class="row-status-pill" id="pill-grammar">باز کردن</span>
-                </span>
-                <span class="row-bar">
-                    <span class="row-bar-content">
-                        <span class="row-title" id="title-grammar">گرامر و کتاب‌های A1 تا C1</span>
-                        <span class="row-desc" id="desc-grammar">Verben mit Präposition، Passiv، Konjunktiv و واژگان</span>
-                    </span>
-                </span>
-            </button>
-        </section>
-
-        <section class="row-group" data-color="purple" id="group-podcasts">
-            <button type="button" class="row-trigger" onclick="toggleMainRow('podcasts', false)">
-                <span class="row-card-header">
-                    <span class="row-square"><span class="row-num">06</span><span class="row-emoji">🎧</span></span>
-                    <span class="row-status-pill" id="pill-podcasts">باز کردن</span>
-                </span>
-                <span class="row-bar">
-                    <span class="row-bar-content">
-                        <span class="row-title" id="title-podcasts">پادکست‌های آلمانی (+۵۲۰ جمله)</span>
-                        <span class="row-desc" id="desc-podcasts">ترجمه، زبان اختیاری پایین هر پادکست و پخش صدا</span>
-                    </span>
-                </span>
-            </button>
-        </section>
-        <div class="row-drawer" id="drawer-podcasts"></div>
-        <div class="row-drawer" id="drawer-grammar"></div>
-        <div class="row-drawer" id="drawer-translator"></div>
-
-        <!-- Row 3: 7 8 9 -->
-        <section class="row-group" data-color="cyan" id="group-radio">
-            <button type="button" class="row-trigger" onclick="toggleMainRow('radio', false)">
-                <span class="row-card-header">
-                    <span class="row-square"><span class="row-num">07</span><span class="row-emoji">📻</span></span>
-                    <span class="row-status-pill" id="pill-radio">باز کردن</span>
-                </span>
-                <span class="row-bar">
-                    <span class="row-bar-content">
-                        <span class="row-title" id="title-radio">رادیو آلمانی با ترجمه فارسی</span>
-                        <span class="row-desc" id="desc-radio">پخش رادیو همراه با ترجمه فارسی زیر آن</span>
-                    </span>
-                </span>
-            </button>
-        </section>
-
-        <section class="row-group" data-color="blue" id="group-solver">
-            <button type="button" class="row-trigger" onclick="toggleMainRow('solver', false)">
-                <span class="row-card-header">
-                    <span class="row-square"><span class="row-num">08</span><span class="row-emoji">🧩</span></span>
-                    <span class="row-status-pill" id="pill-solver">باز کردن</span>
-                </span>
-                <span class="row-bar">
-                    <span class="row-bar-content">
-                        <span class="row-title" id="title-solver">حل‌کننده نامحدود سؤال و گرامر + اسکن عکس</span>
-                        <span class="row-desc" id="desc-solver">پاسخ و راه‌حل کامل هر سؤال/گرامر + اسکن از عکس</span>
-                    </span>
-                </span>
-            </button>
-        </section>
-
-        <section class="row-group" data-color="green" id="group-quiz">
-            <button type="button" class="row-trigger" onclick="toggleMainRow('quiz', false)">
-                <span class="row-card-header">
-                    <span class="row-square"><span class="row-num">09</span><span class="row-emoji">✍️</span></span>
-                    <span class="row-status-pill" id="pill-quiz">باز کردن</span>
-                </span>
-                <span class="row-bar">
-                    <span class="row-bar-content">
-                        <span class="row-title" id="title-quiz">آزمون‌های تعاملی A1 تا C1</span>
-                        <span class="row-desc" id="desc-quiz">سرخ/آبی، رد کردن، امتیاز زنده و جشن امتیاز بالا</span>
-                    </span>
-                </span>
-            </button>
-        </section>
-        <div class="row-drawer" id="drawer-quiz"></div>
-        <div class="row-drawer" id="drawer-solver"></div>
-        <div class="row-drawer" id="drawer-radio"></div>
-
-        <hr class="grid-divider-line">
-
-        <!-- Section 10 -->
-        <div class="stacked-slot-item">
-            <section class="row-group" data-color="rose" id="group-multilang">
-                <button type="button" class="row-trigger" onclick="toggleMainRow('multilang', false)">
-                    <span class="row-card-header">
-                        <span class="row-square"><span class="row-num">10</span><span class="row-emoji">🌍</span></span>
-                        <span class="row-status-pill" id="pill-multilang">باز کردن</span>
-                    </span>
-                    <span class="row-bar">
-                        <span class="row-bar-content">
-                            <span class="row-title" id="title-multilang">بخش چندزبانه (ترکی، عربی، انگلیسی، اردو، پشتو، فارسی/دری، آلمانی)</span>
-                            <span class="row-desc" id="desc-multilang">عبارات کلیدی و راهنمای یادگیری آلمانی به زبان‌های مختلف</span>
-                        </span>
-                    </span>
-                </button>
-            </section>
-            <div class="row-drawer" id="drawer-multilang"></div>
+    <!-- پنل محتوای بازشده -->
+    <section class="opened-section-panel" id="openedPanel">
+        <div class="panel-top-bar">
+            <h2 class="panel-heading" id="panelTitle">عنوان بخش</h2>
+            <button type="button" class="btn-close-panel" onclick="closeSectionPanel()">✕ بستن بخش</button>
         </div>
-
-        <hr class="grid-divider-line">
-
-        <!-- Section 11 -->
-        <div class="stacked-slot-item">
-            <section class="row-group" data-color="orange" id="group-contact">
-                <button type="button" class="row-trigger" onclick="toggleMainRow('contact', false)">
-                    <span class="row-card-header">
-                        <span class="row-square"><span class="row-num">11</span><span class="row-emoji">🎬</span></span>
-                        <span class="row-status-pill" id="pill-contact">باز کردن</span>
-                    </span>
-                    <span class="row-bar">
-                        <span class="row-bar-content">
-                            <span class="row-title" id="title-contact">مجموعه کامل ویدیوهای آموزشی (Deutsche Welle A1–B1، ویدیوهای B2–C1 و ویدیوهای جدید) + ارتباط با KING ASAD</span>
-                            <span class="row-desc" id="desc-contact">همه ویدیوهای سطوح و ویدیوهای آموزشی بدون حذف شدن در این بخش جمع شده‌اند • تماس: +4915212898695</span>
-                        </span>
-                    </span>
-                </button>
-            </section>
-            <div class="row-drawer" id="drawer-contact"></div>
-        </div>
-
-        <hr class="grid-divider-line">
-    </main>
+        <div id="panelContent"></div>
+    </section>
 
     <footer class="site-footer">
-        <span>🇩🇪 🇦🇫 🇮🇷 KING ASAD • <span dir="ltr">+4915212898695</span> • آموزش آلمانی (A1–C1)</span>
-        <span class="clock-pill" id="liveClockDate">در حال بارگذاری...</span>
+        <span>👑 KING ASAD • <span dir="ltr">+4915212898695</span></span>
+        <span id="clockText">...</span>
     </footer>
 </div>
 
 <script>
 var LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
-var SPEECH_LANGS = [
-    { code: 'de-DE', short: 'de', label: '🇩🇪 آلمانی (de-DE)' },
-    { code: 'fa-IR', short: 'fa', label: '🇮🇷 دری / فارسی (fa-IR)' },
-    { code: 'en-US', short: 'en', label: '🇬🇧 انگلیسی (en-US)' },
-    { code: 'tr-TR', short: 'tr', label: '🇹🇷 ترکی (tr-TR)' },
-    { code: 'ar-SA', short: 'ar', label: '🇸🇦 عربی (ar-SA)' },
-    { code: 'ps-AF', short: 'ps', label: '🇦🇫 پشتو (ps-AF)' },
-    { code: 'ur-PK', short: 'ur', label: '🇵🇰 اردو (ur-PK)' }
-];
-
-var UI_TRANSLATIONS = {
-    fa: { dir: 'rtl', openText: 'باز کردن', closeText: 'بستن', lessonPrefix: 'درس', allLevelsBtn: 'همه سطوح (۱۲۹ درس)', nextPageBtn: '➡ صفحه بعدی', descLabel: '📌 توضیحات درس', videoStartLabel: '⏱ شروع ویدیو از ثانیه', applyStartBtn: 'اعمال زمان شروع' },
-    de: { dir: 'ltr', openText: 'Öffnen', closeText: 'Schließen', lessonPrefix: 'Lektion', allLevelsBtn: 'Alle Stufen (129 Lektionen)', nextPageBtn: '➡ Nächste Seite', descLabel: '📌 Beschreibung', videoStartLabel: '⏱ Video-Start bei Sekunde', applyStartBtn: 'Startzeit anwenden' },
-    en: { dir: 'ltr', openText: 'Open', closeText: 'Close', lessonPrefix: 'Lesson', allLevelsBtn: 'All Levels (129 Lessons)', nextPageBtn: '➡ Next Page', descLabel: '📌 Lesson Notes', videoStartLabel: '⏱ Video starts at second', applyStartBtn: 'Apply Start Time' },
-    tr: { dir: 'ltr', openText: 'Aç', closeText: 'Kapat', lessonPrefix: 'Ders', allLevelsBtn: 'Tüm Seviyeler (129 Ders)', nextPageBtn: '➡ Sonraki Sayfa', descLabel: '📌 Ders Açıklaması', videoStartLabel: '⏱ Video başlangıcı (sn)', applyStartBtn: 'Başlangıcı Uygula' },
-    ar: { dir: 'rtl', openText: 'فتح', closeText: 'إغلاق', lessonPrefix: 'الدرس', allLevelsBtn: 'جميع المستويات (١٢٩ درساً)', nextPageBtn: '➡ الصفحة التالية', descLabel: '📌 شرح الدرس', videoStartLabel: '⏱ يبدأ الفيديو من الثانية', applyStartBtn: 'تطبيق وقت البدء' },
-    ps: { dir: 'rtl', openText: 'پرانیستل', closeText: 'تړل', lessonPrefix: 'لوست', allLevelsBtn: 'ټولې کچې (۱۲۹ لوستونه)', nextPageBtn: '➡ بله پاڼه', descLabel: '📌 د لوست توضیحات', videoStartLabel: '⏱ ویډیو له دې ثانیې پیلېږي', applyStartBtn: 'د پیل وخت تطبیق کړئ' },
-    ur: { dir: 'rtl', openText: 'کھولیں', closeText: 'بند کریں', lessonPrefix: 'سبق', allLevelsBtn: 'تمام لیولز (۱۲۹ اسباق)', nextPageBtn: '➡ اگلا صفحہ', descLabel: '📌 سبق کی تفصیل', videoStartLabel: '⏱ ویڈیو شروع ہونے کا وقت (سیکنڈ)', applyStartBtn: 'شروع کا وقت لاگو کریں' }
+var LEVEL_INFO = {
+    A1: { faName: 'مقدماتی (A1)', book: 'کتاب Schritte / Menschen A1', goal: 'معرفی خود، اعداد، زمان، خرید و جملات ساده روزمره', videoId: '4-eDoThe6qo' },
+    A2: { faName: 'پایه پیشرفته (A2)', book: 'کتاب Schritte / Menschen A2', goal: 'سفر، کار، سلامتی، گذشته ساده و کامل و مکالمات روزمره', videoId: 'Lg5P2w_Ro1c' },
+    B1: { faName: 'متوسط (B1)', book: 'کتاب Sicher / Aspekte neu B1', goal: 'بیان نظر، شغل، مهاجرت، جمله مجهول، شرطی و جملات فرعی', videoId: 'LkufozluseI' },
+    B2: { faName: 'فرامیانه (B2)', book: 'کتاب Sicher / Aspekte neu B2', goal: 'تحلیل، بحث و استدلال، افعال با حرف اضافه و ساختارهای رسمی', videoId: 'ZpLXfkYC1H4' },
+    C1: { faName: 'پیشرفته (C1)', book: 'کتاب Sicher / Aspekte C1', goal: 'متون علمی و تحلیلی، ظرافت‌های دستوری و بیان پیشرفته', videoId: 'lr5nQObcSY0' }
 };
 
-var currentSiteLang = 'fa';
-var selectedAudioVoiceLang = 'de-DE';
-var activeOcrTargetId = null;
-
-var levelVideos = {
-    A1: { id: '4-eDoThe6qo', source: 'Deutsche Welle (DW)', title: 'Deutsche Welle – Nicos Weg A1' },
-    A2: { id: 'Lg5P2w_Ro1c', source: 'Deutsche Welle (DW)', title: 'Deutsche Welle – Nicos Weg A2' },
-    B1: { id: 'LkufozluseI', source: 'Deutsche Welle (DW)', title: 'Deutsche Welle – Nicos Weg B1' },
-    B2: { id: 'ZpLXfkYC1H4', source: 'ویدیوی آموزشی B2', title: 'ویدیوی آموزشی سطح B2 – واژگان و مباحث پیشرفته' },
-    C1: { id: 'lr5nQObcSY0', source: 'ویدیوی آموزشی C1', title: 'ویدیوی آموزشی سطح C1 – ساختارها و افعال پیشرفته' }
-};
-
-var ALL_TRAINING_VIDEOS = [
-    { id: '4-eDoThe6qo', level: 'A1', source: 'Deutsche Welle (DW)', title: 'Deutsche Welle A1 – Nicos Weg (سطح A1)', desc: 'ویدیوی رسمی Deutsche Welle برای سطح A1.' },
-    { id: 'Lg5P2w_Ro1c', level: 'A2', source: 'Deutsche Welle (DW)', title: 'Deutsche Welle A2 – Nicos Weg (سطح A2)', desc: 'ویدیوی رسمی Deutsche Welle برای سطح A2.' },
-    { id: 'LkufozluseI', level: 'B1', source: 'Deutsche Welle (DW)', title: 'Deutsche Welle B1 – Nicos Weg (سطح B1)', desc: 'ویدیوی رسمی Deutsche Welle برای سطح B1.' },
-    { id: 'ZpLXfkYC1H4', level: 'B2', source: 'ویدیوی آموزشی B2', title: 'ویدیوی آموزشی سطح B2 – 100 wichtige Wörter', desc: 'ویدیوی آموزشی ویژه سطح B2.' },
-    { id: 'lr5nQObcSY0', level: 'C1', source: 'ویدیوی آموزشی C1', title: 'ویدیوی آموزشی سطح C1 – 500 Verben & Aufbau', desc: 'ویدیوی آموزشی ویژه سطح C1.' },
-    { id: 'L6jb3CijCnE', level: 'A1', source: 'ویدیوی آموزشی جدید ۱', title: 'ویدیوی جدید ۱ – لغات و واژگان آلمانی (Wortschatz)', desc: 'مرور واژگان پرکاربرد آلمانی.' },
-    { id: 'bN0CYbXomqo', level: 'A1', source: 'ویدیوی آموزشی جدید ۲', title: 'ویدیوی جدید ۲ – ۱۰۰ فعل مهم آلمانی (100 Verben)', desc: 'آشنایی با ۱۰۰ فعل کاربردی.' },
-    { id: 'wv84cwyTiNc', level: 'A2', source: 'ویدیوی آموزشی جدید ۳', title: 'ویدیوی جدید ۳ – ۱۰۰ سؤال و جواب رایج', desc: 'تمرین پرسش و پاسخ روزمره.' },
-    { id: '2ObeTuUgu-Y', level: 'B1', source: 'ویدیوی آموزشی جدید ۵', title: 'ویدیوی جدید ۵ – ۱۰۰ فعل گذشته', desc: 'تمرین افعال در زمان گذشته.' }
-];
-
-function getLessonTopicVideo(lvl, idx, title) {
-    var t = String(title || '').toLowerCase();
-    var baseVid = levelVideos[lvl] || levelVideos.A1;
-
-    if (lvl === 'A1' || lvl === 'A2' || lvl === 'B1') {
-        var dwStart = 10 + (idx * 18);
-        var cue = 'Deutsche Welle (' + lvl + ') – موضوع «' + title + '»';
-        if (t.indexOf('سلام') !== -1 || t.indexOf('معرفی') !== -1) { dwStart = 8; cue = 'DW ' + lvl + ': معرفی و سلام‌وعلیک'; }
-        else if (t.indexOf('کشور') !== -1 || t.indexOf('ملیت') !== -1) { dwStart = 55; cue = 'DW ' + lvl + ': کشورها و ملیت‌ها'; }
-        else if (t.indexOf('خانواده') !== -1) { dwStart = 105; cue = 'DW ' + lvl + ': خانواده و روابط'; }
-        else if (t.indexOf('ساعت') !== -1 || t.indexOf('زمان') !== -1) { dwStart = 150; cue = 'DW ' + lvl + ': زمان و برنامه'; }
-        else if (t.indexOf('غذا') !== -1 || t.indexOf('کافه') !== -1 || t.indexOf('رستورانت') !== -1) { dwStart = 195; cue = 'DW ' + lvl + ': غذا و رستورانت'; }
-        else if (t.indexOf('خرید') !== -1 || t.indexOf('کار') !== -1) { dwStart = 240; cue = 'DW ' + lvl + ': خرید و کار روزمره'; }
-        return { id: baseVid.id, start: dwStart, cueNote: cue };
-    }
-
-    if (lvl === 'B2') {
-        return { id: 'ZpLXfkYC1H4', start: 12 + (idx * 14), cueNote: 'ویدیوی B2 – موضوع «' + title + '»' };
-    }
-    return { id: 'lr5nQObcSY0', start: 15 + (idx * 15), cueNote: 'ویدیوی C1 – موضوع «' + title + '»' };
-}
-
-var levelDescriptions = {
-    A1: 'سطح مقدماتی (۱۹ درس) – ویدیوی Deutsche Welle A1 طبق موضوع درس.',
-    A2: 'سطح پایه پیشرفته (۲۰ درس) – ویدیوی Deutsche Welle A2 طبق موضوع درس.',
-    B1: 'سطح متوسط (۳۰ درس) – ویدیوی Deutsche Welle B1 طبق موضوع درس.',
-    B2: 'سطح متوسط رو به بالا (۳۰ درس) – ویدیوی آموزشی B2 طبق موضوع درس.',
-    C1: 'سطح پیشرفته (۳۰ درس) – ویدیوی آموزشی C1 طبق موضوع درس.'
-};
-
-var lessonTitles = {
-    A1: ['سلام و معرفی خود','کشورها و ملیت‌ها','خانواده و دوستان','اعداد و سن','روزهای هفته و ماه‌ها','ساعت و زمان','غذا و نوشیدنی','در کافه و رستورانت','خرید از فروشگاه','رنگ‌ها و لباس‌ها','خانه و اتاق‌ها','وسایل خانه','شغل‌ها و محل کار','برنامه روزانه','حمل‌ونقل شهری','آب‌وهوا و فصل‌ها','بدن و سلامتی','قرار ملاقات','دعوت و خداحافظی'],
-    A2: ['روتین روزانه و عادت‌ها','خانه و جستجوی آپارتمان','خرید لباس و اندازه‌ها','خاطرات آخر هفته','سفر با قطار','رزرو هتل','در رستورانت سفارش دادن','آشپزی و دستور غذا','قرار داکتر','شرح درد و بیماری','آموزش و کورس زبان','کار و همکاران','نامه و ایمیل ساده','تلفن و پیام گذاشتن','تفریح و سرگرمی','ورزش و تناسب اندام','شهر و راهنمایی مسیر','مقایسه کالاها','دعوت به مهمانی','برنامه‌ریزی تعطیلات'],
-    B1: ['بیان نظر و استدلال','محافظت از محیط زیست','درخواست کار و رزومه','مصاحبه شغلی','سلامت و سبک زندگی','رسانه و شبکه‌های اجتماعی','آموزش و انتخاب رشته','زندگی در شهر یا روستا','مهاجرت و سازگاری','فرهنگ و سنت‌ها','مصرف و خرید آگاهانه','تکنولوژی در زندگی','حل اختلاف و مذاکره','دوستی و روابط اجتماعی','برنامه‌ریزی آینده','تجربه‌های سفر','حوادث و گزارش رویداد','آگهی و تبلیغات','اجاره خانه و قرارداد','قوانین و حقوق شهروندی','تغذیه و عادت‌های سالم','حمل‌ونقل عمومی','داوطلبی و کمک اجتماعی','آب‌وهوا و تغییرات اقلیمی','کتاب و فیلم','آمادگی برای امتحان','جلسه و گفت‌وگوی گروهی','شکایت و درخواست رسمی','تصمیم‌گیری و پیامدها','هدف‌گذاری شخصی'],
-    B2: ['استدلال پیچیده و دیدگاه‌ها','رسانه و سواد اطلاعاتی','اقتصاد و بازار کار','مدیریت پروژه','فرهنگ سازمانی','هوش مصنوعی و جامعه','حریم خصوصی دیجیتال','تغییرات اقلیمی و سیاست','انرژی‌های تجدیدپذیر','عدالت اجتماعی','آموزش عالی و پژوهش','مهاجرت و هویت','ارتباطات بین‌فرهنگی','رهبری و مسئولیت','مصالحه و حل تعارض','مصرف پایدار','شهرهای هوشمند','سلامت عمومی','اخلاق در علم','جهانی‌شدن','حقوق کار و قراردادها','تبلیغات و رفتار مصرف‌کننده','تاریخ و حافظه جمعی','هنر و نقد فرهنگی','علم و فناوری','ارائه و سخنرانی رسمی','گزارش‌نویسی تحلیلی','بحث و مناظره','فرضیه و پیامد احتمالی','زبان رسمی و غیررسمی'],
-    C1: ['زبان علمی و دانشگاهی','تحلیل انتقادی متون','بلاغت و فن بیان','ابهام و ظرافت معنایی','سبک‌شناسی نوشتار','مقاله پژوهشی','روش‌شناسی تحقیق','استدلال و مغالطه','گفتمان سیاسی و اجتماعی','اخلاق حرفه‌ای','تحلیل داده و تفسیر نتایج','نقد ادبی','زبان رسانه و چارچوب‌بندی','مذاکره پیشرفته','ارتباطات دیپلماتیک','اصطلاحات حقوقی','اقتصاد کلان و سیاست‌گذاری','فلسفه و جهان‌بینی','هویت و چندزبانگی','جامعه‌شناسی معاصر','فناوری و آینده انسان','زیست‌اخلاق و پزشکی','پایداری و مسئولیت جهانی','مدیریت بحران','ارائه تخصصی','نگارش گزارش مدیریتی','بازنویسی و خلاصه‌سازی','تحلیل سخنرانی','تفسیر ضمنی و کنایه','آمادگی آزمون پیشرفته']
-};
-
-var starterWords = [
-    ['sein', 'بودن'], ['haben', 'داشتن'], ['wollen', 'خواستن'], ['nehmen', 'گرفتن'], ['schicken', 'فرستادن'],
-    ['geben', 'دادن'], ['sprechen', 'صحبت کردن'], ['lernen', 'یاد گرفتن'], ['helfen', 'کمک کردن'], ['kommen', 'آمدن']
-];
-
-var lessonData = {};
-LEVELS.forEach(function(lvl) {
-    lessonData[lvl] = lessonTitles[lvl].map(function(title, idx) {
-        var items = [];
-        for (var s = 1; s <= 12; s++) {
-            var pair = starterWords[(idx + s) % starterWords.length];
-            items.push({
-                de: 'Lektion ' + (idx + 1) + ' (' + title + ') – Satz ' + s + ': Ich übe „' + pair[0] + '“.',
-                fa: 'درس ' + (idx + 1) + ' (' + title + ') – جمله ' + s + ': من «' + pair[1] + '» را تمرین می‌کنم.'
-            });
-        }
-        var vSpec = getLessonTopicVideo(lvl, idx, title);
-        return {
-            title: title,
-            videoId: vSpec.id,
-            videoStart: vSpec.start,
-            cueNote: vSpec.cueNote,
-            sentences: items,
-            sentencePage: 0,
-            open: false,
-            grammar: 'در این درس («' + title + '» سطح ' + lvl + ')، ویدیو متناسب با موضوع درس تنظیم شده تا واژگان و ساختارهای مرتبط را تمرین کنید.'
-        };
-    });
-});
-
-var LEVEL_GRAMMAR_AND_BOOKS = {
-    A1: { bookTitle: 'کتاب سطح A1 – قواعد پایه و واژگان الفبایی', sections: [
-        { key: 'Nomen und Artikel', title: 'Nomen und Artikel (اسم و حرف تعریف)', desc: 'der Tisch، die Lampe، das Buch.' },
-        { key: 'Verben mit Präposition', title: 'Verben mit Präposition (فعل با حرف اضافه)', desc: 'warten auf + Akk.' }
-    ]},
-    A2: { bookTitle: 'کتاب سطح A2 – ساختارهای پایه پیشرفته و افعال', sections: [
-        { key: 'Verben mit Präposition', title: 'Verben mit Präposition', desc: 'sich freuen auf/über، denken an، sprechen über.' },
-        { key: 'Infinitiv, präsens, Präteritum, perfekt', title: 'Infinitiv, Präsens, Präteritum, Perfekt', desc: 'صرف زمانی افعال در حال ساده، گذشته ساده و گذشته کامل.' }
-    ]},
-    B1: { bookTitle: 'کتاب سطح B1 – مجهول، شرطی و افعال با حرف اضافه', sections: [
-        { key: 'Verben mit Präpositionen', title: 'Verben mit Präpositionen', desc: 'ساخت سوال با wo(r)+Präposition و حرف اضافه + ضمیر.' },
-        { key: 'Passiv', title: 'Passiv (جمله مجهول)', desc: 'Vorgangspassiv با werden + Partizip II.' },
-        { key: 'Konjunktiv', title: 'Konjunktiv (وجه شرطی)', desc: 'Konjunktiv II با würde + Infinitiv.' }
-    ]},
-    B2: { bookTitle: 'کتاب سطح B2 – افعال با حرف اضافه، مجهول و وجه نقلی', sections: [
-        { key: 'Verben mit Präposition', title: 'Verben mit Präposition', desc: 'beitragen zu، verzichten auf، hinweisen auf.' },
-        { key: 'Passiv', title: 'Passiv', desc: 'Passiv با Modalverb و Zustandspassiv.' },
-        { key: 'Konjunktiv', title: 'Konjunktiv', desc: 'Konjunktiv I و II.' }
-    ]},
-    C1: { bookTitle: 'کتاب سطح C1 – ساختارهای پیشرفته، مجهول، وجه نقلی و واژگان الفبایی', sections: [
-        { key: 'Verben mit Präpositionen', title: 'Verben mit Präpositionen', desc: 'ترکیب‌های دقیق فعلی–حرف‌اضافه‌ای در سطح C1.' },
-        { key: 'Passiv', title: 'Passiv', desc: 'جایگزین‌های مجهول و ساختارهای غیرشخصی.' },
-        { key: 'Konjunktiv', title: 'Konjunktiv', desc: 'ظرافت‌های Konjunktiv I و II.' }
-    ]}
-};
-
-var PODCAST_520 = [];
-(function build520Podcasts() {
-    var bases = [
-        ['Guten Morgen und herzlich willkommen zu unserem heutigen Deutsch-Podcast.', 'صبح بخیر و به پادکست امروز زبان آلمانی ما خوش آمدید.'],
-        ['Heute sprechen wir über effektive Methoden zum Sprachenlernen.', 'امروز درباره روش‌های مؤثر یادگیری زبان صحبت می‌کنیم.'],
-        ['Jeden Tag zwanzig Minuten zu hören hilft enorm beim Verstehen.', 'گوش دادن روزانه به مدت بیست دقیقه به درک شنیداری کمک می‌کند.'],
-        ['Wiederhole den Satz laut, um deine Aussprache zu verbessern.', 'جمله را با صدای بلند تکرار کن تا تلفظت بهتر شود.']
-    ];
-    for (var i = 0; i < 520; i++) {
-        var b = bases[i % bases.length];
-        PODCAST_520.push({ num: i + 1, lvl: LEVELS[i % LEVELS.length], de: b[0] + ' [Folge ' + (i + 1) + ']', fa: b[1] + ' [اپیزود ' + (i + 1) + ']' });
-    }
-})();
-
-var RADIO_CHANNELS = [{
-    name: 'رادیو آموزش و گفت‌وگوی آلمانی',
-    lines: [
-        ['Willkommen bei Radio KING ASAD – Nachrichten und Alltag auf Deutsch.', 'به رادیو KING ASAD خوش آمدید – اخبار و زندگی روزمره به زبان آلمانی.'],
-        ['In Deutschland beginnen viele Geschäfte und Büros am Morgen pünktlich.', 'در آلمان بسیاری از فروشگاه‌ها و اداره‌ها صبح‌ها سر وقت شروع به کار می‌کنند.']
+var LESSONS_BY_LEVEL = {
+    A1: [
+        { title: 'درس ۱: سلام، خداحافظی و معرفی خود', desc: 'یادگیری احوال‌پرسی رسمی و غیررسمی و معرفی نام و ملیت.', start: 8 },
+        { title: 'درس ۲: اعداد، سن و روزهای هفته', desc: 'شمارش اعداد، بیان سن، روزهای هفته و ماه‌های سال.', start: 45 },
+        { title: 'درس ۳: خانواده، خانه و اشیای روزمره', desc: 'واژگان اعضای خانواده، اتاق‌های خانه و حروف تعریف.', start: 95 },
+        { title: 'درس ۴: خرید، رستورانت و غذاها', desc: 'سفارش غذا و نوشیدنی و پرسیدن قیمت به زبان آلمانی.', start: 145 }
+    ],
+    A2: [
+        { title: 'درس ۱: برنامه روزانه و روتین کاری', desc: 'بیان کارهای روزانه و افعال جداشدنی (trennbare Verben).', start: 10 },
+        { title: 'درس ۲: سفر، قطار و رزرو هتل', desc: 'خرید بلیت، پرسیدن مسیر و مکالمه در هتل.', start: 60 },
+        { title: 'درس ۳: سلامتی، بدن و مراجعه به داکتر', desc: 'شرح علائم بیماری و گفت‌وگو با داکتر.', start: 115 },
+        { title: 'درس ۴: خاطرات گذشته (Perfekt & Präteritum)', desc: 'بیان اتفاقات دیروز و هفته گذشته.', start: 170 }
+    ],
+    B1: [
+        { title: 'درس ۱: بیان نظر، موافقت و مخالفت', desc: 'اصطلاحات استدلال و ابراز عقیده در مکالمات.', start: 12 },
+        { title: 'درس ۲: کار، رزومه و مصاحبه شغلی', desc: 'معرفی مهارت‌ها و پرسش‌های رایج مصاحبه کاری.', start: 70 },
+        { title: 'درس ۳: جمله مجهول (Passiv) و شرطی (Konjunktiv II)', desc: 'ساخت جملات مجهول و بیان آرزو و فرضیه.', start: 130 },
+        { title: 'درس ۴: جامعه، محیط زیست و مهاجرت', desc: 'واژگان کلیدی و جملات فرعی با weil, obwohl, dass.', start: 190 }
+    ],
+    B2: [
+        { title: 'درس ۱: استدلال تحلیلی و مناظره', desc: 'دفاع از موضع با دلیل و مثال در مباحث چالش‌برانگیز.', start: 15 },
+        { title: 'درس ۲: افعال با حرف اضافه (Verben mit Präpositionen)', desc: 'ساخت پرسش با wo(r)+حرف اضافه و پاسخ با da(r)+حرف اضافه.', start: 75 },
+        { title: 'درس ۳: گزارش‌نویسی و مکاتبات رسمی', desc: 'نگارش متن رسمی و ساختارهای غیرشخصی.', start: 135 },
+        { title: 'درس ۴: فناوری، رسانه و اقتصاد', desc: 'واژگان تخصصی و تحلیل روندهای اجتماعی.', start: 195 }
+    ],
+    C1: [
+        { title: 'درس ۱: تحلیل متون علمی و آکادمیک', desc: 'درک و استخراج مفاهیم دقیق در متون پیشرفته.', start: 15 },
+        { title: 'درس ۲: ظرافت‌های معنایی و وجه نقلی (Konjunktiv I)', desc: 'نقل قول غیرمستقیم و ساختارهای پیشرفته دستوری.', start: 80 },
+        { title: 'درس ۳: بلاغت، نقد و سخنرانی', desc: 'فن بیان، ساختاردهی منسجم و واژگان سطح بالا.', start: 145 },
+        { title: 'درس ۴: آمادگی آزمون‌های سطح C1', desc: 'مرور نکات کلیدی خواندن، شنیدن، نوشتن و صحبت کردن.', start: 210 }
     ]
-}];
-
-var quizData = {
-    A1: [['Was bedeutet „Guten Morgen“?', ['صبح بخیر','شب بخیر','خداحافظ'], 0],['Wie heißt du?', ['چند سال داری؟','نامت چیست؟','کجا زندگی می‌کنی؟'], 1]],
-    A2: [['Ich ___ gestern nach Berlin gefahren.', ['bin','habe','ist'], 0],['Was bedeutet „Einkaufen“?', ['خوابیدن','خرید کردن','درس خواندن'], 1]],
-    B1: [['Wenn ich Zeit hätte, ___ ich reisen.', ['werde','würde','bin'], 1],['Was bedeutet „obwohl“?', ['زیرا','اگر','با وجود اینکه'], 2]],
-    B2: [['Was bedeutet „abwägen“?', ['سنجیدن و بررسی جوانب','فراموش کردن','تکرار کردن'], 0],['Die Ergebnisse müssen sorgfältig ___.', ['analysiert werden','analysieren','analysiert haben'], 0]],
-    C1: [['Was bedeutet „die Schlussfolgerung“?', ['نتیجه‌گیری','پیش‌فرض','مخالفت'], 0],['Eine Prämisse ist ___.', ['eine Grundannahme','ein Ergebnis','eine Übersetzung'], 0]]
 };
 
-var MULTILANG_SAMPLES = [
-    { lang: '🇩🇪 Deutsch', greeting: 'Hallo! Ich lerne Deutsch mit KING ASAD.', tip: 'Höre genau zu und sprich jeden Satz laut nach.' },
-    { lang: '🇮🇷 دری / فارسی', greeting: 'سلام! من با KING ASAD زبان آلمانی یاد می‌گیرم.', tip: 'با دقت گوش دهید و هر جمله را با صدای بلند تکرار کنید.' },
-    { lang: '🇹🇷 Türkçe', greeting: 'Merhaba! KING ASAD ile Almanca öğreniyorum.', tip: 'Dikkatle dinleyin ve her cümleyi yüksek sesle tekrarlayın.' },
-    { lang: '🇸🇦 العربية', greeting: 'مرحباً! أتعلم الألمانية مع KING ASAD.', tip: 'استمع بانتباه وكرر كل جملة بصوت واضح.' },
-    { lang: '🇬🇧 English', greeting: 'Hello! I am learning German with KING ASAD.', tip: 'Listen carefully and repeat every sentence out loud.' },
-    { lang: '🇵🇰 اردو', greeting: 'ہیلو! میں KING ASAD کے ساتھ جرمن سیکھ رہا ہوں۔', tip: 'غور سے سنیں اور ہر جملہ بلند آواز میں دہرائیں۔' },
-    { lang: '🇦🇫 پښتو', greeting: 'سلام! زه د KING ASAD سره جرمني ژبه زده کوم.', tip: 'په ځیر غوږ ونیسئ او هره جمله په لوړ غږ تکرار کړئ.' }
+var GRAMMAR_RULES_BY_LEVEL = {
+    A1: [
+        { rule: 'حروف تعریف اسم‌ها (Artikel: der, die, das)', explain: 'در زبان آلمانی هر اسم یک جنس دارد: مذکر (der)، مؤنث (die)، خنثی (das) و جمع همه آن‌ها (die). مثال: der Tisch، die Lampe، das Buch.' },
+        { rule: 'جایگاه فعل در جمله خبری (Verb auf Position 2)', explain: 'در جمله خبری ساده آلمانی، فعل صرف‌شده همیشه در جایگاه دوم قرار می‌گیرد. مثال: Ich lerne Deutsch. / Heute lerne ich Deutsch.' },
+        { rule: 'افعال sein و haben در زمان حال', explain: 'sein: ich bin, du bist, er/sie/es ist, wir sind, ihr seid, sie/Sie sind. / haben: ich habe, du hast, er/sie/es hat.' }
+    ],
+    A2: [
+        { rule: 'گذشته کامل با Perfekt (haben/sein + Partizip II)', explain: 'بیشتر افعال در مکالمه با haben + Partizip II ساخته می‌شوند و افعال حرکتی یا تغییر حالت مثل gehen, fahren, kommen با sein می‌آیند.' },
+        { rule: 'افعال جداشدنی (Trennbare Verben)', explain: 'در پیشوندهای جداشدنی مثل auf-, an-, ein-, mit- در جمله خبری ساده، پیشوند به انتهای جمله می‌رود: Ich stehe um 7 Uhr auf.' },
+        { rule: 'حروف اضافه با Dativ و Akkusativ', explain: 'حروف اضافه mit, nach, aus, zu, bei, von همیشه Dativ می‌سازند و für, durch, ohne, um همیشه Akkusativ.' }
+    ],
+    B1: [
+        { rule: 'جمله مجهول (Vorgangspassiv با werden + Partizip II)', explain: 'وقتی انجام‌دهنده کار مهم نیست یا نامشخص است از werden + Partizip II استفاده می‌کنیم: Der Brief wird geschrieben.' },
+        { rule: 'وجه شرطی Konjunktiv II (würde + Infinitiv)', explain: 'برای بیان آرزو، درخواست مؤدبانه یا شرایط فرضی: Wenn ich Zeit hätte, würde ich mehr reisen.' },
+        { rule: 'جملات پیرو با weil, obwohl, wenn, dass', explain: 'در جملات پیرو (Nebensatz)، فعل صرف‌شده به آخرین جایگاه جمله منتقل می‌شود: Ich bleibe zu Hause, weil es regnet.' }
+    ],
+    B2: [
+        { rule: 'افعال با حرف اضافه و ضمایر ترکیبی (wo-/da-)', explain: 'برای اشیا از wo(r)+Präposition در سؤال و da(r)+Präposition در جواب استفاده می‌شود: Worauf wartest du? – Darauf habe ich gewartet.' },
+        { rule: 'جایگزین‌های مجهول (Passiversatzformen)', explain: 'ساختارهایی مثل sich lassen + Infinitiv یا -bar نشان‌دهنده امکان انجام کار هستند: Das Problem lässt sich leicht lösen.' },
+        { rule: 'مشارکت‌های وصفی (Partizipialattribute)', explain: 'استفاده از صفت فاعلی یا مفعولی قبل از اسم برای فشرده‌سازی جمله: die schnell wachsende Stadt.' }
+    ],
+    C1: [
+        { rule: 'وجه نقلی Konjunktiv I در نقل قول غیرمستقیم', explain: 'برای گزارش دیدگاه دیگران بدون جانبداری به کار می‌رود: Er sagte, er habe keine Zeit.' },
+        { rule: 'ساختارهای اسمی‌سازی (Nominalisierung)', explain: 'تبدیل جملات فعلی به عبارت‌های اسمی برای متون رسمی و علمی: Aufgrund der steigenden Preise...' },
+        { rule: 'حروف ربط و قیدهای ربطی پیشرفته', explain: 'استفاده از dennoch, infolgedessen, vorausgesetzt dass, geschweige denn برای انسجام استدلال.' }
+    ]
+};
+
+var PODCASTS_BY_LEVEL = {
+    A1: [
+        { title: 'پادکست A1 – معرفی و زندگی روزمره (deltalord.com)', de: 'Hallo und willkommen! Ich heiße Sara und komme aus Wien. Heute lerne ich Deutsch.', fa: 'سلام و خوش آمدید! نام من سارا است و اهل وین هستم. امروز آلمانی یاد می‌گیرم.' },
+        { title: 'پادکست A1 – خرید و کافه (deltalord.com)', de: 'Ich möchte bitte einen Kaffee und ein Brötchen bestellen. Was kostet das zusammen?', fa: 'لطفاً یک قهوه و یک نان کوچک سفارش می‌دهم. روی‌هم‌رفته چقدر می‌شود؟' }
+    ],
+    A2: [
+        { title: 'پادکست A2 – سفر با قطار (deltalord.com)', de: 'Der Zug fährt heute zehn Minuten später ab. Wir steigen am Hauptbahnhof um.', fa: 'قطار امروز ده دقیقه دیرتر حرکت می‌کند. ما در ایستگاه مرکزی عوض می‌کنیم.' },
+        { title: 'پادکست A2 – کار و برنامه هفتگی (deltalord.com)', de: 'Am Montag habe ich einen Termin beim Arzt und am Mittwoch arbeite ich im Büro.', fa: 'روز دوشنبه با داکتر قرار دارم و روز چهارشنبه در دفتر کار می‌کنم.' }
+    ],
+    B1: [
+        { title: 'پادکست B1 – محیط زیست و سبک زندگی (deltalord.com)', de: 'Immer mehr Menschen fahren mit dem Fahrrad, weil sie Umwelt und Gesundheit schützen wollen.', fa: 'افراد بیشتری با دوچرخه می‌روند، زیرا می‌خواهند از محیط زیست و سلامتی محافظت کنند.' },
+        { title: 'پادکست B1 – یادگیری زبان در خارج (deltalord.com)', de: 'Wenn man täglich Deutsch hört und spricht, versteht man nach einigen Monaten viel besser.', fa: 'اگر هر روز آلمانی بشنوید و صحبت کنید، بعد از چند ماه بسیار بهتر متوجه می‌شوید.' }
+    ],
+    B2: [
+        { title: 'پادکست B2 – کار، فرهنگ سازمانی و تصمیم‌گیری (deltalord.com)', de: 'Eine gute Teamarbeit setzt Vertrauen, klare Kommunikation und gegenseitigen Respekt voraus.', fa: 'کار تیمی خوب نیازمند اعتماد، ارتباط شفاف و احترام متقابل است.' },
+        { title: 'پادکست B2 – تحولات دیجیتال (deltalord.com)', de: 'Digitale Werkzeuge erleichtern den Alltag, erfordern aber auch einen kritischen Umgang mit Informationen.', fa: 'ابزارهای دیجیتال زندگی روزمره را آسان می‌کنند، اما نیازمند برخورد نقادانه با اطلاعات نیز هستند.' }
+    ],
+    C1: [
+        { title: 'پادکست C1 – تحلیل اجتماعی و زبان دقیق (deltalord.com)', de: 'Sprache prägt nicht nur die Kommunikation, sondern beeinflusst auch die Art, wie wir Zusammenhänge wahrnehmen.', fa: 'زبان تنها ارتباط را شکل نمی‌دهد، بلکه بر نحوه درک ما از پیوندها و مفاهیم نیز اثر می‌گذارد.' },
+        { title: 'پادکست C1 – استدلال و آینده‌پژوهی (deltalord.com)', de: 'Nachhaltige Entwicklung gelingt nur dann, wenn langfristige Folgen gegenüber kurzfristigen Vorteilen abgewogen werden.', fa: 'توسعه پایدار تنها زمانی محقق می‌شود که پیامدهای بلندمدت در برابر منافع کوتاه‌مدت سنجیده شوند.' }
+    ]
+};
+
+var QUIZ_BY_LEVEL = {
+    A1: [
+        { q: 'معنی «Guten Morgen» چیست؟', opts: ['صبح بخیر', 'شب بخیر', 'متشکرم'], ans: 0 },
+        { q: 'کدام گزینه «من آلمانی یاد می‌گیرم» است؟', opts: ['Ich lerne Deutsch.', 'Du lernst Deutsch.', 'Er lernt Deutsch.'], ans: 0 }
+    ],
+    A2: [
+        { q: 'جمله «Ich ___ gestern nach Hause gegangen.» با کدام فعل کامل می‌شود؟', opts: ['bin', 'habe', 'ist'], ans: 0 },
+        { q: 'معنی «der Bahnhof» چیست؟', opts: ['ایستگاه قطار', 'بیمارستان', 'فروشگاه'], ans: 0 }
+    ],
+    B1: [
+        { q: 'کدام حرف ربط نشان‌دهنده «علت» است؟', opts: ['weil', 'obwohl', 'damit'], ans: 0 },
+        { q: 'در «Wenn ich Zeit hätte, ___ ich mehr lesen.» کدام گزینه درست است؟', opts: ['würde', 'werde', 'bin'], ans: 0 }
+    ],
+    B2: [
+        { q: 'معنی «verzichten auf» چیست؟', opts: ['صرف‌نظر کردن از', 'اعتماد کردن به', 'فکر کردن به'], ans: 0 },
+        { q: 'در «Die Aufgabe muss sofort ___ werden.» کدام شکل درست است؟', opts: ['erledigt', 'erledigen', 'erledigst'], ans: 0 }
+    ],
+    C1: [
+        { q: 'معنی «die Schlussfolgerung» چیست؟', opts: ['نتیجه‌گیری', 'مقدمه', 'پیشنهاد'], ans: 0 },
+        { q: 'در «Er sagte, er ___ keine Zeit.» برای نقل قول غیرمستقیم کدام مناسب‌تر است؟', opts: ['habe', 'hatte', 'bin'], ans: 0 }
+    ]
+};
+
+var ALL_VIDEOS = [
+    { title: 'Deutsche Welle A1 – Nicos Weg', id: '4-eDoThe6qo', note: 'ویدیوی سطح A1' },
+    { title: 'Deutsche Welle A2 – Nicos Weg', id: 'Lg5P2w_Ro1c', note: 'ویدیوی سطح A2' },
+    { title: 'Deutsche Welle B1 – Nicos Weg', id: 'LkufozluseI', note: 'ویدیوی سطح B1' },
+    { title: 'ویدیوی آموزشی سطح B2', id: 'ZpLXfkYC1H4', note: 'واژگان و ساختارهای B2' },
+    { title: 'ویدیوی آموزشی سطح C1', id: 'lr5nQObcSY0', note: 'ساختارها و افعال C1' },
+    { title: 'واژگان پرکاربرد آلمانی', id: 'L6jb3CijCnE', note: 'تقویت دایره واژگان' },
+    { title: '۱۰۰ فعل مهم آلمانی', id: 'bN0CYbXomqo', note: 'افعال کاربردی روزمره' },
+    { title: '۱۰۰ سؤال و جواب رایج', id: 'wv84cwyTiNc', note: 'مکالمه و پرسش و پاسخ' },
+    { title: '۱۰۰ فعل گذشته آلمانی', id: '2ObeTuUgu-Y', note: 'تمرین افعال گذشته' }
 ];
 
-var selectedLevelFilter = 'ALL';
-var radioTimer = null;
-var radioIndex = 0;
-var quizState = {};
-var mySpeechLang = 'fa-IR';
-var otherSpeechLang = 'de-DE';
-var activeOcrTargetId = null;
+var activeSection = null;
+var selectedLevel = 'A1';
+var selectedGrammarLevel = 'A1';
+var selectedPodcastLevel = 'A1';
+var selectedQuizLevel = 'A1';
+var quizAnswers = {};
+var activeOcrCallback = null;
 
-function escapeAttr(str) {
-    return String(str || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
-}
-
-function speakTextSafe(text, langCode) {
+function speakText(text, lang) {
     var clean = String(text || '').trim();
     if (!clean) return;
+    var targetLang = lang || (/[\u0600-\u06FF]/.test(clean) ? 'fa-IR' : 'de-DE');
     try {
         if (window.speechSynthesis && typeof window.SpeechSynthesisUtterance === 'function') {
             window.speechSynthesis.cancel();
             var u = new window.SpeechSynthesisUtterance(clean);
-            u.lang = langCode || selectedAudioVoiceLang || 'de-DE';
+            u.lang = targetLang;
             u.rate = 0.92;
             window.speechSynthesis.speak(u);
         }
     } catch (e) {}
 }
 
-window.speakWithChosenLang = function(text, explicitLang) {
-    speakTextSafe(text, explicitLang || selectedAudioVoiceLang || 'de-DE');
-};
-
-window.speakStageSentence = function(lang) {
-    var el = document.getElementById(lang === 'fa' ? 'stageFaText' : 'stageDeText');
-    if (el) speakTextSafe(el.textContent, lang === 'fa' ? 'fa-IR' : 'de-DE');
-};
-
-function updateStageFromLesson(lvl, idx) {
-    var les = lessonData[lvl] && lessonData[lvl][idx];
-    if (!les) return;
-    var firstSent = les.sentences[0] || { de: les.title, fa: les.title };
-    var lbl = document.getElementById('stageLessonLabel');
-    var deEl = document.getElementById('stageDeText');
-    var faEl = document.getElementById('stageFaText');
-    if (lbl) lbl.textContent = 'سطح ' + lvl + ' • درس ' + (idx + 1) + ': ' + les.title;
-    if (deEl) deEl.textContent = firstSent.de;
-    if (faEl) faEl.textContent = firstSent.fa;
+function escapeJs(str) {
+    return String(str || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;').replace(/\n/g, ' ');
 }
 
-window.openLevelFromTile = function(lvl) {
-    selectedLevelFilter = lvl || 'A1';
-    if (lvl && lvl !== 'ALL') updateStageFromLesson(lvl, 0);
-    toggleMainRow('lessons', true);
-    var g = document.getElementById('group-lessons');
-    if (g) g.scrollIntoView({ behavior: 'smooth', block: 'start' });
-};
-
-function buildCoreEverydaySentences(deWord, faWord) {
-    var wDe = String(deWord || 'das Wort').trim();
-    var wFa = String(faWord || 'واژه').trim();
-    return [
-        { verbTitle: 'بودن (sein)', de: '„' + wDe + '“ ist heute im Alltag sehr wichtig.', fa: '«' + wFa + '» امروز در زندگی روزمره بسیار مهم است.' },
-        { verbTitle: 'داشتن (haben)', de: 'Ich habe jeden Tag mit „' + wDe + '“ zu tun.', fa: 'من هر روز با «' + wFa + '» سر و کار دارم.' },
-        { verbTitle: 'خواستن (wollen)', de: 'Ich möchte „' + wDe + '“ richtig auf Deutsch sagen.', fa: 'من می‌خواهم «' + wFa + '» را به درستی به آلمانی بگویم.' },
-        { verbTitle: 'گرفتن (nehmen)', de: 'Ich nehme „' + wDe + '“ und übe damit.', fa: 'من «' + wFa + '» را می‌گیرم و با آن تمرین می‌کنم.' },
-        { verbTitle: 'فرستادن (schicken)', de: 'Ich schicke dir heute eine Nachricht über „' + wDe + '“.', fa: 'امروز درباره «' + wFa + '» برایت پیام می‌فرستم.' },
-        { verbTitle: 'دادن (geben)', de: 'Kannst du mir bitte ein Beispiel für „' + wDe + '“ geben?', fa: 'آیا می‌توانید لطفاً برای «' + wFa + '» یک مثال بدهید؟' }
-    ];
-}
-
-function renderSentencesBlockHtml(deWord, faWord, voiceLangCode) {
-    var vLang = voiceLangCode || selectedAudioVoiceLang || 'de-DE';
-    var sentences = buildCoreEverydaySentences(deWord, faWord);
-    var html = '<div class="word-sentence-box"><div style="font-weight:900;color:#1e3a8a;margin-bottom:6px;">جملات روزمره زیر لغت (بودن، داشتن، خواستن، گرفتن، فرستادن، دادن):</div>';
-    sentences.forEach(function(s) {
-        html += '<div class="sentence-line-item">' +
-            '<div><span class="verb-pill" style="margin-inline-end:6px;">' + s.verbTitle + '</span><strong>🇩🇪 ' + s.de + '</strong><div style="color:#4b5563;font-size:12px;">🇮🇷 ' + s.fa + '</div></div>' +
-            '<div class="audio-group">' +
-                '<button type="button" class="btn-audio-de" onclick="speakWithChosenLang(\'' + escapeAttr(s.de) + '\', \'' + escapeAttr(vLang) + '\')">🔊 پخش جمله</button>' +
-                '<button type="button" class="btn-audio-fa" onclick="speakTextSafe(\'' + escapeAttr(s.fa) + '\', \'fa-IR\')">🔊 فارسی</button>' +
-            '</div>' +
-        '</div>';
-    });
-    return html + '</div>';
-}
-
-function detectLanguageShort(text) {
-    var s = String(text || '').trim();
+function detectShortLang(txt) {
+    var s = String(txt || '').trim();
     if (/[\u0600-\u06FF]/.test(s)) return 'fa';
     if (/[äöüÄÖÜß]/.test(s)) return 'de';
+    if (/[\u0621-\u064A]/.test(s)) return 'ar';
     return 'en';
 }
 
-function translateTextOnline(text, fromShort, toShort, cb) {
+function translateOnline(text, fromLang, toLang, cb) {
     var clean = String(text || '').trim();
     if (!clean) { cb(''); return; }
-    var src = (fromShort && fromShort !== 'auto') ? fromShort : detectLanguageShort(clean);
-    var dst = toShort || 'de';
+    var src = (fromLang && fromLang !== 'auto') ? fromLang : detectShortLang(clean);
+    var dst = toLang || 'de';
     if (src === dst) { cb(clean); return; }
 
     var url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(clean) + '&langpair=' + encodeURIComponent(src) + '|' + encodeURIComponent(dst);
-    var done = false;
-    var timer = setTimeout(function() { if (!done) { done = true; cb(clean); } }, 3500);
-
-    if (typeof fetch === 'function') {
-        fetch(url)
-            .then(function(r) { return r.json(); })
-            .then(function(data) {
-                if (done) return;
-                done = true; clearTimeout(timer);
-                var out = (data && data.responseData && data.responseData.translatedText) ? String(data.responseData.translatedText).trim() : '';
-                cb((out && out.toUpperCase().indexOf('MYMEMORY WARNING') !== 0) ? out : clean);
-            })
-            .catch(function() { if (!done) { done = true; clearTimeout(timer); cb(clean); } });
-    } else {
-        clearTimeout(timer); cb(clean);
-    }
+    fetch(url)
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+            var out = (d && d.responseData && d.responseData.translatedText) ? d.responseData.translatedText.trim() : '';
+            cb(out || clean);
+        })
+        .catch(function() { cb(clean); });
 }
 
-function lookupWordOnlineUnlimited(query, callback) {
-    var clean = String(query || '').trim();
-    if (!clean) { callback(null); return; }
-    var isGerman = /[a-zA-ZäöüÄÖÜß]/.test(clean) && !/[\u0600-\u06FF]/.test(clean);
-    var fromShort = isGerman ? 'de' : 'fa';
-    var toShort = isGerman ? 'fa' : 'de';
-    translateTextOnline(clean, fromShort, toShort, function(tr) {
-        callback({
-            query: clean,
-            deWord: isGerman ? clean : (tr || clean),
-            faWord: isGerman ? (tr || clean) : clean,
-            sourceInfo: 'فرهنگ لغت آنلاین نامحدود'
-        });
-    });
+function startOcrForInput(inputId, doneFnName) {
+    activeOcrCallback = { inputId: inputId, doneFnName: doneFnName || '' };
+    var picker = document.getElementById('ocrImagePicker');
+    if (picker) { picker.value = ''; picker.click(); }
 }
-
-window.triggerPhotoScan = function(targetInputId, onDoneCallbackName) {
-    activeOcrTargetId = { inputId: targetInputId, callbackName: onDoneCallbackName || '' };
-    var fileInp = document.getElementById('sharedOcrFileInput');
-    if (fileInp) { fileInp.value = ''; fileInp.click(); }
-};
 
 document.addEventListener('change', function(e) {
-    if (!e.target || e.target.id !== 'sharedOcrFileInput') return;
+    if (!e.target || e.target.id !== 'ocrImagePicker') return;
     var file = e.target.files && e.target.files[0];
-    if (!file || !activeOcrTargetId) return;
-    var targetInfo = activeOcrTargetId;
-    var targetEl = document.getElementById(targetInfo.inputId);
-    if (targetEl) targetEl.value = '⏳ در حال اسکن متن از عکس...';
+    if (!file || !activeOcrCallback) return;
+    var info = activeOcrCallback;
+    var inp = document.getElementById(info.inputId);
+    if (inp) inp.value = '⏳ در حال اسکن متن از عکس...';
 
     if (window.Tesseract && typeof window.Tesseract.recognize === 'function') {
         window.Tesseract.recognize(file, 'deu+fas+eng')
             .then(function(res) {
-                var extracted = (res && res.data && res.data.text) ? res.data.text.trim() : '';
-                if (targetEl) targetEl.value = extracted || 'متنی در عکس تشخیص داده نشد.';
-                if (extracted && targetInfo.callbackName && typeof window[targetInfo.callbackName] === 'function') {
-                    window[targetInfo.callbackName]();
+                var txt = (res && res.data && res.data.text) ? res.data.text.trim() : '';
+                if (inp) inp.value = txt || 'متنی در عکس یافت نشد.';
+                if (txt && info.doneFnName && typeof window[info.doneFnName] === 'function') {
+                    window[info.doneFnName]();
                 }
             })
-            .catch(function() { if (targetEl) targetEl.value = 'خطا در اسکن عکس.'; });
+            .catch(function() { if (inp) inp.value = 'خطا در اسکن عکس.'; });
     }
 });
 
-window.toggleMainRow = function(key, forceOpen) {
-    var drawer = document.getElementById('drawer-' + key);
-    var pill = document.getElementById('pill-' + key);
-    var pack = UI_TRANSLATIONS[currentSiteLang] || UI_TRANSLATIONS.fa;
-    if (!drawer) return;
-    var shouldOpen = forceOpen ? true : !drawer.classList.contains('open');
-    if (shouldOpen) {
-        drawer.style.display = 'block';
-        drawer.classList.add('open');
-        if (pill) pill.textContent = pack.closeText;
-        renderDrawerContent(key, drawer);
-    } else {
-        drawer.style.display = 'none';
-        drawer.classList.remove('open');
-        if (pill) pill.textContent = pack.openText;
-    }
+window.openSection = function(secKey) {
+    activeSection = secKey;
+    document.querySelectorAll('.main-tile-card').forEach(function(card) {
+        card.classList.toggle('active-tile', card.id === 'tile-' + secKey);
+    });
+    var panel = document.getElementById('openedPanel');
+    var titleEl = document.getElementById('panelTitle');
+    var contentEl = document.getElementById('panelContent');
+    if (!panel || !titleEl || !contentEl) return;
+
+    var titles = {
+        levels: '📚 سطوح و درس‌ها (A1 تا C1)',
+        dictionary: '📖 فرهنگ لغات آنلاین',
+        twoway: '🔄 ترجمه متن دوطرفه',
+        translator: '🌐 مترجم نامحدود هر زبان به هر زبان + اسکن عکس',
+        grammar: '📐 گرامر و کتاب‌های A1 تا C1',
+        podcasts: '🎧 پادکست‌های هر سطح (deltalord.com) + متن نوشتاری',
+        solver: '🧩 حل‌کننده نامحدود سؤال و گرامر + متن و اسکن عکس',
+        quiz: '✍️ آزمون‌های سطح A1 الی C1',
+        videos: '🎬 مجموعه کامل ویدیوهای آموزشی'
+    };
+
+    titleEl.textContent = titles[secKey] || 'بخش آموزشی';
+    panel.classList.add('open');
+
+    if (secKey === 'levels') renderLevelsView(contentEl);
+    else if (secKey === 'dictionary') renderDictionaryView(contentEl);
+    else if (secKey === 'twoway') renderTwoWayView(contentEl);
+    else if (secKey === 'translator') renderUnlimitedTranslatorView(contentEl);
+    else if (secKey === 'grammar') renderGrammarBooksView(contentEl);
+    else if (secKey === 'podcasts') renderPodcastsView(contentEl);
+    else if (secKey === 'solver') renderSolverView(contentEl);
+    else if (secKey === 'quiz') renderQuizView(contentEl);
+    else if (secKey === 'videos') renderVideosView(contentEl);
+
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
 
-function renderDrawerContent(key, drawer) {
-    if (key === 'lessons') {
-        drawer.innerHTML = buildLessonsDrawerHtml();
-        bindLessonAccordions(drawer);
-    } else if (key === 'vocab100k') {
-        drawer.innerHTML = buildUnlimitedOnlineVocabHtml();
-        searchUnlimitedOnlineWord('sein');
-    } else if (key === 'live_voice') {
-        drawer.innerHTML = buildTwoWaySpeechDrawerHtml();
-    } else if (key === 'translator') {
-        drawer.innerHTML = buildTranslatorHtml();
-    } else if (key === 'grammar') {
-        drawer.innerHTML = buildGrammarDrawerHtml();
-    } else if (key === 'podcasts') {
-        drawer.innerHTML = buildPodcastsDrawerHtml();
-        renderPodcastList();
-    } else if (key === 'radio') {
-        drawer.innerHTML = buildRadioDrawerHtml();
-    } else if (key === 'solver') {
-        drawer.innerHTML = buildSolverDrawerHtml();
-    } else if (key === 'quiz') {
-        drawer.innerHTML = buildQuizDrawerHtml();
-    } else if (key === 'multilang') {
-        drawer.innerHTML = buildMultilangDrawerHtml();
-    } else if (key === 'contact') {
-        drawer.innerHTML = buildContactDrawerHtml();
-    }
-}
+window.closeSectionPanel = function() {
+    activeSection = null;
+    document.querySelectorAll('.main-tile-card').forEach(function(card) {
+        card.classList.remove('active-tile');
+    });
+    var panel = document.getElementById('openedPanel');
+    if (panel) panel.classList.remove('open');
+};
 
-function buildLessonsDrawerHtml() {
-    var pack = UI_TRANSLATIONS[currentSiteLang] || UI_TRANSLATIONS.fa;
-    var levelsToShow = (selectedLevelFilter === 'ALL') ? LEVELS : [selectedLevelFilter];
-    var html = '<div class="level-switcher-bar">' +
-        '<button type="button" class="lvl-filter-btn' + (selectedLevelFilter === 'ALL' ? ' active' : '') + '" data-lvl-filter="ALL">' + pack.allLevelsBtn + '</button>';
+/* ۱. سطوح و درس‌ها */
+function renderLevelsView(container) {
+    var html = '<div class="levels-bar">';
     LEVELS.forEach(function(lvl) {
-        html += '<button type="button" class="lvl-filter-btn' + (selectedLevelFilter === lvl ? ' active' : '') + '" data-lvl-filter="' + lvl + '">' + lvl + '</button>';
+        html += '<button type="button" class="lvl-btn' + (lvl === selectedLevel ? ' active' : '') + '" onclick="changeLessonLevel(\'' + lvl + '\')">' + lvl + '</button>';
     });
     html += '</div>';
 
-    levelsToShow.forEach(function(lvl) {
-        var vid = levelVideos[lvl];
-        html += '<div class="sub-card"><h4>' + lvl + ' (' + vid.source + ') – ' + levelDescriptions[lvl] + '</h4>';
+    var info = LEVEL_INFO[selectedLevel];
+    var lessons = LESSONS_BY_LEVEL[selectedLevel] || [];
 
-        lessonData[lvl].forEach(function(les, idx) {
-            var pageSize = 4;
-            var total = les.sentences.length;
-            var start = ((les.sentencePage || 0) * pageSize) % total;
-            var visibleSentences = [];
-            for (var k = 0; k < pageSize; k++) {
-                visibleSentences.push({ item: les.sentences[(start + k) % total], realIdx: (start + k) % total });
-            }
+    html += '<div class="specs-grid">' +
+        '<div><strong>سطح انتخاب‌شده:</strong> ' + info.faName + '</div>' +
+        '<div><strong>کتاب مرجع:</strong> ' + info.book + '</div>' +
+        '<div><strong>مشخصات و هدف سطح:</strong> ' + info.goal + '</div>' +
+    '</div>';
 
-            var isOpen = !!les.open;
-            var lessonDomId = 'lessonCard_' + lvl + '_' + idx;
-            var activeVidId = les.videoId || vid.id;
-            var startSec = les.videoStart || 0;
-
-            html += '<div class="lesson-item" id="' + lessonDomId + '">' +
-                '<button type="button" class="lesson-head-btn' + (isOpen ? ' open' : '') + '" data-lvl="' + lvl + '" data-les-idx="' + idx + '">' +
-                    '<span>' + pack.lessonPrefix + ' ' + (idx + 1) + ': ' + les.title + ' (' + vid.source + ')</span>' +
-                    '<span>' + (isOpen ? '▴' : '▾') + '</span>' +
-                '</button>' +
-                '<div class="lesson-body' + (isOpen ? ' open' : '') + '">';
-
-            if (isOpen) {
-                html += '<div class="video-cue-bar">' +
-                    '<span>🎯 ' + (les.cueNote || les.title) + '</span>' +
-                    '<span>• ' + pack.videoStartLabel + ': <strong>' + startSec + 's</strong></span>' +
-                    '<input type="number" min="0" max="7200" id="startInp_' + lvl + '_' + idx + '" value="' + startSec + '" style="width:88px;margin:0;padding:4px 8px;font-size:12px;">' +
-                    '<button type="button" class="btn-move" onclick="applyCustomVideoStart(\'' + lvl + '\', ' + idx + ')">' + pack.applyStartBtn + '</button>' +
-                '</div>' +
-                '<iframe class="video-frame" src="https://www.youtube.com/embed/' + activeVidId + '?start=' + startSec + '" title="' + les.title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-            }
-
-            visibleSentences.forEach(function(entry) {
-                var rIdx = entry.realIdx;
-                var item = entry.item;
-                html += '<div class="line-row"><div class="row-top-flex">' +
-                    '<div><strong>🇩🇪 ' + item.de + '</strong><div style="color:#4b5563;font-size:12.5px;">🇮🇷 ' + item.fa + '</div></div>' +
-                    '<div class="audio-group">' +
-                        '<button type="button" class="btn-move" onclick="moveLessonSentence(\'' + lvl + '\', ' + idx + ', ' + rIdx + ', -1)">⬆</button>' +
-                        '<button type="button" class="btn-move" onclick="moveLessonSentence(\'' + lvl + '\', ' + idx + ', ' + rIdx + ', 1)">⬇</button>' +
-                        '<button type="button" class="btn-audio-de" onclick="speakTextSafe(\'' + escapeAttr(item.de) + '\', \'de-DE\')">🔊 DE</button>' +
-                        '<button type="button" class="btn-audio-fa" onclick="speakTextSafe(\'' + escapeAttr(item.fa) + '\', \'fa-IR\')">🔊 FA</button>' +
+    lessons.forEach(function(les, idx) {
+        var sampleDe = les.title + ' – Ich übe Deutsch jeden Tag.';
+        var sampleFa = les.desc;
+        html += '<div class="lesson-box">' +
+            '<button type="button" class="lesson-trigger" onclick="toggleLessonDetail(' + idx + ')">' +
+                '<span>' + les.title + '</span>' +
+                '<span>مشخصات و درس ▾</span>' +
+            '</button>' +
+            '<div class="lesson-details" id="lessonDetail_' + idx + '">' +
+                '<div class="specs-grid"><strong>مشخصات درس:</strong> ' + les.desc + '</div>' +
+                '<iframe class="video-frame" src="https://www.youtube.com/embed/' + info.videoId + '?start=' + les.start + '" title="' + les.title + '" allowfullscreen></iframe>' +
+                '<div class="sentence-card">' +
+                    '<div>' +
+                        '<div class="clickable-speech" onclick="speakText(\'' + escapeJs(sampleDe) + '\', \'de-DE\')"><strong>🇩🇪 ' + sampleDe + '</strong></div>' +
+                        '<div class="clickable-speech" style="color:#334155;font-size:12.5px;margin-top:4px;" onclick="speakText(\'' + escapeJs(sampleFa) + '\', \'fa-IR\')">🇮🇷 ' + sampleFa + '</div>' +
                     '</div>' +
-                '</div></div>';
-            });
-
-            html += '<div class="lesson-description-box"><strong>' + pack.descLabel + ' (' + les.title + '):</strong> ' + les.grammar + '</div>' +
-                '<div class="audio-group" style="margin-top:8px;"><button type="button" class="btn-primary" onclick="nextLessonPage(\'' + lvl + '\', ' + idx + ')">' + pack.nextPageBtn + '</button></div>' +
-            '</div></div>';
-        });
-
-        html += '</div>';
-    });
-    return html;
-}
-
-window.applyCustomVideoStart = function(lvl, idx) {
-    var inp = document.getElementById('startInp_' + lvl + '_' + idx);
-    var sec = inp ? parseInt(inp.value, 10) : 0;
-    lessonData[lvl][idx].videoStart = isNaN(sec) || sec < 0 ? 0 : sec;
-    lessonData[lvl][idx].open = true;
-    rerenderLessonsKeepingPosition(lvl, idx);
-};
-
-function rerenderLessonsKeepingPosition(lvl, idx) {
-    var drawer = document.getElementById('drawer-lessons');
-    if (!drawer) return;
-    drawer.innerHTML = buildLessonsDrawerHtml();
-    bindLessonAccordions(drawer);
-    var targetCard = document.getElementById('lessonCard_' + lvl + '_' + idx);
-    if (targetCard) targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-window.moveLessonSentence = function(lvl, lessonIdx, sentenceIdx, delta) {
-    var list = lessonData[lvl][lessonIdx].sentences;
-    var targetIdx = sentenceIdx + delta;
-    if (targetIdx < 0 || targetIdx >= list.length) return;
-    var temp = list[sentenceIdx];
-    list[sentenceIdx] = list[targetIdx];
-    list[targetIdx] = temp;
-    lessonData[lvl][lessonIdx].open = true;
-    rerenderLessonsKeepingPosition(lvl, lessonIdx);
-};
-
-window.nextLessonPage = function(lvl, lessonIdx) {
-    lessonData[lvl][lessonIdx].sentencePage = (lessonData[lvl][lessonIdx].sentencePage || 0) + 1;
-    lessonData[lvl][lessonIdx].open = true;
-    rerenderLessonsKeepingPosition(lvl, lessonIdx);
-};
-
-function bindLessonAccordions(container) {
-    container.querySelectorAll('[data-lvl-filter]').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            selectedLevelFilter = btn.getAttribute('data-lvl-filter') || 'ALL';
-            var d = document.getElementById('drawer-lessons');
-            if (d) { d.innerHTML = buildLessonsDrawerHtml(); bindLessonAccordions(d); }
-        });
-    });
-    container.querySelectorAll('[data-les-idx]').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            var lvl = btn.getAttribute('data-lvl');
-            var idx = parseInt(btn.getAttribute('data-les-idx'), 10);
-            if (!lvl || isNaN(idx)) return;
-            lessonData[lvl][idx].open = !lessonData[lvl][idx].open;
-            if (lessonData[lvl][idx].open) updateStageFromLesson(lvl, idx);
-            rerenderLessonsKeepingPosition(lvl, idx);
-        });
-    });
-}
-
-function buildUnlimitedOnlineVocabHtml() {
-    var langOpts = SPEECH_LANGS.map(function(sl) {
-        return '<option value="' + sl.code + '"' + (sl.code === selectedAudioVoiceLang ? ' selected' : '') + '>' + sl.label + '</option>';
-    }).join('');
-    return '<div class="sub-card"><h4>📖 فرهنگ لغت آنلاین نامحدود + اسکن عکس</h4>' +
-        '<div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;margin-bottom:8px;">' +
-            '<input type="text" id="unlimitedDictInput" style="margin:0;" placeholder="هر لغت آلمانی یا دری/فارسی را بنویسید یا از عکس اسکن کنید...">' +
-            '<button type="button" class="btn-scan" onclick="triggerPhotoScan(\'unlimitedDictInput\', \'runUnlimitedDictSearch\')">📷 اسکن عکس</button>' +
-            '<button type="button" class="btn-primary" onclick="runUnlimitedDictSearch()">🔍 پیدا کردن لغت</button>' +
-        '</div>' +
-        '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">' +
-            '<span style="font-size:12.5px;font-weight:800;color:#1e3a8a;">زبان اختیاری پخش صدا:</span>' +
-            '<select id="dictVoiceLangSelect" style="width:auto;margin:0;padding:6px 10px;" onchange="selectedAudioVoiceLang=this.value; runUnlimitedDictSearch();">' + langOpts + '</select>' +
-        '</div>' +
-        '<div id="unlimitedDictResultBox"></div></div>';
-}
-
-window.runUnlimitedDictSearch = function() {
-    var inp = document.getElementById('unlimitedDictInput');
-    searchUnlimitedOnlineWord((inp && inp.value.trim()) ? inp.value.trim() : 'sein');
-};
-
-function searchUnlimitedOnlineWord(query) {
-    var box = document.getElementById('unlimitedDictResultBox');
-    if (!box) return;
-    box.innerHTML = '<div class="result-banner">🌐 در حال جستجو برای «' + query + '»...</div>';
-    lookupWordOnlineUnlimited(query, function(res) {
-        if (!res) return;
-        var vLang = selectedAudioVoiceLang || 'de-DE';
-        box.innerHTML = '<div class="vocab-row"><div class="row-top-flex">' +
-            '<div><div style="font-size:15px;font-weight:900;">🇩🇪 ' + res.deWord + ' — 🇮🇷 ' + res.faWord + '</div></div>' +
-            '<div class="audio-group">' +
-                '<button type="button" class="btn-audio-de" onclick="speakWithChosenLang(\'' + escapeAttr(res.deWord) + '\', \'' + escapeAttr(vLang) + '\')">🔊 تلفظ لغت</button>' +
-                '<button type="button" class="btn-audio-fa" onclick="speakTextSafe(\'' + escapeAttr(res.faWord) + '\', \'fa-IR\')">🔊 تلفظ فارسی</button>' +
+                    '<div style="display:flex;gap:6px;">' +
+                        '<button type="button" class="btn-action" onclick="speakText(\'' + escapeJs(sampleDe) + '\', \'de-DE\')">🔊 صدای آلمانی</button>' +
+                        '<button type="button" class="btn-action green" onclick="speakText(\'' + escapeJs(sampleFa) + '\', \'fa-IR\')">🔊 صدای فارسی</button>' +
+                    '</div>' +
+                '</div>' +
             '</div>' +
-        '</div>' + renderSentencesBlockHtml(res.deWord, res.faWord, vLang) + '</div>';
-    });
-}
-
-function buildTwoWaySpeechDrawerHtml() {
-    var optsMe = SPEECH_LANGS.map(function(sl) { return '<option value="' + sl.code + '"' + (sl.code === mySpeechLang ? ' selected' : '') + '>' + sl.label + '</option>'; }).join('');
-    var optsOther = SPEECH_LANGS.map(function(sl) { return '<option value="' + sl.code + '"' + (sl.code === otherSpeechLang ? ' selected' : '') + '>' + sl.label + '</option>'; }).join('');
-    return '<div class="dialogue-panel">' +
-        '<div style="font-size:17px;font-weight:900;">🎙️ تبدیل صدا و متن دری ↔ آلمانی + نوشتن مشکلات</div>' +
-        '<div class="dialogue-grid-2">' +
-            '<div class="speaker-card"><div style="font-weight:900;color:#fde047;">۱. صدای من ➔ متن</div><select id="mySpeechLangSelect" style="background:#071326;color:#fff;" onchange="mySpeechLang=this.value">' + optsMe + '</select><button type="button" class="btn-audio-fa" onclick="captureSpeechToTarget(\'me\')">🎤 شروع ضبط</button><div class="transcript-box" id="myTranscriptBox">متن صحبت شما...</div><div class="transcript-box" id="myTranslatedBox" style="min-height:44px;">ترجمه...</div></div>' +
-            '<div class="speaker-card"><div style="font-weight:900;color:#6ee7b7;">۲. صدای طرف مقابل ➔ متن</div><select id="otherSpeechLangSelect" style="background:#071326;color:#fff;" onchange="otherSpeechLang=this.value">' + optsOther + '</select><button type="button" class="btn-audio-de" onclick="captureSpeechToTarget(\'other\')">🎤 شروع ضبط</button><div class="transcript-box" id="otherTranscriptBox">متن طرف مقابل...</div><div class="transcript-box" id="otherTranslatedBox" style="min-height:44px;">ترجمه...</div></div>' +
-        '</div>' +
-        '<div class="speaker-card" style="margin-top:12px;"><div style="font-weight:900;color:#fde047;">۳. نوشتن مشکلات و تبدیل به زبان دلخواه</div><textarea id="problemTextInput" style="background:#fff;color:#0f172a;" placeholder="مشکل خود را بنویسید..."></textarea><button type="button" class="btn-primary" onclick="convertProblemText()">🔄 تبدیل به آلمانی</button><div class="transcript-box" id="problemConvertedOutput">نتیجه...</div></div>' +
-        '<div id="speechStatusNote" style="margin-top:8px;font-size:12.5px;color:#fde047;">آماده...</div></div>';
-}
-
-window.convertProblemText = function() {
-    var inp = document.getElementById('problemTextInput');
-    var out = document.getElementById('problemConvertedOutput');
-    if (!inp || !out || !inp.value.trim()) return;
-    out.textContent = 'در حال تبدیل...';
-    translateTextOnline(inp.value.trim(), 'auto', 'de', function(res) { out.textContent = res; });
-};
-
-window.captureSpeechToTarget = function(who) {
-    var SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
-    var st = document.getElementById('speechStatusNote');
-    if (!SpeechRec) { if (st) st.textContent = 'مرورگر از تشخیص گفتار پشتیبانی نمی‌کند.'; return; }
-    var langCode = who === 'me' ? document.getElementById('mySpeechLangSelect').value : document.getElementById('otherSpeechLangSelect').value;
-    var rec = new SpeechRec();
-    rec.lang = langCode;
-    rec.onresult = function(ev) {
-        var spoken = ev.results[0][0].transcript;
-        document.getElementById(who === 'me' ? 'myTranscriptBox' : 'otherTranscriptBox').textContent = spoken;
-        translateTextOnline(spoken, langCode.split('-')[0], langCode.startsWith('de') ? 'fa' : 'de', function(tr) {
-            document.getElementById(who === 'me' ? 'myTranslatedBox' : 'otherTranslatedBox').textContent = tr;
-        });
-    };
-    rec.start();
-};
-
-function buildTranslatorHtml() {
-    return '<div class="sub-card"><h4>🌐 مترجم نامحدود هر زبان به هر زبان + اسکن عکس</h4>' +
-        '<textarea id="trInput" placeholder="متن را بنویسید یا از عکس اسکن کنید..."></textarea>' +
-        '<div class="audio-group"><button type="button" class="btn-primary" onclick="runTranslate()">ترجمه به آلمانی</button><button type="button" class="btn-audio-de" onclick="runTranslate(\'fa\')">ترجمه به فارسی</button><button type="button" class="btn-scan" onclick="triggerPhotoScan(\'trInput\', \'runTranslate\')">📷 اسکن عکس</button></div>' +
-        '<div id="trOutput" class="result-banner" style="display:none;"></div><div id="trSentencesBox"></div></div>';
-}
-
-window.runTranslate = function(forceDst) {
-    var inp = document.getElementById('trInput');
-    var out = document.getElementById('trOutput');
-    var sBox = document.getElementById('trSentencesBox');
-    if (!inp || !out || !inp.value.trim()) return;
-    var txt = inp.value.trim();
-    var dst = forceDst || (detectLanguageShort(txt) === 'de' ? 'fa' : 'de');
-    out.style.display = 'block';
-    out.textContent = 'در حال ترجمه...';
-    translateTextOnline(txt, 'auto', dst, function(res) {
-        out.innerHTML = '<div><strong>ترجمه:</strong> ' + res + '</div><div class="audio-group" style="margin-top:6px;"><button type="button" class="btn-audio-de" onclick="speakTextSafe(\'' + escapeAttr(res) + '\', \'' + (dst === 'de' ? 'de-DE' : 'fa-IR') + '\')">🔊 پخش صدا</button></div>';
-        if (sBox) sBox.innerHTML = renderSentencesBlockHtml(dst === 'de' ? res : txt, dst === 'fa' ? res : txt, selectedAudioVoiceLang);
-    });
-};
-
-function buildGrammarDrawerHtml() {
-    var h = '<div class="sub-card"><h4>📐 گرامر و کتاب‌های A1 تا C1</h4><div class="level-switcher-bar">';
-    LEVELS.forEach(function(lvl, i) { h += '<button type="button" class="lvl-filter-btn' + (i === 0 ? ' active' : '') + '" id="gBtn-' + lvl + '" onclick="selectGrammarLevel(\'' + lvl + '\')">' + lvl + '</button>'; });
-    h += '</div><div id="grammarLevelContent"></div></div>';
-    setTimeout(function() { window.selectGrammarLevel('A1'); }, 0);
-    return h;
-}
-
-window.selectGrammarLevel = function(lvl) {
-    LEVELS.forEach(function(l) { var b = document.getElementById('gBtn-' + l); if (b) b.classList.toggle('active', l === lvl); });
-    var box = document.getElementById('grammarLevelContent');
-    var data = LEVEL_GRAMMAR_AND_BOOKS[lvl];
-    if (!box || !data) return;
-    var h = '<div class="result-banner">📘 ' + data.bookTitle + '</div>';
-    data.sections.forEach(function(sec, i) {
-        h += '<button type="button" class="book-topic-btn" onclick="toggleGrammarTopic(' + i + ')">' + sec.title + '</button><div id="gTopic-' + i + '" style="display:none;padding:10px;margin-bottom:8px;background:#f8fafc;border-radius:8px;">' + sec.desc + '</div>';
-    });
-    box.innerHTML = h;
-};
-
-window.toggleGrammarTopic = function(i) {
-    var el = document.getElementById('gTopic-' + i);
-    if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
-};
-
-function buildPodcastsDrawerHtml() {
-    return '<div class="sub-card"><h4>🎧 پادکست‌های آلمانی (+۵۲۰ جمله)</h4><input type="text" id="podSearch" oninput="renderPodcastList()" placeholder="جستجو در پادکست‌ها..."><div id="podList"></div></div>';
-}
-
-window.renderPodcastList = function() {
-    var listEl = document.getElementById('podList');
-    if (!listEl) return;
-    var q = (document.getElementById('podSearch') ? document.getElementById('podSearch').value : '').trim().toLowerCase();
-    var filtered = PODCAST_520.filter(function(item) { return !q || item.de.toLowerCase().indexOf(q) !== -1 || item.fa.indexOf(q) !== -1; }).slice(0, 10);
-    var langOpts = SPEECH_LANGS.map(function(sl) { return '<option value="' + sl.short + '"' + (sl.short === 'fa' ? ' selected' : '') + '>' + sl.label + '</option>'; }).join('');
-    listEl.innerHTML = filtered.map(function(item) {
-        return '<div class="line-row"><div class="row-top-flex"><div><strong>[' + item.lvl + ' #' + item.num + '] 🇩🇪 ' + item.de + '</strong><div style="color:#4b5563;font-size:12.5px;">🇮🇷 ' + item.fa + '</div></div><div class="audio-group"><button type="button" class="btn-audio-de" onclick="speakTextSafe(\'' + escapeAttr(item.de) + '\', \'de-DE\')">🔊 DE</button><button type="button" class="btn-audio-fa" onclick="speakTextSafe(\'' + escapeAttr(item.fa) + '\', \'fa-IR\')">🔊 FA</button></div></div>' +
-            '<div class="word-sentence-box"><select style="width:auto;margin:0;padding:4px 8px;" onchange="applyPodcastOptionalLang(' + item.num + ', this.value, \'' + escapeAttr(item.de) + '\')">' + langOpts + '</select><div id="podOptOut-' + item.num + '" style="margin-top:4px;font-weight:700;">زبان اختیاری پایین پادکست</div></div></div>';
-    }).join('');
-};
-
-window.applyPodcastOptionalLang = function(num, targetShort, deText) {
-    var out = document.getElementById('podOptOut-' + num);
-    if (!out) return;
-    out.textContent = 'در حال ترجمه...';
-    translateTextOnline(deText, 'de', targetShort, function(tr) { out.textContent = tr || deText; });
-};
-
-function buildRadioDrawerHtml() {
-    var line = RADIO_CHANNELS[0].lines[radioIndex % RADIO_CHANNELS[0].lines.length];
-    return '<div class="sub-card"><h4>📻 رادیو آلمانی با ترجمه فارسی</h4><div class="audio-group"><button type="button" class="btn-primary" onclick="startRadioAuto()">▶ پخش</button><button type="button" class="btn-secondary" onclick="stopRadioAuto()">⏹ توقف</button><button type="button" class="btn-audio-de" onclick="nextRadioLine()">⏭ بعدی</button></div><div class="result-banner" id="radioBox"><div>🇩🇪 ' + line[0] + '</div><div style="color:#1e3a8a;margin-top:4px;">🇮🇷 ' + line[1] + '</div></div></div>';
-}
-
-function updateRadioBox() {
-    var box = document.getElementById('radioBox');
-    var line = RADIO_CHANNELS[0].lines[radioIndex % RADIO_CHANNELS[0].lines.length];
-    if (box) box.innerHTML = '<div>🇩🇪 ' + line[0] + '</div><div style="color:#1e3a8a;margin-top:4px;">🇮🇷 ' + line[1] + '</div>';
-    speakTextSafe(line[0], 'de-DE');
-}
-
-window.startRadioAuto = function() { stopRadioAuto(); updateRadioBox(); radioTimer = setInterval(function() { radioIndex++; updateRadioBox(); }, 5000); };
-window.stopRadioAuto = function() { if (radioTimer) { clearInterval(radioTimer); radioTimer = null; } };
-window.nextRadioLine = function() { radioIndex++; updateRadioBox(); };
-
-function buildSolverDrawerHtml() {
-    return '<div class="sub-card"><h4>🧩 حل‌کننده سؤال و گرامر + اسکن عکس</h4><textarea id="solverInput" placeholder="سؤال یا جمله را بنویسید یا اسکن کنید..."></textarea><div class="audio-group"><button type="button" class="btn-primary" onclick="runSolver()">حل و تحلیل</button><button type="button" class="btn-scan" onclick="triggerPhotoScan(\'solverInput\', \'runSolver\')">📷 اسکن عکس</button></div><div id="solverResult" class="result-banner" style="display:none;"></div></div>';
-}
-
-window.runSolver = function() {
-    var inp = document.getElementById('solverInput');
-    var out = document.getElementById('solverResult');
-    if (!inp || !out || !inp.value.trim()) return;
-    var txt = inp.value.trim();
-    out.style.display = 'block';
-    out.innerHTML = '⏳ در حال تحلیل...';
-    translateTextOnline(txt, 'auto', detectLanguageShort(txt) === 'de' ? 'fa' : 'de', function(tr) {
-        out.innerHTML = '<div><strong>متن:</strong> ' + txt + '</div><div style="color:#1e3a8a;margin-top:4px;"><strong>ترجمه/معادل:</strong> ' + tr + '</div><div style="margin-top:6px;"><strong>راه‌حل:</strong> فعل صرف‌شده را در جایگاه مناسب بررسی کرده و حروف تعریف و حالت دستوری را تطبیق دهید.</div>';
-    });
-};
-
-function buildQuizDrawerHtml() {
-    var h = '<div class="sub-card"><h4>✍️ آزمون‌های تعاملی A1 تا C1</h4><div class="level-switcher-bar">';
-    LEVELS.forEach(function(lvl, i) { h += '<button type="button" class="lvl-filter-btn' + (i === 0 ? ' active' : '') + '" id="qBtn-' + lvl + '" onclick="renderQuizLevel(\'' + lvl + '\')">' + lvl + '</button>'; });
-    h += '</div><div id="quizBody"></div></div>';
-    setTimeout(function() { window.renderQuizLevel('A1'); }, 0);
-    return h;
-}
-
-window.renderQuizLevel = function(lvl) {
-    LEVELS.forEach(function(l) { var b = document.getElementById('qBtn-' + l); if (b) b.classList.toggle('active', l === lvl); });
-    var body = document.getElementById('quizBody');
-    var qs = quizData[lvl] || [];
-    if (!body) return;
-    if (!quizState[lvl]) quizState[lvl] = { answers: {}, skipped: {} };
-    var h = '';
-    qs.forEach(function(item, qIdx) {
-        var chosen = quizState[lvl].answers[qIdx];
-        var isSkipped = !!quizState[lvl].skipped[qIdx];
-        h += '<div class="line-row"><div style="font-weight:800;">سؤال ' + (qIdx + 1) + ': ' + item[0] + '</div>';
-        item[1].forEach(function(opt, oIdx) {
-            var cls = 'quiz-option-label';
-            if (!isSkipped && chosen !== undefined) {
-                if (oIdx === item[2]) cls += ' correct-choice';
-                else if (oIdx === chosen) cls += ' wrong-choice';
-            }
-            h += '<label class="' + cls + '"><input type="radio" name="q_' + lvl + '_' + qIdx + '" ' + (!isSkipped && chosen === oIdx ? 'checked' : '') + ' onchange="chooseQuizOption(\'' + lvl + '\', ' + qIdx + ', ' + oIdx + ')"><span>' + opt + '</span></label>';
-        });
-        h += '<button type="button" class="btn-secondary" style="margin-top:4px;" onclick="skipQuizQuestion(\'' + lvl + '\', ' + qIdx + ')">رد کردن</button></div>';
-    });
-    h += '<div class="quiz-live-score" id="quizScoreBox"></div>';
-    body.innerHTML = h;
-    var correct = 0;
-    qs.forEach(function(it, i) { if (quizState[lvl].answers[i] === it[2]) correct++; });
-    document.getElementById('quizScoreBox').textContent = 'امتیاز: ' + correct + ' از ' + qs.length;
-};
-
-window.chooseQuizOption = function(lvl, qIdx, oIdx) {
-    if (!quizState[lvl]) quizState[lvl] = { answers: {}, skipped: {} };
-    quizState[lvl].answers[qIdx] = oIdx; quizState[lvl].skipped[qIdx] = false;
-    window.renderQuizLevel(lvl);
-};
-
-window.skipQuizQuestion = function(lvl, qIdx) {
-    if (!quizState[lvl]) quizState[lvl] = { answers: {}, skipped: {} };
-    delete quizState[lvl].answers[qIdx]; quizState[lvl].skipped[qIdx] = true;
-    window.renderQuizLevel(lvl);
-};
-
-function buildMultilangDrawerHtml() {
-    return '<div class="sub-card"><h4>🌍 عبارات چندزبانه یادگیری آلمانی</h4>' + MULTILANG_SAMPLES.map(function(m) {
-        return '<div class="line-row"><strong>' + m.lang + '</strong><div>' + m.greeting + '</div><div style="color:#4b5563;font-size:12.5px;">' + m.tip + '</div></div>';
-    }).join('') + '</div>';
-}
-
-function buildContactDrawerHtml() {
-    var h = '<div class="sub-card"><h4>🎬 مجموعه کامل ویدیوهای آموزشی (Deutsche Welle A1–B1، ویدیوهای B2–C1 و ویدیوهای جدید) + ارتباط با KING ASAD</h4>' +
-        '<p style="margin-bottom:10px;font-weight:700;">تماس مستقیم با مدیر: <span dir="ltr">+4915212898695</span></p>';
-
-    ALL_TRAINING_VIDEOS.forEach(function(v) {
-        h += '<div class="line-row">' +
-            '<div style="font-weight:900;color:#1e3a8a;">' + v.title + ' • [' + v.source + ']</div>' +
-            '<div style="font-size:12.5px;color:#4b5563;">' + v.desc + '</div>' +
-            '<iframe class="video-frame" src="https://www.youtube.com/embed/' + v.id + '" title="' + v.title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
         '</div>';
     });
 
-    h += '<input type="text" id="contactName" placeholder="نام شما">' +
-        '<textarea id="contactMsg" placeholder="پیام یا سؤال خود را بنویسید..."></textarea>' +
-        '<button type="button" class="btn-primary" onclick="sendContactMessage()">ثبت پیام</button>' +
-        '<div id="contactStatus" class="result-banner" style="display:none;"></div></div>';
-    return h;
+    container.innerHTML = html;
 }
 
-window.sendContactMessage = function() {
-    var name = (document.getElementById('contactName') ? document.getElementById('contactName').value : '').trim();
-    var msg = (document.getElementById('contactMsg') ? document.getElementById('contactMsg').value : '').trim();
-    var st = document.getElementById('contactStatus');
-    if (!st) return;
-    st.style.display = 'block';
-    st.textContent = msg ? ('پیام شما (' + (name || 'کاربر') + ') ثبت شد. تماس: +4915212898695') : 'لطفاً متن پیام را وارد کنید.';
+window.changeLessonLevel = function(lvl) {
+    selectedLevel = lvl;
+    renderLevelsView(document.getElementById('panelContent'));
 };
 
-function updateClockAndDate() {
-    var el = document.getElementById('liveClockDate');
-    if (!el) return;
-    var now = new Date();
-    el.textContent = now.toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' }) + ' • ' + now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+window.toggleLessonDetail = function(idx) {
+    var el = document.getElementById('lessonDetail_' + idx);
+    if (el) el.classList.toggle('open');
+};
+
+/* ۲. فرهنگ لغات آنلاین با دکمه جستجوی واضح و کلیک برای خواندن */
+function renderDictionaryView(container) {
+    container.innerHTML = '<div class="box-card">' +
+        '<div style="font-weight:900;color:#0c2344;margin-bottom:8px;">لغت آلمانی یا فارسی/دری را بنویسید و روی «جستجو» کلیک کنید:</div>' +
+        '<div class="dict-search-bar">' +
+            '<input type="text" id="dictWordInput" placeholder="مثلاً: lernen ، das Haus ، کتاب ، سفر...">' +
+            '<button type="button" class="btn-search-prominent" onclick="searchDictWord()">🔍 جستجو در فرهنگ لغت</button>' +
+            '<button type="button" class="btn-action green" onclick="speakText(document.getElementById(\'dictWordInput\').value)">🔊 خواندن لغت</button>' +
+        '</div>' +
+        '<div id="dictSearchResult"></div>' +
+    '</div>';
+    searchDictWord('lernen');
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    updateClockAndDate();
-    setInterval(updateClockAndDate, 1000);
+window.searchDictWord = function(preset) {
+    var inp = document.getElementById('dictWordInput');
+    var out = document.getElementById('dictSearchResult');
+    if (!out) return;
+    var q = (preset || (inp ? inp.value : '') || '').trim();
+    if (!q) {
+        out.innerHTML = '<div class="result-box">لطفاً یک لغت برای جستجو وارد کنید.</div>';
+        return;
+    }
+    if (inp && !preset) inp.value = q;
+    out.innerHTML = '<div class="result-box">⏳ در حال جستجوی لغت «' + q + '»...</div>';
 
-    var welcomeModal = document.getElementById('welcomeModal');
-    var btnOpenWelcome = document.getElementById('btnOpenWelcome');
-    var btnCloseWelcome = document.getElementById('btnCloseWelcome');
-    var btnWelcomeContact = document.getElementById('btnWelcomeContact');
-    var btnStartJourney = document.getElementById('btnStartJourney');
-    var siteLangSelect = document.getElementById('siteLangSelect');
+    var isDe = /[a-zA-ZäöüÄÖÜß]/.test(q) && !/[\u0600-\u06FF]/.test(q);
+    translateOnline(q, isDe ? 'de' : 'fa', isDe ? 'fa' : 'de', function(tr) {
+        var deWord = isDe ? q : tr;
+        var faWord = isDe ? tr : q;
+        var exampleDe = 'Ich lerne das Wort „' + deWord + '“ heute.';
+        var exampleFa = 'من امروز لغت «' + faWord + '» را یاد می‌گیرم.';
+        out.innerHTML = '<div class="result-box">' +
+            '<div style="font-size:15px;font-weight:900;margin-bottom:8px;">' +
+                '<span class="clickable-speech" onclick="speakText(\'' + escapeJs(deWord) + '\', \'de-DE\')">🇩🇪 ' + deWord + '</span>' +
+                ' — ' +
+                '<span class="clickable-speech" onclick="speakText(\'' + escapeJs(faWord) + '\', \'fa-IR\')">🇮🇷 ' + faWord + '</span>' +
+            '</div>' +
+            '<div style="margin-bottom:8px;">' +
+                '<div class="clickable-speech" onclick="speakText(\'' + escapeJs(exampleDe) + '\', \'de-DE\')">مثال آلمانی: ' + exampleDe + '</div>' +
+                '<div class="clickable-speech" style="color:#1e3a8a;margin-top:3px;" onclick="speakText(\'' + escapeJs(exampleFa) + '\', \'fa-IR\')">مثال فارسی: ' + exampleFa + '</div>' +
+            '</div>' +
+            '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+                '<button type="button" class="btn-action" onclick="speakText(\'' + escapeJs(deWord) + '\', \'de-DE\')">🔊 تلفظ آلمانی</button>' +
+                '<button type="button" class="btn-action green" onclick="speakText(\'' + escapeJs(faWord) + '\', \'fa-IR\')">🔊 تلفظ فارسی</button>' +
+                '<button type="button" class="btn-action dark" onclick="speakText(\'' + escapeJs(exampleDe) + '\', \'de-DE\')">🔊 خواندن مثال</button>' +
+            '</div>' +
+        '</div>';
+    });
+};
 
-    if (btnOpenWelcome && welcomeModal) btnOpenWelcome.onclick = function() { welcomeModal.classList.add('open'); };
-    if (btnCloseWelcome && welcomeModal) btnCloseWelcome.onclick = function() { welcomeModal.classList.remove('open'); };
-    if (btnWelcomeContact && welcomeModal) {
-        btnWelcomeContact.onclick = function() {
-            welcomeModal.classList.remove('open');
-            toggleMainRow('contact', true);
-            document.getElementById('group-contact').scrollIntoView({ behavior: 'smooth' });
-        };
+/* ۳. ترجمه متن دوطرفه (بدون ترجمه صدا؛ با دکمه خواندن متن) */
+function renderTwoWayView(container) {
+    container.innerHTML = '<div class="two-way-grid">' +
+        '<div class="box-card">' +
+            '<div style="font-weight:900;color:#0c2344;margin-bottom:6px;">متن فارسی / دری ➔ ترجمه به آلمانی</div>' +
+            '<textarea id="twoWayFaText" placeholder="متن فارسی یا دری خود را بنویسید..."></textarea>' +
+            '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+                '<button type="button" class="btn-action" onclick="translateTwoWay(\'faToDe\')">ترجمه به آلمانی</button>' +
+                '<button type="button" class="btn-action green" onclick="speakText(document.getElementById(\'twoWayFaText\').value, \'fa-IR\')">🔊 خواندن متن فارسی</button>' +
+            '</div>' +
+            '<div class="result-box" id="twoWayFaResult" onclick="speakText(this.innerText, \'de-DE\')">ترجمه آلمانی این‌جا نمایش داده می‌شود (برای خواندن کلیک کنید).</div>' +
+        '</div>' +
+        '<div class="box-card">' +
+            '<div style="font-weight:900;color:#0c2344;margin-bottom:6px;">متن آلمانی ➔ ترجمه به فارسی / دری</div>' +
+            '<textarea id="twoWayDeText" placeholder="Deutschen Text hier eingeben..."></textarea>' +
+            '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+                '<button type="button" class="btn-action" onclick="translateTwoWay(\'deToFa\')">ترجمه به فارسی</button>' +
+                '<button type="button" class="btn-action green" onclick="speakText(document.getElementById(\'twoWayDeText\').value, \'de-DE\')">🔊 خواندن متن آلمانی</button>' +
+            '</div>' +
+            '<div class="result-box" id="twoWayDeResult" onclick="speakText(this.innerText, \'fa-IR\')">ترجمه فارسی این‌جا نمایش داده می‌شود (برای خواندن کلیک کنید).</div>' +
+        '</div>' +
+    '</div>';
+}
+
+window.translateTwoWay = function(dirMode) {
+    if (dirMode === 'faToDe') {
+        var txt = document.getElementById('twoWayFaText').value.trim();
+        var resBox = document.getElementById('twoWayFaResult');
+        if (!txt) return;
+        resBox.textContent = 'در حال ترجمه...';
+        translateOnline(txt, 'fa', 'de', function(tr) {
+            resBox.innerHTML = '<div class="clickable-speech" onclick="speakText(\'' + escapeJs(tr) + '\', \'de-DE\')">' + tr + '</div>' +
+                '<button type="button" class="btn-action" style="margin-top:8px;" onclick="speakText(\'' + escapeJs(tr) + '\', \'de-DE\')">🔊 خواندن ترجمه</button>';
+        });
+    } else {
+        var txtDe = document.getElementById('twoWayDeText').value.trim();
+        var resBoxDe = document.getElementById('twoWayDeResult');
+        if (!txtDe) return;
+        resBoxDe.textContent = 'در حال ترجمه...';
+        translateOnline(txtDe, 'de', 'fa', function(trFa) {
+            resBoxDe.innerHTML = '<div class="clickable-speech" onclick="speakText(\'' + escapeJs(trFa) + '\', \'fa-IR\')">' + trFa + '</div>' +
+                '<button type="button" class="btn-action green" style="margin-top:8px;" onclick="speakText(\'' + escapeJs(trFa) + '\', \'fa-IR\')">🔊 خواندن ترجمه</button>';
+        });
     }
-    if (btnStartJourney) {
-        btnStartJourney.onclick = function() {
-            toggleMainRow('lessons', true);
-            document.getElementById('group-lessons').scrollIntoView({ behavior: 'smooth' });
-        };
-    }
-    if (siteLangSelect) {
-        siteLangSelect.onchange = function() {
-            currentSiteLang = this.value || 'fa';
-            document.documentElement.lang = currentSiteLang;
-            document.documentElement.dir = (UI_TRANSLATIONS[currentSiteLang] || UI_TRANSLATIONS.fa).dir;
-        };
-    }
-});
+};
+
+/* ۴. مترجم نامحدود هر زبان به هر زبان + اسکن عکس */
+function renderUnlimitedTranslatorView(container) {
+    container.innerHTML = '<div class="box-card">' +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;">' +
+            '<div><label style="font-size:12.5px;font-weight:800;">زبان مبدا:</label>' +
+                '<select id="anySrcLang">' +
+                    '<option value="auto">تشخیص خودکار</option>' +
+                    '<option value="fa">فارسی / دری (FA)</option>' +
+                    '<option value="de">آلمانی (DE)</option>' +
+                    '<option value="en">انگلیسی (EN)</option>' +
+                    '<option value="tr">ترکی (TR)</option>' +
+                    '<option value="ar">عربی (AR)</option>' +
+                '</select></div>' +
+            '<div><label style="font-size:12.5px;font-weight:800;">زبان مقصد:</label>' +
+                '<select id="anyDstLang">' +
+                    '<option value="de">آلمانی (DE)</option>' +
+                    '<option value="fa">فارسی / دری (FA)</option>' +
+                    '<option value="en">انگلیسی (EN)</option>' +
+                    '<option value="tr">ترکی (TR)</option>' +
+                    '<option value="ar">عربی (AR)</option>' +
+                '</select></div>' +
+        '</div>' +
+        '<textarea id="anyTextInput" style="min-height:130px;" placeholder="متن کوتاه یا طولانی (نامحدود) بنویسید یا از عکس اسکن کنید..."></textarea>' +
+        '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+            '<button type="button" class="btn-action" onclick="runAnyLanguageTranslation()">🌐 ترجمه متن</button>' +
+            '<button type="button" class="btn-action teal" onclick="startOcrForInput(\'anyTextInput\', \'runAnyLanguageTranslation\')">📷 اسکن متن از عکس</button>' +
+            '<button type="button" class="btn-action green" onclick="speakText(document.getElementById(\'anyTextInput\').value)">🔊 خواندن متن ورودی</button>' +
+        '</div>' +
+        '<div class="result-box" id="anyTranslateOutput" style="display:none;"></div>' +
+    '</div>';
+}
+
+window.runAnyLanguageTranslation = function() {
+    var inp = document.getElementById('anyTextInput');
+    var src = document.getElementById('anySrcLang').value;
+    var dst = document.getElementById('anyDstLang').value;
+    var out = document.getElementById('anyTranslateOutput');
+    if (!inp || !inp.value.trim()) return;
+    out.style.display = 'block';
+    out.textContent = 'در حال ترجمه...';
+
+    var chunks = inp.value.trim().match(/[^.!?\n]+[.!?\n]?/g) || [inp.value.trim()];
+    var results = new Array(chunks.length);
+    var completed = 0;
+
+    chunks.forEach(function(part, idx) {
+        translateOnline(part.trim(), src, dst, function(tr) {
+            results[idx] = tr;
+            completed++;
+            if (completed === chunks.length) {
+                var joined = results.join(' ');
+                out.innerHTML = '<div class="clickable-speech" onclick="speakText(\'' + escapeJs(joined) + '\')">' + joined + '</div>' +
+                    '<button type="button" class="btn-action green" style="margin-top:8px;" onclick="speakText(\'' + escapeJs(joined) + '\')">🔊 خواندن ترجمه</button>';
+            }
+        });
+    });
+};
+
+/* ۵. گرامر و کتاب‌های A1 تا C1 */
+function renderGrammarBooksView(container) {
+    var html = '<div class="levels-bar">';
+    LEVELS.forEach(function(lvl) {
+        html += '<button type="button" class="lvl-btn' + (lvl === selectedGrammarLevel ? ' active' : '') + '" onclick="changeGrammarLevel(\'' + lvl + '\')">' + lvl + '</button>';
+    });
+    html += '</div>';
+
+    var info = LEVEL_INFO[selectedGrammarLevel];
+    var rules = GRAMMAR_RULES_BY_LEVEL[selectedGrammarLevel] || [];
+
+    html += '<div class="specs-grid"><strong>کتاب سطح ' + selectedGrammarLevel + ':</strong> ' + info.book + '</div>';
+
+    rules.forEach(function(r) {
+        html += '<div class="grammar-rule-card">' +
+            '<div style="font-size:15px;font-weight:900;color:#0c2344;margin-bottom:4px;">📘 ' + r.rule + '</div>' +
+            '<div class="clickable-speech" style="font-size:13.5px;color:#1e293b;" onclick="speakText(\'' + escapeJs(r.explain) + '\')">' + r.explain + '</div>' +
+            '<button type="button" class="btn-action" style="margin-top:8px;" onclick="speakText(\'' + escapeJs(r.explain) + '\')">🔊 خواندن قاعده</button>' +
+        '</div>';
+    });
+
+    container.innerHTML = html;
+}
+
+window.changeGrammarLevel = function(lvl) {
+    selectedGrammarLevel = lvl;
+    renderGrammarBooksView(document.getElementById('panelContent'));
+};
+
+/* ۶. پادکست‌های هر سطح از deltalord.com + متن نوشتاری */
+function renderPodcastsView(container) {
+    var html = '<div class="levels-bar">';
+    LEVELS.forEach(function(lvl) {
+        html += '<button type="button" class="lvl-btn' + (lvl === selectedPodcastLevel ? ' active' : '') + '" onclick="changePodcastLevel(\'' + lvl + '\')">' + lvl + '</button>';
+    });
+    html += '</div>';
+
+    html += '<div class="specs-grid">' +
+        '<strong>منبع پادکست‌ها:</strong> <a href="https://deltalord.com/" target="_blank" rel="noopener" style="color:#1d4ed8;font-weight:900;">deltalord.com</a> – پادکست‌های سطح ' + selectedPodcastLevel + ' همراه با متن نوشتاری و پخش صدا.' +
+    '</div>';
+
+    var list = PODCASTS_BY_LEVEL[selectedPodcastLevel] || [];
+    list.forEach(function(p) {
+        html += '<div class="podcast-item-card">' +
+            '<div style="font-weight:900;color:#0c2344;margin-bottom:6px;">🎧 ' + p.title + '</div>' +
+            '<div class="clickable-speech" style="font-size:14px;font-weight:800;margin-bottom:4px;" onclick="speakText(\'' + escapeJs(p.de) + '\', \'de-DE\')">متن آلمانی: ' + p.de + '</div>' +
+            '<div class="clickable-speech" style="font-size:13px;color:#334155;margin-bottom:8px;" onclick="speakText(\'' + escapeJs(p.fa) + '\', \'fa-IR\')">ترجمه متن: ' + p.fa + '</div>' +
+            '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+                '<button type="button" class="btn-action" onclick="speakText(\'' + escapeJs(p.de) + '\', \'de-DE\')">▶ پخش متن آلمانی</button>' +
+                '<button type="button" class="btn-action green" onclick="speakText(\'' + escapeJs(p.fa) + '\', \'fa-IR\')">▶ پخش ترجمه فارسی</button>' +
+                '<a href="https://deltalord.com/" target="_blank" rel="noopener" class="btn-action dark" style="text-decoration:none;display:inline-flex;align-items:center;">🌐 باز کردن deltalord.com</a>' +
+            '</div>' +
+        '</div>';
+    });
+
+    container.innerHTML = html;
+}
+
+window.changePodcastLevel = function(lvl) {
+    selectedPodcastLevel = lvl;
+    renderPodcastsView(document.getElementById('panelContent'));
+};
+
+/* ۷. حل‌کننده نامحدود سؤال و گرامر + متن و اسکن عکس */
+function renderSolverView(container) {
+    container.innerHTML = '<div class="box-card">' +
+        '<div style="font-weight:900;color:#0c2344;margin-bottom:6px;">سؤال یا جمله گرامری خود را بنویسید یا از عکس اسکن کنید:</div>' +
+        '<textarea id="solverQuestionInput" placeholder="مثلاً: Ergänzen Sie: Ich ___ gestern ins Kino gegangen. یا هر سؤال گرامری دیگر..."></textarea>' +
+        '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+            '<button type="button" class="btn-action" onclick="solveQuestionOrGrammar()">🧩 حل سؤال و توضیح گرامر</button>' +
+            '<button type="button" class="btn-action teal" onclick="startOcrForInput(\'solverQuestionInput\', \'solveQuestionOrGrammar\')">📷 اسکن سؤال از عکس</button>' +
+        '</div>' +
+        '<div class="result-box" id="solverAnswerBox" style="display:none;"></div>' +
+    '</div>';
+}
+
+window.solveQuestionOrGrammar = function() {
+    var inp = document.getElementById('solverQuestionInput');
+    var box = document.getElementById('solverAnswerBox');
+    if (!inp || !inp.value.trim()) return;
+    var qText = inp.value.trim();
+    box.style.display = 'block';
+    box.textContent = '⏳ در حال تحلیل سؤال و قاعده گرامری...';
+
+    translateOnline(qText, detectShortLang(qText), detectShortLang(qText) === 'de' ? 'fa' : 'de', function(tr) {
+        var note = 'توضیح گرامری: جایگاه فعل صرف‌شده، حالت دستوری (Nominativ / Akkusativ / Dativ / Genitiv) و زمان فعل را با فاعل جمله بررسی کنید.';
+        if (/gegangen|gefahren|gekommen|gewesen/i.test(qText)) {
+            note = 'توضیح گرامری: برای افعال حرکتی و تغییر حالت در گذشته کامل (Perfekt) از فعل کمکی sein (bin / bist / ist / sind) استفاده می‌شود.';
+        } else if (/werden|wurde|würde/i.test(qText)) {
+            note = 'توضیح گرامری: این ساختار به جمله مجهول (Passiv) یا وجه شرطی (Konjunktiv II) مربوط است و فعل اصلی به صورت Infinitiv یا Partizip II می‌آید.';
+        }
+        box.innerHTML = '<div><strong>متن سؤال:</strong> ' + qText + '</div>' +
+            '<div style="color:#1e3a8a;margin-top:6px;"><strong>ترجمه / معادل:</strong> ' + tr + '</div>' +
+            '<div class="clickable-speech" style="margin-top:6px;" onclick="speakText(\'' + escapeJs(note) + '\', \'fa-IR\')"><strong>راه‌حل و توضیح:</strong> ' + note + '</div>';
+    });
+};
+
+/* ۸. آزمون‌های سطح A1 الی C1 */
+function renderQuizView(container) {
+    var html = '<div class="levels-bar">';
+    LEVELS.forEach(function(lvl) {
+        html += '<button type="button" class="lvl-btn' + (lvl === selectedQuizLevel ? ' active' : '') + '" onclick="changeQuizLevel(\'' + lvl + '\')">' + lvl + '</button>';
+    });
+    html += '</div>';
+
+    var qs = QUIZ_BY_LEVEL[selectedQuizLevel] || [];
+    var score = 0;
+
+    qs.forEach(function(item, qIdx) {
+        var key = selectedQuizLevel + '_' + qIdx;
+        var picked = quizAnswers[key];
+        if (picked === item.ans) score++;
+
+        html += '<div class="box-card"><div style="font-weight:900;margin-bottom:6px;">سؤال ' + (qIdx + 1) + ': ' + item.q + '</div>';
+        item.opts.forEach(function(op, oIdx) {
+            var cls = 'quiz-opt';
+            if (picked !== undefined) {
+                if (oIdx === item.ans) cls += ' ok';
+                else if (oIdx === picked) cls += ' bad';
+            }
+            html += '<div class="' + cls + '" onclick="pickQuizAnswer(\'' + selectedQuizLevel + '\', ' + qIdx + ', ' + oIdx + ')">' +
+                '<span>' + op + '</span>' +
+            '</div>';
+        });
+        html += '</div>';
+    });
+
+    html += '<div class="result-box">امتیاز شما در آزمون ' + selectedQuizLevel + ': <strong>' + score + ' از ' + qs.length + '</strong></div>';
+    container.innerHTML = html;
+}
+
+window.changeQuizLevel = function(lvl) {
+    selectedQuizLevel = lvl;
+    renderQuizView(document.getElementById('panelContent'));
+};
+
+window.pickQuizAnswer = function(lvl, qIdx, oIdx) {
+    quizAnswers[lvl + '_' + qIdx] = oIdx;
+    renderQuizView(document.getElementById('panelContent'));
+};
+
+/* ۹. مجموعه کامل ویدیوهای آموزشی */
+function renderVideosView(container) {
+    var html = '';
+    ALL_VIDEOS.forEach(function(v) {
+        html += '<div class="box-card">' +
+            '<div style="font-weight:900;color:#0c2344;">🎬 ' + v.title + '</div>' +
+            '<div style="font-size:12.5px;color:#475569;margin-bottom:6px;">' + v.note + '</div>' +
+            '<iframe class="video-frame" src="https://www.youtube.com/embed/' + v.id + '" title="' + v.title + '" allowfullscreen></iframe>' +
+        '</div>';
+    });
+    container.innerHTML = html;
+}
+
+function tickClock() {
+    var el = document.getElementById('clockText');
+    if (!el) return;
+    var now = new Date();
+    el.textContent = now.toLocaleDateString('fa-IR') + ' • ' + now.toLocaleTimeString('de-DE');
+}
+
+tickClock();
+setInterval(tickClock, 1000);
 </script>
 </body>
 </html>
