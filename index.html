@@ -78,7 +78,7 @@ body::before {
     pointer-events: none;
 }
 
-/* نوار ناوبری افقی بالا */
+/* نوار ناوبری بالا */
 .top-nav {
     position: sticky;
     top: 0;
@@ -86,11 +86,11 @@ body::before {
     background: linear-gradient(90deg, rgba(5, 8, 15, 0.96) 0%, rgba(20, 24, 38, 0.96) 100%);
     backdrop-filter: blur(12px);
     border-bottom: 2px solid var(--surface-border);
-    padding: 10px 18px;
+    padding: 11px 20px;
 }
 
 .nav-wrap {
-    max-width: 1260px;
+    max-width: 1360px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -109,7 +109,7 @@ body::before {
 
 .brand-title-box {
     font-family: "Cinzel", "Vazirmatn", sans-serif;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 900;
     color: var(--accent);
     line-height: 1.15;
@@ -117,7 +117,7 @@ body::before {
 .brand-title-box small {
     display: block;
     font-family: "Vazirmatn", sans-serif;
-    font-size: 11px;
+    font-size: 11.5px;
     color: #e2e8f0;
     font-weight: 700;
 }
@@ -134,9 +134,9 @@ body::before {
     color: #f8fafc;
     border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 999px;
-    padding: 6px 14px;
+    padding: 7px 15px;
     font-family: inherit;
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 800;
     cursor: pointer;
 }
@@ -155,15 +155,15 @@ body::before {
 }
 
 .main-shell {
-    max-width: 1260px;
+    max-width: 1360px;
     margin: 0 auto;
-    padding: 16px 16px 48px;
+    padding: 18px 18px 52px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
 }
 
-/* نوار افقی ۴ سبک طراحی با اندازه یکسان */
+/* نوار افقی ۴ سبک طراحی هم‌اندازه */
 .style-switcher-bar {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -173,13 +173,14 @@ body::before {
 
 .style-choice-btn {
     height: 100%;
+    min-height: 68px;
     background: rgba(15, 23, 42, 0.90);
     color: #ffffff;
     border: 2px solid rgba(250, 204, 21, 0.45);
-    border-radius: 16px;
-    padding: 12px 14px;
+    border-radius: 18px;
+    padding: 13px 16px;
     font-family: inherit;
-    font-size: 13.5px;
+    font-size: 14.5px;
     font-weight: 900;
     cursor: pointer;
     text-align: center;
@@ -199,7 +200,7 @@ body::before {
     box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.45);
 }
 .style-choice-btn small {
-    font-size: 11px;
+    font-size: 11.5px;
     font-weight: 700;
     opacity: 0.92;
 }
@@ -210,11 +211,11 @@ body::before {
     backdrop-filter: blur(12px);
     border: 2px solid var(--surface-border);
     border-radius: 26px;
-    padding: 20px 22px;
+    padding: 22px 24px;
     box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
     display: grid;
-    grid-template-columns: 265px 1fr;
-    gap: 20px;
+    grid-template-columns: 275px 1fr;
+    gap: 22px;
     align-items: center;
 }
 
@@ -229,7 +230,7 @@ body::before {
 
 .student-photo-box img {
     width: 100%;
-    height: 215px;
+    height: 220px;
     object-fit: cover;
     border-radius: 14px;
     display: block;
@@ -238,7 +239,7 @@ body::before {
 .student-photo-box span {
     display: block;
     margin-top: 6px;
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 900;
     color: #0b2144;
 }
@@ -260,9 +261,9 @@ body.theme-modern-edu .hero-center {
 }
 
 .cefr-mini-badge {
-    padding: 3px 10px;
+    padding: 4px 11px;
     border-radius: 8px;
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 900;
     color: #ffffff;
     cursor: pointer;
@@ -276,7 +277,7 @@ body.theme-modern-edu .hero-center {
 
 .hero-main-heading {
     font-family: "Cinzel", "Vazirmatn", sans-serif;
-    font-size: clamp(26px, 4.8vw, 46px);
+    font-size: clamp(28px, 4.8vw, 48px);
     font-weight: 900;
     color: #facc15;
     text-shadow: 0 4px 16px rgba(0, 0, 0, 0.65);
@@ -285,7 +286,7 @@ body.theme-modern-edu .hero-center {
 .hero-main-heading span {
     display: block;
     color: #ffffff;
-    font-size: clamp(21px, 3.6vw, 34px);
+    font-size: clamp(22px, 3.6vw, 35px);
 }
 body.theme-modern-edu .hero-main-heading { color: #1d4ed8; text-shadow: none; }
 body.theme-modern-edu .hero-main-heading span { color: #0f172a; }
@@ -296,8 +297,8 @@ body.theme-modern-edu .hero-main-heading span { color: #0f172a; }
     background: linear-gradient(90deg, #f59e0b 0%, #fde047 50%, #f59e0b 100%);
     color: #0f172a;
     font-weight: 900;
-    font-size: clamp(14px, 2.1vw, 17.5px);
-    padding: 5px 20px;
+    font-size: clamp(14.5px, 2.1vw, 18px);
+    padding: 6px 22px;
     border-radius: 10px;
 }
 
@@ -308,9 +309,9 @@ body.theme-modern-edu .hero-main-heading span { color: #0f172a; }
     background: rgba(7, 13, 25, 0.85);
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 5px 18px;
+    padding: 6px 18px;
     border-radius: 999px;
-    font-size: clamp(13.5px, 2vw, 17px);
+    font-size: clamp(14px, 2vw, 17.5px);
     font-weight: 900;
 }
 
@@ -324,26 +325,26 @@ body.theme-modern-edu .hero-main-heading span { color: #0f172a; }
     background: rgba(5, 9, 17, 0.85);
     border: 1.5px solid var(--accent);
     color: #facc15;
-    padding: 7px 16px;
+    padding: 8px 18px;
     border-radius: 14px;
-    font-size: 13.5px;
+    font-size: 14px;
     font-weight: 900;
     font-variant-numeric: tabular-nums;
 }
 
-/* چهار کارت اصلی در یک ردیف و چهار ستون افقی با اندازه یکسان */
-.four-horizontal-row {
+/* ردیف‌های ۵بخشی بزرگ و کنار هم */
+.five-big-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 14px;
     align-items: stretch;
 }
 
-.horiz-main-card {
+.big-five-card {
     height: 100%;
-    min-height: 215px;
-    border-radius: 20px;
-    padding: 20px 16px;
+    min-height: 245px;
+    border-radius: 22px;
+    padding: 22px 15px;
     color: #ffffff;
     text-align: center;
     cursor: pointer;
@@ -354,86 +355,66 @@ body.theme-modern-edu .hero-main-heading span { color: #0f172a; }
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
     font-family: inherit;
 }
 
-body.theme-luxury-glass .horiz-main-card {
+body.theme-luxury-glass .big-five-card {
     backdrop-filter: blur(14px);
     animation: floatCard 4.5s ease-in-out infinite;
 }
-body.theme-luxury-glass .horiz-main-card:nth-child(2) { animation-delay: 0.6s; }
-body.theme-luxury-glass .horiz-main-card:nth-child(3) { animation-delay: 1.2s; }
-body.theme-luxury-glass .horiz-main-card:nth-child(4) { animation-delay: 1.8s; }
+body.theme-luxury-glass .big-five-card:nth-child(2) { animation-delay: 0.4s; }
+body.theme-luxury-glass .big-five-card:nth-child(3) { animation-delay: 0.8s; }
+body.theme-luxury-glass .big-five-card:nth-child(4) { animation-delay: 1.2s; }
+body.theme-luxury-glass .big-five-card:nth-child(5) { animation-delay: 1.6s; }
 
 @keyframes floatCard {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-5px); }
 }
 
-.horiz-main-card:hover { transform: translateY(-4px); }
-.horiz-main-card.picked-main {
-    box-shadow: 0 0 0 4px #facc15, 0 18px 36px rgba(0, 0, 0, 0.5);
+.big-five-card:hover { transform: translateY(-4px); }
+.big-five-card.picked-main {
+    box-shadow: 0 0 0 4px #facc15, 0 18px 36px rgba(0, 0, 0, 0.52);
 }
 
-.hcard-1 { background: linear-gradient(155deg, #6d28d9 0%, #2e1065 100%); }
-.hcard-2 { background: linear-gradient(155deg, #15803d 0%, #052e16 100%); }
-.hcard-3 { background: linear-gradient(155deg, #1d4ed8 0%, #172554 100%); }
-.hcard-4 { background: linear-gradient(155deg, #d97706 0%, #78350f 100%); }
+/* رنگ‌بندی جذاب ۱۰ کارت بزرگ (۵ کارت در ردیف اول، ۵ کارت در ردیف دوم) */
+.b5-1 { background: linear-gradient(155deg, #6d28d9 0%, #2e1065 100%); }
+.b5-2 { background: linear-gradient(155deg, #15803d 0%, #052e16 100%); }
+.b5-3 { background: linear-gradient(155deg, #1d4ed8 0%, #172554 100%); }
+.b5-4 { background: linear-gradient(155deg, #d97706 0%, #78350f 100%); }
+.b5-5 { background: linear-gradient(155deg, #0f766e 0%, #042f2e 100%); }
 
-.hcard-icon {
-    width: 56px;
-    height: 56px;
+.b5-6 { background: linear-gradient(155deg, #0369a1 0%, #082f49 100%); }
+.b5-7 { background: linear-gradient(155deg, #be185d 0%, #500724 100%); }
+.b5-8 { background: linear-gradient(155deg, #4338ca 0%, #1e1b4b 100%); }
+.b5-9 { background: linear-gradient(155deg, #b91c1c 0%, #450a0a 100%); }
+.b5-10 { background: linear-gradient(155deg, #a16207 0%, #422006 100%); }
+
+.b5-icon {
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.18);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 32px;
+    flex-shrink: 0;
 }
 
-.hcard-title-fa { font-size: 17px; font-weight: 900; line-height: 1.3; }
-.hcard-sub-de { font-size: 12.5px; font-weight: 800; color: #f8fafc; opacity: 0.92; }
+.b5-title-fa { font-size: 18px; font-weight: 900; line-height: 1.35; }
+.b5-sub-de { font-size: 13px; font-weight: 800; color: #f8fafc; opacity: 0.92; }
 
-.hcard-action-pill {
+.b5-action-pill {
     background: rgba(9, 13, 22, 0.88);
     color: #facc15;
-    border: 1.5px solid rgba(250, 204, 21, 0.8);
+    border: 1.5px solid rgba(250, 204, 21, 0.85);
     border-radius: 999px;
-    padding: 6px 14px;
-    font-size: 12.5px;
-    font-weight: 900;
-    width: 100%;
-}
-
-/* نوار ابزارهای تکمیلی در ردیف منظم */
-.full-features-strip {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 14px;
-    align-items: stretch;
-}
-
-.feature-chip-btn {
-    height: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    color: #0b2144;
-    border: 2px solid #cbd5e1;
-    border-radius: 14px;
-    padding: 11px 12px;
-    font-family: inherit;
+    padding: 8px 14px;
     font-size: 13px;
     font-weight: 900;
-    cursor: pointer;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-.feature-chip-btn.active-chip {
-    background: #0b2144;
-    color: #facc15;
-    border-color: #facc15;
+    width: 100%;
 }
 
 /* پنل بازشونده محتوا */
@@ -443,7 +424,7 @@ body.theme-luxury-glass .horiz-main-card:nth-child(4) { animation-delay: 1.8s; }
     color: var(--drawer-ink);
     border: 2.5px solid var(--accent);
     border-radius: 22px;
-    padding: 20px 18px;
+    padding: 22px 20px;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
 }
 .drawer-panel.open { display: block; }
@@ -460,7 +441,7 @@ body.theme-luxury-glass .horiz-main-card:nth-child(4) { animation-delay: 1.8s; }
 }
 
 .drawer-title {
-    font-size: clamp(18px, 2.8vw, 22px);
+    font-size: clamp(19px, 2.8vw, 23px);
     font-weight: 900;
     color: #0b2144;
 }
@@ -470,9 +451,9 @@ body.theme-luxury-glass .horiz-main-card:nth-child(4) { animation-delay: 1.8s; }
     color: #ffffff;
     border: none;
     border-radius: 10px;
-    padding: 7px 14px;
+    padding: 8px 15px;
     font-family: inherit;
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 900;
     cursor: pointer;
 }
@@ -490,7 +471,7 @@ body.theme-luxury-glass .horiz-main-card:nth-child(4) { animation-delay: 1.8s; }
     background: linear-gradient(180deg, #fef9c3 0%, #ffffff 22%);
     border: 2px solid rgba(217, 119, 6, 0.35);
     border-radius: 18px;
-    padding: 15px 14px;
+    padding: 16px 15px;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
     display: flex;
     flex-direction: column;
@@ -498,7 +479,7 @@ body.theme-luxury-glass .horiz-main-card:nth-child(4) { animation-delay: 1.8s; }
 }
 
 .info-col-title {
-    font-size: 15.5px;
+    font-size: 16px;
     font-weight: 900;
     color: #0f172a;
     border-bottom: 2px solid #fde047;
@@ -524,14 +505,14 @@ body.theme-luxury-glass .horiz-main-card:nth-child(4) { animation-delay: 1.8s; }
     background: #f8fafc;
     border: 1px solid #cbd5e1;
     border-radius: 12px;
-    padding: 7px 5px;
+    padding: 8px 5px;
     font-variant-numeric: tabular-nums;
 }
 .clock-city { font-size: 11.5px; font-weight: 900; color: #0f172a; }
-.clock-val { font-size: 13.5px; font-weight: 900; color: #1d4ed8; }
+.clock-val { font-size: 14px; font-weight: 900; color: #1d4ed8; }
 
 .welcome-box-txt { text-align: center; font-size: 13.5px; font-weight: 800; color: #0f172a; }
-.welcome-box-txt strong { display: block; color: #b45309; font-size: 15px; margin: 6px 0; }
+.welcome-box-txt strong { display: block; color: #b45309; font-size: 15.5px; margin: 6px 0; }
 
 .wa-link-btn {
     display: block; width: 100%; text-align: center; text-decoration: none;
@@ -548,11 +529,11 @@ body.theme-luxury-glass .horiz-main-card:nth-child(4) { animation-delay: 1.8s; }
     background: linear-gradient(90deg, #070d19 0%, #1e293b 50%, #070d19 100%);
     border: 2px solid rgba(250, 204, 21, 0.6);
     border-radius: 999px;
-    padding: 12px 18px;
+    padding: 13px 18px;
     text-align: center;
     color: #facc15;
     font-weight: 900;
-    font-size: clamp(13.5px, 2.2vw, 18px);
+    font-size: clamp(14px, 2.2vw, 18.5px);
 }
 
 /* استایل عناصر داخلی */
@@ -606,20 +587,24 @@ textarea { min-height: 95px; resize: vertical; }
 .quiz-option.wrong { background: #dc2626; color: #ffffff; border-color: #991b1b; }
 
 /* واکنش‌گرا در تبلت و موبایل */
-@media (max-width: 1024px) {
+@media (max-width: 1180px) {
+    .five-big-row { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 960px) {
     .hero-banner { grid-template-columns: 1fr; }
     .student-photo-box { max-width: 290px; margin: 0 auto; }
-    .style-switcher-bar, .four-horizontal-row, .four-info-cols { grid-template-columns: repeat(2, 1fr); }
-    .full-features-strip { grid-template-columns: repeat(2, 1fr); }
+    .style-switcher-bar, .four-info-cols { grid-template-columns: repeat(2, 1fr); }
+    .five-big-row { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 600px) {
-    .main-shell { padding: 12px 12px 36px; gap: 12px; }
-    .style-switcher-bar, .four-horizontal-row, .full-features-strip, .four-info-cols, .two-way-cols {
+    .main-shell { padding: 12px 12px 40px; gap: 12px; }
+    .style-switcher-bar, .five-big-row, .four-info-cols, .two-way-cols {
         grid-template-columns: 1fr;
         gap: 10px;
     }
-    .horiz-main-card { min-height: auto; padding: 16px 14px; gap: 8px; }
+    .big-five-card { min-height: auto; padding: 18px 14px; }
     .search-bar-grid { grid-template-columns: 1fr; }
     .bottom-ribbon-bar { border-radius: 18px; }
 }
@@ -697,44 +682,80 @@ textarea { min-height: 95px; resize: vertical; }
         </div>
     </section>
 
-    <!-- چهار کارت اصلی در یک ردیف و چهار ستون افقی با اندازه یکسان -->
-    <section class="four-horizontal-row">
-        <button type="button" class="horiz-main-card hcard-1" id="mcard-podcasts" onclick="openSection('podcasts')">
-            <div class="hcard-icon">🎧</div>
-            <div class="hcard-title-fa">پادکست‌های آلمانی</div>
-            <div class="hcard-sub-de">Deutsche Podcasts</div>
-            <div class="hcard-action-pill">▶ شنیدن پادکست</div>
+    <!-- ردیف اول: ۵ بخش بزرگ کنار هم -->
+    <section class="five-big-row" aria-label="ردیف اول بخش‌های اصلی">
+        <button type="button" class="big-five-card b5-1" id="mcard-podcasts" onclick="openSection('podcasts')">
+            <div class="b5-icon">🎧</div>
+            <div class="b5-title-fa">پادکست‌های آلمانی</div>
+            <div class="b5-sub-de">Deutsche Podcasts</div>
+            <div class="b5-action-pill">▶ شنیدن پادکست</div>
         </button>
 
-        <button type="button" class="horiz-main-card hcard-2" id="mcard-levels" onclick="openSection('levels')">
-            <div class="hcard-icon">📚</div>
-            <div class="hcard-title-fa">درس‌های A1 تا C1</div>
-            <div class="hcard-sub-de">Deutsch Kurse</div>
-            <div class="hcard-action-pill">▶ شروع درس‌ها</div>
+        <button type="button" class="big-five-card b5-2" id="mcard-levels" onclick="openSection('levels')">
+            <div class="b5-icon">📚</div>
+            <div class="b5-title-fa">درس‌های A1 تا C1</div>
+            <div class="b5-sub-de">Deutsch Kurse</div>
+            <div class="b5-action-pill">▶ شروع درس‌ها</div>
         </button>
 
-        <button type="button" class="horiz-main-card hcard-3" id="mcard-twoway" onclick="openSection('twoway')">
-            <div class="hcard-icon">💬</div>
-            <div class="hcard-title-fa">مکالمه و ترجمه فارسی</div>
-            <div class="hcard-sub-de">Dialogue &amp; Übersetzung</div>
-            <div class="hcard-action-pill">▶ ترجمه و لغت</div>
+        <button type="button" class="big-five-card b5-3" id="mcard-twoway" onclick="openSection('twoway')">
+            <div class="b5-icon">💬</div>
+            <div class="b5-title-fa">مکالمه و ترجمه فارسی</div>
+            <div class="b5-sub-de">Dialogue &amp; Übersetzung</div>
+            <div class="b5-action-pill">▶ ترجمه و مکالمه</div>
         </button>
 
-        <button type="button" class="horiz-main-card hcard-4" id="mcard-quiz" onclick="openSection('quiz')">
-            <div class="hcard-icon">📝</div>
-            <div class="hcard-title-fa">تمرین و آزمون</div>
-            <div class="hcard-sub-de">Übungen &amp; Tests</div>
-            <div class="hcard-action-pill">▶ شروع آزمون</div>
+        <button type="button" class="big-five-card b5-4" id="mcard-quiz" onclick="openSection('quiz')">
+            <div class="b5-icon">📝</div>
+            <div class="b5-title-fa">تمرین و آزمون</div>
+            <div class="b5-sub-de">Übungen &amp; Tests</div>
+            <div class="b5-action-pill">▶ شروع آزمون</div>
+        </button>
+
+        <button type="button" class="big-five-card b5-5" id="mcard-dict" onclick="openSection('dict')">
+            <div class="b5-icon">📖</div>
+            <div class="b5-title-fa">فرهنگ لغات آنلاین</div>
+            <div class="b5-sub-de">Online Wörterbuch</div>
+            <div class="b5-action-pill">▶ جستجوی لغت</div>
         </button>
     </section>
 
-    <!-- نوار افقی ابزارهای تکمیلی هم‌اندازه -->
-    <section class="full-features-strip">
-        <button type="button" class="feature-chip-btn" id="chip-dict" onclick="openSection('dict')">📖 فرهنگ لغات آنلاین</button>
-        <button type="button" class="feature-chip-btn" id="chip-translator" onclick="openSection('translator')">🌐 مترجم نامحدود + عکس</button>
-        <button type="button" class="feature-chip-btn" id="chip-grammar" onclick="openSection('grammar')">📐 گرامر و کتاب A1–C1</button>
-        <button type="button" class="feature-chip-btn" id="chip-solver" onclick="openSection('solver')">🧩 حل‌کننده سؤال و گرامر</button>
-        <button type="button" class="feature-chip-btn" id="chip-videos" onclick="openSection('videos')">🎬 ویدیوهای آموزشی</button>
+    <!-- ردیف دوم: ۵ بخش بزرگ کنار هم -->
+    <section class="five-big-row" aria-label="ردیف دوم بخش‌های آموزشی">
+        <button type="button" class="big-five-card b5-6" id="mcard-translator" onclick="openSection('translator')">
+            <div class="b5-icon">🌐</div>
+            <div class="b5-title-fa">مترجم نامحدود + عکس</div>
+            <div class="b5-sub-de">Übersetzer &amp; Foto-Scan</div>
+            <div class="b5-action-pill">▶ ترجمه و اسکن</div>
+        </button>
+
+        <button type="button" class="big-five-card b5-7" id="mcard-grammar" onclick="openSection('grammar')">
+            <div class="b5-icon">📐</div>
+            <div class="b5-title-fa">گرامر و کتاب A1–C1</div>
+            <div class="b5-sub-de">Grammatik &amp; Bücher</div>
+            <div class="b5-action-pill">▶ قواعد و کتاب‌ها</div>
+        </button>
+
+        <button type="button" class="big-five-card b5-8" id="mcard-solver" onclick="openSection('solver')">
+            <div class="b5-icon">🧩</div>
+            <div class="b5-title-fa">حل‌کننده سؤال و گرامر</div>
+            <div class="b5-sub-de">Aufgaben &amp; Tipps</div>
+            <div class="b5-action-pill">▶ حل تمرین</div>
+        </button>
+
+        <button type="button" class="big-five-card b5-9" id="mcard-videos" onclick="openSection('videos')">
+            <div class="b5-icon">🎬</div>
+            <div class="b5-title-fa">ویدیوهای آموزشی</div>
+            <div class="b5-sub-de">Lernvideos A1–C1</div>
+            <div class="b5-action-pill">▶ تماشای ویدیو</div>
+        </button>
+
+        <button type="button" class="big-five-card b5-10" id="mcard-worldinfo" onclick="openSection('worldinfo')">
+            <div class="b5-icon">🕒</div>
+            <div class="b5-title-fa">ساعت و تاریخ جهانی</div>
+            <div class="b5-sub-de">Weltzeit &amp; Info</div>
+            <div class="b5-action-pill">▶ مشاهده ساعت‌ها</div>
+        </button>
     </section>
 
     <!-- پنجره بازشونده محتوای کامل هر بخش -->
@@ -1037,11 +1058,8 @@ window.jumpToLevel = function(lvl) {
 };
 
 window.openSection = function(sec) {
-    document.querySelectorAll('.horiz-main-card').forEach(function(c) {
+    document.querySelectorAll('.big-five-card').forEach(function(c) {
         c.classList.toggle('picked-main', c.id === 'mcard-' + sec);
-    });
-    document.querySelectorAll('.feature-chip-btn').forEach(function(b) {
-        b.classList.toggle('active-chip', b.id === 'chip-' + sec);
     });
 
     var panel = document.getElementById('drawerPanel');
@@ -1058,7 +1076,8 @@ window.openSection = function(sec) {
         translator: '🌐 مترجم نامحدود هر زبان به هر زبان + اسکن عکس',
         grammar: '📐 گرامر و کتاب‌های A1 تا C1',
         solver: '🧩 حل‌کننده نامحدود سؤال و گرامر + متن و اسکن عکس',
-        videos: '🎬 مجموعه کامل ویدیوهای آموزشی'
+        videos: '🎬 مجموعه کامل ویدیوهای آموزشی',
+        worldinfo: '🕒 ساعت و تاریخ روز جهانی و اطلاعات مرکز آموزشی'
     };
 
     heading.textContent = titles[sec] || 'بخش آموزشی';
@@ -1073,16 +1092,35 @@ window.openSection = function(sec) {
     else if (sec === 'solver') paintSolverSection(bodyEl);
     else if (sec === 'quiz') paintQuizSection(bodyEl);
     else if (sec === 'videos') paintVideosSection(bodyEl);
+    else if (sec === 'worldinfo') paintWorldInfoSection(bodyEl);
 
     panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
 
 window.closeDrawerPanel = function() {
-    document.querySelectorAll('.horiz-main-card').forEach(function(c) { c.classList.remove('picked-main'); });
-    document.querySelectorAll('.feature-chip-btn').forEach(function(b) { b.classList.remove('active-chip'); });
+    document.querySelectorAll('.big-five-card').forEach(function(c) { c.classList.remove('picked-main'); });
     var panel = document.getElementById('drawerPanel');
     if (panel) panel.classList.remove('open');
 };
+
+function paintWorldInfoSection(container) {
+    var now = new Date();
+    var af = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Kabul' });
+    var ir = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Tehran' });
+    var de = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Europe/Berlin' });
+    var utc = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'UTC' });
+    var dateStr = now.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+    container.innerHTML = '<div class="card-block">' +
+        '<div style="font-size:16px;font-weight:900;color:#0b2144;margin-bottom:8px;">🌍 تاریخ روز جهانی: ' + dateStr + '</div>' +
+        '<div class="two-way-cols">' +
+            '<div class="answer-banner">🇦🇫 افغانستان (کابل): <strong>' + af + '</strong></div>' +
+            '<div class="answer-banner">🇮🇷 ایران (تهران): <strong>' + ir + '</strong></div>' +
+            '<div class="answer-banner">🇩🇪 اروپا (برلین): <strong>' + de + '</strong></div>' +
+            '<div class="answer-banner">🌍 ساعت جهانی (UTC): <strong>' + utc + '</strong></div>' +
+        '</div>' +
+    '</div>';
+}
 
 function paintLevelsSection(container) {
     var html = '<div class="level-rows">';
