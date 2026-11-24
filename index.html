@@ -94,7 +94,7 @@ html, body {
 
 .hero-stats-text { font-size: 13.5px; font-weight: 700; color: #f3e8ff; margin-bottom: 16px; line-height: 1.8; }
 
-.hero-controls-row { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.hero-controls-row { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
 
 .hero-lang-select {
     background: rgba(24, 9, 53, 0.85); color: #ffffff; border: 1.5px solid rgba(255, 255, 255, 0.42);
@@ -104,7 +104,16 @@ html, body {
 
 .hero-welcome-btn {
     background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); color: #1e1035; border: none;
-    border-radius: 14px; padding: 9px 22px; font-family: inherit; font-size: 14px; font-weight: 900; cursor: pointer;
+    border-radius: 14px; padding: 9px 18px; font-family: inherit; font-size: 13.5px; font-weight: 900; cursor: pointer;
+}
+
+.hero-levels-only-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #ffffff; border: 1.5px solid rgba(255,255,255,0.45);
+    border-radius: 14px; padding: 9px 18px; font-family: inherit; font-size: 13.5px; font-weight: 900; cursor: pointer;
+}
+.hero-levels-only-btn.active {
+    background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%);
+    box-shadow: 0 0 0 2px #fde047;
 }
 
 .hero-start-btn {
@@ -122,6 +131,7 @@ html, body {
     overflow: hidden; box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32); transition: transform 0.2s ease;
 }
 .level-tile:hover { transform: translateY(-3px); }
+.level-tile.selected-tile { border-color: #facc15; box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.55); }
 
 .tile-top-bar { padding: 7px 12px; display: flex; align-items: center; justify-content: space-between; font-weight: 900; font-size: 12px; color: #ffffff; }
 .tile-body-box { padding: 14px 12px 16px; display: flex; flex-direction: column; align-items: center; gap: 4px; color: #111827; }
@@ -139,6 +149,13 @@ html, body {
 .three-col-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; align-items: start; }
 .grid-divider-line { grid-column: 1 / -1; border: none; border-top: 2.5px dashed rgba(250, 204, 21, 0.65); margin: 8px 0 4px; }
 .stacked-slot-item { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 12px; }
+
+/* حالت نمایش تنها سطوح و درس‌ها */
+.levels-only-mode .row-group:not(#group-lessons),
+.levels-only-mode .grid-divider-line,
+.levels-only-mode .stacked-slot-item:not(:has(#group-lessons)) {
+    display: none !important;
+}
 
 .row-group { --row-main: var(--c1-main); --row-dark: var(--c1-dark); --row-soft: var(--c1-soft); }
 .row-group[data-color="blue"] { --row-main: var(--c1-main); --row-dark: var(--c1-dark); --row-soft: var(--c1-soft); }
@@ -275,13 +292,6 @@ textarea { min-height: 70px; resize: vertical; }
 .modal-backdrop.open { display: flex; }
 .modal-card { background: #ffffff; color: #111827; max-width: 520px; width: 100%; border-radius: 16px; padding: 22px; border-top: 5px solid #f59e0b; }
 
-.confetti-layer { position: fixed; inset: 0; pointer-events: none; z-index: 9998; overflow: hidden; }
-.confetti-piece { position: absolute; top: -16px; width: 10px; height: 16px; border-radius: 2px; animation: confettiFall 2.2s linear forwards; }
-@keyframes confettiFall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
-}
-
 .site-footer {
     max-width: 1120px; margin: 22px auto 0; padding: 13px 18px; background: rgba(24, 9, 53, 0.92); color: #ffffff;
     border-radius: 999px; border: 1.5px solid rgba(250, 204, 21, 0.55); display: flex; align-items: center;
@@ -300,7 +310,6 @@ textarea { min-height: 70px; resize: vertical; }
 </head>
 <body>
 
-<div class="confetti-layer" id="confettiLayer"></div>
 <input type="file" id="sharedOcrFileInput" accept="image/*" capture="environment" style="display:none;">
 
 <div class="modal-backdrop" id="welcomeModal">
@@ -308,7 +317,7 @@ textarea { min-height: 70px; resize: vertical; }
         <div style="font-size:13px;font-weight:900;color:#b45309;margin-bottom:4px;">👑 KING ASAD – مرکز آموزش زبان آلمانی</div>
         <h2 id="welcomeTitle" style="font-size:21px;font-weight:900;margin-bottom:8px;">خوش آمدید! به دنیای یادگیری زبان آلمانی خوش آمدید</h2>
         <p style="font-size:13.5px;color:#374151;margin-bottom:12px;">
-            ویدیوهای <strong>Deutsche Welle (A1, A2, B1)</strong> و ویدیوهای آموزشی <strong>B2 و C1</strong> هم در هر درس طبق موضوع همان درس تنظیم شده‌اند و هم مجموعه کامل آن‌ها در بخش ویدیوهای آموزشی باقی مانده است.
+            می‌توانید با گزینه <strong>«نمایش تنها سطوح»</strong> صفحه را کاملاً منظم کنید تا تنها سطوح و درس‌های سطح انتخاب‌شده نمایش داده شوند.
         </p>
         <p style="font-size:13px;color:#1e3a8a;font-weight:800;margin-bottom:14px;">
             تماس مستقیم با مدیر: <span dir="ltr">+4915212898695</span>
@@ -349,6 +358,9 @@ textarea { min-height: 70px; resize: vertical; }
                 <option value="ur">🇵🇰 اردو (UR)</option>
                 <option value="ps">🇦🇫 پښتو (PS)</option>
             </select>
+            <button type="button" class="hero-levels-only-btn" id="btnToggleLevelsOnly" onclick="toggleLevelsOnlyMode()">
+                🎯 نمایش تنها سطوح
+            </button>
             <button type="button" class="hero-welcome-btn" id="btnOpenWelcome">🎉 خوش‌آمدید</button>
         </div>
 
@@ -359,46 +371,46 @@ textarea { min-height: 70px; resize: vertical; }
     </section>
 
     <section class="chaharchookat-grid" id="chaharchookatLevels">
-        <button type="button" class="level-tile tile-a1" onclick="openLevelFromTile('A1')">
+        <button type="button" class="level-tile tile-a1" id="tile-A1" onclick="openLevelFromTile('A1')">
             <span class="tile-top-bar"><span>DW A1</span><span>📘</span></span>
             <span class="tile-body-box">
                 <span class="tile-code">A1</span>
-                <span class="tile-sub">درس ۱۹ • Deutsche Welle A1</span>
+                <span class="tile-sub">درس ۱۹ • کلیک برای نمایش درس‌ها</span>
             </span>
         </button>
-        <button type="button" class="level-tile tile-a2" onclick="openLevelFromTile('A2')">
+        <button type="button" class="level-tile tile-a2" id="tile-A2" onclick="openLevelFromTile('A2')">
             <span class="tile-top-bar"><span>DW A2</span><span>📗</span></span>
             <span class="tile-body-box">
                 <span class="tile-code">A2</span>
-                <span class="tile-sub">درس ۲۰ • Deutsche Welle A2</span>
+                <span class="tile-sub">درس ۲۰ • کلیک برای نمایش درس‌ها</span>
             </span>
         </button>
-        <button type="button" class="level-tile tile-b1" onclick="openLevelFromTile('B1')">
+        <button type="button" class="level-tile tile-b1" id="tile-B1" onclick="openLevelFromTile('B1')">
             <span class="tile-top-bar"><span>DW B1</span><span>📙</span></span>
             <span class="tile-body-box">
                 <span class="tile-code">B1</span>
-                <span class="tile-sub">درس ۳۰ • Deutsche Welle B1</span>
+                <span class="tile-sub">درس ۳۰ • کلیک برای نمایش درس‌ها</span>
             </span>
         </button>
-        <button type="button" class="level-tile tile-b2" onclick="openLevelFromTile('B2')">
+        <button type="button" class="level-tile tile-b2" id="tile-B2" onclick="openLevelFromTile('B2')">
             <span class="tile-top-bar"><span>VID B2</span><span>📕</span></span>
             <span class="tile-body-box">
                 <span class="tile-code">B2</span>
-                <span class="tile-sub">درس ۳۰ • ویدیوی ویژه B2</span>
+                <span class="tile-sub">درس ۳۰ • کلیک برای نمایش درس‌ها</span>
             </span>
         </button>
-        <button type="button" class="level-tile tile-c1" onclick="openLevelFromTile('C1')">
+        <button type="button" class="level-tile tile-c1" id="tile-C1" onclick="openLevelFromTile('C1')">
             <span class="tile-top-bar"><span>VID C1</span><span>🎓</span></span>
             <span class="tile-body-box">
                 <span class="tile-code">C1</span>
-                <span class="tile-sub">درس ۳۰ • ویدیوی ویژه C1</span>
+                <span class="tile-sub">درس ۳۰ • کلیک برای نمایش درس‌ها</span>
             </span>
         </button>
-        <button type="button" class="level-tile tile-all" onclick="openLevelFromTile('ALL')">
+        <button type="button" class="level-tile tile-all" id="tile-ALL" onclick="openLevelFromTile('ALL')">
             <span class="tile-top-bar"><span>ALL</span><span>📚</span></span>
             <span class="tile-body-box">
                 <span class="tile-code">A1–C1</span>
-                <span class="tile-sub">همه ۱۲۹ درس • باز کردن درس‌ها</span>
+                <span class="tile-sub">همه ۱۲۹ درس • کلیک برای نمایش درس‌ها</span>
             </span>
         </button>
     </section>
@@ -574,7 +586,7 @@ textarea { min-height: 70px; resize: vertical; }
 
         <hr class="grid-divider-line">
 
-        <!-- Section 11: بخش ویدیوهای آموزشی و ارتباط با KING ASAD -->
+        <!-- Section 11 -->
         <div class="stacked-slot-item">
             <section class="row-group" data-color="orange" id="group-contact">
                 <button type="button" class="row-trigger" onclick="toggleMainRow('contact', false)">
@@ -584,7 +596,7 @@ textarea { min-height: 70px; resize: vertical; }
                     </span>
                     <span class="row-bar">
                         <span class="row-bar-content">
-                            <span class="row-title" id="title-contact">مجموعه کامل ویدیوهای آموزشی (Deutsche Welle A1–B1، ویدیوهای B2–C1 و ۶ ویدیوی جدید) + ارتباط با KING ASAD</span>
+                            <span class="row-title" id="title-contact">مجموعه کامل ویدیوهای آموزشی (Deutsche Welle A1–B1، ویدیوهای B2–C1 و ویدیوهای جدید) + ارتباط با KING ASAD</span>
                             <span class="row-desc" id="desc-contact">همه ویدیوهای سطوح و ویدیوهای آموزشی بدون حذف شدن در این بخش جمع شده‌اند • تماس: +4915212898695</span>
                         </span>
                     </span>
@@ -616,20 +628,20 @@ var SPEECH_LANGS = [
 ];
 
 var UI_TRANSLATIONS = {
-    fa: { dir: 'rtl', openText: 'باز کردن', closeText: 'بستن', lessonPrefix: 'درس', allLevelsBtn: 'همه سطوح (۱۲۹ درس)', nextPageBtn: '➡ صفحه بعدی', descLabel: '📌 توضیحات درس', videoStartLabel: '⏱ شروع ویدیو از ثانیه', applyStartBtn: 'اعمال زمان شروع' },
-    de: { dir: 'ltr', openText: 'Öffnen', closeText: 'Schließen', lessonPrefix: 'Lektion', allLevelsBtn: 'Alle Stufen (129 Lektionen)', nextPageBtn: '➡ Nächste Seite', descLabel: '📌 Beschreibung', videoStartLabel: '⏱ Video-Start bei Sekunde', applyStartBtn: 'Startzeit anwenden' },
-    en: { dir: 'ltr', openText: 'Open', closeText: 'Close', lessonPrefix: 'Lesson', allLevelsBtn: 'All Levels (129 Lessons)', nextPageBtn: '➡ Next Page', descLabel: '📌 Lesson Notes', videoStartLabel: '⏱ Video starts at second', applyStartBtn: 'Apply Start Time' },
-    tr: { dir: 'ltr', openText: 'Aç', closeText: 'Kapat', lessonPrefix: 'Ders', allLevelsBtn: 'Tüm Seviyeler (129 Ders)', nextPageBtn: '➡ Sonraki Sayfa', descLabel: '📌 Ders Açıklaması', videoStartLabel: '⏱ Video başlangıcı (sn)', applyStartBtn: 'Başlangıcı Uygula' },
-    ar: { dir: 'rtl', openText: 'فتح', closeText: 'إغلاق', lessonPrefix: 'الدرس', allLevelsBtn: 'جميع المستويات (١٢٩ درساً)', nextPageBtn: '➡ الصفحة التالية', descLabel: '📌 شرح الدرس', videoStartLabel: '⏱ يبدأ الفيديو من الثانية', applyStartBtn: 'تطبيق وقت البدء' },
-    ps: { dir: 'rtl', openText: 'پرانیستل', closeText: 'تړل', lessonPrefix: 'لوست', allLevelsBtn: 'ټولې کچې (۱۲۹ لوستونه)', nextPageBtn: '➡ بله پاڼه', descLabel: '📌 د لوست توضیحات', videoStartLabel: '⏱ ویډیو له دې ثانیې پیلېږي', applyStartBtn: 'د پیل وخت تطبیق کړئ' },
-    ur: { dir: 'rtl', openText: 'کھولیں', closeText: 'بند کریں', lessonPrefix: 'سبق', allLevelsBtn: 'تمام لیولز (۱۲۹ اسباق)', nextPageBtn: '➡ اگلا صفحہ', descLabel: '📌 سبق کی تفصیل', videoStartLabel: '⏱ ویڈیو شروع ہونے کا وقت (سیکنڈ)', applyStartBtn: 'شروع کا وقت لاگو کریں' }
+    fa: { dir: 'rtl', openText: 'باز کردن', closeText: 'بستن', lessonPrefix: 'درس', allLevelsBtn: 'همه سطوح (۱۲۹ درس)', nextPageBtn: '➡ صفحه بعدی', descLabel: '📌 توضیحات درس', videoStartLabel: '⏱ شروع ویدیو از ثانیه', applyStartBtn: 'اعمال زمان شروع', levelsOnlyBtn: '🎯 نمایش تنها سطوح', fullViewBtn: '📚 نمایش همه بخش‌ها' },
+    de: { dir: 'ltr', openText: 'Öffnen', closeText: 'Schließen', lessonPrefix: 'Lektion', allLevelsBtn: 'Alle Stufen (129 Lektionen)', nextPageBtn: '➡ Nächste Seite', descLabel: '📌 Beschreibung', videoStartLabel: '⏱ Video-Start bei Sekunde', applyStartBtn: 'Startzeit anwenden', levelsOnlyBtn: '🎯 Nur Stufen anzeigen', fullViewBtn: '📚 Alle Bereiche anzeigen' },
+    en: { dir: 'ltr', openText: 'Open', closeText: 'Close', lessonPrefix: 'Lesson', allLevelsBtn: 'All Levels (129 Lessons)', nextPageBtn: '➡ Next Page', descLabel: '📌 Lesson Notes', videoStartLabel: '⏱ Video starts at second', applyStartBtn: 'Apply Start Time', levelsOnlyBtn: '🎯 Levels Only', fullViewBtn: '📚 All Sections' },
+    tr: { dir: 'ltr', openText: 'Aç', closeText: 'Kapat', lessonPrefix: 'Ders', allLevelsBtn: 'Tüm Seviyeler (129 Ders)', nextPageBtn: '➡ Sonraki Sayfa', descLabel: '📌 Ders Açıklaması', videoStartLabel: '⏱ Video başlangıcı (sn)', applyStartBtn: 'Başlangıcı Uygula', levelsOnlyBtn: '🎯 Sadece Seviyeler', fullViewBtn: '📚 Tüm Bölümler' },
+    ar: { dir: 'rtl', openText: 'فتح', closeText: 'إغلاق', lessonPrefix: 'الدرس', allLevelsBtn: 'جميع المستويات (١٢٩ درساً)', nextPageBtn: '➡ الصفحة التالية', descLabel: '📌 شرح الدرس', videoStartLabel: '⏱ يبدأ الفيديو من الثانية', applyStartBtn: 'تطبيق وقت البدء', levelsOnlyBtn: '🎯 المستويات فقط', fullViewBtn: '📚 جميع الأقسام' },
+    ps: { dir: 'rtl', openText: 'پرانیستل', closeText: 'تړل', lessonPrefix: 'لوست', allLevelsBtn: 'ټولې کچې (۱۲۹ لوستونه)', nextPageBtn: '➡ بله پاڼه', descLabel: '📌 د لوست توضیحات', videoStartLabel: '⏱ ویډیو له دې ثانیې پیلېږي', applyStartBtn: 'د پیل وخت تطبیق کړئ', levelsOnlyBtn: '🎯 یوازې کچې', fullViewBtn: '📚 ټولې برخې' },
+    ur: { dir: 'rtl', openText: 'کھولیں', closeText: 'بند کریں', lessonPrefix: 'سبق', allLevelsBtn: 'تمام لیولز (۱۲۹ اسباق)', nextPageBtn: '➡ اگلا صفحہ', descLabel: '📌 سبق کی تفصیل', videoStartLabel: '⏱ ویڈیو شروع ہونے کا وقت (سیکنڈ)', applyStartBtn: 'شروع کا وقت لاگو کریں', levelsOnlyBtn: '🎯 صرف لیولز', fullViewBtn: '📚 تمام سیکشنز' }
 };
 
 var currentSiteLang = 'fa';
 var selectedAudioVoiceLang = 'de-DE';
 var activeOcrTargetId = null;
+var levelsOnlyMode = false;
 
-/* ویدیوهای سطوح: A1, A2, B1 از Deutsche Welle و B2, C1 از ویدیوهای دیگر */
 var levelVideos = {
     A1: { id: '4-eDoThe6qo', source: 'Deutsche Welle (DW)', title: 'Deutsche Welle – Nicos Weg A1' },
     A2: { id: 'Lg5P2w_Ro1c', source: 'Deutsche Welle (DW)', title: 'Deutsche Welle – Nicos Weg A2' },
@@ -638,32 +650,30 @@ var levelVideos = {
     C1: { id: 'lr5nQObcSY0', source: 'ویدیوی آموزشی C1', title: 'ویدیوی آموزشی سطح C1 – ساختارها و افعال پیشرفته' }
 };
 
-/* مجموعه کامل همه ویدیوهای آموزشی (بدون حذف هیچ ویدیویی) */
 var ALL_TRAINING_VIDEOS = [
-    { id: '4-eDoThe6qo', level: 'A1', source: 'Deutsche Welle (DW)', title: 'Deutsche Welle A1 – Nicos Weg (سطح A1)', desc: 'ویدیوی رسمی Deutsche Welle برای سطح A1 (سلام، معرفی، زندگی روزمره).' },
-    { id: 'Lg5P2w_Ro1c', level: 'A2', source: 'Deutsche Welle (DW)', title: 'Deutsche Welle A2 – Nicos Weg (سطح A2)', desc: 'ویدیوی رسمی Deutsche Welle برای سطح A2 (مکالمات، سفر، کار و روتین).' },
-    { id: 'LkufozluseI', level: 'B1', source: 'Deutsche Welle (DW)', title: 'Deutsche Welle B1 – Nicos Weg (سطح B1)', desc: 'ویدیوی رسمی Deutsche Welle برای سطح B1 (بحث، استدلال و موقعیت‌های اجتماعی).' },
-    { id: 'ZpLXfkYC1H4', level: 'B2', source: 'ویدیوی آموزشی B2', title: 'ویدیوی آموزشی سطح B2 – 100 wichtige Wörter', desc: 'ویدیوی آموزشی ویژه سطح B2 برای واژگان تحلیلی و کلیدی.' },
-    { id: 'lr5nQObcSY0', level: 'C1', source: 'ویدیوی آموزشی C1', title: 'ویدیوی آموزشی سطح C1 – 500 Verben & Aufbau', desc: 'ویدیوی آموزشی ویژه سطح C1 برای افعال و ساختارهای پیشرفته.' },
-    { id: 'L6jb3CijCnE', level: 'A1', source: 'ویدیوی آموزشی جدید ۱', title: 'ویدیوی جدید ۱ – لغات و واژگان آلمانی (Wortschatz)', desc: 'مرور واژگان پرکاربرد آلمانی با تلفظ واضح.' },
-    { id: 'bN0CYbXomqo', level: 'A1', source: 'ویدیوی آموزشی جدید ۲', title: 'ویدیوی جدید ۲ – ۱۰۰ فعل مهم آلمانی (100 Verben)', desc: 'آشنایی با ۱۰۰ فعل کاربردی برای ساخت جمله.' },
-    { id: 'wv84cwyTiNc', level: 'A2', source: 'ویدیوی آموزشی جدید ۳', title: 'ویدیوی جدید ۳ – ۱۰۰ سؤال و جواب رایج (100 Fragen & Antworten)', desc: 'تمرین پرسش و پاسخ روزمره به زبان آلمانی.' },
-    { id: '2ObeTuUgu-Y', level: 'B1', source: 'ویدیوی آموزشی جدید ۵', title: 'ویدیوی جدید ۵ – ۱۰۰ فعل گذشته (100 Verben Vergangenheit)', desc: 'تمرین افعال در زمان گذشته برای روایت داستان و تجربه.' }
+    { id: '4-eDoThe6qo', level: 'A1', source: 'Deutsche Welle (DW)', title: 'Deutsche Welle A1 – Nicos Weg (سطح A1)', desc: 'ویدیوی رسمی Deutsche Welle برای سطح A1.' },
+    { id: 'Lg5P2w_Ro1c', level: 'A2', source: 'Deutsche Welle (DW)', title: 'Deutsche Welle A2 – Nicos Weg (سطح A2)', desc: 'ویدیوی رسمی Deutsche Welle برای سطح A2.' },
+    { id: 'LkufozluseI', level: 'B1', source: 'Deutsche Welle (DW)', title: 'Deutsche Welle B1 – Nicos Weg (سطح B1)', desc: 'ویدیوی رسمی Deutsche Welle برای سطح B1.' },
+    { id: 'ZpLXfkYC1H4', level: 'B2', source: 'ویدیوی آموزشی B2', title: 'ویدیوی آموزشی سطح B2 – 100 wichtige Wörter', desc: 'ویدیوی آموزشی ویژه سطح B2.' },
+    { id: 'lr5nQObcSY0', level: 'C1', source: 'ویدیوی آموزشی C1', title: 'ویدیوی آموزشی سطح C1 – 500 Verben & Aufbau', desc: 'ویدیوی آموزشی ویژه سطح C1.' },
+    { id: 'L6jb3CijCnE', level: 'A1', source: 'ویدیوی آموزشی جدید ۱', title: 'ویدیوی جدید ۱ – لغات و واژگان آلمانی (Wortschatz)', desc: 'مرور واژگان پرکاربرد آلمانی.' },
+    { id: 'bN0CYbXomqo', level: 'A1', source: 'ویدیوی آموزشی جدید ۲', title: 'ویدیوی جدید ۲ – ۱۰۰ فعل مهم آلمانی (100 Verben)', desc: 'آشنایی با ۱۰۰ فعل کاربردی.' },
+    { id: 'wv84cwyTiNc', level: 'A2', source: 'ویدیوی آموزشی جدید ۳', title: 'ویدیوی جدید ۳ – ۱۰۰ سؤال و جواب رایج', desc: 'تمرین پرسش و پاسخ روزمره.' },
+    { id: '2ObeTuUgu-Y', level: 'B1', source: 'ویدیوی آموزشی جدید ۵', title: 'ویدیوی جدید ۵ – ۱۰۰ فعل گذشته', desc: 'تمرین افعال در زمان گذشته.' }
 ];
 
-/* جابجایی و تنظیم شروع ویدیو دقیقاً مطابق موضوع هر درس */
 function getLessonTopicVideo(lvl, idx, title) {
     var t = String(title || '').toLowerCase();
     var baseVid = levelVideos[lvl] || levelVideos.A1;
 
     if (lvl === 'A1' || lvl === 'A2' || lvl === 'B1') {
         var dwStart = 10 + (idx * 18);
-        var cue = 'Deutsche Welle (' + lvl + ') – بخش موضوع «' + title + '»';
+        var cue = 'Deutsche Welle (' + lvl + ') – موضوع «' + title + '»';
         if (t.indexOf('سلام') !== -1 || t.indexOf('معرفی') !== -1) { dwStart = 8; cue = 'DW ' + lvl + ': معرفی و سلام‌وعلیک'; }
         else if (t.indexOf('کشور') !== -1 || t.indexOf('ملیت') !== -1) { dwStart = 55; cue = 'DW ' + lvl + ': کشورها و ملیت‌ها'; }
         else if (t.indexOf('خانواده') !== -1) { dwStart = 105; cue = 'DW ' + lvl + ': خانواده و روابط'; }
         else if (t.indexOf('ساعت') !== -1 || t.indexOf('زمان') !== -1) { dwStart = 150; cue = 'DW ' + lvl + ': زمان و برنامه'; }
-        else if (t.indexOf('غذا') !== -1 || t.indexOf('کافه') !== -1 || t.indexOf('رستورانت') !== -1) { dwStart = 195; cue = 'DW ' + lvl + ': غذا، نوشیدنی و رستورانت'; }
+        else if (t.indexOf('غذا') !== -1 || t.indexOf('کافه') !== -1 || t.indexOf('رستورانت') !== -1) { dwStart = 195; cue = 'DW ' + lvl + ': غذا و رستورانت'; }
         else if (t.indexOf('خرید') !== -1 || t.indexOf('کار') !== -1) { dwStart = 240; cue = 'DW ' + lvl + ': خرید و کار روزمره'; }
         return { id: baseVid.id, start: dwStart, cueNote: cue };
     }
@@ -671,16 +681,15 @@ function getLessonTopicVideo(lvl, idx, title) {
     if (lvl === 'B2') {
         return { id: 'ZpLXfkYC1H4', start: 12 + (idx * 14), cueNote: 'ویدیوی B2 – موضوع «' + title + '»' };
     }
-
     return { id: 'lr5nQObcSY0', start: 15 + (idx * 15), cueNote: 'ویدیوی C1 – موضوع «' + title + '»' };
 }
 
 var levelDescriptions = {
-    A1: 'سطح مقدماتی (۱۹ درس) – ویدیوی Deutsche Welle A1 تنظیم‌شده بر اساس موضوع هر درس.',
-    A2: 'سطح پایه پیشرفته (۲۰ درس) – ویدیوی Deutsche Welle A2 تنظیم‌شده بر اساس موضوع هر درس.',
-    B1: 'سطح متوسط (۳۰ درس) – ویدیوی Deutsche Welle B1 تنظیم‌شده بر اساس موضوع هر درس.',
-    B2: 'سطح متوسط رو به بالا (۳۰ درس) – ویدیوی آموزشی B2 تنظیم‌شده بر اساس موضوع هر درس.',
-    C1: 'سطح پیشرفته (۳۰ درس) – ویدیوی آموزشی C1 تنظیم‌شده بر اساس موضوع هر درس.'
+    A1: 'سطح مقدماتی (۱۹ درس) – ویدیوی Deutsche Welle A1 طبق موضوع درس.',
+    A2: 'سطح پایه پیشرفته (۲۰ درس) – ویدیوی Deutsche Welle A2 طبق موضوع درس.',
+    B1: 'سطح متوسط (۳۰ درس) – ویدیوی Deutsche Welle B1 طبق موضوع درس.',
+    B2: 'سطح متوسط رو به بالا (۳۰ درس) – ویدیوی آموزشی B2 طبق موضوع درس.',
+    C1: 'سطح پیشرفته (۳۰ درس) – ویدیوی آموزشی C1 طبق موضوع درس.'
 };
 
 var lessonTitles = {
@@ -716,7 +725,7 @@ LEVELS.forEach(function(lvl) {
             sentences: items,
             sentencePage: 0,
             open: false,
-            grammar: 'در این درس («' + title + '» سطح ' + lvl + ')، ویدیو متناسب با همین موضوع تنظیم شده تا واژگان و ساختارهای مربوط را تمرین کنید.'
+            grammar: 'در این درس («' + title + '» سطح ' + lvl + ')، ویدیو متناسب با موضوع درس تنظیم شده تا واژگان و ساختارهای مرتبط را تمرین کنید.'
         };
     });
 });
@@ -724,10 +733,10 @@ LEVELS.forEach(function(lvl) {
 var LEVEL_GRAMMAR_AND_BOOKS = {
     A1: { bookTitle: 'کتاب سطح A1 – قواعد پایه و واژگان الفبایی', sections: [
         { key: 'Nomen und Artikel', title: 'Nomen und Artikel (اسم و حرف تعریف)', desc: 'der Tisch، die Lampe، das Buch.' },
-        { key: 'Verben mit Präposition', title: 'Verben mit Präposition (فعل با حرف اضافه)', desc: 'آشنایی اولیه با افعال همراه حرف اضافه مانند warten auf + Akk.' }
+        { key: 'Verben mit Präposition', title: 'Verben mit Präposition (فعل با حرف اضافه)', desc: 'warten auf + Akk.' }
     ]},
     A2: { bookTitle: 'کتاب سطح A2 – ساختارهای پایه پیشرفته و افعال', sections: [
-        { key: 'Verben mit Präposition', title: 'Verben mit Präposition (افعال همراه با حرف اضافه)', desc: 'sich freuen auf/über، denken an، sprechen über.' },
+        { key: 'Verben mit Präposition', title: 'Verben mit Präposition', desc: 'sich freuen auf/über، denken an، sprechen über.' },
         { key: 'Infinitiv, präsens, Präteritum, perfekt', title: 'Infinitiv, Präsens, Präteritum, Perfekt', desc: 'صرف زمانی افعال در حال ساده، گذشته ساده و گذشته کامل.' }
     ]},
     B1: { bookTitle: 'کتاب سطح B1 – مجهول، شرطی و افعال با حرف اضافه', sections: [
@@ -793,7 +802,7 @@ var radioIndex = 0;
 var quizState = {};
 var mySpeechLang = 'fa-IR';
 var otherSpeechLang = 'de-DE';
-var activeRecInstance = null;
+var activeOcrTargetId = null;
 
 function escapeAttr(str) {
     return String(str || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
@@ -817,9 +826,40 @@ window.speakWithChosenLang = function(text, explicitLang) {
     speakTextSafe(text, explicitLang || selectedAudioVoiceLang || 'de-DE');
 };
 
+function updateSelectedTileHighlight(lvl) {
+    document.querySelectorAll('.level-tile').forEach(function(t) { t.classList.remove('selected-tile'); });
+    var activeTile = document.getElementById('tile-' + (lvl || 'ALL'));
+    if (activeTile) activeTile.classList.add('selected-tile');
+}
+
+window.toggleLevelsOnlyMode = function(forceState) {
+    levelsOnlyMode = (typeof forceState === 'boolean') ? forceState : !levelsOnlyMode;
+    var shell = document.getElementById('appShell');
+    var btn = document.getElementById('btnToggleLevelsOnly');
+    var pack = UI_TRANSLATIONS[currentSiteLang] || UI_TRANSLATIONS.fa;
+
+    if (shell) shell.classList.toggle('levels-only-mode', levelsOnlyMode);
+    if (btn) {
+        btn.classList.toggle('active', levelsOnlyMode);
+        btn.textContent = levelsOnlyMode ? pack.fullViewBtn : pack.levelsOnlyBtn;
+    }
+
+    if (levelsOnlyMode) {
+        toggleMainRow('lessons', true);
+        var g = document.getElementById('group-lessons');
+        if (g) g.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+};
+
 window.openLevelFromTile = function(lvl) {
     selectedLevelFilter = lvl || 'A1';
+    updateSelectedTileHighlight(selectedLevelFilter);
     toggleMainRow('lessons', true);
+    var d = document.getElementById('drawer-lessons');
+    if (d) {
+        d.innerHTML = buildLessonsDrawerHtml();
+        bindLessonAccordions(d);
+    }
     var g = document.getElementById('group-lessons');
     if (g) g.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
@@ -1083,6 +1123,7 @@ function bindLessonAccordions(container) {
     container.querySelectorAll('[data-lvl-filter]').forEach(function(btn) {
         btn.addEventListener('click', function() {
             selectedLevelFilter = btn.getAttribute('data-lvl-filter') || 'ALL';
+            updateSelectedTileHighlight(selectedLevelFilter);
             var d = document.getElementById('drawer-lessons');
             if (d) { d.innerHTML = buildLessonsDrawerHtml(); bindLessonAccordions(d); }
         });
@@ -1331,7 +1372,6 @@ function buildMultilangDrawerHtml() {
     }).join('') + '</div>';
 }
 
-/* مجموعه کامل همه ویدیوهای آموزشی (بدون حذف هیچ ویدیویی) در بخش ۱۱ */
 function buildContactDrawerHtml() {
     var h = '<div class="sub-card"><h4>🎬 مجموعه کامل ویدیوهای آموزشی (Deutsche Welle A1–B1، ویدیوهای B2–C1 و ویدیوهای جدید) + ارتباط با KING ASAD</h4>' +
         '<p style="margin-bottom:10px;font-weight:700;">تماس مستقیم با مدیر: <span dir="ltr">+4915212898695</span></p>';
@@ -1383,6 +1423,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (btnWelcomeContact && welcomeModal) {
         btnWelcomeContact.onclick = function() {
             welcomeModal.classList.remove('open');
+            toggleLevelsOnlyMode(false);
             toggleMainRow('contact', true);
             document.getElementById('group-contact').scrollIntoView({ behavior: 'smooth' });
         };
