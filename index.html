@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0d1b3e">
+<meta name="theme-color" content="#3b0764">
 <title>KING ASAD – مرکز جامع آموزش زبان آلمانی (A1–C1)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,6 @@
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 <style>
 :root {
-    --page-bg: #111622;
     --panel-bg: #ffffff;
     --ink: #111827;
     --muted: #4b5563;
@@ -45,10 +44,10 @@
     --c7-dark: #115e59;
     --c7-soft: #f0fdfa;
 
-    --radius-sm: 12px;
-    --radius-md: 16px;
-    --shadow-row: 0 6px 16px rgba(0, 0, 0, 0.22);
-    --shadow-drawer: 0 12px 28px rgba(15, 23, 42, 0.25);
+    --radius-sm: 14px;
+    --radius-md: 18px;
+    --shadow-row: 0 10px 24px rgba(15, 23, 42, 0.28);
+    --shadow-drawer: 0 14px 32px rgba(15, 23, 42, 0.32);
 }
 
 * {
@@ -60,7 +59,9 @@
 html, body {
     min-height: 100vh;
     font-family: "Vazirmatn", "Cairo", "Inter", Tahoma, Arial, sans-serif;
-    background: radial-gradient(circle at top, #1a2642 0%, #111622 65%);
+    background:
+        linear-gradient(160deg, rgba(64, 24, 138, 0.86) 0%, rgba(109, 40, 217, 0.82) 50%, rgba(76, 29, 149, 0.90) 100%),
+        url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1500&q=80") center/cover fixed no-repeat;
     color: var(--ink);
     line-height: 1.75;
     overflow-x: hidden;
@@ -72,18 +73,18 @@ html, body {
     padding: 18px 14px 44px;
 }
 
-/* Hero with Student Study Background + Flags */
+/* Poster-inspired Hero header with Student Study Photo + Flags */
 .hero-card {
     position: relative;
     background:
-        linear-gradient(155deg, rgba(11, 28, 72, 0.88) 0%, rgba(15, 41, 102, 0.84) 55%, rgba(22, 58, 138, 0.88) 100%),
+        linear-gradient(155deg, rgba(46, 16, 101, 0.88) 0%, rgba(88, 28, 135, 0.84) 55%, rgba(59, 7, 100, 0.90) 100%),
         url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
     color: #ffffff;
-    border-radius: 22px;
-    padding: 26px 20px 28px;
+    border-radius: 24px;
+    padding: 26px 20px 26px;
     margin-bottom: 18px;
-    border: 1.5px solid rgba(255, 255, 255, 0.22);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+    border: 2px solid rgba(255, 255, 255, 0.24);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.42);
     text-align: center;
     overflow: hidden;
 }
@@ -94,8 +95,8 @@ html, body {
     justify-content: center;
     gap: 8px;
     flex-wrap: wrap;
-    background: rgba(9, 17, 38, 0.68);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(24, 9, 53, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 999px;
     padding: 6px 14px;
     margin-bottom: 12px;
@@ -103,10 +104,10 @@ html, body {
 }
 
 .hero-brand-line {
-    font-size: clamp(20px, 3.8vw, 30px);
+    font-size: clamp(20px, 3.8vw, 31px);
     font-weight: 900;
     line-height: 1.35;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     text-shadow: 0 3px 12px rgba(0, 0, 0, 0.55);
 }
 
@@ -116,22 +117,22 @@ html, body {
 }
 
 .hero-slogan-pill {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-    color: #0b132b;
-    border-radius: 22px;
-    padding: 12px 18px;
-    margin: 0 auto 16px;
-    max-width: 760px;
+    background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+    color: #1e1035;
+    border-radius: 999px;
+    padding: 10px 20px;
+    margin: 0 auto 14px;
+    max-width: 780px;
     font-weight: 900;
-    font-size: clamp(13.5px, 2.5vw, 16px);
-    line-height: 1.65;
+    font-size: clamp(13.5px, 2.4vw, 16px);
+    line-height: 1.6;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
 }
 
 .hero-stats-text {
     font-size: 13.5px;
     font-weight: 700;
-    color: #f1f5f9;
+    color: #f3e8ff;
     margin-bottom: 16px;
     line-height: 1.8;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
@@ -147,9 +148,9 @@ html, body {
 }
 
 .hero-lang-select {
-    background: rgba(15, 23, 42, 0.78);
+    background: rgba(24, 9, 53, 0.82);
     color: #ffffff;
-    border: 1.5px solid rgba(255, 255, 255, 0.38);
+    border: 1.5px solid rgba(255, 255, 255, 0.42);
     border-radius: 14px;
     padding: 9px 16px;
     font-family: inherit;
@@ -161,13 +162,13 @@ html, body {
 }
 
 .hero-lang-select option {
-    background: #0f172a;
+    background: #1e1035;
     color: #ffffff;
 }
 
 .hero-welcome-btn {
     background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-    color: #111827;
+    color: #1e1035;
     border: none;
     border-radius: 14px;
     padding: 9px 22px;
@@ -210,9 +211,9 @@ html, body {
 }
 
 .level-tile {
-    border: 2.5px solid rgba(255, 255, 255, 0.28);
+    border: 2.5px solid rgba(255, 255, 255, 0.32);
     border-radius: 18px;
-    padding: 18px 12px;
+    padding: 16px 12px;
     color: #ffffff;
     font-family: inherit;
     cursor: pointer;
@@ -220,7 +221,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 5px;
     text-align: center;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -238,21 +239,21 @@ html, body {
 .level-tile.tile-c1 { background: linear-gradient(145deg, #0e7490 0%, #06b6d4 100%); }
 
 .tile-icon { font-size: 24px; line-height: 1.2; }
-.tile-code { font-size: 26px; font-weight: 900; line-height: 1.15; letter-spacing: 0.5px; }
-.tile-sub { font-size: 12.5px; font-weight: 800; color: rgba(255, 255, 255, 0.95); }
+.tile-code { font-size: 25px; font-weight: 900; line-height: 1.15; }
+.tile-sub { font-size: 12px; font-weight: 800; color: rgba(255, 255, 255, 0.96); }
 
-/* 3-Column Grid Layout for 11 Sections: 123 / 456 / 789 / ___ / ___ / ___ */
+/* Poster-inspired 3-Column Card Grid: 123 / 456 / 789 / ___ / ___ / ___ */
 .three-col-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    gap: 15px;
     align-items: start;
 }
 
 .grid-divider-line {
     grid-column: 1 / -1;
     border: none;
-    border-top: 2.5px dashed rgba(250, 204, 21, 0.55);
+    border-top: 2.5px dashed rgba(250, 204, 21, 0.65);
     margin: 8px 0 4px;
 }
 
@@ -277,85 +278,92 @@ html, body {
 .row-group[data-color="cyan"] { --row-main: var(--c6-main); --row-dark: var(--c6-dark); --row-soft: var(--c6-soft); }
 .row-group[data-color="teal"] { --row-main: var(--c7-main); --row-dark: var(--c7-dark); --row-soft: var(--c7-soft); }
 
+/* Poster Card Style: Dark header bar with number + white inner card */
 .row-trigger {
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: 60px 8px 1fr;
-    align-items: stretch;
-    background: transparent;
-    border: none;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.92);
+    border: 2px solid rgba(255, 255, 255, 0.65);
+    border-radius: 18px;
+    overflow: hidden;
     cursor: pointer;
     text-align: start;
     font-family: inherit;
-    filter: drop-shadow(var(--shadow-row));
-    transition: transform 0.2s ease;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.15);
+    box-shadow: var(--shadow-row);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
 }
 
 .row-trigger:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.36);
+}
+
+.row-card-header {
+    background: linear-gradient(90deg, var(--row-dark) 0%, var(--row-main) 100%);
+    color: #ffffff;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
 }
 
 .row-square {
-    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-    border: 3px solid var(--row-main);
-    border-radius: var(--radius-sm);
-    display: flex;
-    flex-direction: column;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    min-height: 82px;
-    color: var(--row-dark);
+    gap: 6px;
     font-weight: 900;
 }
 
-.row-num { font-size: 16px; line-height: 1.1; }
-.row-emoji { font-size: 18px; line-height: 1.2; }
-
-.row-bridge {
-    background: var(--row-dark);
-    margin: 12px 0;
+.row-num {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.2;
 }
 
+.row-emoji { font-size: 17px; line-height: 1.2; }
+.row-bridge { display: none; }
+
 .row-bar {
-    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-    border: 3px solid var(--row-main);
-    border-radius: var(--radius-sm);
-    padding: 10px 12px;
+    padding: 12px 14px 14px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 8px;
-    min-height: 82px;
+    gap: 10px;
+    flex: 1;
 }
 
 .row-bar-content {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
 }
 
 .row-title { font-size: 14.5px; font-weight: 900; color: var(--ink); line-height: 1.45; }
-.row-desc { font-size: 11.5px; color: var(--muted); font-weight: 600; line-height: 1.45; }
+.row-desc { font-size: 12px; color: var(--muted); font-weight: 600; line-height: 1.5; }
 
 .row-status-pill {
     background: var(--row-soft);
     color: var(--row-dark);
     border: 1.5px solid var(--row-main);
     border-radius: 999px;
-    padding: 3px 10px;
+    padding: 3px 11px;
     font-size: 11px;
     font-weight: 800;
     white-space: nowrap;
 }
 
-.row-trigger[aria-expanded="true"] .row-bar {
+.row-trigger[aria-expanded="true"] {
     background: var(--row-soft);
+    border-color: var(--row-main);
 }
 
-/* Full-width drawer placed cleanly across the grid */
 .row-drawer {
     grid-column: 1 / -1;
     display: none;
@@ -536,12 +544,13 @@ textarea { min-height: 70px; resize: vertical; }
     100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
 }
 
+/* Poster-inspired Footer Pill */
 .site-footer {
-    max-width: 1120px; margin: 22px auto 0; padding: 12px 16px; background: #0b1c48; color: #e2e8f0;
-    border-radius: var(--radius-sm); border-top: 3px solid #f59e0b; display: flex; align-items: center;
-    justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 12.5px; font-weight: 700;
+    max-width: 1120px; margin: 22px auto 0; padding: 13px 18px; background: rgba(24, 9, 53, 0.9); color: #ffffff;
+    border-radius: 999px; border: 1.5px solid rgba(250, 204, 21, 0.55); display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 12.5px; font-weight: 800;
 }
-.clock-pill { background: rgba(255, 255, 255, 0.12); color: #fde047; padding: 3px 10px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+.clock-pill { background: rgba(250, 204, 21, 0.18); color: #fde047; padding: 3px 12px; border-radius: 999px; font-variant-numeric: tabular-nums; }
 
 @media (max-width: 900px) {
     .three-col-grid {
@@ -557,10 +566,7 @@ textarea { min-height: 70px; resize: vertical; }
     }
     .level-tile { padding: 14px 8px; }
     .tile-code { font-size: 24px; }
-    .row-trigger { grid-template-columns: 56px 8px 1fr; }
-    .row-square { min-height: 70px; }
-    .row-bar { min-height: 70px; padding: 10px 12px; }
-    .row-title { font-size: 14px; }
+    .site-footer { border-radius: 16px; }
 }
 </style>
 </head>
@@ -568,7 +574,6 @@ textarea { min-height: 70px; resize: vertical; }
 
 <div class="confetti-layer" id="confettiLayer"></div>
 
-<!-- Hidden shared file input for photo OCR scanning across sections -->
 <input type="file" id="sharedOcrFileInput" accept="image/*" capture="environment" style="display:none;">
 
 <div class="modal-backdrop" id="welcomeModal" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
@@ -612,7 +617,7 @@ textarea { min-height: 70px; resize: vertical; }
         </div>
 
         <div class="hero-stats-text" id="uiSubtitle">
-            فرهنگ لغت آنلاین نامحدود + جملات روزمره • ۶ ویدیوی جدید و سطوح A1–C1 • پادکست با زبان اختیاری • گرامر کامل و آزمون
+            فرهنگ لغت آنلاین نامحدود + اسکن عکس • ۶ ویدیوی جدید و سطوح A1–C1 • مترجم نامحدود • حل‌کننده سؤال و گرامر
         </div>
 
         <div class="hero-controls-row">
@@ -637,28 +642,28 @@ textarea { min-height: 70px; resize: vertical; }
     <section class="chaharchookat-grid" id="chaharchookatLevels" aria-label="سطوح آموزشی چهارچوکات">
         <button type="button" class="level-tile tile-a1" data-tile-level="A1">
             <span class="tile-icon">📘</span>
-            <span class="tile-code">A1</span>
-            <span class="tile-sub">درس ۱۹ • 19 Lektionen</span>
+            <span class="tile-code" id="tileCode-A1">A1</span>
+            <span class="tile-sub" id="tileSub-A1">درس ۱۹ • 19 Lektionen</span>
         </button>
         <button type="button" class="level-tile tile-a2" data-tile-level="A2">
             <span class="tile-icon">📗</span>
-            <span class="tile-code">A2</span>
-            <span class="tile-sub">درس ۲۰ • 20 Lektionen</span>
+            <span class="tile-code" id="tileCode-A2">A2</span>
+            <span class="tile-sub" id="tileSub-A2">درس ۲۰ • 20 Lektionen</span>
         </button>
         <button type="button" class="level-tile tile-b1" data-tile-level="B1">
             <span class="tile-icon">📙</span>
-            <span class="tile-code">B1</span>
-            <span class="tile-sub">درس ۳۰ • 30 Lektionen</span>
+            <span class="tile-code" id="tileCode-B1">B1</span>
+            <span class="tile-sub" id="tileSub-B1">درس ۳۰ • 30 Lektionen</span>
         </button>
         <button type="button" class="level-tile tile-b2" data-tile-level="B2">
             <span class="tile-icon">📕</span>
-            <span class="tile-code">B2</span>
-            <span class="tile-sub">درس ۳۰ • 30 Lektionen</span>
+            <span class="tile-code" id="tileCode-B2">B2</span>
+            <span class="tile-sub" id="tileSub-B2">درس ۳۰ • 30 Lektionen</span>
         </button>
         <button type="button" class="level-tile tile-c1" data-tile-level="C1">
             <span class="tile-icon">🎓</span>
-            <span class="tile-code">C1</span>
-            <span class="tile-sub">درس ۳۰ • 30 Lektionen</span>
+            <span class="tile-code" id="tileCode-C1">C1</span>
+            <span class="tile-sub" id="tileSub-C1">درس ۳۰ • 30 Lektionen</span>
         </button>
     </section>
 
@@ -667,42 +672,48 @@ textarea { min-height: 70px; resize: vertical; }
         <!-- Row 1: 1 2 3 -->
         <section class="row-group" data-color="blue" data-row-key="lessons" id="group-lessons">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-lessons">
-                <span class="row-square"><span class="row-num">01</span><span class="row-emoji">📚</span></span>
+                <span class="row-card-header">
+                    <span class="row-square"><span class="row-num">01</span><span class="row-emoji">📚</span></span>
+                    <span class="row-status-pill" id="pill-lessons">باز کردن</span>
+                </span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
                         <span class="row-title" id="title-lessons">سطوح و درس‌ها (A1 تا C1 – ۱۲۹ درس)</span>
-                        <span class="row-desc" id="desc-lessons">ویدیوی هر درس، توضیحات در پایین درس و صفحه بعدی</span>
+                        <span class="row-desc" id="desc-lessons">ویدیوی هر درس طبق موضوع، توضیحات پایین درس و صفحه بعدی</span>
                     </span>
-                    <span class="row-status-pill" id="pill-lessons">باز کردن</span>
                 </span>
             </button>
         </section>
 
         <section class="row-group" data-color="rose" data-row-key="vocab100k" id="group-vocab100k">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-vocab100k">
-                <span class="row-square"><span class="row-num">02</span><span class="row-emoji">📖</span></span>
+                <span class="row-card-header">
+                    <span class="row-square"><span class="row-num">02</span><span class="row-emoji">📖</span></span>
+                    <span class="row-status-pill" id="pill-vocab100k">باز کردن</span>
+                </span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
                         <span class="row-title" id="title-vocab100k">فرهنگ لغت آنلاین نامحدود + اسکن عکس</span>
                         <span class="row-desc" id="desc-vocab100k">جستجوی هر لغت، اسکن عکس متن و جملات روزمره با صدا</span>
                     </span>
-                    <span class="row-status-pill" id="pill-vocab100k">باز کردن</span>
                 </span>
             </button>
         </section>
 
         <section class="row-group" data-color="teal" data-row-key="live_voice" id="group-live_voice">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-live_voice">
-                <span class="row-square"><span class="row-num">03</span><span class="row-emoji">🎙️</span></span>
+                <span class="row-card-header">
+                    <span class="row-square"><span class="row-num">03</span><span class="row-emoji">🎙️</span></span>
+                    <span class="row-status-pill" id="pill-live_voice">باز کردن</span>
+                </span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
                         <span class="row-title" id="title-live_voice">ترجمه صدا و متن دوطرفه + نوشتن مشکلات</span>
                         <span class="row-desc" id="desc-live_voice">صدا به متن، نوشتن مشکلات و تبدیل به زبان دلخواه</span>
                     </span>
-                    <span class="row-status-pill" id="pill-live_voice">باز کردن</span>
                 </span>
             </button>
         </section>
@@ -713,42 +724,48 @@ textarea { min-height: 70px; resize: vertical; }
         <!-- Row 2: 4 5 6 -->
         <section class="row-group" data-color="orange" data-row-key="translator" id="group-translator">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-translator">
-                <span class="row-square"><span class="row-num">04</span><span class="row-emoji">🌐</span></span>
+                <span class="row-card-header">
+                    <span class="row-square"><span class="row-num">04</span><span class="row-emoji">🌐</span></span>
+                    <span class="row-status-pill" id="pill-translator">باز کردن</span>
+                </span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
                         <span class="row-title" id="title-translator">مترجم نامحدود هر زبان به هر زبان + اسکن عکس</span>
-                        <span class="row-desc" id="desc-translator">ترجمه آزاد فارسی و سایر زبان‌ها + اسکن عکس و صدا</span>
+                        <span class="row-desc" id="desc-translator">ترجمه خودکار متن اسکن‌شده، هر زبان به هر زبان و صدا</span>
                     </span>
-                    <span class="row-status-pill" id="pill-translator">باز کردن</span>
                 </span>
             </button>
         </section>
 
         <section class="row-group" data-color="green" data-row-key="grammar" id="group-grammar">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-grammar">
-                <span class="row-square"><span class="row-num">05</span><span class="row-emoji">📐</span></span>
+                <span class="row-card-header">
+                    <span class="row-square"><span class="row-num">05</span><span class="row-emoji">📐</span></span>
+                    <span class="row-status-pill" id="pill-grammar">باز کردن</span>
+                </span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
                         <span class="row-title" id="title-grammar">گرامر و کتاب‌های A1 تا C1</span>
                         <span class="row-desc" id="desc-grammar">Verben mit Präposition، Passiv، Konjunktiv و واژگان</span>
                     </span>
-                    <span class="row-status-pill" id="pill-grammar">باز کردن</span>
                 </span>
             </button>
         </section>
 
         <section class="row-group" data-color="purple" data-row-key="podcasts" id="group-podcasts">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-podcasts">
-                <span class="row-square"><span class="row-num">06</span><span class="row-emoji">🎧</span></span>
+                <span class="row-card-header">
+                    <span class="row-square"><span class="row-num">06</span><span class="row-emoji">🎧</span></span>
+                    <span class="row-status-pill" id="pill-podcasts">باز کردن</span>
+                </span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
                         <span class="row-title" id="title-podcasts">پادکست‌های آلمانی (+۵۲۰ جمله)</span>
                         <span class="row-desc" id="desc-podcasts">ترجمه، زبان اختیاری پایین هر پادکست و پخش صدا</span>
                     </span>
-                    <span class="row-status-pill" id="pill-podcasts">باز کردن</span>
                 </span>
             </button>
         </section>
@@ -759,42 +776,48 @@ textarea { min-height: 70px; resize: vertical; }
         <!-- Row 3: 7 8 9 -->
         <section class="row-group" data-color="cyan" data-row-key="radio" id="group-radio">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-radio">
-                <span class="row-square"><span class="row-num">07</span><span class="row-emoji">📻</span></span>
+                <span class="row-card-header">
+                    <span class="row-square"><span class="row-num">07</span><span class="row-emoji">📻</span></span>
+                    <span class="row-status-pill" id="pill-radio">باز کردن</span>
+                </span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
                         <span class="row-title" id="title-radio">رادیو آلمانی با ترجمه فارسی</span>
                         <span class="row-desc" id="desc-radio">پخش رادیو همراه با ترجمه فارسی زیر آن</span>
                     </span>
-                    <span class="row-status-pill" id="pill-radio">باز کردن</span>
                 </span>
             </button>
         </section>
 
         <section class="row-group" data-color="blue" data-row-key="solver" id="group-solver">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-solver">
-                <span class="row-square"><span class="row-num">08</span><span class="row-emoji">🧩</span></span>
+                <span class="row-card-header">
+                    <span class="row-square"><span class="row-num">08</span><span class="row-emoji">🧩</span></span>
+                    <span class="row-status-pill" id="pill-solver">باز کردن</span>
+                </span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
                         <span class="row-title" id="title-solver">حل‌کننده نامحدود سؤال و گرامر + اسکن عکس</span>
                         <span class="row-desc" id="desc-solver">پاسخ و راه‌حل کامل هر سؤال/گرامر + اسکن از عکس</span>
                     </span>
-                    <span class="row-status-pill" id="pill-solver">باز کردن</span>
                 </span>
             </button>
         </section>
 
         <section class="row-group" data-color="green" data-row-key="quiz" id="group-quiz">
             <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-quiz">
-                <span class="row-square"><span class="row-num">09</span><span class="row-emoji">✍️</span></span>
+                <span class="row-card-header">
+                    <span class="row-square"><span class="row-num">09</span><span class="row-emoji">✍️</span></span>
+                    <span class="row-status-pill" id="pill-quiz">باز کردن</span>
+                </span>
                 <span class="row-bridge"></span>
                 <span class="row-bar">
                     <span class="row-bar-content">
                         <span class="row-title" id="title-quiz">آزمون‌های تعاملی A1 تا C1</span>
                         <span class="row-desc" id="desc-quiz">سرخ/آبی، رد کردن، امتیاز زنده و جشن امتیاز بالا</span>
                     </span>
-                    <span class="row-status-pill" id="pill-quiz">باز کردن</span>
                 </span>
             </button>
         </section>
@@ -808,14 +831,16 @@ textarea { min-height: 70px; resize: vertical; }
         <div class="stacked-slot-item">
             <section class="row-group" data-color="rose" data-row-key="multilang" id="group-multilang">
                 <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-multilang">
-                    <span class="row-square"><span class="row-num">10</span><span class="row-emoji">🌍</span></span>
+                    <span class="row-card-header">
+                        <span class="row-square"><span class="row-num">10</span><span class="row-emoji">🌍</span></span>
+                        <span class="row-status-pill" id="pill-multilang">باز کردن</span>
+                    </span>
                     <span class="row-bridge"></span>
                     <span class="row-bar">
                         <span class="row-bar-content">
                             <span class="row-title" id="title-multilang">بخش چندزبانه (ترکی، عربی، انگلیسی، اردو، پشتو، فارسی/دری، آلمانی)</span>
                             <span class="row-desc" id="desc-multilang">عبارات کلیدی و راهنمای یادگیری آلمانی به زبان‌های مختلف</span>
                         </span>
-                        <span class="row-status-pill" id="pill-multilang">باز کردن</span>
                     </span>
                 </button>
             </section>
@@ -828,14 +853,16 @@ textarea { min-height: 70px; resize: vertical; }
         <div class="stacked-slot-item">
             <section class="row-group" data-color="orange" data-row-key="contact" id="group-contact">
                 <button type="button" class="row-trigger" aria-expanded="false" aria-controls="drawer-contact">
-                    <span class="row-square"><span class="row-num">11</span><span class="row-emoji">🎬</span></span>
+                    <span class="row-card-header">
+                        <span class="row-square"><span class="row-num">11</span><span class="row-emoji">🎬</span></span>
+                        <span class="row-status-pill" id="pill-contact">باز کردن</span>
+                    </span>
                     <span class="row-bridge"></span>
                     <span class="row-bar">
                         <span class="row-bar-content">
                             <span class="row-title" id="title-contact">۶ ویدیوی آموزشی جدید، سطوح A1–C1 و ارتباط با KING ASAD</span>
                             <span class="row-desc" id="desc-contact">۶ ویدیوی جدید (واژگان، افعال، پرسش و پاسخ، کلمات مهم) + شماره تماس: +4915212898695</span>
                         </span>
-                        <span class="row-status-pill" id="pill-contact">باز کردن</span>
                     </span>
                 </button>
             </section>
@@ -846,7 +873,7 @@ textarea { min-height: 70px; resize: vertical; }
     </main>
 
     <footer class="site-footer">
-        <span>🇩🇪 🇦🇫 🇮🇷 KING ASAD • <span dir="ltr">+4915212898695</span> • آموزش آلمانی (A1–C1)</span>
+        <span id="uiFooterLeft">🇩🇪 🇦🇫 🇮🇷 KING ASAD • <span dir="ltr">+4915212898695</span> • آموزش آلمانی (A1–C1)</span>
         <span class="clock-pill" id="liveClockDate">در حال بارگذاری ساعت و تاریخ...</span>
     </footer>
 </div>
@@ -877,11 +904,15 @@ var UI_TRANSLATIONS = {
         contactWelcome: 'ارتباط با ما',
         openText: 'باز کردن',
         closeText: 'بستن',
+        lessonPrefix: 'درس',
+        allLevelsBtn: 'همه سطوح (۱۲۹ درس)',
+        nextPageBtn: '➡ صفحه بعدی',
+        descLabel: '📌 توضیحات درس',
         sections: {
-            lessons: ['سطوح و درس‌ها (A1 تا C1 – ۱۲۹ درس)', 'ویدیوی هر درس، توضیحات در پایین درس و صفحه بعدی'],
+            lessons: ['سطوح و درس‌ها (A1 تا C1 – ۱۲۹ درس)', 'ویدیوی هر درس طبق موضوع، توضیحات پایین درس و صفحه بعدی'],
             vocab100k: ['فرهنگ لغت آنلاین نامحدود + اسکن عکس', 'جستجوی هر لغت، اسکن عکس متن و جملات روزمره با صدا'],
             live_voice: ['ترجمه صدا و متن دوطرفه + نوشتن مشکلات', 'صدا به متن، نوشتن مشکلات و تبدیل به زبان دلخواه'],
-            translator: ['مترجم نامحدود هر زبان به هر زبان + اسکن عکس', 'ترجمه آزاد فارسی و سایر زبان‌ها + اسکن عکس و صدا'],
+            translator: ['مترجم نامحدود هر زبان به هر زبان + اسکن عکس', 'ترجمه خودکار متن اسکن‌شده، هر زبان به هر زبان و صدا'],
             grammar: ['گرامر و کتاب‌های A1 تا C1', 'Verben mit Präposition، Passiv، Konjunktiv و واژگان'],
             podcasts: ['پادکست‌های آلمانی (+۵۲۰ جمله)', 'ترجمه، زبان اختیاری پایین هر پادکست و پخش صدا'],
             radio: ['رادیو آلمانی با ترجمه فارسی', 'پخش رادیو همراه با ترجمه فارسی زیر آن'],
@@ -903,11 +934,15 @@ var UI_TRANSLATIONS = {
         contactWelcome: 'Kontakt',
         openText: 'Öffnen',
         closeText: 'Schließen',
+        lessonPrefix: 'Lektion',
+        allLevelsBtn: 'Alle Stufen (129 Lektionen)',
+        nextPageBtn: '➡ Nächste Seite',
+        descLabel: '📌 Beschreibung',
         sections: {
-            lessons: ['Stufen & Lektionen (A1–C1 – 129 Lektionen)', 'Passendes Video je Lektion, Erklärung unten & Nächste Seite'],
+            lessons: ['Stufen & Lektionen (A1–C1 – 129 Lektionen)', 'Themenbezogenes Video, Erklärung unten & Nächste Seite'],
             vocab100k: ['Online-Wörterbuch + Foto-Scan', 'Wörter suchen, Foto scannen & Alltagssätze mit Audio'],
             live_voice: ['Sprach- & Textübersetzung + Probleme schreiben', 'Sprache zu Text, Probleme eingeben & umwandeln'],
-            translator: ['Unbegrenzter Übersetzer (alle Sprachen) + Foto-Scan', 'Freie Übersetzung in jede Sprache + Foto-Scan & Audio'],
+            translator: ['Unbegrenzter Übersetzer (alle Sprachen) + Foto-Scan', 'Automatische Übersetzung nach Foto-Scan & Audio'],
             grammar: ['Grammatik & Bücher A1–C1', 'Verben mit Präposition, Passiv, Konjunktiv & Wortliste'],
             podcasts: ['Deutsche Podcasts (+520 Sätze)', 'Übersetzung, optionale Sprache unter jedem Podcast & Audio'],
             radio: ['Deutsches Radio mit Übersetzung', 'Radio hören mit Übersetzung darunter'],
@@ -929,11 +964,15 @@ var UI_TRANSLATIONS = {
         contactWelcome: 'Contact Us',
         openText: 'Open',
         closeText: 'Close',
+        lessonPrefix: 'Lesson',
+        allLevelsBtn: 'All Levels (129 Lessons)',
+        nextPageBtn: '➡ Next Page',
+        descLabel: '📌 Lesson Notes',
         sections: {
-            lessons: ['Levels & Lessons (A1–C1 – 129 Lessons)', 'Lesson video, explanation below lesson & Next Page'],
+            lessons: ['Levels & Lessons (A1–C1 – 129 Lessons)', 'Topic-matched lesson video, explanation below & Next Page'],
             vocab100k: ['Unlimited Online Dictionary + Photo Scan', 'Look up any word, scan photo text & daily sentences with audio'],
             live_voice: ['Voice & Text Translation + Write Problems', 'Speech to text, write problems & convert to chosen language'],
-            translator: ['Unlimited Any-to-Any Translator + Photo Scan', 'Translate from/to any language + photo scan & speech'],
+            translator: ['Unlimited Any-to-Any Translator + Photo Scan', 'Auto-translate scanned text, any language & speech'],
             grammar: ['Grammar & Books A1–C1', 'Verben mit Präposition, Passiv, Konjunktiv & Wordlists'],
             podcasts: ['German Podcasts (+520 Sentences)', 'Translation, optional language below each podcast & audio'],
             radio: ['German Radio with Translation', 'Listen with live translation shown below'],
@@ -955,11 +994,15 @@ var UI_TRANSLATIONS = {
         contactWelcome: 'İletişim',
         openText: 'Aç',
         closeText: 'Kapat',
+        lessonPrefix: 'Ders',
+        allLevelsBtn: 'Tüm Seviyeler (129 Ders)',
+        nextPageBtn: '➡ Sonraki Sayfa',
+        descLabel: '📌 Ders Açıklaması',
         sections: {
-            lessons: ['Seviyeler ve Dersler (A1–C1 – 129 Ders)', 'Derse özel video, ders altında açıklama ve Sonraki Sayfa'],
+            lessons: ['Seviyeler ve Dersler (A1–C1 – 129 Ders)', 'Konuya uygun ders videosu, altta açıklama ve Sonraki Sayfa'],
             vocab100k: ['Sınırsız Online Sözlük + Fotoğraf Tarama', 'Kelime arama, fotoğraf tarama ve sesli günlük cümleler'],
             live_voice: ['Ses ve Metin Çevirisi + Sorun Yazma', 'Sesten metne, sorun yazma ve seçilen dile çevirme'],
-            translator: ['Sınırsız Çevirmen + Fotoğraf Tarama', 'Her dilden her dile çeviri + fotoğraf tarama ve ses'],
+            translator: ['Sınırsız Çevirmen + Fotoğraf Tarama', 'Taranan metni otomatik çevirme + fotoğraf tarama ve ses'],
             grammar: ['A1–C1 Gramer ve Kitaplar', 'Verben mit Präposition, Passiv, Konjunktiv ve Kelime Listesi'],
             podcasts: ['Almanca Podcastler (+520 Cümle)', 'Çeviri, her podcast altında isteğe bağlı dil ve ses'],
             radio: ['Çevirili Almanca Radyo', 'Altta çeviri ile radyo dinleme'],
@@ -981,11 +1024,15 @@ var UI_TRANSLATIONS = {
         contactWelcome: 'تواصل معنا',
         openText: 'فتح',
         closeText: 'إغلاق',
+        lessonPrefix: 'الدرس',
+        allLevelsBtn: 'جميع المستويات (١٢٩ درساً)',
+        nextPageBtn: '➡ الصفحة التالية',
+        descLabel: '📌 شرح الدرس',
         sections: {
-            lessons: ['المستويات والدروس (A1 إلى C1 – ١٢٩ درساً)', 'فيديو لكل درس، شرح أسفل الدرس وزر الصفحة التالية'],
+            lessons: ['المستويات والدروس (A1 إلى C1 – ١٢٩ درساً)', 'فيديو حسب موضوع الدرس، شرح أسفل الدرس والصفحة التالية'],
             vocab100k: ['قاموس أونلاين غير محدود + مسح الصور', 'بحث أي كلمة، مسح نص الصورة وجمل يومية مع الصوت'],
             live_voice: ['ترجمة الصوت والنص + كتابة المشكلات', 'تحويل الصوت لنص، كتابة المشكلات وتحويلها للغة المطلوبة'],
-            translator: ['مترجم غير محدود لأي لغة + مسح الصور', 'ترجمة حرة من وإلى أي لغة + مسح الصور والصوت'],
+            translator: ['مترجم غير محدود لأي لغة + مسح الصور', 'ترجمة تلقائية للنص الممسوح من وإلى أي لغة + الصوت'],
             grammar: ['قواعد وكتب A1 إلى C1', 'Verben mit Präposition، Passiv، Konjunktiv وقوائم الكلمات'],
             podcasts: ['بودكاست ألماني (+٥٢٠ جملة)', 'ترجمة، لغة اختيارية أسفل كل بودكاست وتشغيل صوتي'],
             radio: ['راديو ألماني مع ترجمة', 'استماع مع عرض الترجمة في الأسفل'],
@@ -1007,11 +1054,15 @@ var UI_TRANSLATIONS = {
         contactWelcome: 'اړیکه',
         openText: 'پرانیستل',
         closeText: 'تړل',
+        lessonPrefix: 'لوست',
+        allLevelsBtn: 'ټولې کچې (۱۲۹ لوستونه)',
+        nextPageBtn: '➡ بله پاڼه',
+        descLabel: '📌 د لوست توضیحات',
         sections: {
-            lessons: ['کچې او لوستونه (A1 تر C1 – ۱۲۹ لوستونه)', 'د هر لوست ویډیو، لاندې توضیحات او بله پاڼه'],
+            lessons: ['کچې او لوستونه (A1 تر C1 – ۱۲۹ لوستونه)', 'د موضوع مطابق ویډیو، لاندې توضیحات او بله پاڼه'],
             vocab100k: ['نامحدود آنلاین قاموس + د عکس سکین', 'د هرې کلمې موندل، د عکس سکین او ورځنۍ جملې'],
             live_voice: ['د غږ او متن ژباړه + د ستونزو لیکل', 'غږ په متن بدلول، ستونزې لیکل او ژباړل'],
-            translator: ['نامحدود ژباړن + د عکس سکین', 'له هرې ژبې بلې ژبې ته ژباړه + د عکس سکین او غږ'],
+            translator: ['نامحدود ژباړن + د عکس سکین', 'د سکین شوي متن خپله ژباړه + د عکس سکین او غږ'],
             grammar: ['د A1 تر C1 ګرامر او کتابونه', 'Verben mit Präposition، Passiv، Konjunktiv او لغتونه'],
             podcasts: ['جرمني پوډکاسټونه (+۵۲۰ جملې)', 'ژباړه، د هر پوډکاسټ لاندې اختیاري ژبه او غږ'],
             radio: ['د ژباړې سره جرمني راډیو', 'لاندې د ژباړې سره د راډیو اورېدل'],
@@ -1033,11 +1084,15 @@ var UI_TRANSLATIONS = {
         contactWelcome: 'رابطہ کریں',
         openText: 'کھولیں',
         closeText: 'بند کریں',
+        lessonPrefix: 'سبق',
+        allLevelsBtn: 'تمام لیولز (۱۲۹ اسباق)',
+        nextPageBtn: '➡ اگلا صفحہ',
+        descLabel: '📌 سبق کی تفصیل',
         sections: {
-            lessons: ['لیولز اور اسباق (A1 تا C1 – ۱۲۹ اسباق)', 'ہر سبق کی ویڈیو، نیچے تفصیل اور اگلا صفحہ'],
+            lessons: ['لیولز اور اسباق (A1 تا C1 – ۱۲۹ اسباق)', 'موضوع کے مطابق ویڈیو، نیچے تفصیل اور اگلا صفحہ'],
             vocab100k: ['لامحدود آن لائن لغت + فوٹو اسکین', 'لفظ تلاش کریں، تصویر اسکین کریں اور روزمرہ جملے'],
             live_voice: ['آواز اور متن کا ترجمہ + مسائل لکھنا', 'آواز سے متن، مسائل لکھنا اور مطلوبہ زبان میں تبدیلی'],
-            translator: ['لامحدود مترجم + فوٹو اسکین', 'کسی بھی زبان سے ترجمہ + فوٹو اسکین اور آواز'],
+            translator: ['لامحدود مترجم + فوٹو اسکین', 'اسکین متن کا خودکار ترجمہ + فوٹو اسکین اور آواز'],
             grammar: ['A1 تا C1 گرامر اور کتب', 'Verben mit Präposition، Passiv، Konjunktiv اور الفاظ'],
             podcasts: ['جرمن پوڈکاسٹس (+٥٢٠ جملے)', 'ترجمہ، ہر پوڈکاسٹ کے نیچے اختیاری زبان اور آواز'],
             radio: ['ترجمہ کے ساتھ جرمن ریڈیو', 'نیچے ترجمہ کے ساتھ ریڈیو سنیں'],
@@ -1061,6 +1116,30 @@ var NEW_SIX_VIDEOS = [
     { id: '2ObeTuUgu-Y', level: 'B1', title: 'ویدیوی جدید ۵ – ۱۰۰ فعل گذشته (100 Verben Vergangenheit)', desc: 'تمرین افعال در زمان گذشته برای روایت داستان و تجربه.' },
     { id: 'ZpLXfkYC1H4', level: 'B2', title: 'ویدیوی جدید ۶ – ۱۰۰ کلمه مهم آلمانی (100 wichtige Wörter)', desc: 'واژگان کلیدی و تحلیلی برای سطوح بالاتر.' }
 ];
+
+/* Topic-matched video assignments per level and lesson (keeping all videos available and ordered by topic/level) */
+var LEVEL_TOPIC_VIDEO_MAP = {
+    A1: ['4-eDoThe6qo', 'L6jb3CijCnE', 'bN0CYbXomqo', 'wv84cwyTiNc'],
+    A2: ['Lg5P2w_Ro1c', 'wv84cwyTiNc', 'bN0CYbXomqo', 'L6jb3CijCnE'],
+    B1: ['LkufozluseI', 'lr5nQObcSY0', '2ObeTuUgu-Y', 'ZpLXfkYC1H4'],
+    B2: ['ZpLXfkYC1H4', 'lr5nQObcSY0', '2ObeTuUgu-Y', 'LkufozluseI'],
+    C1: ['lr5nQObcSY0', 'ZpLXfkYC1H4', '2ObeTuUgu-Y', 'LkufozluseI']
+};
+
+function getTopicVideoForLesson(lvl, idx, title) {
+    var t = String(title || '').toLowerCase();
+    if (t.indexOf('فعل') !== -1 || t.indexOf('گذشته') !== -1 || t.indexOf('برنامه') !== -1 || t.indexOf('روتین') !== -1) {
+        return (t.indexOf('گذشته') !== -1 || t.indexOf('خاطرات') !== -1) ? '2ObeTuUgu-Y' : ((lvl === 'B1' || lvl === 'C1') ? 'lr5nQObcSY0' : 'bN0CYbXomqo');
+    }
+    if (t.indexOf('سؤال') !== -1 || t.indexOf('پرسش') !== -1 || t.indexOf('مکالمه') !== -1 || t.indexOf('قرار') !== -1) {
+        return 'wv84cwyTiNc';
+    }
+    if (t.indexOf('واژگان') !== -1 || t.indexOf('کلمه') !== -1 || t.indexOf('لغت') !== -1 || t.indexOf('خرید') !== -1 || t.indexOf('غذا') !== -1) {
+        return (lvl === 'B2' || lvl === 'C1') ? 'ZpLXfkYC1H4' : 'L6jb3CijCnE';
+    }
+    var pool = LEVEL_TOPIC_VIDEO_MAP[lvl] || LEVEL_TOPIC_VIDEO_MAP.A1;
+    return pool[idx % pool.length];
+}
 
 function buildCoreEverydaySentences(deWord, faWord) {
     var wDe = String(deWord || 'das Wort').trim();
@@ -1175,8 +1254,6 @@ var levelVideos = {
     C1: { id: 'lr5nQObcSY0', title: 'Aufbau & C1 Verben - KING ASAD', link: 'https://www.goethe.de/de/spr/ueb.html' }
 };
 
-var LESSON_VIDEO_POOL = ['4-eDoThe6qo', 'L6jb3CijCnE', 'bN0CYbXomqo', 'Lg5P2w_Ro1c', 'wv84cwyTiNc', 'LkufozluseI', 'lr5nQObcSY0', '2ObeTuUgu-Y', 'ZpLXfkYC1H4'];
-
 var levelDescriptions = {
     A1: 'سطح مقدماتی (۱۹ درس): معرفی خود، اعداد، زمان، خانواده، خرید و مکالمات ساده روزمره.',
     A2: 'سطح پایه پیشرفته (۲۰ درس): روتین روزانه، مسکن، سفر، سلامت، کار، ایمیل و برنامه‌ریزی.',
@@ -1212,7 +1289,7 @@ var starterWords = [
 ];
 
 var lessonData = {};
-LEVELS.forEach(function(lvl, lIdx) {
+LEVELS.forEach(function(lvl) {
     lessonData[lvl] = lessonTitles[lvl].map(function(title, idx) {
         var items = [];
         for (var s = 1; s <= 12; s++) {
@@ -1224,12 +1301,12 @@ LEVELS.forEach(function(lvl, lIdx) {
         }
         return {
             title: title,
-            videoId: LESSON_VIDEO_POOL[(lIdx + idx) % LESSON_VIDEO_POOL.length],
+            videoId: getTopicVideoForLesson(lvl, idx, title),
             words: [0, 1, 2, 3, 4].map(function(k) { return starterWords[(idx * 3 + k) % starterWords.length]; }),
             sentences: items,
             sentencePage: 0,
             open: false,
-            grammar: 'در این درس («' + title + '» در سطح ' + lvl + ') یاد می‌گیرید چگونه واژگان کلیدی را در جمله‌های کوتاه و کاربردی به‌کار ببرید و ساختار فعل در جمله را رعایت کنید.'
+            grammar: 'موضوع این درس («' + title + '» در سطح ' + lvl + ') روی کاربرد عملی واژگان مرتبط، صرف درست فعل و جمله‌سازی روزمره تمرکز دارد.'
         };
     });
 });
@@ -1367,7 +1444,7 @@ window.speakWithChosenLang = function(text, explicitLang) {
     speakTextSafe(text, langToUse);
 };
 
-/* Apply Site Language Across All Sections & Texts */
+/* Apply Site Language Across All Sections, Topics, Levels & Lessons */
 function applySiteLanguage(langCode) {
     currentSiteLang = UI_TRANSLATIONS[langCode] ? langCode : 'fa';
     var pack = UI_TRANSLATIONS[currentSiteLang];
@@ -1402,9 +1479,16 @@ function applySiteLanguage(langCode) {
         if (dEl) dEl.textContent = pack.sections[key][1];
         if (pEl) pEl.textContent = (drawer && drawer.classList.contains('open')) ? pack.closeText : pack.openText;
     });
+
+    /* Re-render open drawers so lessons, grammar topics, quizzes & multilingual texts adapt to chosen language */
+    Object.keys(pack.sections).forEach(function(key) {
+        var drawer = document.getElementById('drawer-' + key);
+        if (drawer && drawer.classList.contains('open')) {
+            renderDrawerContent(key, drawer);
+        }
+    });
 }
 
-/* Unlimited Any-to-Any Translation */
 function detectLanguageShort(text) {
     var s = String(text || '').trim();
     if (/[\u0600-\u06FF]/.test(s)) return 'fa';
@@ -1542,11 +1626,12 @@ function renderDrawerContent(key, drawer) {
     }
 }
 
-/* 01: Lessons A1-C1 + Per-Lesson Video + Description Below Lesson + Next Page + Keep Position */
+/* 01: Lessons A1-C1 + Topic Video + Description Below Lesson + Next Page + Keep Position */
 function buildLessonsDrawerHtml() {
+    var pack = UI_TRANSLATIONS[currentSiteLang] || UI_TRANSLATIONS.fa;
     var levelsToShow = (selectedLevelFilter === 'ALL') ? LEVELS : [selectedLevelFilter];
     var html = '<div class="level-switcher-bar">' +
-        '<button type="button" class="lvl-filter-btn' + (selectedLevelFilter === 'ALL' ? ' active' : '') + '" data-lvl-filter="ALL">همه سطوح (۱۲۹ درس)</button>';
+        '<button type="button" class="lvl-filter-btn' + (selectedLevelFilter === 'ALL' ? ' active' : '') + '" data-lvl-filter="ALL">' + pack.allLevelsBtn + '</button>';
     LEVELS.forEach(function(lvl) {
         html += '<button type="button" class="lvl-filter-btn' + (selectedLevelFilter === lvl ? ' active' : '') + '" data-lvl-filter="' + lvl + '">' + lvl + '</button>';
     });
@@ -1554,7 +1639,7 @@ function buildLessonsDrawerHtml() {
 
     levelsToShow.forEach(function(lvl) {
         var vid = levelVideos[lvl];
-        html += '<div class="sub-card"><h4>سطح ' + lvl + ' – ' + levelDescriptions[lvl] + '</h4>';
+        html += '<div class="sub-card"><h4>' + lvl + ' – ' + levelDescriptions[lvl] + '</h4>';
 
         lessonData[lvl].forEach(function(les, idx) {
             var pageSize = 4;
@@ -1571,13 +1656,13 @@ function buildLessonsDrawerHtml() {
 
             html += '<div class="lesson-item" id="' + lessonDomId + '">' +
                 '<button type="button" class="lesson-head-btn' + (isOpen ? ' open' : '') + '" data-lvl="' + lvl + '" data-les-idx="' + idx + '">' +
-                    '<span>درس ' + (idx + 1) + ': ' + les.title + '</span>' +
+                    '<span>' + pack.lessonPrefix + ' ' + (idx + 1) + ': ' + les.title + '</span>' +
                     '<span>' + (isOpen ? '▴' : '▾') + '</span>' +
                 '</button>' +
                 '<div class="lesson-body' + (isOpen ? ' open' : '') + '">';
 
             if (isOpen) {
-                html += '<iframe class="video-frame" src="https://www.youtube.com/embed/' + activeVidId + '" title="ویدیوی درس ' + (idx + 1) + ' – ' + les.title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                html += '<iframe class="video-frame" src="https://www.youtube.com/embed/' + activeVidId + '" title="' + les.title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
             }
 
             visibleSentences.forEach(function(entry) {
@@ -1587,21 +1672,21 @@ function buildLessonsDrawerHtml() {
                     '<div class="row-top-flex">' +
                         '<div><strong>🇩🇪 ' + item.de + '</strong><div style="color:#4b5563;font-size:12.5px;">🇮🇷 ' + item.fa + '</div></div>' +
                         '<div class="audio-group">' +
-                            '<button type="button" class="btn-move" onclick="moveLessonSentence(\'' + lvl + '\', ' + idx + ', ' + rIdx + ', -1)">⬆ بالا</button>' +
-                            '<button type="button" class="btn-move" onclick="moveLessonSentence(\'' + lvl + '\', ' + idx + ', ' + rIdx + ', 1)">⬇ پایین</button>' +
-                            '<button type="button" class="btn-audio-de" onclick="speakTextSafe(\'' + escapeAttr(item.de) + '\', \'de-DE\')">🔊 آلمانی</button>' +
-                            '<button type="button" class="btn-audio-fa" onclick="speakTextSafe(\'' + escapeAttr(item.fa) + '\', \'fa-IR\')">🔊 دری/فارسی</button>' +
+                            '<button type="button" class="btn-move" onclick="moveLessonSentence(\'' + lvl + '\', ' + idx + ', ' + rIdx + ', -1)">⬆</button>' +
+                            '<button type="button" class="btn-move" onclick="moveLessonSentence(\'' + lvl + '\', ' + idx + ', ' + rIdx + ', 1)">⬇</button>' +
+                            '<button type="button" class="btn-audio-de" onclick="speakTextSafe(\'' + escapeAttr(item.de) + '\', \'de-DE\')">🔊 DE</button>' +
+                            '<button type="button" class="btn-audio-fa" onclick="speakTextSafe(\'' + escapeAttr(item.fa) + '\', \'fa-IR\')">🔊 FA</button>' +
                         '</div>' +
                     '</div>' +
                 '</div>';
             });
 
             html += '<div class="lesson-description-box">' +
-                '<strong>📌 توضیحات درس ' + (idx + 1) + ' (' + les.title + '):</strong> ' + les.grammar +
+                '<strong>' + pack.descLabel + ' (' + les.title + '):</strong> ' + les.grammar +
             '</div>';
 
             html += '<div class="audio-group" style="margin-top:8px;">' +
-                '<button type="button" class="btn-primary" onclick="nextLessonPage(\'' + lvl + '\', ' + idx + ')">➡ صفحه بعدی</button>' +
+                '<button type="button" class="btn-primary" onclick="nextLessonPage(\'' + lvl + '\', ' + idx + ')">' + pack.nextPageBtn + '</button>' +
             '</div>' +
             '</div></div>';
         });
@@ -1855,7 +1940,7 @@ window.stopSpeechCapture = function() {
     }
 };
 
-/* 04: Unlimited Any-to-Any Translator + Photo Scan + Everyday Sentences */
+/* 04: Unlimited Any-to-Any Translator + Auto-Translate After Photo Scan */
 function buildTranslatorHtml() {
     var targetOpts =
         '<option value="de">🇩🇪 آلمانی (Deutsch)</option>' +
@@ -1866,19 +1951,30 @@ function buildTranslatorHtml() {
         '<option value="ps">🇦🇫 پشتو (پښتو)</option>' +
         '<option value="ur">🇵🇰 اردو (اردو)</option>';
 
-    return '<div class="sub-card"><h4>🌐 مترجم نامحدود هر زبان به هر زبان + اسکن عکس</h4>' +
+    return '<div class="sub-card"><h4>🌐 مترجم نامحدود هر زبان به هر زبان + اسکن عکس و ترجمه خودکار</h4>' +
         '<div class="audio-group" style="margin-bottom:8px;">' +
             '<span style="font-size:12.5px;font-weight:800;color:#1e3a8a;">ترجمه به زبان:</span>' +
-            '<select id="trTargetLang" style="width:auto;margin:0;padding:6px 10px;">' + targetOpts + '</select>' +
+            '<select id="trTargetLang" style="width:auto;margin:0;padding:6px 10px;" onchange="if(document.getElementById(\'trInput\').value.trim()) runTranslate();">' + targetOpts + '</select>' +
             '<button type="button" class="btn-audio-fa" onclick="document.getElementById(\'trTargetLang\').value=\'de\'; runTranslate();">🇮🇷 هر متن فارسی ➔ آلمانی</button>' +
             '<button type="button" class="btn-audio-de" onclick="document.getElementById(\'trTargetLang\').value=\'fa\'; runTranslate();">🇩🇪 هر متن ➔ دری/فارسی</button>' +
-            '<button type="button" class="btn-scan" onclick="triggerPhotoScan(\'trInput\', \'runTranslate\')">📷 اسکن عکس متن</button>' +
+            '<button type="button" class="btn-scan" onclick="triggerPhotoScan(\'trInput\', \'runTranslate\')">📷 اسکن عکس و ترجمه خودکار</button>' +
         '</div>' +
-        '<textarea id="trInput" placeholder="هر متن یا جمله را به فارسی یا هر زبان دیگری بنویسید یا از عکس اسکن کنید..."></textarea>' +
+        '<textarea id="trInput" oninput="scheduleAutoTranslate()" placeholder="هر متن یا جمله را به فارسی یا هر زبان دیگری بنویسید یا از عکس اسکن کنید..."></textarea>' +
         '<button type="button" class="btn-primary" onclick="runTranslate()">ترجمه نامحدود و نمایش جملات روزمره</button>' +
         '<div id="trOutput" class="result-banner" style="display:none;"></div>' +
         '<div id="trSentencesBox"></div></div>';
 }
+
+var autoTranslateTimer = null;
+window.scheduleAutoTranslate = function() {
+    if (autoTranslateTimer) clearTimeout(autoTranslateTimer);
+    autoTranslateTimer = setTimeout(function() {
+        var inp = document.getElementById('trInput');
+        if (inp && inp.value.trim().length > 1) {
+            window.runTranslate();
+        }
+    }, 650);
+};
 
 window.runTranslate = function() {
     var inp = document.getElementById('trInput');
