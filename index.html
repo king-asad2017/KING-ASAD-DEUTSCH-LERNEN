@@ -332,7 +332,7 @@ body.theme-modern-edu .hero-main-heading span { color: #0f172a; }
     font-variant-numeric: tabular-nums;
 }
 
-/* ردیف‌های ۵بخشی بزرگ و کنار هم */
+/* دو ردیف افقی ۵بخشی بزرگ و کنار هم */
 .five-big-row {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -378,7 +378,6 @@ body.theme-luxury-glass .big-five-card:nth-child(5) { animation-delay: 1.6s; }
     box-shadow: 0 0 0 4px #facc15, 0 18px 36px rgba(0, 0, 0, 0.52);
 }
 
-/* رنگ‌بندی جذاب ۱۰ کارت بزرگ (۵ کارت در ردیف اول، ۵ کارت در ردیف دوم) */
 .b5-1 { background: linear-gradient(155deg, #6d28d9 0%, #2e1065 100%); }
 .b5-2 { background: linear-gradient(155deg, #15803d 0%, #052e16 100%); }
 .b5-3 { background: linear-gradient(155deg, #1d4ed8 0%, #172554 100%); }
@@ -536,29 +535,85 @@ body.theme-luxury-glass .big-five-card:nth-child(5) { animation-delay: 1.6s; }
     font-size: clamp(14px, 2.2vw, 18.5px);
 }
 
-/* استایل عناصر داخلی */
-.level-rows { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+/* استایل عناصر داخلی سطوح و درس‌ها */
+.level-rows { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
 .level-row-btn {
     display: flex; align-items: stretch; border-radius: 16px; overflow: hidden;
     background: #ffffff; border: 2px solid #cbd5e1; cursor: pointer; text-align: start;
     font-family: inherit; width: 100%;
+    transition: transform 0.15s ease, border-color 0.15s ease;
 }
+.level-row-btn:hover { transform: translateY(-1px); }
 .level-row-btn.active { border-color: #0b2144; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25); }
-.lvl-tag-col { min-width: 80px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; color: #ffffff; padding: 12px; }
+.lvl-tag-col { min-width: 84px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 900; color: #ffffff; padding: 12px; }
 .lvl-A1 .lvl-tag-col { background: #2563eb; }
 .lvl-A2 .lvl-tag-col { background: #16a34a; }
 .lvl-B1 .lvl-tag-col { background: #eab308; color: #0f172a; }
 .lvl-B2 .lvl-tag-col { background: #ea580c; }
 .lvl-C1 .lvl-tag-col { background: #db2777; }
 .lvl-text-col { flex: 1; padding: 10px 14px; display: flex; flex-direction: column; justify-content: center; }
-.lvl-name { font-size: 16px; font-weight: 900; color: #0f172a; }
+.lvl-name { font-size: 16.5px; font-weight: 900; color: #0f172a; }
 .lvl-sub { font-size: 12.5px; font-weight: 700; color: #475569; }
 .lvl-arrow { display: flex; align-items: center; padding: 0 14px; font-size: 22px; font-weight: 900; color: #0b2144; }
 
-.lesson-item-box { border: 1.5px solid #cbd5e1; border-radius: 14px; margin-bottom: 10px; background: #f8fafc; overflow: hidden; }
-.lesson-head-btn { width: 100%; padding: 13px 16px; background: #e0f2fe; border: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; text-align: start; font-family: inherit; font-size: 15px; font-weight: 900; color: #0b2144; cursor: pointer; }
-.lesson-body-box { display: none; padding: 15px; background: #ffffff; border-top: 1px solid #cbd5e1; }
-.lesson-body-box.open { display: block; }
+.nav-back-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #f1f5f9;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 14px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+}
+
+.btn-back-step {
+    background: #0b2144;
+    color: #facc15;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.lesson-list-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lesson-select-btn {
+    width: 100%;
+    padding: 14px 16px;
+    background: #e0f2fe;
+    border: 1.5px solid #7dd3fc;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: start;
+    font-family: inherit;
+    font-size: 15.5px;
+    font-weight: 900;
+    color: #0b2144;
+    cursor: pointer;
+}
+.lesson-select-btn:hover {
+    background: #bae6fd;
+}
+
+.single-lesson-view {
+    background: #ffffff;
+    border: 2px solid #0284c7;
+    border-radius: 18px;
+    padding: 16px;
+}
 
 .video-box { background: #050a14; border-radius: 14px; padding: 12px; margin: 10px 0; color: #ffffff; }
 .video-iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 10px; display: block; background: #000000; }
@@ -682,7 +737,7 @@ textarea { min-height: 95px; resize: vertical; }
         </div>
     </section>
 
-    <!-- ردیف اول: ۵ بخش بزرگ کنار هم -->
+    <!-- ردیف اول: ۵ بخش اصلی بزرگ کنار هم -->
     <section class="five-big-row" aria-label="ردیف اول بخش‌های اصلی">
         <button type="button" class="big-five-card b5-1" id="mcard-podcasts" onclick="openSection('podcasts')">
             <div class="b5-icon">🎧</div>
@@ -720,8 +775,8 @@ textarea { min-height: 95px; resize: vertical; }
         </button>
     </section>
 
-    <!-- ردیف دوم: ۵ بخش بزرگ کنار هم -->
-    <section class="five-big-row" aria-label="ردیف دوم بخش‌های آموزشی">
+    <!-- ردیف دوم: ۵ بخش اصلی بزرگ کنار هم -->
+    <section class="five-big-row" aria-label="ردیف دوم بخش‌های اصلی">
         <button type="button" class="big-five-card b5-6" id="mcard-translator" onclick="openSection('translator')">
             <div class="b5-icon">🌐</div>
             <div class="b5-title-fa">مترجم نامحدود + عکس</div>
@@ -953,7 +1008,14 @@ var TRAINING_VIDEOS = [
     { title: '۱۰۰ فعل گذشته آلمانی', id: '2ObeTuUgu-Y', start: 0, note: 'تمرین افعال گذشته' }
 ];
 
-var curLevel = 'A1';
+/* وضعیت مرحله‌ای سطوح و درس‌ها:
+   - activeLevel: وقتی null باشد، لیست تمام سطح‌ها (A1–C1) نمایش داده می‌شود. وقتی سطحی انتخاب شود، درس‌های آن سطح نمایش داده می‌شود.
+   - activeLessonIndex: وقتی null باشد، لیست درس‌های سطح فعال نمایش داده می‌شود. وقتی عددی (0, 1, ...) باشد، فقط همان یک درس باز است و درس قبلی بسته می‌شود.
+*/
+var activeLevel = null;
+var activeLessonIndex = null;
+var lastVisitedLevel = 'A1';
+
 var curGrammarLevel = 'A1';
 var curPodcastLevel = 'A1';
 var curQuizLevel = 'A1';
@@ -1053,7 +1115,9 @@ document.addEventListener('change', function(e) {
 });
 
 window.jumpToLevel = function(lvl) {
-    curLevel = lvl;
+    activeLevel = lvl;
+    lastVisitedLevel = lvl;
+    activeLessonIndex = null;
     openSection('levels');
 };
 
@@ -1103,6 +1167,107 @@ window.closeDrawerPanel = function() {
     if (panel) panel.classList.remove('open');
 };
 
+/* مدیریت دقیق سطوح و درس‌ها */
+function paintLevelsSection(container) {
+    /* حالت ۱: هیچ سطحی انتخاب نشده -> نمایش تمام سطح‌ها */
+    if (!activeLevel) {
+        var html = '<div style="font-size:14px;font-weight:800;color:#475569;margin-bottom:10px;">روی هر سطح کلیک کنید تا درس‌های همان سطح باز شود:</div>';
+        html += '<div class="level-rows">';
+        LEVELS.forEach(function(lvl) {
+            var m = LEVEL_META[lvl];
+            html += '<button type="button" class="level-row-btn lvl-' + lvl + (lvl === lastVisitedLevel ? ' active' : '') + '" onclick="selectLevelStep(\'' + lvl + '\')">' +
+                '<span class="lvl-tag-col">' + lvl + '</span>' +
+                '<span class="lvl-text-col">' +
+                    '<span class="lvl-name">' + m.fa + '</span>' +
+                    '<span class="lvl-sub">' + m.sub + ' • ' + m.book + '</span>' +
+                '</span>' +
+                '<span class="lvl-arrow">‹</span>' +
+            '</button>';
+        });
+        html += '</div>';
+        container.innerHTML = html;
+        return;
+    }
+
+    var meta = LEVEL_META[activeLevel];
+    var list = LESSONS[activeLevel] || [];
+
+    /* حالت ۲: یک درس خاص انتخاب شده -> پنهان بودن سطوح و نمایش فقط محتوای همان درس */
+    if (activeLessonIndex !== null && list[activeLessonIndex]) {
+        var les = list[activeLessonIndex];
+        var sampleDe = les.title + ' – Wir lernen Deutsch jeden Tag.';
+        var sampleFa = les.desc;
+
+        var lessonHtml = '<div class="nav-back-bar">' +
+            '<span style="font-weight:900;color:#0b2144;">' + meta.fa + ' • ' + les.title + '</span>' +
+            '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+                '<button type="button" class="btn-back-step" onclick="backToLevelLessons()">← بازگشت به درس‌های ' + activeLevel + '</button>' +
+                '<button type="button" class="btn-blue" onclick="backToAllLevels()">← همه سطوح</button>' +
+            '</div>' +
+        '</div>';
+
+        lessonHtml += '<div class="single-lesson-view">' +
+            '<div style="font-size:17px;font-weight:900;color:#0b2144;margin-bottom:8px;">' + les.title + '</div>' +
+            '<div class="card-block"><strong>مشخصات درس:</strong> ' + les.desc + '</div>' +
+            renderVideoPlayerHtml(meta.videoId, les.start, les.title) +
+            '<div class="card-block" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">' +
+                '<div>' +
+                    '<div class="speak-text" onclick="readOutLoud(\'' + escapeQuote(sampleDe) + '\', \'de-DE\')"><strong>🇩🇪 ' + sampleDe + '</strong></div>' +
+                    '<div class="speak-text" style="color:#334155;font-size:13px;margin-top:4px;" onclick="readOutLoud(\'' + escapeQuote(sampleFa) + '\', \'fa-IR\')">🇮🇷 ' + sampleFa + '</div>' +
+                '</div>' +
+                '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+                    '<button type="button" class="btn-blue" onclick="readOutLoud(\'' + escapeQuote(sampleDe) + '\', \'de-DE\')">🔊 صدای آلمانی</button>' +
+                    '<button type="button" class="btn-green" onclick="readOutLoud(\'' + escapeQuote(sampleFa) + '\', \'fa-IR\')">🔊 صدای فارسی</button>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
+
+        container.innerHTML = lessonHtml;
+        return;
+    }
+
+    /* حالت ۳: سطح انتخاب شده است و لیست درس‌های همان سطح نمایش داده می‌شود (سطوح دیگر پنهان هستند) */
+    var lvlHtml = '<div class="nav-back-bar">' +
+        '<span style="font-weight:900;color:#0b2144;">' + meta.fa + ' • ' + meta.book + '</span>' +
+        '<button type="button" class="btn-back-step" onclick="backToAllLevels()">← بازگشت به تمام سطح‌ها (A1–C1)</button>' +
+    '</div>';
+
+    lvlHtml += '<div class="lesson-list-stack">';
+    list.forEach(function(item, idx) {
+        lvlHtml += '<button type="button" class="lesson-select-btn" onclick="openSingleLessonStep(' + idx + ')">' +
+            '<span>' + item.title + '</span>' +
+            '<span>باز کردن درس ‹</span>' +
+        '</button>';
+    });
+    lvlHtml += '</div>';
+
+    container.innerHTML = lvlHtml;
+}
+
+window.selectLevelStep = function(lvl) {
+    activeLevel = lvl;
+    lastVisitedLevel = lvl;
+    activeLessonIndex = null;
+    paintLevelsSection(document.getElementById('drawerBody'));
+};
+
+window.openSingleLessonStep = function(idx) {
+    /* با انتخاب درس جدید، هر درس قبلی بسته و جایگزین می‌شود */
+    activeLessonIndex = idx;
+    paintLevelsSection(document.getElementById('drawerBody'));
+};
+
+window.backToLevelLessons = function() {
+    activeLessonIndex = null;
+    paintLevelsSection(document.getElementById('drawerBody'));
+};
+
+window.backToAllLevels = function() {
+    activeLevel = null;
+    activeLessonIndex = null;
+    paintLevelsSection(document.getElementById('drawerBody'));
+};
+
 function paintWorldInfoSection(container) {
     var now = new Date();
     var af = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Asia/Kabul' });
@@ -1121,67 +1286,6 @@ function paintWorldInfoSection(container) {
         '</div>' +
     '</div>';
 }
-
-function paintLevelsSection(container) {
-    var html = '<div class="level-rows">';
-    LEVELS.forEach(function(lvl) {
-        var m = LEVEL_META[lvl];
-        html += '<button type="button" class="level-row-btn lvl-' + lvl + (lvl === curLevel ? ' active' : '') + '" onclick="pickLevel(\'' + lvl + '\')">' +
-            '<span class="lvl-tag-col">' + lvl + '</span>' +
-            '<span class="lvl-text-col">' +
-                '<span class="lvl-name">' + m.fa + '</span>' +
-                '<span class="lvl-sub">' + m.sub + ' • ' + m.book + '</span>' +
-            '</span>' +
-            '<span class="lvl-arrow">‹</span>' +
-        '</button>';
-    });
-    html += '</div>';
-
-    var meta = LEVEL_META[curLevel];
-    var list = LESSONS[curLevel] || [];
-
-    html += '<div class="card-block">' +
-        '<div style="font-size:16px;font-weight:900;color:#0b2144;">مشخصات سطح ' + curLevel + ': ' + meta.fa + '</div>' +
-        '<div style="font-size:13.5px;margin-top:4px;"><strong>کتاب:</strong> ' + meta.book + ' • <strong>توضیح:</strong> ' + meta.sub + '</div>' +
-    '</div>';
-
-    list.forEach(function(les, idx) {
-        var sampleDe = les.title + ' – Wir lernen Deutsch jeden Tag.';
-        var sampleFa = les.desc;
-        html += '<div class="lesson-item-box">' +
-            '<button type="button" class="lesson-head-btn" onclick="toggleLessonAccordion(' + idx + ')">' +
-                '<span>' + les.title + '</span>' +
-                '<span>مشخصات و ویدیو ▾</span>' +
-            '</button>' +
-            '<div class="lesson-body-box" id="lesPanel_' + idx + '">' +
-                '<div class="card-block" style="margin-bottom:8px;"><strong>مشخصات درس:</strong> ' + les.desc + '</div>' +
-                renderVideoPlayerHtml(meta.videoId, les.start, les.title) +
-                '<div class="card-block" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">' +
-                    '<div>' +
-                        '<div class="speak-text" onclick="readOutLoud(\'' + escapeQuote(sampleDe) + '\', \'de-DE\')"><strong>🇩🇪 ' + sampleDe + '</strong></div>' +
-                        '<div class="speak-text" style="color:#334155;font-size:13px;margin-top:4px;" onclick="readOutLoud(\'' + escapeQuote(sampleFa) + '\', \'fa-IR\')">🇮🇷 ' + sampleFa + '</div>' +
-                    '</div>' +
-                    '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
-                        '<button type="button" class="btn-blue" onclick="readOutLoud(\'' + escapeQuote(sampleDe) + '\', \'de-DE\')">🔊 صدای آلمانی</button>' +
-                        '<button type="button" class="btn-green" onclick="readOutLoud(\'' + escapeQuote(sampleFa) + '\', \'fa-IR\')">🔊 صدای فارسی</button>' +
-                    '</div>' +
-                '</div>' +
-            '</div>' +
-        '</div>';
-    });
-
-    container.innerHTML = html;
-}
-
-window.pickLevel = function(lvl) {
-    curLevel = lvl;
-    paintLevelsSection(document.getElementById('drawerBody'));
-};
-
-window.toggleLessonAccordion = function(idx) {
-    var el = document.getElementById('lesPanel_' + idx);
-    if (el) el.classList.toggle('open');
-};
 
 function paintDictionarySection(container) {
     container.innerHTML = '<div class="card-block">' +
