@@ -16,50 +16,40 @@
     --surface-bg: rgba(16, 20, 32, 0.92);
     --surface-border: rgba(250, 204, 21, 0.55);
     --accent: #facc15;
-    --accent-secondary: #f59e0b;
-    --text-on-dark: #ffffff;
     --drawer-bg: rgba(255, 255, 255, 0.98);
     --drawer-ink: #0f172a;
 }
 
-/* ۱. سبک مشکی و طلایی */
 body.theme-black-gold {
     --page-bg: #060911;
     --page-grad: linear-gradient(165deg, rgba(5, 8, 15, 0.91) 0%, rgba(24, 19, 8, 0.85) 55%, rgba(250, 204, 21, 0.16) 100%);
     --surface-bg: rgba(13, 15, 23, 0.93);
     --surface-border: rgba(250, 204, 21, 0.72);
     --accent: #facc15;
-    --accent-secondary: #eab308;
 }
 
-/* ۲. سبک رنگ‌های پرچم آلمان (سیاه، سرخ و زرد) */
 body.theme-german {
     --page-bg: #09090b;
     --page-grad: linear-gradient(165deg, rgba(10, 10, 12, 0.90) 0%, rgba(127, 29, 29, 0.68) 52%, rgba(250, 204, 21, 0.24) 100%);
     --surface-bg: rgba(18, 12, 14, 0.92);
     --surface-border: #ef4444;
     --accent: #facc15;
-    --accent-secondary: #dc2626;
 }
 
-/* ۳. سبک مدرن آموزشی (آبی و سفید) */
 body.theme-modern-edu {
     --page-bg: #0c2340;
     --page-grad: linear-gradient(165deg, rgba(12, 35, 64, 0.88) 0%, rgba(29, 78, 216, 0.78) 52%, rgba(248, 250, 252, 0.86) 100%);
     --surface-bg: rgba(255, 255, 255, 0.94);
     --surface-border: #2563eb;
     --accent: #2563eb;
-    --accent-secondary: #0284c7;
 }
 
-/* ۴. سبک شیشه‌ای لوکس با نورپردازی و کارت‌های متحرک */
 body.theme-luxury-glass {
     --page-bg: #070b19;
     --page-grad: linear-gradient(155deg, rgba(15, 23, 42, 0.78) 0%, rgba(30, 58, 138, 0.65) 50%, rgba(250, 204, 21, 0.22) 100%);
     --surface-bg: rgba(255, 255, 255, 0.16);
     --surface-border: rgba(255, 255, 255, 0.55);
     --accent: #fde047;
-    --accent-secondary: #38bdf8;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -74,7 +64,6 @@ html, body {
     position: relative;
 }
 
-/* پس‌زمینه عکس محصل‌ها + گرادیانت سبک انتخاب‌شده */
 body::before {
     content: "";
     position: fixed;
@@ -89,7 +78,7 @@ body::before {
     pointer-events: none;
 }
 
-/* نوار ناوبری بالا */
+/* نوار ناوبری افقی بالا */
 .top-nav {
     position: sticky;
     top: 0;
@@ -101,7 +90,7 @@ body::before {
 }
 
 .nav-wrap {
-    max-width: 1240px;
+    max-width: 1260px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -136,7 +125,7 @@ body::before {
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 8px;
     flex-wrap: wrap;
 }
 
@@ -145,7 +134,7 @@ body::before {
     color: #f8fafc;
     border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 999px;
-    padding: 6px 13px;
+    padding: 6px 14px;
     font-family: inherit;
     font-size: 12.5px;
     font-weight: 800;
@@ -166,30 +155,39 @@ body::before {
 }
 
 .main-shell {
-    max-width: 1240px;
+    max-width: 1260px;
     margin: 0 auto;
     padding: 16px 16px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-/* نوار انتخاب ۴ سبک طراحی */
+/* نوار افقی ۴ سبک طراحی با اندازه یکسان */
 .style-switcher-bar {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-bottom: 16px;
+    gap: 14px;
+    align-items: stretch;
 }
 
 .style-choice-btn {
-    background: rgba(15, 23, 42, 0.88);
+    height: 100%;
+    background: rgba(15, 23, 42, 0.90);
     color: #ffffff;
     border: 2px solid rgba(250, 204, 21, 0.45);
     border-radius: 16px;
-    padding: 10px 12px;
+    padding: 12px 14px;
     font-family: inherit;
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 900;
     cursor: pointer;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
 }
@@ -201,10 +199,9 @@ body::before {
     box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.45);
 }
 .style-choice-btn small {
-    display: block;
     font-size: 11px;
     font-weight: 700;
-    opacity: 0.9;
+    opacity: 0.92;
 }
 
 /* بنر اصلی و عکس محصل */
@@ -214,16 +211,11 @@ body::before {
     border: 2px solid var(--surface-border);
     border-radius: 26px;
     padding: 20px 22px;
-    margin-bottom: 18px;
     box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
     display: grid;
     grid-template-columns: 265px 1fr;
     gap: 20px;
     align-items: center;
-}
-
-body.theme-modern-edu .hero-banner {
-    color: #0f172a;
 }
 
 .student-photo-box {
@@ -257,7 +249,6 @@ body.theme-modern-edu .hero-banner {
 }
 body.theme-modern-edu .hero-center {
     color: #0f172a;
-    text-shadow: none;
 }
 
 .cefr-top-pills {
@@ -340,17 +331,19 @@ body.theme-modern-edu .hero-main-heading span { color: #0f172a; }
     font-variant-numeric: tabular-nums;
 }
 
-/* چهار بخش اصلی به‌صورت افقی در یک ردیف */
+/* چهار کارت اصلی در یک ردیف و چهار ستون افقی با اندازه یکسان */
 .four-horizontal-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 14px;
-    margin-bottom: 18px;
+    align-items: stretch;
 }
 
 .horiz-main-card {
+    height: 100%;
+    min-height: 215px;
     border-radius: 20px;
-    padding: 18px 14px;
+    padding: 20px 16px;
     color: #ffffff;
     text-align: center;
     cursor: pointer;
@@ -377,7 +370,7 @@ body.theme-luxury-glass .horiz-main-card:nth-child(4) { animation-delay: 1.8s; }
     50% { transform: translateY(-5px); }
 }
 
-.horiz-main-card:hover { transform: translateY(-5px); }
+.horiz-main-card:hover { transform: translateY(-4px); }
 .horiz-main-card.picked-main {
     box-shadow: 0 0 0 4px #facc15, 0 18px 36px rgba(0, 0, 0, 0.5);
 }
@@ -396,11 +389,10 @@ body.theme-luxury-glass .horiz-main-card:nth-child(4) { animation-delay: 1.8s; }
     align-items: center;
     justify-content: center;
     font-size: 28px;
-    margin-bottom: 8px;
 }
 
 .hcard-title-fa { font-size: 17px; font-weight: 900; line-height: 1.3; }
-.hcard-sub-de { font-size: 13px; font-weight: 800; color: #f8fafc; margin: 4px 0 12px; opacity: 0.92; }
+.hcard-sub-de { font-size: 12.5px; font-weight: 800; color: #f8fafc; opacity: 0.92; }
 
 .hcard-action-pill {
     background: rgba(9, 13, 22, 0.88);
@@ -413,25 +405,30 @@ body.theme-luxury-glass .horiz-main-card:nth-child(4) { animation-delay: 1.8s; }
     width: 100%;
 }
 
-/* نوار ابزارهای تکمیلی تا هیچ بخشی حذف نشود */
+/* نوار ابزارهای تکمیلی در ردیف منظم */
 .full-features-strip {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 10px;
-    margin-bottom: 18px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    align-items: stretch;
 }
 
 .feature-chip-btn {
-    background: rgba(255, 255, 255, 0.94);
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
     color: #0b2144;
     border: 2px solid #cbd5e1;
     border-radius: 14px;
-    padding: 10px 12px;
+    padding: 11px 12px;
     font-family: inherit;
     font-size: 13px;
     font-weight: 900;
     cursor: pointer;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 .feature-chip-btn.active-chip {
     background: #0b2144;
@@ -447,7 +444,6 @@ body.theme-luxury-glass .horiz-main-card:nth-child(4) { animation-delay: 1.8s; }
     border: 2.5px solid var(--accent);
     border-radius: 22px;
     padding: 20px 18px;
-    margin-bottom: 20px;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
 }
 .drawer-panel.open { display: block; }
@@ -481,20 +477,24 @@ body.theme-luxury-glass .horiz-main-card:nth-child(4) { animation-delay: 1.8s; }
     cursor: pointer;
 }
 
-/* بخش چهارستونی پایین صفحه */
+/* چهار ستون افقی پایین صفحه با اندازه یکسان */
 .four-info-cols {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 14px;
-    margin-bottom: 18px;
+    align-items: stretch;
 }
 
 .info-col-box {
+    height: 100%;
     background: linear-gradient(180deg, #fef9c3 0%, #ffffff 22%);
     border: 2px solid rgba(217, 119, 6, 0.35);
     border-radius: 18px;
     padding: 15px 14px;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .info-col-title {
@@ -605,14 +605,23 @@ textarea { min-height: 95px; resize: vertical; }
 .quiz-option.right { background: #2563eb; color: #ffffff; border-color: #1e40af; }
 .quiz-option.wrong { background: #dc2626; color: #ffffff; border-color: #991b1b; }
 
-@media (max-width: 980px) {
+/* واکنش‌گرا در تبلت و موبایل */
+@media (max-width: 1024px) {
     .hero-banner { grid-template-columns: 1fr; }
     .student-photo-box { max-width: 290px; margin: 0 auto; }
     .style-switcher-bar, .four-horizontal-row, .four-info-cols { grid-template-columns: repeat(2, 1fr); }
+    .full-features-strip { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media (max-width: 600px) {
-    .style-switcher-bar, .four-horizontal-row, .four-info-cols, .two-way-cols { grid-template-columns: 1fr; }
+    .main-shell { padding: 12px 12px 36px; gap: 12px; }
+    .style-switcher-bar, .four-horizontal-row, .full-features-strip, .four-info-cols, .two-way-cols {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .horiz-main-card { min-height: auto; padding: 16px 14px; gap: 8px; }
     .search-bar-grid { grid-template-columns: 1fr; }
+    .bottom-ribbon-bar { border-radius: 18px; }
 }
 </style>
 </head>
@@ -620,7 +629,6 @@ textarea { min-height: 95px; resize: vertical; }
 
 <input type="file" id="ocrFileInput" accept="image/*" capture="environment" style="display:none;">
 
-<!-- نوار ناوبری بالا -->
 <nav class="top-nav">
     <div class="nav-wrap">
         <a href="#top" class="brand-link" onclick="closeDrawerPanel()">
@@ -640,7 +648,7 @@ textarea { min-height: 95px; resize: vertical; }
 </nav>
 
 <div class="main-shell" id="top">
-    <!-- انتخاب‌گر ۴ سبک طراحی پیشنهادی -->
+    <!-- ۴ سبک طراحی به‌صورت افقی و هم‌اندازه -->
     <section class="style-switcher-bar" aria-label="انتخاب سبک طراحی">
         <button type="button" class="style-choice-btn active-style" id="st-black-gold" onclick="setSiteTheme('theme-black-gold', 'st-black-gold')">
             👑 Black &amp; Gold
@@ -689,7 +697,7 @@ textarea { min-height: 95px; resize: vertical; }
         </div>
     </section>
 
-    <!-- چهار بخش اصلی به‌صورت افقی در یک ردیف -->
+    <!-- چهار کارت اصلی در یک ردیف و چهار ستون افقی با اندازه یکسان -->
     <section class="four-horizontal-row">
         <button type="button" class="horiz-main-card hcard-1" id="mcard-podcasts" onclick="openSection('podcasts')">
             <div class="hcard-icon">🎧</div>
@@ -720,7 +728,7 @@ textarea { min-height: 95px; resize: vertical; }
         </button>
     </section>
 
-    <!-- نوار دسترسی کامل به سایر بخش‌های سایت -->
+    <!-- نوار افقی ابزارهای تکمیلی هم‌اندازه -->
     <section class="full-features-strip">
         <button type="button" class="feature-chip-btn" id="chip-dict" onclick="openSection('dict')">📖 فرهنگ لغات آنلاین</button>
         <button type="button" class="feature-chip-btn" id="chip-translator" onclick="openSection('translator')">🌐 مترجم نامحدود + عکس</button>
@@ -738,7 +746,7 @@ textarea { min-height: 95px; resize: vertical; }
         <div id="drawerBody"></div>
     </section>
 
-    <!-- بخش چهارستونی پایین صفحه -->
+    <!-- بخش چهارستونی افقی پایین صفحه با اندازه یکسان -->
     <section class="four-info-cols">
         <div class="info-col-box">
             <div class="info-col-title">⭐ Wichtige Links</div>
