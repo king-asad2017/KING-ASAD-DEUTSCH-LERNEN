@@ -90,7 +90,7 @@ body::before {
 }
 
 .nav-wrap {
-    max-width: 1380px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -155,7 +155,7 @@ body::before {
 }
 
 .main-shell {
-    max-width: 1380px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 18px 18px 52px;
     display: flex;
@@ -332,31 +332,33 @@ body.theme-modern-edu .hero-main-heading span { color: #0f172a; }
     font-variant-numeric: tabular-nums;
 }
 
-/* دو ردیف افقی ۵تایی کنار هم */
+/* دو ردیف افقی ۵تایی کنار هم (مجموعاً ۱۰ بخش) */
 .horizontal-row-5 {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 14px;
     align-items: stretch;
+    width: 100%;
 }
 
 .section-horiz-card {
     height: 100%;
     min-height: 245px;
     border-radius: 22px;
-    padding: 22px 15px;
+    padding: 20px 14px;
     color: #ffffff;
     text-align: center;
     cursor: pointer;
     border: 2.5px solid rgba(255, 255, 255, 0.85);
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.36);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
     font-family: inherit;
+    position: relative;
 }
 
 body.theme-luxury-glass .section-horiz-card {
@@ -375,8 +377,9 @@ body.theme-luxury-glass .section-horiz-card:nth-child(5) { animation-delay: 1.6s
 
 .section-horiz-card:hover { transform: translateY(-4px); }
 .section-horiz-card.active-section-card {
-    box-shadow: 0 0 0 4px #facc15, 0 18px 36px rgba(0, 0, 0, 0.52);
+    box-shadow: 0 0 0 4px #facc15, 0 18px 36px rgba(0, 0, 0, 0.55);
     border-color: #facc15;
+    outline: 3px solid rgba(250, 204, 21, 0.55);
 }
 
 .sc-1 { background: linear-gradient(155deg, #6d28d9 0%, #2e1065 100%); }
@@ -392,27 +395,27 @@ body.theme-luxury-glass .section-horiz-card:nth-child(5) { animation-delay: 1.6s
 .sc-10 { background: linear-gradient(155deg, #a16207 0%, #422006 100%); }
 
 .sc-icon {
-    width: 64px;
-    height: 64px;
+    width: 62px;
+    height: 62px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.18);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    font-size: 30px;
     flex-shrink: 0;
 }
 
-.sc-title-fa { font-size: 18px; font-weight: 900; line-height: 1.35; }
-.sc-sub-de { font-size: 13px; font-weight: 800; color: #f8fafc; opacity: 0.92; }
+.sc-title-fa { font-size: 17px; font-weight: 900; line-height: 1.35; }
+.sc-sub-de { font-size: 12.5px; font-weight: 800; color: #f8fafc; opacity: 0.92; }
 
 .sc-pill {
     background: rgba(9, 13, 22, 0.88);
     color: #facc15;
     border: 1.5px solid rgba(250, 204, 21, 0.85);
     border-radius: 999px;
-    padding: 8px 14px;
-    font-size: 13px;
+    padding: 7px 12px;
+    font-size: 12.5px;
     font-weight: 900;
     width: 100%;
 }
@@ -451,7 +454,7 @@ body.theme-luxury-glass .section-horiz-card:nth-child(5) { animation-delay: 1.6s
     color: #ffffff;
     border: none;
     border-radius: 10px;
-    padding: 8px 15px;
+    padding: 8px 16px;
     font-family: inherit;
     font-size: 13.5px;
     font-weight: 900;
@@ -734,7 +737,7 @@ textarea { min-height: 95px; resize: vertical; }
         </div>
     </section>
 
-    <!-- ردیف اول افقی: ۵ بخش مستقل کنار هم -->
+    <!-- ردیف اول افقی: ۵ بخش مستقل کنار هم (-----) -->
     <section class="horizontal-row-5" aria-label="ردیف اول افقی بخش‌های سایت">
         <button type="button" class="section-horiz-card sc-1" id="mcard-podcasts" onclick="openSection('podcasts')">
             <div class="sc-icon">🎧</div>
@@ -772,7 +775,7 @@ textarea { min-height: 95px; resize: vertical; }
         </button>
     </section>
 
-    <!-- ردیف دوم افقی: ۵ بخش مستقل کنار هم -->
+    <!-- ردیف دوم افقی: ۵ بخش مستقل کنار هم (-----) -->
     <section class="horizontal-row-5" aria-label="ردیف دوم افقی بخش‌های سایت">
         <button type="button" class="section-horiz-card sc-6" id="mcard-translator" onclick="openSection('translator')">
             <div class="sc-icon">🌐</div>
@@ -814,7 +817,7 @@ textarea { min-height: 95px; resize: vertical; }
     <section class="drawer-panel" id="drawerPanel">
         <div class="drawer-head">
             <h2 class="drawer-title" id="drawerHeading">بخش آموزشی</h2>
-            <button type="button" class="btn-close-box" onclick="closeDrawerPanel()">✕ بستن</button>
+            <button type="button" class="btn-close-box" onclick="closeDrawerPanel()">✕ بستن و بازگشت به بخش</button>
         </div>
         <div id="drawerBody"></div>
     </section>
@@ -1024,6 +1027,17 @@ window.setSiteTheme = function(themeClass, btnId) {
     });
 };
 
+function focusSectionCard(secId) {
+    if (!secId) return;
+    var card = document.getElementById('mcard-' + secId);
+    if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (typeof card.focus === 'function') {
+            try { card.focus({ preventScroll: true }); } catch (e) {}
+        }
+    }
+}
+
 function readOutLoud(text, forcedLang) {
     var clean = String(text || '').trim();
     if (!clean) return;
@@ -1153,18 +1167,15 @@ window.openSection = function(sec) {
     else if (sec === 'videos') paintVideosSection(bodyEl);
     else if (sec === 'worldinfo') paintWorldInfoSection(bodyEl);
 
-    var activeCard = document.getElementById('mcard-' + sec);
-    if (activeCard) {
-        activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 };
 
 window.closeDrawerPanel = function() {
-    var targetCard = activeSectionId ? document.getElementById('mcard-' + activeSectionId) : null;
+    var prevSection = activeSectionId;
     var panel = document.getElementById('drawerPanel');
     if (panel) panel.classList.remove('open');
-    if (targetCard) {
-        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (prevSection) {
+        focusSectionCard(prevSection);
     }
 };
 
