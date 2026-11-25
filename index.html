@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#060911">
-<title>KING ASAD DEUTSCH LERNEN – مرکز آموزشی و سایت آنلاین</title>
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KING ASAD DE">
+<title>KING ASAD DEUTSCH LERNEN – مرکز آموزشی و اپ آنلاین</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&family=Cinzel:wght@700;800;900&family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -147,6 +151,12 @@ body::before {
     border-color: #fef08a;
     font-weight: 900;
 }
+.nav-btn.install-pill {
+    background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+    color: #ffffff;
+    border: 1.5px solid #bbf7d0;
+    font-weight: 900;
+}
 .nav-btn.admin-pill {
     background: #0f172a;
     color: #facc15;
@@ -161,6 +171,45 @@ body::before {
     display: flex;
     flex-direction: column;
     gap: 18px;
+}
+
+/* بنر نصب اپلیکیشن روی گوشی */
+.install-app-strip {
+    background: linear-gradient(90deg, rgba(20, 83, 45, 0.94) 0%, rgba(15, 23, 42, 0.95) 55%, rgba(113, 63, 18, 0.92) 100%);
+    border: 2px solid #facc15;
+    border-radius: 20px;
+    padding: 14px 18px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.install-app-text strong {
+    display: block;
+    font-size: 15.5px;
+    font-weight: 900;
+    color: #facc15;
+}
+.install-app-text span {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e2e8f0;
+}
+
+.install-action-btn {
+    background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+    color: #091324;
+    border: 2px solid #ffffff;
+    border-radius: 12px;
+    padding: 10px 18px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
 }
 
 /* نوار افقی ۴ سبک طراحی هم‌اندازه */
@@ -677,6 +726,7 @@ textarea { min-height: 95px; resize: vertical; }
         </a>
         <div class="nav-menu">
             <button type="button" class="nav-btn home-pill" onclick="closeDrawerPanel()">🏠 Home</button>
+            <button type="button" class="nav-btn install-pill" onclick="triggerAppInstall()">📲 نصب اپ</button>
             <button type="button" class="nav-btn" onclick="openSection('levels')">📚 Lernen</button>
             <button type="button" class="nav-btn" onclick="openSection('podcasts')">🎧 Podcast</button>
             <button type="button" class="nav-btn" onclick="openSection('solver')">🎮 Übungen</button>
@@ -688,6 +738,15 @@ textarea { min-height: 95px; resize: vertical; }
 </nav>
 
 <div class="main-shell" id="top">
+    <!-- نوار نصب اپلیکیشن روی تلفن -->
+    <section class="install-app-strip" id="appInstallBanner">
+        <div class="install-app-text">
+            <strong>📲 نصب KING ASAD DEUTSCH LERNEN به‌عنوان اپلیکیشن روی گوشی</strong>
+            <span id="installStatusNote">این سایت مثل یک اپ مستقل روی صفحه اصلی گوشی شما نصب می‌شود.</span>
+        </div>
+        <button type="button" class="install-action-btn" id="installAppBtn" onclick="triggerAppInstall()">⬇ نصب اپلیکیشن روی گوشی</button>
+    </section>
+
     <!-- ۴ سبک طراحی به‌صورت افقی و هم‌اندازه -->
     <section class="style-switcher-bar" aria-label="انتخاب سبک طراحی">
         <button type="button" class="style-choice-btn active-style" id="st-black-gold" onclick="setSiteTheme('theme-black-gold', 'st-black-gold')">
@@ -879,6 +938,98 @@ textarea { min-height: 95px; resize: vertical; }
 </div>
 
 <script>
+/* ایجاد آیکون و Manifest داخلی برای نصب به‌عنوان اپ روی گوشی (PWA) */
+(function setupPwaManifestAndIcon() {
+    var svgIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">' +
+        '<rect width="512" height="512" rx="110" fill="#060911"/>' +
+        '<rect x="14" y="14" width="484" height="484" rx="98" fill="none" stroke="#facc15" stroke-width="14"/>' +
+        '<text x="256" y="210" font-size="140" text-anchor="middle">👑</text>' +
+        '<text x="256" y="330" font-size="68" font-weight="900" fill="#facc15" font-family="Arial, sans-serif" text-anchor="middle">KING ASAD</text>' +
+        '<text x="256" y="405" font-size="42" font-weight="800" fill="#ffffff" font-family="Arial, sans-serif" text-anchor="middle">DEUTSCH LERNEN</text>' +
+        '</svg>';
+    var iconDataUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgIcon);
+
+    var appleLink = document.createElement('link');
+    appleLink.rel = 'apple-touch-icon';
+    appleLink.href = iconDataUrl;
+    document.head.appendChild(appleLink);
+
+    var manifestObj = {
+        name: 'KING ASAD DEUTSCH LERNEN',
+        short_name: 'KING ASAD DE',
+        description: 'مرکز آموزشی زبان آلمانی A1 تا C1، پادکست، مترجم و آزمون',
+        start_url: './',
+        display: 'standalone',
+        background_color: '#060911',
+        theme_color: '#060911',
+        icons: [
+            {
+                src: iconDataUrl,
+                sizes: '512x512',
+                type: 'image/svg+xml',
+                purpose: 'any maskable'
+            }
+        ]
+    };
+
+    try {
+        var blob = new Blob([JSON.stringify(manifestObj)], { type: 'application/manifest+json' });
+        var manifestUrl = URL.createObjectURL(blob);
+        var mLink = document.createElement('link');
+        mLink.rel = 'manifest';
+        mLink.href = manifestUrl;
+        document.head.appendChild(mLink);
+    } catch (e) {}
+
+    if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+        var swCode = "self.addEventListener('install', function(e) { self.skipWaiting(); });" +
+            "self.addEventListener('activate', function(e) { e.waitUntil(self.clients.claim()); });" +
+            "self.addEventListener('fetch', function(e) { e.respondWith(fetch(e.request).catch(function() { return caches.match(e.request); })); });";
+        try {
+            var swBlob = new Blob([swCode], { type: 'application/javascript' });
+            var swUrl = URL.createObjectURL(swBlob);
+            navigator.serviceWorker.register(swUrl).catch(function() {});
+        } catch (e) {}
+    }
+})();
+
+var deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    var noteEl = document.getElementById('installStatusNote');
+    if (noteEl) {
+        noteEl.textContent = 'اپلیکیشن آماده نصب است! دکمه «نصب اپلیکیشن روی گوشی» را بزنید.';
+    }
+});
+
+window.addEventListener('appinstalled', function() {
+    deferredInstallPrompt = null;
+    var noteEl = document.getElementById('installStatusNote');
+    if (noteEl) {
+        noteEl.textContent = '✅ اپلیکیشن KING ASAD DEUTSCH LERNEN روی گوشی شما نصب شد!';
+    }
+});
+
+window.triggerAppInstall = function() {
+    if (deferredInstallPrompt && typeof deferredInstallPrompt.prompt === 'function') {
+        deferredInstallPrompt.prompt();
+        deferredInstallPrompt.userChoice.then(function() {
+            deferredInstallPrompt = null;
+        });
+        return;
+    }
+
+    var isIos = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    var msg = isIos
+        ? 'برای نصب روی آیفون/آیپد در مرورگر Safari: روی دکمه اشتراک‌گذاری (Share 📤) در پایین یا بالای صفحه بزنید و گزینه «Add to Home Screen» را انتخاب کنید.'
+        : 'برای نصب روی گوشی: در منوی مرورگر (⋮ یا سه نقطه) گزینه «Install app» یا «Add to Home screen» را بزنید تا اپ روی صفحه اصلی گوشی قرار گیرد.';
+
+    var noteEl = document.getElementById('installStatusNote');
+    if (noteEl) noteEl.textContent = msg;
+    alert(msg);
+};
+
 var LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
 var LEVEL_META = {
